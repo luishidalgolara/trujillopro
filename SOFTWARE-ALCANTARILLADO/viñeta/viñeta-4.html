@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viñeta ESSBIO - Proyecto Alcantarillado</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            overflow: hidden;
+        }
+        
+        .vineta-container {
+            width: 552px;
+            height: 832px;
+            background: white;
+            border: 2px solid #000;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        /* HEADER PRINCIPAL */
+        .header-principal {
+            background: #2c5aa0;
+            color: white;
+            text-align: center;
+            padding: 11px;
+            font-size: 13px;
+            font-weight: bold;
+            border-bottom: 2px solid #000;
+            line-height: 1.2;
+        }
+        
+        /* SECCION INFO PROYECTO */
+        .seccion-proyecto {
+            border-bottom: 2px solid #000;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .fila-proyecto {
+            display: flex;
+            border-bottom: 1px solid #000;
+            min-height: 23px;
+        }
+        
+        .fila-proyecto:last-child {
+            border-bottom: none;
+        }
+        
+        .campo {
+            display: flex;
+            align-items: center;
+            padding: 4px 8px;
+            border-right: 1px solid #000;
+        }
+        
+        .campo:last-child {
+            border-right: none;
+        }
+        
+        .campo-label {
+            font-weight: bold;
+            font-size: 9px;
+            white-space: nowrap;
+            margin-right: 8px;
+        }
+        
+        .campo-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 9px;
+            outline: none;
+            min-width: 0;
+        }
+        
+        .campo-corto {
+            flex: 0 0 30%;
+        }
+        
+        .campo-medio {
+            flex: 0 0 35%;
+        }
+        
+        .campo-largo {
+            flex: 1;
+        }
+        
+        /* SECCION DIRECCION */
+        .seccion-direccion {
+            border-bottom: 2px solid #000;
+        }
+        
+        .fila-direccion {
+            display: flex;
+            align-items: center;
+            padding: 4px 8px;
+            border-bottom: 1px solid #000;
+            min-height: 23px;
+        }
+        
+        .fila-direccion:last-child {
+            border-bottom: none;
+        }
+        
+        .dir-label {
+            font-weight: bold;
+            font-size: 9px;
+            min-width: 95px;
+        }
+        
+        .dir-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 9px;
+            outline: none;
+        }
+        
+        /* SECCION UBICACION */
+        .seccion-ubicacion {
+            flex: 1;
+            display: flex;
+            border-bottom: 2px solid #000;
+            min-height: 227px;
+        }
+        
+        .ubicacion-izq {
+            width: 132px;
+            border-right: 2px solid #000;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .ubicacion-titulo {
+            font-weight: bold;
+            font-size: 11px;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        
+        .ubicacion-textarea {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 9px;
+            resize: none;
+            outline: none;
+        }
+        
+        .ubicacion-der {
+            flex: 1;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            background: #f0f0f0;
+            position: relative;
+            gap: 6px;
+        }
+        
+        .mapa-input-container {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            position: relative;
+        }
+        
+        .mapa-input-label {
+            font-size: 9px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        
+        .mapa-input-wrapper {
+            flex: 1;
+            position: relative;
+        }
+        
+        .mapa-input {
+            width: 100%;
+            padding: 4px 6px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 9px;
+            outline: none;
+        }
+        
+        .autocomplete-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ccc;
+            border-top: none;
+            max-height: 150px;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            display: none;
+        }
+        
+        .autocomplete-item {
+            padding: 6px 8px;
+            font-size: 9px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .autocomplete-item:hover {
+            background: #e3f2fd;
+        }
+        
+        .autocomplete-item:last-child {
+            border-bottom: none;
+        }
+        
+        .mapa-container {
+            flex: 1;
+            border: 1px solid #666;
+            background: white;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .mapa-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .mapa-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            color: #999;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        /* SECCION FIRMAS */
+        .seccion-firmas {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .firmas-header {
+            background: #2c5aa0;
+            color: white;
+            text-align: center;
+            padding: 6px;
+            font-size: 11px;
+            font-weight: bold;
+            border-bottom: 2px solid #000;
+        }
+        
+        .firmas-body {
+            flex: 1;
+            display: flex;
+        }
+        
+        .firma-col {
+            flex: 1;
+            border-right: 2px solid #000;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .firma-col:last-child {
+            border-right: none;
+        }
+        
+        .firma-titulo {
+            font-weight: bold;
+            font-size: 9px;
+            text-align: center;
+            margin-bottom: 8px;
+            padding: 4px;
+            background: #e0e0e0;
+        }
+        
+        .firma-campo {
+            display: flex;
+            margin-bottom: 6px;
+            font-size: 9px;
+        }
+        
+        .firma-campo-label {
+            font-weight: bold;
+            min-width: 68px;
+        }
+        
+        .firma-campo-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 9px;
+            outline: none;
+        }
+        
+        /* BOTONES */
+        .botones-container {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            display: flex;
+            gap: 5px;
+            z-index: 1000;
+        }
+        
+        .btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        .btn-primary {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .btn-danger {
+            background: #f44336;
+            color: white;
+        }
+        
+        @media print {
+            .botones-container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="vineta-container" id="vinetaContainer">
+        <!-- HEADER PRINCIPAL -->
+        <div class="header-principal">
+            PROYECTO DE INSTALACION DE ALCANTARILLADO DOMICILIARIO
+        </div>
+        
+        <!-- SECCION PROYECTO -->
+        <div class="seccion-proyecto">
+            <div class="fila-proyecto">
+                <div class="campo campo-largo">
+                    <span class="campo-label">PROYECTO:</span>
+                    <input type="text" class="campo-input" id="proyecto" placeholder="Nombre del proyecto">
+                </div>
+                <div class="campo campo-medio">
+                    <span class="campo-label">LAMINA:</span>
+                    <input type="text" class="campo-input" id="lamina" value="4">
+                </div>
+            </div>
+            
+            <div class="fila-proyecto">
+                <div class="campo campo-corto">
+                    <span class="campo-label">N°:</span>
+                    <input type="text" class="campo-input" id="proyecto_num">
+                </div>
+                <div class="campo campo-medio">
+                    <span class="campo-label">FECHA:</span>
+                    <input type="text" class="campo-input" id="proyecto_fecha">
+                </div>
+                <div class="campo campo-largo">
+                    <span class="campo-label">DE:</span>
+                    <input type="text" class="campo-input" id="lamina_de">
+                </div>
+            </div>
+            
+            <div class="fila-proyecto">
+                <div class="campo campo-medio">
+                    <span class="campo-label">AVISO INICIO:</span>
+                    <input type="text" class="campo-input" id="aviso_inicio">
+                </div>
+                <div class="campo campo-medio">
+                    <span class="campo-label">N°:</span>
+                    <input type="text" class="campo-input" id="aviso_num">
+                </div>
+                <div class="campo campo-largo">
+                    <span class="campo-label">FECHA:</span>
+                    <input type="text" class="campo-input" id="aviso_fecha">
+                </div>
+            </div>
+            
+            <div class="fila-proyecto">
+                <div class="campo campo-largo">
+                    <span class="campo-label">CERT. FACTIBILIDAD:</span>
+                    <input type="text" class="campo-input" id="cert_fact" value="2018100377S">
+                </div>
+                <div class="campo campo-medio">
+                    <span class="campo-label">FECHA:</span>
+                    <input type="text" class="campo-input" id="cert_fecha">
+                </div>
+            </div>
+        </div>
+        
+        <!-- SECCION DIRECCION -->
+        <div class="seccion-direccion">
+            <div class="fila-direccion">
+                <span class="dir-label">CALLE:</span>
+                <input type="text" class="dir-input" id="calle">
+            </div>
+            <div class="fila-direccion">
+                <span class="dir-label">N° MUNICIPAL:</span>
+                <input type="text" class="dir-input" id="num_municipal">
+            </div>
+            <div class="fila-direccion">
+                <span class="dir-label">POBLACION:</span>
+                <input type="text" class="dir-input" id="poblacion">
+            </div>
+            <div class="fila-direccion">
+                <span class="dir-label">COMUNA:</span>
+                <input type="text" class="dir-input" id="comuna">
+            </div>
+        </div>
+        
+        <!-- SECCION UBICACION -->
+        <div class="seccion-ubicacion">
+            <div class="ubicacion-izq">
+                <div class="ubicacion-titulo">UBICACION</div>
+                <textarea class="ubicacion-textarea" id="ubicacion" placeholder="Descripción ubicación..."></textarea>
+            </div>
+            <div class="ubicacion-der">
+                <div class="mapa-input-container">
+                    <span class="mapa-input-label">Dirección:</span>
+                    <div class="mapa-input-wrapper">
+                        <input type="text" class="mapa-input" id="direccion_mapa" placeholder="Ej: Av. Libertador Bernardo O'Higgins 1449, Santiago" autocomplete="off">
+                        <div class="autocomplete-list" id="autocompleteList"></div>
+                    </div>
+                </div>
+                <div class="mapa-container">
+                    <div class="mapa-placeholder" id="mapaPlaceholder">
+                        Escribe una dirección arriba para ver el mapa
+                    </div>
+                    <iframe 
+                        id="mapaIframe" 
+                        class="mapa-iframe" 
+                        style="display: none;"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SECCION FIRMAS -->
+        <div class="seccion-firmas">
+            <div class="firmas-header">FIRMAS</div>
+            <div class="firmas-body">
+                <div class="firma-col">
+                    <div class="firma-titulo">PROYECTISTA</div>
+                    <div class="firma-campo">
+                        <span class="firma-campo-label">Nombre:</span>
+                        <input type="text" class="firma-campo-input" id="proy_nombre">
+                    </div>
+                    <div class="firma-campo">
+                        <span class="firma-campo-label">Profesión:</span>
+                        <input type="text" class="firma-campo-input" id="proy_profesion">
+                    </div>
+                    <div class="firma-campo">
+                        <span class="firma-campo-label">Domicilio:</span>
+                        <input type="text" class="firma-campo-input" id="proy_domicilio">
+                    </div>
+                </div>
+                
+                <div class="firma-col">
+                    <div class="firma-titulo">PROPIETARIO</div>
+                    <div class="firma-campo">
+                        <span class="firma-campo-label">Nombre:</span>
+                        <input type="text" class="firma-campo-input" id="prop_nombre">
+                    </div>
+                    <div class="firma-campo">
+                        <span class="firma-campo-label">RUT:</span>
+                        <input type="text" class="firma-campo-input" id="prop_rut">
+                    </div>
+                    <div class="firma-campo">
+                        <span class="firma-campo-label">Domicilio:</span>
+                        <input type="text" class="firma-campo-input" id="prop_domicilio">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="firmas-body" style="border-top: 2px solid #000;">
+                <div class="firma-col">
+                    <div class="firma-titulo">CONTRATISTA</div>
+                    <div class="firma-campo">
+                        <span class="firma-campo-label">Nombre:</span>
+                        <input type="text" class="firma-campo-input" id="cont_nombre">
+                    </div>
+                    <div class="firma-campo">
+                        <span class="firma-campo-label">Profesión:</span>
+                        <input type="text" class="firma-campo-input" id="cont_profesion">
+                    </div>
+                    <div class="firma-campo">
+                        <span class="firma-campo-label">Domicilio:</span>
+                        <input type="text" class="firma-campo-input" id="cont_domicilio">
+                    </div>
+                </div>
+                
+                <div class="firma-col">
+                    <div class="firma-titulo">CERTIFICADO RECEPCIÓN</div>
+                    <div class="firma-campo">
+                        <span class="firma-campo-label">N°:</span>
+                        <input type="text" class="firma-campo-input" id="cert_recep_num">
+                    </div>
+                    <div class="firma-campo">
+                        <span class="firma-campo-label">FECHA:</span>
+                        <input type="text" class="firma-campo-input" id="cert_recep_fecha">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="botones-container">
+        <button class="btn btn-primary" onclick="guardarDatos()">💾 Guardar</button>
+        <button class="btn btn-danger" onclick="limpiarFormulario()">🗑️ Limpiar</button>
+        <button class="btn btn-primary" onclick="window.print()">🖨️ Imprimir</button>
+    </div>
+
+    <script>
+        let datosTemporales = {};
+        let timeoutMapa = null;
+        let timeoutAutocomplete = null;
+
+        // ELEMENTOS DOM
+        const direccionInput = document.getElementById('direccion_mapa');
+        const mapaIframe = document.getElementById('mapaIframe');
+        const mapaPlaceholder = document.getElementById('mapaPlaceholder');
+        const autocompleteList = document.getElementById('autocompleteList');
+
+        // AUTOCOMPLETADO CON NOMINATIM
+        function buscarDirecciones(query) {
+            if (query.length < 3) {
+                autocompleteList.style.display = 'none';
+                return;
+            }
+
+            fetch(
+                'https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(query) + '&countrycodes=cl&limit=5&addressdetails=1',
+                {
+                    headers: {
+                        'Accept-Language': 'es'
+                    }
+                }
+            )
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(resultados) {
+                mostrarSugerencias(resultados);
+            })
+            .catch(function(error) {
+                console.error('Error en búsqueda:', error);
+            });
+        }
+
+        function mostrarSugerencias(resultados) {
+            autocompleteList.innerHTML = '';
+            
+            if (resultados.length === 0) {
+                autocompleteList.style.display = 'none';
+                return;
+            }
+
+            resultados.forEach(function(resultado) {
+                const item = document.createElement('div');
+                item.className = 'autocomplete-item';
+                item.textContent = resultado.display_name;
+                
+                item.addEventListener('click', function() {
+                    direccionInput.value = resultado.display_name;
+                    autocompleteList.style.display = 'none';
+                    actualizarMapa();
+                });
+                
+                autocompleteList.appendChild(item);
+            });
+            
+            autocompleteList.style.display = 'block';
+        }
+
+        // ACTUALIZAR MAPA
+        function actualizarMapa() {
+            const direccion = direccionInput.value.trim();
+            
+            if (direccion === '') {
+                mapaIframe.style.display = 'none';
+                mapaPlaceholder.style.display = 'flex';
+                mapaPlaceholder.textContent = 'Escribe una dirección arriba para ver el mapa';
+                return;
+            }
+
+            const direccionEncoded = encodeURIComponent(direccion);
+            const urlMapa = 'https://maps.google.com/maps?q=' + direccionEncoded + '&output=embed&z=18';
+            
+            mapaIframe.src = urlMapa;
+            mapaIframe.style.display = 'block';
+            mapaPlaceholder.style.display = 'none';
+            
+            console.log('Mapa actualizado:', direccion);
+        }
+
+        // EVENTOS INPUT
+        direccionInput.addEventListener('input', function() {
+            const valor = this.value.trim();
+            
+            // Autocompletado
+            clearTimeout(timeoutAutocomplete);
+            if (valor.length >= 3) {
+                timeoutAutocomplete = setTimeout(function() {
+                    buscarDirecciones(valor);
+                }, 300);
+            } else {
+                autocompleteList.style.display = 'none';
+            }
+            
+            // Actualizar mapa
+            clearTimeout(timeoutMapa);
+            timeoutMapa = setTimeout(actualizarMapa, 800);
+        });
+
+        direccionInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                clearTimeout(timeoutMapa);
+                clearTimeout(timeoutAutocomplete);
+                autocompleteList.style.display = 'none';
+                actualizarMapa();
+            }
+        });
+
+        // Cerrar sugerencias al hacer click fuera
+        document.addEventListener('click', function(e) {
+            if (!direccionInput.contains(e.target) && !autocompleteList.contains(e.target)) {
+                autocompleteList.style.display = 'none';
+            }
+        });
+
+        function limpiarFormulario() {
+            if (confirm('¿Limpiar todos los campos?')) {
+                const inputs = document.querySelectorAll('input, textarea');
+                inputs.forEach(input => {
+                    if (input.id !== 'lamina' && input.id !== 'cert_fact') {
+                        input.value = '';
+                    }
+                });
+                datosTemporales = {};
+                
+                mapaIframe.src = '';
+                mapaIframe.style.display = 'none';
+                mapaPlaceholder.style.display = 'flex';
+                mapaPlaceholder.textContent = 'Escribe una dirección arriba para ver el mapa';
+                autocompleteList.style.display = 'none';
+            }
+        }
+
+        function guardarDatos() {
+            const datos = {};
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                if (input.id) {
+                    datos[input.id] = input.value;
+                }
+            });
+            
+            const json = JSON.stringify(datos, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'vineta_essbio.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                if (input.id) {
+                    const saved = datosTemporales[input.id];
+                    if (saved && input.id !== 'lamina' && input.id !== 'cert_fact') {
+                        input.value = saved;
+                    }
+                    
+                    input.addEventListener('input', function() {
+                        datosTemporales[input.id] = input.value;
+                    });
+                }
+            });
+        });
+
+        (function() {
+            let panActivo = false;
+            let ultimaPosicion = { x: 0, y: 0 };
+            let zoomFactorActual = 1;
+            const container = document.getElementById('vinetaContainer');
+
+            function cancelarPan() {
+                if (panActivo) {
+                    panActivo = false;
+                    document.body.style.cursor = 'auto';
+                    window.parent.postMessage({ tipo: 'vinetaPanCancelar' }, '*');
+                }
+            }
+
+            container.addEventListener('mousedown', function(e) {
+                if (e.button === 1 && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA' && e.target.tagName !== 'BUTTON') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    panActivo = true;
+                    ultimaPosicion.x = e.clientX;
+                    ultimaPosicion.y = e.clientY;
+                    document.body.style.cursor = 'grabbing';
+                    
+                    window.parent.postMessage({
+                        tipo: 'vinetaPanInicio',
+                        x: e.clientX,
+                        y: e.clientY
+                    }, '*');
+                }
+            }, true);
+
+            container.addEventListener('mousemove', function(e) {
+                if (!panActivo) return;
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const deltaXRaw = ultimaPosicion.x - e.clientX;
+                const deltaYRaw = ultimaPosicion.y - e.clientY;
+                
+                const deltaX = deltaXRaw * zoomFactorActual;
+                const deltaY = deltaYRaw * zoomFactorActual;
+                
+                window.parent.postMessage({
+                    tipo: 'vinetaPanMove',
+                    deltaX: deltaX,
+                    deltaY: deltaY
+                }, '*');
+                
+                ultimaPosicion.x = e.clientX;
+                ultimaPosicion.y = e.clientY;
+            }, true);
+
+            document.addEventListener('mouseup', function(e) {
+                if (panActivo && e.button === 1) {
+                    cancelarPan();
+                }
+            }, true);
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (panActivo) {
+                        e.stopPropagation();
+                        cancelarPan();
+                    }
+                }
+            }, true);
+
+            window.addEventListener('blur', function() {
+                cancelarPan();
+            });
+
+            window.addEventListener('message', function(event) {
+                if (event.data.tipo === 'vinetaCancelarPan') {
+                    cancelarPan();
+                }
+                
+                if (event.data.tipo === 'vinetaZoomUpdate') {
+                    zoomFactorActual = event.data.zoom;
+                }
+            });
+
+            console.log('✅ PAN iframe mejorado con captura controlada');
+        })();
+    </script>
+</body>
+</html>

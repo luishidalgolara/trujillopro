@@ -1,0 +1,160 @@
+/* ESTILOS PARA SECCIONES CAD EN TOOLBAR */
+
+.section-dibujo-cad {
+    border-left: 3px solid #6366f1;
+}
+
+.section-colores-cad {
+    border-left: 3px solid #ec4899;
+}
+
+.section-grosor-cad {
+    border-left: 3px solid #f59e0b;
+}
+
+.color-square {
+    border-width: 2px !important;
+    transition: all 0.3s ease;
+}
+
+.color-square:hover {
+    transform: scale(1.15);
+    border-color: #00d9ff !important;
+    box-shadow: 0 0 12px rgba(0, 217, 255, 0.5);
+}
+
+.color-square.active {
+    border-color: #00ff88 !important;
+    border-width: 3px !important;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+}
+
+.color-more {
+    background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%) !important;
+    color: white !important;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 5px 12px !important;
+    min-width: auto !important;
+}
+
+.color-more:hover {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
+    transform: translateY(-1px);
+}
+
+.grosor-btn.active {
+    background: #ef4444 !important;
+    color: white !important;
+    border-color: #ef4444 !important;
+}
+
+.modal-colores-aci {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 100000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal-colores-aci.active {
+    display: flex;
+}
+
+.modal-colores-content {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    border: 3px solid #00d4ff;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 850px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 212, 255, 0.3);
+}
+
+.modal-colores-header {
+    color: #00d4ff;
+    font-size: 1.5em;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+}
+
+.modal-colores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.color-item-modal {
+    width: 50px;
+    height: 50px;
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7em;
+    color: white;
+    text-shadow: 0 0 3px black, 0 0 6px black;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.color-item-modal:hover {
+    transform: scale(1.2);
+    border-color: #00ff88;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.6), 0 4px 15px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.modal-close-btn {
+    background: linear-gradient(135deg, #ff4444 0%, #cc3333 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1em;
+    width: 100%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
+}
+
+.modal-close-btn:hover {
+    background: linear-gradient(135deg, #ff6666 0%, #ee5555 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 68, 68, 0.5);
+}
+
+.modal-colores-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-colores-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.modal-colores-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+    border-radius: 4px;
+}
+
+.modal-colores-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+}

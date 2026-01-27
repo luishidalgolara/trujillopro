@@ -1,0 +1,590 @@
+{
+  "seccion_5_exigencias_generales": {
+    "numero": "5",
+    "titulo": "EXIGENCIAS GENERALES",
+    "subsecciones": {
+      "5.0_de_las_instalaciones": {
+        "numero": "5.0",
+        "titulo": "DE LAS INSTALACIONES",
+        "articulos": [
+          {
+            "numero": "5.0.1",
+            "texto": "Toda instalación de consumo deberá ser proyectada y ejecutada dando estricto cumplimiento a las disposiciones de esta Norma."
+          },
+          {
+            "numero": "5.0.2",
+            "texto": "Toda instalación de consumo deberá ejecutarse de acuerdo a un proyecto técnicamente concebido, el cual deberá asegurar que la instalación no presenta riesgos para operadores o usuarios, sea eficiente, proporcione un buen servicio, permita un fácil y adecuado mantenimiento y tenga la flexibilidad necesaria como para permitir modificaciones o ampliaciones con facilidad."
+          },
+          {
+            "numero": "5.0.3",
+            "texto": "Toda instalación de consumo debe ser proyectada y ejecutada bajo la supervisión directa de un Instalador Electricista autorizado y de la categoría correspondiente según lo establecido en el D.S. Nº 92, de 1983, del Ministerio de Economía Fomento y Reconstrucción, Reglamento de Instaladores Eléctricos y de Electricistas de Espectáculos Públicos."
+          },
+          {
+            "numero": "5.0.4",
+            "texto": "En uso de sus atribuciones, la Superintendencia podrá controlar las instalaciones de consumo en sus etapas de proyecto, ejecución, operación y mantenimiento, según se establece en la Ley Nº 18.410 y sus modificaciones."
+          }
+        ]
+      },
+      "5.1_empalmes": {
+        "numero": "5.1",
+        "titulo": "EMPALMES",
+        "articulos": [
+          {
+            "numero": "5.1.1",
+            "texto": "Toda instalación de consumo se conectará a la red pública de distribución a través de un empalme ejecutado de acuerdo a las normas correspondientes."
+          },
+          {
+            "numero": "5.1.2",
+            "texto": "Sólo se otorgará empalme a aquellas instalaciones construidas de acuerdo a normas y que cuenten con la certificación o sello establecido en la Ley Nº 18.410."
+          },
+          {
+            "numero": "5.1.3",
+            "texto": "Las cajas de medida del empalme se ubicarán en una posición tal que permita un fácil acceso para la lectura o control de los equipos de medida y eventuales trabajos de mantenimiento y las acometidas, sean aéreas o subterráneas, en ningún caso podrán atravesar propiedades vecinas."
+          },
+          {
+            "numero": "5.1.4",
+            "texto": "Para construcciones habitacionales unifamiliares u otro tipo de recintos identificados con un rol de avalúo único, conectados a través de un empalme único, el equipo de medida de éste deberá ubicarse dentro de un semicírculo de radio no superior a quince metros, con centro en la puerta de acceso desde la vía pública al punto de medición. Los equipos de medida de los empalmes se montarán en la fachada exterior de la edificación sí ésta queda dentro de la zona delimitada; en caso contrario, se ubicarán en un punto próximo a la línea de cierre, cumpliendo la exigencia establecida, y se montarán en una estructura instalada con este propósito.",
+            "nota_aclaratoria": "En zonas rurales y situaciones similares, en que las condiciones de terreno y las dimensiones de los predios no posibilitan el cumplimiento estricto de esta disposición, se deberá aplicar el mejor criterio técnico."
+          },
+          {
+            "numero": "5.1.5",
+            "texto": "Los empalmes de edificios de departamentos, edificios de oficinas o galerías multitiendas podrán ser concentrados, distribuidos o mixtos. Se entiende por concentrados a aquella condición en que los empalmes de todas las dependencias están reunidos en un recinto único; por distribuidos a aquella condición en que los empalmes están ubicados en recintos en cada uno de los pisos o zonas; y por mixtos, a aquella condición en que existen empalmes concentrados correspondientes a grupos parciales de pisos, zonas o bloques constructivos. Estos conceptos podrán aplicarse también a construcciones en que predomine la distribución horizontal de dependencias.",
+            "nota_aclaratoria": "No debe confundirse tienda de departamentos con galería multitiendas; en la primera existirá un único empalme pues existirá una única instalación con un único usuario o propietario, en tanto en la segunda existirán múltiples instalaciones con sus correspondientes empalmes."
+          },
+          {
+            "numero": "5.1.6",
+            "texto": "En cualquiera de las alternativas de montaje de los empalmes en la construcción, se dejarán previstos espacios cerrados de tamaño suficiente como para permitir el cómodo acceso del o los alimentadores de acometida, provenientes de la red pública de distribución, una adecuada ubicación de las cajas de protección de éstos y las de las cajas de empalme de las distintas dependencias y, además, amplios espacios disponibles para posibles aumentos de capacidad de las instalaciones y los eventuales trabajos de mantenimiento o reparación. Estos espacios podrán ser recintos destinados a este único propósito o bien nichos de albañilería o metálicos, dependiendo de la calidad de la instalación y de la cantidad de empalmes a instalar."
+          },
+          {
+            "numero": "5.1.7",
+            "texto": "Respecto de la ubicación de las cajas de empalmes individuales dentro de los recintos destinados a su montaje, éstas se ubicarán de modo tal que el borde inferior de ninguna de ellas quede a una altura menos de 0,80 m, ni el borde superior de ninguna de ellas quede a una altura superior a 2,10 m, ambas cotas medidas respecto del nivel de piso terminado. Ver hoja de norma Nº 1.",
+            "referencia_visual": "hoja de norma Nº 1"
+          },
+          {
+            "numero": "5.1.8",
+            "texto": "Los recintos de empalmes eléctricos podrán utilizarse también para instalar en ellos los empalmes telefónicos, los cuales deberán estar separados de los eléctricos por un panel divisorio dispuesto de forma tal que no entorpezca el acceso ni la operación de ninguna de ambas instalaciones. En este recinto no podrán instalarse los empalmes o equipos de medida de otros servicios tales como agua potable o gas, así como tampoco podrá usarse este recinto como lugar de estadía de personal ni como bodega de ninguna especie."
+          },
+          {
+            "numero": "5.1.9",
+            "texto": "Se aceptará la concentración de empalmes en edificios de altura hasta quince pisos, sobre esta altura se deberán construir recintos exclusivos para concentración de empalmes por cada quince pisos o fracción. En la construcción y disposición de estos recintos se deberán respetar las condiciones establecidas en 5.1.6 y 5.1.7."
+          },
+          {
+            "numero": "5.1.10",
+            "texto": "Para permitir el paso del o los arranques provenientes de la red pública para la conexión de los empalmes definidos en 5.1.9, en la construcción se dispondrá de un conducto por el cual subirá la canalización de estos alimentadores, debiendo ser accesible piso a piso. Este conducto deberá ser de uso exclusivo para llevar canalizaciones eléctricas de potencia."
+          },
+          {
+            "numero": "5.1.11",
+            "texto": "En la canalización de los arranques indicados en 5.1.10 se utilizarán preferentemente ductos cerrados; en caso de usar ductos accesibles como bandejas o escalerillas sólo se podrá usar cables multiconductores en esta canalización."
+          },
+          {
+            "numero": "5.1.12",
+            "texto": "La canalización de estos arranques podrá ejecutarla el instalador a cargo de las instalaciones de consumo del edificio, de acuerdo a un proyecto proporcionado o aprobado por la Empresa Eléctrica respectiva y bajo la supervisión de ésta."
+          },
+          {
+            "numero": "5.1.13",
+            "texto": "Desde tableros generales ubicados dentro del recinto de empalmes o un recinto contiguo, según se disponga en el proyecto general de la construcción, se protegerán y comandarán los alimentadores propios de cada dependencia del edificio. En la construcción, ubicación y montaje de estos tableros se respetarán las exigencias contenidas en el capítulo 6 de esta Norma."
+          },
+          {
+            "numero": "5.1.14",
+            "texto": "Entre el tablero general correspondiente y el tablero de distribución de cada dependencia del edificio estarán los alimentadores propios de cada instalación en particular; en la canalización de estos alimentadores se deberán respetar las exigencias contenidas en los párrafos 7.1.1.4 a 7.1.1.6 del capítulo 7 de esta Norma."
+          },
+          {
+            "numero": "5.1.15",
+            "texto": "En el proyecto de instalación eléctrica de un edificio se deberá incluir un detalle de montaje de los empalmes, en el cual se mostrará en una vista de elevación la ubicación de la caja de protecciones de la Empresa Eléctrica, las cajas de conexión, las cajas de medida de cada dependencia o servicio, los tableros de la instalación, si existen en ese punto, y el recorrido y características de la canalización que interconecta estos elementos."
+          },
+          {
+            "numero": "5.1.16",
+            "texto": "En los casos en que una canalización de otro servicio como de comunicaciones o control comparta recintos, canalizaciones o conductos con instalaciones eléctricas, aquella deberá proyectarse e instalarse teniendo en cuenta que podrán ser afectados por fallas o interferencias originadas en las instalaciones eléctricas. La adopción de medidas correctivas o de protección será de exclusiva responsabilidad del usuario o propietario de aquellos servicios."
+          }
+        ]
+      },
+      "5.2_subsistemas_de_distribucion": {
+        "numero": "5.2",
+        "titulo": "SUBSISTEMAS DE DISTRIBUCIÓN",
+        "articulos": [
+          {
+            "numero": "5.2.1",
+            "texto": "Cualquier comunidad constituida por los habitantes o usuarios de edificios de altura, condominios o similares podrá optar a la alternativa de obtener energía eléctrica desde un subsistema de distribución."
+          },
+          {
+            "numero": "5.2.2",
+            "texto": "Se denominará subsistema de distribución a una red eléctrica de distribución construida dentro de los límites de la propiedad del edificio o condominio, administrada y mantenida por la comunidad, sus representantes o quienes ella designe, cuya finalidad será proveer de energía eléctrica a cada uno de sus integrantes, en forma independiente del control de la Empresa Eléctrica concesionaria de la zona."
+          },
+          {
+            "numero": "5.2.3",
+            "texto": "Para todos los efectos, el subsistema de distribución será considerado como un único servicio, siendo referidas las obligaciones, derechos y deberes de la Empresa Eléctrica de distribución sólo con respecto al punto de empalme.",
+            "nota_aclaratoria": "La finalidad de un subsistema de distribución es la de aprovechar las ventajas económicas que ofrece la compra en grandes bloques de energía, por lo tanto al establecerse uno de estos subsistemas, quien lo establezca y lo opere deberá efectuar un estudio de alternativas en el que se demuestre que el costo final de la energía y/o las condiciones de calidad de servicio para el usuario individual ofrecerán una ventaja real con respecto a las ofrecidas por la Concesionaria local."
+          },
+          {
+            "numero": "5.2.4",
+            "texto": "Los subsistemas de distribución regularán su accionar mediante un contrato privado establecido entre sus integrantes y según un reglamento interno acordado y fijado de acuerdo a la legislación vigente."
+          },
+          {
+            "numero": "5.2.5",
+            "texto": "Para cumplir con los objetivos que dan origen a un subsistema de distribución, los interesados en constituirlo y administrarlo deberán presentar ante la Superintendencia un estudio elaborado, y firmado por un instalador con licencia para realizar este tipo de instalaciones, en el que se establezca:",
+            "requisitos": [
+              "Usuarios que se conectarán al subsistema",
+              "Constitución física del subsistema, mostrada a través de un proyecto consistente en los planos de las instalaciones, memorias de cálculo, memorias descriptivas de construcción y operación y un análisis detallado de los costos de construcción."
+            ]
+          },
+          {
+            "numero": "5.2.6",
+            "texto": "La Superintendencia podrá exigir modificaciones o rechazar el estudio fundamentando su rechazo sobre bases técnicas, habiendo constatado que las instalaciones propias del subsistema no cumplen la normativa vigente, si tales observaciones no son subsanadas en plazo que ella misma determina."
+          },
+          {
+            "numero": "5.2.7",
+            "texto": "Las instalaciones constitutivas de un subsistema de distribución deberán construirse cumpliendo las exigencias de esta Norma y las normas correspondientes a las distintas modalidades constructivas de una red de distribución pública."
+          },
+          {
+            "numero": "5.2.8",
+            "texto": "Las Empresas Eléctricas Concesionarias locales no podrán oponerse a la constitución de un subsistema de distribución que haya cumplido todas las exigencias que impone esta Norma. No obstante lo anterior, la constitución de un subsistema de distribución deberá ser oportunamente comunicado a la Empresa Eléctrica correspondiente, acompañando a dicha comunicación la documentación de constitución inscrita en la Superintendencia. Igual obligatoriedad se establece para las modificaciones técnicas o administrativas que se introduzcan al funcionamiento del subsistema."
+          },
+          {
+            "numero": "5.2.9",
+            "texto": "No obstante lo indicado en 5.2.5, los subsistemas de distribución deberán proyectarse y construirse de modo tal que cualquiera de sus usuarios individuales tenga la opción de desconectarse del subsistema y conectarse a la red de la Concesionaria Local."
+          },
+          {
+            "numero": "5.2.10",
+            "texto": "El subsistema deberá proyectarse y construirse de modo de garantizar que en caso de una falla general interna, no atribuible a terceros, el usuario final en ningún caso permanecerá sin energía por un período superior a doce horas y que la frecuencia media de este tipo de fallas no sea superior a una cada tres años."
+          },
+          {
+            "numero": "5.2.11",
+            "texto": "El hecho de ser un usuario de un subsistema de distribución no exime del cumplimiento de las exigencias de esta Norma relativas a las instalaciones de consumo."
+          },
+          {
+            "numero": "5.2.12",
+            "texto": "Los subsistemas existentes a la entrada en vigencia de esta Norma deberán regularizar su constitución y funcionamiento adecuándolos a sus exigencias en un plazo no superior a un año."
+          }
+        ]
+      },
+      "5.3_condiciones_de_alimentacion": {
+        "numero": "5.3",
+        "titulo": "CONDICIONES DE ALIMENTACIÓN",
+        "subsecciones": {
+          "5.3.1_tensiones": {
+            "numero": "5.3.1",
+            "titulo": "Tensiones",
+            "articulos": [
+              {
+                "numero": "5.3.1.1",
+                "texto": "La tensión de servicio de los materiales o equipos empleados en instalaciones deberá ser a lo menos igual a la tensión nominal del sistema a que la instalación se conecte."
+              },
+              {
+                "numero": "5.3.1.2",
+                "texto": "En el caso de materiales o equipos aptos para varias tensiones de servicio, una de ellas a lo menos deberá cumplir lo indicado en 5.3.1.1 y todas las disposiciones de Norma correspondientes se aplicarán en función de este valor."
+              },
+              {
+                "numero": "5.3.1.3",
+                "texto": "Para las instalaciones de consumo en baja tensión las tensiones nominales serán 380/220 V, 500 V y 660V, en las condiciones especificadas en la norma NSEC 8 En.75."
+              }
+            ]
+          },
+          "5.3.2_frecuencia": {
+            "numero": "5.3.2",
+            "titulo": "Frecuencia",
+            "articulos": [
+              {
+                "numero": "5.3.2.1",
+                "texto": "Las disposiciones de esta Norma son aplicables a instalaciones de consumo alimentadas con corriente alterna."
+              },
+              {
+                "numero": "5.3.2.2",
+                "texto": "Los materiales y equipos que se utilicen en las instalaciones contenidas en el alcance de esta Norma deberán ser aptos para funcionar a una frecuencia nominal de 50 Hz."
+              }
+            ]
+          }
+        }
+      },
+      "5.4_condiciones_de_montaje": {
+        "numero": "5.4",
+        "titulo": "CONDICIONES DE MONTAJE",
+        "subsecciones": {
+          "5.4.1_condiciones_ambientales": {
+            "numero": "5.4.1",
+            "titulo": "Condiciones ambientales",
+            "articulos": [
+              {
+                "numero": "5.4.1.1",
+                "texto": "Las disposiciones de esta Norma serán aplicables en sitios en los cuales la temperatura ambiente no descienda mas allá de –10ºC, no exceda de 35ºC y su valor medio diario anual no sea superior a 25ºC."
+              },
+              {
+                "numero": "5.4.1.2",
+                "texto": "Cuando la temperatura ambiente sobrepase los límites indicados en 5.4.1.1 se deberán tomar las precauciones prescritas en las normas respectivas y aplicar los factores de corrección correspondientes."
+              },
+              {
+                "numero": "5.4.1.3",
+                "texto": "Las disposiciones de esta Norma son, en general, válidas en regiones cuya altitud no sea superior a 1.000 m. Donde se exceda esta altitud se deberán tomar las precauciones indicadas por las normas respectivas o por los fabricantes, al instalar equipos tales como motores, transformadores, disyuntores, etc."
+              },
+              {
+                "numero": "5.4.1.4",
+                "texto": "Las disposiciones de esta Norma son aplicables en zonas en que la contaminación ambiental no afecta el comportamiento de los componentes de la instalación. En zonas en que la contaminación excesiva puede alterar este comportamiento deben tomarse las precauciones correspondientes establecidas en normas o en recomendaciones de los fabricantes. En particular la Norma reconoce como zona de alta contaminación salina a la franja costera, definida como una zona de 10 Km de ancho, medidos desde el borde costero, al igual que instalaciones ubicadas en recintos en donde se procesen componentes químicos corrosivos.",
+                "nota_aclaratoria": "Como ejemplos de ambientes en que la contaminación puede alterar las características de funcionamiento de equipos pueden citarse instalaciones destinadas a servir procesos industriales que tengan actividades de chancado o molienda de materiales, en cuyo caso los depósitos de polvos provenientes del proceso pueden alterar las características de refrigeración o de aislamiento de los componentes de la instalación."
+              }
+            ]
+          },
+          "5.4.2_exigencias_para_materiales_y_equipos": {
+            "numero": "5.4.2",
+            "titulo": "Exigencias para materiales y equipos",
+            "articulos": [
+              {
+                "numero": "5.4.2.1",
+                "texto": "Todos los materiales y equipos usados en instalaciones eléctricas de consumo deberán contar con la certificación establecida en la Ley y el Reglamento, otorgada por una entidad autorizada para ello."
+              },
+              {
+                "numero": "5.4.2.2",
+                "texto": "Sólo se considerarán aprobados los métodos de montaje indicados en esta Norma."
+              },
+              {
+                "numero": "5.4.2.3",
+                "texto": "Desde un punto de vista de protección mecánica los equipos y materiales usados en instalaciones de consumo se clasificarán en:",
+                "clasificacion": [
+                  "Equipos sin protección.",
+                  "Equipos para servicio ligero, que pueden soportar esfuerzos mecánicos pequeños.",
+                  "Equipos para servicio pesado, que pueden soportar grandes esfuerzos mecánicos o choques."
+                ]
+              },
+              {
+                "numero": "5.4.2.4",
+                "texto": "Desde el punto de vista de la protección contra la penetración de líquidos o polvos los equipos se clasifican en:",
+                "clasificacion": [
+                  "Equipos abiertos.",
+                  "Equipos protegidos contra la caída vertical de gotas de agua.",
+                  "Equipos protegidos contra la lluvia.",
+                  "Equipos protegidos contra salpicaduras de agua en cualquier dirección.",
+                  "Equipos protegidos contra la penetración de polvo.",
+                  "Equipos impermeables."
+                ]
+              },
+              {
+                "numero": "5.4.2.5",
+                "texto": "De acuerdo al ambiente en que se instalen los equipos deberán contar con las siguientes protecciones:",
+                "protecciones": [
+                  "Protección contra la intemperie.",
+                  "Protección contra la acción del aire salino.",
+                  "Protección contra agentes químicos y vapores corrosivos."
+                ],
+                "nota_aclaratoria": "En tanto no se dicte la Norma Nacional correspondiente se considerará una práctica aceptable el aplicar los índices de protección establecidos por la Norma IEC. 529. Ver Apéndice 1."
+              },
+              {
+                "numero": "5.4.2.6",
+                "texto": "Los equipos que se instalen en lugares peligrosos deberán cumplir las normas respectivas.",
+                "nota_aclaratoria": "En tanto no se dicte la Norma Nacional correspondiente se considerará una práctica aceptable el utilizar la clasificación y métodos de montaje establecidos en el Código Eléctrico Nacional – NEC – de EE.UU en su sección 500 sobre instalaciones en lugares peligrosos y/o los especificados por las Norma CEI, según lo indicado en el párrafo 4.1.22 de esta Norma."
+              },
+              {
+                "numero": "5.4.2.7",
+                "texto": "Los sistemas de canalización y materiales empleados en ellos deberán ser adecuados al tipo de equipo al cual se conecten o bien, en la entrada al equipo o en la zona vecina a éste se deberán agregar las protecciones y accesorios adecuados a cada caso de modo que los equipos no pierdan sus características.",
+                "nota_aclaratoria": "Se considerarán dentro del alcance de esta exigencia, por ejemplo, las prensaestopas, conectores y similares que permiten mantener el índice de protección del equipo aun cuando la canalización que llega a él no tenga esa misma característica."
+              },
+              {
+                "numero": "5.4.2.8",
+                "texto": "Las protecciones y los aparatos de maniobra empleados para operar bajo carga deben tener una capacidad de ruptura suficiente como para interrumpir la máxima corriente de cortocircuito en el punto de instalación, a la tensión nominal de alimentación."
+              },
+              {
+                "numero": "5.4.2.9",
+                "texto": "Todos los aparatos de maniobra o protecciones deberán marcarse en forma legible e indeleble indicando cual es su función. Igual exigencia se hará a los alimentadores."
+              },
+              {
+                "numero": "5.4.2.10",
+                "texto": "Todos los elementos constitutivos de canalizaciones o de los equipos se fijarán firmemente a las superficies sobre las cuales van montados, usando para ello sólo medios aprobados para estos efectos."
+              }
+            ]
+          },
+          "5.4.3_conductores_uniones_y_derivaciones": {
+            "numero": "5.4.3",
+            "titulo": "Conductores, uniones y derivaciones",
+            "articulos": [
+              {
+                "numero": "5.4.3.1",
+                "texto": "Las disposiciones de esta Norma se han establecido considerando que los conductores empleados en las instalaciones serán de cobre. El uso de otro material como conductor eléctrico deberá ser consultado a SEC, la que podrá autorizar y fijar las condiciones de uso de aquél."
+              },
+              {
+                "numero": "5.4.3.2",
+                "texto": "Las uniones y derivaciones entre conductores podrán hacerse mediante soldaduras de bajo punto de fusión, soldaduras de alto punto de fusión, conectores de baja compresión o conectores de alta compresión. En el caso de usar soldaduras de bajo punto de fusión, deberá verificarse previamente que la unión o derivación sea mecánicamente resistente.",
+                "nota_aclaratoria": "La soldadura de bajo punto de fusión comúnmente empleada en instalaciones es la plomo - estaño, la de alto punto de fusión es la por reacción química exotérmica; los conectores de baja compresión serán las prensas empernadas y los conectores roscables y para alta compresión se tendrán los conectores aplicados con herramientas hidráulicas o similares."
+              },
+              {
+                "numero": "5.4.3.3",
+                "texto": "Los alambres hasta 10 mm2 de sección y los conductores cableados hasta 6 mm2 podrán conectarse directamente a los terminales o puentes de conexión de los equipos, siempre que estos terminales o puentes permitan este tipo de conexión; para secciones superiores a las indicadas se exigirá un terminal de cable, salvo que el terminal o puente de conexión sea de un diseño tal que haga innecesario o inconveniente esta exigencia."
+              },
+              {
+                "numero": "5.4.3.4",
+                "texto": "La conexión entre los conductores y los terminales indicados debe hacerse de modo que exista una adecuada continuidad eléctrica, sin daño para el conductor y sin comprometer su aislación. Los terminales se unirán al conductor por alguno de los medios indicados en 5.4.3.2."
+              },
+              {
+                "numero": "5.4.3.5",
+                "texto": "Las uniones y derivaciones se aislarán convenientemente, debiendo recuperar a lo menos un nivel de aislamiento equivalente al propio del conductor, utilizando para ello cintas aislantes, mufas de resinas epóxicas, cubiertas termoretráctiles o mecanoretráctiles u otros medios aprobados."
+              },
+              {
+                "numero": "5.4.3.6",
+                "texto": "Las uniones no deberán quedar sometidas a tensión mecánica, excepto las uniones hechas en líneas aéreas; las derivaciones deberán cumplir esta exigencia sin excepción."
+              }
+            ]
+          },
+          "5.4.4_espacios_de_trabajo_y_distancias_minimas_de_seguridad": {
+            "numero": "5.4.4",
+            "titulo": "Espacios de trabajo y distancias mínimas de seguridad",
+            "articulos": [
+              {
+                "numero": "5.4.4.1",
+                "texto": "Para los efectos de fijación de los espacios de trabajo y distancias mínimas de seguridad, se considerará como zona alcanzable por una persona, a aquella que medida desde el punto donde ésta pueda situarse, esté a una distancia límite de 2,50 m por arriba, 1,0 m lateralmente y 1,0 m hacia abajo. En la hoja de norma Nº 2 se expresa gráficamente esta definición.",
+                "referencia_visual": "hoja de norma Nº 2"
+              },
+              {
+                "numero": "5.4.4.2",
+                "texto": "Los espacios de trabajo y accesos a partes energizadas descubiertas que requieran de inspección, ajustes o mantenimiento estando bajo tensión, se dimensionarán tomando como mínimo los valores de distancias indicadas en la tabla Nº 5.1, salvo que en otros artículos de esta Norma se establezcan valores distintos para condiciones especiales."
+              },
+              {
+                "numero": "5.4.4.3",
+                "texto": "Si la parte energizada descubierta está ubicada en la parte frontal de un Tablero o Centro de Control, el espacio de trabajo libre mínimo será de 1,50 m."
+              },
+              {
+                "numero": "5.4.4.4",
+                "texto": "El acceso a los espacios de trabajo debe estar asegurado por lo menos por una entrada de ancho mínimo de 0,60 m y altura mínima de 1,50 m, salvo que la presencia de equipos de gran volumen dentro de la zona exija mayores dimensiones. Las puertas deberán abrir hacia fuera y estar premunidas de cerraduras que permitan abrir desde el interior sin el uso de llaves o herramientas."
+              },
+              {
+                "numero": "5.4.4.5",
+                "texto": "La altura libre sobre los espacios de trabajo no debe ser inferior a 2,0 m."
+              },
+              {
+                "numero": "5.4.4.6",
+                "texto": "Los espacios de trabajo deben estar iluminados con iluminancias que cumplan las exigencias de la tabla Nº 11.24."
+              },
+              {
+                "numero": "5.4.4.7",
+                "texto": "Los espacios de trabajo no podrán ser usados como lugares de almacenamiento de ningún tipo de material, equipo o mobiliario ni como recinto de estadía de personal."
+              },
+              {
+                "numero": "5.4.4.8",
+                "texto": "En los puntos de acceso a los espacios de trabajo se deberá colocar en forma destacada letreros prohibiendo el acceso a personal no calificado."
+              }
+            ],
+            "tabla_5.1": {
+              "titulo": "Tabla Nº 5.1 Espacios de Trabajo",
+              "encabezados": [
+                "Tensión respecto a tierra [V]",
+                "Espacio libre mínimo [m] - Condición 1",
+                "Espacio libre mínimo [m] - Condición 2",
+                "Espacio libre mínimo [m] - Condición 3"
+              ],
+              "datos": [
+                {
+                  "tension": "0 - 200",
+                  "condicion_1": "0,75",
+                  "condicion_2": "0,75",
+                  "condicion_3": "0,90"
+                },
+                {
+                  "tension": "201 - 1000",
+                  "condicion_1": "0,75",
+                  "condicion_2": "1,10",
+                  "condicion_3": "1,20"
+                }
+              ],
+              "condiciones_aplicacion": [
+                {
+                  "condicion": "1",
+                  "descripcion": "Lugares en donde en un lado existen partes energizadas descubiertas y el lado opuesto es no conductor, o bien, partes energizadas a ambos lados pero protegidas convenientemente mediante cubiertas aislantes removibles."
+                },
+                {
+                  "condicion": "2",
+                  "descripcion": "Lugares en donde existen partes energizadas descubiertas en un lado y el lado opuesto está formado por material conductor puesto a tierra. Los muros de hormigón, ladrillos, ladrillos enlucidos con mortero de cemento o recubiertos con cerámicos se considerarán muros conductores puestos a tierra."
+                },
+                {
+                  "condicion": "3",
+                  "descripcion": "Partes energizadas descubiertas a ambos lados con el operador trabajando entre ellas."
+                }
+              ],
+              "excepcion": "No serán necesarios estos espacios de trabajo detrás de los tableros o centros de control que tengan acceso a todos sus controles, conexiones y operación por la parte frontal o los costados. En todo caso, desde estas posiciones se deberán respetar los valores mínimos establecidos en la tabla 5.1."
+            }
+          },
+          "5.4.5_marcas_e_identificaciones": {
+            "numero": "5.4.5",
+            "titulo": "Marcas e identificaciones",
+            "articulos": [
+              {
+                "numero": "5.4.5.1",
+                "texto": "En todo aparato, accesorio o material eléctrico deberá mostrarse en forma legible e indeleble el nombre del fabricante, país de origen, marca registrada o bien, otro tipo de marca que haga posible la inmediata identificación del responsable del producto."
+              },
+              {
+                "numero": "5.4.5.2",
+                "texto": "Todo equipo o material eléctrico deberá tener impresas en forma fácilmente visible e indeleble sus características dimensionales o de funcionamiento, indicaciones de tipo o clase y de la certificación de aprobación de uso."
+              },
+              {
+                "numero": "5.4.5.3",
+                "texto": "Todos los sistemas de canalización eléctrica en ductos metálicos instalados a la vista u ocultos se identificarán con el color que corresponda conforme a la Norma Chilena respectiva, pintando el ducto en toda su extensión o en tramos de no menos de 0,20 m pintados cada 5,0 m o después de obstáculos que impidan ver alguna de esas marcas."
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "seccion_6_tableros": {
+    "numero": "6",
+    "titulo": "TABLEROS",
+    "subsecciones": {
+      "6.0_conceptos_generales": {
+        "numero": "6.0",
+        "titulo": "CONCEPTOS GENERALES",
+        "articulos": [
+          {
+            "numero": "6.0.1",
+            "texto": "Los tableros son equipos eléctricos de una instalación, que concentran dispositivos de protección y de maniobra o comando, desde los cuales se puede proteger y operar toda la instalación o parte de ella."
+          },
+          {
+            "numero": "6.0.2",
+            "texto": "La cantidad de tableros que sea necesario para el comando y protección de una instalación se determinará buscando salvaguardar la seguridad y tratando de obtener la mejor funcionalidad y flexibilidad en la operación de dicha instalación, tomando en cuenta la distribución y finalidad de cada uno de los recintos en que estén subdivididos el o los edificios componentes de la propiedad."
+          },
+          {
+            "numero": "6.0.3",
+            "texto": "Los tableros serán instalados en lugares seguros y fácilmente accesibles, teniendo en cuenta las condiciones particulares siguientes:",
+            "condiciones_particulares": [
+              {
+                "numero": "6.0.3.1",
+                "texto": "Los tableros de locales de reunión de personas se ubicarán en recintos sólo accesibles al personal de operación y administración."
+              },
+              {
+                "numero": "6.0.3.2",
+                "texto": "En caso de ser necesaria la instalación de tableros en recintos peligrosos, éstos deberán ser construidos utilizando equipos y métodos constructivos acorde a las normas específicas sobre la materia."
+              }
+            ]
+          },
+          {
+            "numero": "6.0.4",
+            "texto": "Todos los tableros deberán llevar estampada en forma visible, legible e indeleble la marca de fabricación, la tensión de servicio, la corriente nominal y el número de fases. El responsable de la instalación deberá agregar en su oportunidad su nombre o marca registrada."
+          }
+        ]
+      },
+      "6.1_clasificacion": {
+        "numero": "6.1",
+        "titulo": "CLASIFICACIÓN",
+        "articulos": [
+          {
+            "numero": "6.1.1",
+            "texto": "Atendiendo a la función y ubicación de los distintos Tableros dentro de la instalación, estos se clasificarán como sigue:",
+            "clasificacion_funcion_ubicacion": [
+              {
+                "numero": "6.1.1.1",
+                "tipo": "Tableros Generales",
+                "definicion": "Son los tableros principales de las instalaciones. En ellos estarán montados los dispositivos de protección y maniobra que protegen los alimentadores y que permiten operar sobre toda la instalación de consumo en forma conjunta o fraccionada."
+              },
+              {
+                "numero": "6.1.1.2",
+                "tipo": "Tableros Generales Auxiliares",
+                "definicion": "Son tableros que son alimentados desde un tablero general y desde ellos se protegen y operan subalimentadores que energizan tableros de distribución."
+              },
+              {
+                "numero": "6.1.1.3",
+                "tipo": "Tableros de Distribución",
+                "definicion": "Son tableros que contienen dispositivos de protección y maniobra que permiten proteger y operar directamente sobre los circuitos en que está dividida una instalación o parte de ella; pueden ser alimentados desde un tablero general, un tablero general auxiliar o directamente desde el empalme."
+              },
+              {
+                "numero": "6.1.1.4",
+                "tipo": "Tableros de Paso",
+                "definicion": "Son tableros que contienen protecciones cuya finalidad es proteger derivaciones que por su capacidad de transporte no pueden ser conectadas directamente a un alimentador, subalimentador o línea de distribución del cual están tomadas."
+              },
+              {
+                "numero": "6.1.1.5",
+                "tipo": "Tableros de Comando",
+                "definicion": "Son tableros que contienen los dispositivos de protección y de maniobra que permiten proteger y operar sobre artefactos individuales o sobre grupos de artefactos pertenecientes a un mismo circuito."
+              },
+              {
+                "numero": "6.1.1.6",
+                "tipo": "Centros de Control",
+                "definicion": "Son tableros que contienen dispositivos de protección y de maniobra o únicamente dispositivos de maniobra y que permiten la operación de grupos de artefactos, en forma individual, en subgrupos, en forma programada o manual."
+              }
+            ]
+          },
+          {
+            "numero": "6.1.2",
+            "texto": "Atendiendo a la utilización de la energía eléctrica controlada desde un tablero, éstos se clasificarán en:",
+            "clasificacion_utilizacion": [
+              "Tableros de Alumbrado",
+              "Tableros de Fuerza",
+              "Tableros de Calefacción",
+              "Tableros de Control",
+              "Tableros de Computación"
+            ],
+            "nota": "Esta clasificación es complementaria con la señalada en 6.1.1."
+          }
+        ]
+      },
+      "6.2_especificaciones_de_construccion": {
+        "numero": "6.2",
+        "titulo": "ESPECIFICACIONES DE CONSTRUCCIÓN",
+        "subsecciones": {
+          "6.2.1_formas_constructivas": {
+            "numero": "6.2.1",
+            "titulo": "Formas constructivas",
+            "articulos": [
+              {
+                "numero": "6.2.1.1",
+                "texto": "Todos los dispositivos y componentes de un tablero deberán montarse dentro de cajas, gabinetes o armarios, dependiendo del tamaño que ellos alcancen."
+              },
+              {
+                "numero": "6.2.1.2",
+                "texto": "Los materiales empleados en la construcción de tableros deberán ser resistentes al fuego, autoextinguentes, no higroscópicos, resistentes a la corrosión o estar adecuadamente protegido contra ella."
+              },
+              {
+                "numero": "6.2.1.3",
+                "texto": "Todos los tableros deberán contar con una cubierta cubre equipos y con una puerta exterior. La cubierta cubre equipos tendrá por finalidad impedir el contacto de cuerpos extraños con las partes energizadas, o bien, que partes energizadas queden al alcance del usuario al operar las protecciones o dispositivos de maniobra; deberá contar con perforaciones de tamaño adecuado como para dejar pasar libremente, sin que ninguno de los elementos indicados sea solidario a ella, palanquitas, perillas de operación o piezas de reemplazo, si procede, de los dispositivos de maniobra o protección. La cubierta cubre equipos se fijará mediante bisagras en disposición vertical, elementos de cierre a presión o cierres de tipo atornillado; en este último caso los tornillos de fijación empleados deberán ser del tipo imperdible. La puerta exterior será totalmente cerrada permitiéndose sobre ella sólo luces piloto de indicación de tablero energizado. Su fijación se hará mediante bisagras en disposición vertical u horizontal. Las partes energizadas de un tablero sólo podrán alcanzarse removiendo la cubierta cubre equipos, entendiéndose que esta maniobra solo se realizará por necesidad de efectuar trabajos de mantenimiento o modificaciones en el interior del tablero. Los elementos de operación de las protecciones o dispositivos de maniobra sólo serán accesibles abriendo la puerta exterior la que deberá permanecer cerrada, para lo cual deberá contar con una chapa con llave o un dispositivo equivalente. Se podrá exceptuar de la exigencia de contar con puerta exterior a todo tablero de uso doméstico o similar, con no más de cuatro circuitos."
+              },
+              {
+                "numero": "6.2.1.4",
+                "texto": "Las cajas mencionadas en 6.2.1.1 se utilizarán para montajes embutidos o sobrepuestos en muros y se utilizarán en el montaje de tableros de baja capacidad y dimensiones reducidas."
+              },
+              {
+                "numero": "6.2.1.5",
+                "texto": "Los gabinetes mencionados en 6.2.1.1 se utilizarán para montajes embutidos o sobrepuestos en muros o bien sobre estructuras autosoportantes y se utilizarán en el montaje de tableros de mediana capacidad y dimensiones."
+              },
+              {
+                "numero": "6.2.1.6",
+                "texto": "Los armarios mencionados en 6.2.1.1 se utilizarán en el montaje de tableros de gran capacidad, se construirán de modo tal que sean autosoportantes y se montarán anclados al piso. Además de ser accesibles frontalmente a través de puertas y cubiertas cubre equipos como las prescritas en 6.2.1.3 podrán ser accesibles por los costados o por su parte trasera mediante tapas removibles fijadas mediante pernos del tipo imperdible."
+              },
+              {
+                "numero": "6.2.1.7",
+                "texto": "El conjunto de elementos que constituyen la parte eléctrica de un tablero deberá ser montado sobre un bastidor o placa de montaje mecánicamente independiente de la caja, gabinete o armario los que se fijarán a éstos mediante pernos, de modo de ser fácilmente removidos en caso de ser necesario."
+              },
+              {
+                "numero": "6.2.1.8",
+                "texto": "El tamaño de caja, gabinete o armario se seleccionará considerando que:",
+                "consideraciones": [
+                  "El cableado de interconexión entre sus dispositivos deberá hacerse a través de bandejas no conductoras que permitan el paso cómodo y seguro de los conductores.",
+                  "Deberá quedar un espacio suficiente entre las paredes de las cajas, gabinetes o armarios y las protecciones o dispositivos de comando y/o maniobra de modo tal de permitir un fácil mantenimiento del tablero.",
+                  "Se deberá considerar un volumen libre de 25% de espacio libre para proveer ampliaciones de capacidad del tablero."
+                ]
+              },
+              {
+                "numero": "6.2.1.9",
+                "texto": "Las cajas, gabinetes o armarios en que se monten los tableros podrán ser construidos con placas de acero o materiales no conductores."
+              },
+              {
+                "numero": "6.2.1.10",
+                "texto": "Las cajas y gabinetes metálicos podrán estar constituidos por placas de acero plegadas y soldadas las que le darán forma y rigidez mecánica. Los armarios metálicos se estructurarán sobre bastidores de perfiles de resistencia mecánica adecuada a las exigencias del montaje y se cerrarán con placas plegadas las que formarán sus cubiertas y puertas. Será recomendable la construcción modular de estos contenedores de modo de poder construir tableros de gran tamaño mediante el montaje de grupos de estos módulos."
+              },
+              {
+                "numero": "6.2.1.11",
+                "texto": "Las placas de acero que se utilicen en la construcción de cajas, gabinetes o armarios tendrán espesores mínimos de acuerdo a lo indicado en la tabla Nº 6.2.",
+                "referencia_tabla": "tabla Nº 6.2"
+              },
+              {
+                "numero": "6.2.1.12",
+                "texto": "Todos los componentes metálicos de cajas, gabinetes y armarios deberán someterse a un proceso de acabado que garantice una adecuada resistencia a la corrosión; este proceso consistirá a lo menos en un lavado de desgrase, decapado ácido, imprimación, aplicación de dos manos de esmalte anticorrosivo y aplicación por proceso de adherencia electrostática de dos manos de esmalte de acabado. La calidad de esta terminación se deberá comprobar mediante la aplicación de las normas de control de calidad correspondientes"
+              },
+              {
+                "numero": "6.2.1.13",
+                "texto": "Los materiales no metálicos empleados en la construcción de cajas, gabinetes o armarios deberán cumplir las siguientes condiciones:",
+                "condiciones": [
+                  "Serán no higroscópicos.",
+                  "En caso de combustión deberán ser autoextinguentes, arder sin llama y emitir humos de baja opacidad, sus residuos gaseosos serán no tóxicos.",
+                  "Tendrán una resistencia mecánica suficiente como para soportar una energía de choque de 2 joules para tableros con puerta y 0,5 joules para tableros sin puerta."
+                ],
+                "nota_aclaratoria": "En tanto no se dicte la Norma Nacional correspondiente la calidad de los materiales no metálicos destinados a la construcción de tableros se podrá ensayar de acuerdo a la Norma CEI 695."
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

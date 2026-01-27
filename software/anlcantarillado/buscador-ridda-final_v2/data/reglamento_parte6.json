@@ -1,0 +1,160 @@
+{
+  "titulos": [
+    {
+      "numero": "TITULO VI",
+      "nombre": "Elevación de Agua Potable",
+      "articulos": [
+        {
+          "numero": "Artículo 80º",
+          "texto": "En las edificaciones en que, por su condición topográfica o de diseño, la presión informada por el prestador en el correspondiente Certificado de Factibilidad no garantice un adecuado y permanente abastecimiento de agua potable desde la red pública a todos los pisos, deberá proyectarse y construirse un sistema de elevación de agua. Excepcionalmente, en aquellos casos en que exista presión suficiente en la red de distribución, el peticionario podrá diferir la construcción de dicho sistema de elevación, el que en todo caso deberá quedar diseñado en el proyecto correspondiente para su construcción cuando sea necesario.\n\nCuando se proyecten y construyan sistemas de elevación de agua potable, todas las instalaciones interiores deberán abastecerse desde estos sistemas, salvo aquellas que normalmente cuenten con presión suficiente sin requerir elevación"
+        },
+        {
+          "numero": "Artículo 81º",
+          "texto": "Los equipos de bombeo se surtirán desde un depósito especial o estanque de acumulación sin presión, no pudiendo hacerlo directamente desde la red pública, ni permitiéndose el uso de una tubería de derivación (by pass)."
+        },
+        {
+          "numero": "Artículo 82º",
+          "texto": "Toda sala de bombas deberá situarse en sitios construidos en forma aislada a la estructura del edificio, con el fin de evitar la transmisión de vibraciones o ruidos a los usuarios y a una distancia tal, que los generados no sean molestos, acogiéndose a la norma oficial para estos efectos. En especial no deberá estar inmediata a cajas de escalas, ascensores, ventanas o shaft.\n\nLa altura de la sala de bombas deberá ser a lo menos de dos metros, medidos desde el nivel de piso terminado hasta el cielo, y el espacio libre alrededor de las bombas y equipos adyacentes garantizará una fácil remoción o reparación de ellos, con un mínimo de 0,25 metros.\n\nTodos sus paramentos internos serán lisos a impermeables. Su piso tendrá una pendiente mínima de un 1% hacia canaletas recolectoras de desagües o filtraciones, las que descargarán a pozos absorbentes o a pozos acumuladores provistos con bomba sentina, ambos diseñados de acuerdo con las descargas máximas que recibirán.\n\nEl acceso a la sala de bombas será dimensionado de acuerdo con los equipos que en ella se instalen y deben tener un ancho mínimo de 1 m."
+        },
+        {
+          "numero": "Artículo 83º",
+          "texto": "Las salas de bombas deberán contar con elementos de iluminación artificial apropiados y a los menos un (1) enchufe hembra embutido de 220 voltios con tapa, para conexión de herramientas de reparación y mantención, a una altura mínima de un metro del piso, inmediatamente al lado del tablero de comando.\n\nLos equipos deberán instalarse sobre fundaciones con elementos adecuados para absorber vibraciones, con una altura mínima de 0,10 metros sobre el nivel del piso hasta la base de los equipos.\n\nLas salas deberán contar a lo menos con dos ventilaciones ubicadas en los extremos superiores opuestos, con rejillas de protección, cuya área dependerá de las características de la bomba, no siendo inferior a 300 cm.² cada una, a otro diseño que mantenga los equipos libres de humedad."
+        },
+        {
+          "numero": "Artículo 84º",
+          "texto": "Los equipos de elevación deberán cumplir con los siguientes requisitos:",
+          "requisitos": [
+            {
+              "codigo": "a",
+              "texto": "Toda instalación de equipos de bombeo deberá considerar a lo menos un equipo de reserva de capacidad igual al mayor de los equipos básicos. También se deben considerar en los casos necesarios, la alternativa de conexión a una fuente eléctrica de respaldo."
+            },
+            {
+              "codigo": "b",
+              "texto": "Los equipos de bombeo deberán suministrar un caudal equivalente al de diseño, a la presión mínima requerida por el sistema."
+            },
+            {
+              "codigo": "c",
+              "texto": "Las uniones de la bomba a las tuberías de succión a impulsión deberán ser del tipo normalizado que permitan fácil conexión y desconexión."
+            },
+            {
+              "codigo": "d",
+              "texto": "Cada motobomba deberá contar con válvulas de corta, tanto en la succión como en la impulsión. Asimismo, deberá instalarse siempre una válvula de retención en la impulsión."
+            },
+            {
+              "codigo": "e",
+              "texto": "En la tubería de impulsión general, previo a la salida de la sala de bombas, deberá instalarse una válvula de corta y antes de ella, una válvula que permita el desagüe de la impulsión."
+            },
+            {
+              "codigo": "f",
+              "texto": "Las tuberías de impulsión no podrán estar directamente adheridas a la estructura del edificio, debiendo ser fijadas con elementos metálicos que incluyan aislantes de vibraciones, especialmente en los tramos finales o en los cambios de dirección. En caso de ser necesarios, deberán incluir elementos para la absorción de dilataciones."
+            },
+            {
+              "codigo": "g",
+              "texto": "Toda aspiración que trabaje con carga negativa deberá contar con una válvula de retención en su extremo inferior, o con un sistema que permita su cebado."
+            },
+            {
+              "codigo": "h",
+              "texto": "Cada equipo de bombeo será alimentado con energía directamente del tablero de control, con circuitos protegidos contra sobrecargas y corto circuitos."
+            },
+            {
+              "codigo": "i",
+              "texto": "Para la operación del sistema, se dispondrá de controles automáticos (interruptores y alternadores), para garantizar el funcionamiento alternativo de las unidades de bombeo, incluyendo el equipo de reserva. Además deberán disponerse de controles manuales que permitan la operación de a lo menos un equipo, en caso de fallas de los sistemas automáticos."
+            },
+            {
+              "codigo": "j",
+              "texto": "Deberá disponerse de controles que detengan las bombas al estar el nivel de agua a 0,10 metros sobre el nivel del chupador (protección de vacío)."
+            },
+            {
+              "codigo": "k",
+              "texto": "Para que el suministro se realice a una presión estable, la presión de detención del sistema tendrá una variación máxima con relación a la presión de partida de 12 m.c.a."
+            },
+            {
+              "codigo": "l",
+              "texto": "La presión máxima del sistema deberá ser tal que no exceda la máxima aceptable conforme a la norma chilena NCh 2485. En estos casos podrán instalarse elementos reguladores de presión."
+            },
+            {
+              "codigo": "m",
+              "texto": "En los planos deberá indicarse claramente las presiones de partida y detención de cada una de las motobombas."
+            },
+            {
+              "codigo": "n",
+              "texto": "Las características, tipo, detalles y disposición total de la instalación y sus obras complementarias, deberán quedar claramente establecidos en los planos."
+            },
+            {
+              "codigo": "ñ",
+              "texto": "El contratista deberá entregar al propietario un manual con instrucciones de operación, control y seguridad del sistema de elevación de aguas."
+            }
+          ]
+        },
+        {
+          "numero": "Artículo 85º",
+          "texto": "En las instalaciones de equipos elevadores con estanque de presión (hidroneumático o similar) deberán cumplirse las siguientes condiciones:",
+          "condiciones": [
+            {
+              "codigo": "a",
+              "texto": "Deberá elegirse una adecuada combinación de estanques hidroneumáticos y bombas, de manera tal que se obtengan intervalos de tiempo entre dos partidas sucesivas de los equipos, acordes con la especificación del fabricante del motor."
+            },
+            {
+              "codigo": "b",
+              "texto": "Deberá evitarse la fuga de aire por las tuberías que pueda ocasionar inconvenientes en el uso, ya sea separando el aire del agua a otro sistema."
+            },
+            {
+              "codigo": "c",
+              "texto": "Todo equipo deberá contar con válvulas de corta y elementos de unión, normalizados."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "TITULO VII",
+      "nombre": "Diseño y Cálculo de Instalaciones Domiciliarias de Alcantarillado",
+      "parrafos": [
+        {
+          "numero": "Párrafo I",
+          "nombre": "Diseño de las Instalaciones Domiciliadas de Alcantarillado",
+          "articulos": [
+            {
+              "numero": "Artículo 86º",
+              "texto": "El diseño de las instalaciones domiciliarias de alcantarillado (IDA) deberá asegurar la evacuación rápida de las aguas servidas sin dar lugar a depósitos putrescibles.\n\nDebe impedirse el paso de las aguas servidas, aire, olores y microorganismos de las tuberías, cámaras y sistemas en general a los ambientes cerrados y habitados y medio ambiente en general, especialmente al subsuelo, garantizando la hermeticidad de las instalaciones al agua, gas y aire.\n\nDeberá contemplarse la utilización de materiales adecuados a fin de impedir la corrosión debida al ataque de ácidos o gases.\n\nEn ningún caso podrá aceptarse el uso de trituradores de desperdicios en las viviendas.\n\nLas uniones domiciliarias se diseñarán de preferencia en el mismo material del colector al que empalmarán.\n\nLas bocas de admisión deberán tener una cota superior a la cota de solera en que se ubique la unión domiciliaria de la propiedad. Cuando ésta condición no se cumpla, la propiedad no podrá desaguar gravitacionalmente y deberá considerarse una planta elevadora en conformidad a los artículos 95º y 96º de este Reglamento.\n\nEn el diseño deberán cumplirse las normas chilenas, instrucciones de la SISS y las prácticas corrientemente empleadas en ingeniería sanitaria."
+            }
+          ]
+        },
+        {
+          "numero": "Párrafo II",
+          "nombre": "Cálculos y Condiciones Básicas de las Instalaciones Domiciliarias de Alcantarillado",
+          "articulos": [
+            {
+              "numero": "Artículo 87º",
+              "texto": "Los diámetros de las tuberías horizontales y verticales y de las pendientes de las primeras, se fijarán mediante el cálculo racional que corresponda o de acuerdo con los Anexos Nº 6-A y Nº 6-B.\n\nEl diámetro mínimo nominal de la unión domiciliaria será de 100 mm.\n\nNo podrá haber disminución de diámetros, aguas abajo del sistema, aunque haya fuerte aumento de la pendiente."
+            },
+            {
+              "numero": "Artículo 88º",
+              "texto": "La pendiente de diseño de las tuberías que conduzcan materias fecales o grasosas, podrá fluctuar entre un 3% y un 15%. Sin embargo, se podrá considerar una pendiente mínima de hasta un 1%, en aquellas tuberías ubicadas en losas o en otros casos especiales, debidamente justificados.\n\nLa pendiente de la unión domiciliada podrá estar comprendida entre un 3% y un 33%, salvo en casos especiales debidamente justificados, cuyo valor mínimo será de un 1%."
+            },
+            {
+              "numero": "Artículo 89º",
+              "texto": "Las tuberías deberán ser impermeables a los gases y líquidos. Toda boca de admisión tendrá un cierre hidráulico o sifón con carga mínima de 50 mm. que evite por completo la salida de gases, a otro dispositivo que cumpla con dicha función."
+            },
+            {
+              "numero": "Artículo 90º",
+              "texto": "Las instalaciones domiciliarias se proyectarán de modo que todas las tuberías sean accesibles para su revisión y limpieza."
+            },
+            {
+              "numero": "Artículo 91º",
+              "texto": "Deberá proyectarse una cámara domiciliaria al interior del inmueble, conforme a la norma chilena NCh Nº 2592, a una distancia no mayor de 1 m de la línea oficial de cierro y en lugar accesible. Excepcionalmente, la autoridad competente puede autorizar distancias mayores a 1 m técnicamente justificadas. Si la distancia entre esta cámara de inspección y el colector público excede los 20 m., deberá proyectarse obligatoriamente una cámara adicional en la vía pública, previa autorización y en las condiciones que establezca la respectiva Municipalidad, de modo de cumplir con este requisito.\n\nEn casos debidamente calificados cuando no pueda construirse la cámara de inspección contigua a la línea de cierre está podrá colocarse en la vía pública, de conformidad con las condiciones que establezca la respectiva Municipalidad.\n\nEn los casos en que la cámara se ubique en la vía pública, ésta deberá cumplir con la norma chilena NCh 2080.\n\nSe previene que en los casos de excepción a que se refiere esta norma, la responsabilidad del usuario se extiende hasta la última cámara ubicada en la vía pública, que forma parte de la instalación domiciliaria."
+            },
+            {
+              "numero": "Artículo 92º",
+              "texto": "La confluencia de los ramales y cambios de dirección o pendiente de los ramales en la planta inferior, se efectuará mediante cámaras de inspección. En casos de tuberías que se instalen a la vista, podrá aceptarse que las cámaras sean reemplazadas por registros adecuados que aseguren total impermeabilidad a los gases y permitan un fácil acceso a los ramales. El ángulo suplementario que formen los ejes de los ramales será el más pequeño posible y en ningún caso mayor de 120°, salvo caída. Toda excepción a esta disposición deberá ser adecuadamente justificada.\n\nLa distancia entre cámaras interiores podrá ser, como máximo de 30 m., para tuberías de 100 mm. de diámetro y hasta 50 m., para diámetros de 150 mm. o más. Las cámaras de inspección domiciliarias se ubicarán en patios o sitios completamente ventilados. Si esto no fuese posible, se aceptará ubicarlas en el interior de la edificación, en cuyo caso se adoptarán dispositivos especiales, como doble tapa a otros, que impidan la salida de los gases. No se aceptará instalar cámaras muebles o colgantes, las que se reemplazarán por registros."
+            },
+            {
+              "numero": "Artículo 93º",
+              "texto": "En instalaciones de edificios de tres o más pisos en altura, se colocarán registros en todos aquellos puntos que sea necesario para la accesibilidad y prueba de los conductos. En las tuberías de descarga, estos registros se establecerán, como mínimo, cada dos pisos."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

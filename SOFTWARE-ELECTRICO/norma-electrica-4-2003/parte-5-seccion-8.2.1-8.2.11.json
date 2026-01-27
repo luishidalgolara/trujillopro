@@ -1,0 +1,891 @@
+{
+  "seccion_8.2_sistemas_de_canalizacion_desarrollo": {
+    "subsecciones": {
+      "8.2.1_cables_de_aislacion_mineral": {
+        "numero": "8.2.1",
+        "titulo": "Cables de aislación mineral (MI)",
+        "articulos": [
+          {
+            "numero": "8.2.1.1",
+            "texto": "El cable MI es un cable con uno o más conductores de aislación mineral refractaria, altamente comprimida y con una cubierta externa continua de cobre, estanca a los líquidos, vapores y gases y que junto a sus accesorios diseñados especialmente para este uso forman un sistema continuo de canalización."
+          },
+          {
+            "numero": "8.2.1.2",
+            "texto": "El uso del cable MI está permitido en los siguientes casos:",
+            "casos_permitidos": [
+              "En tendido de alimentadores y líneas de circuito,",
+              "En ambientes secos, húmedos o mojados,",
+              "En interiores o a la intemperie,",
+              "A la vista, embutido o subterráneo con protección adicional para daños físicos y corrosión,",
+              "En ambientes peligrosos de cualquier naturaleza,",
+              "En lugares en que se manipulen lubricantes o gasolina,",
+              "En cualquier ambiente corrosivo que no dañe la cubierta de cobre."
+            ]
+          },
+          {
+            "numero": "8.2.1.3",
+            "texto": "No se permite el uso de cable MI en ambientes corrosivos que dañen la cubierta, excepto si ésta se protege mediante un material adecuado para estas condiciones."
+          },
+          {
+            "numero": "8.2.1.4",
+            "texto": "Cuando se instale a la vista, el cable MI deberá fijarse en forma segura a la superficie sobre la cual está tendido, mediante abrazaderas, grapas o soportes ubicados a distancias no superiores a 2,0 m en tramos rectos o a una distancia menor que determine la buena práctica, cuando se produzcan cambios de dirección en su trazado."
+          },
+          {
+            "numero": "8.2.1.5",
+            "texto": "Cuando sea necesario curvar un cable MI, las curvas se harán con herramientas especializadas, evitando dañar la cubierta y la aislación; el radio interior mínimo de la curva será el indicado por el fabricante, o en su defecto, cinco veces el diámetro del cable."
+          },
+          {
+            "numero": "8.2.1.6",
+            "texto": "Para unir los cables MI a cajas de derivación, gabinetes y/o cajas de conexión de equipos, deberán utilizarse sólo aquellos accesorios construidos y aprobados exclusivamente para este uso."
+          },
+          {
+            "numero": "8.2.1.7",
+            "texto": "En todos los extremos del cable MI, aun cuando éstos queden en el interior de cajas gabinetes o equipos, se deberá colocar una pieza de sello construida y aprobada para este fin, con la finalidad de evitar que penetre la humedad en el compuesto mineral de aislación."
+          }
+        ]
+      },
+      "8.2.2_conductores_desnudos_sobre_aisladores": {
+        "numero": "8.2.2",
+        "titulo": "Conductores desnudos sobre aisladores",
+        "articulos": [
+          {
+            "numero": "8.2.2.1",
+            "texto": "Los conductores desnudos empleados en canalizaciones eléctricas podrán ser macizos, cableados, tubulares o de barras de formas cilíndrica, rectangular, elipsoidal u otra."
+          },
+          {
+            "numero": "8.2.2.2",
+            "texto": "Solo podrán utilizarse conductores desnudos sobre aisladores como sistema de canalización en líneas aéreas a la intemperie, en subestaciones o locales de maniobra accesibles únicamente a personal calificado y en sistemas de barras trole para equipos desplazables."
+          },
+          {
+            "numero": "8.2.2.3",
+            "texto": "Aún cumpliendo las disposiciones definidas en el párrafo anterior, no podrán utilizarse conductores desnudos sobre aisladores en locales peligrosos, en locales húmedos o mojados ni en donde queden expuestos a la acción de vapores corrosivos, a excepción de instalaciones en salas de baterías de acumuladores."
+          },
+          {
+            "numero": "8.2.2.4",
+            "texto": "Las instalaciones de líneas aéreas desnudas a la intemperie sólo se aceptarán en zonas de tránsito escaso o nulo, como por ejemplo zonas no cultivables de predios agrícolas. En general, no se aceptará su uso en locales industriales."
+          },
+          {
+            "numero": "8.2.2.5",
+            "texto": "Las líneas aéreas desnudas a la intemperie se montarán sobre postes de altura suficiente como para asegurar que la distancia entre el conductor más bajo y el suelo, en su punto y condiciones de flecha máxima, será como mínimo de 5 m."
+          },
+          {
+            "numero": "8.2.2.6",
+            "texto": "La sección mínima de los conductores para líneas aéreas a la intemperie será de 4 mm2 para vanos no superiores a 10 m, de 6 mm2 para vanos de hasta 30 m y de 10 mm2 para vanos de hasta 45 m. La sección a emplear en vanos superiores deberá ser justificada mediante cálculo, cumpliendo las prescripciones de la norma NSEG 5 En 71, Instalaciones de Corrientes Fuertes."
+          },
+          {
+            "numero": "8.2.2.7",
+            "texto": "La distancia mínima entre los conductores en una línea aérea de conductores desnudos, medida en los puntos de apoyo, será de 20 cm para vanos de hasta 30 m y de 30 cm para vanos superiores."
+          },
+          {
+            "numero": "8.2.2.8",
+            "texto": "Bajo condiciones climáticas muy severas se adoptarán las medidas necesarias para asegurar una adecuada resistencia mecánica de la línea y para dimensionarla se procederá según las exigencias del capítulo sobre Líneas Aéreas de la norma NSEG 5 En 71."
+          },
+          {
+            "numero": "8.2.2.9",
+            "texto": "Las secciones máximas de conductores desnudos que se colocaran sobre aisladores se fijarán según la tabla Nº 8.11."
+          },
+          {
+            "numero": "8.2.2.10",
+            "texto": "Además de las exigencias indicadas en los párrafos anteriores la construcción de una línea aérea deberá cumplir, en general, las disposiciones sobre Redes de Distribución Aéreas que dicte o autorice la Superintendencia."
+          },
+          {
+            "numero": "8.2.2.11",
+            "texto": "La instalación de sistemas de barras de distribución desnudas, consideradas en 8.2.2.2, deberá cumplir las exigencias señaladas en 6.2.2.2 a 6.2.2.5."
+          },
+          {
+            "numero": "8.2.2.12",
+            "texto": "Todo el sistema de barras de distribución desnudas deberá quedar protegido por una cubierta removible y mecánicamente resistente. En caso que esta cubierta sea de un material conductor, deberá conectarse a tierra cada una de las secciones que la formen. Se recomienda que esta cubierta esté formada por una rejilla o que tenga perforaciones que faciliten la ventilación de las barras sin afectar la seguridad del conjunto."
+          },
+          {
+            "numero": "8.2.2.13",
+            "texto": "Donde un sistema de barras desnudas deba atravesar un muro, deberán utilizarse aisladores pasamuros o un sistema de canalización que cuente con cortafuegos adecuados."
+          },
+          {
+            "numero": "8.2.2.14",
+            "texto": "Los sistemas de barras trole desnudas para alimentar equipos desplazables, consideradas en 8.2.2.2, podrán instalarse bajo techo o a la intemperie."
+          },
+          {
+            "numero": "8.2.2.15",
+            "texto": "Las barras trole desnudas podrán montarse sobre postes o estructuras instaladas para este fin, sobre muros o sobre partes estructurales de edificios."
+          },
+          {
+            "numero": "8.2.2.16",
+            "texto": "En las instalaciones bajo techo la altura de la barra más baja sobre el nivel de piso no será inferior a 5 m; en instalaciones a la intemperie se deberán respetar las exigencias establecidas en 8.2.2.4."
+          },
+          {
+            "numero": "8.2.2.17",
+            "texto": "La separación vertical entre conductores de distinta polaridad, en función de la distancia entre apoyos o vanos, se fijará de acuerdo a la tabla Nº 8.12. En caso de tendidos en que los conductores queden en un plano horizontal la separación se fijará de acuerdo a la norma NSEG 5 En 71."
+          }
+        ],
+        "tablas": {
+          "tabla_8.11": {
+            "numero": "Tabla Nº 8.11",
+            "titulo": "Secciones Máximas de Conductores sobre Aisladores",
+            "encabezados": [
+              "Tipo de aislador",
+              "Dimensión básica del aislador [mm] (*)",
+              "Sección del conductor [mm2] - Desnudo",
+              "Sección del conductor [mm2] - Aislado"
+            ],
+            "datos": [
+              {
+                "tipo": "Carrete",
+                "dimension": "Ø 51",
+                "desnudo": "35",
+                "aislado": "16"
+              },
+              {
+                "tipo": "Carrete",
+                "dimension": "Ø 57",
+                "desnudo": "70",
+                "aislado": "35"
+              },
+              {
+                "tipo": "Carrete",
+                "dimension": "Ø 76",
+                "desnudo": "120",
+                "aislado": "70"
+              },
+              {
+                "tipo": "Campana",
+                "dimension": "h 72",
+                "desnudo": "25",
+                "aislado": "10"
+              },
+              {
+                "tipo": "Campana",
+                "dimension": "h 80",
+                "desnudo": "70",
+                "aislado": "35"
+              },
+              {
+                "tipo": "Campana",
+                "dimension": "h 100",
+                "desnudo": "120",
+                "aislado": "70"
+              },
+              {
+                "tipo": "Campana",
+                "dimension": "h 145",
+                "desnudo": "150",
+                "aislado": "95"
+              },
+              {
+                "tipo": "Rollo",
+                "dimension": "h 25",
+                "desnudo": "-",
+                "aislado": "2,5"
+              },
+              {
+                "tipo": "Rollo",
+                "dimension": "h 32",
+                "desnudo": "-",
+                "aislado": "6"
+              },
+              {
+                "tipo": "Rollo",
+                "dimension": "h 36",
+                "desnudo": "-",
+                "aislado": "10"
+              },
+              {
+                "tipo": "Rollo",
+                "dimension": "h 40",
+                "desnudo": "-",
+                "aislado": "16"
+              }
+            ],
+            "nota": "(*) Ø = diámetro; h = altura"
+          },
+          "tabla_8.12": {
+            "numero": "Tabla Nº 8.12",
+            "titulo": "Distancia Mínima entre Conductores de Distinta Polaridad",
+            "encabezados": [
+              "Distancia entre apoyos o vanos [m]",
+              "Distancia entre conductores [cm]"
+            ],
+            "datos": [
+              {
+                "vanos": "hasta 2",
+                "distancia": "5"
+              },
+              {
+                "vanos": "Sobre 2 hasta 4",
+                "distancia": "10"
+              },
+              {
+                "vanos": "Sobre 4 hasta 6",
+                "distancia": "15"
+              },
+              {
+                "vanos": "Sobre 6 hasta 30",
+                "distancia": "20"
+              },
+              {
+                "vanos": "sobre 30",
+                "distancia": "30"
+              }
+            ]
+          }
+        }
+      },
+      "8.2.3_conductores_aislados_sobre_aisladores": {
+        "numero": "8.2.3",
+        "titulo": "Conductores aislados sobre aisladores",
+        "articulos": [
+          {
+            "numero": "8.2.3.1",
+            "texto": "Los conductores aislados montados sobre aisladores sólo podrán instalarse en sitios en que no queden expuestos a daños mecánicos causados por personas u objetos que se manipulen en sus proximidades."
+          },
+          {
+            "numero": "8.2.3.2",
+            "texto": "Está prohibida la instalación de conductores aislados sobre aisladores en lugares o recintos que presenten riesgos de incendio o de explosión, en garajes comerciales, en teatros y locales de reunión de personas, en estudios de cine o televisión, en pozos de ascensores o montacargas, o similares."
+          },
+          {
+            "numero": "8.2.3.3",
+            "texto": "En líneas aéreas a la intemperie formada por conductores aislados sobre aisladores, el conductor inferior a la línea en su punto más bajo deberá tener una altura mínima de 4,0 m sobre el nivel del suelo. Esta altura deberá aumentarse en zonas de tránsito de vehículos de carga de modo de permitir el paso libre del más alto de éstos y podrá disminuirse hasta un mínimo de 3,0 m si la línea se tiende vecina a un muro en toda su extensión."
+          },
+          {
+            "numero": "8.2.3.4",
+            "texto": "Las secciones mínimas para las líneas aéreas aisladas a la intemperie serán las mismas prescritas en 8.2.2.6."
+          },
+          {
+            "numero": "8.2.3.5",
+            "texto": "La distancia vertical mínima entre conductores de líneas aéreas aisladas a la intemperie será de 15 cm."
+          },
+          {
+            "numero": "8.2.3.6",
+            "texto": "Las líneas aéreas a la intemperie con conductores aislados deberán cumplir lo indicado en 8.2.2.8 y 8.2.2.10 y los conductores empleados deberán ser los adecuados para este tipo de instalaciones de acuerdo a lo prescrito en las tablas Nº 8.6 y Nº 8.6a."
+          },
+          {
+            "numero": "8.2.3.7",
+            "texto": "En instalaciones bajo techo la distancia entre el conductor más bajo de una línea sobre aisladores y el piso no debe ser inferior a 2,5 m. En caso que los conductores pasen sobre zonas transitadas o que las condiciones del proceso realizado lo exijan deberá aumentarse esta altura mínima de acuerdo a esas condiciones."
+          },
+          {
+            "numero": "8.2.3.8",
+            "texto": "La distancia máxima de luz entre los aisladores de apoyo para las líneas aisladas bajo techo será de 6 m si la línea se apoya en muros o superficies similares, tanto para recorridos horizontales como verticales, la sección mínima a utilizar en estos casos será 1,5 mm2."
+          },
+          {
+            "numero": "8.2.3.9",
+            "texto": "La distancia mínima entre los conductores y la superficie o parte que le sirve de apoyo será de 1,5 cm en recintos secos y limpios. Esta distancia se aumentará a 3 cm en recintos húmedos, mojados o ambientes con polvos en suspensión."
+          },
+          {
+            "numero": "8.2.3.10",
+            "texto": "Para las condiciones consideradas en 8.2.3.1 a 8.2.3.9, la distancia mínima entre conductores de distinta polaridad será de 1,5 cm para tensiones de servicio de hasta 400 V y de 3 cm para tensiones de servicio superiores."
+          },
+          {
+            "numero": "8.2.3.11",
+            "texto": "Las secciones máximas de conductores aislados en los distintos tipos de aisladores se fijarán de acuerdo a la tabla Nº 8.11."
+          },
+          {
+            "numero": "8.2.3.12",
+            "texto": "Las derivaciones deberán hacerse en los puntos de apoyo y se aislarán convenientemente. En los puntos de derivación, la distancia entre el conductor y la superficie o pieza de apoyo no debe ser inferior a 2 cm."
+          },
+          {
+            "numero": "8.2.3.13",
+            "texto": "Los conductores de la línea sobre aisladores deberán asegurarse a los aisladores mediante amarras; estas amarras serán de material aislante o de conductores eléctricos aislados que tengan el mismo tipo de aislación que el conductor de la línea y la amarra se hará de modo de evitar que estos conductores formen una espora cerrada. Las amarras de líneas hasta 4 mm2 de sección deberán tener una resistencia mecánica equivalente a la de un conductor de cobre de 1,5 mm2; para secciones hasta de 10 mm2 a la de 2,5 mm2; para secciones superiores, la resistencia mecánica de la amarra deberá ser equivalente a la de un conductor de cobre de 8,37 mm2."
+          },
+          {
+            "numero": "8.2.3.14",
+            "texto": "Las bajadas desde una línea aérea se harán en cables multiconductores o con conductores en ductos que aseguren una protección mecánica adecuada de los conductores. Las líneas que atraviesan muros deberán hacerlo en ductos. En igual forma la entrada de los conductores a una roseta o equipo debe estar protegida por un ducto de no menos de 10 cm de largo."
+          },
+          {
+            "numero": "8.2.3.15",
+            "texto": "La entrada de los conductores en el ducto deberá hacerse sin tensión mecánica y se protegerá mediante una prensaestopas o un accesorio similar que impida la penetración de cuerpos extraños. En los puntos de entrada de los conductores a ductos deberán ir aisladores de apoyo."
+          }
+        ]
+      },
+      "8.2.4_cables_planos": {
+        "numero": "8.2.4",
+        "titulo": "Cables planos",
+        "articulos": [
+          {
+            "numero": "8.2.4.1",
+            "texto": "Los cables planos son conjuntos de dos, tres o cuatro conductores aislados dispuestos en forma paralela, en una capa y envueltos por una chaqueta aislante independiente de la aislación de cada conductor individual; el conjunto forma un cable de sección transversal rectangular. Pertenecen a esta clasificación los cables TPS, NYIF y el NYIFY."
+          },
+          {
+            "numero": "8.2.4.2",
+            "texto": "Los cables planos sólo podrán usarse en instalaciones bajo techo, embutidos, a la vista u ocultos. En ningún caso podrán apoyarse sobre material combustible, como madera.",
+            "nota_aclaratoria": "El uso de cables planos es una buena alternativa para la ejecución de instalaciones en viviendas económicas; sin embargo, la falta de accesorios adecuados para su uso dificulta la aplicación de este método de canalización."
+          },
+          {
+            "numero": "8.2.4.3",
+            "texto": "En el caso de colocarse embutidos podrán quedar directamente bajo o en el revoque, sea éste de mortero de cemento o yeso. No podrán instalarse ocultos o embutidos en tabiques cuya estructura, recubrimiento y/o relleno sean madera u otros materiales combustibles."
+          },
+          {
+            "numero": "8.2.4.4",
+            "texto": "Los cables planos podrán instalarse ocultos en los espacios huecos que queden en paredes o techos construidos con materiales incombustibles. Podrán instalarse en entretechos con envigados de madera siempre que éstos formen parte de una construcción sólida y que el cable plano vaya colocado sobre apoyos de modo tal que ningún punto de ellos quede en contacto con la madera u otros elementos combustibles."
+          },
+          {
+            "numero": "8.2.4.5",
+            "texto": "Embutidos u ocultos sólo se permitirá su tendido en tramos verticales y horizontales. En los tramos horizontales se aceptará tenderlos a 0,30 m de los cielos y a 0,20 m de los pisos."
+          },
+          {
+            "numero": "8.2.4.6",
+            "texto": "A la vista u ocultos, los cables planos deberán afianzarse a las superficies o puntos de soporte mediante abrazaderas o grapas metálicas resistentes a la oxidación o de material plástico de resistencia y flexibilidad adecuadas."
+          },
+          {
+            "numero": "8.2.4.7",
+            "texto": "En casas o construcciones de madera o materiales combustibles no se permitirá el empleo de cables planos como sistema de canalización."
+          },
+          {
+            "numero": "8.2.4.8",
+            "texto": "Al emplear cables planos como sistema de canalización deberá emplearse cajas de derivación y accesorios aprobados para este uso."
+          },
+          {
+            "numero": "8.2.4.9",
+            "texto": "Las capacidades de transporte de corriente de los cables planos se fijarán de acuerdo a la tabla Nº 8.7 grupo 2 ó la tabla Nº 8.7a grupo A, según el tipo de cable que se esté empleando en la canalización."
+          }
+        ]
+      },
+      "8.2.5_cables_sobre_soportes": {
+        "numero": "8.2.5",
+        "titulo": "Cables sobre soportes",
+        "articulos": [
+          {
+            "numero": "8.2.5.1",
+            "texto": "Podrán utilizarse en este sistema de canalización sólo cables multiconductores de los tipos TTMU, NYY, USE, EVA o similares."
+          },
+          {
+            "numero": "8.2.5.2",
+            "texto": "Al usar este sistema de canalización los conductores no deberán quedar expuestos a daños mecánicos. La altura mínima de montaje será de 2 m en tramos horizontales. Se permitirán bajadas verticales pero deberán protegerse con una cubierta resistente bajo 1,2 m."
+          },
+          {
+            "numero": "8.2.5.3",
+            "texto": "Los soportes podrán ser metálicos o no metálicos y estar formados por sistemas de abrazaderas, rieles y abrazaderas u otros similares. La distancia máxima entre ellos será de 1,5 m."
+          },
+          {
+            "numero": "8.2.5.4",
+            "texto": "La separación mínima entre el cable y la superficie de apoyo del soporte será de 1 cm. No se acepta este tipo de canalización sobre superficies combustibles."
+          },
+          {
+            "numero": "8.2.5.5",
+            "texto": "Para cables de secciones superiores a 50 mm2 deberán usarse abrazaderas de materiales no magnéticos."
+          },
+          {
+            "numero": "8.2.5.6",
+            "texto": "Si se colocan varios cables en un tendido paralelo, la distancia entre cable y cable debe ser a lo menos igual al diámetro del cable de menor sección con un mínimo de 1 cm."
+          },
+          {
+            "numero": "8.2.5.7",
+            "texto": "La capacidad de transporte de los cables sobre soportes se fijará de acuerdo a la tabla Nº 8.7 grupo 3 ó la tabla Nº 8.7a Grupo B, según sea el tipo de cable que se emplee en la canalización."
+          }
+        ]
+      },
+      "8.2.6_conductores_en_tuberias_metalicas": {
+        "numero": "8.2.6",
+        "titulo": "Conductores en tuberías metálicas",
+        "articulos": [
+          {
+            "numero": "8.2.6.1",
+            "texto": "Podrán usarse como sistemas de canalización eléctrica tuberías metálicas ferrosas o no ferrosas. Las tuberías metálicas de materiales ferrosos podrán ser de pared gruesa (cañerías), de pared media o de pared delgada (tubos eléctricos). Las tuberías metálicas no ferrosas podrán ser de cobre o bronce. En una misma canalización no podrán mezclarse tuberías metálicas de distintos materiales."
+          },
+          {
+            "numero": "8.2.6.2",
+            "texto": "En alimentaciones de corriente alterna canalizadas en tuberías metálicas deberá evitarse el calentamiento de éstas debido a la inducción electromagnética, colocando todos los conductores, incluido el neutro cuando corresponda, en una misma tubería."
+          },
+          {
+            "numero": "8.2.6.3",
+            "texto": "Las tuberías metálicas ferrosas deberán protegerse contra la corrosión mediante un proceso de barnizado o galvanizado en caliente. No se aceptará el uso de tuberías protegidas por medio de un proceso de electrogalvanizado como sistema de canalización eléctrica.",
+            "nota_aclaratoria": "La prohibición de uso de la protección electrogalvanizada se debe a que, por las características de este proceso, no se deposita cinc en el interior de la tubería."
+          },
+          {
+            "numero": "8.2.6.4",
+            "texto": "Las tuberías barnizadas, si se emplean a la vista, sólo podrán usarse en canalizaciones bajo techo en locales secos y ambientes no corrosivos."
+          },
+          {
+            "numero": "8.2.6.5",
+            "texto": "Las tuberías metálicas ferrosas, si se emplean embutidas, sólo podrán cubrirse con mortero de cemento; no deberán cubrirse o embutirse en contacto directo con yeso."
+          },
+          {
+            "numero": "8.2.6.6",
+            "texto": "Las tuberías barnizadas sólo podrán preembutirse en hormigón vibrado en las siguientes condiciones:",
+            "condiciones": [
+              "En muros interiores de edificios.",
+              "En losas de cielo de modo tal que los tubos lleguen a los centros o cajas formando una U invertida.",
+              "Evitando el uso de coplas roscadas, los sistemas de acoplamiento que se usen deberán prescindir del sistema de roscado, deberán acoplarse por medio de manguitos compresibles."
+            ]
+          },
+          {
+            "numero": "8.2.6.7",
+            "texto": "Las tuberías galvanizadas de pared gruesa, intermedias o de pared delgada podrán usarse a la intemperie cumpliendo en cada caso las condiciones indicadas en esta norma en las secciones pertinentes."
+          },
+          {
+            "numero": "8.2.6.8",
+            "texto": "Las tuberías galvanizadas intermedias y de pared delgada no deberán usarse en recintos que presenten riesgos de explosión."
+          },
+          {
+            "numero": "8.2.6.9",
+            "texto": "Todos los cortes que se hagan a una tubería deberán ser repasados cuidadosamente para eliminar las rebabas."
+          },
+          {
+            "numero": "8.2.6.10",
+            "texto": "Las tuberías de pared delgada deberán fijarse a la caja o gabinete al cual entren o salgan mediante tuerca y contratuerca, tuerca y boquilla, uniones emballetadas u otro sistema aprobado para ello."
+          },
+          {
+            "numero": "8.2.6.11",
+            "texto": "Las tuberías de pared gruesa deberán fijarse a las cajas o gabinetes a los cuales entren mediante boquillas y contratuercas u otro sistema aprobado para ello."
+          },
+          {
+            "numero": "8.2.6.12",
+            "texto": "Los tramos de tuberías metálicas de pared gruesa deberán unirse unos con otros mediante coplas con hilos. Los trozos de tuberías que al hacerles hilo para el acoplamiento pierden su protección contra la corrosión, deberán ser cubiertos con pinturas antióxido."
+          },
+          {
+            "numero": "8.2.6.13",
+            "texto": "Las tuberías de pared delgada deberán ser acopladas mediante sistemas de coplas sin hilos, debiendo los sistemas de fijación de éstas asegurar una perfecta continuidad eléctrica, una adecuada rigidez mecánica y no deberán disminuir la sección transversal de la tubería."
+          },
+          {
+            "numero": "8.2.6.14",
+            "texto": "Las curvas hechas en tuberías metálicas no deberán dañarlas ni disminuir el diámetro efectivo de ellas. Los radios de curvatura mínimos para tuberías metálicas se indican en la tabla Nº 8.13."
+          },
+          {
+            "numero": "8.2.6.15",
+            "texto": "No deberá existir una desviación mayor de 180 grados en un tramo de tubería entre dos cajas o accesorios. En caso de existir la necesidad de tener una mayor desviación se deberán colocar cajas intermedias. Para distancias entre cajas de derivación no superiores a 5,0 m se aceptará una desviación de 270º sin cajas intermedias."
+          },
+          {
+            "numero": "8.2.6.16",
+            "texto": "Las tuberías metálicas instaladas a la vista u ocultas deberán tener soportes o fijaciones a una distancia no superior a 1,50 m."
+          }
+        ],
+        "tablas": {
+          "tabla_8.13": {
+            "numero": "Tabla Nº 8.13",
+            "titulo": "Radios de Curvatura para Tuberías Metálicas",
+            "encabezados": [
+              "Diámetro nominal de la tubería [pulgadas]",
+              "Radio de curvatura al borde interior del tubo [cm]"
+            ],
+            "datos": [
+              {
+                "diametro": "½ 5/8",
+                "radio": "10"
+              },
+              {
+                "diametro": "¾ 1",
+                "radio": "10"
+              },
+              {
+                "diametro": "1 ¼",
+                "radio": "12"
+              },
+              {
+                "diametro": "1 ½",
+                "radio": "18"
+              },
+              {
+                "diametro": "2",
+                "radio": "20"
+              },
+              {
+                "diametro": "2 ½",
+                "radio": "25"
+              },
+              {
+                "diametro": "3",
+                "radio": "30"
+              },
+              {
+                "diametro": "3 ½",
+                "radio": "40"
+              },
+              {
+                "diametro": "4",
+                "radio": "45"
+              },
+              {
+                "diametro": "5",
+                "radio": "55"
+              },
+              {
+                "diametro": "6",
+                "radio": "60"
+              },
+              {
+                "diametro": "",
+                "radio": "75"
+              },
+              {
+                "diametro": "",
+                "radio": "90"
+              }
+            ]
+          }
+        }
+      },
+      "8.2.7_conductores_en_tuberias_metalicas_flexibles": {
+        "numero": "8.2.7",
+        "titulo": "Conductores en tuberías metálicas flexibles",
+        "articulos": [
+          {
+            "numero": "8.2.7.1",
+            "texto": "Se clasificará como tubería metálica flexible a toda tubería construida en lámina de acero, dispuesta para formar el tubo, generalmente en forma helicoidal y que puede ser curvada en forma manual sin necesidad de emplear herramientas para este efecto."
+          },
+          {
+            "numero": "8.2.7.2",
+            "texto": "Las tuberías metálicas flexibles se clasificarán en livianas y de uso pesado."
+          },
+          {
+            "numero": "8.2.7.3",
+            "texto": "Se entenderá por tubería metálica flexible liviana a una tubería metálica flexible de sección circular sin chaqueta exterior de protección, en conjunto con sus accesorios de montaje."
+          },
+          {
+            "numero": "8.2.7.4",
+            "texto": "Se entenderá por tubería metálica flexible de uso pesado a una tubería metálica flexible de sección circular con una chaqueta exterior no metálica, en conjunto con sus accesorios de montaje."
+          },
+          {
+            "numero": "8.2.7.5",
+            "texto": "Las tuberías metálicas flexibles livianas se podrán usar en ambientes secos, en lugares en donde estén protegidas de daños físicos u ocultas en cielos falsos, para proteger las derivaciones desde la canalización fija a equipos de iluminación o a los pilares de servicio indicados en la sección 8.2.14. La máxima longitud permitida para una canalización en tuberías de este tipo es de 1,50 m y los diámetros permitidos serán ½\" y ¾\"."
+          },
+          {
+            "numero": "8.2.7.6",
+            "texto": "El uso de tuberías metálicas flexibles livianas no se permite en canalizaciones embutidas, preembutidas, subterráneas, en donde quede expuesta a daños físicos y en instalaciones en lugares peligrosos."
+          },
+          {
+            "numero": "8.2.7.7",
+            "texto": "Las tuberías metálicas flexibles de uso pesado podrán usarse en ambientes húmedos o mojados siempre que se las emplee con conductores aptos para este tipo de ambientes, en lugares en donde estén protegidas de daños físicos, en conexión a canalizaciones fijas de equipos en cuyo funcionamiento se presenten vibraciones, tal como en el caso de motores. La máxima longitud permitida para una canalización en tuberías de este tipo es de 2,0 m y los diámetros permitidos serán desde ½ \" a 4\"."
+          },
+          {
+            "numero": "8.2.7.8",
+            "texto": "En caso de que la longitud de una tubería metálica flexible de uso pesado exceda de 1,20 m se deberá poner un soporte intermedio que evite un desplazamiento lateral excesivo."
+          },
+          {
+            "numero": "8.2.7.9",
+            "texto": "La cantidad máxima de conductores en tuberías metálicas flexibles se fijará de acuerdo a la tabla Nº 8.18."
+          },
+          {
+            "numero": "8.2.7.10",
+            "texto": "En donde las tuberías metálicas flexibles se empleen combinadas con canalizaciones fijas no metálicas se deberá instalar un conductor de protección de modo de conectarlas a tierra. En el caso de unirse a canalizaciones fijas conductoras, los accesorios de conexión de las tuberías metálicas flexibles deberán asegurar una adecuada conducción que garantice el correcto aterrizamiento de la tubería flexible."
+          }
+        ]
+      },
+      "8.2.8_conductores_en_tuberias_no_metalicas_condiciones_generales": {
+        "numero": "8.2.8",
+        "titulo": "Conductores en tuberías no metálicas. Condiciones generales",
+        "articulos": [
+          {
+            "numero": "8.2.8.1",
+            "texto": "Podrán usarse como medio de canalización eléctrica tuberías y accesorios de material no metálico adecuado para soportar la acción de la humedad y agentes químicos. Si se usan en canalizaciones a la vista u ocultas, deberán ser de tipo incombustible o autoextinguente, resistente a los impactos, a las compresiones y a las deformaciones debidas a los efectos del calor, en condiciones similares a las que se encontrarán en su uso y manipulación; para uso subterráneo embutido o preembutido deberán ser resistentes a la acción de la humedad, de hongos, de agentes corrosivos en general y tener una resistencia mecánica suficiente como para soportar los esfuerzos a que se verán sometidas durante su manipulación, montaje y uso. Cuando vayan enterradas deberán ser capaces de soportar las presiones a que serán sometidas después de su instalación."
+          },
+          {
+            "numero": "8.2.8.2",
+            "texto": "En canalizaciones en locales de reunión de personas, a las características de las tuberías no metálicas indicadas en 8.2.8.1 deberán agregarse que, en caso de combustión, deberán arder sin llama, no emitir gases tóxicos, estar libres de materiales halógenos y emitir humos de muy baja opacidad.",
+            "nota_aclaratoria": "Esta condición es equivalente al cumplimiento de la Clasificación M1, VOF4, de las normas NF F16 101 y NF F16 102."
+          },
+          {
+            "numero": "8.2.8.3",
+            "texto": "Como materiales aprobados para la fabricación de tuberías no metálicas para usar en canalizaciones eléctricas están, el Cloruro de Polivinilo (PVC) para uso general y el Polietileno (PE) para uso en tendidos embutidos, preembutidos y subterráneos en zonas de tránsito liviano."
+          },
+          {
+            "numero": "8.2.8.4",
+            "texto": "Está prohibido el uso de tuberías no metálicas en las siguientes condiciones:",
+            "condiciones_prohibidas": [
+              "En lugares en que se presenten riesgos de incendio o de explosión.",
+              "Como soporte de equipos y otros dispositivos.",
+              "Expuesta directamente a la radiación solar, excepto si el material de la tubería está expresamente aprobado para este uso y la tubería lleva marcada en forma indeleble esta condición.",
+              "Donde están expuestas a daños físicos severos que excedan la resistencia mecánica para la cual la tubería fue diseñada.",
+              "En donde la temperatura ambiente exceda la temperatura para la cual la tubería fue aprobada.",
+              "Para llevar conductores cuya temperatura de servicio exceda la temperatura para la cual la tubería fue aprobada."
+            ]
+          }
+        ]
+      },
+      "8.2.9_conductores_en_tuberias_no_metalicas_rigidas_y_semirigidas": {
+        "numero": "8.2.9",
+        "titulo": "Conductores en tuberías no metálicas rígidas y semirígidas",
+        "articulos": [
+          {
+            "numero": "8.2.9.1",
+            "texto": "Se consideran tuberías no metálicas rígidas las fabricadas de Cloruro de Polivinilo y tuberías no metálicas semirígidas las fabricadas de Polietileno."
+          },
+          {
+            "numero": "8.2.9.2",
+            "texto": "Las tuberías rígidas se clasificarán en tuberías livianas, semilivianas, pesadas y de alto impacto."
+          },
+          {
+            "numero": "8.2.9.3",
+            "texto": "Las tuberías no metálicas rígidas livianas sólo serán aceptadas para canalizaciones en instalaciones de tipo habitacional; no serán aceptables en instalaciones industriales de ninguna magnitud, a excepción de recintos dedicados exclusivamente a oficinas."
+          },
+          {
+            "numero": "8.8.9.4",
+            "texto": "Las tuberías no metálicas rígidas semilivianas, se aceptarán en todo tipo de instalaciones en que se esperen condiciones de trabajo sin mayores exigencias desde el punto de vista de resistencia mecánica."
+          },
+          {
+            "numero": "8.2.9.5",
+            "texto": "Las tuberías no metálicas rígidas pesadas y de alto impacto, serán usadas en donde se presenten condiciones de exigencias mecánicas fuertes o extremas; en particular en canalizaciones subterráneas sólo se podrán usar tuberías de estas categorías."
+          },
+          {
+            "numero": "8.2.9.6",
+            "texto": "Las tuberías rígidas no metálicas y sus accesorios aprobados para su uso eléctrico podrán usarse bajo las siguientes condiciones:",
+            "condiciones": [
+              "Embutidas o preembutidas.",
+              "Para uso subterráneo, cumpliendo las condiciones prescritas en la sección 8.2.15, podrán emplearse tuberías de todos los materiales indicados en 8.2.9.1.",
+              "A la vista u ocultas. En estas condiciones estas tuberías no metálicas son especialmente recomendables para instalaciones en lugares húmedos o mojados tales como lavanderías, fábricas de conservas, baños públicos o sitios similares. Las cajas de accesorios, abrazaderas, pernos, prensas y otros deben ser de un material resistente a la corrosión o protegidos en forma adecuada contra ella."
+            ]
+          },
+          {
+            "numero": "8.2.9.7",
+            "texto": "En donde se instale una tubería no metálica oculta, embutida o preembutida en muros, se le deberá montar en tramos verticales y horizontales próximos al cielo o piso en condiciones similares a las indicadas en 8.2.4.5."
+          },
+          {
+            "numero": "8.2.9.8",
+            "texto": "Todos los extremos de tuberías deberán ser suavizados Interiormente evitando los bordes cortantes."
+          },
+          {
+            "numero": "8.2.9.9",
+            "texto": "Las uniones entre tramos de tuberías deberán efectuarse mediante coplas del mismo material o expandiendo la tubería en caliente para hacer boquillas que permitan el acoplamiento de las distintas secciones. La unión o fijación a accesorios o cajas se podrá hacer con boquillas del mismo material, mediante boquillas y contratuercas roscadas del mismo material o metálicas adecuadamente protegidas contra la corrosión, en el caso de tuberías rígidas de tipo pesado."
+          },
+          {
+            "numero": "8.2.9.10",
+            "texto": "Las tuberías a la vista u ocultas serán fijadas en forma adecuada; la separación entre los soportes se determinará, de acuerdo a la tabla Nº 8.14. Se colocarán abrazaderas a una distancia mínima de 0,4 m de cajas, gabinetes de tableros o de cualquier otro extremo de tubería. Los soportes deberán ser de material resistente a la corrosión."
+          },
+          {
+            "numero": "8.2.9.11",
+            "texto": "En donde sea necesario compensar las contracciones o dilataciones de las tuberías producidas por efectos de la temperatura se deberá colocar juntas de dilatación."
+          },
+          {
+            "numero": "8.2.9.12",
+            "texto": "En las entradas de las tuberías a cajas u otros accesorios similares se deberá colocar una boquilla o adaptador para proteger a los conductores de la fricción, a menos que el diseño de la entrada de la caja o el accesorio sea tal que proporcione dicha protección."
+          },
+          {
+            "numero": "8.2.9.13",
+            "texto": "Las curvas en tuberías no metálicas se harán de modo de no dañarlas y el radio de curvatura deberá ser como mínimo el prescrito en la tabla Nº 8.13."
+          },
+          {
+            "numero": "8.2.9.14",
+            "texto": "Las tuberías no metálicas semirígidas sólo podrán usarse embutidas, preembutidas y subterráneas en zonas de tránsito liviano. Atendiendo a su forma de fabricación se tenderán en tramos continuos evitando uniones entre cajas o cámaras."
+          },
+          {
+            "numero": "8.2.9.15",
+            "texto": "Las características dimensionales de los distintos tipos de tuberías no metálicas rígidas y semirígidas se muestran en la tabla Nº 8.15."
+          }
+        ],
+        "tablas": {
+          "tabla_8.14": {
+            "numero": "Tabla Nº 8.14",
+            "titulo": "Separación entre Soportes para Tuberías No Metálicas",
+            "encabezados": [
+              "Diámetro nominal de la tubería [pulgadas]",
+              "Separación entre soportes [m]"
+            ],
+            "datos": [
+              {
+                "diametro": "½ a ¾",
+                "separacion": "1,20"
+              },
+              {
+                "diametro": "1 a 2",
+                "separacion": "1,50"
+              },
+              {
+                "diametro": "2 ½ a 3",
+                "separacion": "1,80"
+              },
+              {
+                "diametro": "3 ½ a 5",
+                "separacion": "2,00"
+              },
+              {
+                "diametro": "6",
+                "separacion": "2,50"
+              }
+            ]
+          },
+          "tabla_8.15": {
+            "numero": "Tabla Nº 8.15",
+            "titulo": "Características Dimensionales de las Tuberías Plásticas Rígidas y Semirígidas",
+            "encabezados": [
+              "Diámetro [mm]",
+              "Diámetro [pulgadas]",
+              "Espesor [mm] - PVC Tipo I",
+              "Espesor [mm] - PVC Tipo II",
+              "Espesor [mm] - PVC Tipo III",
+              "Espesor [mm] - PVC Sch 40",
+              "Espesor [mm] - PVC Sch 80",
+              "Espesor [mm] - PE"
+            ],
+            "datos": [
+              {
+                "diametro_mm": "16",
+                "diametro_pulg": "5/8",
+                "tipo_I": "-",
+                "tipo_II": "-",
+                "tipo_III": "1,2",
+                "sch_40": "-",
+                "sch_80": "-",
+                "pe": "1,8"
+              },
+              {
+                "diametro_mm": "20",
+                "diametro_pulg": "½",
+                "tipo_I": "-",
+                "tipo_II": "-",
+                "tipo_III": "1,5",
+                "sch_40": "2,8",
+                "sch_80": "3,7",
+                "pe": "2,0"
+              },
+              {
+                "diametro_mm": "25",
+                "diametro_pulg": "¾",
+                "tipo_I": "-",
+                "tipo_II": "-",
+                "tipo_III": "1,5",
+                "sch_40": "2,9",
+                "sch_80": "3,9",
+                "pe": "2,0"
+              },
+              {
+                "diametro_mm": "32",
+                "diametro_pulg": "1",
+                "tipo_I": "-",
+                "tipo_II": "-",
+                "tipo_III": "1,8",
+                "sch_40": "3,4",
+                "sch_80": "4,5",
+                "pe": "2,4"
+              },
+              {
+                "diametro_mm": "40",
+                "diametro_pulg": "1 ¼",
+                "tipo_I": "-",
+                "tipo_II": "1,8",
+                "tipo_III": "1,9",
+                "sch_40": "3,6",
+                "sch_80": "4,9",
+                "pe": "3,0"
+              },
+              {
+                "diametro_mm": "50",
+                "diametro_pulg": "1 ½",
+                "tipo_I": "-",
+                "tipo_II": "1,8",
+                "tipo_III": "2,4",
+                "sch_40": "3,7",
+                "sch_80": "5,1",
+                "pe": "3,0"
+              },
+              {
+                "diametro_mm": "63",
+                "diametro_pulg": "2",
+                "tipo_I": "-",
+                "tipo_II": "1,9",
+                "tipo_III": "3,0",
+                "sch_40": "3,9",
+                "sch_80": "5,5",
+                "pe": "4,0"
+              },
+              {
+                "diametro_mm": "75",
+                "diametro_pulg": "2 ½",
+                "tipo_I": "1,8",
+                "tipo_II": "2,2",
+                "tipo_III": "3,6",
+                "sch_40": "5,2",
+                "sch_80": "7,0",
+                "pe": "4,5"
+              },
+              {
+                "diametro_mm": "90",
+                "diametro_pulg": "3",
+                "tipo_I": "1,8",
+                "tipo_II": "2,7",
+                "tipo_III": "4,3",
+                "sch_40": "5,5",
+                "sch_80": "7,6",
+                "pe": "5"
+              },
+              {
+                "diametro_mm": "110",
+                "diametro_pulg": "4",
+                "tipo_I": "2,2",
+                "tipo_II": "3,2",
+                "tipo_III": "5,3",
+                "sch_40": "6,0",
+                "sch_80": "8,6",
+                "pe": "6"
+              },
+              {
+                "diametro_mm": "140",
+                "diametro_pulg": "5",
+                "tipo_I": "2,8",
+                "tipo_II": "4,1",
+                "tipo_III": "6,7",
+                "sch_40": "6,6",
+                "sch_80": "9,5",
+                "pe": "-"
+              },
+              {
+                "diametro_mm": "160",
+                "diametro_pulg": "6",
+                "tipo_I": "3,2",
+                "tipo_II": "4,1",
+                "tipo_III": "7,7",
+                "sch_40": "7,1",
+                "sch_80": "10,9",
+                "pe": "-"
+              }
+            ],
+            "notas": [
+              "Importante: Las dimensiones indicadas son sólo referenciales y no se deben entender como valores de norma para la fabricación de tuberías.",
+              "Las tuberías de PVC (conduits) de tipos I, II y III se fabrican según normas NCh 397 y 399. Los conduits de PVC Sch (Schedule) 40 y Sch 80 se fabrican según norma ASTM 1785.",
+              "Las tuberías (conduits) tipos I y II y el de 16 mm tipo III se consideran livianos, el tipo Sch 40 es de tipo pesado y el Sch 80 se considera de alto impacto."
+            ]
+          }
+        }
+      },
+      "8.2.10_tuberias_no_metalicas_flexibles": {
+        "numero": "8.2.10",
+        "titulo": "Tuberías no metálicas flexibles",
+        "articulos": [
+          {
+            "numero": "8.2.10.1",
+            "texto": "Las tuberías no metálicas flexibles deberán cumplir las exigencias de la Norma NCh 2015 Of.86."
+          },
+          {
+            "numero": "8.2.10.2",
+            "texto": "Podrán utilizarse tuberías no metálicas flexibles construidas de materiales incombustibles o autoextinguentes y resistentes a la acción de la humedad, la corrosión y agentes climáticos. Deberán construirse y dimensionarse de modo que teniendo una flexibilidad suficiente como para curvarse sin la ayuda de herramientas o métodos especiales, su resistencia mecánica, espesor y características constructivas las hagan resistentes a los impactos y presiones que puedan encontrar en condiciones normales de uso."
+          },
+          {
+            "numero": "8.2.10.3",
+            "texto": "Sólo podrán instalarse en las siguientes condiciones:",
+            "condiciones": [
+              "A la vista en sitios secos.",
+              "Ocultas en tabiquerías, entretechos o sitios similares.",
+              "Embutidas si sus características de resistencia mecánica lo permiten; estas características deberán ser certificadas por un organismo competente reconocido por la Superintendencia. En estas condiciones, al instalarse en muros sólo se podrá hacerlo mediante tramos verticales u horizontales próximos al cielo o piso en condiciones similares a las indicadas en 8.2.4.5."
+            ]
+          },
+          {
+            "numero": "8.2.10.4",
+            "texto": "En canalizaciones en tuberías no metálicas flexibles no se acepta el empleo de coplas."
+          }
+        ]
+      },
+      "8.2.11_cantidad_maxima_de_conductores_en_tuberias": {
+        "numero": "8.2.11",
+        "titulo": "Cantidad máxima de conductores en tuberías",
+        "articulos": [
+          {
+            "numero": "8.2.11.1",
+            "texto": "La cantidad máxima de los diferentes tipos de conductores en los distintos tipos de tuberías se fijará de acuerdo a lo prescrito en las tablas Nº 8.16 a Nº 8.19."
+          },
+          {
+            "numero": "8.2.11.2",
+            "texto": "Para fijar la cantidad máxima de conductores en una tubería se aceptará que el conductor o haz de conductores, incluyendo la aislación de cada uno de ellos, ocupe un porcentaje de la sección transversal de la tubería que esté de acuerdo a lo prescrito por la tabla Nº 8.16."
+          },
+          {
+            "numero": "8.2.11.3",
+            "texto": "La cantidad de conductores, determinada de acuerdo a la tabla Nº 8.16 y sus condiciones de aplicación, se verificará comparando el diámetro interno de la tubería considerada con el diámetro de la envolvente teórica del haz de conductores respectivo. La diferencia entre ellos no deberá ser inferior a 3 mm para los valores de las tablas Nº 8.17, Nº 8.17a, Nº 8.18 y Nº 8.18a y de 12 mm, para la tabla Nº 8.19."
+          },
+          {
+            "numero": "8.2.11.4",
+            "texto": "Los valores de las tablas Nº 8.17, Nº 8.17a, Nº 8.18 y Nº 8.18a serán válidos para tramos de tuberías de hasta 20 m de largo, rectos o con no más de dos curvas con una desviación total no superior a 180º: Para tramos de distancias superiores o para desviaciones mayores a las indicadas se deberá colocar cajas de paso intermedias."
+          },
+          {
+            "numero": "8.2.11.5",
+            "texto": "En tuberías que lleven más de tres conductores se deberán aplicar los factores de corrección de capacidad de transporte de corriente indicados en la tabla Nº 8.8."
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,289 @@
+/* ============================================================
+   SIMBOLOGÍA CSS - Estilos para el sistema de simbología
+   ============================================================ */
+
+/* VENTANA FLOTANTE PRINCIPAL */
+.vineta-window {
+    position: absolute;
+    width: 55%;
+    max-width: 600px;
+    height: 65vh;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* HEADER DE LA VENTANA */
+#simbologiaHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: #9b59b6;
+    color: white;
+    min-height: 35px;
+    cursor: grab;
+    user-select: none;
+}
+
+#simbologiaHeader:active {
+    cursor: grabbing;
+}
+
+/* BOTONES DEL HEADER */
+#simbologiaHeader button {
+    transition: all 0.2s ease;
+}
+
+#simbologiaHeader button:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+#simbologiaHeader button:active {
+    transform: scale(0.95);
+}
+
+/* CONTENEDOR DE LA SIMBOLOGÍA */
+.simbologia-container {
+    font-family: Arial, sans-serif;
+    background: white;
+    padding: 0;
+}
+
+.simbologia-container h1 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #000000;
+    border-bottom: 3px solid #000000;
+    padding-bottom: 8px;
+}
+
+/* TABLA DE SIMBOLOGÍA */
+.tabla-simbologia {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.tabla-simbologia th {
+    background: #000000;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+    border: 2px solid #000000;
+    font-size: 14px;
+}
+
+.tabla-simbologia td {
+    padding: 8px 10px;
+    border: 2px solid #000000;
+    font-size: 13px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.tabla-simbologia input {
+    width: 95%;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.tabla-simbologia tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+.tabla-simbologia tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.tabla-simbologia tbody tr:hover {
+    background: #e3f2fd !important;
+}
+
+.tabla-simbologia tbody tr.fila-seleccionada {
+    background: #e8f4f8 !important;
+}
+
+/* CELDAS DE SÍMBOLOS */
+.simbolo-celda {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: #000000;
+}
+
+.flecha-tuberia {
+    color: #ff6600;
+    font-size: 20px;
+}
+
+.circulo-camara {
+    color: #ff6600;
+    font-size: 20px;
+}
+
+.linea-punteada {
+    border-top: 3px dashed #000;
+    width: 60px;
+    margin: 0 auto;
+}
+
+/* SIMBOLOGÍA INTEGRADA AL PLANO */
+.simbologia-integrada {
+    position: absolute;
+    width: 450px;
+    cursor: move;
+    z-index: 50;
+    border: 2px solid #9b59b6;
+    background: white;
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform-origin: top left;
+    overflow: visible;
+    transition: border-color 0.3s ease;
+}
+
+.simbologia-integrada[data-bloqueado="true"] {
+    cursor: not-allowed;
+    border-color: #e74c3c;
+}
+
+/* CONTROLES DE LA SIMBOLOGÍA INTEGRADA */
+.simbologia-integrada > div:first-child {
+    position: absolute;
+    top: -35px;
+    right: 0;
+    background: #9b59b6;
+    padding: 5px;
+    border-radius: 4px;
+    display: flex;
+    gap: 5px;
+    z-index: 10;
+}
+
+.simbologia-integrada button {
+    transition: all 0.2s ease;
+}
+
+.simbologia-integrada button:hover {
+    transform: scale(1.1);
+}
+
+.simbologia-integrada button:active {
+    transform: scale(0.95);
+}
+
+/* BOTÓN ELIMINAR FILA */
+#btnEliminarFilaSeleccionada,
+.btn-eliminar-fila-integrada {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ESTILOS PARA LA SIMBOLOGÍA INTEGRADA - REDUCIDOS */
+.simbologia-integrada .simbologia-container h1 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+}
+
+.simbologia-integrada .tabla-simbologia th {
+    padding: 8px;
+    font-size: 13px;
+}
+
+.simbologia-integrada .tabla-simbologia td {
+    padding: 6px 8px;
+    font-size: 12px;
+}
+
+.simbologia-integrada .tabla-simbologia input {
+    padding: 3px;
+    font-size: 11px;
+}
+
+.simbologia-integrada .simbolo-celda {
+    font-size: 14px;
+}
+
+.simbologia-integrada .flecha-tuberia,
+.simbologia-integrada .circulo-camara {
+    font-size: 18px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .vineta-window {
+        width: 90%;
+        height: 80vh;
+    }
+    
+    .simbologia-integrada {
+        width: 90%;
+        max-width: 400px;
+    }
+}
+
+/* SCROLLBAR PERSONALIZADO */
+.vineta-window > div:last-child::-webkit-scrollbar {
+    width: 8px;
+}
+
+.vineta-window > div:last-child::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.vineta-window > div:last-child::-webkit-scrollbar-thumb {
+    background: #9b59b6;
+    border-radius: 4px;
+}
+
+.vineta-window > div:last-child::-webkit-scrollbar-thumb:hover {
+    background: #8e44ad;
+}
+/* Asegurar que todas las celdas de símbolo tengan el mismo tamaño */
+.simbolo-celda {
+    width: 60px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px;
+}
+
+/* Todos los elementos dentro de simbolo-celda deben ser del mismo tamaño */
+.simbolo-celda svg,
+.simbolo-celda object,
+.simbolo-celda img,
+.simbolo-celda .icono-medidor {
+    width: 24px !important;
+    height: 24px !important;
+    display: block;
+    margin: 0 auto;
+}
+
+.simbolo-celda .icono-medidor svg {
+    width: 24px !important;
+    height: 24px !important;
+}

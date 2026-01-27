@@ -1,0 +1,30 @@
+/* base.css (CORREGIDO) */
+
+/* ================================
+   RESET Y CONFIGURACIÓN GLOBAL
+   ================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    overflow: hidden;
+    height: 100vh;
+    color: #e5e5e5;
+}
+
+/* ================================
+   CONTENEDOR PRINCIPAL
+   ================================ */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0a0a0a 100%);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}

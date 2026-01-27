@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Losa de Cimentación</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/losa-cimentacion.css">
+    <link rel="stylesheet" href="../css/cortes.css">
+</head>
+<body>
+    <header>
+        <h1>Diseño de Losa de Cimentación</h1>
+        <p>Cálculo de Fundación Superficial</p>
+    </header>
+    <div class="container">
+        <a href="../index.html" class="back-button">← Volver al Menú</a>
+        <div class="content-wrapper">
+            <div class="input-section">
+                <h2>📝 Datos de Entrada</h2>
+                <div class="form-group">
+                    <label>Dimensión en X:</label>
+                    <input type="number" id="dimX" value="12.0" step="0.5">
+                    <small>m</small>
+                </div>
+                <div class="form-group">
+                    <label>Dimensión en Y:</label>
+                    <input type="number" id="dimY" value="10.0" step="0.5">
+                    <small>m</small>
+                </div>
+                <div class="form-group">
+                    <label>Espesor de Losa:</label>
+                    <input type="number" id="espesor" value="0.50" step="0.05">
+                    <small>m</small>
+                </div>
+                <div class="form-group">
+                    <label>Número de Columnas en X:</label>
+                    <input type="number" id="colX" value="4" step="1" min="2">
+                </div>
+                <div class="form-group">
+                    <label>Número de Columnas en Y:</label>
+                    <input type="number" id="colY" value="3" step="1" min="2">
+                </div>
+                <div class="form-group">
+                    <label>Carga por Columna:</label>
+                    <input type="number" id="cargaCol" value="800" step="50">
+                    <small>kN</small>
+                </div>
+                <div class="form-group">
+                    <label>Capacidad Portante del Suelo:</label>
+                    <input type="number" id="qadm" value="150" step="10">
+                    <small>kPa</small>
+                </div>
+                <div class="form-group">
+                    <label>Resistencia del Hormigón (f'c):</label>
+                    <select id="fc">
+                        <option value="25" selected>H25 (25 MPa)</option>
+                        <option value="30">H30 (30 MPa)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Acero de Refuerzo (fy):</label>
+                    <select id="fy">
+                        <option value="420" selected>A63-42H (420 MPa)</option>
+                    </select>
+                </div>
+                <button class="btn-calculate" onclick="calcularLosaCimentacion()">
+                    🔨 Calcular Losa de Cimentación
+                </button>
+            </div>
+            <div class="output-section">
+                <h2>📊 Resultados del Diseño</h2>
+                                <div class="vista-controles">
+                    <button class="btn-vista active" id="btn3d" onclick="cambiarVista('3d')">
+                        🔷 Vista 3D
+                    </button>
+                    <button class="btn-vista" id="btnCorte" onclick="cambiarVista('corte')">
+                        ✂️ Ver Corte A-A
+                    </button>
+                </div>
+                <div class="vista-container">
+                    <div id="canvas3d" class="active"></div>
+                    <canvas id="canvasCorte" width="800" height="600"></canvas>
+                </div>
+                <div class="results" id="resultados">
+                    <p style="text-align: center; color: #7f8c8d; padding: 2rem;">
+                        Ingrese los datos y presione "Calcular"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer><p>© 2025 - Software de Cálculos Estructurales Chile</p></footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="../js/utils/normativa-chile.js"></script>
+    <script src="../js/utils/calculos-comunes.js"></script>
+    <script src="../js/utils/three-config.js"></script>
+    <script src="../js/utils/acero-cuantificacion.js"></script>
+    <script src="../js/utils/cortes-detalle.js"></script>
+    <script src="../js/losa-cimentacion.js"></script>
+</body>
+</html>

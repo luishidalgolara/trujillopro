@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viñeta Eléctrica</title>
+    <link rel="stylesheet" href="vineta-styles.css">
+</head>
+<body style="margin: 0; padding: 0; background: white; overflow: hidden;">
+    <div class="vineta-container" style="margin: 0; display: block;">
+        <!-- FILA 1: PROYECTO -->
+        <div class="fila-proyecto">
+            <div class="label">PROYECTO :</div>
+            <div class="contenido">
+                <span class="editable-vineta" contenteditable="true" id="nombreProyecto">ELECTRICO PARA VIVIENDA UNIFAMILIAR</span>
+            </div>
+        </div>
+
+        <!-- FILA 2: PROYECTISTA -->
+        <div class="fila-proyectista">
+            <span class="label">PROYECTISTA :</span>
+            <span class="contenido editable-vineta" contenteditable="true" id="nombreProyectista"></span>
+        </div>
+
+        <!-- FILA 3: UBICACIÓN -->
+        <div class="fila-ubicacion">
+            <span class="label">UBICACION :</span>
+            <span class="contenido editable-vineta" contenteditable="true" id="ubicacion1">PEHUEN Nº 1330, CONDOMINIO PABLO NERUDA</span>
+            <span class="contenido-linea2">
+                ROL :- <span class="editable-vineta" contenteditable="true" id="rol">6511 - 59</span>
+            </span>
+        </div>
+
+        <!-- FILA 4: CONTENIDO -->
+        <div class="fila-contenido">
+            <div class="texto">
+                <span class="label">CONTENIDO :</span>
+                <div class="lista">
+                    <div><span class="editable-vineta" contenteditable="true" id="contenido1">PLANO DE CIRCUITO ALUMBRADO NIVEL 1 Y 2</span></div>
+                    <div><span class="editable-vineta" contenteditable="true" id="contenido2">PLANO DE CIRCUITO ENCHUFES NIVEL 1 Y 2</span></div>
+                    <div><span class="editable-vineta" contenteditable="true" id="contenido3">ESQUEMA POSICION DE ARTEFACTOS</span></div>
+                    <div><span class="editable-vineta" contenteditable="true" id="contenido4">CAMARILLA DE REGISTRO PUESTA A TIERRA</span></div>
+                </div>
+            </div>
+            <div class="rosa-vientos">
+                <svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="black" stroke-width="2"/>
+                    <line x1="50" y1="5" x2="50" y2="95" stroke="black" stroke-width="2"/>
+                    <line x1="5" y1="50" x2="95" y2="50" stroke="black" stroke-width="2"/>
+                    <path d="M 50 5 L 40 25 L 50 20 L 60 25 Z" fill="black"/>
+                    <path d="M 50 95 L 40 75 L 50 80 L 60 75 Z" fill="white" stroke="black" stroke-width="1.5"/>
+                    <path d="M 95 50 L 75 40 L 80 50 L 75 60 Z" fill="white" stroke="black" stroke-width="1.5"/>
+                    <path d="M 5 50 L 25 40 L 20 50 L 25 60 Z" fill="white" stroke="black" stroke-width="1.5"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- FILA 5: ACOTACIONES Y FECHA -->
+        <div class="fila-acotaciones">
+            <div class="acotaciones-left">
+                <span class="label">ACOTACIONES :</span>
+                <span class="contenido editable-vineta" contenteditable="true" id="acotaciones">METROS</span>
+            </div>
+            <div class="acotaciones-right">
+                <span class="label">FECHA :</span>
+                <span class="contenido editable-vineta" contenteditable="true" id="fecha">NOV 2023</span>
+            </div>
+        </div>
+
+        <!-- FILA 6: ARQUITECTO -->
+        <div class="fila-arquitecto">
+            <span class="label">ARQUITECTO :</span>
+            <span class="editable-vineta" contenteditable="true" id="arquitecto"></span>
+        </div>
+
+        <!-- FILA 7: FIRMAS Y NÚMERO DE PLANO -->
+        <div class="fila-firmas">
+            <div class="firma-box">
+                <div class="titulo">FIRMA PROPIETARIO</div>
+                <div class="nombre">
+                    <span class="editable-vineta" contenteditable="true" id="propietario"></span><br>
+                    <span class="editable-vineta" contenteditable="true" id="rutPropietario"></span>
+                </div>
+            </div>
+            <div class="firma-box">
+                <div class="titulo">FIRMA ARQUITECTO</div>
+                <div class="nombre">
+                    <span class="editable-vineta" contenteditable="true" id="firmaArquitecto"></span>
+                </div>
+            </div>
+            <div class="numero-plano-box">
+                <div class="label">No. DE PLANO:</div>
+                <div class="numero">
+                    <span class="editable-vineta" contenteditable="true" id="numeroActual">1</span> DE <span class="editable-vineta" contenteditable="true" id="numeroTotal">2</span>
+                </div>
+                <div class="total">
+                    <span class="editable-vineta" contenteditable="true" id="totalPlanos">0</span> de <span class="editable-vineta" contenteditable="true" id="totalFinal">5</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Lista de campos editables
+        const camposVineta = [
+            'nombreProyecto', 'nombreProyectista', 'ubicacion1', 'rol',
+            'contenido1', 'contenido2', 'contenido3', 'contenido4',
+            'acotaciones', 'fecha', 'arquitecto', 'propietario', 'rutPropietario',
+            'firmaArquitecto', 'numeroActual', 'numeroTotal', 'totalPlanos', 'totalFinal'
+        ];
+
+        // Cargar datos guardados
+        window.addEventListener('DOMContentLoaded', function() {
+            camposVineta.forEach(campo => {
+                const elemento = document.getElementById(campo);
+                const valorGuardado = localStorage.getItem('vineta_electrica_' + campo);
+                if (valorGuardado && elemento) {
+                    elemento.textContent = valorGuardado;
+                }
+            });
+        });
+
+        // Auto-guardado al editar
+        document.querySelectorAll('.editable-vineta').forEach(elemento => {
+            elemento.addEventListener('blur', function() {
+                const id = this.id;
+                if (id) {
+                    localStorage.setItem('vineta_electrica_' + id, this.textContent);
+                    console.log('💾 Guardado:', id);
+                }
+            });
+
+            // Prevenir Enter
+            elemento.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                }
+            });
+        });
+
+        console.log('✅ Viñeta content cargada');
+    </script>
+</body>
+</html>

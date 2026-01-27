@@ -1,0 +1,1512 @@
+{
+  "norma": {
+    "identificacion": {
+      "codigo": "NCH Elec. 4/2003",
+      "titulo": "INSTALACIONES DE CONSUMO EN BAJA TENSIÓN",
+      "organismo": "SUPERINTENDENCIA DE ELECTRICIDAD Y COMBUSTIBLES S.E.C.",
+      "tipo": "ELECTRICIDAD",
+      "fecha_publicacion": "Octubre de 2003"
+    },
+    "indice": [
+      {
+        "numero": "1",
+        "titulo": "Objetivo",
+        "pagina": 1
+      },
+      {
+        "numero": "2",
+        "titulo": "Alcance",
+        "pagina": 1
+      },
+      {
+        "numero": "3",
+        "titulo": "Referencias",
+        "pagina": 2
+      },
+      {
+        "numero": "4",
+        "titulo": "Terminología",
+        "pagina": 2
+      },
+      {
+        "numero": "5",
+        "titulo": "Exigencias Generales",
+        "pagina": 11,
+        "subsecciones": [
+          {
+            "numero": "5.0",
+            "titulo": "De las instalaciones",
+            "pagina": 11
+          },
+          {
+            "numero": "5.1",
+            "titulo": "Empalmes",
+            "pagina": 11
+          },
+          {
+            "numero": "5.2",
+            "titulo": "Subsistemas de distribución",
+            "pagina": 13
+          },
+          {
+            "numero": "5.3",
+            "titulo": "Condiciones de alimentación",
+            "pagina": 15,
+            "subsecciones": [
+              {
+                "numero": "5.3.1",
+                "titulo": "Tensiones",
+                "pagina": 15
+              },
+              {
+                "numero": "5.3.2",
+                "titulo": "Frecuencia",
+                "pagina": 15
+              }
+            ]
+          },
+          {
+            "numero": "5.4",
+            "titulo": "Condiciones de montaje",
+            "pagina": 15,
+            "subsecciones": [
+              {
+                "numero": "5.4.1",
+                "titulo": "Condiciones ambientales",
+                "pagina": 15
+              },
+              {
+                "numero": "5.4.2",
+                "titulo": "Exigencias para materiales y equipos",
+                "pagina": 16
+              },
+              {
+                "numero": "5.4.3",
+                "titulo": "Conductores, uniones y derivaciones",
+                "pagina": 17
+              },
+              {
+                "numero": "5.4.4",
+                "titulo": "Espacios de trabajo y distancias mínimas de seguridad",
+                "pagina": 17
+              },
+              {
+                "numero": "5.4.5",
+                "titulo": "Marcas e identificaciones",
+                "pagina": 19
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "numero": "6",
+        "titulo": "Tableros",
+        "pagina": 19,
+        "subsecciones": [
+          {
+            "numero": "6.0",
+            "titulo": "Conceptos generales",
+            "pagina": 19
+          },
+          {
+            "numero": "6.1",
+            "titulo": "Clasificación",
+            "pagina": 19
+          },
+          {
+            "numero": "6.2",
+            "titulo": "Especificaciones de construcción",
+            "pagina": 20,
+            "subsecciones": [
+              {
+                "numero": "6.2.1",
+                "titulo": "Formas constructivas",
+                "pagina": 20
+              },
+              {
+                "numero": "6.2.2",
+                "titulo": "Material eléctrico",
+                "pagina": 23
+              },
+              {
+                "numero": "6.2.3",
+                "titulo": "Orden de conexionado",
+                "pagina": 23
+              },
+              {
+                "numero": "6.2.4",
+                "titulo": "Conexión a tierra",
+                "pagina": 24
+              }
+            ]
+          },
+          {
+            "numero": "6.3",
+            "titulo": "Disposiciones aplicables a tableros generales",
+            "pagina": 25
+          },
+          {
+            "numero": "6.4",
+            "titulo": "Disposiciones aplicables a tableros de distribución",
+            "pagina": 25
+          }
+        ]
+      },
+      {
+        "numero": "7",
+        "titulo": "Alimentadores",
+        "pagina": 26,
+        "subsecciones": [
+          {
+            "numero": "7.0",
+            "titulo": "Conceptos generales",
+            "pagina": 26
+          },
+          {
+            "numero": "7.1",
+            "titulo": "Especificaciones",
+            "pagina": 26,
+            "subsecciones": [
+              {
+                "numero": "7.1.1",
+                "titulo": "Canalizaciones",
+                "pagina": 26
+              },
+              {
+                "numero": "7.1.2",
+                "titulo": "Protecciones",
+                "pagina": 27
+              }
+            ]
+          },
+          {
+            "numero": "7.2",
+            "titulo": "Dimensionamiento",
+            "pagina": 27,
+            "subsecciones": [
+              {
+                "numero": "7.2.1",
+                "titulo": "Estimación de cargas",
+                "pagina": 27
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "numero": "8",
+        "titulo": "Materiales y Sistemas de Canalizaciones",
+        "pagina": 29,
+        "subsecciones": [
+          {
+            "numero": "8.0",
+            "titulo": "Conceptos generales",
+            "pagina": 29,
+            "subsecciones": [
+              {
+                "numero": "8.0.1",
+                "titulo": "Conductores",
+                "pagina": 29
+              },
+              {
+                "numero": "8.0.2",
+                "titulo": "Protección contra las condiciones de ambientes desfavorables",
+                "pagina": 30
+              },
+              {
+                "numero": "8.0.3",
+                "titulo": "Canalizaciones a distintas temperaturas",
+                "pagina": 30
+              },
+              {
+                "numero": "8.0.4",
+                "titulo": "Canalizaciones y conductores",
+                "pagina": 31
+              }
+            ]
+          },
+          {
+            "numero": "8.1",
+            "titulo": "Conductores para instalaciones",
+            "pagina": 32,
+            "subsecciones": [
+              {
+                "numero": "8.1.1",
+                "titulo": "Generalidades",
+                "pagina": 32
+              },
+              {
+                "numero": "8.1.2",
+                "titulo": "Especificaciones y condiciones de uso de los conductores",
+                "pagina": 32
+              }
+            ]
+          },
+          {
+            "numero": "8.2",
+            "titulo": "Sistemas de canalización",
+            "pagina": 41,
+            "subsecciones": [
+              {
+                "numero": "8.2.1",
+                "titulo": "Cables de aislación mineral (MI)",
+                "pagina": 41
+              },
+              {
+                "numero": "8.2.2",
+                "titulo": "Conductores desnudos sobre aisladores",
+                "pagina": 42
+              },
+              {
+                "numero": "8.2.3",
+                "titulo": "Conductores aislados sobre aisladores",
+                "pagina": 44
+              },
+              {
+                "numero": "8.2.4",
+                "titulo": "Cables planos",
+                "pagina": 45
+              },
+              {
+                "numero": "8.2.5",
+                "titulo": "Cables sobre soportes",
+                "pagina": 46
+              },
+              {
+                "numero": "8.2.6",
+                "titulo": "Conductores en tuberías metálicas",
+                "pagina": 47
+              },
+              {
+                "numero": "8.2.7",
+                "titulo": "Conductores en tuberías metálicas flexibles",
+                "pagina": 48
+              },
+              {
+                "numero": "8.2.8",
+                "titulo": "Conductores en tuberías no metálicas. Condiciones generales",
+                "pagina": 49
+              },
+              {
+                "numero": "8.2.9",
+                "titulo": "Conductores en tubería no metálicas rígidas y semirígidas",
+                "pagina": 50
+              },
+              {
+                "numero": "8.2.10",
+                "titulo": "Tuberías no metálicas flexibles",
+                "pagina": 51
+              },
+              {
+                "numero": "8.2.11",
+                "titulo": "Cantidad máxima de conductores en tuberías",
+                "pagina": 52
+              },
+              {
+                "numero": "8.2.12",
+                "titulo": "Cajas de derivación, de aparatos y de accesorios",
+                "pagina": 53
+              },
+              {
+                "numero": "8.2.13",
+                "titulo": "Canalizaciones en molduras y bandejas portaconductores no metálicas para usos habitacionales o similares",
+                "pagina": 60
+              },
+              {
+                "numero": "8.2.14",
+                "titulo": "Canalizaciones en pilares de servicio",
+                "pagina": 61
+              },
+              {
+                "numero": "8.2.15",
+                "titulo": "Canalizaciones subterráneas",
+                "pagina": 61
+              },
+              {
+                "numero": "8.2.16",
+                "titulo": "Condiciones de instalación",
+                "pagina": 62
+              },
+              {
+                "numero": "8.2.17",
+                "titulo": "Cámaras",
+                "pagina": 63
+              },
+              {
+                "numero": "8.2.18",
+                "titulo": "Cruces y paralelismos de canalizaciones eléctricas subterráneas con redes de gas, agua potable y alcantarillado",
+                "pagina": 64
+              },
+              {
+                "numero": "8.2.19",
+                "titulo": "Bandejas portaconductores",
+                "pagina": 64
+              },
+              {
+                "numero": "8.2.20",
+                "titulo": "Escalerillas portaconductores",
+                "pagina": 67
+              },
+              {
+                "numero": "8.2.21",
+                "titulo": "Canalizaciones en canaletas",
+                "pagina": 69
+              },
+              {
+                "numero": "8.2.22",
+                "titulo": "Barras ómnibus",
+                "pagina": 71
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "numero": "9",
+        "titulo": "Medidas de Protección contra Tensiones Peligrosas",
+        "pagina": 72,
+        "subsecciones": [
+          {
+            "numero": "9.0",
+            "titulo": "Generalidades",
+            "pagina": 72
+          },
+          {
+            "numero": "9.1",
+            "titulo": "Medidas de protección contra contactos directos",
+            "pagina": 73
+          },
+          {
+            "numero": "9.2",
+            "titulo": "Medidas de protección contra contactos indirectos",
+            "pagina": 73
+          },
+          {
+            "numero": "9.3",
+            "titulo": "Protección contra sobretensiones en instalaciones y equipos",
+            "pagina": 78
+          }
+        ]
+      },
+      {
+        "numero": "10",
+        "titulo": "Puestas a Tierra",
+        "pagina": 78,
+        "subsecciones": [
+          {
+            "numero": "10.0",
+            "titulo": "Conceptos generales",
+            "pagina": 78
+          },
+          {
+            "numero": "10.1",
+            "titulo": "Tierra de servicio",
+            "pagina": 78
+          },
+          {
+            "numero": "10.2",
+            "titulo": "Tierra de protección",
+            "pagina": 80
+          },
+          {
+            "numero": "10.3",
+            "titulo": "Electrodos de puesta a tierra",
+            "pagina": 81
+          },
+          {
+            "numero": "10.4",
+            "titulo": "Medición de la resistencia de puesta a tierra",
+            "pagina": 82
+          }
+        ]
+      },
+      {
+        "numero": "11",
+        "titulo": "Instalaciones de alumbrado",
+        "pagina": 83,
+        "subsecciones": [
+          {
+            "numero": "11.0",
+            "titulo": "Conceptos generales",
+            "pagina": 83
+          },
+          {
+            "numero": "11.1",
+            "titulo": "Alumbrado de viviendas",
+            "pagina": 85
+          },
+          {
+            "numero": "11.2",
+            "titulo": "Alumbrado en locales comerciales e industriales",
+            "pagina": 85
+          },
+          {
+            "numero": "11.3",
+            "titulo": "Alumbrado en recintos asistenciales y educacionales",
+            "pagina": 87
+          },
+          {
+            "numero": "11.4",
+            "titulo": "Instalaciones especiales",
+            "pagina": 88
+          },
+          {
+            "numero": "11.5",
+            "titulo": "Alumbrado de emergencia",
+            "pagina": 89
+          }
+        ]
+      },
+      {
+        "numero": "12",
+        "titulo": "Instalaciones de Fuerza",
+        "pagina": 92,
+        "subsecciones": [
+          {
+            "numero": "12.0",
+            "titulo": "Exigencias generales",
+            "pagina": 92,
+            "subsecciones": [
+              {
+                "numero": "12.0.1",
+                "titulo": "Conceptos generales",
+                "pagina": 92
+              },
+              {
+                "numero": "12.0.2",
+                "titulo": "Exigencias para los equipos",
+                "pagina": 93
+              },
+              {
+                "numero": "12.0.3",
+                "titulo": "Condiciones de diseño",
+                "pagina": 93
+              }
+            ]
+          },
+          {
+            "numero": "12.1",
+            "titulo": "Condiciones de instalación de los motores",
+            "pagina": 93
+          },
+          {
+            "numero": "12.2",
+            "titulo": "Dimensionamiento de conductores",
+            "pagina": 94
+          },
+          {
+            "numero": "12.3",
+            "titulo": "Protecciones y comandos",
+            "pagina": 95,
+            "subsecciones": [
+              {
+                "numero": "12.3.1",
+                "titulo": "Protecciones de sobrecarga",
+                "pagina": 95
+              },
+              {
+                "numero": "12.3.2",
+                "titulo": "Protecciones de cortocircuito",
+                "pagina": 96
+              },
+              {
+                "numero": "12.3.3",
+                "titulo": "Partidores e interruptores",
+                "pagina": 97
+              },
+              {
+                "numero": "12.3.4",
+                "titulo": "Circuito de control de motores",
+                "pagina": 98
+              }
+            ]
+          },
+          {
+            "numero": "12.4",
+            "titulo": "Instalación de soldadoras eléctricas",
+            "pagina": 99
+          }
+        ]
+      },
+      {
+        "numero": "13",
+        "titulo": "Instalaciones de Calefacción",
+        "pagina": 102,
+        "subsecciones": [
+          {
+            "numero": "13.0",
+            "titulo": "Conceptos generales",
+            "pagina": 102,
+            "subsecciones": [
+              {
+                "numero": "13.0.1",
+                "titulo": "Exigencias generales",
+                "pagina": 102
+              },
+              {
+                "numero": "13.0.2",
+                "titulo": "Exigencias para los equipos",
+                "pagina": 102
+              }
+            ]
+          },
+          {
+            "numero": "13.1",
+            "titulo": "Circuitos",
+            "pagina": 103
+          },
+          {
+            "numero": "13.2",
+            "titulo": "Protecciones y comandos",
+            "pagina": 103
+          },
+          {
+            "numero": "13.3",
+            "titulo": "Canalizaciones",
+            "pagina": 103
+          }
+        ]
+      },
+      {
+        "numero": "14",
+        "titulo": "Sistemas de Autogeneración",
+        "pagina": 104,
+        "subsecciones": [
+          {
+            "numero": "14.0",
+            "titulo": "Conceptos generales",
+            "pagina": 104
+          },
+          {
+            "numero": "14.1",
+            "titulo": "Sistemas de emergencia",
+            "pagina": 105
+          },
+          {
+            "numero": "14.2",
+            "titulo": "Clasificación de los sistemas de emergencia",
+            "pagina": 106
+          },
+          {
+            "numero": "14.3",
+            "titulo": "Alimentación de sistemas de emergencia",
+            "pagina": 106
+          },
+          {
+            "numero": "14.4",
+            "titulo": "Circuitos de emergencia",
+            "pagina": 108
+          },
+          {
+            "numero": "14.5",
+            "titulo": "Sistemas de corte de puntas",
+            "pagina": 109
+          },
+          {
+            "numero": "14.6",
+            "titulo": "Sistemas de cogeneración",
+            "pagina": 109
+          }
+        ]
+      },
+      {
+        "numero": "15",
+        "titulo": "Instalaciones en Hospitales",
+        "pagina": 110,
+        "subsecciones": [
+          {
+            "numero": "15.0",
+            "titulo": "Conceptos generales",
+            "pagina": 110
+          },
+          {
+            "numero": "15.1",
+            "titulo": "Consumos conectados a los sistemas de emergencia",
+            "pagina": 111
+          },
+          {
+            "numero": "15.2",
+            "titulo": "Medidas de seguridad en recintos de uso médico",
+            "pagina": 112
+          },
+          {
+            "numero": "15.3",
+            "titulo": "Canalizaciones",
+            "pagina": 115
+          }
+        ]
+      },
+      {
+        "numero": "16",
+        "titulo": "Instalaciones en Servicentros e Islas de Expendio de Gasolina",
+        "pagina": 116,
+        "subsecciones": [
+          {
+            "numero": "16.0",
+            "titulo": "Conceptos generales",
+            "pagina": 116
+          },
+          {
+            "numero": "16.1",
+            "titulo": "Equipos y canalizaciones en las zonas peligrosas",
+            "pagina": 117
+          },
+          {
+            "numero": "16.2",
+            "titulo": "Protecciones y comando de circuitos y equipos",
+            "pagina": 118
+          }
+        ]
+      },
+      {
+        "numero": "17",
+        "titulo": "Instalaciones en Áreas de Pintura y Procesos de Acabado",
+        "pagina": 118,
+        "subsecciones": [
+          {
+            "numero": "17.0",
+            "titulo": "Conceptos generales",
+            "pagina": 118
+          },
+          {
+            "numero": "17.1",
+            "titulo": "Equipos y canalizaciones en zonas peligrosas",
+            "pagina": 119
+          }
+        ]
+      },
+      {
+        "numero": "18",
+        "titulo": "Instalaciones en construcciones prefabricadas",
+        "pagina": 119,
+        "subsecciones": [
+          {
+            "numero": "18.0",
+            "titulo": "Conceptos generales",
+            "pagina": 119
+          },
+          {
+            "numero": "18.1",
+            "titulo": "Canalizaciones y equipos en construcciones prefabricadas",
+            "pagina": 120
+          }
+        ]
+      },
+      {
+        "numero": "19",
+        "titulo": "Instalaciones provisionales",
+        "pagina": 120,
+        "subsecciones": [
+          {
+            "numero": "19.0",
+            "titulo": "Conceptos generales",
+            "pagina": 120
+          },
+          {
+            "numero": "19.1",
+            "titulo": "Condiciones de montaje",
+            "pagina": 121,
+            "subsecciones": [
+              {
+                "numero": "19.1.1",
+                "titulo": "Tableros",
+                "pagina": 121
+              },
+              {
+                "numero": "19.1.2",
+                "titulo": "Protecciones",
+                "pagina": 121
+              },
+              {
+                "numero": "19.1.3",
+                "titulo": "Canalizaciones",
+                "pagina": 121
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "numero": "Apéndice 1",
+        "titulo": "Grados de protección de carcazas y cajas de equipos y aparatos",
+        "pagina": 123
+      },
+      {
+        "numero": "Apéndice 2",
+        "titulo": "Potencia media por unidad de superficie estimada necesaria para obtener una Iluminancia dada",
+        "pagina": 128
+      },
+      {
+        "numero": "Apéndice 3",
+        "titulo": "Medición de luminancia e iluminancia de las señales de seguridad",
+        "pagina": 129
+      },
+      {
+        "numero": "Apéndice 4",
+        "titulo": "Características nominales de motores usuales",
+        "pagina": 130
+      },
+      {
+        "numero": "Apéndice 5",
+        "titulo": "Medición de resistencia de pisos de salas de operación",
+        "pagina": 131
+      },
+      {
+        "numero": "Apéndice 6",
+        "titulo": "Equivalencia de Secciones AWG – mm2",
+        "pagina": 132
+      },
+      {
+        "numero": "Apéndice 7",
+        "titulo": "Protocolos de Medición de Parámetros varios de Instalaciones de Consumo.",
+        "pagina": 133
+      }
+    ],
+    "seccion_1_objetivo": {
+      "numero": "1",
+      "titulo": "OBJETIVO",
+      "contenido": [
+        {
+          "numero": "1.1",
+          "texto": "Esta Norma tiene por objeto fijar las condiciones mínimas de seguridad que deben cumplir las instalaciones eléctricas de consumo en Baja Tensión, con el fin de salvaguardar a las personas que las operan o hacen uso de ellas y preservar el medio ambiente en que han sido construidas."
+        },
+        {
+          "numero": "1.2",
+          "texto": "Esta Norma contiene esencialmente exigencias de seguridad. Su cumplimiento, junto a un adecuado mantenimiento, garantiza una instalación básicamente libre de riesgos; sin embargo, no garantiza necesariamente la eficiencia, buen servicio, flexibilidad y facilidad de ampliación de las instalaciones, condiciones éstas inherentes a un estudio acabado de cada proceso o ambiente particular y a un adecuado proyecto."
+        },
+        {
+          "numero": "1.3",
+          "texto": "Las disposiciones de esta Norma están hechas para ser aplicadas e interpretadas por profesionales especializados; no debe entenderse este texto como un manual de instrucciones o adiestramiento."
+        }
+      ]
+    },
+    "seccion_2_alcance": {
+      "numero": "2",
+      "titulo": "ALCANCE",
+      "contenido": [
+        {
+          "numero": "2.1",
+          "texto": "Las disposiciones de esta Norma se aplicarán al proyecto, ejecución y mantenimiento de las instalaciones de consumo cuya tensión sea inferior a 1000 V."
+        },
+        {
+          "numero": "2.2",
+          "texto": "En atención a sus características, tanto técnicas como administrativas, las instalaciones eléctricas de consumo en vías públicas concesionadas se clasifican como instalaciones de consumo y por ello quedan dentro del alcance de aplicación de las disposiciones de esta Norma."
+        },
+        {
+          "numero": "2.3",
+          "texto": "En general, las disposiciones de esta Norma no son aplicables a las instalaciones eléctricas de vehículos, sean éstos terrestres, marítimos o aéreos, a instalaciones en faenas mineras subterráneas, a instalaciones de tracción ferroviaria, ni a instalaciones de comunicaciones, señalización y medición, las cuales se proyectarán ejecutarán y mantendrán de acuerdo a las normas específicas para cada caso."
+        },
+        {
+          "numero": "2.4",
+          "texto": "Esta Norma modifica y reemplaza en forma definitiva a la norma NCh Elec 4/84."
+        },
+        {
+          "numero": "2.5",
+          "texto": "De acuerdo a lo establecido en la Ley Nº 18.410, cualquier duda en cuanto a la interpretación de las disposiciones de esta Norma será resuelta por la Superintendencia de Electricidad y Combustibles, en adelante SEC."
+        },
+        {
+          "numero": "2.6",
+          "texto": "Las disposiciones de esta Norma tendrán las calidades de exigencias y recomendaciones; las exigencias se caracterizarán por el empleo de las expresiones \"se debe\", \"deberá\" y su cumplimento será de carácter obligatorio, en tanto en las recomendaciones se emplearán las expresiones \"se recomienda\", \"se podrá\" o \"se puede\" y su cumplimiento será de carácter opcional, si bien, en el espíritu de la Norma, se considera que la sugerida es la mejor opción.",
+          "nota_aclaratoria": "Se incluyen en esta versión Notas Aclaratorias, identificadas en el texto por la sigla destacada NA y escritas en cursiva. Dichas notas no forman parte de las disposiciones de la Norma y su finalidad es exclusivamente permitir una mejor compresión y aplicación de estas últimas."
+        },
+        {
+          "numero": "2.7",
+          "texto": "En el texto de esta Norma se encuentran detalladas una gran cantidad de características dimensionales y de fabricación de materiales de canalización y equipos, como por ejemplo, ductos, conductores o cajas, gabinetes y armarios para montaje de tableros. Estas menciones son sólo referenciales y no deben entenderse como que constituyen en si normas de fabricación de los elementos aludidos; al citarlos sólo se pretende fijar características de referencia para determinar sus condiciones de montaje como conjunto dentro de una instalación.",
+          "nota_aclaratoria": "Lo expuesto significa, por ejemplo, que al indicar diámetros internos o externos de los ductos, espesores de aislación y diámetros externos de los conductores, con ello no se están definiendo estas dimensiones como parámetros de fabricación sino que con ello se permite determinar la cantidad de conductores en ductos en las tablas correspondientes o calcular alguna condición que no esté definida en esas tablas."
+        }
+      ]
+    },
+    "seccion_3_referencias": {
+      "numero": "3",
+      "titulo": "REFERENCIAS",
+      "contenido": [
+        {
+          "numero": "3.1",
+          "texto": "Esta Norma contiene referencias a las siguientes normas:",
+          "normas_referenciadas": [
+            {
+              "codigo": "NCh Elec 2/84",
+              "titulo": "Elaboración y presentación de proyectos."
+            },
+            {
+              "codigo": "NSEG 5 E.n. 71",
+              "titulo": "Instalaciones de corrientes fuertes."
+            },
+            {
+              "codigo": "NSEG 6 E.n. 71",
+              "titulo": "Cruces y paralelismos en líneas eléctricas."
+            },
+            {
+              "codigo": "NSEG 8 E.n. 71",
+              "titulo": "Tensiones normales."
+            },
+            {
+              "codigo": "NSEG 20 E.p. 78",
+              "titulo": "Subestaciones interiores."
+            },
+            {
+              "codigo": "CEI 529",
+              "titulo": "Grados de protección proporcionados por cajas o carcazas."
+            },
+            {
+              "codigo": "NCh 815 Of/95",
+              "titulo": "Tubos de PVC rígido. Métodos de ensayo."
+            },
+            {
+              "codigo": "NCh 2015 Of/86",
+              "titulo": "Tubos flexibles de material plástico auto extinguibles para canalizaciones eléctricas. Especificaciones."
+            },
+            {
+              "codigo": "NFPA70",
+              "titulo": "Código Eléctrico Nacional. EEUU."
+            },
+            {
+              "codigo": "NF F 16-101",
+              "titulo": "Comportamiento frente a la acción del fuego. Selección de materiales. Francia."
+            },
+            {
+              "codigo": "NF F 16-102",
+              "titulo": "Comportamiento frente a la acción del fuego. Selección de materiales. Aplicación a equipos eléctricos. Francia."
+            }
+          ]
+        }
+      ]
+    },
+    "seccion_4_terminologia": {
+      "numero": "4",
+      "titulo": "TERMINOLOGIA",
+      "contenido": [
+        {
+          "numero": "4.1",
+          "texto": "Para los efectos de aplicación de esta Norma, los términos que se dan a continuación tienen el significado que se indica."
+        }
+      ],
+      "terminos": [
+        {
+          "codigo": "4.1.1",
+          "termino": "ACCESIBLE",
+          "definiciones": [
+            {
+              "codigo": "4.1.1.1",
+              "aplicacion": "Aplicado a canalizaciones",
+              "definicion": "Son aquellas canalizaciones que pueden ser inspeccionadas, sometidas a mantenimiento o modificadas, sin afectar la estructura de la construcción o sus terminaciones."
+            },
+            {
+              "codigo": "4.1.1.2",
+              "aplicacion": "Aplicado a equipos",
+              "definicion": "Son aquellos equipos que no están protegidos mediante puertas cerradas con llave, barreras fijas u otros medios similares."
+            }
+          ]
+        },
+        {
+          "codigo": "4.1.2",
+          "termino": "ACCESIBLE FÁCILMENTE",
+          "definicion": "Son aquellas canalizaciones o equipos accesibles que pueden ser alcanzados sin necesidad de trepar, quitar obstáculos, etc., para repararlos, inspeccionarlos u operarlos."
+        },
+        {
+          "codigo": "4.1.3",
+          "termino": "ACCESORIO",
+          "definiciones": [
+            {
+              "codigo": "4.1.3.1",
+              "aplicacion": "Aplicado a materiales",
+              "definicion": "Material complementario utilizado en instalaciones eléctricas, cuyo fin es cumplir funciones de índole mas bien mecánicas que eléctricas."
+            },
+            {
+              "codigo": "4.1.3.2",
+              "aplicacion": "Aplicado a equipos",
+              "definicion": "Equipo complementario necesario para el funcionamiento del equipo principal."
+            }
+          ]
+        },
+        {
+          "codigo": "4.1.4",
+          "termino": "AISLACIÓN",
+          "definicion": "Conjunto de elementos utilizados en la ejecución de una instalación o construcción de un aparato o equipo y cuya finalidad es evitar el contacto con o entre partes activas."
+        },
+        {
+          "codigo": "4.1.5",
+          "termino": "AISLAMIENTO",
+          "definicion": "Magnitud numérica que caracteriza la aislación de un material, equipo o instalación."
+        },
+        {
+          "codigo": "4.1.6",
+          "termino": "ALUMBRADO DE EMERGENCIA",
+          "definicion": "Término genérico aplicado a sistemas de iluminación destinados a ser usados en caso de falla de la iluminación normal. Su objetivo básico es permitir la evacuación segura de lugares en que transiten, permanezcan o trabajen personas y por ello se dividen en los tipos siguientes, según las condiciones de aplicación:",
+          "subtipos": [
+            {
+              "codigo": "4.1.6.1",
+              "tipo": "Alumbrado de seguridad",
+              "definicion": "Parte del alumbrado de emergencia destinado a garantizar la seguridad de las personas que evacúan una zona determinada o que deben concluir alguna tarea que no es posible abandonar en ciertas condiciones."
+            },
+            {
+              "codigo": "4.1.6.2",
+              "tipo": "Alumbrado ambiental",
+              "definicion": "(Denominado también antipánico) Alumbrado destinado a evitar que se produzcan situaciones de pánico en personas o grupos de personas permitiéndoles identificar su entorno y alcanzar con facilidad las vías de evacuación."
+            },
+            {
+              "codigo": "4.1.6.3",
+              "tipo": "Alumbrado de zonas de trabajo riesgoso",
+              "definicion": "Alumbrado destinado a permitir la ejecución de los procedimientos de detención o control de estos trabajos, garantizando la seguridad de las personas que los desarrollan o que se encuentran en la zona."
+            },
+            {
+              "codigo": "4.1.6.4",
+              "tipo": "Alumbrado de reemplazo",
+              "definicion": "Alumbrado de seguridad destinado a permitir el desarrollo de las actividades normales de una zona sin provocar mayores alteraciones."
+            },
+            {
+              "codigo": "4.1.6.5",
+              "tipo": "Salidas de seguridad (escapes)",
+              "definicion": "Salida destinada a ser usada en casos de urgencia."
+            },
+            {
+              "codigo": "4.1.6.6",
+              "tipo": "Señal de seguridad",
+              "definicion": "Señales que mediante una combinación de formas geométricas y colores, entregan una indicación general relacionada con la seguridad y que a través de símbolos o textos muestran un mensaje particular relativo a una condición de seguridad."
+            },
+            {
+              "codigo": "4.1.6.7",
+              "tipo": "Vías de evacuación",
+              "definicion": "Camino a seguir en caso de una evacuación de urgencia."
+            }
+          ]
+        },
+        {
+          "codigo": "4.1.7",
+          "termino": "APARATO",
+          "definicion": "Elemento de la instalación destinado a controlar el paso de la energía eléctrica."
+        },
+        {
+          "codigo": "4.1.8",
+          "termino": "APROBADO",
+          "definicion": "Aceptado por una entidad técnica, designada por la Superintendencia de acuerdo a sus facultades, mediante una certificación escrita en donde constan las características de funcionamiento y las normas de acuerdo a las cuales se efectuaron las pruebas de aprobación."
+        },
+        {
+          "codigo": "4.1.9",
+          "termino": "ARTEFACTO",
+          "definicion": "Elemento fijo o portátil, parte de una instalación, que consume energía eléctrica."
+        },
+        {
+          "codigo": "4.1.10",
+          "termino": "AUTOGENERACIÓN",
+          "definicion": "Es el proceso de alimentación de energía desde una fuente instalada en el recinto en donde está ubicada la instalación de consumo y que es operada bajo la tuición y responsabilidad de su dueño o usuario, con independencia o en conjunto con la red pública. De acuerdo a su finalidad las fuentes de autogeneración pueden ser:",
+          "subtipos": [
+            {
+              "codigo": "4.1.10.1",
+              "tipo": "Sistemas de Emergencia",
+              "definicion": "Conjunto de instalaciones y equipo eléctrico destinado a proporcionar energía a aquellas partes de una instalación de consumo cuyo funcionamiento es esencial para la protección de la vida, la propiedad privada, por razones de seguridad o por necesidad de continuidad de un proceso, cuando se interrumpe la alimentación normal de la instalación desde la red pública."
+            },
+            {
+              "codigo": "4.1.10.2",
+              "tipo": "Sistemas para corte de puntas",
+              "definicion": "Conjunto de instalaciones y equipo eléctrico destinado a proporcionar energía independiente de la red pública a toda o parte de una instalación de consumo durante los períodos definidos como horas de punta en los decretos de fijación de tarifas, con la finalidad de aprovechar las ventajas económicas que esta condición ofrece."
+            },
+            {
+              "codigo": "4.1.10.3",
+              "tipo": "Sistemas de cogeneración",
+              "definicion": "Es aquel sistema que puede operar interconectado permanentemente con la red pública para abastecer parte o todas las necesidades de energía de la instalaciones de consumo e incluso entregar excedentes de generación a dicha red, si ello se conviene entre las partes."
+            }
+          ],
+          "nota_aclaratoria": "Eventualmente un único sistema de autogeneración puede cumplir todas las posibilidades de funcionamiento reseñadas."
+        },
+        {
+          "codigo": "4.1.11",
+          "termino": "CANALIZACIÓN",
+          "definicion": "Conjunto formado por conductores eléctricos y los accesorios que aseguran su fijación y protección mecánicas.",
+          "subtipos": [
+            {
+              "codigo": "4.1.11.1",
+              "tipo": "A la vista",
+              "definicion": "Canalizaciones que son observables a simple vista."
+            },
+            {
+              "codigo": "4.1.11.2",
+              "tipo": "Embutida",
+              "definicion": "Canalizaciones colocadas en perforaciones o calados hechos en muros, losas o tabiques de una construcción y que son recubiertas por las terminaciones o enlucidos de éstos."
+            },
+            {
+              "codigo": "4.1.11.3",
+              "tipo": "Oculta",
+              "definicion": "Canalizaciones colocadas en lugares que no permiten su visualización directa, pero que son accesibles en toda su extensión. Este término es aplicable también a equipos."
+            },
+            {
+              "codigo": "4.1.11.4",
+              "tipo": "Preembutida",
+              "definicion": "Canalización que se incorpora a la estructura de una edificación junto con sus envigados."
+            },
+            {
+              "codigo": "4.1.11.5",
+              "tipo": "Subterránea",
+              "definicion": "Canalizaciones que van enterradas en el suelo."
+            }
+          ]
+        },
+        {
+          "codigo": "4.1.12",
+          "termino": "CARGA",
+          "definicion": "Es todo artefacto, equipo o instalación cuyo mecanismo u operación requiere del consumo de energía eléctrica para su funcionamiento. Dependiendo de su comportamiento las cargas pueden ser:",
+          "subtipos": [
+            {
+              "codigo": "4.1.12.1",
+              "tipo": "Carga lineal",
+              "definicion": "Es una carga cuyas características no afectan las formas de onda de tensión y corriente durante su período de funcionamiento."
+            },
+            {
+              "codigo": "4.1.12.2",
+              "tipo": "Carga no lineal",
+              "definicion": "Es una carga cuyas características afectan los parámetros de la alimentación modificando la forma de onda de la tensión y/o corriente durante su período de funcionamiento."
+            }
+          ]
+        },
+        {
+          "codigo": "4.1.13",
+          "termino": "CENTRO",
+          "definicion": "Punto de la instalación en donde está conectado un artefacto; en el caso particular de circuitos destinados a iluminación se designará como centro al conjunto de portalámparas con su correspondiente interruptor de comando o un punto en que existan uno, dos o tres enchufes montados en una caja común."
+        },
+        {
+          "codigo": "4.1.14",
+          "termino": "CIRCUITO",
+          "definicion": "Conjunto de artefactos alimentados por una línea común de distribución, la cual es protegida por un único dispositivo de protección."
+        },
+        {
+          "codigo": "4.1.15",
+          "termino": "CONDUCTOR",
+          "definicion": "Hilo metálico, de cobre dentro del alcance de esta Norma, de sección transversal frecuentemente cilíndrico o rectangular, destinado a conducir corriente eléctrica. De acuerdo a su forma constructiva podrá ser designado como alambre, si se trata de una sección circular sólida única, barra si se trata de una sección rectangular o conductor cableado si la sección resultante está formada por varios alambres iguales de sección menor.",
+          "subtipos": [
+            {
+              "codigo": "4.1.15.1",
+              "tipo": "Conductor activo",
+              "definicion": "Conductor destinado al transporte de energía eléctrica. Se aplicará esta calificación a los conductores de fase y neutro de un sistema de corriente alterna o a los conductores positivo, negativo y neutro de sistemas de corriente continua."
+            },
+            {
+              "codigo": "4.1.15.2",
+              "tipo": "Conductor aislado",
+              "definicion": "Conductor en el cual su superficie está protegida de los contactos directos mediante una cubierta compuesta de una o más capas concéntricas de material aislante."
+            },
+            {
+              "codigo": "4.1.15.3",
+              "tipo": "Conductor desnudo",
+              "definicion": "Conductor en el cual su superficie está expuesta al contacto directo sin protección de ninguna especie."
+            }
+          ]
+        },
+        {
+          "codigo": "4.1.16",
+          "termino": "CONECTOR",
+          "definicion": "Dispositivo destinado a establecer una conexión eléctrica entre dos o más conductores."
+        },
+        {
+          "codigo": "4.1.17",
+          "termino": "DEMANDA",
+          "definicion": "La demanda de una instalación, sistema eléctrico o parte de él, es la carga de consumo en el punto considerado, promediada sobre un intervalo de tiempo dado. Se expresa en unidades de potencia.",
+          "subtipos": [
+            {
+              "codigo": "4.1.17.1",
+              "tipo": "Demanda máxima",
+              "definicion": "Es la mayor demanda de la instalación, sistema eléctrico o parte de él que ocurre en un período de tiempo dado. Se expresa en unidades de potencia."
+            },
+            {
+              "codigo": "4.1.17.2",
+              "tipo": "Demanda, factor de",
+              "definicion": "Es la razón, definida sobre un período de tiempo dado, entre la demanda máxima de la instalación o sistema y la carga total conectada. Se entenderá por carga total conectada a la suma aritmética de las potencias nominales de los artefactos o componentes de la instalación. Se puede también aplicar esta definición a partes de la instalación o sistema."
+            }
+          ]
+        },
+        {
+          "codigo": "4.1.18",
+          "termino": "DIVERSIDAD, FACTOR DE",
+          "definicion": "Es la razón entre la suma de las demandas máximas individuales de cada una de las subdivisiones de una instalación o sistema y la demanda máxima de la instalación o sistema completo."
+        },
+        {
+          "codigo": "4.1.19",
+          "termino": "EQUIPO ELÉCTRICO",
+          "definicion": "Término aplicable a aparatos de maniobra, regulación, seguridad o control y a los artefactos y accesorios que forman parte de una instalación eléctrica. Dependiendo de su forma constructiva y características de resistencia a la acción del medio ambiente se calificarán según los tipos detallados a continuación y de acuerdo al cumplimiento de la norma específica sobre la materia.",
+          "subtipos": [
+            {
+              "codigo": "4.1.19.1",
+              "tipo": "Equipo abierto",
+              "definicion": "Equipo que no cuenta con ningún tipo de protección contra el acceso de materiales extraños, contra la entrada de agua o humedad ni barreras que impidan alcanzar partes energizadas. Su forma constructiva únicamente los hace aptos para ser instalados en recintos techados y en ambientes secos y limpios, accesibles sólo a personal calificado.",
+              "nota_aclaratoria": "Corresponde a la clasificación IP00 de la Norma IEC 529 Ver Apéndice 1"
+            },
+            {
+              "codigo": "4.1.19.2",
+              "tipo": "Equipo a prueba de goteo",
+              "definicion": "Equipo construido de modo que al quedar sometido a la caída de gotas de agua, con una inclinación no superior a 15º, éstas no penetran en su interior.",
+              "nota_aclaratoria": "Corresponde a la clasificación IPX2 de la Norma IEC 529 y cumplen las condiciones de prueba del párrafo 14.2.2 de dicha Norma. Ver Apéndice 1."
+            },
+            {
+              "codigo": "4.1.19.3",
+              "tipo": "Equipo a prueba de lluvia",
+              "definicion": "Equipo construido de modo que al quedar sometido a la acción de una lluvia, con una inclinación de hasta 60º, ésta no penetra en su interior.",
+              "nota_aclaratoria": "Corresponde a la clasificación IPX3 de la Norma IEC 529 y cumplen las condiciones de prueba del párrafo 14.2.3 de dicha Norma. Ver Apéndice 1."
+            },
+            {
+              "codigo": "4.1.19.4",
+              "tipo": "Equipo a prueba de salpicaduras",
+              "definicion": "Equipo construido de modo que al quedar sometido a la acción de salpicaduras de agua en cualquier dirección, ésta no penetra en su interior.",
+              "nota_aclaratoria": "Corresponde a la clasificación IPX4 de la Norma IEC 529 y cumplen las condiciones de prueba del párrafo 14.2.4 de dicha Norma. Ver Apéndice 1."
+            },
+            {
+              "codigo": "4.1.19.5",
+              "tipo": "Equipo impermeable",
+              "definicion": "Equipo construido de modo que pueda trabajar sumergido en agua sin que ésta penetre en su interior.",
+              "nota_aclaratoria": "La Norma IEC 529 considera dos condiciones de inmersión, la correspondiente al grado IPX7 y al IPX8, cumpliendo cada una de ellas las condiciones de prueba de los párrafos 14.2.7 y 14.2.8 de dicha Norma. Ver Apéndice 1."
+            },
+            {
+              "codigo": "4.1.19.6",
+              "tipo": "Equipo a prueba de polvo",
+              "definicion": "Equipo construido de modo que al ser instalado en ambientes con polvos en suspensión, éstos no penetren en su interior.",
+              "nota_aclaratoria": "La Norma IEC 529 considera dos condiciones la primera correspondiente al grado IP5X y la segunda al IP6X, cumpliendo cada una de ellas las condiciones de prueba de los párrafos 13.4, 13.5 y 14.6 de dicha Norma. Ver Apéndice 1."
+            }
+          ]
+        },
+        {
+          "codigo": "4.1.20",
+          "termino": "FALLA",
+          "definicion": "Unión entre dos puntos a potencial diferente o ausencia temporal o permanente de la energía al interior o exterior de una instalación, que provoca una condición anormal de funcionamiento de ella, de alguno de sus circuitos o de parte de éstos. Estas fallas pueden ser de los tipos siguientes:",
+          "subtipos": [
+            {
+              "codigo": "4.1.20.1",
+              "tipo": "Cortocircuito",
+              "definicion": "Falla en que su valor de impedancia es muy pequeño, lo cual causa una circulación de corriente particularmente alta con respecto a la capacidad normal del circuito, equipo o parte de la instalación que la soporta."
+            },
+            {
+              "codigo": "4.1.20.2",
+              "tipo": "Falla a masa",
+              "definicion": "Es la unión accidental que se produce entre un conductor activo y la cubierta o bastidor metálico de un aparato, artefacto o equipo eléctrico."
+            },
+            {
+              "codigo": "4.1.20.3",
+              "tipo": "Falla a tierra",
+              "definicion": "Unión de un conductor activo con tierra o con equipos conectados a tierra."
+            },
+            {
+              "codigo": "4.1.20.4",
+              "tipo": "Falla fugaz",
+              "definicion": "Es aquella en que el agente que ocasiona la falla no deja evidencia ni rastro.",
+              "nota_aclaratoria": "En estos casos generalmente el arco eléctrico originado en la falla hace desaparecer el agente causante de la falla; en otros casos las condiciones ambientes ocasionan la pérdida de evidencia."
+            },
+            {
+              "codigo": "4.1.20.5",
+              "tipo": "Falla instantánea",
+              "definicion": "Falla que tiene un tiempo de duración comprendido entre 0,5 y 30 ciclos. 1 ciclo corresponde a 1/50 segundos."
+            },
+            {
+              "codigo": "4.1.20.6",
+              "tipo": "Falla permanente",
+              "definicion": "Falla que tiene una duración suficiente como para que los parámetros del circuito o parte del sistema en falla alcancen sus valores estables."
+            },
+            {
+              "codigo": "4.1.20.7",
+              "tipo": "Falla transitoria",
+              "definicion": "Falla que tiene tiempo de duración comprendido entre 30 ciclos y 3 segundos."
+            },
+            {
+              "codigo": "4.1.20.8",
+              "tipo": "Microcorte",
+              "definicion": "Corte de energía con un tiempo de duración comprendido entre 0,1 segundos y 3 minutos."
+            },
+            {
+              "codigo": "4.1.20.9",
+              "tipo": "Sobrecorriente",
+              "definicion": "Corriente que sobrepasa el valor permisible en un circuito eléctrico; puede ser provocada por cualquiera de las condiciones de falla definidas en los párrafos precedentes o por una sobrecarga."
+            }
+          ]
+        },
+        {
+          "codigo": "4.1.21",
+          "termino": "INSTALACIÓN DE CONSUMO",
+          "definicion": "Instalación eléctrica construida en una propiedad particular, destinada al uso exclusivo de sus usuarios o propietarios, en la cual se emplea la energía eléctrica con fines de uso doméstico, comercial o industrial."
+        },
+        {
+          "codigo": "4.1.22",
+          "termino": "INSTALACIONES EN LUGARES PELIGROSOS",
+          "definicion": "Instalaciones erigidas en lugares o recintos en los cuales se manipulan elementos o agentes de fácil inflamación o explosivos. En el montaje de estas instalaciones se deberá emplear alguno de los siguientes tipos de equipos, según sea el material o agente que origine el riesgo.",
+          "subtipos": [
+            {
+              "codigo": "4.1.22.1",
+              "tipo": "Equipo Antideflagrante",
+              "definicion": "Equipo o material eléctrico susceptible de inflamar una atmósfera explosiva contenido en una envoltura capaz de soportar en su interior la explosión de una mezcla gaseosa combustible y que al mismo tiempo impide que dicha explosión se propague a la atmósfera circundante. Su temperatura exterior de funcionamiento debe ser tal que no alcance el punto de inflamación de la mezcla explosiva que los rodea.",
+              "nota_aclaratoria": "Este tipo de equipo corresponderá a los marcados como Clase 1 División 1, letras A hasta D, según el Código Eléctrico Nacional de EE.UU (NEC) o como EEx d según las normas europeas."
+            },
+            {
+              "codigo": "4.1.22.2",
+              "tipo": "Equipos de seguridad aumentada",
+              "definicion": "Son equipos en los cuales el riesgo de inflamación del material combustible se evita impidiendo la producción de chispas o calentamientos excesivos por medio de una alta calidad constructiva, con un índice de protección mínimo de IP547.",
+              "nota_aclaratoria": "Este tipo de equipos corresponderá a los marcados como EEx e, según normas europeas."
+            },
+            {
+              "codigo": "4.1.22.3",
+              "tipo": "Equipos de seguridad intrínseca",
+              "definicion": "Equipos en que se limitan las tensiones y corrientes de funcionamiento a valores suficientemente bajos como para producir chispas de muy baja energía. Esta clasificación es aplicable generalmente a equipos electrónicos.",
+              "nota_aclaratoria": "Este tipo de equipos corresponderá a los marcados como EEx i, según normas europeas"
+            },
+            {
+              "codigo": "4.1.22.4",
+              "tipo": "Equipo estanco",
+              "definicion": "Equipos en que se impide la entrada a su interior de mezclas explosivas sumergiéndolos en aceite o sometiéndolos a una sobrepresión interna.",
+              "nota_aclaratoria": "Estos tipos de equipos corresponderán a los marcados como EEx o, para aquellos sumergidos en aceite ó EEx p, para aquellos sometidos a sobre presión, según normas europeas."
+            },
+            {
+              "codigo": "4.1.22.5",
+              "tipo": "Equipo no propagante",
+              "definicion": "Equipos en que se impide la propagación de la inflamación en su interior mediante un relleno con material pulverulento no explosivo, generalmente sílice.",
+              "nota_aclaratoria": "Este tipo de equipos corresponderá a los marcados como EEx q, según normas europeas."
+            }
+          ]
+        },
+        {
+          "codigo": "4.1.23",
+          "termino": "ÍNDICES DE CLASIFICACIÓN DE LUGARES PELIGROSOS",
+          "definicion": "Los siguientes serán los parámetros a tener en cuenta en la calificación de un lugar como presentando riesgo de explosión. Los valores numéricos asociados a estos conceptos se deberán obtener de las normas específicas.",
+          "subtipos": [
+            {
+              "codigo": "4.1.23.1",
+              "tipo": "Densidad de vapor",
+              "definicion": "Es la relación entre el peso de un determinado volumen de gas puro y el peso de igual volumen de aire seco."
+            },
+            {
+              "codigo": "4.1.23.2",
+              "tipo": "Límites de inflamabilidad",
+              "definicion": "Son los valores de concentración de gas respecto al aire, expresados como porcentaje inferior y superior del volumen de la mezcla, entre de los cuales la mezcla inflamable puede encenderse."
+            },
+            {
+              "codigo": "4.1.23.3",
+              "tipo": "Punto de vaporización",
+              "definicion": "Es la temperatura a la cual se produce el vapor proveniente de un líquido volátil, en cantidad tal como para producir en la superficie del líquido una mezcla del vapor con el aire, de característica inflamable."
+            },
+            {
+              "codigo": "4.1.23.4",
+              "tipo": "Temperatura de encendido para depósitos de polvo",
+              "definicion": "Es la temperatura mínima a la cual una capa de polvo de 5 mm de espesor, depositada sobre una superficie caliente abierta, inicia su combustión."
+            },
+            {
+              "codigo": "4.1.23.5",
+              "tipo": "Temperatura de ignición",
+              "definicion": "Es la temperatura mínima a la cual una mezcla de aire con gases, vapores, humos, polvos o fibras, inicia su combustión y la mantiene en forma independiente de la fuente original de calor."
+            }
+          ]
+        },
+        {
+          "codigo": "4.1.24",
+          "termino": "LOCAL DE REUNIÓN DE PERSONAS",
+          "definicion": "Se considerará como tal a todo sitio cerrado en que esté presente un número superior a veinticinco personas por lapsos de tiempo superiores a quince minutos. Estarán comprendidos en esta definición, sin que esta enumeración sea determinante ni excluyente, los siguientes:",
+          "ejemplos": [
+            {
+              "tipo": "Locales asistenciales",
+              "descripcion": "hospitales, clínicas, policlínicos, consultorios, etc."
+            },
+            {
+              "tipo": "Locales educacionales",
+              "descripcion": "educación prebásica hasta educación técnico profesional y superior."
+            },
+            {
+              "tipo": "Locales destinados al culto",
+              "descripcion": "iglesias, templos, salones, mezquitas, sinagogas, etc."
+            },
+            {
+              "tipo": "Locales de entretenimiento",
+              "descripcion": "ferias, juegos, billares, etc."
+            },
+            {
+              "tipo": "Locales deportivos",
+              "descripcion": "de prácticas y de espectáculos: estadios, gimnasios."
+            },
+            {
+              "tipo": "Locales de espectáculos en vivo",
+              "descripcion": "permanentes o esporádicos."
+            },
+            {
+              "tipo": "Cines, teatros",
+              "descripcion": ""
+            },
+            {
+              "tipo": "Locales destinados a fines sociales",
+              "descripcion": "Salas de reuniones de Sindicatos, Organizaciones Comunitarias, etc."
+            }
+          ]
+        },
+        {
+          "codigo": "4.1.25",
+          "termino": "MASA",
+          "definicion": "Parte conductora de un equipo eléctrico, normalmente aislada respecto de los conductores activos, que en ciertos circuitos puede ser utilizada como conductor de retorno y que en condiciones de falla puede quedar energizada y presentar un potencial respecto del suelo."
+        },
+        {
+          "codigo": "4.1.26",
+          "termino": "PERSONAL CALIFICADO",
+          "definicion": "Personal que está capacitado en el montaje y operación de equipos e instalaciones eléctricas y en los riesgos que en ellos puedan presentarse."
+        },
+        {
+          "codigo": "4.1.27",
+          "termino": "PROTECCIONES",
+          "definicion": "Dispositivos destinados a desenergizar un sistema, circuito o artefacto cuando en ellos se alteran las condiciones normales de funcionamiento.",
+          "subtipos": [
+            {
+              "codigo": "4.1.27.1",
+              "tipo": "Disyuntor",
+              "definicion": "Dispositivo de protección provisto de un comando manual y cuya función es desconectar automáticamente una instalación o la parte fallada de ella, por la acción de un elemento termomagnético u otro de características de accionamiento equivalentes, cuando la corriente que circula por ella excede valores preestablecidos durante un tiempo dado."
+            },
+            {
+              "codigo": "4.1.27.2",
+              "tipo": "Fusible",
+              "definicion": "Dispositivo de protección cuya función es desconectar automáticamente una instalación o la parte fallada de ella, por la fusión de un hilo conductor, que es uno de sus componentes, cuando la corriente que circula por ella excede valores preestablecidos durante un tiempo dado."
+            },
+            {
+              "codigo": "4.1.27.3",
+              "tipo": "Protector térmico",
+              "definicion": "Dispositivo destinado a limitar la sobrecarga de artefactos eléctricos mediante la acción de un componente que actúa por variaciones de temperatura, generalmente un par bimetálico."
+            },
+            {
+              "codigo": "4.1.27.4",
+              "tipo": "Protector diferencial",
+              "definicion": "Dispositivo de protección destinado a desenergizar una instalación, circuito o artefacto cuando existe una falla a masa; opera cuando la suma fasorial de las corrientes a través de los conductores de alimentación es superior a un valor preestablecido."
+            },
+            {
+              "codigo": "4.1.27.5",
+              "tipo": "Ruptura (Cierre), Capacidad de",
+              "definicion": "Valor de la componente alterna de la corriente de cortocircuito, expresada en términos del valor efectivo (rms), que una protección puede cerrar, mantener durante el periodo de operación y despejar, al abrir en condiciones preestablecidas, sin que se alteren sus características constructivas ni de funcionamiento.",
+              "nota_aclaratoria": "Esta definición puede ser complementada con las definiciones 2.5.5 de la Norma CEI 898."
+            },
+            {
+              "codigo": "4.1.27.6",
+              "tipo": "Sensibilidad",
+              "definicion": "Valor de corriente diferencial que hace operar a un protector diferencial. Se entenderá por corriente diferencial a la suma fasorial de los valores instantáneos de las corrientes que circulan a través de todos los conductores del circuito principal del protector.",
+              "nota_aclaratoria": "Esta definición es concordante con las definiciones 3.2.3 y 3.2.4 de la Norma CEI 1008-I."
+            }
+          ]
+        },
+        {
+          "codigo": "4.1.28",
+          "termino": "RECINTOS",
+          "subtipos": [
+            {
+              "codigo": "4.1.28.1",
+              "tipo": "Recintos de ambientes corrosivos",
+              "definicion": "En general se presentan condiciones ambientales corrosivas en áreas donde se almacenan y/o manipulan ácidos o álcalis, especialmente si además existe humedad ambiental. También se dan estas condiciones, sin que esta enumeración sea excluyente, en plantas procesadoras y/o envasadoras de carnes, de adhesivos, de fertilizantes, productos químicos, establos, lavanderías, curtiembres, conserveras, vitivinícolas, etc."
+            },
+            {
+              "codigo": "4.1.28.2",
+              "tipo": "Recintos calientes",
+              "definicion": "Recintos en que la temperatura ambiente excede a 35º C, por períodos superiores a quince minutos."
+            },
+            {
+              "codigo": "4.1.28.3",
+              "tipo": "Recintos expuestos",
+              "definicion": "Recintos en los cuales los equipos e instalaciones están colocadas a la intemperie, sometidos a la acción de la lluvia, rayos solares, frío y otros agentes atmosféricos."
+            },
+            {
+              "codigo": "4.1.28.4",
+              "tipo": "Recintos húmedos",
+              "definicion": "Recintos en los cuales el vapor de agua del aire alcanza una concentración tal que se producen condensaciones en cielos y paredes, pero no se alcanzan a formar gotas ni se produce impregnación de ellos."
+            },
+            {
+              "codigo": "4.1.28.5",
+              "tipo": "Recintos mojados",
+              "definicion": "Recintos en los cuales el vapor de agua del aire alcanza una concentración tal que los cielos y paredes se impregnan y la condensación produce gotas de agua o bien en ellos se utiliza vapor de agua, como parte de los procesos o acciones que en ellos se desarrollan, por períodos superiores a quince minutos."
+            },
+            {
+              "codigo": "4.1.28.6",
+              "tipo": "Recintos peligrosos",
+              "definicion": "Son recintos en los cuales, por la naturaleza de los materiales que se almacenan, manipulan o procesan, existe riesgo de incendio o de explosión."
+            },
+            {
+              "codigo": "4.1.28.7",
+              "tipo": "Recintos secos",
+              "definicion": "Recintos que no son húmedos, mojados o expuestos ni siquiera en forma temporal"
+            }
+          ]
+        },
+        {
+          "codigo": "4.1.29",
+          "termino": "RED PÚBLICA",
+          "definicion": "Instalaciones eléctricas, de propiedad de empresas concesionarias de servicio público, destinadas a la generación, transporte y distribución de la energía eléctrica, de modo de servir desde ellas a instalaciones de consumo."
+        },
+        {
+          "codigo": "4.1.30",
+          "termino": "RÉGIMEN DE CARGA",
+          "definicion": "Es el parámetro que define el comportamiento de la carga de un equipo, circuito o instalación a través del tiempo. Para los efectos de aplicación de esta Norma se definen los siguientes regímenes de carga:",
+          "subtipos": [
+            {
+              "codigo": "4.1.30.1",
+              "tipo": "Régimen permanente",
+              "definicion": "Es aquel cuya duración es tal que todos los elementos de la instalación alcanzan su temperatura nominal estable, al circular en ésta su corriente nominal."
+            },
+            {
+              "codigo": "4.1.30.2",
+              "tipo": "Régimen intermitente",
+              "definicion": "Es aquel en que los tiempos de conexión se alternan con pausas cuya duración no es suficiente como para que los elementos de la instalación alcancen la temperatura nominal. La suma del tiempo de conexión y de la pausa se conocen como ciclo de trabajo; y la razón entre el tiempo de conexión y el ciclo de trabajo se denomina factor de funcionamiento"
+            },
+            {
+              "codigo": "4.1.30.3",
+              "tipo": "Régimen periódico",
+              "definicion": "Es un régimen intermitente en el cual el ciclo de trabajo es constante y se repite en forma regular."
+            },
+            {
+              "codigo": "4.1.30.4",
+              "tipo": "Régimen de breve duración",
+              "definicion": "Es aquel en que el tiempo de conexión es tan corto que no se alcanza la temperatura de régimen estable y la pausa es lo suficientemente larga como para que los elementos de la instalación recuperen la temperatura del medio ambiente."
+            }
+          ]
+        },
+        {
+          "codigo": "4.1.31",
+          "termino": "SOBRECARGA",
+          "definicion": "Aumento de la potencia o corriente absorbida por un artefacto mas allá de su valor nominal."
+        },
+        {
+          "codigo": "4.1.32",
+          "termino": "TIERRAS",
+          "subtipos": [
+            {
+              "codigo": "4.1.32.1",
+              "tipo": "Tierra de referencia",
+              "definicion": "Electrodo de tierra usado para efectos de medición o comparación, instalado en una zona del suelo, en particular de su superficie, lo suficientemente alejada del electrodo de tierra a medir o del punto de comparación, como para que no se presenten diferencias de potencial entre distintos puntos de ella. Ver figura 1."
+            },
+            {
+              "codigo": "4.1.32.2",
+              "tipo": "Tierra, electrodos de",
+              "definicion": "Son conductores desnudos, enterrados, cuya finalidad es establecer contacto eléctrico con el suelo."
+            },
+            {
+              "codigo": "4.1.32.3",
+              "tipo": "Tierra, línea de",
+              "definicion": "Conductor que une el electrodo de tierra con el punto de la instalación eléctrica que se quiere poner a tierra."
+            },
+            {
+              "codigo": "4.1.32.4",
+              "tipo": "Tierra, poner a",
+              "definicion": "Consiste en unir un punto del circuito de servicio o la masa de algún equipo con el suelo."
+            },
+            {
+              "codigo": "4.1.32.5",
+              "tipo": "Tierra, puesta a",
+              "definicion": "Conjunto de electrodos y líneas de tierra cuya finalidad es establecer el contacto eléctrico con el suelo."
+            },
+            {
+              "codigo": "4.1.32.6",
+              "tipo": "Tierra, resistencia de puesta a",
+              "definicion": "Valor de resistencia eléctrica medido entre un electrodo de tierra y una tierra de referencia, más la resistencia eléctrica de la línea de tierra."
+            },
+            {
+              "codigo": "4.1.32.7",
+              "tipo": "Tierra, resistividad específica de",
+              "definicion": "Es la resistencia eléctrica específica del suelo en consideración; usualmente se representa como la resistencia de un cubo de arista unitaria, medida entre dos caras opuestas de él. En el sistema internacional de unidades su unidad será el Ohm*m2/m = Ohm*m."
+            }
+          ]
+        },
+        {
+          "codigo": "4.1.33",
+          "termino": "UNIDAD DE POTENCIA SIN INTERRUPCION (UPS)",
+          "definicion": "Es un equipo eléctrico integrado por una fuente de poder autónoma capaz de entregar energía a un equipo, circuito o instalación cuando se produce una caída de la fuente principal de alimentación, durante un período de tiempo breve sin producir un corte durante el proceso de transferencia.",
+          "nota_aclaratoria": "Se ha ocupado esta denominación con el fin de mantener la sigla UPS que ha alcanzado gran difusión en nuestro medio y en la actualidad de uso obligado, pese a corresponder a una expresión ajena a nuestro idioma."
+        },
+        {
+          "codigo": "4.1.34",
+          "termino": "VALORES NOMINALES",
+          "definicion": "Son los valores de los parámetros de funcionamiento de un sistema, instalación, equipo o artefacto, definidos por su fabricante o instalador para identificarlos."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,193 @@
+/* ARCHIVO: notas/notas-dropdown.css (CORREGIDO - z-index arreglado) */
+
+.btn-notas-container {
+    position: relative;
+    display: inline-block;
+    overflow: visible;
+}
+
+.dropdown-notas {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background: white;
+    border: 2px solid #ffc107;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    min-width: 180px;
+    z-index: 10002;
+    display: none;
+    margin-bottom: 5px;
+}
+
+.dropdown-notas.active {
+    display: block;
+}
+
+.dropdown-item-nota {
+    width: 100%;
+    padding: 8px 15px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 12px;
+    color: #2c3e50;
+    transition: all 0.3s;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.dropdown-item-nota:last-child {
+    border-bottom: none;
+    border-radius: 0 0 6px 6px;
+}
+
+.dropdown-item-nota:first-child {
+    border-radius: 6px 6px 0 0;
+}
+
+.dropdown-item-nota:hover {
+    background: #ffc107;
+    color: white;
+}
+
+/* Contenedor de nota en plano */
+.nota-plano-container {
+    position: absolute;
+    background: #fff3cd;
+    border: 2px solid #ffc107;
+    border-left: 4px solid #ffc107;
+    padding: 8px 12px;
+    border-radius: 4px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    min-width: 220px;
+    max-width: 500px;
+    width: 320px;
+    min-height: 100px;
+    z-index: 100;
+    cursor: default; /* Solo el header es arrastrable */
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    pointer-events: auto; /* Asegura captura de eventos */
+}
+
+.nota-plano-container.anclada {
+    cursor: default;
+    border-color: #28a745;
+    border-left-color: #28a745;
+    background: #d4edda;
+}
+
+.nota-plano-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 193, 7, 0.3);
+    flex-shrink: 0;
+    cursor: move; /* El header es la zona de arrastre */
+    user-select: none; /* Evita selección de texto al arrastrar */
+}
+
+.nota-plano-header:active {
+    cursor: grabbing; /* Feedback visual al arrastrar */
+}
+
+.nota-plano-container.anclada .nota-plano-header {
+    cursor: default; /* No se puede arrastrar si está anclada */
+}
+
+.nota-plano-titulo {
+    font-weight: bold;
+    color: #856404;
+    font-size: clamp(10px, 3vw, 14px);
+}
+
+.nota-plano-controles {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+}
+
+.nota-btn {
+    padding: 3px 6px;
+    border: none;
+    border-radius: 3px;
+    font-size: clamp(7px, 2vw, 9px);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.nota-btn.anclar {
+    background: #ffc107;
+    color: #000;
+}
+
+.nota-btn.anclar:hover {
+    background: #ffb300;
+}
+
+.nota-btn.anclada {
+    background: #28a745;
+    color: #fff;
+}
+
+.nota-btn.eliminar {
+    background: #dc3545;
+    color: #fff;
+}
+
+.nota-btn.eliminar:hover {
+    background: #c82333;
+}
+
+.nota-plano-contenido {
+    color: #333;
+    font-size: clamp(10px, 2.5vw, 13px);
+    line-height: 1.5;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
+    box-sizing: border-box;
+    flex: 1;
+    cursor: default; /* No arrastrable desde el contenido */
+}
+
+.nota-plano-contenido ol {
+    margin-left: 15px;
+    margin-top: 3px;
+    padding-right: 5px;
+    box-sizing: border-box;
+}
+
+.nota-plano-contenido li {
+    margin-bottom: 4px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.nota-resize-handle {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(-45deg, 
+        transparent 30%, rgba(255, 193, 7, 0.7) 30%, rgba(255, 193, 7, 0.7) 35%, transparent 35%, 
+        transparent 45%, rgba(255, 193, 7, 0.7) 45%, rgba(255, 193, 7, 0.7) 50%, transparent 50%,
+        transparent 60%, rgba(255, 193, 7, 0.7) 60%, rgba(255, 193, 7, 0.7) 65%, transparent 65%);
+    cursor: nw-resize;
+    border-radius: 0 0 5px 0;
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.nota-plano-container.anclada .nota-resize-handle {
+    display: none;
+}

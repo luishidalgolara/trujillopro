@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siglas y Símbolos Convencionales</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 3px solid black;
+        }
+        
+        th, td {
+            border: 2px solid black;
+            padding: 8px;
+            font-size: 13px;
+        }
+        
+        th {
+            background-color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .col-designaciones {
+            width: 50%;
+            text-align: left;
+            padding-left: 15px;
+        }
+        
+        .col-sigla {
+            width: 15%;
+            text-align: center;
+        }
+        
+        .col-simbolo {
+            width: 17.5%;
+            text-align: center;
+        }
+        
+        .row-item {
+            height: 35px;
+        }
+        
+        .titulo-seccion {
+            font-weight: bold;
+            padding-top: 12px;
+        }
+        
+        .simbolo-planta, .simbolo-perfil {
+            display: inline-block;
+            position: relative;
+        }
+        
+        /* Símbolos de medidor y remarcador */
+        .simbolo-medidor {
+            width: 40px;
+            height: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .simbolo-medidor::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: black;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        
+        .simbolo-remarcador {
+            width: 40px;
+            height: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .simbolo-remarcador::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: black;
+            left: 30%;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+        
+        .simbolo-remarcador::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: black;
+            left: 70%;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        
+        .simbolo-remarcador-perfil {
+            display: inline-block;
+            position: relative;
+            width: 30px;
+            height: 30px;
+        }
+        
+        .simbolo-remarcador-perfil::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background: black;
+            left: 0;
+            top: 50%;
+        }
+        
+        .simbolo-remarcador-perfil::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 6px solid black;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        /* Llaves de paso */
+        .llave-paso {
+            display: inline-block;
+            width: 30px;
+            height: 2px;
+            background: black;
+            position: relative;
+        }
+        
+        .llave-paso::before,
+        .llave-paso::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border: 2px solid black;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .llave-paso::before {
+            left: -2px;
+        }
+        
+        .llave-paso::after {
+            right: -2px;
+        }
+        
+        .llave-salida {
+            display: inline-block;
+            width: 25px;
+            height: 2px;
+            background: black;
+            position: relative;
+        }
+        
+        .llave-salida::before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: white;
+            border: 2px solid black;
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        /* Calefón */
+        .calefon-planta {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid black;
+            border-radius: 3px;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .calefon-perfil {
+            display: inline-block;
+            width: 16px;
+            height: 30px;
+            border: 2px solid black;
+            border-radius: 3px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        /* Termo */
+        .termo-planta {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid black;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        .termo-perfil {
+            display: inline-block;
+            width: 16px;
+            height: 30px;
+            border: 2px solid black;
+            border-radius: 8px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        /* Caldera */
+        .caldera-planta {
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            border: 2px solid black;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 22px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .caldera-perfil {
+            display: inline-block;
+            width: 18px;
+            height: 32px;
+            border: 2px solid black;
+            border-radius: 9px;
+            text-align: center;
+            line-height: 32px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        /* Tuberías proyectadas */
+        .tuberia-radier {
+            display: inline-block;
+            width: 50px;
+            height: 3px;
+            background: black;
+        }
+        
+        .tuberia-protegida {
+            display: inline-block;
+            width: 50px;
+            height: 8px;
+            background: black;
+        }
+        
+        .tuberia-entretecho {
+            display: inline-block;
+            width: 50px;
+            height: 3px;
+            background: black;
+            position: relative;
+        }
+        
+        .tuberia-entretecho::before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 3px;
+            background: black;
+            left: 10px;
+            top: 0;
+        }
+        
+        .tuberia-entretecho::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 3px;
+            background: black;
+            right: 10px;
+            top: 0;
+        }
+        
+        .tuberia-caliente-radier {
+            display: inline-block;
+            width: 50px;
+            height: 3px;
+            background: black;
+            position: relative;
+        }
+        
+        .tuberia-caliente-radier::before {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 3px;
+            background: black;
+            left: 19px;
+            top: 0;
+        }
+        
+        .tuberia-caliente-entretecho {
+            display: inline-block;
+            width: 50px;
+            height: 3px;
+            background: black;
+            position: relative;
+        }
+        
+        .tuberia-caliente-entretecho::before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 3px;
+            background: black;
+            left: 8px;
+            top: 0;
+        }
+        
+        .tuberia-caliente-entretecho::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 3px;
+            background: black;
+            right: 8px;
+            top: 0;
+        }
+        
+        .tuberia-caliente-protegida {
+            display: inline-block;
+            width: 50px;
+            height: 8px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            SIGLAS Y SÍMBOLOS CONVENCIONALES UTILIZADOS EN PROYECTOS DE<br>
+            INSTALACIONES DOMICILIARIAS DE AGUA POTABLE Y ALCANTARILLADO
+        </h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th class="col-designaciones">DESIGNACIONES</th>
+                    <th class="col-sigla">SIGLA</th>
+                    <th class="col-simbolo" colspan="2">SÍMBOLOS</th>
+                </tr>
+                <tr>
+                    <th class="col-designaciones"></th>
+                    <th class="col-sigla"></th>
+                    <th class="col-simbolo">PLANTA</th>
+                    <th class="col-simbolo">PERFIL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-designaciones titulo-seccion">AGUA POTABLE</td>
+                    <td class="col-sigla"></td>
+                    <td class="col-simbolo"></td>
+                    <td class="col-simbolo"></td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">TUBERIA FIERRO ACERO</td>
+                    <td class="col-sigla"><strong>AC</strong></td>
+                    <td class="col-simbolo"></td>
+                    <td class="col-simbolo"></td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">TUBERIA FIERRO GALVANIZADO</td>
+                    <td class="col-sigla"><strong>F GALV</strong></td>
+                    <td class="col-simbolo"></td>
+                    <td class="col-simbolo"></td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">TUBERIA DE COBRE</td>
+                    <td class="col-sigla"><strong>Cu.</strong></td>
+                    <td class="col-simbolo"></td>
+                    <td class="col-simbolo"></td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">TUBERIA DE PVC</td>
+                    <td class="col-sigla"><strong>PVC</strong></td>
+                    <td class="col-simbolo"></td>
+                    <td class="col-simbolo"></td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">TUBERIA DE POLIPROPILENO</td>
+                    <td class="col-sigla"><strong>PP</strong></td>
+                    <td class="col-simbolo"></td>
+                    <td class="col-simbolo"></td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">TUBERIA ASBESTO CEMENTO</td>
+                    <td class="col-sigla"><strong>A-CEM</strong></td>
+                    <td class="col-simbolo"></td>
+                    <td class="col-simbolo"></td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">INSTALACION DOMICILIARIA AGUA POTABLE</td>
+                    <td class="col-sigla"><strong>IDAP</strong></td>
+                    <td class="col-simbolo"></td>
+                    <td class="col-simbolo"></td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">MEDIDOR DE AGUA POTABLE</td>
+                    <td class="col-sigla"><strong>MAP</strong></td>
+                    <td class="col-simbolo">
+                        <div class="simbolo-medidor"></div>
+                    </td>
+                    <td class="col-simbolo"></td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">REMARCADOR DE AGUA POTABLE</td>
+                    <td class="col-sigla"><strong>RAP</strong></td>
+                    <td class="col-simbolo">
+                        <div class="simbolo-remarcador"></div>
+                    </td>
+                    <td class="col-simbolo">
+                        <div class="simbolo-remarcador-perfil"></div>
+                    </td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">LLAVE DE PASO (AGUA FRIA)</td>
+                    <td class="col-sigla"><strong>LLP</strong></td>
+                    <td class="col-simbolo">
+                        <div class="llave-paso"></div>
+                    </td>
+                    <td class="col-simbolo">
+                        <div class="llave-paso"></div>
+                    </td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">LLAVE DE PASO (AGUA CALIENTE)</td>
+                    <td class="col-sigla"><strong>LLP</strong></td>
+                    <td class="col-simbolo">
+                        <div class="llave-paso"></div>
+                    </td>
+                    <td class="col-simbolo">
+                        <div class="llave-paso"></div>
+                    </td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">LLAVE DE SALIDA</td>
+                    <td class="col-sigla"><strong>LLS</strong></td>
+                    <td class="col-simbolo">
+                        <div class="llave-salida"></div>
+                    </td>
+                    <td class="col-simbolo">
+                        <div class="llave-salida"></div>
+                    </td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">CALEFON</td>
+                    <td class="col-sigla"><strong>CAL</strong></td>
+                    <td class="col-simbolo">
+                        <div class="calefon-planta">C</div>
+                    </td>
+                    <td class="col-simbolo">
+                        <div class="calefon-perfil">C</div>
+                    </td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">TERMO</td>
+                    <td class="col-sigla"><strong>T</strong></td>
+                    <td class="col-simbolo">
+                        <div class="termo-planta">T</div>
+                    </td>
+                    <td class="col-simbolo">
+                        <div class="termo-perfil">T</div>
+                    </td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">CALDERA</td>
+                    <td class="col-sigla"><strong>K</strong></td>
+                    <td class="col-simbolo">
+                        <div class="caldera-planta">K</div>
+                    </td>
+                    <td class="col-simbolo">
+                        <div class="caldera-perfil">K</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-designaciones titulo-seccion">PARA TUBERIA PROYECTADA</td>
+                    <td class="col-sigla"></td>
+                    <td class="col-simbolo"></td>
+                    <td class="col-simbolo"></td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">TUBERIA AGUA FRIA POR RADIER O TIERRA</td>
+                    <td class="col-sigla"><strong>AF</strong></td>
+                    <td class="col-simbolo">
+                        <div class="tuberia-radier"></div>
+                    </td>
+                    <td class="col-simbolo"></td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">TUBERIA AGUA FRIA PROTEGIDA</td>
+                    <td class="col-sigla"><strong>AF PROT</strong></td>
+                    <td class="col-simbolo">
+                        <div class="tuberia-protegida"></div>
+                    </td>
+                    <td class="col-simbolo"></td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">TUBERIA AGUA FRIA POR ENTRETECHO</td>
+                    <td class="col-sigla"><strong>AF</strong></td>
+                    <td class="col-simbolo">
+                        <div class="tuberia-entretecho"></div>
+                    </td>
+                    <td class="col-simbolo"></td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">TEBERIA AGUA CALIENTE POR RADIER O TIERRA</td>
+                    <td class="col-sigla"><strong>AC</strong></td>
+                    <td class="col-simbolo">
+                        <div class="tuberia-caliente-radier"></div>
+                    </td>
+                    <td class="col-simbolo"></td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">TUBERIA AGUA CALIENTE POR ENTRETECHO</td>
+                    <td class="col-sigla"><strong>AC</strong></td>
+                    <td class="col-simbolo">
+                        <div class="tuberia-caliente-entretecho"></div>
+                    </td>
+                    <td class="col-simbolo"></td>
+                </tr>
+                <tr class="row-item">
+                    <td class="col-designaciones">TUBERIA AGUA CALIENTE PROTEGIDA</td>
+                    <td class="col-sigla"><strong>AC PROT</strong></td>
+                    <td class="col-simbolo">
+                        <div class="tuberia-caliente-protegida"></div>
+                    </td>
+                    <td class="col-simbolo"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

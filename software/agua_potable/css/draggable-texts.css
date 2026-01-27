@@ -1,0 +1,139 @@
+/* css/draggable-texts.css */
+text[data-connection] {
+    font-family: 'Arial', sans-serif !important;
+    font-weight: bold !important;
+    fill: #000000 !important;
+    stroke: #ffffff !important;
+    stroke-width: 2 !important;
+    paint-order: stroke fill !important;
+    pointer-events: auto !important;
+    font-size: 11px !important;
+    text-shadow: none !important;
+    cursor: grab !important;
+    transition: all 0.3s ease;
+}
+
+text[data-connection]:hover {
+    fill: #1f2937 !important;
+    stroke: #fbbf24 !important;
+    stroke-width: 3 !important;
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6));
+    transform: scale(1.05);
+}
+
+text[data-connection]:active,
+text[data-connection].dragging {
+    cursor: grabbing !important;
+    fill: #dc2626 !important;
+    stroke: #ffffff !important;
+    stroke-width: 4 !important;
+    filter: drop-shadow(0 0 12px rgba(220, 38, 38, 0.8));
+    transform: scale(1.1);
+}
+
+.draggable-text {
+    cursor: grab !important;
+    transition: all 0.3s ease;
+}
+
+.draggable-text:hover {
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6));
+}
+
+.draggable-text:active {
+    cursor: grabbing !important;
+}
+
+.draggable-text-group {
+    cursor: grab !important;
+    transition: all 0.3s ease;
+}
+
+.draggable-text-group:hover {
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6));
+}
+
+.draggable-text-group:active {
+    cursor: grabbing !important;
+}
+
+.draggable-text-group text {
+    pointer-events: none !important;
+}
+
+.draggable-text-group line {
+    pointer-events: none !important;
+}
+
+line[data-connection-divider] {
+    stroke: #000000 !important;
+    stroke-width: 1 !important;
+    pointer-events: none !important;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+line[data-leader] {
+    pointer-events: none !important;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    stroke-dasharray: 3,2 !important;
+}
+
+polygon[data-leader] {
+    pointer-events: none !important;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.draggable-text-group:hover ~ line[data-leader],
+text[data-connection]:hover ~ line[data-leader] {
+    opacity: 1;
+    stroke-width: 2 !important;
+    filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.6));
+}
+
+.draggable-text-group:hover ~ polygon[data-leader],
+text[data-connection]:hover ~ polygon[data-leader] {
+    opacity: 1;
+    filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.6));
+}
+
+.dragging-active text[data-connection] {
+    fill: #dc2626 !important;
+    stroke: #ffffff !important;
+    stroke-width: 4 !important;
+    filter: drop-shadow(0 0 12px rgba(220, 38, 38, 0.8));
+}
+
+.dragging-active line[data-leader] {
+    stroke-width: 3 !important;
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(220, 38, 38, 0.6));
+}
+
+.dragging-active polygon[data-leader] {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(220, 38, 38, 0.6));
+}
+
+text[data-connection*="arranque"] {
+    fill: #ff6b35 !important;
+    stroke: #ffffff !important;
+    cursor: grab !important;
+}
+
+text[data-connection*="arranque"]:hover {
+    fill: #dc2f02 !important;
+    stroke: #fbbf24 !important;
+    filter: drop-shadow(0 0 8px rgba(255, 107, 53, 0.8));
+}
+
+text[data-connection].highlight {
+    fill: #fbbf24 !important;
+    stroke: #1f2937 !important;
+    stroke-width: 3 !important;
+    filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.9));
+    transform: scale(1.1);
+    animation: text-highlight-pulse 1s ease-in-out infinite;
+}

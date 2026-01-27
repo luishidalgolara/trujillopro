@@ -1,0 +1,87 @@
+.modal-memoria {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.ventana-memoria {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 1200px;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.modal-memoria-header {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    color: white;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #4338ca;
+}
+
+.modal-memoria-title {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.modal-memoria-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-modal-memoria {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-modal-memoria:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.btn-modal-memoria.close:hover {
+    background: #ef4444;
+}
+
+.modal-memoria-content {
+    flex: 1;
+    overflow: hidden;
+    padding: 0;
+}
+
+.modal-memoria-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+@media print {
+    .modal-memoria {
+        display: none !important;
+    }
+}

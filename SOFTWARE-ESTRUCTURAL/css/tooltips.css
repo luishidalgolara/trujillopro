@@ -1,0 +1,234 @@
+/* ============================================
+   SISTEMA DE TOOLTIPS EDUCATIVOS
+   ============================================ */
+
+/* Icono de tooltip */
+.tooltip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(102, 126, 234, 0.3);
+    vertical-align: middle;
+}
+
+.tooltip-icon:hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+/* Contenedor general */
+#tooltip-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* Popup del tooltip */
+.tooltip-popup {
+    position: fixed;
+    width: 400px;
+    max-width: 90vw;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    pointer-events: all;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 10000;
+    overflow: hidden;
+}
+
+.tooltip-popup.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Header del tooltip */
+.tooltip-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tooltip-header h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.tooltip-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.tooltip-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+/* Body del tooltip */
+.tooltip-body {
+    padding: 1.25rem;
+    max-height: 400px;
+    overflow-y: auto;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+.tooltip-body strong {
+    color: #667eea;
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.tooltip-body strong:first-child {
+    margin-top: 0;
+}
+
+/* Fórmula */
+.tooltip-formula {
+    margin-top: 1rem;
+}
+
+.formula-box {
+    background: #f8f9fa;
+    border-left: 4px solid #667eea;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    color: #2c3e50;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+/* Lista "Donde" */
+.tooltip-donde {
+    margin-top: 1rem;
+}
+
+.tooltip-donde ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    list-style: none;
+}
+
+.tooltip-donde ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.tooltip-donde ul li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Normativa */
+.tooltip-norma {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: #e8f4f8;
+    border-left: 4px solid #3498db;
+    border-radius: 4px;
+}
+
+.tooltip-norma strong {
+    margin: 0;
+    color: #3498db;
+}
+
+/* Nota */
+.tooltip-nota {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: #fff8e1;
+    border-left: 4px solid #ffc107;
+    border-radius: 4px;
+}
+
+.tooltip-nota strong {
+    margin: 0;
+    color: #f39c12;
+}
+
+/* Scrollbar personalizado */
+.tooltip-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.tooltip-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.tooltip-body::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 4px;
+}
+
+.tooltip-body::-webkit-scrollbar-thumb:hover {
+    background: #764ba2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tooltip-popup {
+        width: 95vw;
+        max-height: 80vh;
+    }
+    
+    .tooltip-header {
+        padding: 0.75rem 1rem;
+    }
+    
+    .tooltip-header h4 {
+        font-size: 1rem;
+    }
+    
+    .tooltip-body {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .formula-box {
+        font-size: 0.85rem;
+        padding: 0.75rem;
+    }
+}

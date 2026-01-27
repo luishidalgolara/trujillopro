@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Ley del Mono 20.898</title>
+    <link rel="stylesheet" href="faq.css">
+</head>
+<body>
+    <div class="faq-container">
+        <!-- HEADER -->
+        <div class="faq-header">
+            <div class="header-content">
+                <div class="header-icon">📚</div>
+                <div class="header-info">
+                    <h1 class="header-title">Preguntas Frecuentes</h1>
+                    <p class="header-subtitle">Ley del Mono 20.898 - 85 Preguntas y Respuestas</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTROLES -->
+        <div class="faq-controles">
+            <!-- Buscador -->
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input"
+                    placeholder="Buscar pregunta o palabra clave..."
+                >
+                <button id="btnClearSearch" class="btn-clear-search" style="display: none;">✕</button>
+            </div>
+
+            <!-- Filtros de Categorías -->
+            <div class="categorias-filtros">
+                <div class="categorias-titulo">Filtrar por categoría:</div>
+                <div class="categorias-buttons" id="categoriasButtons">
+                    <!-- Se generan dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Ordenamiento -->
+            <div class="orden-control">
+                <label for="ordenSelect">Ordenar por:</label>
+                <select id="ordenSelect" class="orden-select">
+                    <option value="alfabetico">A - Z (Alfabético)</option>
+                    <option value="categoria">Por Categoría</option>
+                    <option value="id">Por Número (1-85)</option>
+                </select>
+            </div>
+
+            <!-- Contador de resultados -->
+            <div class="resultados-contador" id="contadorResultados">
+                Mostrando 85 de 85 preguntas
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="acciones-rapidas">
+                <button id="btnExpandirTodo" class="btn-accion">📖 Expandir Todo</button>
+                <button id="btnColapsarTodo" class="btn-accion">📕 Colapsar Todo</button>
+            </div>
+        </div>
+
+        <!-- LISTA DE PREGUNTAS (FAQ ACORDEÓN) -->
+        <div class="faq-lista" id="faqLista">
+            <!-- Las preguntas se generan dinámicamente -->
+        </div>
+
+        <!-- Sin resultados -->
+        <div class="no-results" id="noResults" style="display: none;">
+            <div class="no-results-icon">🔍</div>
+            <h3>No se encontraron resultados</h3>
+            <p>Intenta con otras palabras clave o selecciona una categoría diferente</p>
+            <button id="btnResetBusqueda" class="btn-reset">Limpiar búsqueda</button>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="faq-footer">
+            <p>💡 <strong>Tip:</strong> Haz clic en cualquier pregunta para ver su respuesta completa</p>
+            <p>📋 Total: <strong>85 preguntas</strong> en <strong>12 categorías</strong></p>
+        </div>
+    </div>
+
+    <script src="../asistente_virtual_LM/preguntas-respuestas-ACTUALIZADO.json"></script>
+    <script src="faq.js"></script>
+</body>
+</html>

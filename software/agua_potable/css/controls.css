@@ -1,0 +1,386 @@
+/* ARCHIVO: css/controls.css (TOOLBAR ESTANDARIZADA 100%) */
+
+/* ================================
+   TOOLBAR PRINCIPAL
+   ================================ */
+.toolbar {
+    background: #0f0f0f;
+    border-bottom: 1px solid #333;
+    padding: 10px 20px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: wrap;
+    scrollbar-width: thin;
+    scrollbar-color: #00d4ff #0f0f0f;
+}
+
+.toolbar::-webkit-scrollbar {
+    height: 6px;
+}
+
+.toolbar::-webkit-scrollbar-track {
+    background: #0f0f0f;
+}
+
+.toolbar::-webkit-scrollbar-thumb {
+    background: #00d4ff;
+    border-radius: 3px;
+}
+
+/* ================================
+   SECCIONES TOOLBAR
+   ================================ */
+.toolbar-section {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: #1a1a1a;
+    border-radius: 8px;
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+}
+
+.toolbar-section:hover {
+    border-color: #444;
+    background: #1f1f1f;
+}
+
+/* ETIQUETAS DE SECCIÓN */
+.toolbar-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #999;
+    text-transform: uppercase;
+    margin-right: 8px;
+    white-space: nowrap;
+    letter-spacing: 0.8px;
+}
+
+/* ================================
+   BOTONES TOOLBAR - ESTANDARIZADOS
+   ================================ */
+.btn-tool {
+    /* ✅ ESTANDARIZADO */
+    padding: 8px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 6px;
+    min-height: 32px;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    
+    /* Estilos visuales */
+    background: #2a2a2a;
+    border: 1px solid #444;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    text-transform: uppercase;
+}
+
+.btn-tool:hover {
+    background: #3a3a3a;
+    border-color: #00d9ff;
+    box-shadow: 0 0 12px rgba(0, 217, 255, 0.4);
+    transform: translateY(-1px);
+}
+
+.btn-tool:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.btn-tool.active {
+    background: #00d9ff;
+    color: #0f0f0f;
+    border-color: #00d9ff;
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+    font-weight: 700;
+}
+
+/* ================================
+   BOTONES ESCALA
+   ================================ */
+.btn-tool.btn-scale {
+    /* ✅ ESTANDARIZADO - MISMO TAMAÑO */
+    padding: 8px 16px;
+    font-size: 11px;
+    min-width: 60px;
+}
+
+.btn-tool.btn-scale.active {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+    color: #000000;
+    border-color: #00d4ff;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+}
+
+/* ================================
+   VARIANTES DE COLOR
+   ================================ */
+.btn-tool.btn-danger {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    border-color: #ef4444;
+    color: white;
+}
+
+.btn-tool.btn-danger:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+}
+
+.btn-tool.btn-info {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border-color: #3b82f6;
+    color: white;
+}
+
+.btn-tool.btn-info:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+}
+
+.btn-tool.btn-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-color: #10b981;
+    color: white;
+}
+
+.btn-tool.btn-success:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+}
+
+.btn-tool.btn-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    border-color: #f59e0b;
+    color: #000000;
+}
+
+.btn-tool.btn-warning:hover {
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+}
+
+/* ================================
+   BORDES DE COLOR POR SECCIÓN
+   ================================ */
+.section-fuente {
+    border-left: 3px solid #10b981;
+}
+
+.section-calentamiento {
+    border-left: 3px solid #f59e0b;
+}
+
+.section-sanitarios {
+    border-left: 3px solid #3b82f6;
+}
+
+.section-cocina {
+    border-left: 3px solid #10b981;
+}
+
+.section-infra {
+    border-left: 3px solid #8b5cf6;
+}
+
+.section-acciones {
+    border-left: 3px solid #ef4444;
+}
+
+.section-dibujo-cad {
+    border-left: 3px solid #6366f1;
+}
+
+.section-colores-cad {
+    border-left: 3px solid #ec4899;
+}
+
+.section-grosor-cad {
+    border-left: 3px solid #f59e0b;
+}
+
+/* ================================
+   HERRAMIENTAS CAD
+   ================================ */
+.cad-tool-btn {
+    /* Ya hereda de .btn-tool, solo agregamos estilos específicos */
+    background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+    border-color: #6366f1;
+    color: white;
+}
+
+.cad-tool-btn:hover {
+    background: linear-gradient(135deg, #4338ca 0%, #3730a3 100%);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+}
+
+.cad-tool-btn.active {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+    color: #000000;
+    border-color: #00d4ff;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+}
+
+/* ================================
+   BOTONES DE COLOR
+   ================================ */
+.color-square {
+    /* ✅ ESTANDARIZADO */
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    padding: 0;
+    border-radius: 6px;
+    border-width: 2px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.color-square:hover {
+    transform: scale(1.15);
+    border-color: #00d9ff !important;
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.6);
+}
+
+.color-square.active {
+    border-color: #00ff88 !important;
+    border-width: 3px !important;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.7);
+    transform: scale(1.1);
+}
+
+.color-more {
+    /* ✅ ESTANDARIZADO - MISMO TAMAÑO QUE .btn-tool */
+    padding: 8px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 6px;
+    min-height: 32px;
+    line-height: 1.2;
+    
+    background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%) !important;
+    color: white !important;
+    border: 1px solid #6366f1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.color-more:hover {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+}
+
+/* ================================
+   BOTONES DE GROSOR
+   ================================ */
+.grosor-btn {
+    /* Ya hereda de .btn-tool - solo agregamos estado activo específico */
+}
+
+.grosor-btn.active {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+    color: white !important;
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+}
+
+/* ================================
+   TOOLTIPS
+   ================================ */
+.btn-tool[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.95);
+    color: #00d9ff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 10px;
+    white-space: nowrap;
+    z-index: 10000;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: normal;
+    border: 1px solid #00d9ff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    animation: tooltipFadeIn 0.2s ease;
+}
+
+@keyframes tooltipFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Flecha del tooltip */
+.btn-tool[title]:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #00d9ff;
+    z-index: 10001;
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+@media (max-width: 1400px) {
+    .btn-tool {
+        padding: 6px 12px;
+        font-size: 10px;
+        min-height: 28px;
+    }
+    
+    .color-square {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        min-height: 28px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .toolbar {
+        padding: 8px 12px;
+        gap: 6px;
+    }
+    
+    .toolbar-section {
+        padding: 4px 8px;
+        gap: 4px;
+    }
+    
+    .btn-tool {
+        padding: 5px 10px;
+        font-size: 9px;
+        min-height: 26px;
+    }
+    
+    .color-square {
+        width: 26px;
+        height: 26px;
+        min-width: 26px;
+        min-height: 26px;
+    }
+}

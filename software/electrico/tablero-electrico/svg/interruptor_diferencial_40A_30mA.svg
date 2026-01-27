@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 380" width="220" height="380">
+  <!-- Definiciones -->
+  <defs>
+    <linearGradient id="plasticGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8f8f8;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#e8e8e8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d8d8d8;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.25"/>
+    </filter>
+    <linearGradient id="metalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#b8936c;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8B7355;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6d5a47;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Cuerpo principal del interruptor -->
+  <rect x="25" y="70" width="170" height="250" rx="6" fill="url(#plasticGradient)" stroke="#aaa" stroke-width="1.5" filter="url(#shadow)"/>
+  
+  <!-- Borde biselado superior -->
+  <path d="M 25 70 L 25 75 L 195 75 L 195 70 Z" fill="#fff" opacity="0.3"/>
+  
+  <!-- Terminales superiores -->
+  <g id="upper-terminals">
+    <!-- Terminal izquierdo superior -->
+    <rect x="52" y="25" width="38" height="55" rx="4" fill="url(#metalGradient)" stroke="#5c4a3a" stroke-width="1"/>
+    <circle cx="71" cy="42" r="9" fill="#555" stroke="#333" stroke-width="1.5"/>
+    <circle cx="71" cy="42" r="3" fill="#444" stroke="#222" stroke-width="0.5"/>
+    <line x1="68" y1="42" x2="74" y2="42" stroke="#666" stroke-width="0.8"/>
+    
+    <!-- Terminal derecho superior -->
+    <rect x="130" y="25" width="38" height="55" rx="4" fill="url(#metalGradient)" stroke="#5c4a3a" stroke-width="1"/>
+    <circle cx="149" cy="42" r="9" fill="#555" stroke="#333" stroke-width="1.5"/>
+    <circle cx="149" cy="42" r="3" fill="#444" stroke="#222" stroke-width="0.5"/>
+    <line x1="146" y1="42" x2="152" y2="42" stroke="#666" stroke-width="0.8"/>
+  </g>
+  
+  <!-- Logo/Marca Neheyler superior -->
+  <rect x="90" y="85" width="40" height="20" rx="2" fill="#00a651"/>
+  <text x="110" y="99" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">T</text>
+  
+  <!-- Panel de identificación -->
+  <rect x="38" y="115" width="144" height="50" rx="3" fill="#ffffff" stroke="#ccc" stroke-width="1"/>
+  <text x="110" y="137" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#000" text-anchor="middle">40A 30mA</text>
+  <text x="110" y="157" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">MECHATRONIC</text>
+  
+  <!-- Símbolo RCD/Diferencial -->
+  <g transform="translate(50, 178)">
+    <!-- Símbolo de tierra -->
+    <circle cx="15" cy="15" r="12" stroke="#555" stroke-width="1.5" fill="none"/>
+    <line x1="15" y1="3" x2="15" y2="27" stroke="#555" stroke-width="1.5"/>
+    <line x1="10" y1="10" x2="20" y2="20" stroke="#555" stroke-width="1.5"/>
+    <line x1="20" y1="10" x2="10" y2="20" stroke="#555" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Ventana de test con símbolo -->
+  <rect x="85" y="175" width="50" height="35" rx="3" fill="#ffffff" stroke="#bbb" stroke-width="1" opacity="0.8"/>
+  <path d="M 95 185 L 95 202 M 87 193.5 L 95 193.5 L 95 185 L 103 185" stroke="#555" stroke-width="1.5" fill="none"/>
+  <path d="M 115 185 L 125 185 M 120 185 L 120 202" stroke="#555" stroke-width="1.5" fill="none"/>
+  
+  <!-- Botón verde de TEST grande -->
+  <rect x="80" y="220" width="60" height="35" rx="4" fill="#00a651" stroke="#008f44" stroke-width="2"/>
+  <text x="110" y="243" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">TEST</text>
+  
+  <!-- Área de marca (vacía) -->
+  <rect x="38" y="265" width="90" height="20" fill="#ebebeb" stroke="#ccc" stroke-width="1"/>
+  
+  <!-- Texto MECHATRONIC eliminado -->
+  
+  <!-- Indicación de corriente residual -->
+  <text x="110" y="299" font-family="Arial, sans-serif" font-size="8" fill="#888" text-anchor="middle">IΔn = 30mA</text>
+  
+  <!-- Terminales inferiores -->
+  <g id="lower-terminals">
+    <!-- Terminal izquierdo inferior -->
+    <rect x="52" y="310" width="38" height="55" rx="4" fill="url(#metalGradient)" stroke="#5c4a3a" stroke-width="1"/>
+    <circle cx="71" cy="338" r="9" fill="#555" stroke="#333" stroke-width="1.5"/>
+    <circle cx="71" cy="338" r="3" fill="#444" stroke="#222" stroke-width="0.5"/>
+    <line x1="68" y1="338" x2="74" y2="338" stroke="#666" stroke-width="0.8"/>
+    
+    <!-- Terminal derecho inferior -->
+    <rect x="130" y="310" width="38" height="55" rx="4" fill="url(#metalGradient)" stroke="#5c4a3a" stroke-width="1"/>
+    <circle cx="149" cy="338" r="9" fill="#555" stroke="#333" stroke-width="1.5"/>
+    <circle cx="149" cy="338" r="3" fill="#444" stroke="#222" stroke-width="0.5"/>
+    <line x1="146" y1="338" x2="152" y2="338" stroke="#666" stroke-width="0.8"/>
+  </g>
+  
+  <!-- Tornillos de conexión internos superiores -->
+  <circle cx="71" cy="105" r="4.5" fill="#777" stroke="#555" stroke-width="0.8"/>
+  <line x1="69" y1="105" x2="73" y2="105" stroke="#999" stroke-width="0.8"/>
+  <line x1="71" y1="103" x2="71" y2="107" stroke="#999" stroke-width="0.8"/>
+  
+  <circle cx="149" cy="105" r="4.5" fill="#777" stroke="#555" stroke-width="0.8"/>
+  <line x1="147" y1="105" x2="151" y2="105" stroke="#999" stroke-width="0.8"/>
+  <line x1="149" y1="103" x2="149" y2="107" stroke="#999" stroke-width="0.8"/>
+  
+  <!-- Tornillos de conexión internos inferiores -->
+  <circle cx="71" cy="295" r="4.5" fill="#777" stroke="#555" stroke-width="0.8"/>
+  <line x1="69" y1="295" x2="73" y2="295" stroke="#999" stroke-width="0.8"/>
+  <line x1="71" y1="293" x2="71" y2="297" stroke="#999" stroke-width="0.8"/>
+  
+  <circle cx="149" cy="295" r="4.5" fill="#777" stroke="#555" stroke-width="0.8"/>
+  <line x1="147" y1="295" x2="151" y2="295" stroke="#999" stroke-width="0.8"/>
+  <line x1="149" y1="293" x2="149" y2="297" stroke="#999" stroke-width="0.8"/>
+  
+  <!-- Ranuras laterales para riel DIN -->
+  <rect x="23" y="160" width="3" height="100" fill="#999" opacity="0.5"/>
+  <rect x="194" y="160" width="3" height="100" fill="#999" opacity="0.5"/>
+  
+  <!-- Detalles de textura del plástico -->
+  <rect x="30" y="75" width="160" height="2" fill="#fff" opacity="0.2"/>
+  <rect x="30" y="315" width="160" height="2" fill="#000" opacity="0.1"/>
+  
+  <!-- Certificación -->
+  <text x="110" y="308" font-family="Arial, sans-serif" font-size="7" fill="#888" text-anchor="middle">IEC 61008</text>
+</svg>

@@ -1,0 +1,205 @@
+{
+  "partes": [
+    {
+      "numero": "TITULO V",
+      "nombre": "De los Instaladores",
+      "articulos": [
+        {
+          "numero": "Artículo 33º",
+          "texto": "Las instalaciones domiciliarias de agua potable y de alcantarillado serán proyectadas y ejecutadas por los profesionales de la construcción a que se refiere el artículo 9º de este reglamento.\nTambién podrán intervenir en el ámbito de la construcción, los profesionales y técnicos especialistas dentro de su área específica de conocimientos, en las materias que legalmente no correspondan en forma exclusiva a determinados profesionales. Esta calidad de profesional o técnico especialista se acreditará mediante certificados expedidos por las entidades o Institutos profesionales reconocidos por el Estado."
+        },
+        {
+          "numero": "Artículo 34º",
+          "texto": "Aquellos especialistas que a la fecha de entrada en vigencia de este Reglamento, estén en posesión de un carné otorgado por la Superintendencia, mantendrán las habilitaciones reconocidas en dicho carné."
+        },
+        {
+          "numero": "Artículo 35º",
+          "texto": "El especialista que durante el desempeño de sus actividades infrinja las disposiciones de este Reglamento, incurrirá en las responsabilidades civiles y penales que correspondan."
+        },
+        {
+          "numero": "Artículo 36º",
+          "texto": "Para que, en conformidad al artículo 39º del DFL MOP Nº 382/88, el propietario del inmueble proceda a ejecutar la conexión o empalme a las redes públicas en uso, se requerirá la aprobación y verificación del prestador.\nTales obras se ejecutarán por los profesionales a que alude el artículo 9º de este Reglamento."
+        },
+        {
+          "numero": "Artículo 37º",
+          "texto": "En las instalaciones domiciliarias de alcantarillado se debe privilegiar aquellas soluciones técnicas que permitan el desagüe gravitacional de las aguas servidas domiciliarias.\nCuando para los efectos de empalmar a la red pública las instalaciones domiciliarias de alcantarillado de una propiedad, sea ineludible el paso de las instalaciones por predios de otros propietarios, deberá estar constituida la servidumbre correspondiente, de acuerdo con la legislación vigente."
+        },
+        {
+          "numero": "Artículo 38º",
+          "texto": "Se prohíbe proyectar y construir arranques de agua potable para abastecer a más de un inmueble e igualmente uniones domiciliarias de alcantarillado que sirvan a dos o más inmuebles.\nSe exceptúan de la regla del inciso anterior, los casos expresamente autorizados por la ley y los calificados por el prestador como comunidades de desagüe y servidumbres de acueducto."
+        },
+        {
+          "numero": "Artículo 39º",
+          "texto": "En caso que un inmueble se abastezca simultáneamente de agua potable desde una red pública y desde una fuente particular, la instalación domiciliaria deberá asegurar la total independencia de ambos sistemas de abastecimiento, siendo admisible únicamente que las aguas puedan mezclarse posteriormente en un estanque de acumulación sin presión.\nConforme con lo expuesto en el artículo 160 del Reglamento de concesiones del DS. Nº 1199/04, de Obras Públicas, dentro del territorio operacional de las concesionarias sanitarias no serán admisibles sistemas particulares de abastecimiento de agua potable destinada al consumo humano ni sistemas particulares de alcantarillado o de disposición de aguas servidas domésticas, salvo que no existan redes públicas enfrente de la respectiva propiedad, caso en el cual se estará a lo dispuesto en el artículo 39º de la Ley General de Servicios Sanitarios.\nEn caso que en un sector no exista red de agua potable o de alcantarillado sólo se aceptarán soluciones particulares de agua potable o alcantarillado correspondientes a soluciones individuales y sólo para sitios preexistentes, soluciones que deben ser aprobadas por la autoridad de salud quien calificará la factibilidad de su construcción, ya sea se trate de terrenos ubicados al interior de un territorio operacional de una empresa o de terrenos ubicados fuera del territorio operacional, pero dentro del límite urbano de la comuna correspondiente. No se aceptarán soluciones particulares de alcantarillado ni de agua potable para dar solución a subdivisiones de terrenos dentro del área urbana."
+        }
+      ]
+    },
+    {
+      "numero": "SEGUNDA PARTE",
+      "nombre": "DE LAS NORMAS TÉCNICAS",
+      "titulos": [
+        {
+          "numero": "TITULO I",
+          "nombre": "Disposiciones Generales",
+          "parrafos": [
+            {
+              "numero": "Párrafo I",
+              "nombre": "Definiciones",
+              "articulos": [
+                {
+                  "numero": "Artículo 40º",
+                  "texto": "Para los efectos de las normas técnicas a que se refiere esta parte del Reglamento, se entenderá por:",
+                  "definiciones": [
+                    {
+                      "letra": "a",
+                      "titulo": "BOCA DE ADMISION",
+                      "contenido": "Es el extremo más alto de una tubería o cámara de inspección de la instalación domiciliaria de alcantarillado, destinada a recibir aguas servidas domésticas."
+                    },
+                    {
+                      "letra": "b",
+                      "titulo": "CAUDAL NOMINAL DE UN MEDIDOR (Qn)",
+                      "contenido": "caudal al cual el medidor debe funcionar en forma permanente y satisfactoria bajo condiciones normales de uso, tanto en condiciones de flujo uniforme como intermitente."
+                    },
+                    {
+                      "letra": "c",
+                      "titulo": "GASTO MAXIMO PROBABLE (QMP)",
+                      "contenido": "Concepto probabilístico mediante el cual se cuantifica el máximo caudal con el que deben diseñarse las instalaciones de agua potable de inmuebles que tienen una determinada característica de consumo."
+                    },
+                    {
+                      "letra": "d",
+                      "titulo": "CIERRE HIDRAULICO",
+                      "contenido": "Accesorio o aparato diseñado y construido de manera de proporcionar, cuando es adecuadamente ventilado, un sello líquido que previene el retroceso de los gases, sin afectar el flujo de las aguas servidas que escurren a través de él."
+                    },
+                    {
+                      "letra": "e",
+                      "titulo": "LONGITUD EQUIVALENTE",
+                      "contenido": "Es una longitud estimada de tubería que representa, para los efectos de cálculo, las pérdidas de carga singulares, es decir aquellas ocasionadas por piezas especiales y accesorios de unión."
+                    },
+                    {
+                      "letra": "f",
+                      "titulo": "RAMAL",
+                      "contenido": "Tubería que recibe los efluentes de los artefactos sanitarios y se empalma con la tubería de descarga o tubería principal."
+                    },
+                    {
+                      "letra": "g",
+                      "titulo": "REGISTRO",
+                      "contenido": "Pieza especial destinada a facilitar el acceso a los ramales y descargas, con fines de desobstrucción."
+                    },
+                    {
+                      "letra": "h",
+                      "titulo": "TUBERIA DE DESCARGA",
+                      "contenido": "Es la canalización de bajada vertical a la que empalman los ramales, destinada a la conducción de las aguas servidas domésticas."
+                    },
+                    {
+                      "letra": "i",
+                      "titulo": "TUBERIA DE DESCOMPRESION",
+                      "contenido": "Es la canalización que se instala a las descargas de los edificios de más de ocho pisos, que se conecta con el extremo inferior de la descarga, con una ventilación, con una cámara de inspección o con tramos superiores de la misma descarga y cuyo objeto es evitar que el aire contenido en las tuberías adquiera presiones que produzcan sifonaje y otras anormalidades en los artefactos."
+                    },
+                    {
+                      "letra": "j",
+                      "titulo": "TUBERIA INTERCEPTORA",
+                      "contenido": "Es aquella que recibe cualquier otra tubería lateral y es distinta a la descarga."
+                    },
+                    {
+                      "letra": "k",
+                      "titulo": "TUBERIA PRINCIPAL",
+                      "contenido": "Es la que recibe las ramificaciones, comienza en la tubería de ventilación principal y termina en la unión domiciliaria."
+                    },
+                    {
+                      "letra": "l",
+                      "titulo": "UNIDAD DE EQUIVALENCIA HIDRAULICA (UEH)",
+                      "contenido": "Concepto probabilístico, en términos del cual se cuantifica la contribución de gasto al sistema de tuberías de la instalación domiciliaria de alcantarillado, de cada uno de los artefactos instalados, expresado en una determinada escala."
+                    },
+                    {
+                      "letra": "m",
+                      "titulo": "VENTILACION",
+                      "contenido": "Tubería o sistema de tuberías instaladas para proveer un flujo de aire hacia y desde el sistema de alcantarillado o para proporcionar una circulación de aire dentro del sistema a objeto de proteger los cierres hidráulicos de sifonaje."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "numero": "Párrafo II",
+              "nombre": "Certificación de Conformidad de Materiales, Artefactos, Componentes, Equipos y Sistemas",
+              "articulos": [
+                {
+                  "numero": "Artículo 41º",
+                  "texto": "Conforme con el artículo 51º del DFL MOP Nº 382/88 Ley General de Servicios Sanitarios, las condiciones que regulan los niveles de calidad en la prestación de los servicios en lo concerniente a la calidad de los materiales de las instalaciones domiciliarias se regirá por las disposiciones técnicas de los artículos siguientes."
+                },
+                {
+                  "numero": "Artículo 42º",
+                  "texto": "Los materiales, artefactos, componentes, equipos y sistemas utilizados en las instalaciones domiciliarias de agua potable y alcantarillado de todo el país, de acuerdo con lo dispuesto en el artículo 6º de este Reglamento, deberán ser autorizados por la Superintendencia.\nPara lo anterior, deberán cumplir con los procedimientos de certificación de calidad dispuestos por la Superintendencia y realizados por organismos acreditados en el Sistema Nacional de Acreditación del Instituto Nacional de Normalización (INN).\nPara aquellos casos en que la certificación nacional de un producto se base en normativa extranjera, por no existir norma chilena o no existir procedimiento de certificación, la Superintendencia podrá otorgar una autorización provisoria, por un plazo de 12 meses, dentro del cual el interesado deberá tramitar y obtener ante el Instituto Nacional de Normalización (INN), la Norma Técnica Chilena Oficial que permita su certificación. En caso que dentro de este plazo no se obtenga la norma oficial, pero se encuentre en estudio en el INN, la Superintendencia calificará la procedencia de posibles prórrogas, cuyos plazos no podrán ser superiores a 18 meses."
+                },
+                {
+                  "numero": "Artículo 43º",
+                  "texto": "Los fabricantes e importadores de materiales, artefactos, componentes, equipos y sistemas utilizados en las instalaciones sanitarias domiciliarias, podrán optar por acogerse a cualquiera de las siguientes situaciones:",
+                  "situaciones": {
+                    "a": {
+                      "texto": "Si existe Norma Chilena acerca del producto, el fabricante o importador deberá presentar en la Superintendencia los certificados que acrediten su cumplimiento por parte del prototipo. En este caso se otorgará la autorización definitiva al producto, estableciéndose en la resolución de autorización las condiciones y el tipo de certificación que deberá cumplir."
+                    },
+                    "b": {
+                      "texto": "Si no existe Norma Chilena acerca del producto, el fabricante o los importadores podrán optar por una de estas alternativas:",
+                      "alternativas": [
+                        {
+                          "codigo": "b.a",
+                          "contenido": "Solicitar el estudio y elaboración de una norma chilena oficial directamente al INN, anexando la documentación correspondiente. Posteriormente, el fabricante o importador deberá presentar en la Superintendencia los certificados que acrediten que el prototipo del producto cumple dicha norma. En este caso, se otorgará la autorización definitiva al producto, estableciéndose en la Resolución de autorización las condiciones y el tipo de certificación que deberá cumplir."
+                        },
+                        {
+                          "codigo": "b.b",
+                          "contenido": "A falta de normas chilenas oficiales, el fabricante o importador podrá certificar según norma extranjera aceptada por la Superintendencia y con certificación nacional. Previa presentación a la Superintendencia de los certificados que acrediten el cumplimiento de los requisitos de la norma extranjera por parte del prototipo del producto, se otorgará una autorización provisoria, mediante resolución que establecerá las condiciones y el tipo de certificación que deberá cumplir el producto, además del plazo para efectuar el estudio en el INN de una Norma Chilena Oficial acerca de la materia."
+                        },
+                        {
+                          "codigo": "b.c",
+                          "contenido": "Presentar las especificaciones técnicas de fabricación del producto para su aprobación por la Superintendencia. Posteriormente, el fabricante o importador deberá presentar en la Superintendencia los certificados que acrediten el cumplimiento, por parte del prototipo, de los requisitos estipulados en la Especificación Técnica SISS, en cuyo caso se otorgará una autorización provisoria, estableciéndose en la resolución de autorización las condiciones y el tipo de certificación que deberá cumplir el producto además del plazo para efectuar el estudio en el INN de una norma chilena oficial acerca de la materia."
+                        }
+                      ]
+                    }
+                  },
+                  "nota": "En todos los casos, la autorización del producto permanecerá vigente mientras no varíen las condiciones que justificaron su aprobación."
+                },
+                {
+                  "numero": "Artículo 43 bis",
+                  "texto": "En materias de certificación de productos a utilizar en las instalaciones domiciliarias de agua potable y alcantarillado, la Superintendencia podrá aceptar aquellas certificaciones otorgadas por organismos acreditados por INN o por un organismo de acreditación signatario de un Acuerdo de Reconocimiento Multilateral del InterAmerican Accreditation Cooperation (IAAC) o del International Accreditation Forum (IAF), en el área de certificación de productos y que dichas certificaciones se realicen en conformidad con las normas o especificaciones aceptadas por la Superintendencia."
+                },
+                {
+                  "numero": "Artículo 44º",
+                  "texto": "La Superintendencia mantendrá una nómina actualizada de los fabricantes a importadores de materiales, artefactos, componentes, equipos y sistemas utilizados en instalaciones domiciliarias de agua potable y de alcantarillado, con indicación de los productos, las normas o especificaciones técnicas por las que se rige su fabricación y los procedimientos de certificación."
+                },
+                {
+                  "numero": "Artículo 45º",
+                  "texto": "Los materiales y los productos que se emplean en las instalaciones domiciliarias serán certificados en su calidad por los organismo de certificación acreditados ante el INN. Tal certificación deberá otorgarse previamente antes de la comercialización de dichos materiales y productos."
+                },
+                {
+                  "numero": "Artículo 46º",
+                  "texto": "Por razones técnicas, económicas o geográficas, la Superintendencia podrá resolver fundadamente la aplicación gradual de las normas técnicas relativas a la prestación de los servicios y las instalaciones domiciliarias."
+                }
+              ]
+            },
+            {
+              "numero": "Párrafo III",
+              "nombre": "Bases Contractuales y Tipos de Certificación",
+              "articulos": [
+                {
+                  "numero": "Artículo 47º",
+                  "texto": "De acuerdo con lo dispuesto en este Reglamento, los términos de referencia de la certificación serán las Normas Chilenas aprobadas por decreto supremo y a falta de ellas, las especificaciones que determine la Superintendencia."
+                },
+                {
+                  "numero": "Artículo 48º",
+                  "texto": "La Certificación de Conformidad podrá ser realizada con alguno de los modelos de certificación que se indican a continuación:",
+                  "modelos": [
+                    {
+                      "tipo": "a",
+                      "nombre": "Certificación por lotes:",
+                      "contenido": "Procedimiento mediante el cual se extrae una muestra representativa de un lote debidamente identificado, efectuándose los ensayos sobre dicha muestra. Si los resultados de los ensayos están conforme con las Normas Chilenas o Especificaciones Técnicas correspondientes al producto, el organismo de certificación otorgará un certificado que comprenda al lote."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

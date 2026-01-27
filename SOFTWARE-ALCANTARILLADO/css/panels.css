@@ -1,0 +1,344 @@
+/* panels.css (CORREGIDO) */
+
+/* ================================
+   PANEL DE TRAZADO TECNOLÓGICO - MÁS COMPACTO
+   ================================ */
+.tracing-panel {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+    border-bottom: 2px solid #00ff88;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    max-height: calc(100vh - 70px - 20px);
+    box-shadow: 
+        0 4px 20px rgba(0, 255, 136, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+    transform: translateY(0);
+    opacity: 1;
+    justify-content: flex-start;
+    overflow: visible;
+}
+
+.tracing-panel.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: none;
+    height: 0;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    overflow: hidden;
+}
+
+.panel-group {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    backdrop-filter: blur(5px);
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+}
+
+.panel-group span {
+    color: #00d4ff;
+    font-weight: 700;
+    font-size: 0.7em;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tool-btn {
+    padding: 5px 8px;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    color: #e5e5e5;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.7em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.tool-btn:hover {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+    color: #000000;
+    border-color: #00d4ff;
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 20px rgba(0, 212, 255, 0.4),
+        0 0 15px rgba(0, 212, 255, 0.3);
+    z-index: 10001;
+}
+
+.tool-btn.active {
+    background: linear-gradient(135deg, #ff4444 0%, #cc3333 100%);
+    color: #ffffff;
+    border-color: #ff4444;
+    box-shadow: 
+        0 0 20px rgba(255, 68, 68, 0.5),
+        0 4px 15px rgba(255, 68, 68, 0.3);
+    animation: pulse-glow 2s ease-in-out infinite;
+    z-index: 10001;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { 
+        box-shadow: 
+            0 0 20px rgba(255, 68, 68, 0.5),
+            0 4px 15px rgba(255, 68, 68, 0.3);
+    }
+    50% { 
+        box-shadow: 
+            0 0 30px rgba(255, 68, 68, 0.8),
+            0 6px 25px rgba(255, 68, 68, 0.5);
+    }
+}
+
+.scale-btn {
+    padding: 5px 8px;
+    background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
+    color: #b0b0b0;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.7em;
+    font-weight: 700;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    line-height: 1;
+}
+
+.scale-btn:hover {
+    background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+    color: #000000;
+    border-color: #00ff88;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.4);
+}
+
+.scale-btn.active {
+    background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+    color: #000000;
+    border-color: #00ff88;
+    box-shadow: 
+        0 0 15px rgba(0, 255, 136, 0.5),
+        0 2px 10px rgba(0, 255, 136, 0.3);
+}
+
+.mode-btn {
+    padding: 5px 10px;
+    background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.7em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    line-height: 1;
+}
+
+.mode-btn:hover {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+.mode-btn.navigation {
+    background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+    color: #000000;
+    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+}
+
+/* ================================
+   DROPDOWN SELECTOR DE NIVEL
+   ================================ */
+.nivel-selector {
+    position: fixed;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    z-index: 99999;
+    display: none;
+    overflow: visible;
+    padding: 0;
+    margin: 0;
+}
+
+.nivel-selector.show {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nivel-option {
+    padding: 10px 20px;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.85em;
+    text-align: center;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.nivel-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+}
+
+.nivel-option.nivel-1 {
+    border-color: #ef4444;
+}
+
+.nivel-option.nivel-1:hover {
+    background: linear-gradient(135deg, #ef4444 0%, #cc3333 100%);
+    color: #ffffff;
+    border-color: #ef4444;
+}
+
+.nivel-option.nivel-2 {
+    border-color: #2563eb;
+}
+
+.nivel-option.nivel-2:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: #ffffff;
+    border-color: #2563eb;
+}
+
+/* ================================
+   PANEL DE PLANOS TECNOLÓGICO
+   ================================ */
+.plans-panel {
+    width: 280px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+    border-left: 3px solid #00d4ff;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    box-shadow: 
+        -4px 0 20px rgba(0, 0, 0, 0.5),
+        inset 3px 0 0 rgba(0, 212, 255, 0.3);
+}
+
+.plans-header {
+    padding: 20px;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    color: #ffffff;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.1em;
+    border-bottom: 2px solid #00d4ff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.plans-counter {
+    background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+    color: #ffffff;
+    padding: 12px;
+    margin: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(99, 102, 241, 0.5);
+    box-shadow: 
+        0 4px 15px rgba(99, 102, 241, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.plans-list {
+    flex: 1;
+    padding: 15px;
+}
+
+.plan-item {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    color: #e5e5e5;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 212, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.plan-item:hover {
+    border-color: #00d4ff;
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+    color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 25px rgba(0, 212, 255, 0.4),
+        0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.plan-item.active {
+    border-color: #00ff88;
+    background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+    color: #000000;
+    box-shadow: 
+        0 8px 25px rgba(0, 255, 136, 0.4),
+        0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.plan-item-title {
+    font-weight: 700;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.plan-item-info {
+    font-size: 0.8em;
+    opacity: 0.8;
+    font-weight: 500;
+}

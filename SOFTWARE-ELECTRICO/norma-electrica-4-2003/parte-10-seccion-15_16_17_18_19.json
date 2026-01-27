@@ -1,0 +1,587 @@
+{
+  "seccion": "15-16-17-18-19",
+  "titulo": "INSTALACIONES EN HOSPITALES, SERVICENTROS, AREAS DE PINTURA, CONSTRUCCIONES PREFABRICADAS E INSTALACIONES PROVISIONALES",
+  "subsecciones": [
+    {
+      "numero": "15.2",
+      "titulo": "Medidas de seguridad en recintos de uso médico",
+      "articulos": [
+        {
+          "numero": "15.2.1",
+          "contenido": "Además de la adopción de alguna de las medidas de protección prescritas en las secciones 9 y 10, deberán adoptarse las siguientes medidas específicas de acuerdo al tipo de recinto."
+        }
+      ],
+      "subsecciones": [
+        {
+          "numero": "15.2.1.1",
+          "titulo": "Salas de hospitalización",
+          "contenido": "Si no se emplean anestésicos combustibles, no se requieren medidas adicionales. En caso de emplearse dicho tipo de anestésicos, estas salas deberán cumplir las exigencias prescritas para las salas de operaciones."
+        },
+        {
+          "numero": "15.2.1.2",
+          "titulo": "Salas de exámenes y cirugía menor",
+          "contenido": "Si no se emplean anestésicos combustibles, no se requieren medidas adicionales. En caso de emplearse dicho tipo de anestésicos, estas salas deberán cumplir las exigencias prescritas para salas de operaciones"
+        },
+        {
+          "numero": "15.2.1.3",
+          "titulo": "Salas de preparación, salas de yesos y salas de parto",
+          "contenido": "Todos los circuitos de este tipo de salas deberán ser protegidos mediante protecciones diferenciales y conexiones equipotenciales y, en caso de utilizar anestésicos combustibles, se deberán cumplir las exigencias prescritas para las salas de operación."
+        },
+        {
+          "numero": "15.2.1.4",
+          "contenido": "Los circuitos de todos los recintos de uso médico definidos en 15.0.1, aparte de los ya citados, deberán ser protegidos mediante protecciones diferenciales y conexiones equipotenciales."
+        }
+      ]
+    },
+    {
+      "numero": "15.2.2",
+      "titulo": "Salas de operaciones",
+      "articulos": [
+        {
+          "numero": "15.2.2.1",
+          "contenido": "En las salas de operaciones y recintos en que utilicen anestésicos combustibles, se considerará como una expuesta a peligro de explosión todo el volumen del recinto comprendido entre el piso y 1,20 m de altura. Ver hoja de norma Nº 21."
+        },
+        {
+          "numero": "15.2.2.2",
+          "contenido": "La alimentación de los equipos ubicados dentro de la zona peligrosa limitada en 15.2.2.1 se hará a través de transformadores de aislación que deberán cumplir las prescripciones del párrafo 9.2.6.1, excepto que su voltaje no podrá ser superior a 220 V ni su potencia superior a 5 KVA."
+        },
+        {
+          "numero": "15.2.2.3",
+          "contenido": "Se deberá instalar por lo menos un transformador de aislación por cada sala de operaciones y sus correspondientes recintos anexos. Los transformadores se instalarán fuera de la sala de operaciones."
+        },
+        {
+          "numero": "15.2.2.4",
+          "contenido": "Se aceptará que los transformadores de aislación de varias salas de operaciones se instalen en un único recinto destinado a este fin; en tal caso, las dimensiones de él deberán ser tal que se cumpla lo establecido en 5.3.4 de la norma NSEG 20 E.p. 78 y se deberán adoptar las medidas necesarias para asegurar su adecuada ventilación, cumpliendo lo establecido en 7.0.8 a 7.0.15 de la norma señalada."
+        },
+        {
+          "numero": "15.2.2.5",
+          "contenido": "El circuito que alimenta el transformador de aislación de una sala de operaciones no deberá alimentar otros consumos. De igual forma el o los circuitos del secundarlo de este transformador no deberán alimentar consumos de otros recintos."
+        },
+        {
+          "numero": "15.2.2.6",
+          "contenido": "Los interruptores que accionen equipos conectados a circuitos aislados de tierra deberán interrumpir todos los conductores de la alimentación."
+        },
+        {
+          "numero": "15.2.2.7",
+          "contenido": "Además de las protecciones normales, los circuitos aislados de tierra estarán conectados a un dispositivo detector de fallas de aislación. Este dispositivo estará compuesto por una unidad de detección y un panel de indicación; la unidad de detección se ubicará fuera de la sala de operaciones y el panel de indicación se ubicará fuera de la sala, preferentemente en la sala de enfermeras; en él existirá una luz verde que estará permanentemente encendida, estando el circuito conectado y en condiciones normales. Si la corriente total de fuga a tierra, sea ésta resistiva, capacitiva o la suma de ambas, alcanza un valor de 2 mA al voltaje nominal, en el panel de señalización se dejará oír una chicharra y se encenderá una luz roja. La corriente mínima de operación del dispositivo de señalización será de 1,7 mA. En el panel de señalización deberá existir una botonera de prueba que permita en cualquier momento comprobar el funcionamiento del dispositivo y una botonera que permita silenciar la alarma acústica, la cual en ningún momento podrá ser dejada fuera de servicio; la luz roja de indicación de falla deberá permanecer encendida mientras dure la falla. El voltaje de prueba con que el detector funciona no debe ser superior a 24 V; la impedancia interna del detector no debe ser inferior a 100 KOhm, y la máxima corriente que circula a través del detector cuando exista una falla franca a tierra en algún conductor del circuito no debe ser superior a 1 mA."
+        },
+        {
+          "numero": "15.2.2.8",
+          "contenido": "Los equipos de rayos X y los equipos cuya potencia unitaria sea superior a 5 KVA podrán conectarse a los circuitos de alimentación sin necesidad de transformadores de aislación, pudiendo incluso alimentarse con 380 V, siempre que cumplan algunas de las prescripciones siguientes:",
+          "opciones": [
+            "a) La construcción del equipo sea del tipo doble aislación.",
+            "b) El equipo se conecte mediante un conductor de protección que cumpla lo prescrito en la sección 10 siempre que su voltaje de operación no sea superior a 220 V.",
+            "c) El equipo opere a una tensión no superior a 24 V.",
+            "d) El equipo sea protegido por un protector diferencial, de acuerdo a lo prescrito en 9.2.7.3, con una sensibilidad no superior a 30 mA. La resistencia de puesta a tierra no será superior a: R = 24 / Is"
+          ]
+        },
+        {
+          "numero": "15.2.2.9",
+          "contenido": "Los enchufes o dispositivos de conexión de los equipos indicados en 15.2.2.8 a), b) y d), serán de un tipo tal que impidan su conexión a circuitos aislados, igualmente los enchufes de los equipos que deban conectarse a circuitos aislados impedirán la conexión a circuitos comunes."
+        },
+        {
+          "numero": "15.2.2.10",
+          "contenido": "En caso de utilizar circuitos con tensión de seguridad, los dispositivos de conexión de los equipos y los enchufes de estos circuitos serán de un tipo tal que impidan la conexión en circuitos de tensiones superiores."
+        },
+        {
+          "numero": "15.2.2.11",
+          "contenido": "Los enchufes que alimenten equipos dentro de una sala de operaciones se deberán instalar fuera de la zona peligrosa limitada en 15.2.2.1 y serán del tipo de seguridad."
+        },
+        {
+          "numero": "15.2.2.12",
+          "contenido": "La conexión desde un enchufe al equipo respectivo se hará mediante cordones flexibles de tipo servicio pesado. Este cordón deberá tener la longitud adecuada a cada caso y deberá estar enrollado sobre un carrete de un diámetro no inferior a 10 cm y preferentemente de enrollado automático."
+        },
+        {
+          "numero": "15.2.2.13",
+          "contenido": "El alumbrado general fijo, cuya altura de montaje no sea inferior a 2,4 m, podrá conectarse a circuitos no aislados, siempre que las lámparas tengan pantallas o difusores cerrados y los interruptores queden fuera de la zona peligrosa definida en 15.2.2.1."
+        },
+        {
+          "numero": "15.2.2.14",
+          "contenido": "En caso de tener necesariamente que instalar un enchufe dentro de la zona peligrosa, éste y su canalización deberán cumplir con alguno de los métodos de seguridad para instalaciones en lugares peligrosos, definidos en 4.1.23.1 a 4.1.23.5 de esta Norma y aprobados para las condiciones ambientales en que van a funcionar."
+        }
+      ]
+    },
+    {
+      "numero": "15.2.3",
+      "contenido": "En todo recinto que se use para fines médicos, se deberán efectuar conexiones equipotenciales que cumplan las disposiciones de 9.2.6.4; a estas conexiones se conectarán todos los elementos metálicos, aunque no pertenezcan a la instalación eléctrica."
+    },
+    {
+      "numero": "15.2.4",
+      "contenido": "El conductor con que se haga la conexión equipotencial será de cobre y de una sección mínima de 4 mm2. Este conductor tendrá una sección mínima de 16 mm2 si une dos o más salas en las cuales haya equipos de medida o de exámenes que operen en combinación."
+    },
+    {
+      "numero": "15.2.5",
+      "contenido": "La conexión equipotencial se conectará a la tierra de protección del sistema."
+    },
+    {
+      "numero": "15.2.6",
+      "contenido": "En una sala de operaciones, las conexiones equipotenciales llegarán a una barra de conexión que sea accesible en todo memento y que permita la desconexión individual de cada conductor equipotencial. A esta barra estarán conectados, siguiendo la trayectoria más corta posible, los siguientes elementos:"
+    },
+    {
+      "numero": "15.2.6.1",
+      "contenido": "El conductor de protección de los circuitos considerados en 15.2.2.8."
+    },
+    {
+      "numero": "15.2.6.2",
+      "contenido": "El conductor de protección del sistema detector de fugas."
+    },
+    {
+      "numero": "15.2.6.3",
+      "contenido": "Los conductores equipotenciales de todas las tuberías metálicas, como por ejemplo las de agua potable, aguas servidas, calefacción, gases, vacío, etc."
+    },
+    {
+      "numero": "15.2.6.4",
+      "contenido": "Los conductores equipotenciales de elementos metálicos de gran superficie, por ejemplo: mesas de operación, lámparas de la mesa de operaciones, ducto de evacuación de gases, etc."
+    },
+    {
+      "numero": "15.2.6.5",
+      "contenido": "Los conductores equipotenciales que conecten salas o grupos de salas en las que existan equipos de exámenes que operen en conjunto."
+    },
+    {
+      "numero": "15.2.6.6",
+      "contenido": "Las pantallas contra radio interferencias."
+    },
+    {
+      "numero": "15.2.6.7",
+      "contenido": "La malla de disipación del piso semiconductivo, si éste existe."
+    },
+    {
+      "numero": "15.2.6.8",
+      "contenido": "Dentro de lo posible, las estructuras de acero de refuerzo del edificio."
+    },
+    {
+      "numero": "15.2.7",
+      "contenido": "Los pisos de los recintos comprendidos en el área de operaciones deberán ser de una calidad tal que su resistencia eléctrica no sea inferior a 50.000 Ohm ni superior a 1 Megohm."
+    },
+    {
+      "numero": "15.2.8",
+      "contenido": "La resistencia se medirá según el método prescrito en el párrafo 9.0.6.4, debiendo efectuarse un mínimo de cinco medidas en el recinto considerado, ver Apéndice 5. El promedio de estas mediciones deberá estar comprendido entre los valores señalados en 15.2.7; sin embargo, ninguno de los valores medidos debe ser inferior a 10.000 Ohm ni superior a 5 Megohm."
+    },
+    {
+      "numero": "15.2.9",
+      "contenido": "En caso de ser necesario, bajo el recubrimiento del piso se colocará una malla metálica de disipación, la que se conectará a la conexión equipotencial. La presencia de esta malla no alterará las exigencias fijadas a la resistencia eléctrica del piso."
+    },
+    {
+      "numero": "15.2.10",
+      "contenido": "En la Hoja de Norma Nº 17 se muestran en forma esquemática las exigencias indicadas en los párrafos 15.2.2 a 15.2.9."
+    },
+    {
+      "numero": "15.3",
+      "titulo": "Canalizaciones",
+      "subsecciones": [
+        {
+          "numero": "15.3.1",
+          "titulo": "En áreas no peligrosas",
+          "articulos": [
+            {
+              "numero": "15.3.1.1",
+              "contenido": "En áreas no peligrosas, se empleará como sistema de canalización, cualquiera de los sistemas aprobados para condiciones similares en la sección 8."
+            },
+            {
+              "numero": "15.3.1.2",
+              "contenido": "En todo caso, los conductores de circuitos aislados de tierra no deben compartir la misma canalización con conductores de circuitos comunes."
+            },
+            {
+              "numero": "15.3.1.3",
+              "contenido": "En salas de operaciones y similares, fuera de la zona definida como peligrosa la canalización deberá hacerse en tuberías metálicas."
+            }
+          ]
+        },
+        {
+          "numero": "15.3.2",
+          "titulo": "En áreas peligrosas",
+          "articulos": [
+            {
+              "numero": "15.3.2.1",
+              "contenido": "Toda canalización eléctrica que deba entrar o atravesar la zona peligrosa de una sala de operaciones o similar, deberá cumplir con alguno de los métodos de seguridad para instalaciones en lugares peligrosos, definidos en 4.1.23.1 a 4.1.23.5 de esta Norma y ser aprobada para las condiciones ambientales en que van a funcionar."
+            },
+            {
+              "numero": "15.3.2.2",
+              "contenido": "En caso de utilizar el método de protección antideflagrante, ver 4.1.23.1, tanto a la entrada como a la salida de la zona peligrosa se deberán colocar sellos adecuados, que aíslen dicha parte de la canalización del resto de la canalización."
+            },
+            {
+              "numero": "15.3.2.3",
+              "contenido": "Cualquier accesorio, caja o parte de la canalización que quede parcialmente dentro de la zona peligrosa se considerara como comprendido totalmente en ésta y deberá ser del tipo a prueba de explosión"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "16",
+      "titulo": "INSTALACIONES EN SERVICENTROS E ISLAS DE EXPENDIO DE GASOLINA",
+      "subsecciones": [
+        {
+          "numero": "16.0",
+          "titulo": "CONCEPTOS GENERALES",
+          "articulos": [
+            {
+              "numero": "16.0.1",
+              "contenido": "Las disposiciones de esta sección se aplicarán a aquellos lugares en donde se suministre gasolina u otros líquidos volátiles inflamables a los vehículos automóviles."
+            },
+            {
+              "numero": "16.0.2",
+              "contenido": "En este tipo de recintos existirán zonas clasificadas como peligrosas, dentro y sobre las cuales las canalizaciones y los equipos eléctricos deberán cumplir las exigencias que se indican en esta sección; el resto del recinto se considerará zona normal y las instalaciones que en él se ejecuten deberán cumplir las restantes disposiciones de la presente Norma."
+            },
+            {
+              "numero": "16.0.3",
+              "contenido": "Para los efectos de aplicación de la presente Norma se consideran zonas peligrosas:"
+            },
+            {
+              "numero": "16.0.3.1",
+              "contenido": "El volumen del tronco de cono, en cuyo centro está el surtidor, con una altura igual a la de éste, un radio de 6,0 m y una altura en el borde de 0,50 m, medidos sobre el nivel de la calzada. Ver hoja de norma Nº 22."
+            },
+            {
+              "numero": "16.0.3.2",
+              "contenido": "El volumen cilíndrico de 3 m de radio, medidos tomando como centro la válvula de llenado de los tanques de combustible y que tiene una altura de 0,50 m, medidos sobre el nivel de la calzada. Ver hoja de norma Nº 22."
+            },
+            {
+              "numero": "16.0.3.3",
+              "contenido": "El volumen cilíndrico de 1,50 m de radio, medidos tomando como centro cada ducto de ventilación de los tanques de combustible y que se extienden desde el nivel del suelo hasta la salida de gases. Sobre este volumen será también zona peligrosa un volumen esférico de radio 1 m, medido tomando como centro la salida de gases. Ver hoja de norma Nº 22."
+            },
+            {
+              "numero": "16.0.3.4",
+              "contenido": "En caso de existir dentro de la zona un muro continuo se entenderá que todas las áreas definidas anteriormente quedan limitadas por él y las zonas más allá de este muro serán normales. Se considera muro continuo aquel que no tenga puertas, ventanas, ni ningún otro tipo de aberturas al alcance de las zonas peligrosas."
+            },
+            {
+              "numero": "16.0.3.5",
+              "contenido": "Las canalizaciones que estén bajo la superficie de las zonas definidas en los párrafos precedentes se considerarán también instaladas en zonas peligrosas y ésta se extenderá hasta el punto en que la canalización emerja sobre el nivel del suelo."
+            }
+          ]
+        },
+        {
+          "numero": "16.1",
+          "titulo": "Equipos y canalizaciones en las zonas peligrosas",
+          "articulos": [
+            {
+              "numero": "16.1.1",
+              "contenido": "Todo el equipo eléctrico que forme parte del surtidor de combustible así como su montaje deberán ser a prueba de explosión."
+            },
+            {
+              "numero": "16.1.2",
+              "contenido": "Las canalizaciones que se instalen dentro de las zonas peligrosas definidas en 16.0.3 sólo podrán hacerse en tuberías metálicas galvanizadas de pared gruesa."
+            },
+            {
+              "numero": "16.1.3",
+              "contenido": "Todas las uniones o acoplamientos entre tuberías y entre tuberías y cajas o accesorios serán roscadas, debiendo asegurarse que el acoplamiento tendrá un mínimo de cinco hilos."
+            },
+            {
+              "numero": "16.1.4",
+              "contenido": "Las cajas de unión o derivación deberán ser a prueba de explosión. No se permiten cámaras pertenecientes a canalizaciones subterráneas que queden dentro de las zonas peligrosas."
+            },
+            {
+              "numero": "16.1.5",
+              "contenido": "En cada tubería que entre o salga de las zonas peligrosas, se deberán colocar sellos que consisten en piezas de cierre hermético, cuya finalidad es impedir el paso de gases, o llamas, a través de la tubería, desde la zona peligrosa hacia la zona normal. Dichos sellos se colocarán a una distancia no superior a 0,50 m, medidos desde el limite de la zona peligrosa."
+            },
+            {
+              "numero": "16.1.6",
+              "contenido": "El sello irá relleno con un compuesto de sellado que debe ser resistente a la acción de los combustibles y aceites que se manipulen en el recinto, tanto en forma líquida como de vapores; su temperatura de fusión debe ser superior a 90º C."
+            },
+            {
+              "numero": "16.1.7",
+              "contenido": "Los conductores que se utilicen en las instalaciones eléctricas deberán tener aislaciones resistentes a la acción de los combustibles y aceites que se manipulen en el recinto en forma líquida o como vapores. Igual exigencia deberán cumplir los materiales que se empleen para aislar uniones y derivaciones. Ver tabla Nº 8.6a."
+            },
+            {
+              "numero": "16.1.8",
+              "contenido": "Está prohibido el cruce de líneas aéreas desnudas de cualquier tensión sobre las zonas peligrosas."
+            },
+            {
+              "numero": "16.1.9",
+              "contenido": "Las canalizaciones subterráneas deberán cumplir las disposiciones de 8.2.15 para zonas de tránsito de vehículos."
+            },
+            {
+              "numero": "16.1.10",
+              "contenido": "Las luminarias para alumbrado fijo ubicadas sobre las calzadas de circulación se montarán a una altura no inferior a 4 m. Podrán instalarse a alturas inferiores, pero en ningún caso dentro de la zona peligrosa, siempre que se trate de equipos cerrados y con pantalla de modo que en caso de falla ninguna chispa o partícula caliente pueda alcanzar la zona peligrosa."
+            },
+            {
+              "numero": "16.1.11",
+              "contenido": "Podrá llevarse en un único ducto los conductores de alimentación a los motores de los surtidores y a las luminarias de una isla; en todo caso estas alimentaciones deberán ser eléctricamente independientes."
+            }
+          ]
+        },
+        {
+          "numero": "16.2",
+          "titulo": "Protecciones y comando de circuitos y equipos",
+          "articulos": [
+            {
+              "numero": "16.2.1",
+              "contenido": "Los tableros, protecciones, interruptores y otros dispositivos de comando deberán preferentemente quedar fuera de las zonas peligrosas definidas en 16.0.3; de no ser ello posible deberán ser a prueba de explosión."
+            },
+            {
+              "numero": "16.2.2",
+              "contenido": "La alimentación de los equipos pertenecientes a una isla se hará a través de disyuntores u otras protecciones que corten todos los conductores, incluso el neutro."
+            },
+            {
+              "numero": "16.2.3",
+              "contenido": "Los equipos instalados dentro de las zonas peligrosas deberán protegerse también mediante protectores diferenciales."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "17",
+      "titulo": "INSTALACIONES EN AREAS DE PINTURA Y PROCESOS DE ACABADO",
+      "subsecciones": [
+        {
+          "numero": "17.0",
+          "titulo": "Conceptos generales",
+          "articulos": [
+            {
+              "numero": "17.0.1",
+              "contenido": "Las disposiciones de esta sección regirán para los recintos en donde se apliquen por pulverización, por inmersión, con brocha o por otros medios, en forma regular o frecuentemente, pinturas, lacas, barnices u otros acabados inflamables y en donde se empleen solventes volátiles inflamables para dichas pinturas, lacas y barnices o puedan producirse depósitos o residuos inflamables de ellos."
+            },
+            {
+              "numero": "17.0.2",
+              "contenido": "En ningún caso deben interpretarse las disposiciones de esta sección como norma de seguridad en el empleo o manipulación de los elementos mencionados en 17.0.1."
+            },
+            {
+              "numero": "17.0.3",
+              "contenido": "En este tipo de recintos existirán zonas clasificadas como peligrosas dentro y sobre las cuales las canalizaciones y los equipos eléctricos deberán cumplir las exigencias que se indican en esta sección; el resto del recinto se considerará zona normal y las instalaciones que en él se ejecuten deberán cumplir las restantes disposiciones de la presente Norma."
+            },
+            {
+              "numero": "17.0.4",
+              "contenido": "Para los efectos de aplicación de las disposiciones de esta sección se considerarán zonas peligrosas:"
+            },
+            {
+              "numero": "17.0.4.1",
+              "contenido": "En donde se realicen los procesos de acabado sin que exista un recinto cerrado para este objeto, separado por las zonas de uso general, será zona peligrosa todo el volumen que tenga un altura de 3 m y cuya base es una circunferencia de radio 6 m, medidos tomado como centro el punto en que se está aplicando la pintura laca o barniz, o bien, el centro del tanque de inmersión y sus puntos de drenaje."
+            },
+            {
+              "numero": "17.0.4.2",
+              "contenido": "En donde los procesos de acabado se realicen en una caseta abierta solo por su parte frontal, se considerará zona peligrosa todo el interior de la caseta mas una zona a su alrededor de las dimensiones y formas mostradas en la hoja de norma Nº 23 figura 2 alternativa a."
+            },
+            {
+              "numero": "17.0.4.3",
+              "contenido": "Las dimensiones señaladas en la hoja de norma 23, figura 2 alternativa a, podrán reducirse a las de la figura 2, alternativa b, si el sistema de pulverizado está enclavado con el sistema de ventilación y extracción de modo que sólo sea posible pintar mientras funciona dicho sistema y, en caso de falla de él, el equipo pulverizador deje de funcionar."
+            },
+            {
+              "numero": "17.04.4",
+              "contenido": "No se considerará zona peligrosa las áreas de secado y cocción provistas de un sistema de ventilación y extracción adecuado y enclavado de tal modo que se desconecte todo el equipo eléctrico existente en ellas cuando falle el sistema de ventilación."
+            }
+          ]
+        },
+        {
+          "numero": "17.1",
+          "titulo": "Equipos y canalizaciones en zonas peligrosas",
+          "articulos": [
+            {
+              "numero": "17.1.1",
+              "contenido": "En áreas de pintura y procesos de acabado en donde se manipulen solventes volátiles e inflamables, son válidas las exigencias de los párrafos 16.1.1 a 16.1.8."
+            },
+            {
+              "numero": "17.1.2",
+              "contenido": "Se permitirá iluminar las áreas peligrosas a través de paneles de vidrios u otros materiales translúcidos o transparentes, siempre que:"
+            },
+            {
+              "numero": "17.1.2.1",
+              "contenido": "Los equipos de Iluminación sean fijos."
+            },
+            {
+              "numero": "17.1.2.2",
+              "contenido": "Los paneles estén montados de forma tal que se asegure una separación total entre el área peligrosa y el equipo de iluminación."
+            },
+            {
+              "numero": "17.1.2.3",
+              "contenido": "El equipo de Iluminación esté aprobado para este uso."
+            },
+            {
+              "numero": "17.1.2.4",
+              "contenido": "El panel sea de un material tal, o esté protegido de tal modo, que su rotura sea improbable."
+            },
+            {
+              "numero": "17.1.2.5",
+              "contenido": "Las temperaturas que puedan alcanzar los paneles por radiación o contacto con el equipo luminoso no alcancen límites peligrosos."
+            },
+            {
+              "numero": "17.1.3",
+              "contenido": "Se recomienda, en general, no emplear lámparas portátiles en breas de pinturas o procesos de acabado. En caso de ser necesario, su empleo deberán ser de un tipo a prueba de explosión y todas sus partes metálicas se deberán conectar a tierra."
+            },
+            {
+              "numero": "17.1.4",
+              "contenido": "Los equipos que puedan producir chispas o partículas de metal caliente y que estén instalados sobre el área peligrosa deberán ser del tipo totalmente cerrado o estar provistos de pantallas que eviten la caída de estas chispas o partículas al área peligrosa."
+            },
+            {
+              "numero": "17.1.5",
+              "contenido": "Todas las partes metálicas no energizadas de equipos fijos o portátiles que operen en áreas de pintado deberán conectarse a tierra."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "18",
+      "titulo": "INSTALACIONES EN CONSTRUCCIONES PREFABRICADAS",
+      "subsecciones": [
+        {
+          "numero": "18.0",
+          "titulo": "Conceptos generales",
+          "articulos": [
+            {
+              "numero": "18.0.1",
+              "contenido": "Las disposiciones de esta sección se aplicarán a todas las instalaciones eléctricas de casas, edificios u otro tipo de construcciones prefabricadas que queden total o parcialmente incorporadas a las partes armadas en fábricas."
+            },
+            {
+              "numero": "18.0.2",
+              "contenido": "Toda instalación prefabricada deberá ser ejecutada de acuerdo a un proyecto técnicamente concebido el que deberá ser certificado por un organismo autorizado por la Superintendencia."
+            },
+            {
+              "numero": "18.0.3",
+              "contenido": "Desde el punto de vista de las instalaciones eléctricas, se entenderá como construcción prefabricada a aquella que se construye en módulos o paneles separados, en fábricas o en obras especiales, dispuestas en el mismo terreno y que su armado consiste en el ensamble de estas unidades. La construcción es hecha de tal manera que todas las partes de la instalación, incorporadas durante el proceso de prefabricación, no pueden inspeccionarse después de instaladas sin desensamblar, dañar o destruir la construcción."
+            },
+            {
+              "numero": "18.0.4",
+              "contenido": "Las instalaciones hechas en casas rodantes no se consideran dentro de la clasificación \"prefabricadas\". En todo caso este tipo de instalaciones deberá cumplir las exigencias de esta Norma si ellas pueden ser conectadas a las redes de distribución."
+            }
+          ]
+        },
+        {
+          "numero": "18.1",
+          "titulo": "Canalizaciones y equipos en construcciones prefabricadas",
+          "articulos": [
+            {
+              "numero": "18.1.1",
+              "contenido": "En construcciones prefabricadas podrá emplearse cualquiera de los métodos de canalización indicados en la sección 8, siempre que el método seleccionado sea compatible con el proceso de prefabricación y los componentes de la canalización no resulten dañados durante éste."
+            },
+            {
+              "numero": "18.1.2",
+              "contenido": "Podrán usarse también como sistema de canalización, huecos estructurales dejados durante el proceso de prefabricación."
+            },
+            {
+              "numero": "18.1.3",
+              "contenido": "La Superintendencia juzgará en cada caso la aptitud de uso del sistema seleccionado y comprobará mediante inspecciones en la fábrica la calidad de los materiales y su montaje."
+            },
+            {
+              "numero": "18.1.4",
+              "contenido": "En función a las características de cada proceso, la Superintendencia determinará en cada caso, si las inspecciones indicadas en 18.1.3 se efectuarán sobre el total de las piezas prefabricadas o sobre muestras seleccionadas al azar."
+            },
+            {
+              "numero": "18.1.5",
+              "contenido": "Las inspecciones indicadas en los párrafos precedentes no eliminan la inspección final de funcionamiento de la instalación completa de acuerdo a lo establecido en la norma correspondiente."
+            },
+            {
+              "numero": "18.1.6",
+              "contenido": "Las construcciones prefabricadas deberán cumplir, además de las exigencias prescritas en esta sección, las restantes disposiciones de esta norma, en la medida en que sean procedentes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "19",
+      "titulo": "INSTALACIONES PROVISIONALES",
+      "subsecciones": [
+        {
+          "numero": "19.0",
+          "titulo": "Conceptos generales",
+          "articulos": [
+            {
+              "numero": "19.0.1",
+              "contenido": "Se denominarán instalaciones provisionales a aquellas destinadas a alimentar cualquier servicio por un período de tiempo definido, generalmente corto, entendiéndose por tal a un período no superior a seis meses. Se considerará como un caso particular de instalaciones provisionales, a aquellas destinadas a faenas de construcción, en este caso el período de vigencia será de once meses y será renovable por una única vez y por el mismo plazo. En este caso el empalme provisional podrá transformarse en definitivo con las adecuaciones necesarias a las condiciones de consumo definitivas una vez que sea fiscalizado por SEC."
+            },
+            {
+              "numero": "19.0.2",
+              "contenido": "Existirán dos tipos de instalaciones provisionales, aquellas conectadas directamente a la red pública a través de un empalme provisional, destinado exclusivamente a este fin y aquellas conectadas a instalaciones permanentes que cuentan con un empalme definitivo para su conexión a la red pública."
+            },
+            {
+              "numero": "19.0.3",
+              "contenido": "Toda instalación provisional deberá ser ejecutada de acuerdo a un proyecto técnicamente concebido, respetando al máximo las condiciones de seguridad, en consideración a que, salvo excepciones, una instalación provisional estará destinada a un uso en el cual se espera exista una afluencia masiva de público y las canalizaciones normalmente quedarán al alcance de éste."
+            },
+            {
+              "numero": "19.0.4",
+              "contenido": "Tanto el proyecto como la ejecución de las instalaciones provisionales deberán ser revisados e inspeccionados por la Superintendencia."
+            },
+            {
+              "numero": "19.0.5",
+              "contenido": "Se permitirá la existencia de instalaciones provisionales:"
+            },
+            {
+              "numero": "19.0.5.1",
+              "contenido": "Durante el período de construcción, remodelación o demolición de edificios o estructuras, montaje o desmontaje de equipos o en situaciones similares."
+            },
+            {
+              "numero": "19.0.5.2",
+              "contenido": "En los periodos de fiestas públicas y eventos similares por lapsos no superiores a 30 días, para iluminaciones decorativas."
+            },
+            {
+              "numero": "19.0.5.3",
+              "contenido": "Durante el desarrollo de eventos culturales, comerciales o artísticos en recintos destinados permanentemente a estos fines o en sitios abiertos habilitados para ello por lapsos de tiempo limitados."
+            },
+            {
+              "numero": "19.0.6",
+              "contenido": "En la ejecución de instalaciones provisionales serán aplicables todas las disposiciones de la presente norma, salvo las que se modifiquen expresamente en esta sección."
+            }
+          ]
+        },
+        {
+          "numero": "19.1",
+          "titulo": "Condiciones de montaje",
+          "subsecciones": [
+            {
+              "numero": "19.1.1",
+              "titulo": "Tableros",
+              "articulos": [
+                {
+                  "numero": "19.1.1.1",
+                  "contenido": "Los alimentadores, circuitos y equipos de una instalación provisional se protegerán y comandarán desde tableros generales, de distribución o comando, según corresponda, los que deben cumplir todas las disposiciones de esta Norma que les sean aplicables."
+                },
+                {
+                  "numero": "19.1.1.2",
+                  "contenido": "Las instalaciones provisionales conectadas a instalaciones permanentes, podrán alimentarse desde tableros existentes de la instalación base, siempre y cuando en dichos tableros exista capacidad, tanto de potencia disponible como de espacio, y al conectar los consumos provisionales a dichos tableros no se altere su funcionalidad ni sus condiciones de seguridad. En toda otra circunstancia se deberá alimentar la instalación provisional desde un tablero destinado exclusivamente a estos fines, manteniendo las condiciones de seguridad y funcionalidad definidas en esta Norma."
+                },
+                {
+                  "numero": "19.1.1.3",
+                  "contenido": "Los tableros se ubicarán de acuerdo a las necesidades de terrenos y se instalarán de tal modo que sean accesibles sólo a personal calificado."
+                }
+              ]
+            },
+            {
+              "numero": "19.1.2",
+              "titulo": "Protecciones",
+              "articulos": [
+                {
+                  "numero": "19.1.2.1",
+                  "contenido": "Todos los circuitos o equipos de una instalación provisional deberán protegerse mediante protectores diferenciales."
+                },
+                {
+                  "numero": "19.1.2.2",
+                  "contenido": "Se aceptará la omisión de protectores diferenciales en circuitos empleados exclusivamente para iluminación y en los cuales no existan enchufes. Estos circuitos deberán protegerse mediante el sistema de neutralización."
+                },
+                {
+                  "numero": "19.1.2.3",
+                  "contenido": "No se podrá utilizar el sistema de tierra de protección en instalaciones provisionales."
+                }
+              ]
+            },
+            {
+              "numero": "19.1.3",
+              "titulo": "Canalizaciones",
+              "articulos": [
+                {
+                  "numero": "19.1.3.1",
+                  "contenido": "Todas las instalaciones provisionales, exceptuando los tendidos subterráneos, deberán canalizarse a la vista, utilizando alguno de los sistemas prescritos en la sección 8, o los que se señalan a continuación."
+                },
+                {
+                  "numero": "19.1.3.2",
+                  "contenido": "Para instalaciones provisionales cuya duración no exceda treinta días se permitirá usar a la intemperie conductores con aislación no aprobadas para tales condiciones."
+                },
+                {
+                  "numero": "19.1.3.3",
+                  "contenido": "Se permitirá llevar conductores de distintos circuitos o servicios en un mismo ducto, siempre que se respeten las condiciones establecidas en 8.2.11 y que se apliquen los factores de corrección de capacidad de transporte señalados en la tabla 8.8."
+                },
+                {
+                  "numero": "19.1.3.4",
+                  "contenido": "En tendidos subterráneos se aceptará el empleo de cables planos, o conductores en tubos plásticos flexibles, con profundidades de enterramiento no superiores a 0,25 m, en zonas en que no exista tránsito de vehículos y no estén expuestas a inundaciones."
+                },
+                {
+                  "numero": "19.1.3.5",
+                  "contenido": "Se aceptará el tendido aéreo de cables multiconductores o grupos de conductores unifilares convenientemente amarrados en haces y sujetos a catenarias de acero, con alturas de montaje fijadas según las condiciones de terreno, pero en ningún caso inferior a 2,50 m."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

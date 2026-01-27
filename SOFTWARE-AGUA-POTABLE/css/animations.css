@@ -1,0 +1,124 @@
+/* css/animations.css */
+@keyframes pulse-matriz-grande {
+    0%, 100% {
+        opacity: 1;
+        filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.9));
+    }
+    50% {
+        opacity: 0.9;
+        filter: drop-shadow(0 0 18px rgba(139, 92, 246, 1));
+    }
+}
+
+@keyframes pulse-matriz {
+    0%, 100% {
+        opacity: 1;
+        filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.8));
+    }
+    50% {
+        opacity: 0.9;
+        filter: drop-shadow(0 0 15px rgba(37, 99, 235, 1));
+    }
+}
+
+@keyframes pulse-arranque {
+    0%, 100% {
+        opacity: 1;
+        filter: drop-shadow(0 0 8px rgba(255, 107, 53, 0.7));
+    }
+    50% {
+        opacity: 0.9;
+        filter: drop-shadow(0 0 12px rgba(255, 107, 53, 1));
+    }
+}
+
+@keyframes pulse-medidor-hidraulico {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.9;
+        transform: scale(1.08);
+    }
+}
+
+@keyframes pulse-calentamiento-hidraulico {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.85;
+        transform: scale(1.04);
+    }
+}
+
+@keyframes pulse-alta-demanda {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.9;
+    }
+}
+
+@keyframes pulse-connection {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes text-highlight-pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.85;
+    }
+}
+
+@keyframes pulse-algorithm-hidraulico-arrastrables {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    }
+    50% {
+        opacity: 0.95;
+        transform: scale(1.03);
+        box-shadow: 0 6px 18px rgba(16, 185, 129, 0.6);
+    }
+}
+
+@keyframes pulse-alta-demanda-badge-arrastrables {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes pulse-calor-badge-arrastrables {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.9;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

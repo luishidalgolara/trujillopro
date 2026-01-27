@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablero Eléctrico Interactivo Profesional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+        
+        .header h1 {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        /* Panel principal con estilo realista */
+        .panel-container {
+            background: linear-gradient(145deg, #e8e8e8, #d0d0d0);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5),
+                inset 0 -2px 8px rgba(0, 0, 0, 0.1);
+            border: 3px solid #888;
+            position: relative;
+        }
+        
+        /* Tornillos de montaje */
+        .mounting-screw {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: radial-gradient(circle, #999 0%, #666 50%, #444 100%);
+            border-radius: 50%;
+            border: 1px solid #333;
+            box-shadow: inset 0 1px 2px rgba(255,255,255,0.3), 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .mounting-screw::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 1.5px;
+            background: #555;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .screw-tl { top: 15px; left: 15px; }
+        .screw-tr { top: 15px; right: 15px; }
+        .screw-bl { bottom: 15px; left: 15px; }
+        .screw-br { bottom: 15px; right: 15px; }
+        
+        .panel-inner {
+            background: linear-gradient(to bottom, #f5f5f5 0%, #ebebeb 100%);
+            border-radius: 8px;
+            padding: 30px;
+            border: 2px solid #aaa;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        /* Medidor de energía con estilo SVG */
+        .meter-section {
+            background: linear-gradient(145deg, #e8e8e8, #d0d0d0);
+            border: 2px solid #888;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .meter-header {
+            background: linear-gradient(to bottom, #2c3e50, #1a252f);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .meter-display {
+            background: linear-gradient(to bottom, #8ab8d4, #5a8ca8);
+            border: 2px solid #34495e;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .meter-lcd {
+            background: #5a7a8c;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 36px;
+            font-weight: bold;
+            color: #00ff00;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(0,255,0,0.5);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .meter-unit {
+            font-size: 18px;
+            color: #00ff00;
+            margin-left: 10px;
+        }
+        
+        .meter-indicators {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+        }
+        
+        .indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            color: #fff;
+        }
+        
+        .indicator-led {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            box-shadow: 0 0 8px currentColor;
+        }
+        
+        .led-red { background: #ff0000; color: #ff0000; }
+        .led-green { background: #00ff00; color: #00ff00; }
+        .led-off { background: #333; opacity: 0.3; }
+        
+        /* Estadísticas del sistema */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .stat-card {
+            background: #fff;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            padding: 18px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        
+        .stat-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .stat-unit {
+            font-size: 16px;
+            color: #666;
+            margin-left: 4px;
+        }
+        
+        .status-ok { color: #00a651; }
+        .status-warning { color: #ff6b00; }
+        .status-danger { color: #d32f2f; }
+        
+        /* Panel de título con estilo realista */
+        .panel-title {
+            background: linear-gradient(to bottom, #2c3e50, #1a252f);
+            color: #fff;
+            padding: 14px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+            border: 1px solid #1a252f;
+        }
+        
+        /* Grid de interruptores */
+        .breakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        /* Interruptor con estilo SVG realista */
+        .breaker {
+            background: linear-gradient(145deg, #f8f8f8, #e8e8e8, #d8d8d8);
+            border-radius: 6px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1.5px solid #aaa;
+            box-shadow: 
+                0 3px 6px rgba(0,0,0,0.15),
+                inset 0 1px 0 rgba(255,255,255,0.5);
+            position: relative;
+            min-height: 320px;
+        }
+        
+        .breaker:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        
+        .breaker.on {
+            background: linear-gradient(145deg, #ffffff, #f8f8f8, #f0f0f0);
+            border-color: #00a651;
+            box-shadow: 
+                0 0 20px rgba(0, 166, 81, 0.4),
+                0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .breaker.differential {
+            background: linear-gradient(145deg, #fffef8, #f8f8e8, #f0f0d8);
+        }
+        
+        .breaker.differential.on {
+            border-color: #ff6b00;
+            box-shadow: 
+                0 0 20px rgba(255, 107, 0, 0.4),
+                0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        /* Terminal superior con gradiente metálico */
+        .breaker-terminal-top {
+            width: 60%;
+            height: 30px;
+            margin: 0 auto 10px;
+            background: linear-gradient(145deg, #b8936c, #8B7355, #6d5a47);
+            border-radius: 4px;
+            border: 1px solid #5c4a3a;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .terminal-screw {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: radial-gradient(circle, #666 0%, #444 50%, #333 100%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid #222;
+            box-shadow: inset 0 1px 2px rgba(255,255,255,0.2);
+        }
+        
+        .terminal-screw::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 1.5px;
+            background: #555;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        /* Ventana de visualización */
+        .breaker-window {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid #bbb;
+            border-radius: 3px;
+            padding: 8px;
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .window-screw {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #777 0%, #555 100%);
+            border-radius: 50%;
+            top: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 0.5px solid #444;
+        }
+        
+        .window-screw::after {
+            content: '';
+            position: absolute;
+            width: 5px;
+            height: 1px;
+            background: #888;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .breaker-label {
+            font-size: 32px;
+            font-weight: bold;
+            color: #000;
+            text-align: center;
+            margin: 15px 0 5px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 8px;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+        }
+        
+        .breaker-circuit {
+            color: #666;
+            font-size: 10px;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+        
+        /* Switch/Palanca realista */
+        .breaker-switch {
+            width: 65px;
+            height: 85px;
+            margin: 0 auto 12px;
+            background: linear-gradient(to bottom, #1a1a1a, #0a0a0a);
+            border-radius: 6px;
+            position: relative;
+            box-shadow: 
+                inset 0 3px 8px rgba(0,0,0,0.6),
+                0 2px 4px rgba(0,0,0,0.3);
+            border: 1.5px solid #000;
+        }
+        
+        .switch-top {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 32px;
+            background: #0a0a0a;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        .switch-toggle {
+            position: absolute;
+            width: 50px;
+            height: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(to bottom, #1a1a1a, #000);
+            border-radius: 5px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            top: 45px;
+            border: 1.5px solid #000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+        
+        .breaker.on .switch-toggle {
+            top: 8px;
+        }
+        
+        /* LED indicador realista */
+        .breaker-led {
+            width: 50px;
+            height: 26px;
+            margin: 0 auto 10px;
+            background: #0a0a0a;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
+            border: 1px solid #000;
+        }
+        
+        .led-indicator {
+            width: 42px;
+            height: 20px;
+            background: #00a651;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.3;
+            transition: all 0.3s;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .breaker.on .led-indicator {
+            opacity: 1;
+            box-shadow: 0 0 10px rgba(0, 166, 81, 0.6);
+        }
+        
+        .breaker.differential .led-indicator {
+            background: #ff6b00;
+        }
+        
+        .breaker.differential.on .led-indicator {
+            box-shadow: 0 0 10px rgba(255, 107, 0, 0.6);
+        }
+        
+        .led-text {
+            color: #fff;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        /* Terminal inferior */
+        .breaker-terminal-bottom {
+            width: 60%;
+            height: 30px;
+            margin: 10px auto 0;
+            background: linear-gradient(145deg, #b8936c, #8B7355, #6d5a47);
+            border-radius: 4px;
+            border: 1px solid #5c4a3a;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .breaker-power {
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: #666;
+            margin-top: 8px;
+        }
+        
+        .breaker.on .breaker-power {
+            color: #00a651;
+        }
+        
+        /* Ranuras para riel DIN */
+        .din-rail-slot {
+            position: absolute;
+            width: 3px;
+            height: 60%;
+            background: #999;
+            opacity: 0.5;
+            top: 20%;
+        }
+        
+        .din-rail-slot.left { left: 2px; }
+        .din-rail-slot.right { right: 2px; }
+        
+        /* Certificación */
+        .breaker-cert {
+            text-align: center;
+            font-size: 7px;
+            color: #888;
+            margin-top: 4px;
+        }
+        
+        /* Botón para eliminar circuito */
+        .delete-breaker {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #d32f2f;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 14px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            transition: all 0.2s;
+        }
+        
+        .breaker:hover .delete-breaker {
+            display: flex;
+        }
+        
+        .delete-breaker:hover {
+            background: #b71c1c;
+            transform: scale(1.1);
+        }
+        
+        /* Panel de control */
+        .control-panel {
+            background: #fff;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        
+        .control-panel h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .add-circuit-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            font-size: 12px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input,
+        .form-group select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            background: #fafafa;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #00a651;
+            box-shadow: 0 0 5px rgba(0, 166, 81, 0.3);
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to bottom, #00a651, #008c44);
+            color: #fff;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(to bottom, #008c44, #007a3a);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        /* Información de circuitos */
+        .circuit-info {
+            background: #fff;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            padding: 20px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        
+        .circuit-info h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .circuit-list {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .circuit-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: #f5f5f5;
+            border-radius: 4px;
+            border-left: 4px solid #ccc;
+            transition: all 0.3s;
+        }
+        
+        .circuit-item.active {
+            background: #e8f5e9;
+            border-left-color: #00a651;
+        }
+        
+        .circuit-item span:first-child {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .circuit-item span:last-child {
+            color: #666;
+            font-size: 12px;
+        }
+        
+        /* Alertas */
+        .alert {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #fff;
+            border-left: 5px solid #ff6b00;
+            border-radius: 6px;
+            padding: 18px 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            font-weight: bold;
+            max-width: 350px;
+            transform: translateX(400px);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1000;
+        }
+        
+        .alert.show {
+            transform: translateX(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .breakers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 15px;
+            }
+            
+            .add-circuit-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .breaker {
+                min-height: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚡ Tablero Eléctrico Profesional</h1>
+            <p>Sistema de Gestión y Monitoreo de Circuitos Eléctricos</p>
+        </div>
+        
+        <div class="panel-container">
+            <!-- Tornillos de montaje -->
+            <div class="mounting-screw screw-tl"></div>
+            <div class="mounting-screw screw-tr"></div>
+            <div class="mounting-screw screw-bl"></div>
+            <div class="mounting-screw screw-br"></div>
+            
+            <div class="panel-inner">
+                <!-- Medidor de energía -->
+                <div class="meter-section">
+                    <div class="meter-header">MEDIDOR DE ENERGÍA - Modelo DDS-1234</div>
+                    <div class="meter-display">
+                        <div class="meter-lcd">
+                            <span id="energyReading">00000.0</span>
+                            <span class="meter-unit">kWh</span>
+                        </div>
+                        <div class="meter-indicators">
+                            <div class="indicator">
+                                <div class="indicator-led led-red"></div>
+                                <span>CONSUMO</span>
+                            </div>
+                            <div class="indicator">
+                                <div class="indicator-led led-off"></div>
+                                <span>EXPORTA</span>
+                            </div>
+                            <div class="indicator">
+                                <div class="indicator-led led-green"></div>
+                                <span>ACTIVO</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Estadísticas -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">Potencia Total</div>
+                            <div class="stat-value" id="totalPower">0<span class="stat-unit">W</span></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Corriente Total</div>
+                            <div class="stat-value" id="totalCurrent">0.0<span class="stat-unit">A</span></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Tensión Nominal</div>
+                            <div class="stat-value">220<span class="stat-unit">V</span></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Estado del Sistema</div>
+                            <div class="stat-value status-ok" id="systemStatus">NORMAL</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Panel de control para agregar circuitos -->
+                <div class="control-panel">
+                    <h3>➕ Agregar Nuevo Circuito</h3>
+                    <div class="add-circuit-form">
+                        <div class="form-group">
+                            <label>Capacidad (A)</label>
+                            <select id="breakerAmp">
+                                <option value="10">C10 (10A)</option>
+                                <option value="16">C16 (16A)</option>
+                                <option value="20">C20 (20A)</option>
+                                <option value="25">C25 (25A)</option>
+                                <option value="32">C32 (32A)</option>
+                                <option value="40">C40 (40A)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre del Circuito</label>
+                            <input type="text" id="circuitName" placeholder="Ej: Cocina, Baño, etc.">
+                        </div>
+                        <div class="form-group">
+                            <label>Potencia Estimada (W)</label>
+                            <input type="number" id="circuitPower" placeholder="1000" min="0" step="100">
+                        </div>
+                        <div class="form-group">
+                            <label>Sección Cable (mm²)</label>
+                            <select id="cableSection">
+                                <option value="1.5">1.5 mm²</option>
+                                <option value="2.5">2.5 mm²</option>
+                                <option value="4.0">4.0 mm²</option>
+                                <option value="6.0">6.0 mm²</option>
+                                <option value="10.0">10.0 mm²</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="addCircuit()">
+                        ➕ Agregar Circuito
+                    </button>
+                </div>
+                
+                <!-- Interruptores principales -->
+                <div class="panel-title">Interruptores Principales</div>
+                <div class="breakers-grid">
+                    <!-- Interruptor Principal -->
+                    <div class="breaker" data-breaker="main" data-type="main">
+                        <div class="din-rail-slot left"></div>
+                        <div class="din-rail-slot right"></div>
+                        
+                        <div class="breaker-terminal-top">
+                            <div class="terminal-screw"></div>
+                        </div>
+                        
+                        <div class="breaker-window">
+                            <div class="window-screw"></div>
+                        </div>
+                        
+                        <div class="breaker-label">40A</div>
+                        <div class="breaker-circuit">Principal</div>
+                        
+                        <div class="breaker-switch">
+                            <div class="switch-top">OFF</div>
+                            <div class="switch-toggle"></div>
+                        </div>
+                        
+                        <div class="breaker-led">
+                            <div class="led-indicator">
+                                <div class="led-text">OFF</div>
+                            </div>
+                        </div>
+                        
+                        <div class="breaker-terminal-bottom">
+                            <div class="terminal-screw"></div>
+                        </div>
+                        
+                        <div class="breaker-power">0W</div>
+                        <div class="breaker-cert">IEC 60898</div>
+                    </div>
+                    
+                    <!-- Diferencial -->
+                    <div class="breaker differential" data-breaker="differential" data-type="differential">
+                        <div class="din-rail-slot left"></div>
+                        <div class="din-rail-slot right"></div>
+                        
+                        <div class="breaker-terminal-top">
+                            <div class="terminal-screw"></div>
+                        </div>
+                        
+                        <div class="breaker-window">
+                            <div class="window-screw"></div>
+                        </div>
+                        
+                        <div class="breaker-label">30mA</div>
+                        <div class="breaker-circuit">Diferencial</div>
+                        
+                        <div class="breaker-switch">
+                            <div class="switch-top">OFF</div>
+                            <div class="switch-toggle"></div>
+                        </div>
+                        
+                        <div class="breaker-led">
+                            <div class="led-indicator">
+                                <div class="led-text">OFF</div>
+                            </div>
+                        </div>
+                        
+                        <div class="breaker-terminal-bottom">
+                            <div class="terminal-screw"></div>
+                        </div>
+                        
+                        <div class="breaker-power">0W</div>
+                        <div class="breaker-cert">IEC 61008</div>
+                    </div>
+                </div>
+                
+                <!-- Circuitos -->
+                <div class="panel-title">Circuitos de Distribución</div>
+                <div class="breakers-grid" id="circuitsGrid">
+                    <!-- Los circuitos se agregarán dinámicamente aquí -->
+                </div>
+                
+                <!-- Información de circuitos -->
+                <div class="circuit-info">
+                    <h3>📋 Información de Circuitos Activos</h3>
+                    <div class="circuit-list" id="circuitList">
+                        <p style="color: #999; text-align: center;">No hay circuitos agregados. Usa el panel superior para agregar circuitos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Alerta -->
+    <div class="alert" id="alert"></div>
+    
+    <script>
+        // Estado del sistema
+        const state = {
+            breakers: {
+                main: false,
+                differential: false
+            },
+            circuits: [],
+            totalPower: 0,
+            maxPower: 8800, // 40A * 220V
+            energyConsumed: 0,
+            lastUpdate: Date.now()
+        };
+        
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            // Eventos para interruptores principales
+            document.querySelectorAll('.breaker[data-type="main"], .breaker[data-type="differential"]').forEach(breaker => {
+                breaker.addEventListener('click', () => toggleBreaker(breaker));
+            });
+            
+            // Agregar algunos circuitos de ejemplo
+            addInitialCircuits();
+            updatePowerConsumption();
+            
+            // Simular consumo de energía
+            setInterval(updateEnergy, 1000);
+        });
+        
+        function addInitialCircuits() {
+            const initialCircuits = [
+                { amp: 10, name: 'Alumbrado', power: 500, section: 1.5 },
+                { amp: 16, name: 'T. Uso General', power: 800, section: 2.5 },
+                { amp: 20, name: 'Lavadora', power: 2000, section: 4.0 },
+                { amp: 25, name: 'Cocina', power: 3500, section: 6.0 }
+            ];
+            
+            initialCircuits.forEach(circuit => {
+                createCircuit(circuit.amp, circuit.name, circuit.power, circuit.section);
+            });
+        }
+        
+        function addCircuit() {
+            const amp = document.getElementById('breakerAmp').value;
+            const name = document.getElementById('circuitName').value.trim();
+            const power = parseInt(document.getElementById('circuitPower').value) || 0;
+            const section = document.getElementById('cableSection').value;
+            
+            if (!name) {
+                showAlert('⚠ Por favor ingresa un nombre para el circuito');
+                return;
+            }
+            
+            if (power <= 0) {
+                showAlert('⚠ Por favor ingresa una potencia válida');
+                return;
+            }
+            
+            createCircuit(amp, name, power, section);
+            
+            // Limpiar formulario
+            document.getElementById('circuitName').value = '';
+            document.getElementById('circuitPower').value = '';
+            
+            showAlert('✅ Circuito agregado exitosamente');
+        }
+        
+        function createCircuit(amp, name, power, section) {
+            const circuitId = `c${amp}_${Date.now()}`;
+            const maxPower = amp * 220; // V = 220V
+            
+            // Agregar al estado
+            state.circuits.push({
+                id: circuitId,
+                amp: amp,
+                name: name,
+                power: power,
+                section: section,
+                maxPower: maxPower,
+                isOn: false
+            });
+            
+            state.breakers[circuitId] = false;
+            
+            // Crear elemento HTML
+            const breakerHTML = `
+                <div class="breaker" data-breaker="${circuitId}" data-power="${power}" data-max="${maxPower}" data-type="circuit">
+                    <button class="delete-breaker" onclick="deleteCircuit('${circuitId}')" title="Eliminar circuito">×</button>
+                    <div class="din-rail-slot left"></div>
+                    <div class="din-rail-slot right"></div>
+                    
+                    <div class="breaker-terminal-top">
+                        <div class="terminal-screw"></div>
+                    </div>
+                    
+                    <div class="breaker-window">
+                        <div class="window-screw"></div>
+                    </div>
+                    
+                    <div class="breaker-label">C${amp}</div>
+                    <div class="breaker-circuit">${name}</div>
+                    
+                    <div class="breaker-switch">
+                        <div class="switch-top">OFF</div>
+                        <div class="switch-toggle"></div>
+                    </div>
+                    
+                    <div class="breaker-led">
+                        <div class="led-indicator">
+                            <div class="led-text">OFF</div>
+                        </div>
+                    </div>
+                    
+                    <div class="breaker-terminal-bottom">
+                        <div class="terminal-screw"></div>
+                    </div>
+                    
+                    <div class="breaker-power">0W</div>
+                    <div class="breaker-cert">IEC 60898</div>
+                </div>
+            `;
+            
+            const grid = document.getElementById('circuitsGrid');
+            grid.insertAdjacentHTML('beforeend', breakerHTML);
+            
+            // Agregar evento click
+            const newBreaker = grid.lastElementChild;
+            newBreaker.addEventListener('click', (e) => {
+                if (!e.target.classList.contains('delete-breaker')) {
+                    toggleBreaker(newBreaker);
+                }
+            });
+            
+            // Actualizar lista de información
+            updateCircuitList();
+        }
+        
+        function deleteCircuit(circuitId) {
+            if (!confirm('¿Estás seguro de eliminar este circuito?')) {
+                return;
+            }
+            
+            // Remover del estado
+            state.circuits = state.circuits.filter(c => c.id !== circuitId);
+            delete state.breakers[circuitId];
+            
+            // Remover del DOM
+            const breaker = document.querySelector(`[data-breaker="${circuitId}"]`);
+            if (breaker) {
+                breaker.remove();
+            }
+            
+            // Actualizar
+            updateCircuitList();
+            updatePowerConsumption();
+            showAlert('🗑️ Circuito eliminado');
+        }
+        
+        function toggleBreaker(breakerEl) {
+            const breakerId = breakerEl.dataset.breaker;
+            const breakerType = breakerEl.dataset.type;
+            const isOn = state.breakers[breakerId];
+            
+            // Verificar dependencias para circuitos
+            if (breakerType === 'circuit') {
+                if (!state.breakers.main || !state.breakers.differential) {
+                    showAlert('⚠ Activa primero el interruptor principal y el diferencial');
+                    return;
+                }
+            }
+            
+            // Cambiar estado
+            state.breakers[breakerId] = !isOn;
+            
+            // Actualizar UI
+            const switchTop = breakerEl.querySelector('.switch-top');
+            const ledText = breakerEl.querySelector('.led-text');
+            
+            if (state.breakers[breakerId]) {
+                breakerEl.classList.add('on');
+                if (switchTop) switchTop.textContent = 'ON';
+                if (ledText) ledText.textContent = 'ON';
+            } else {
+                breakerEl.classList.remove('on');
+                if (switchTop) switchTop.textContent = 'OFF';
+                if (ledText) ledText.textContent = 'OFF';
+                
+                // Si se apaga el principal o diferencial, apagar todos los circuitos
+                if (breakerId === 'main' || breakerId === 'differential') {
+                    turnOffAllCircuits();
+                }
+            }
+            
+            // Actualizar circuito en estado
+            const circuit = state.circuits.find(c => c.id === breakerId);
+            if (circuit) {
+                circuit.isOn = state.breakers[breakerId];
+            }
+            
+            // Actualizar consumo
+            updatePowerConsumption();
+            updateCircuitList();
+        }
+        
+        function turnOffAllCircuits() {
+            document.querySelectorAll('.breaker[data-type="circuit"]').forEach(breaker => {
+                const breakerId = breaker.dataset.breaker;
+                state.breakers[breakerId] = false;
+                breaker.classList.remove('on');
+                
+                const switchTop = breaker.querySelector('.switch-top');
+                const ledText = breaker.querySelector('.led-text');
+                if (switchTop) switchTop.textContent = 'OFF';
+                if (ledText) ledText.textContent = 'OFF';
+                
+                const circuit = state.circuits.find(c => c.id === breakerId);
+                if (circuit) circuit.isOn = false;
+            });
+        }
+        
+        function updatePowerConsumption() {
+            let totalPower = 0;
+            
+            document.querySelectorAll('.breaker[data-type="circuit"]').forEach(breaker => {
+                const breakerId = breaker.dataset.breaker;
+                const power = parseInt(breaker.dataset.power) || 0;
+                const powerDisplay = breaker.querySelector('.breaker-power');
+                
+                if (state.breakers[breakerId]) {
+                    totalPower += power;
+                    if (powerDisplay) {
+                        powerDisplay.textContent = `${power}W`;
+                    }
+                } else {
+                    if (powerDisplay) {
+                        powerDisplay.textContent = '0W';
+                    }
+                }
+            });
+            
+            state.totalPower = totalPower;
+            
+            // Actualizar displays
+            document.getElementById('totalPower').innerHTML = `${totalPower}<span class="stat-unit">W</span>`;
+            const current = (totalPower / 220).toFixed(1);
+            document.getElementById('totalCurrent').innerHTML = `${current}<span class="stat-unit">A</span>`;
+            
+            // Verificar sobrecarga
+            const loadPercentage = (totalPower / state.maxPower) * 100;
+            const systemStatusEl = document.getElementById('systemStatus');
+            
+            systemStatusEl.classList.remove('status-ok', 'status-warning', 'status-danger');
+            
+            if (loadPercentage > 90) {
+                systemStatusEl.textContent = 'SOBRECARGA';
+                systemStatusEl.classList.add('status-danger');
+                showAlert('⚠ SOBRECARGA DETECTADA! Reduce el consumo');
+                
+                // Simular disparo del diferencial
+                setTimeout(() => {
+                    if (loadPercentage > 100) {
+                        state.breakers.differential = false;
+                        const diffBreaker = document.querySelector('[data-breaker="differential"]');
+                        diffBreaker.classList.remove('on');
+                        const switchTop = diffBreaker.querySelector('.switch-top');
+                        const ledText = diffBreaker.querySelector('.led-text');
+                        if (switchTop) switchTop.textContent = 'OFF';
+                        if (ledText) ledText.textContent = 'OFF';
+                        turnOffAllCircuits();
+                        updatePowerConsumption();
+                        showAlert('🔴 Diferencial disparado por sobrecarga');
+                    }
+                }, 1000);
+            } else if (loadPercentage > 70) {
+                systemStatusEl.textContent = 'ALERTA';
+                systemStatusEl.classList.add('status-warning');
+            } else {
+                systemStatusEl.textContent = 'NORMAL';
+                systemStatusEl.classList.add('status-ok');
+            }
+        }
+        
+        function updateCircuitList() {
+            const listEl = document.getElementById('circuitList');
+            
+            if (state.circuits.length === 0) {
+                listEl.innerHTML = '<p style="color: #999; text-align: center;">No hay circuitos agregados. Usa el panel superior para agregar circuitos.</p>';
+                return;
+            }
+            
+            listEl.innerHTML = state.circuits.map(circuit => `
+                <div class="circuit-item ${circuit.isOn ? 'active' : ''}" data-circuit="${circuit.id}">
+                    <span>• ${circuit.name} (C${circuit.amp})</span>
+                    <span>Sección: ${circuit.section}mm² | Max: ${circuit.maxPower}W</span>
+                </div>
+            `).join('');
+        }
+        
+        function updateEnergy() {
+            if (state.totalPower > 0) {
+                const now = Date.now();
+                const timeDiff = (now - state.lastUpdate) / 1000 / 3600; // Horas
+                const energyDiff = (state.totalPower / 1000) * timeDiff; // kWh
+                state.energyConsumed += energyDiff;
+                state.lastUpdate = now;
+                
+                document.getElementById('energyReading').textContent = state.energyConsumed.toFixed(1).padStart(7, '0');
+            }
+        }
+        
+        function showAlert(message) {
+            const alertEl = document.getElementById('alert');
+            alertEl.textContent = message;
+            alertEl.classList.add('show');
+            
+            setTimeout(() => {
+                alertEl.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

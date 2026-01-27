@@ -1,0 +1,110 @@
+{
+  "ley_nombre": "Ley N° 20.898",
+  "nombre_comun": "Ley del Mono",
+  "descripcion": "Establece un procedimiento simplificado para la regularización de viviendas de autoconstrucción",
+  "vigencia": "Hasta 31 de diciembre de 2027",
+  
+  "requisitos_generales": [
+    {
+      "numero": 1,
+      "titulo": "Superficie y Avalúo Fiscal - Opción 1",
+      "descripcion": "Vivienda menor a 90 m² con avalúo fiscal menor a 1.000 UF (vivienda y terreno en conjunto)"
+    },
+    {
+      "numero": 2,
+      "titulo": "Superficie y Avalúo Fiscal - Opción 2",
+      "descripcion": "Vivienda menor a 140 m² con avalúo fiscal menor a 2.000 UF (vivienda y terreno en conjunto)",
+      "excepciones": "Excepto en casos de viviendas que sean beneficiadas por subsidios del Ministerio de Vivienda y Urbanismo para el mejoramiento y/o ampliación de la vivienda, caso en el que podrá superar dicha superficie."
+    },
+    {
+      "numero": 3,
+      "titulo": "Fecha de Construcción",
+      "descripcion": "La vivienda debe haber sido construida ANTES del 4 de febrero de 2016 (fecha de publicación de la ley)"
+    },
+    {
+      "numero": 4,
+      "titulo": "Ubicación Permitida",
+      "descripcion": "Válido para viviendas en áreas urbanas y rurales. NO debe estar en áreas de riesgo, protección, terrenos de utilidad pública o bienes nacionales de uso público"
+    },
+    {
+      "numero": 5,
+      "titulo": "Sin Reclamaciones Pendientes",
+      "descripcion": "No tener, a la fecha de ingreso de la solicitud de regularización, reclamaciones escritas pendientes por incumplimiento de normas urbanísticas ante la dirección de obras municipales o el juzgado de policía local respectivo"
+    }
+  ],
+
+  "normas_habitabilidad": {
+    "titulo": "Normas de Habitabilidad, Seguridad y Estabilidad",
+    "descripcion": "Las viviendas deben cumplir con las siguientes normas para garantizar la habitabilidad, seguridad y estabilidad, y con aquellas aplicables a las instalaciones interiores de electricidad, agua potable, alcantarillado y gas",
+    
+    "habitabilidad": {
+      "altura": {
+        "materia": "Altura",
+        "norma": "La altura mínima de piso a cielo, medida en obra terminada, que debe ser de 2,30 metros, podrá ser rebajada hasta 2,0 metros.",
+        "detalles": "La medida vertical mínima de obra terminada en pasadas peatonales bajo vigas o instalaciones horizontales de 2,0 metros podrá ser rebajada hasta en un 10%."
+      },
+      "terminacion_interior": {
+        "materia": "Terminación Interior",
+        "norma": "El estándar de terminaciones no podrá ser inferior al definido en la Ordenanza General de Urbanismo y Construcciones para una obra gruesa habitable."
+      },
+      "ventilacion": {
+        "materia": "Ventilación",
+        "norma_general": "Los locales habitables deberán tener, al menos, una ventana que permita la entrada de aire y luz del exterior.",
+        "ventanas_fijas": "Se admitirán ventanas fijas selladas siempre que se contemplen ductos de ventilación adecuados y que no se trate de dormitorios o recintos en los que se consulten artefactos de combustión de cualquier tipo.",
+        "banos_cocinas": "Los baños, cocinas y lavaderos, cuando no contemplen ventana al exterior que permita la renovación de aire, deberán ventilarse mediante un ducto, individual o colectivo, de sección libre no interrumpida de, al menos, 0,16 m².",
+        "reduccion": "La dimensión señalada podrá reducirse en caso de contemplarse tiraje forzado."
+      }
+    },
+
+    "seguridad_contra_incendios": {
+      "resistencia_al_fuego": {
+        "materia": "Resistencia al Fuego",
+        "norma": "Las viviendas aisladas, pareadas o continuas, de hasta dos pisos, cuya superficie edificada sea inferior o igual a 90 m², tendrán una resistencia al fuego a lo menos F-15 en todos sus elementos y componentes soportantes.",
+        "condicion": "Siempre que el muro de adosamiento o muro divisorio, según corresponda, cumpla con las exigencias de muros divisorios entre unidades de la Ordenanza General de Urbanismo y Construcciones."
+      },
+      "adosamientos": {
+        "materia": "Adosamientos",
+        "norma_muro": "Tratándose de edificaciones adosadas al deslinde, el muro de adosamiento deberá llegar hasta la cubierta del cuerpo adosado con resistencia al fuego F-60.",
+        "evacuacion_aguas": "Además, el adosamiento deberá contemplar un sistema de evacuación de aguas lluvia que no afecte a los predios vecinos."
+      }
+    },
+
+    "estabilidad": {
+      "calculo_estructural": {
+        "materia": "Cálculo Estructural",
+        "descripcion": "No se exigirá proyecto de cálculo estructural en los casos que a continuación se indica:",
+        "casos_exentos": [
+          {
+            "tipo": "a) Viviendas de estructura de madera",
+            "condiciones": "De un máximo de dos pisos, con entramados de pisos de madera, cuyas habitaciones no tengan más de 3,0 metros de distancia entre apoyos."
+          },
+          {
+            "tipo": "b) Viviendas de albañilería o hormigón - un piso",
+            "condiciones": "De estructura de albañilería armada o reforzada, o de hormigón armado, de un máximo de un piso, cuyas habitaciones no tengan más de 3,0 metros de distancia entre apoyos."
+          },
+          {
+            "tipo": "c) Viviendas mixtas - dos pisos",
+            "condiciones": "De estructura en primer piso de albañilería armada o reforzada, o de hormigón armado, de un máximo de dos pisos con entramados de pisos de madera, cuyas habitaciones no tengan más de 3,0 metros de distancia entre apoyos, siempre que la estructura del segundo piso sea liviana."
+          }
+        ],
+        "declaracion_profesional": "En estos casos el profesional competente deberá declarar que la obra reúne las condiciones de estabilidad, respecto del tipo de construcción de que se trate, o que cumple con las condiciones mínimas de los elementos de construcción no sometidos a cálculo de estabilidad, exigidas en el Capítulo 6 del Título 5 de la Ordenanza General de Urbanismo y Construcciones, que les sean aplicables."
+      }
+    }
+  },
+
+  "instalaciones_requeridas": [
+    "Electricidad",
+    "Agua potable",
+    "Alcantarillado",
+    "Gas (cuando corresponda)"
+  ],
+
+  "informacion_adicional": {
+    "altura_minima_techos": "2.0 metros (rebajada desde 2.30m)",
+    "altura_minima_vigas": "2.0 metros (puede reducirse 10%)",
+    "ducto_ventilacion_minimo": "0.16 m²",
+    "resistencia_fuego_general": "F-15",
+    "resistencia_fuego_adosamiento": "F-60",
+    "distancia_maxima_apoyos": "3.0 metros"
+  }
+}

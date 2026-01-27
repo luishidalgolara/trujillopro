@@ -1,0 +1,1873 @@
+{
+  "seccion_8.1_conductores_para_instalaciones": {
+    "numero": "8.1",
+    "titulo": "CONDUCTORES PARA INSTALACIONES",
+    "subsecciones": {
+      "8.1.1_generalidades": {
+        "numero": "8.1.1",
+        "titulo": "Generalidades",
+        "articulos": [
+          {
+            "numero": "8.1.1.1",
+            "texto": "La selección de un conductor se hará considerando que debe asegurarse una suficiente capacidad de transporte de corriente, una adecuada capacidad de soportar corrientes de cortocircuito, una adecuada resistencia mecánica y un buen comportamiento ante las condiciones ambientales."
+          },
+          {
+            "numero": "8.1.1.2",
+            "texto": "Las disposiciones de esta sección serán aplicables a todos los conductores de las instalaciones de consumo, excepto a los de alumbrado interno de sistemas de partida y dispositivos de control."
+          }
+        ]
+      },
+      "8.1.2_especificaciones_y_condiciones_de_uso_de_los_conductores": {
+        "numero": "8.1.2",
+        "titulo": "Especificaciones y condiciones de uso de los conductores",
+        "articulos": [
+          {
+            "numero": "8.1.2.1",
+            "texto": "Las condiciones de uso de los distintos tipos de conductores se señalan en las tablas Nº 8.6 y Nº 8.6a.",
+            "referencia_tablas": [
+              "Tabla Nº 8.6",
+              "Tabla Nº 8.6a"
+            ]
+          },
+          {
+            "numero": "8.1.2.2",
+            "texto": "Las capacidades de transporte de los conductores para las distintas secciones y tipos se señalan en las tablas Nº 8.7 y Nº 8.7a.",
+            "referencia_tablas": [
+              "Tabla Nº 8.7",
+              "Tabla Nº 8.7a"
+            ]
+          },
+          {
+            "numero": "8.1.2.3",
+            "texto": "Los valores indicados en las tablas Nº 8.7 y Nº 8.7a para conductores en ductos o en cables, son aplicables a tres conductores colocados en un mismo ducto o cable. En caso de circuitos trifásicos no se considerará al neutro como un cuarto conductor y al conductor de tierra de protección en ningún caso se le considerará como un conductor activo al fijar la capacidad de transporte de una línea. Si el número de conductores activos colocados en un mismo ducto o cable excede de tres, se deberá disminuir la capacidad de transporte de cada uno de los conductores individuales de acuerdo al factor de corrección fn indicado en la tabla Nº 8.8. En igual forma, si la temperatura ambiente excede de 30ºC la capacidad de transporte de los conductores se deberá disminuir de acuerdo al factor de corrección ft indicado en las tablas Nº 8.9 y Nº 8.9a. De este modo, si la temperatura ambiente y/o la cantidad de conductores exceden los valores fijados en las tablas, la corriente de servicio para cada conductor estará fijada por la expresión:",
+            "formula": "Is = It × ft × fn",
+            "definiciones_formula": {
+              "Is": "corriente de servicio",
+              "It": "corriente de tabla",
+              "ft": "factor de corrección por temperatura",
+              "fn": "factor de corrección por cantidad de conductores"
+            }
+          },
+          {
+            "numero": "8.1.2.4",
+            "texto": "Identificación de los conductores. Sobre la aislación o la cubierta exterior de los conductores, según corresponda, deberán ir impresas a lo menos las siguientes indicaciones:",
+            "indicaciones_requeridas": [
+              "Nombre del fabricante o su marca registrada",
+              "Tipo de conductor, indicado por las letras de código, por ejemplo, THW, NYA, EVA, etc.",
+              "Sección en mm2 para las secciones métricas y sección en mm2 y en paréntesis el número AWG para secciones AWG.",
+              "Tensión de servicio. Corresponde a la tensión entre fases",
+              "Número de certificación, si procede."
+            ],
+            "requisitos_impresion": "Esta inscripción deberá hacerse en un color de contraste con el color de la aislación o cubierta del conductor de modo tal que esta información sea fácilmente legible y se deberá repetir con un espaciamiento máximo de 0,50 m, en toda la longitud del conductor."
+          },
+          {
+            "numero": "8.1.2.5",
+            "texto": "Los radios de curvatura de conductores aislados no deberán ser menores a ocho veces el diámetro externo del conductor, incluida su aislación y cubierta, si procede. Para cables con pantalla este radio será como mínimo de doce veces el diámetro total del cable."
+          },
+          {
+            "numero": "8.1.2.6",
+            "texto": "En las tablas Nº 8.6 a Nº 8.10 se indican las características constructivas, condiciones de uso y condiciones de instalación de los conductores usuales en instalaciones de consumo.",
+            "referencia_tablas": [
+              "Tabla Nº 8.6",
+              "Tabla Nº 8.6a",
+              "Tabla Nº 8.7",
+              "Tabla Nº 8.7a",
+              "Tabla Nº 8.8",
+              "Tabla Nº 8.9",
+              "Tabla Nº 8.9a",
+              "Tabla Nº 8.10"
+            ]
+          }
+        ],
+        "tablas": {
+          "tabla_8.6": {
+            "numero": "Tabla Nº 8.6",
+            "titulo": "Características y Condiciones de Uso de Conductores Aislados. Secciones Métricas",
+            "encabezados": [
+              "Características constructivas",
+              "Letras de identificación",
+              "Condiciones de uso",
+              "Máxima temperatura de servicio [ºC]",
+              "Espesores de aislación - Sección nominal [mm2]",
+              "Espesores de aislación - Espesor [mm]",
+              "Tensión de servicio [V]",
+              "Chaqueta exterior"
+            ],
+            "conductores": [
+              {
+                "caracteristicas": "Conductor unipolar, (alambre) aislación de PVC",
+                "identificacion": "NYA",
+                "condiciones_uso": "Ambientes secos canalizados en tuberías, bandejas, escalerillas, molduras",
+                "temperatura_maxima": "70",
+                "espesores_aislacion": [
+                  {
+                    "seccion": "1,5",
+                    "espesor": "0,6"
+                  },
+                  {
+                    "seccion": "2,5",
+                    "espesor": "0,7"
+                  },
+                  {
+                    "seccion": "4, 6",
+                    "espesor": "0,8"
+                  },
+                  {
+                    "seccion": "10, 16",
+                    "espesor": "1,0"
+                  },
+                  {
+                    "seccion": "25,35",
+                    "espesor": "1,2"
+                  },
+                  {
+                    "seccion": "50,70",
+                    "espesor": "1,4"
+                  }
+                ],
+                "tension_servicio": "600",
+                "chaqueta_exterior": "No tiene"
+              },
+              {
+                "caracteristicas": "Conductor unipolar, (alambre o cableado) aislación de PVC",
+                "identificacion": "NSYA",
+                "condiciones_uso": "Ambientes secos o húmedos, canalizados en tuberías, bandejas, escalerillas, molduras, en tendidos aéreos a la intemperie en líneas de acometida, fuera del alcance de la mano",
+                "temperatura_maxima": "70",
+                "espesores_aislacion": [
+                  {
+                    "seccion": "1,5 a 6",
+                    "espesor": "1,0"
+                  },
+                  {
+                    "seccion": "10, 16",
+                    "espesor": "1,2"
+                  },
+                  {
+                    "seccion": "25, 35",
+                    "espesor": "1,4"
+                  },
+                  {
+                    "seccion": "50, 70",
+                    "espesor": "1,6"
+                  },
+                  {
+                    "seccion": "95, 120",
+                    "espesor": "1,8"
+                  },
+                  {
+                    "seccion": "150",
+                    "espesor": "2,0"
+                  },
+                  {
+                    "seccion": "185",
+                    "espesor": "2,2"
+                  },
+                  {
+                    "seccion": "240",
+                    "espesor": "2,4"
+                  },
+                  {
+                    "seccion": "300",
+                    "espesor": "2,6"
+                  },
+                  {
+                    "seccion": "400",
+                    "espesor": "2,8"
+                  }
+                ],
+                "tension_servicio": "600",
+                "chaqueta_exterior": "No tiene"
+              },
+              {
+                "caracteristicas": "Cable multiconductor con aislación PVC y chaqueta",
+                "identificacion": "NYY",
+                "condiciones_uso": "Ambientes secos, húmedos, intemperie sin exposición a rayos solares. Tendidos subterráneos en ducto o directamente en tierra",
+                "temperatura_maxima": "70",
+                "espesores_aislacion": [
+                  {
+                    "seccion": "1,5",
+                    "espesor": "0.8"
+                  },
+                  {
+                    "seccion": "2,5",
+                    "espesor": "0.9"
+                  },
+                  {
+                    "seccion": "4 a 16",
+                    "espesor": "1.0"
+                  },
+                  {
+                    "seccion": "25 a 35",
+                    "espesor": "1.2"
+                  },
+                  {
+                    "seccion": "50 a 70",
+                    "espesor": "1,4"
+                  },
+                  {
+                    "seccion": "95 a 120",
+                    "espesor": "1,6"
+                  },
+                  {
+                    "seccion": "150 a 240",
+                    "espesor": "2,0"
+                  },
+                  {
+                    "seccion": "300 a 400",
+                    "espesor": "2,6"
+                  }
+                ],
+                "tension_servicio": "600",
+                "chaqueta_exterior": "PVC"
+              },
+              {
+                "caracteristicas": "Cable plano multiconductor, dos o tres alambres. Aislación PVC y chaqueta",
+                "identificacion": "NYFY (TPS)",
+                "condiciones_uso": "Instalaciones sobrepuestas en ambientes interiores, no necesitan ducto. Se usa también en bajadas de acometidas",
+                "temperatura_maxima": "70",
+                "espesores_aislacion": [
+                  {
+                    "seccion": "2x1 a 3x1,5",
+                    "espesor": "0,8"
+                  },
+                  {
+                    "seccion": "2x2,5; 3x2,5; 2x4",
+                    "espesor": "0,9"
+                  },
+                  {
+                    "seccion": "2x8,37 y 2x10",
+                    "espesor": "1,0"
+                  }
+                ],
+                "tension_servicio": "600",
+                "chaqueta_exterior": "PVC"
+              }
+            ]
+          },
+          "tabla_8.6a": {
+            "numero": "Tabla Nº 8.6a",
+            "titulo": "Características y Condiciones de Uso de Conductores Aislados. Secciones AWG",
+            "encabezados": [
+              "Características constructivas",
+              "Letras de identificación",
+              "Condiciones de uso",
+              "Máxima temperatura de servicio [ºC]",
+              "Espesores de aislación - Sección nominal [mm2]",
+              "Espesores de aislación - Espesor [mm]",
+              "Tensión de servicio [V]",
+              "Chaqueta exterior"
+            ],
+            "conductores": [
+              {
+                "caracteristicas": "Conductor unipolar; aislación PVC",
+                "identificacion": "THW",
+                "condiciones_uso": "Ambientes secos y húmedos; canalizados en tuberías, bandejas, escalerillas, molduras",
+                "temperatura_maxima": "75",
+                "espesores_aislacion": [
+                  {
+                    "seccion": "2,08 a 5,26",
+                    "espesor": "1,14"
+                  },
+                  {
+                    "seccion": "8,37 a 33,6",
+                    "espesor": "1,52"
+                  },
+                  {
+                    "seccion": "42,4 a 107",
+                    "espesor": "2,03"
+                  },
+                  {
+                    "seccion": "126,7 a 253",
+                    "espesor": "2,41"
+                  },
+                  {
+                    "seccion": "304 a 506",
+                    "espesor": "2,79"
+                  }
+                ],
+                "tension_servicio": "600",
+                "chaqueta_exterior": "No tiene"
+              },
+              {
+                "caracteristicas": "Conductor unipolar; aislación PVC",
+                "identificacion": "THWN",
+                "condiciones_uso": "Ambientes secos y húmedos; canalizados en tuberías, bandejas, escalerillas, molduras. La cubierta lo hace resistente a la acción de aceites, grasas, ácidos y gasolina",
+                "temperatura_maxima": "75",
+                "espesores_aislacion": [
+                  {
+                    "seccion": "2,08 a 3,31",
+                    "espesor": "0,38"
+                  },
+                  {
+                    "seccion": "5,26",
+                    "espesor": "0,51"
+                  },
+                  {
+                    "seccion": "8,37 a 13,3",
+                    "espesor": "0,76"
+                  },
+                  {
+                    "seccion": "21,2 a 33,6",
+                    "espesor": "1,02"
+                  },
+                  {
+                    "seccion": "42,4 a ,107",
+                    "espesor": "1,27"
+                  },
+                  {
+                    "seccion": "126,7 a 253",
+                    "espesor": "1,52"
+                  },
+                  {
+                    "seccion": "304 a 506",
+                    "espesor": "1,78"
+                  }
+                ],
+                "tension_servicio": "600",
+                "chaqueta_exterior": "Nylon"
+              },
+              {
+                "caracteristicas": "Conductor unipolar; aislación PVC",
+                "identificacion": "THHN",
+                "condiciones_uso": "Ambientes secos y húmedos; canalizados en tuberías, bandejas, escalerillas, molduras. La cubierta lo hace resistente a la acción de aceites, grasas, ácidos y gasolina",
+                "temperatura_maxima": "90",
+                "espesores_aislacion": [
+                  {
+                    "seccion": "2,08 a 3,31",
+                    "espesor": "0,38"
+                  },
+                  {
+                    "seccion": "5,26",
+                    "espesor": "0,51"
+                  },
+                  {
+                    "seccion": "8,37 a 13,3",
+                    "espesor": "0,76"
+                  },
+                  {
+                    "seccion": "21,2 a 33,6",
+                    "espesor": "1,02"
+                  },
+                  {
+                    "seccion": "42,4 a ,107",
+                    "espesor": "1,27"
+                  },
+                  {
+                    "seccion": "126,7 a 253",
+                    "espesor": "1,52"
+                  },
+                  {
+                    "seccion": "304 a 506",
+                    "espesor": "1,78"
+                  }
+                ],
+                "tension_servicio": "600",
+                "chaqueta_exterior": "Nylon"
+              },
+              {
+                "caracteristicas": "Conductor cableado, mono o multipolar. Aislación y chaqueta de etil vinil acetato",
+                "identificacion": "EVA",
+                "condiciones_uso": "En interiores, tuberías, bandejas, escalerillas, muy retardante a la llama, autoextinguente, se quema sin emitir gases tóxicos ni corrosivos, libre de materias halógenas. Indicado para uso en ambientes de trabajo cerrados como minas o túneles, o lugares de reunión de personas",
+                "temperatura_maxima": "90",
+                "espesores_aislacion": [
+                  {
+                    "seccion": "1,5 a 2,5",
+                    "espesor": "0,8"
+                  },
+                  {
+                    "seccion": "4 a 16",
+                    "espesor": "1,0"
+                  },
+                  {
+                    "seccion": "25 a 35",
+                    "espesor": "1,2"
+                  },
+                  {
+                    "seccion": "50 a 70",
+                    "espesor": "1,4"
+                  },
+                  {
+                    "seccion": "95 a 120",
+                    "espesor": "1,6"
+                  },
+                  {
+                    "seccion": "150",
+                    "espesor": "1,8"
+                  },
+                  {
+                    "seccion": "185",
+                    "espesor": "2,0"
+                  },
+                  {
+                    "seccion": "240",
+                    "espesor": "2,2"
+                  },
+                  {
+                    "seccion": "300",
+                    "espesor": "2,4"
+                  },
+                  {
+                    "seccion": "400",
+                    "espesor": "2,6"
+                  },
+                  {
+                    "seccion": "500 a 630",
+                    "espesor": "2,8"
+                  }
+                ],
+                "tension_servicio": "1000",
+                "chaqueta_exterior": "EVA"
+              },
+              {
+                "caracteristicas": "Conductor cableado o alambre, aislación de Polietileno",
+                "identificacion": "PW",
+                "condiciones_uso": "Líneas aéreas a la intemperie",
+                "temperatura_maxima": "75",
+                "espesores_aislacion": [
+                  {
+                    "seccion": "8,37 a 21,2",
+                    "espesor": "0,76"
+                  },
+                  {
+                    "seccion": "33,6 a 42,4",
+                    "espesor": "1,14"
+                  },
+                  {
+                    "seccion": "53,5 a 107",
+                    "espesor": "1,52"
+                  }
+                ],
+                "tension_servicio": "600",
+                "chaqueta_exterior": "No tiene"
+              },
+              {
+                "caracteristicas": "Conductor unipolar, cableado, aislación Polietileno reticulado chaqueta PVC",
+                "identificacion": "TTU",
+                "condiciones_uso": "Instalaciones aéreas o subterráneas, en ducto o directamente en tierra o bajo agua, interiores canalizados en ductos, bandejas, o escalerillas. Ambiente secos, húmedos o mojados.",
+                "temperatura_maxima": "75",
+                "espesores_aislacion": [
+                  {
+                    "seccion": "8,37 a 33,6",
+                    "espesor": "1,14"
+                  },
+                  {
+                    "seccion": "42,4 a 107",
+                    "espesor": "1,40"
+                  },
+                  {
+                    "seccion": "126,7 a 253,4",
+                    "espesor": "1,65"
+                  },
+                  {
+                    "seccion": "380 a 506,7",
+                    "espesor": "2,03"
+                  }
+                ],
+                "tension_servicio": "600",
+                "chaqueta_exterior": "PVC"
+              },
+              {
+                "caracteristicas": "Conductor multipolar, (2,3 o 4 conductores por cable) aislación PVC, chaqueta PVC",
+                "identificacion": "TTMU",
+                "condiciones_uso": "Instalaciones aéreas o subterráneas, en ducto o directamente en tierra o bajo agua, interiores canalizados en ductos, bandejas, o escalerillas. Ambiente secos, húmedos o mojados.",
+                "temperatura_maxima": "75",
+                "espesores_aislacion": [
+                  {
+                    "seccion": "2,08 a 5,26",
+                    "espesor": "1,14"
+                  },
+                  {
+                    "seccion": "8,37 a 33,6",
+                    "espesor": "1,52"
+                  },
+                  {
+                    "seccion": "42,4 a 107",
+                    "espesor": "2,03"
+                  },
+                  {
+                    "seccion": "126,7 a 253,4",
+                    "espesor": "2,79"
+                  }
+                ],
+                "tension_servicio": "600",
+                "chaqueta_exterior": "PVC"
+              },
+              {
+                "caracteristicas": "Conductor unipolar, cableado, aislación Polietileno reticulado chaqueta PVC",
+                "identificacion": "XTU",
+                "condiciones_uso": "Instalaciones aéreas o subterráneas, en ducto o directamente en tierra o bajo agua, interiores canalizados en ductos, bandejas, o escalerillas. Ambiente secos, húmedos o mojados.",
+                "temperatura_maxima": "90",
+                "espesores_aislacion": [
+                  {
+                    "seccion": "2,08 a 5,26",
+                    "espesor": "0,76"
+                  },
+                  {
+                    "seccion": "8,37 a 33,6",
+                    "espesor": "1,14"
+                  },
+                  {
+                    "seccion": "42,4 a 107",
+                    "espesor": "1,40"
+                  },
+                  {
+                    "seccion": "126,7 a 253,4",
+                    "espesor": "1,65"
+                  },
+                  {
+                    "seccion": "380 a 506,7",
+                    "espesor": "2,03"
+                  }
+                ],
+                "tension_servicio": "600",
+                "chaqueta_exterior": "PVC"
+              },
+              {
+                "caracteristicas": "Conductor multipolar, (2,3 o 4 conductores por cable) aislación Polietileno reticulado, chaqueta PVC",
+                "identificacion": "XTMU",
+                "condiciones_uso": "Instalaciones aéreas o subterráneas, en ducto o directamente en tierra o bajo agua, interiores canalizados en ductos, bandejas, o escalerillas. Ambiente secos, húmedos o mojados.",
+                "temperatura_maxima": "90",
+                "espesores_aislacion": [
+                  {
+                    "seccion": "2,08 a 5,26",
+                    "espesor": "1,14"
+                  },
+                  {
+                    "seccion": "8,37 a 33,6",
+                    "espesor": "1,52"
+                  },
+                  {
+                    "seccion": "42,4 a 107",
+                    "espesor": "2,03"
+                  },
+                  {
+                    "seccion": "126,7 a 253,4",
+                    "espesor": "2,79"
+                  }
+                ],
+                "tension_servicio": "600",
+                "chaqueta_exterior": "PVC"
+              },
+              {
+                "caracteristicas": "Conductor monopolar; alambre o cableado. Aislación polietileno chaqueta PVC",
+                "identificacion": "PT",
+                "condiciones_uso": "Instalaciones aéreas o subterráneas, en ducto o directamente en tierra o bajo agua, interiores canalizados en ductos, bandejas, o escalerillas. Ambiente secos, húmedos o mojados.",
+                "temperatura_maxima": "75",
+                "espesores_aislacion": [
+                  {
+                    "seccion": "8,37 a 33,6",
+                    "espesor": "1,14"
+                  },
+                  {
+                    "seccion": "42,4 a 107",
+                    "espesor": "1,40"
+                  },
+                  {
+                    "seccion": "126,7 a 253,4",
+                    "espesor": "1,65"
+                  },
+                  {
+                    "seccion": "380 a 506,7",
+                    "espesor": "2,03"
+                  }
+                ],
+                "tension_servicio": "600",
+                "chaqueta_exterior": "PVC"
+              },
+              {
+                "caracteristicas": "Conductor monopolar; alambre o cableado. Aislación etileno propileno chaqueta neopreno",
+                "identificacion": "USE-RHH",
+                "condiciones_uso": "Instalaciones aéreas o subterráneas, en ducto o directamente en tierra o bajo agua, interiores canalizados en ductos, bandejas, o escalerillas. Ambiente secos, húmedos o mojados.",
+                "temperatura_maxima": "90",
+                "espesores_aislacion": [
+                  {
+                    "seccion": "3,31 a 5,26",
+                    "espesor": "0,76"
+                  },
+                  {
+                    "seccion": "8,37 a 33,6",
+                    "espesor": "1,14"
+                  },
+                  {
+                    "seccion": "42,4 a 107",
+                    "espesor": "1,40"
+                  },
+                  {
+                    "seccion": "126,7 a 253,4",
+                    "espesor": "1,65"
+                  },
+                  {
+                    "seccion": "380 a 506,7",
+                    "espesor": "2,03"
+                  }
+                ],
+                "tension_servicio": "600",
+                "chaqueta_exterior": "Neopreno"
+              },
+              {
+                "caracteristicas": "Conductor tripolar; alambre o cableado. Aislación etileno propileno chaqueta neopreno",
+                "identificacion": "USE-RHHM",
+                "condiciones_uso": "Instalaciones aéreas o subterráneas, en ducto o directamente en tierra o bajo agua, interiores canalizados en ductos, bandejas, o escalerillas. Ambiente secos, húmedos o mojados.",
+                "temperatura_maxima": "90",
+                "espesores_aislacion": [
+                  {
+                    "seccion": "3,31 a 5,26",
+                    "espesor": "0,76"
+                  },
+                  {
+                    "seccion": "8,37 a 33,6",
+                    "espesor": "1,14"
+                  },
+                  {
+                    "seccion": "42,4 a 107",
+                    "espesor": "1,40"
+                  },
+                  {
+                    "seccion": "126,7 a 253,4",
+                    "espesor": "1,65"
+                  },
+                  {
+                    "seccion": "380 a 506,7",
+                    "espesor": "2,03"
+                  }
+                ],
+                "tension_servicio": "600",
+                "chaqueta_exterior": "Neopreno"
+              },
+              {
+                "caracteristicas": "Conductor monopolar; alambre o cableado. Aislación etileno propileno chaqueta PVC",
+                "identificacion": "ET",
+                "condiciones_uso": "Instalaciones aéreas o subterráneas, en ducto o directamente en tierra o bajo agua, interiores canalizados en ductos, bandejas, o escalerillas. Ambiente secos, húmedos o mojados.",
+                "temperatura_maxima": "90",
+                "espesores_aislacion": [
+                  {
+                    "seccion": "3,31 a 5,26",
+                    "espesor": "0,76"
+                  },
+                  {
+                    "seccion": "8,37 a 33,6",
+                    "espesor": "1,14"
+                  },
+                  {
+                    "seccion": "42,4 a 107",
+                    "espesor": "1,40"
+                  },
+                  {
+                    "seccion": "126,7 a 253,4",
+                    "espesor": "1,65"
+                  },
+                  {
+                    "seccion": "380 a 506,7",
+                    "espesor": "2,03"
+                  }
+                ],
+                "tension_servicio": "600",
+                "chaqueta_exterior": "PVC"
+              },
+              {
+                "caracteristicas": "Conductor monopolar; alambre o cableado. Aislación etileno propileno chaqueta neopreno",
+                "identificacion": "EN",
+                "condiciones_uso": "Instalaciones aéreas o subterráneas, en ducto o directamente en tierra o bajo agua, interiores canalizados en ductos, bandejas, o escalerillas. Ambiente secos, húmedos o mojados.",
+                "temperatura_maxima": "90",
+                "espesores_aislacion": [
+                  {
+                    "seccion": "3,31 a 5,26",
+                    "espesor": "0,76"
+                  },
+                  {
+                    "seccion": "8,37 a 33,6",
+                    "espesor": "1,14"
+                  },
+                  {
+                    "seccion": "42,4 a 107",
+                    "espesor": "1,40"
+                  },
+                  {
+                    "seccion": "126,7 a 253,4",
+                    "espesor": "1,65"
+                  },
+                  {
+                    "seccion": "380 a 506,7",
+                    "espesor": "2,03"
+                  }
+                ],
+                "tension_servicio": "600",
+                "chaqueta_exterior": "Neopreno"
+              }
+            ]
+          },
+          "tabla_8.7": {
+            "numero": "Tabla Nº 8.7",
+            "titulo": "Intensidad de Corriente Admisible para Conductores Aislados Fabricados según Normas Europeas. Secciones Milimétricas. Temperatura de Servicio: 70º C; Temperatura Ambiente: 30º C.",
+            "encabezados": [
+              "Sección nominal [mm2]",
+              "Corriente admisible Amperes [A] - Grupo 1",
+              "Corriente admisible Amperes [A] - Grupo 2",
+              "Corriente admisible Amperes [A] - Grupo 3"
+            ],
+            "datos": [
+              {
+                "seccion": "0,75",
+                "grupo_1": "-",
+                "grupo_2": "12",
+                "grupo_3": "15"
+              },
+              {
+                "seccion": "1",
+                "grupo_1": "11",
+                "grupo_2": "15",
+                "grupo_3": "19"
+              },
+              {
+                "seccion": "1,5",
+                "grupo_1": "15",
+                "grupo_2": "19",
+                "grupo_3": "23"
+              },
+              {
+                "seccion": "2,5",
+                "grupo_1": "20",
+                "grupo_2": "25",
+                "grupo_3": "32"
+              },
+              {
+                "seccion": "4",
+                "grupo_1": "25",
+                "grupo_2": "34",
+                "grupo_3": "42"
+              },
+              {
+                "seccion": "6",
+                "grupo_1": "33",
+                "grupo_2": "44",
+                "grupo_3": "54"
+              },
+              {
+                "seccion": "10",
+                "grupo_1": "45",
+                "grupo_2": "61",
+                "grupo_3": "73"
+              },
+              {
+                "seccion": "16",
+                "grupo_1": "61",
+                "grupo_2": "82",
+                "grupo_3": "98"
+              },
+              {
+                "seccion": "25",
+                "grupo_1": "83",
+                "grupo_2": "108",
+                "grupo_3": "129"
+              },
+              {
+                "seccion": "35",
+                "grupo_1": "103",
+                "grupo_2": "134",
+                "grupo_3": "158"
+              },
+              {
+                "seccion": "50",
+                "grupo_1": "132",
+                "grupo_2": "167",
+                "grupo_3": "197"
+              },
+              {
+                "seccion": "70",
+                "grupo_1": "164",
+                "grupo_2": "207",
+                "grupo_3": "244"
+              },
+              {
+                "seccion": "95",
+                "grupo_1": "197",
+                "grupo_2": "249",
+                "grupo_3": "291"
+              },
+              {
+                "seccion": "120",
+                "grupo_1": "235",
+                "grupo_2": "291",
+                "grupo_3": "343"
+              },
+              {
+                "seccion": "150",
+                "grupo_1": "-",
+                "grupo_2": "327",
+                "grupo_3": "382"
+              },
+              {
+                "seccion": "185",
+                "grupo_1": "-",
+                "grupo_2": "374",
+                "grupo_3": "436"
+              },
+              {
+                "seccion": "240",
+                "grupo_1": "-",
+                "grupo_2": "442",
+                "grupo_3": "516"
+              },
+              {
+                "seccion": "300",
+                "grupo_1": "-",
+                "grupo_2": "510",
+                "grupo_3": "595"
+              },
+              {
+                "seccion": "400",
+                "grupo_1": "-",
+                "grupo_2": "-",
+                "grupo_3": "708"
+              },
+              {
+                "seccion": "500",
+                "grupo_1": "-",
+                "grupo_2": "-",
+                "grupo_3": "809"
+              }
+            ],
+            "notas": [
+              "Grupo 1: Conductores monopolares en tuberías.",
+              "Grupo 2: Conductores multipolares con cubierta común; cables planos, cables móviles, portátiles y similares.",
+              "Grupo 3: Conductores monopolares tendidos libremente al aire con un espacio mínimo entre ellos igual al diámetro del conductor."
+            ]
+          },
+          "tabla_8.7a": {
+            "numero": "Tabla Nº 8.7a",
+            "titulo": "Intensidad de Corriente Admisible para Conductores Aislados Fabricados según Normas Norteamericanas. Secciones AWG. Temperatura Ambiente de: 30º C.",
+            "encabezados": [
+              "Sección [mm2]",
+              "Temperatura de servicio 60ºC - Tipos TW, UF - Grupo A",
+              "Temperatura de servicio 60ºC - Tipos TW, UF - Grupo B",
+              "Temperatura de servicio 75ºC - Tipos THW, THWN, TTU, TTMU, PT, PW - Grupo A",
+              "Temperatura de servicio 75ºC - Tipos THW, THWN, TTU, TTMU, PT, PW - Grupo B",
+              "Temperatura de servicio 90ºC - Tipos THHN,XTU, XTMU, EVA, USE-RHH, USE-RHHM, ET, EN - Grupo A",
+              "Temperatura de servicio 90ºC - Tipos THHN,XTU, XTMU, EVA, USE-RHH, USE-RHHM, ET, EN - Grupo B"
+            ],
+            "datos": [
+              {
+                "seccion": "2,08",
+                "t60_A": "20",
+                "t60_B": "25",
+                "t75_A": "20",
+                "t75_B": "30",
+                "t90_A": "25",
+                "t90_B": "35"
+              },
+              {
+                "seccion": "3,31",
+                "t60_A": "25",
+                "t60_B": "30",
+                "t75_A": "25",
+                "t75_B": "35",
+                "t90_A": "30",
+                "t90_B": "40"
+              },
+              {
+                "seccion": "5,26",
+                "t60_A": "30",
+                "t60_B": "40",
+                "t75_A": "35",
+                "t75_B": "50",
+                "t90_A": "40",
+                "t90_B": "55"
+              },
+              {
+                "seccion": "8,37",
+                "t60_A": "40",
+                "t60_B": "60",
+                "t75_A": "50",
+                "t75_B": "70",
+                "t90_A": "55",
+                "t90_B": "80"
+              },
+              {
+                "seccion": "13,3",
+                "t60_A": "55",
+                "t60_B": "80",
+                "t75_A": "65",
+                "t75_B": "95",
+                "t90_A": "75",
+                "t90_B": "105"
+              },
+              {
+                "seccion": "21,2",
+                "t60_A": "70",
+                "t60_B": "105",
+                "t75_A": "85",
+                "t75_B": "125",
+                "t90_A": "95",
+                "t90_B": "140"
+              },
+              {
+                "seccion": "26,7",
+                "t60_A": "85",
+                "t60_B": "120",
+                "t75_A": "100",
+                "t75_B": "145",
+                "t90_A": "110",
+                "t90_B": "165"
+              },
+              {
+                "seccion": "33,6",
+                "t60_A": "95",
+                "t60_B": "140",
+                "t75_A": "115",
+                "t75_B": "170",
+                "t90_A": "130",
+                "t90_B": "190"
+              },
+              {
+                "seccion": "42,4",
+                "t60_A": "110",
+                "t60_B": "165",
+                "t75_A": "130",
+                "t75_B": "195",
+                "t90_A": "150",
+                "t90_B": "220"
+              },
+              {
+                "seccion": "53,5",
+                "t60_A": "125",
+                "t60_B": "195",
+                "t75_A": "150",
+                "t75_B": "230",
+                "t90_A": "170",
+                "t90_B": "260"
+              },
+              {
+                "seccion": "67,4",
+                "t60_A": "145",
+                "t60_B": "225",
+                "t75_A": "175",
+                "t75_B": "265",
+                "t90_A": "195",
+                "t90_B": "300"
+              },
+              {
+                "seccion": "85",
+                "t60_A": "165",
+                "t60_B": "260",
+                "t75_A": "200",
+                "t75_B": "310",
+                "t90_A": "225",
+                "t90_B": "350"
+              },
+              {
+                "seccion": "107,2",
+                "t60_A": "195",
+                "t60_B": "300",
+                "t75_A": "230",
+                "t75_B": "360",
+                "t90_A": "260",
+                "t90_B": "405"
+              },
+              {
+                "seccion": "126,7",
+                "t60_A": "215",
+                "t60_B": "340",
+                "t75_A": "255",
+                "t75_B": "405",
+                "t90_A": "290",
+                "t90_B": "455"
+              },
+              {
+                "seccion": "151,8",
+                "t60_A": "240",
+                "t60_B": "375",
+                "t75_A": "285",
+                "t75_B": "445",
+                "t90_A": "320",
+                "t90_B": "505"
+              },
+              {
+                "seccion": "177,3",
+                "t60_A": "250",
+                "t60_B": "420",
+                "t75_A": "310",
+                "t75_B": "505",
+                "t90_A": "350",
+                "t90_B": "570"
+              },
+              {
+                "seccion": "202,7",
+                "t60_A": "280",
+                "t60_B": "455",
+                "t75_A": "335",
+                "t75_B": "545",
+                "t90_A": "380",
+                "t90_B": "615"
+              },
+              {
+                "seccion": "253,2",
+                "t60_A": "320",
+                "t60_B": "515",
+                "t75_A": "380",
+                "t75_B": "620",
+                "t90_A": "430",
+                "t90_B": "700"
+              },
+              {
+                "seccion": "303,6",
+                "t60_A": "355",
+                "t60_B": "575",
+                "t75_A": "420",
+                "t75_B": "690",
+                "t90_A": "475",
+                "t90_B": "780"
+              },
+              {
+                "seccion": "354,7",
+                "t60_A": "385",
+                "t60_B": "630",
+                "t75_A": "460",
+                "t75_B": "755",
+                "t90_A": "520",
+                "t90_B": "855"
+              },
+              {
+                "seccion": "379,5",
+                "t60_A": "400",
+                "t60_B": "655",
+                "t75_A": "475",
+                "t75_B": "785",
+                "t90_A": "535",
+                "t90_B": "885"
+              },
+              {
+                "seccion": "405,4",
+                "t60_A": "410",
+                "t60_B": "680",
+                "t75_A": "490",
+                "t75_B": "815",
+                "t90_A": "555",
+                "t90_B": "920"
+              },
+              {
+                "seccion": "456,0",
+                "t60_A": "435",
+                "t60_B": "730",
+                "t75_A": "520",
+                "t75_B": "870",
+                "t90_A": "585",
+                "t90_B": "985"
+              },
+              {
+                "seccion": "506,7",
+                "t60_A": "455",
+                "t60_B": "780",
+                "t75_A": "545",
+                "t75_B": "935",
+                "t90_A": "615",
+                "t90_B": "1055"
+              },
+              {
+                "seccion": "633,4",
+                "t60_A": "495",
+                "t60_B": "890",
+                "t75_A": "590",
+                "t75_B": "1065",
+                "t90_A": "665",
+                "t90_B": "1200"
+              },
+              {
+                "seccion": "750,1",
+                "t60_A": "520",
+                "t60_B": "980",
+                "t75_A": "625",
+                "t75_B": "1175",
+                "t90_A": "705",
+                "t90_B": "1325"
+              },
+              {
+                "seccion": "886,7",
+                "t60_A": "545",
+                "t60_B": "1070",
+                "t75_A": "650",
+                "t75_B": "1280",
+                "t90_A": "735",
+                "t90_B": "1455"
+              },
+              {
+                "seccion": "1.013",
+                "t60_A": "560",
+                "t60_B": "1155",
+                "t75_A": "665",
+                "t75_B": "1385",
+                "t90_A": "750",
+                "t90_B": "1560"
+              }
+            ],
+            "notas": [
+              "Grupo A.- Hasta tres conductores en ducto, en cable o directamente enterrados.",
+              "Grupo B.- Conductor simple al aire libre. Para aplicar esta capacidad, en caso de conductores que corran paralelamente, debe existir entre ellos una separación mínima equivalente a un diámetro del conductor.",
+              "No obstante lo indicado en la tabla, las protecciones de cortocircuito de los conductores de 2,08 mm2, 3,31 mm2 y 5,26 mm2, no deberán exceder de 16, 20 y 32 A, respectivamente"
+            ]
+          },
+          "tabla_8.8": {
+            "numero": "Tabla Nº 8.8",
+            "titulo": "Factor de Corrección de Capacidad de Transporte de Corriente por Cantidad de Conductores en Tubería.",
+            "encabezados": [
+              "Cantidad de conductores",
+              "Factor de corrección fn"
+            ],
+            "datos": [
+              {
+                "cantidad": "4 a 6",
+                "factor": "0,8"
+              },
+              {
+                "cantidad": "7 a 24",
+                "factor": "0,7"
+              },
+              {
+                "cantidad": "25 a 42",
+                "factor": "0,6"
+              },
+              {
+                "cantidad": "sobre 42",
+                "factor": "0,5"
+              }
+            ]
+          },
+          "tabla_8.9": {
+            "numero": "Tabla Nº 8.9",
+            "titulo": "Factor de Corrección de la Capacidad de Transporte de Corriente por Variación de Temperatura Ambiente. Secciones Métricas.",
+            "encabezados": [
+              "Temperatura ambiente [ºC]",
+              "Factor de corrección ft"
+            ],
+            "datos": [
+              {
+                "temperatura": "10",
+                "factor": "1,22"
+              },
+              {
+                "temperatura": "15",
+                "factor": "1,17"
+              },
+              {
+                "temperatura": "20",
+                "factor": "1,12"
+              },
+              {
+                "temperatura": "25",
+                "factor": "1,07"
+              },
+              {
+                "temperatura": "30",
+                "factor": "1,00"
+              },
+              {
+                "temperatura": "35",
+                "factor": "0,93"
+              },
+              {
+                "temperatura": "40",
+                "factor": "0,87"
+              },
+              {
+                "temperatura": "45",
+                "factor": "0,79"
+              },
+              {
+                "temperatura": "50",
+                "factor": "0,71"
+              },
+              {
+                "temperatura": "55",
+                "factor": "0,61"
+              },
+              {
+                "temperatura": "60",
+                "factor": "0,50"
+              },
+              {
+                "temperatura": "65",
+                "factor": "-"
+              }
+            ]
+          },
+          "tabla_8.9a": {
+            "numero": "Tabla Nº 8.9a",
+            "titulo": "Factor de Corrección de la Capacidad de Transporte de Corriente por Variación de Temperatura Ambiente. Secciones AWG",
+            "encabezados": [
+              "Temperatura ambiente [ºC]",
+              "Factor de corrección ft - Temperatura de servicio del conductor 60ºC",
+              "Factor de corrección ft - Temperatura de servicio del conductor 75ºC",
+              "Factor de corrección ft - Temperatura de servicio del conductor 90ºC"
+            ],
+            "datos": [
+              {
+                "temperatura": "21-25",
+                "t60": "1,08",
+                "t75": "1,05",
+                "t90": "1,04"
+              },
+              {
+                "temperatura": "26-30",
+                "t60": "1,00",
+                "t75": "1,00",
+                "t90": "1,00"
+              },
+              {
+                "temperatura": "31-35",
+                "t60": "0,91",
+                "t75": "0,94",
+                "t90": "0,96"
+              },
+              {
+                "temperatura": "36-40",
+                "t60": "0,82",
+                "t75": "0,88",
+                "t90": "0,91"
+              },
+              {
+                "temperatura": "41-45",
+                "t60": "0,71",
+                "t75": "0,82",
+                "t90": "0,87"
+              },
+              {
+                "temperatura": "46-50",
+                "t60": "0,58",
+                "t75": "0,75",
+                "t90": "0,82"
+              },
+              {
+                "temperatura": "51-55",
+                "t60": "0,41",
+                "t75": "0,67",
+                "t90": "0,76"
+              },
+              {
+                "temperatura": "56-60",
+                "t60": "-",
+                "t75": "0,58",
+                "t90": "0,71"
+              },
+              {
+                "temperatura": "61-70",
+                "t60": "-",
+                "t75": "0,33",
+                "t90": "0,58"
+              },
+              {
+                "temperatura": "71-80",
+                "t60": "-",
+                "t75": "-",
+                "t90": "0,41"
+              }
+            ]
+          },
+          "tabla_8.10": {
+            "numero": "Tabla Nº 8.10",
+            "titulo": "Dimensiones de Conductores con Aislación Termoplástica",
+            "nota_importante": "Los diámetros y secciones indicadas corresponden al conductor mas su aislación; los valores mostrados en la tabla son referenciales, no constituyen norma de fabricación.",
+            "encabezados": [
+              "Sección nominal [mm2]",
+              "NYA - Ø ext aprox. [mm]",
+              "NYA - Sección aprox. [mm2]",
+              "NSYA - Ø ext aprox. [mm]",
+              "NSYA - Sección aprox. [mm2]",
+              "THW - Ø ext aprox. [mm]",
+              "THW - Sección aprox. [mm2]",
+              "THHN - Ø ext aprox. [mm]",
+              "THHN - Sección aprox. [mm2]",
+              "TTU - Ø ext aprox. [mm]",
+              "TTU - Sección aprox. [mm2]"
+            ],
+            "datos": [
+              {
+                "seccion": "1",
+                "nya_d": "2,40",
+                "nya_s": "4,52",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "",
+                "thw_s": "",
+                "thhn_d": "",
+                "thhn_s": "",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "1,5",
+                "nya_d": "2,60",
+                "nya_s": "5,31",
+                "nsya_d": "3,45",
+                "nsya_s": "9,35",
+                "thw_d": "",
+                "thw_s": "",
+                "thhn_d": "",
+                "thhn_s": "",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "2,08",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "4,28",
+                "thw_s": "14,39",
+                "thhn_d": "2,9",
+                "thhn_s": "6,61",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "2,5",
+                "nya_d": "3,20",
+                "nya_s": "8,04",
+                "nsya_d": "3,85",
+                "nsya_s": "11,65",
+                "thw_d": "",
+                "thw_s": "",
+                "thhn_d": "",
+                "thhn_s": "",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "3,31",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "4,76",
+                "thw_s": "17,80",
+                "thhn_d": "3,4",
+                "thhn_s": "9,08",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "4",
+                "nya_d": "3,90",
+                "nya_s": "11,95",
+                "nsya_d": "4,35",
+                "nsya_s": "14,87",
+                "thw_d": "",
+                "thw_s": "",
+                "thhn_d": "",
+                "thhn_s": "",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "5,26",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "5,38",
+                "thw_s": "22,73",
+                "thhn_d": "4,2",
+                "thhn_s": "13,85",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "6",
+                "nya_d": "4,40",
+                "nya_s": "15,21",
+                "nsya_d": "4,85",
+                "nsya_s": "18,48",
+                "thw_d": "",
+                "thw_s": "",
+                "thhn_d": "",
+                "thhn_s": "",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "8,37",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "6,95",
+                "thw_s": "38,05",
+                "thhn_d": "5,6",
+                "thhn_s": "24,63",
+                "ttu_d": "6,5",
+                "ttu_s": "33,18"
+              },
+              {
+                "seccion": "10",
+                "nya_d": "5,60",
+                "nya_s": "24,63",
+                "nsya_d": "6,05",
+                "nsya_s": "28,75",
+                "thw_d": "",
+                "thw_s": "",
+                "thhn_d": "",
+                "thhn_s": "",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "13,3",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "7,91",
+                "thw_s": "42,27",
+                "thhn_d": "6,3",
+                "thhn_s": "31,17",
+                "ttu_d": "8,6",
+                "ttu_s": "50,09"
+              },
+              {
+                "seccion": "16",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "7,6",
+                "nsya_s": "45,36",
+                "thw_d": "",
+                "thw_s": "",
+                "thhn_d": "",
+                "thhn_s": "",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "21,2",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "9,13",
+                "thw_s": "65,61",
+                "thhn_d": "8,1",
+                "thhn_s": "51,53",
+                "ttu_d": "9,8",
+                "ttu_s": "75,43"
+              },
+              {
+                "seccion": "25",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "9,3",
+                "nsya_s": "67,92",
+                "thw_d": "",
+                "thw_s": "",
+                "thhn_d": "",
+                "thhn_s": "",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "26,7",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "9,86",
+                "thw_s": "76,36",
+                "thhn_d": "8,8",
+                "thhn_s": "60,82",
+                "ttu_d": "10,5",
+                "ttu_s": "88,24"
+              },
+              {
+                "seccion": "33,6",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "10,70",
+                "thw_s": "89,92",
+                "thhn_d": "9,8",
+                "thhn_s": "75,43",
+                "ttu_d": "11,4",
+                "ttu_s": "102,07"
+              },
+              {
+                "seccion": "35",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "10,5",
+                "nsya_s": "86,59",
+                "thw_d": "",
+                "thw_s": "",
+                "thhn_d": "",
+                "thhn_s": "",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "42,4",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "12,52",
+                "thw_s": "123,11",
+                "thhn_d": "11,4",
+                "thhn_s": "102,07",
+                "ttu_d": "13,7",
+                "ttu_s": "147,41"
+              },
+              {
+                "seccion": "50",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "12,4",
+                "nsya_s": "120,79",
+                "thw_d": "",
+                "thw_s": "",
+                "thhn_d": "",
+                "thhn_s": "",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "53,5",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "13,54",
+                "thw_s": "143,99",
+                "thhn_d": "12,4",
+                "thhn_s": "120,76",
+                "ttu_d": "14,7",
+                "ttu_s": "169,72"
+              },
+              {
+                "seccion": "67,4",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "14,91",
+                "thw_s": "174,84",
+                "thhn_d": "13,6",
+                "thhn_s": "143,14",
+                "ttu_d": "15,9",
+                "ttu_s": "198,56"
+              },
+              {
+                "seccion": "70",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "14,1",
+                "nsya_s": "156,14",
+                "thw_d": "",
+                "thw_s": "",
+                "thhn_d": "",
+                "thhn_s": "",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "85",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "16,02",
+                "thw_s": "201,57",
+                "thhn_d": "14,8",
+                "thhn_s": "172,03",
+                "ttu_d": "17,2",
+                "ttu_s": "232,35"
+              },
+              {
+                "seccion": "95",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "16,3",
+                "nsya_s": "208,67",
+                "thw_d": "",
+                "thw_s": "",
+                "thhn_d": "",
+                "thhn_s": "",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "107,2",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "17,48",
+                "thw_s": "239,98",
+                "thhn_d": "16,4",
+                "thhn_s": "211,24",
+                "ttu_d": "18,7",
+                "ttu_s": "274,65"
+              },
+              {
+                "seccion": "120",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "18,0",
+                "nsya_s": "254,46",
+                "thw_d": "",
+                "thw_s": "",
+                "thhn_d": "",
+                "thhn_s": "",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "126,7",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "19,50",
+                "thw_s": "298,85",
+                "thhn_d": "18,1",
+                "thhn_s": "257,31",
+                "ttu_d": "21,4",
+                "ttu_s": "359,69"
+              },
+              {
+                "seccion": "150",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "21,0",
+                "nsya_s": "346,36",
+                "thw_d": "",
+                "thw_s": "",
+                "thhn_d": "",
+                "thhn_s": "",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "152",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "20,91",
+                "thw_s": "343,40",
+                "thhn_d": "19,5",
+                "thhn_s": "298,65",
+                "ttu_d": "22,8",
+                "ttu_s": "408,28"
+              },
+              {
+                "seccion": "177,3",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "22,20",
+                "thw_s": "387,08",
+                "thhn_d": "20,6",
+                "thhn_s": "333,29",
+                "ttu_d": "24,1",
+                "ttu_s": "450,08"
+              },
+              {
+                "seccion": "185",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "22,2",
+                "nsya_s": "387,07",
+                "thw_d": "",
+                "thw_s": "",
+                "thhn_d": "",
+                "thhn_s": "",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "202,7",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "23,40",
+                "thw_s": "420,05",
+                "thhn_d": "21,9",
+                "thhn_s": "376,79",
+                "ttu_d": "25,2",
+                "ttu_s": "502,73"
+              },
+              {
+                "seccion": "240",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "25,1",
+                "nsya_s": "494,80",
+                "thw_d": "",
+                "thw_s": "",
+                "thhn_d": "",
+                "thhn_s": "",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "253",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "25,56",
+                "thw_s": "513,11",
+                "thhn_d": "24,9",
+                "thhn_s": "486,96",
+                "ttu_d": "27,5",
+                "ttu_s": "593,96"
+              },
+              {
+                "seccion": "300",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "29,0",
+                "nsya_s": "660,52",
+                "thw_d": "",
+                "thw_s": "",
+                "thhn_d": "",
+                "thhn_s": "",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "304",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "28,38",
+                "thw_s": "632,58",
+                "thhn_d": "26,5",
+                "thhn_s": "551,55",
+                "ttu_d": "30,3",
+                "ttu_s": "720,93"
+              },
+              {
+                "seccion": "380",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "31,05",
+                "thw_s": "757,21",
+                "thhn_d": "29,1",
+                "thhn_s": "665,09",
+                "ttu_d": "33,0",
+                "ttu_s": "855,30"
+              },
+              {
+                "seccion": "400",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "31,7",
+                "nsya_s": "789,24",
+                "thw_d": "",
+                "thw_s": "",
+                "thhn_d": "",
+                "thhn_s": "",
+                "ttu_d": "",
+                "ttu_s": ""
+              },
+              {
+                "seccion": "506,7",
+                "nya_d": "",
+                "nya_s": "",
+                "nsya_d": "",
+                "nsya_s": "",
+                "thw_d": "34,96",
+                "thw_s": "959,92",
+                "thhn_d": "33.0",
+                "thhn_s": "855,30",
+                "ttu_d": "36,9",
+                "ttu_s": "1069,2"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "seccion_8.2_sistemas_de_canalizacion": {
+    "numero": "8.2",
+    "titulo": "SISTEMAS DE CANALIZACIÓN",
+    "subsecciones": {
+      "8.2.0_sistemas_aceptados": {
+        "numero": "8.2.0",
+        "texto": "Los sistemas de canalización eléctrica aceptados en el ámbito de aplicación de esta Norma son los siguientes:",
+        "sistemas": [
+          {
+            "numero": "8.2.0.1",
+            "tipo": "Cables de aislación mineral"
+          },
+          {
+            "numero": "8.2.0.2",
+            "tipo": "Conductores sobre aisladores",
+            "subtipos": [
+              "Conductores desnudos sobre aisladores",
+              "Conductores aislados sobre aisladores"
+            ]
+          },
+          {
+            "numero": "8.2.0.3",
+            "tipo": "Cables planos"
+          },
+          {
+            "numero": "8.2.0.4",
+            "tipo": "Cables sobre soportes"
+          },
+          {
+            "numero": "8.2.0.5",
+            "tipo": "Conductores en tuberías",
+            "subtipos": [
+              "Conductores en tuberías metálicas",
+              "Conductores en tuberías metálicas flexibles",
+              "Conductores en tuberías no metálicas",
+              "Conductores en tuberías no metálicas flexibles"
+            ]
+          },
+          {
+            "numero": "8.2.0.6",
+            "tipo": "Conductores en molduras y bandejas portaconductores no metálicas para uso doméstico o similar"
+          },
+          {
+            "numero": "8.2.0.7",
+            "tipo": "Conductores en Pilares de servicio"
+          },
+          {
+            "numero": "8.2.0.8",
+            "tipo": "Conductores en Canalizaciones subterráneas"
+          },
+          {
+            "numero": "8.2.0.9",
+            "tipo": "Conductores en bandejas portaconductores",
+            "subtipos": [
+              "Conductores en bandejas metálicas",
+              "Conductores en bandejas no metálicas"
+            ]
+          },
+          {
+            "numero": "8.2.0.10",
+            "tipo": "Conductores en escalerillas portaconductores",
+            "subtipos": [
+              "Conductores en escalerillas metálicas",
+              "Conductores en escalerillas no metálicas"
+            ]
+          },
+          {
+            "numero": "8.2.0.11",
+            "tipo": "Conductores en canaletas"
+          },
+          {
+            "numero": "8.2.0.12",
+            "tipo": "Barras ómnibus"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuadro de U.E.H.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: transparent;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+            border: 2px solid #2c3e50;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+            font-size: 13px;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        tr:hover {
+            background: #e8f4f8;
+        }
+
+        input[type="number"] {
+            width: 50px;
+            padding: 6px;
+            text-align: center;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            font-size: 13px;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #2980b9;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+
+        .total-row {
+            background: #2c3e50 !important;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .total-row td {
+            padding: 12px;
+            border: 2px solid #2c3e50;
+        }
+
+        .nota {
+            margin-top: 15px;
+            padding: 12px;
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            border-radius: 5px;
+            font-size: 13px;
+            color: #333;
+        }
+
+        .nota strong {
+            color: #856404;
+        }
+
+        .total-general {
+            font-size: 20px;
+            color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="cuadroContainer">
+        <h1>CUADRO DE U.E.H.</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ARTEFACTOS</th>
+                    <th>SIGLA</th>
+                    <th style="width: 100px;">CANTIDAD</th>
+                    <th>U.E.H.<br>UNITARIO</th>
+                    <th>TOTAL</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr>
+                    <td>WC</td>
+                    <td>WC</td>
+                    <td><input type="number" min="0" value="0" id="ueh_wc" onchange="calcular()" data-unitario="3" data-artefacto="wc"></td>
+                    <td>3</td>
+                    <td class="total" id="ueh_total_wc">0</td>
+                </tr>
+                <tr>
+                    <td>LAVATORIO</td>
+                    <td>L'</td>
+                    <td><input type="number" min="0" value="0" id="ueh_lavatorio" onchange="calcular()" data-unitario="1" data-artefacto="lavatorio"></td>
+                    <td>1</td>
+                    <td class="total" id="ueh_total_lavatorio">0</td>
+                </tr>
+                <tr>
+                    <td>BAÑO TINA</td>
+                    <td>Bt</td>
+                    <td><input type="number" min="0" value="0" id="ueh_bano-tina" onchange="calcular()" data-unitario="3" data-artefacto="bano-tina"></td>
+                    <td>3</td>
+                    <td class="total" id="ueh_total_bano-tina">0</td>
+                </tr>
+                <tr>
+                    <td>BAÑOS LLUVIA</td>
+                    <td>Bll</td>
+                    <td><input type="number" min="0" value="0" id="ueh_ducha" onchange="calcular()" data-unitario="2" data-artefacto="ducha"></td>
+                    <td>2</td>
+                    <td class="total" id="ueh_total_ducha">0</td>
+                </tr>
+                <tr>
+                    <td>BIDET</td>
+                    <td>Bd</td>
+                    <td><input type="number" min="0" value="0" id="ueh_bidet" onchange="calcular()" data-unitario="1" data-artefacto="bidet"></td>
+                    <td>1</td>
+                    <td class="total" id="ueh_total_bidet">0</td>
+                </tr>
+                <tr>
+                    <td>URINARIO</td>
+                    <td>U</td>
+                    <td><input type="number" min="0" value="0" id="ueh_urinario" onchange="calcular()" data-unitario="1" data-artefacto="urinario"></td>
+                    <td>1</td>
+                    <td class="total" id="ueh_total_urinario">0</td>
+                </tr>
+                <tr>
+                    <td>LAVADORA</td>
+                    <td>Lv</td>
+                    <td><input type="number" min="0" value="0" id="ueh_lavadora" onchange="calcular()" data-unitario="3" data-artefacto="lavadora"></td>
+                    <td>3</td>
+                    <td class="total" id="ueh_total_lavadora">0</td>
+                </tr>
+                <tr>
+                    <td>LAVACOPAS</td>
+                    <td>Lc</td>
+                    <td><input type="number" min="0" value="0" id="ueh_lavacopas" onchange="calcular()" data-unitario="3" data-artefacto="lavacopas"></td>
+                    <td>3</td>
+                    <td class="total" id="ueh_total_lavacopas">0</td>
+                </tr>
+                <tr>
+                    <td>LAVADERO</td>
+                    <td>Ld</td>
+                    <td><input type="number" min="0" value="0" id="ueh_lavadero" onchange="calcular()" data-unitario="3" data-artefacto="lavadero"></td>
+                    <td>3</td>
+                    <td class="total" id="ueh_total_lavadero">0</td>
+                </tr>
+                <tr>
+                    <td>LAVAPLATOS</td>
+                    <td>LP</td>
+                    <td><input type="number" min="0" value="0" id="ueh_lavaplatos" onchange="calcular()" data-unitario="3" data-artefacto="lavaplatos"></td>
+                    <td>3</td>
+                    <td class="total" id="ueh_total_lavaplatos">0</td>
+                </tr>
+                <tr>
+                    <td>PILETA</td>
+                    <td>P</td>
+                    <td><input type="number" min="0" value="0" id="ueh_pileta" onchange="calcular()" data-unitario="3" data-artefacto="pileta"></td>
+                    <td>3</td>
+                    <td class="total" id="ueh_total_pileta">0</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr class="total-row">
+                    <td colspan="4">TOTALES</td>
+                    <td class="total-general" id="totalGeneral">0</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="nota">
+            <strong>NOTA:</strong> ARTEFACTOS CLASE 1
+        </div>
+    </div>
+
+    <script>
+        function calcular() {
+            const inputs = document.querySelectorAll('input[type="number"]');
+            let totalGeneral = 0;
+
+            inputs.forEach(input => {
+                const cantidad = parseInt(input.value) || 0;
+                const unitario = parseInt(input.dataset.unitario);
+                const total = cantidad * unitario;
+                
+                const artefactoId = input.dataset.artefacto;
+                const totalCell = document.getElementById(`ueh_total_${artefactoId}`);
+                if (totalCell) {
+                    totalCell.textContent = total;
+                }
+                
+                totalGeneral += total;
+            });
+
+            document.getElementById('totalGeneral').textContent = totalGeneral;
+        }
+
+        function actualizarCantidadUEH(artefactoId, cantidad) {
+            const input = document.getElementById(`ueh_${artefactoId}`);
+            if (input) {
+                input.value = cantidad;
+                calcular();
+            }
+        }
+
+        function incrementarArtefactoUEH(artefactoId) {
+            const input = document.getElementById(`ueh_${artefactoId}`);
+            if (input) {
+                input.value = parseInt(input.value || 0) + 1;
+                calcular();
+            }
+        }
+
+        function decrementarArtefactoUEH(artefactoId) {
+            const input = document.getElementById(`ueh_${artefactoId}`);
+            if (input) {
+                const valorActual = parseInt(input.value || 0);
+                if (valorActual > 0) {
+                    input.value = valorActual - 1;
+                    calcular();
+                }
+            }
+        }
+
+        window.actualizarCantidadUEH = actualizarCantidadUEH;
+        window.incrementarArtefactoUEH = incrementarArtefactoUEH;
+        window.decrementarArtefactoUEH = decrementarArtefactoUEH;
+        window.calcular = calcular;
+
+        calcular();
+    </script>
+</body>
+</html>

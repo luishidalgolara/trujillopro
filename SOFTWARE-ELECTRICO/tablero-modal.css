@@ -1,0 +1,533 @@
+/* ========================================
+   MODAL TABLERO ELÉCTRICO INTEGRADO
+   ======================================== */
+
+#modalTableroInteractivo {
+    z-index: 2000;
+}
+
+#modalTableroInteractivo .modal-window {
+    max-width: 95vw;
+    max-height: 95vh;
+    width: 1400px;
+    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+}
+
+/* CAMBIO PRINCIPAL: Agregar scroll vertical */
+#modalTableroInteractivo .modal-content {
+    padding: 0;
+    max-height: calc(95vh - 60px);
+    overflow-y: auto; /* Cambiado de 'hidden' a 'auto' */
+    overflow-x: hidden;
+}
+
+/* Contenedor principal del tablero */
+.tablero-container {
+    min-height: 100%; /* Cambiado de height a min-height */
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(145deg, #e8e8e8, #d0d0d0);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Medidor de energía */
+.tablero-meter-section {
+    background: linear-gradient(145deg, #e8e8e8, #d0d0d0);
+    border: 2px solid #888;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.tablero-meter-header {
+    background: linear-gradient(to bottom, #2c3e50, #1a252f);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.tablero-meter-display {
+    background: linear-gradient(to bottom, #8ab8d4, #5a8ca8);
+    border: 2px solid #34495e;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.tablero-meter-lcd {
+    background: #5a7a8c;
+    border-radius: 4px;
+    padding: 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 28px;
+    font-weight: bold;
+    color: #00ff00;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(0,255,0,0.5);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.tablero-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+.tablero-stat-card {
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    padding: 12px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.tablero-stat-label {
+    color: #666;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.tablero-stat-value {
+    font-size: 22px;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Contenido scrollable - Ya no necesita overflow propio */
+.tablero-content {
+    flex: 1;
+    padding-right: 10px;
+}
+
+/* Secciones de nivel */
+.tablero-level-section {
+    margin-bottom: 25px;
+}
+
+.tablero-level-title {
+    background: linear-gradient(to bottom, #2c3e50, #1a252f);
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.tablero-level-badge {
+    background: #fff;
+    color: #2c3e50;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Grid de circuitos */
+.tablero-circuits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.tablero-circuits-grid:empty::after {
+    content: 'No hay circuitos en este nivel. Agrega símbolos en el plano.';
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 30px 20px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 6px;
+    border: 2px dashed #ccc;
+}
+
+/* Interruptor con estilo SVG realista */
+.tablero-breaker {
+    background: linear-gradient(145deg, #f8f8f8, #e8e8e8, #d8d8d8);
+    border-radius: 6px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1.5px solid #aaa;
+    box-shadow: 
+        0 3px 6px rgba(0,0,0,0.15),
+        inset 0 1px 0 rgba(255,255,255,0.5);
+    position: relative;
+    min-height: 320px;
+}
+
+.tablero-breaker:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.tablero-breaker.on {
+    background: linear-gradient(145deg, #ffffff, #f8f8f8, #f0f0f0);
+    border-color: #00a651;
+    box-shadow: 
+        0 0 20px rgba(0, 166, 81, 0.4),
+        0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Ranuras para riel DIN */
+.breaker-din-rail-slot {
+    position: absolute;
+    width: 3px;
+    height: 60%;
+    background: #999;
+    opacity: 0.5;
+    top: 20%;
+}
+
+.breaker-din-rail-slot.left { left: 2px; }
+.breaker-din-rail-slot.right { right: 2px; }
+
+/* Terminal superior con gradiente metálico */
+.breaker-terminal-top {
+    width: 60%;
+    height: 30px;
+    margin: 0 auto 10px;
+    background: linear-gradient(145deg, #b8936c, #8B7355, #6d5a47);
+    border-radius: 4px;
+    border: 1px solid #5c4a3a;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.breaker-terminal-screw {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle, #666 0%, #444 50%, #333 100%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #222;
+    box-shadow: inset 0 1px 2px rgba(255,255,255,0.2);
+}
+
+.breaker-terminal-screw::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 1.5px;
+    background: #555;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Ventana de visualización */
+.breaker-window {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    padding: 8px;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.breaker-window-screw {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, #777 0%, #555 100%);
+    border-radius: 50%;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 0.5px solid #444;
+}
+
+.breaker-window-screw::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 1px;
+    background: #888;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.breaker-label {
+    font-size: 32px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    margin: 15px 0 5px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 8px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.breaker-circuit-name {
+    color: #666;
+    font-size: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+/* Switch/Palanca realista */
+.breaker-switch {
+    width: 65px;
+    height: 85px;
+    margin: 0 auto 12px;
+    background: linear-gradient(to bottom, #1a1a1a, #0a0a0a);
+    border-radius: 6px;
+    position: relative;
+    box-shadow: 
+        inset 0 3px 8px rgba(0,0,0,0.6),
+        0 2px 4px rgba(0,0,0,0.3);
+    border: 1.5px solid #000;
+}
+
+.breaker-switch-top {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 32px;
+    background: #0a0a0a;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.breaker-switch-toggle {
+    position: absolute;
+    width: 50px;
+    height: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom, #1a1a1a, #000);
+    border-radius: 5px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    top: 45px;
+    border: 1.5px solid #000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.tablero-breaker.on .breaker-switch-toggle {
+    top: 8px;
+}
+
+/* LED indicador realista */
+.breaker-led {
+    width: 50px;
+    height: 26px;
+    margin: 0 auto 10px;
+    background: #0a0a0a;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
+    border: 1px solid #000;
+}
+
+.breaker-led-indicator {
+    width: 42px;
+    height: 20px;
+    background: #00a651;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.3;
+    transition: all 0.3s;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.tablero-breaker.on .breaker-led-indicator {
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(0, 166, 81, 0.6);
+}
+
+.breaker-led-text {
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* Terminal inferior */
+.breaker-terminal-bottom {
+    width: 60%;
+    height: 30px;
+    margin: 10px auto 0;
+    background: linear-gradient(145deg, #b8936c, #8B7355, #6d5a47);
+    border-radius: 4px;
+    border: 1px solid #5c4a3a;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.breaker-power {
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #666;
+    margin-top: 8px;
+}
+
+.tablero-breaker.on .breaker-power {
+    color: #00a651;
+}
+
+/* Certificación */
+.breaker-cert {
+    text-align: center;
+    font-size: 7px;
+    color: #888;
+    margin-top: 4px;
+}
+
+/* Contador de elementos */
+.breaker-count {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #2c3e50;
+    color: #fff;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Información de circuitos */
+.tablero-info-section {
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.tablero-info-section h4 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.circuit-info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    font-size: 11px;
+}
+
+.circuit-info-item span:first-child {
+    font-weight: bold;
+    color: #333;
+}
+
+.circuit-info-item span:last-child {
+    color: #666;
+}
+
+/* Scrollbar personalizado para el modal */
+#modalTableroInteractivo .modal-content::-webkit-scrollbar {
+    width: 12px;
+}
+
+#modalTableroInteractivo .modal-content::-webkit-scrollbar-track {
+    background: #34495e;
+    border-radius: 6px;
+}
+
+#modalTableroInteractivo .modal-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #2c3e50, #1a252f);
+    border-radius: 6px;
+    border: 2px solid #34495e;
+}
+
+#modalTableroInteractivo .modal-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #1a252f, #0d1419);
+}
+
+/* Scrollbar para listas internas */
+.tablero-content::-webkit-scrollbar,
+.circuit-items::-webkit-scrollbar {
+    width: 8px;
+}
+
+.tablero-content::-webkit-scrollbar-track,
+.circuit-items::-webkit-scrollbar-track {
+    background: #e0e0e0;
+    border-radius: 4px;
+}
+
+.tablero-content::-webkit-scrollbar-thumb,
+.circuit-items::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 4px;
+}
+
+.tablero-content::-webkit-scrollbar-thumb:hover,
+.circuit-items::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+/* Mensaje vacío */
+.empty-message {
+    color: #999;
+    text-align: center;
+    font-style: italic;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .tablero-circuits-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+}

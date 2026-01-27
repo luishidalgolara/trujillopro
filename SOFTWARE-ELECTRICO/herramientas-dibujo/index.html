@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas de Dibujo</title>
+    <link rel="stylesheet" href="tools-styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="toolbar">
+            <h3>Herramientas de Dibujo</h3>
+            
+            <!-- Herramientas -->
+            <div class="tools-section">
+                <h4>Herramientas</h4>
+                <button class="tool-btn active" data-tool="line">
+                    <span class="icon">📏</span>
+                    Línea
+                </button>
+                <button class="tool-btn" data-tool="polyline">
+                    <span class="icon">📐</span>
+                    Polilínea
+                </button>
+                <button class="tool-btn" data-tool="circle">
+                    <span class="icon">⭕</span>
+                    Círculo
+                </button>
+                <button class="tool-btn" data-tool="square">
+                    <span class="icon">◻️</span>
+                    Cuadrado
+                </button>
+                <button class="tool-btn" data-tool="rectangle">
+                    <span class="icon">▭</span>
+                    Rectángulo
+                </button>
+            </div>
+
+            <!-- Paleta de Colores -->
+            <div class="color-section">
+                <h4>Paleta de Colores</h4>
+                <div class="color-palette">
+                    <div class="color-item active" data-color="#000000" style="background-color: #000000;" title="Negro"></div>
+                    <div class="color-item" data-color="#FF0000" style="background-color: #FF0000;" title="Rojo"></div>
+                    <div class="color-item" data-color="#0000FF" style="background-color: #0000FF;" title="Azul"></div>
+                    <div class="color-item" data-color="#00FF00" style="background-color: #00FF00;" title="Verde"></div>
+                    <div class="color-item" data-color="#FFFF00" style="background-color: #FFFF00;" title="Amarillo"></div>
+                    <div class="color-item" data-color="#FF00FF" style="background-color: #FF00FF;" title="Magenta"></div>
+                    <div class="color-item" data-color="#00FFFF" style="background-color: #00FFFF;" title="Cyan"></div>
+                    <div class="color-item" data-color="#FFA500" style="background-color: #FFA500;" title="Naranja"></div>
+                    <div class="color-item" data-color="#800080" style="background-color: #800080;" title="Púrpura"></div>
+                    <div class="color-item" data-color="#FFC0CB" style="background-color: #FFC0CB;" title="Rosa"></div>
+                    <div class="color-item" data-color="#8B4513" style="background-color: #8B4513;" title="Marrón"></div>
+                    <div class="color-item" data-color="#808080" style="background-color: #808080;" title="Gris"></div>
+                    <div class="color-item" data-color="#FFFFFF" style="background-color: #FFFFFF; border: 1px solid #ccc;" title="Blanco"></div>
+                </div>
+                
+                <!-- Selector de color personalizado -->
+                <div class="custom-color">
+                    <label for="customColor">Color personalizado:</label>
+                    <input type="color" id="customColor" value="#000000">
+                </div>
+            </div>
+
+            <!-- Grosor de línea -->
+            <div class="stroke-section">
+                <h4>Grosor de Línea</h4>
+                <input type="range" id="strokeWidth" min="1" max="10" value="2">
+                <span id="strokeValue">2</span> px
+            </div>
+
+            <!-- Acciones -->
+            <div class="actions-section">
+                <button class="action-btn" id="clearCanvas">🗑️ Limpiar</button>
+                <button class="action-btn" id="undoBtn">↶ Deshacer</button>
+            </div>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="drawingCanvas"></canvas>
+            <div class="instructions">
+                <p><strong>Instrucciones:</strong></p>
+                <p>• <strong>Línea:</strong> Click inicio, click fin</p>
+                <p>• <strong>Polilínea:</strong> Click múltiple, doble click para finalizar</p>
+                <p>• <strong>Círculo:</strong> Click centro, arrastrar para radio</p>
+                <p>• <strong>Cuadrado/Rectángulo:</strong> Click esquina, arrastrar</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="color-palette.js"></script>
+    <script src="tools-drawing.js"></script>
+</body>
+</html>

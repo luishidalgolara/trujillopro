@@ -1,0 +1,122 @@
+/* nivel_2_ap/nivel-2-styles.css - ESTILOS SELECTOR DE NIVELES Y ELEMENTOS NIVEL 2 */
+
+/* ========================================
+   SELECTOR POPUP DE NIVELES
+   ======================================== */
+.nivel-selector {
+    position: fixed;
+    background: #1a1a1a;
+    border: 2px solid #00d9ff;
+    border-radius: 8px;
+    padding: 8px;
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 10000;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 217, 255, 0.3);
+    animation: selectorFadeIn 0.2s ease;
+}
+
+.nivel-selector.show {
+    display: flex;
+}
+
+@keyframes selectorFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nivel-option {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 150px;
+}
+
+.nivel-option.nivel-1 {
+    background: #3498db;
+    color: white;
+}
+
+.nivel-option.nivel-1:hover {
+    background: #2980b9;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.5);
+}
+
+.nivel-option.nivel-2 {
+    background: #e74c3c;
+    color: white;
+}
+
+.nivel-option.nivel-2:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.5);
+}
+
+/* ========================================
+   ELEMENTOS NIVEL 2
+   ======================================== */
+.nivel-2 {
+    opacity: 0.9;
+}
+
+.nivel-2 circle {
+    filter: drop-shadow(0 0 4px rgba(231, 76, 60, 0.6));
+}
+
+/* Tuberías nivel 2 */
+.pipe-line.nivel-2 {
+    stroke: #ef4444 !important;
+    stroke-width: 4 !important;
+}
+
+/* Flechas de flujo nivel 2 */
+.flow-arrow.nivel-2 polygon {
+    fill: #ef4444 !important;
+}
+
+/* Etiquetas de tuberías nivel 2 */
+.pipe-label-group.nivel-2 .guide-line {
+    stroke: #ef4444 !important;
+}
+
+.pipe-label-group.nivel-2 rect {
+    stroke: #ef4444 !important;
+    fill: white !important;
+}
+
+.pipe-label-group.nivel-2 text {
+    fill: #ef4444 !important;
+}
+
+/* Badge de nivel en elementos */
+.nivel-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #3498db;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 10px;
+    border: 2px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.nivel-badge.nivel-2 {
+    background: #e74c3c;
+}

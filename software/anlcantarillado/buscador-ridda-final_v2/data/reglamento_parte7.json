@@ -1,0 +1,574 @@
+{
+  "titulos": [
+    {
+      "numero": "TITULO VIII",
+      "nombre": "Redes Privadas de Alcantarillado",
+      "articulos": [
+        {
+          "numero": "Artículo 94º",
+          "texto": "En las redes privadas de alcantarillado deberá existir una cámara naciente con características técnicas de una cámara pública, de una altura mínima que asegure un correcto desagüe de las viviendas así como una diferencia de cota con las tuberías de agua potable para evitar cualquier posible interferencia o contaminación.\n\nEstas redes privadas se proyectarán con características técnicas de redes públicas, de acuerdo con la Norma Chilena NCh 1105. A este colector central deberán empalmarse las viviendas a través de una tubería con características técnicas de unión domiciliaria.\n\nPara el caso de viviendas sociales podrá considerarse una unión por cada dos viviendas, debiendo tener cada vivienda su respectiva cámara de tipo domiciliario.\n\nEn estos casos, la última cámara de la red privada también deberá ser del tipo pública y se ubicará lo más cercana posible a la línea de cierro de la propiedad, a una distancia menor de 20 metros del colector.\n\nAdemás deberá considerarse una cámara de inspección pública, en el empalme con el colector."
+        }
+      ]
+    },
+    {
+      "numero": "TITULO IX",
+      "nombre": "Elevación de Aguas Servidas",
+      "articulos": [
+        {
+          "numero": "Artículo 95º",
+          "texto": "En caso que, las aguas servidas de un inmueble no puedan ser evacuadas gravitacionalmente al punto de conexión señalado en el certificado de factibilidad, éstas se descargarán gravitacionalmente a un estanque de acumulación, el que se evacuará por medio de plantas elevadoras o eyectoras.\n\nExcepcionalmente, para el caso que las bocas de admisión estén ubicadas a una cota inferior a la de la solera sobre el punto de empalme, las aguas podrán desaguar gravitacionalmente a puntos más bajos de la red pública, en que se cumplan las condiciones establecidas en el inciso 6º del artículo 86º del presente Reglamento.\n\nSin perjuicio de lo anterior, los ramales que sirvan cualquier boca de admisión ubicada a una cota menor que la cota de terreno sobre el colector, en el punto de empalme de la unión domiciliaria, desaguarán independiente del resto de las bocas de admisión de la edificación. Se exceptúan las cámaras de inspección con tapa hermética."
+        },
+        {
+          "numero": "Artículo 96º",
+          "texto": "La elevación de las aguas servidas a que se refiere el artículo anterior deberá cumplir con las siguientes condiciones:",
+          "condiciones": [
+            {
+              "codigo": "a",
+              "texto": "Toda la tubería de impulsión descargará a una cámara de inspección. El punto de descarga de esta impulsión tendrá una cota tal que permita el escurrimiento gravitacional al colector público."
+            },
+            {
+              "codigo": "b",
+              "texto": "La instalación de bombeo deberá contemplar un mínimo de dos bombas, provistas de dispositivos de control para funcionar alternadamente, siendo al menos una de ellas de reserva."
+            },
+            {
+              "codigo": "c",
+              "texto": "Cada bomba deberá contar con válvulas de corta en la aspiración y en la impulsión cuando corresponda, para casos de retiro. Asimismo deberá contar con válvulas de retención de paso completo. Estas válvulas no podrán estar instaladas dentro del estanque de acumulación."
+            },
+            {
+              "codigo": "d",
+              "texto": "Las válvulas, equipos y bombas deberán contar con uniones, para una fácil conexión y desconexión."
+            },
+            {
+              "codigo": "e",
+              "texto": "La tubería de impulsión general deberá contar con un retorno con válvula de corta, que permita su desagüe."
+            },
+            {
+              "codigo": "f",
+              "texto": "El período de retención máximo para el estanque de acumulación será de doce (12) horas y los equipos elevadores deberán estar capacitados para evacuar las aguas servidas del estanque en una (1) hora."
+            },
+            {
+              "codigo": "g",
+              "texto": "Las plantas elevadoras deberán instalarse en recintos debidamente ventilados y los estanques de acumulación deberán tener ventilación directa a la techumbre o empalmarse a la ventilación de la red de alcantarillado, desde el punto interior más alto de su estructura."
+            },
+            {
+              "codigo": "h",
+              "texto": "Toda planta elevadora a la que descarguen aguas servidas provenientes de inodoros deberán contar con equipos que puedan bombear sólidos mayores de 50 mm. Sus tuberías de impulsión serán de un diámetro interior mínimo de 50 mm. En caso de considerar equipos con aspiración negativa, se deberá verificar la presión neta positiva en la aspiración y considerar los dispositivos de seguridad para cebado, eliminación de gases desprendidos y prevención de riesgo de explosiones que garanticen el normal y continuo funcionamiento del sistema de elevación."
+            },
+            {
+              "codigo": "i",
+              "texto": "La superficie interior de los estanques será lisa, impermeable y el piso tendrá una pendiente mínima de un 3% hacia el punto de succión de los equipos de elevación. En estanques de hormigón armado el recubrimiento de las armaduras de las superficies en contacto con el agua no será inferior a 2 cm."
+            },
+            {
+              "codigo": "j",
+              "texto": "La estructura deberá ser estanca y en la prueba de estanqueidad su pérdida no será mayor que el 0,5% de su volumen útil en 24 horas."
+            },
+            {
+              "codigo": "k",
+              "texto": "Todos los estanques de acumulación de aguas servidas deberán tener una escotilla de acceso que permita extraer con facilidad los equipos de bombeo, la que no podrá tener dimensiones menores que 0,80 metros libres por lado y su tapa deberá ser estanca a los líquidos y a los gases."
+            },
+            {
+              "codigo": "l",
+              "texto": "El nivel de partida máximo de las bombas en el estanque no podrá ser superior a la mitad de la altura entre el fondo del mismo y el radier de la tubería de descarga más baja, debiendo contar con un elemento para avisar en casos que se sobrepase el nivel antes mencionado y accione la bomba de reserva automáticamente."
+            },
+            {
+              "codigo": "m",
+              "texto": "Las características, tipo, detalles y disposición total de la instalación y sus obras complementarias deberán quedar claramente establecidas en los planos."
+            },
+            {
+              "codigo": "n",
+              "texto": "El contratista deberá entregar al propietario un manual con instrucciones de operación, control y seguridad del sistema de elevación de aguas servidas."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "TITULO X",
+      "nombre": "Descargas, Ventilación y Descompresión de las Instalaciones Domiciliarias de Alcantarillado",
+      "articulos": [
+        {
+          "numero": "Artículo 97º",
+          "texto": "Toda instalación domiciliaria de alcantarillado deberá contar con un sistema de ventilación, que cumpla con las siguientes condiciones:",
+          "condiciones": [
+            {
+              "codigo": "a",
+              "texto": "Se establecerá, a lo menos, una tubería de ventilación principal, de diámetro nominal no inferior a 75 mm. por cada empalme con la red pública, la que deberá quedar en el punto más alto de la red de alcantarillado domiciliario."
+            },
+            {
+              "codigo": "b",
+              "texto": "Se deberán ventilar los ramales de inodoros (WC) que recorran, en planta, más de 3 metros antes de llegar a una cámara de inspección o empalme con ventilación y cualquier otro ramal que recorra más de 7 m. con excepción de los ramales de pileta, en que se podrá aceptar hasta 15 metros."
+            },
+            {
+              "codigo": "c",
+              "texto": "Deberán ventilarse los ramales de inodoros que recorran en planta menos de 3 metros antes de llegar a un empalme con ventilación y que reciban descarga de otro artefacto, lo que no será necesario cuando la llegada se haga a una cámara de inspección."
+            },
+            {
+              "codigo": "d",
+              "texto": "La ventilación deberá empalmar a la tubería que ventila, por medio de una pieza \"V\" invertida, de manera que la ventilación sea siempre la continuación vertical de un ramal, en cuanto las condiciones físicas así lo permitan."
+            },
+            {
+              "codigo": "e",
+              "texto": "Toda tubería de descarga que reciba servicios de pisos superiores, exceptuando aquellas que desagüen a una pileta o cámara sifón, deberá estar ventilada por medio de un ramal, las que deberán conectarse mediante una \"V\" invertida."
+            },
+            {
+              "codigo": "f",
+              "texto": "En instalaciones de edificios de cuatro o más pisos, se ventilará la tubería principal en su extremo más alto, y esta se denominará \"ventilación principal\". Además, deberá prolongarse como ventilación la tubería de descarga, permitiéndose unir ventilaciones entre sí, previa verificación de su diámetro."
+            },
+            {
+              "codigo": "g",
+              "texto": "Se aceptará sin ventilación un grupo de artefactos sanitarios colocados a una distancia hasta de 2 m. de la descarga, en el primero y último piso de un edificio. En pisos intermedios, sólo se aceptará un artefacto sin ventilación por descarga, siempre que esté colocado a una distancia no mayor de treinta veces el diámetro de la tubería interceptora ventilada o de descarga.\n\nSin embargo, tratándose de viviendas de tipo social, podrá aceptarse que los pisos intermedios no tengan ventilación cuando se cumplan simultáneamente las siguientes condiciones:",
+              "subcondiciones": [
+                {
+                  "codigo": "g.a",
+                  "texto": "Que existan a lo menos dos descargas de diámetro interior mínimo de 100 mm."
+                },
+                {
+                  "codigo": "g.b",
+                  "texto": "Que las descargas estén conectadas en un piso inferior mediante una cañería horizontal de igual diámetro que las descargas."
+                },
+                {
+                  "codigo": "g.c",
+                  "texto": "Que a cada descarga desagüen como máximo tres artefactos por piso, que estén a menos de dos metros de la respectiva descarga y que todos los inodoros desagüen a una misma descarga."
+                }
+              ]
+            },
+            {
+              "codigo": "h",
+              "texto": "El diámetro de ventilación se calculará a base de la tabla incluida en Anexo Nº 7, sin perjuicio del cálculo racional que corresponda."
+            },
+            {
+              "codigo": "i",
+              "texto": "No se aceptará ninguna ventilación con disminución de diámetro hacia los pisos altos."
+            },
+            {
+              "codigo": "j",
+              "texto": "Las ventilaciones deberán ser verticales, en cuanto las condiciones físicas así lo permitan."
+            },
+            {
+              "codigo": "k",
+              "texto": "Los tramos de avance horizontal en planta, deberán efectuarse siempre en forma ascendente y la ventilación deberá sobresalir 60 cm. sobre la techumbre en el punto de salida y 2,5 m. en terrazas ubicadas en el último piso del edificio. La longitud máxima de las ventilaciones se indica en la tabla del Anexo Nº 7."
+            },
+            {
+              "codigo": "l",
+              "texto": "El terminal de las ventilaciones que den a un patio de luz rodeado por uno o más cuerpos de edificios deberá continuar hasta el techo del cuerpo del edificio más alto, si no existe una distancia mínima, en horizontal, de 10 m. al muro del edificio con ventanas."
+            },
+            {
+              "codigo": "m",
+              "texto": "Se puede unir una o más ventilaciones por medio de piezas adecuadas, aumentándose el diámetro hacia arriba de acuerdo con el número total de unidades de equivalencia hidráulica instaladas."
+            },
+            {
+              "codigo": "n",
+              "texto": "Las ventilaciones de PVC que estén expuestas directamente a la radiación solar, deben ser protegidas para evitar la acción de los rayos ultravioletas."
+            }
+          ]
+        },
+        {
+          "numero": "Artículo 98º",
+          "texto": "En edificios de más de ocho pisos y hasta 14, se deberá colocar una tubería de descompresión en los términos establecidos en los Anexos Nº 8-A y 8-B del presente Reglamento."
+        },
+        {
+          "numero": "Artículo 99º",
+          "texto": "En todo caso, se aceptarán las soluciones establecidas en el Anexo Nº 8-A y Anexo Nº 8-B y cualquier otra solución como válvulas de admisión de aire a otras, en la medida que sean técnicamente aceptables y cumplan con los procedimientos de certificación de conformidad con lo establecido en los artículos 42º y siguientes de este Reglamento."
+        }
+      ]
+    },
+    {
+      "numero": "TITULO XI",
+      "nombre": "Disposición de Aguas Lluvias",
+      "articulos": [
+        {
+          "numero": "Artículo 100º",
+          "texto": "La disposición de las aguas lluvias del inmueble deberá ser asumida en formas independiente de las instalaciones domiciliarias de alcantarillado. El diseño correspondiente de estas instalaciones deberá resguardar esta disposición."
+        }
+      ]
+    },
+    {
+      "numero": "TITULO XII",
+      "nombre": "Construcción de las Instalaciones Domiciliarias de Agua Potable y de Alcantarillado",
+      "articulos": [
+        {
+          "numero": "Artículo 101º",
+          "texto": "En la construcción de las instalaciones domiciliarias de agua potable y alcantarillado se deben cumplir las especificaciones del proyecto, las Normas Chilenas, Instrucciones y Especificaciones Técnicas de las SISS, si correspondiere."
+        }
+      ],
+      "parrafos": [
+        {
+          "numero": "Párrafo I",
+          "nombre": "Construcción y Prueba de la Instalación Domiciliaria de Agua Potable",
+          "articulos": [
+            {
+              "numero": "Artículo 102º",
+              "texto": "Las instalaciones domiciliadas de agua potable deberán cumplir con las siguientes condiciones:",
+              "condiciones": [
+                {
+                  "codigo": "a",
+                  "nombre": "Instalación de Tuberías",
+                  "items": [
+                    {
+                      "codigo": "a.a",
+                      "texto": "Las claves de las tuberías de agua potable que se instalen en los patios, jardines, zona de espacios comunes, y en general al exterior de la vivienda, deben quedar enterradas como mínimo a 50 centímetros del nivel superior del terreno, salvo que se trate de redes privadas en que deberán aplicarse las respectivas normas chilenas. Se deberá además respetar una distancia mínima de 0.60 metros en arranques y nichos guarda medidor respecto de otros servicios."
+                    },
+                    {
+                      "codigo": "a.b",
+                      "texto": "La instalación de tuberías, confección de uniones entre tuberías y piezas especiales, encamado del sello de la excavación, relleno lateral y superior de la zanja, fijación de la tubería cuando esta queda a la vista, deben cumplir con las especificaciones del proyecto, con las Normas Chilenas, Instrucciones y Especificaciones Técnicas de la SISS y planos tipos de la Superintendencia acerca de la materia y las recomendaciones del fabricante."
+                    },
+                    {
+                      "codigo": "a.c",
+                      "texto": "En la construcción deberá procurarse que la tubería de agua potable quede como mínimo 30 centímetros sobre la tubería de alcantarillado. De no ser posible lo anterior deberán tomarse todos los resguardos pertinentes, consultando tuberías de alcantarillado en material impermeable."
+                    }
+                  ]
+                },
+                {
+                  "codigo": "b",
+                  "nombre": "Colocación de Artefactos Sanitarios",
+                  "texto": "Los artefactos sanitarios se instalarán de acuerdo con las especificaciones del fabricante e indicaciones de proyecto. De la misma manera se ejecutará la unión de los artefactos a las tuberías de alimentación y de desagüe. La distribución de los artefactos sanitarios se ajustará a las indicaciones del plano del proyecto y deberá comprobarse su correcta fijación y nivelación."
+                },
+                {
+                  "codigo": "c",
+                  "nombre": "Colocación de Grifería",
+                  "texto": "El montaje de la grifería debe ejecutarse de acuerdo con las indicaciones del fabricante, de tal manera que técnicamente asegure una correcta operación y garantice la estanqueidad del sistema. Antes de la instalación de la grifería se comprobará que el diámetro nominal de las llaves coincida con el de la tubería en la que van a ser instaladas. Los accesorios de unión, soldaduras, abrazaderas u otros elementos que sea preciso utilizar deberán garantizar el cumplimiento de las cualidades generales de una instalación domiciliaria de agua potable, tales como preservación de la potabilidad del agua, estanqueidad, etc."
+                },
+                {
+                  "codigo": "d",
+                  "nombre": "Ejecución y colocación de elementos diversos",
+                  "texto": "La colocación de elementos tales como medidores, equipos de bombeo y la ejecución de obras como estanques de agua potable, deberán ajustarse a las normas o especificaciones técnicas de cada elemento, tanto en la etapa de ejecución de obras civiles como en el montaje de los elementos electromecánicos y adicionalmente, cumplir con las pruebas a las que fuese necesario someterlos en obras hasta lograr su funcionamiento óptimo."
+                }
+              ]
+            },
+            {
+              "numero": "Artículo 103º",
+              "texto": "Toda instalación domiciliaria de agua potable deberá ser absolutamente impermeable y no podrá ponerse en servicio mientras no sea sometida a una prueba de presión hidráulica que deberá cumplir las siguientes características:",
+              "caracteristicas": [
+                {
+                  "codigo": "a",
+                  "texto": "Presión mínima de 10 kg/cm², en el punto de mayor cota del tramo probado."
+                },
+                {
+                  "codigo": "b",
+                  "texto": "Las pruebas podrán efectuarse por tramos separados de longitud no inferior a 20 metros, según las características de la instalación, debiendo instalarse la bomba de prueba y el manómetro en el extremo inferior del tramo."
+                },
+                {
+                  "codigo": "c",
+                  "texto": "La duración de la prueba será de 10 minutos y durante este tiempo no debe producirse variación en el manómetro. Las pruebas correspondientes a equipos elevadores, estanques y accesorios consistirán en la verificación de su correcto funcionamiento por un período no inferior a dos horas."
+                },
+                {
+                  "codigo": "d",
+                  "texto": "La bomba de prueba deberá instalarse siempre en el punto inicial de la alimentación del tramo a probarse."
+                },
+                {
+                  "codigo": "e",
+                  "texto": "El total de la tubería a probar comprenderá la instalación interior desde la llave de paso después del medidor hasta el extremo de las tuberías, antes de las piezas de unión de los artefactos."
+                },
+                {
+                  "codigo": "f",
+                  "texto": "En caso de instalaciones con estanques superiores de acumulación, las tuberías serán sometidas a prueba desde la salida del estanque hasta el punto de unión con los artefactos."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "numero": "Párrafo II",
+          "nombre": "Construcción y Prueba de las Instalaciones Domiciliarias de Alcantarillado",
+          "articulos": [
+            {
+              "numero": "Artículo 104º",
+              "texto": "Las instalaciones domiciliarias de alcantarillado deberán cumplir con las siguientes condiciones:",
+              "condiciones": [
+                {
+                  "codigo": "a",
+                  "nombre": "Excavación",
+                  "items": [
+                    {
+                      "codigo": "a.a",
+                      "texto": "Las zanjas para colocar las tuberías se ejecutarán de acuerdo con los trazados y pendientes indicados en el plano del proyecto. Deberán tener su fondo excavado de modo de permitir el apoyo satisfactorio de las tuberías en toda su extensión, y, cuando se requiera, profundizándose en el lugar de las juntas o uniones."
+                    },
+                    {
+                      "codigo": "a.b",
+                      "texto": "Al efectuar la excavación de zanjas se observarán las disposiciones correspondientes, en lo referente a ancho en el fondo, taludes y entibados que fuesen necesarios de acuerdo a la clase de terreno y profundidad, de manera que no se perjudique a propiedades vecinas y se resguarde la seguridad del personal que labora en la faena."
+                    },
+                    {
+                      "codigo": "a.c",
+                      "texto": "Las excavaciones se harán a tajo abierto hasta una profundidad de 1,5 metros. Para profundidades mayores, podrán ejecutarse túneles a los que deberá darse la sección suficiente para permitir el trabajo en condiciones de seguridad adecuadas para el personal."
+                    },
+                    {
+                      "codigo": "a.d",
+                      "texto": "En caso de haberse excedido la excavación del sello indicado en el plano, las tuberías de hormigón simple deberán colocarse sobre un relleno de hormigón tipo H5, según la clasificación establecida en NCh 170."
+                    }
+                  ]
+                },
+                {
+                  "codigo": "b",
+                  "nombre": "Colocación",
+                  "items": [
+                    {
+                      "codigo": "b.a",
+                      "texto": "Las tuberías se colocarán comenzando por la zona de menor cota en la zanja, y en sentido ascendente. Se cuidará que queden firmemente asentadas, bien alineadas y que las juntas sean impermeables, lisas internamente y continuas para no causar obstrucciones a otras irregularidades."
+                    },
+                    {
+                      "codigo": "b.b",
+                      "texto": "Las tuberías de hormigón simple se reforzarán con un dado de hormigón de 170 kg- cem/m3, de 0,10 metros de espesor libre del recubrimiento del tubo, en cruces de paredes, cuando pasen bajo secciones edificadas o cuando la clave se encuentre a 0,6 metros o menos, bajo el nivel del terreno."
+                    },
+                    {
+                      "codigo": "b.c",
+                      "texto": "Se reforzarán de la forma indicada en letra precedente en todo su contorno hasta la cota de piso terminado, las piezas especiales, empalmes y trozos de tuberías verticales o laterales que reciban desagües."
+                    },
+                    {
+                      "codigo": "b.d",
+                      "texto": "Sin perjuicio de lo contemplado en las letras anteriores, las tuberías se instalarán de acuerdo con las especificaciones de la Superintendencia y a falta de éstas, las del fabricante."
+                    },
+                    {
+                      "codigo": "b.e",
+                      "texto": "Tratándose de tuberías plásticas, éstas se colocarán como mínimo sobre una base de arena de 0,10 m. de espesor dentro de un rango adecuado a la sección, antes de proceder a las pruebas reglamentarias.\n\nUna vez probadas, si corresponde se les cubrirá de arena en todo el rasgo. Los tramos verticales se protegerán por medio de mortero de cemento u otro sistema apropiado aislando el tubo para evitar adherencia debido a problemas de dilatación."
+                    }
+                  ]
+                },
+                {
+                  "codigo": "c",
+                  "nombre": "Junturas",
+                  "items": [
+                    {
+                      "codigo": "c.a",
+                      "texto": "Las junturas de las tuberías de hormigón simple se ejecutarán por medio de cemento puro, recubierto con mortero de 300 Kg-cem/m3."
+                    },
+                    {
+                      "codigo": "c.b",
+                      "texto": "En las demás tuberías, las junturas deberán ejecutarse siguiendo estrictamente las instrucciones del fabricante."
+                    },
+                    {
+                      "codigo": "c.c",
+                      "texto": "Ejecutadas las junturas, se dejará un tiempo técnicamente prudente antes de someter el sistema a cualquier tipo de cargas que puedan dañar la tubería o la juntura."
+                    }
+                  ]
+                },
+                {
+                  "codigo": "d",
+                  "nombre": "Relleno de Zanjas",
+                  "items": [
+                    {
+                      "codigo": "d.a",
+                      "texto": "Una vez verificadas las pendientes y calidad del terreno y efectuadas las pruebas en forma satisfactoria, se procederá al relleno de las excavaciones, rompiendo previamente los puentes en caso de haberse ejecutado túneles."
+                    },
+                    {
+                      "codigo": "d.b",
+                      "texto": "El relleno debe hacerse con tierra exenta de piedras, compactado debidamente a ambos costados de la tubería hasta una altura de 0,30 metros y luego se continuará el relleno por capas de 0,20 metros de espesor compactadas adecuadamente."
+                    },
+                    {
+                      "codigo": "d.c",
+                      "texto": "Para el relleno de las excavaciones de las uniones domiciliarias, dada su ubicación en la calzada y aceras, se deberá cumplir con las exigencias para relleno de zanjas ubicadas en lugares públicos."
+                    },
+                    {
+                      "codigo": "d.d",
+                      "texto": "Las excavaciones donde se instalen tuberías de PVC, se rellenarán conforme lo dispone la Norma Chilena correspondiente."
+                    }
+                  ]
+                },
+                {
+                  "codigo": "e",
+                  "nombre": "Colocación de Descargas, Ventilaciones y en General de Tuberías No Enterradas",
+                  "items": [
+                    {
+                      "codigo": "e.a",
+                      "texto": "Las descargas y ventilaciones deberán apoyarse en su base en un machón de concreto y en cada piso se sujetarán con una abrazadera de metal colocada inmediatamente debajo de la campana de la junta."
+                    },
+                    {
+                      "codigo": "e.b",
+                      "texto": "Las juntas de las tuberías horizontales no enterradas deberán ser fijadas convenientemente. Si quedan debajo de las losas o vigas de los pisos superiores, se sostendrán de aquellas mediante abrazaderas o ganchos metálicos y cuando estén cerca del suelo se apoyarán en machones o soportes especiales."
+                    },
+                    {
+                      "codigo": "e.c",
+                      "texto": "Para esta clase de tuberías se deberá cumplir las pendientes y alineaciones indicadas en los planos respectivos, evitando depresiones y desviaciones, de manera de procurar su fácil limpieza y reparación."
+                    }
+                  ]
+                },
+                {
+                  "codigo": "f",
+                  "nombre": "Cámaras de Inspección Domiciliarias",
+                  "items": [
+                    {
+                      "codigo": "f.a",
+                      "texto": "Las cámaras de inspección domiciliaria deberán ser construidas en materiales absolutamente impermeables a los líquidos y gases y deberán cumplir con las demás características y dimensiones establecidas en la Norma Chilena correspondiente o instrucciones de la SISS."
+                    },
+                    {
+                      "codigo": "f.b",
+                      "texto": "La cámara de inspección que deba colocarse en espacios cerrados, deberá cumplir con las condiciones señaladas en el inciso 2º del artículo 92 de este Reglamento para el caso de utilizarse contratapa, ésta deberá colocarse a una distancia medida desde el nivel del piso o tapa de 0,30 m. aproximadamente, construida de hormigón armado, en una sola pieza, de medidas aproximadas de 0,58 x 0,58 m.; la que se apoyará en una saliente que se construye en todo su perímetro, en las paredes de la cámara."
+                    },
+                    {
+                      "codigo": "f.c",
+                      "texto": "Para evitar el escape o paso de los líquidos y gases que se encuentran en la tubería, se rellenará el espacio comprendido entre la contratapa y la pared de la cámara con papel, arpillera, filástica, etc. y se recubrirá con una mezcla de cemento y arena. En casos en que la cámara se deba ubicar en lugares inundables, el cierre de la tapa debe ser hermético, para impedir la salida de los gases y la entrada del agua proveniente de inundación, cuyo cierre hermético se ejecutará sobre la saliente que rodea la cámara en todo su perímetro, colocándose indistintamente una banda goma, filástica alquitranada, masilla, etc."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "numero": "Artículo 105º",
+              "texto": "Toda instalación domiciliaria de alcantarillado deberá ser absolutamente impermeable a gases y líquidos, y no podrá ponerse en servicio mientras no sea sometida a las siguientes pruebas:",
+              "pruebas": [
+                {
+                  "codigo": "a",
+                  "nombre": "Prueba hidráulica",
+                  "items": [
+                    {
+                      "codigo": "a.a",
+                      "texto": "Antes de ser cubiertas las tuberías, se efectuará una prueba de presión hidráulica de 1,60 m. de presión sobre la boca de admisión más alta durante un periodo mínimo de quince minutos."
+                    },
+                    {
+                      "codigo": "a.b",
+                      "texto": "Las descargas con alturas superiores a dos pisos, se fraccionarán por medio de piezas de registro, con el fin de ejecutar las pruebas con una presión no superior a la altura de estos dos pisos."
+                    },
+                    {
+                      "codigo": "a.c",
+                      "texto": "La pérdida por filtración para las tuberías de hormigón simple no podrá ser superior a la indicada en el Anexo Nº 9. En otro tipo de tuberías no se aceptará tolerancia de filtración."
+                    },
+                    {
+                      "codigo": "a.d",
+                      "texto": "Durante esta prueba, deberá efectuarse una revisión de las junturas mediante inspección visual para verificar que no filtren."
+                    }
+                  ]
+                },
+                {
+                  "codigo": "b",
+                  "nombre": "Prueba de bola",
+                  "items": [
+                    {
+                      "codigo": "b.a",
+                      "texto": "Realizada la prueba indicada en la letra precedente, las tuberías horizontales de hasta 150 mm. se someterán a una prueba de bola, cuyo objeto es verificar la existencia de costras en las junturas u otro impedimento interior."
+                    },
+                    {
+                      "codigo": "b.b",
+                      "texto": "La bola con que deben efectuarse las pruebas tendrá una tolerancia máxima de 3 mm. con respecto al diámetro de la tubería verificada."
+                    }
+                  ]
+                },
+                {
+                  "codigo": "c",
+                  "nombre": "Prueba de Luz",
+                  "items": [
+                    {
+                      "codigo": "c.a",
+                      "texto": "Para tuberías de diámetro superiores a 150 mm., la prueba de bola se sustituirá por la prueba de luz."
+                    },
+                    {
+                      "codigo": "c.b",
+                      "texto": "Esta prueba se efectúa instalando una fuente de iluminación adecuada, en una de las cámaras que delimitan el tramo de tuberías a probar. En la otra cámara, se instala un espejo que deberá recibir el haz de luz proveniente de la primera."
+                    },
+                    {
+                      "codigo": "c.c",
+                      "texto": "Se realizará la prueba moviendo circularmente la fuente de iluminación en la sección inicial de la tubería, debiendo verificarse que la recepción de la imagen interior del tubo reflejada en el espejo sea redonda y no presente interrupciones durante el transcurso de la prueba. De no ser así, deberá rechazarse la prueba."
+                    }
+                  ]
+                },
+                {
+                  "codigo": "d",
+                  "nombre": "Verificación del asentamiento y pendientes",
+                  "items": [
+                    {
+                      "codigo": "d.a",
+                      "texto": "Después de practicar la prueba de presión hidráulica se rellenarán los huecos de las excavaciones debajo de las junturas de los tubos. En casos de tuberías de hormigón simple, estas junturas se rellenarán con hormigón pobre que cubra hasta la mitad del tubo."
+                    },
+                    {
+                      "codigo": "d.b",
+                      "texto": "Antes de efectuarse el relleno de la excavación, deberá verificarse el asentamiento de la tubería y la pendiente indicada en el plano. Cuando proceda, también deberá revisarse la protección de hormigón de las tuberías."
+                    }
+                  ]
+                },
+                {
+                  "codigo": "e",
+                  "nombre": "Segunda prueba hidráulica, de bola o de luz",
+                  "texto": "Una vez cubiertas las tuberías, deberán someterse nuevamente a una prueba hidráulica y de bola o de luz, en su caso, de la misma manera como se indicó anteriormente, a fin de garantizar el estado del sistema después del relleno de la excavación. En éstas, se incluirán los ramales auxiliares que se consulten en el plano."
+                },
+                {
+                  "codigo": "f",
+                  "nombre": "Prueba de humo",
+                  "items": [
+                    {
+                      "codigo": "f.a",
+                      "texto": "Esta prueba, tiene por objeto garantizar la estanqueidad de las junturas y el funcionamiento satisfactorio de los cierres hidráulicos y ventilaciones, y debe ejecutarse cuando estén totalmente terminados zócalos y pisos, y estén colocados los artefactos en los ramales respectivos. Podrá admitirse la falta de uno o más artefactos que figuren como futuros en el plano, sin embargo, una vez que sean instalados deberán ser sometidos a la prueba respectiva."
+                    },
+                    {
+                      "codigo": "f.b",
+                      "texto": "Todas las tuberías de descarga, incluso los ramales que recibe, se someterán a una prueba de presión de humo, que se introducirá por la parte más alta de la canalización, debiendo colocarse previamente un tapón en la cámara de inspección correspondiente al canal de esa descarga. Si el ramal no tiene ventilación, el humo se introducirá por la boca de comunicación de la cámara."
+                    },
+                    {
+                      "codigo": "f.c",
+                      "texto": "La prueba de humo será satisfactoria si durante cinco minutos no se observa desprendimiento de humo por las junturas, manteniendo una presión suficiente para hacer subir el agua de los sifones en 3 cm."
+                    }
+                  ]
+                },
+                {
+                  "codigo": "g",
+                  "nombre": "Pruebas de cámaras de inspección",
+                  "items": [
+                    {
+                      "codigo": "g.a",
+                      "texto": "Las cámaras de inspección se someterán a una revisión de sus detalles, y en especial, a las sopladuras a otros defectos en sus estucos y afinados interiores."
+                    },
+                    {
+                      "codigo": "g.b",
+                      "texto": "Se someterán, además, a una prueba de presión hidráulica con una presión igual a la profundidad de la misma cámara, debiendo permanecer el nivel de agua constante por un tiempo mínimo de cinco minutos."
+                    }
+                  ]
+                },
+                {
+                  "codigo": "h",
+                  "nombre": "Pruebas de instalaciones domiciliadas existentes",
+                  "items": [
+                    {
+                      "codigo": "h.a",
+                      "texto": "En toda instalación domiciliada existente en que se introduzcan modificaciones, deberán repetirse las pruebas reglamentadas en las tuberías y cámaras de inspección que reciban los nuevos servicios o que hayan sufrido modificaciones. En estos casos, se podrán efectuar las pruebas sin remover los artefactos instalados."
+                    },
+                    {
+                      "codigo": "h.b",
+                      "texto": "Para la prueba de presión hidráulica, se utilizará una presión equivalente a la altura del piso. Además, en esta prueba se aceptará una tolerancia de filtración hasta en tres veces superior a lo admitido en instalaciones nuevas. Si la filtración fuese mayor, se descubrirán las tuberías afectadas a fin de proceder a su reparación. En este último caso, al repetir la prueba de presión hidráulica, se retirarán los artefactos instalados a fin de efectuar la prueba de bola."
+                    },
+                    {
+                      "codigo": "h.c",
+                      "texto": "Efectuadas satisfactoriamente las pruebas anteriores, podrán reinstalarse los artefactos, después de lo cual se procederá a realizar la prueba de humo en la forma y condiciones indicadas precedentemente."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "TITULO FINAL",
+      "nombre": "Disposiciones Finales",
+      "articulos": [
+        {
+          "numero": "Artículo 106º",
+          "texto": "Forman parte integrante de este Reglamento los Anexos 1, 2, 3, 4, 5, 6-A, 6-B, 7, 8-A, 8-B, 9, 10-A y 10-B, que se incluyen en forma adjunta al presente decreto."
+        },
+        {
+          "numero": "Artículo 107º",
+          "texto": "Deróganse a partir de la entrada en vigencia del presente Reglamento los DS Minvu Nº 267 de 1980 y DS MOP Nº 70 de 1981 y se dejan sin efecto los decretos MOP 1.234/99 y 1.000/00, ambos sin tramitar."
+        },
+        {
+          "numero": "Artículo 108º",
+          "texto": "Todos los plazos de días que establece este Reglamento se entenderán de días hábiles, en los términos establecidos por el artículo 25 de la Ley 19.880."
+        }
+      ]
+    }
+  ],
+  "articulos_transitorios": [
+    {
+      "numero": "Artículo primero",
+      "texto": "El Reglamento que se aprueba entrará en vigencia a contar de 120 días después de su publicación en el Diario Oficial."
+    },
+    {
+      "numero": "Artículo segundo",
+      "texto": "Se previene que las normas chilenas invocadas en los artículos 5º; 15º letras a y a.b; 20 inciso final; 49; 52 letra f; 63, 94 y 104 letra a.d., a la fecha detentan su vigencia desde los años que seguidamente se expresa: Nº 691/of. 1998; Nº 1.105/of. 1999; Nº 1.104/of. 1998; Nº 2.485/of. 2000; Nº 1.730/of. 2000; Nº 13/of. 1993; Nº 494/of. 1969 y Nº 170/of. 1985."
+    },
+    {
+      "numero": "Artículo tercero",
+      "texto": "\"Para los efectos de conexión a los sistemas públicos de los inmuebles que cuentan a la fecha de publicación de este decreto, con fuentes propias de agua potable y soluciones particulares de alcantarillado, no les será exigible lo dispuesto en la letra d) del artículo 22º del Reglamento (certificación de calidad de materiales)\""
+    },
+    {
+      "numero": "Artículo cuarto",
+      "texto": "De ser necesaria la definición de requisitos y características especiales para los revisores independientes de instalaciones domiciliarias de agua potable y de alcantarillado a que se refiere el artículo 25º del Reglamento, éstos serán establecidos a través del Reglamento a que alude el artículo 116º bis del DFL 458/75; Ley General de Urbanismo y Construcciones.\n\nAnótese, comuníquese, tómese razón, publíquese e insértese en la recopilación de reglamentos de la Contraloría General de la República.-"
+    }
+  ]
+}

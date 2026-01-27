@@ -1,0 +1,736 @@
+{
+  "seccion": "12-13-14-15",
+  "titulo": "INSTALACIONES DE FUERZA, CALEFACCIÓN, AUTOGENERACIÓN Y HOSPITALES",
+  "subsecciones": [
+    {
+      "numero": "12.4.5",
+      "titulo": "Soldadoras por resistencia (continuación)",
+      "tablas": [
+        {
+          "numero": "12.31",
+          "columnas": ["Factor de Funcionamiento", "Coeficiente"],
+          "datos": [
+            {"factor": "0,05 ó menor", "coeficiente": "0,22"},
+            {"factor": "0,075", "coeficiente": "0,27"},
+            {"factor": "0,10", "coeficiente": "0,32"},
+            {"factor": "0,15", "coeficiente": "0,39"},
+            {"factor": "0,20", "coeficiente": "0,45"},
+            {"factor": "0,25", "coeficiente": "0,50"},
+            {"factor": "0,30", "coeficiente": "0,55"},
+            {"factor": "0,40", "coeficiente": "0,63"},
+            {"factor": "0,50", "coeficiente": "0,71"}
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "12.4.6",
+      "titulo": "Protecciones y comandos",
+      "articulos": [
+        {
+          "numero": "12.4.6.1",
+          "contenido": "Cada soldadora tendrá una protección de cortocircuito de capacidad nominal o regulada a no más de 2,5 veces la corriente nominal del primario. Se puede omitir esta protección en la soldadora cuando la protección del circuito cumpla la exigencia indicada."
+        },
+        {
+          "numero": "12.4.6.2",
+          "contenido": "Cada soldadora deberá llevar un interruptor o disyuntor que permita separarla de la alimentación, siempre que la soldadora no lo tenga incorporado; la capacidad de estos aparatos será, por lo menos, igual a la capacidad de transporte de los conductores de alimentación. Se puede utilizar como desconectador el interruptor de circuito cuando se alimente una sola soldadora."
+        },
+        {
+          "numero": "12.4.6.3",
+          "contenido": "Los conductores de alimentación a una soldadora o grupo de soldadoras deberán llevar protecciones de sobrecarga y cortocircuitos de capacidad nominal o regulados a no más de 2,5 veces la corriente máxima que pueda circular por ellos, determinada de acuerdo a 12.4.5.1, 12.4.5.2 ó 12.4.5.3, según corresponda."
+        }
+      ]
+    },
+    {
+      "numero": "12.4.7",
+      "titulo": "Marcas",
+      "articulos": [
+        {
+          "numero": "12.4.7.1",
+          "contenido": "En la placa de características de las soldadoras por resistencia se indicarán los siguientes datos:",
+          "lista": [
+            "Nombre del fabricante o su marca registrada.",
+            "Potencia nominal en KVA.",
+            "Factor de potencia.",
+            "Voltaje nominal de alimentación.",
+            "Para un factor de funcionamiento de 0,5, voltajes secundarios de circuito abierto, corrientes máxima y mínima de secundario en cortocircuito.",
+            "Distancia entre electrodos, y",
+            "Certificación emitida por un organismo competente."
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "13",
+      "titulo": "INSTALACIONES DE CALEFACCIÓN",
+      "subsecciones": [
+        {
+          "numero": "13.0",
+          "titulo": "CONCEPTOS GENERALES",
+          "subsecciones": [
+            {
+              "numero": "13.0.1",
+              "titulo": "Exigencias generales",
+              "articulos": [
+                {
+                  "numero": "13.0.1.1",
+                  "contenido": "Se considerará instalación de calefacción a toda aquella instalación en que la energía eléctrica se transforma en energía calórica con el objeto de variar la temperatura ambiental de recintos, calentar agua o preparar alimentos."
+                },
+                {
+                  "numero": "13.0.1.2",
+                  "contenido": "Los circuitos de calefacción deberán estar separados de los circuitos de otro tipo de consumos, sin embargo, podrán tener alimentadores o subalimentadores comunes, salvo alguna disposición expresa en contrario"
+                },
+                {
+                  "numero": "13.0.1.3",
+                  "contenido": "Los equipos de calefacción que necesiten de motores para su funcionamiento, se conectarán a circuitos de calefacción, salvo que las características del equipo hagan necesaria una conexión de estos consumos a circuitos independientes."
+                },
+                {
+                  "numero": "13.0.1.4",
+                  "contenido": "Las máquinas que necesiten para su funcionamiento de elementos calefactores, pero cuya finalidad corresponda a la clasificación de consumo de fuerza, podrán conectarse a circuitos de fuerza, salvo que las características del equipo hagan necesaria una conexión separada de los elementos calefactores."
+                }
+              ]
+            },
+            {
+              "numero": "13.0.2",
+              "titulo": "Exigencias para los equipos",
+              "articulos": [
+                {
+                  "numero": "13.0.2.1",
+                  "contenido": "Todos los equipos eléctricos que forman parte de una instalación de calefacción deberán ser adecuados al ambiente y condiciones de montaje en que se instalen, de acuerdo a lo indicado en 5.4.2."
+                },
+                {
+                  "numero": "13.0.2.2",
+                  "contenido": "Todo equipo eléctrico usado en calefacción deberá tener una placa de características en que se indiquen a lo menos los siguientes datos:",
+                  "lista": [
+                    "Nombre del fabricante o su marca registrada.",
+                    "Voltaje nominal y corriente de plena carga.",
+                    "Potencia nominal.",
+                    "Certificación emitida por un organismo competente."
+                  ]
+                },
+                {
+                  "numero": "13.0.2.3",
+                  "contenido": "Si el equipo cuenta, para su funcionamiento, con un motor de una potencia superior a 1/8 HP, deberán indicarse separadamente los datos de los calefactores tal como se indicó anteriormente, agregando los siguientes datos del motor:",
+                  "lista": [
+                    "Voltaje nominal y corriente de plena carga.",
+                    "Frecuencia.",
+                    "Velocidad en r.p.m.",
+                    "Factor de potencia."
+                  ]
+                },
+                {
+                  "numero": "13.0.2.4",
+                  "contenido": "La placa de características deberá ser fácilmente accesible y visible con el equipo instalado en condiciones normales de uso."
+                },
+                {
+                  "numero": "13.0.2.5",
+                  "contenido": "Los equipos móviles deberán entregarse con un cordón de una longitud no inferior a 2 m, adecuado al uso que se les dará."
+                },
+                {
+                  "numero": "13.0.2.6",
+                  "contenido": "Todo equipo de calefacción de potencia superior a 1 KW deberá contar con un interruptor incorporado a él, que corte todas sus líneas activas, o se conectará al circuito a través de un tablero de comando."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "numero": "13.1",
+          "titulo": "Circuitos",
+          "articulos": [
+            {
+              "numero": "13.1.1",
+              "contenido": "Los circuitos de enchufes de calefacción para alimentar dos o más calefactores tendrán capacidades nominales de 15, 20, 25 ó 30 A."
+            },
+            {
+              "numero": "13.1.2",
+              "contenido": "La cantidad de enchufes en cada circuito de calefacción se fijará tomando en cuenta la capacidad nominal del circuito y la potencia unitaria de cada equipo calefactor que se conecte a él."
+            },
+            {
+              "numero": "13.1.3",
+              "contenido": "Los equipos de potencias unitarias superiores a las capacidades de los circuitos señalados en 13.1.1 se deberán alimentar a través de un tablero de comando."
+            },
+            {
+              "numero": "13.1.4",
+              "contenido": "Los conductores de alimentación de circuitos de calefacción se dimensionarán de modo de asegurar una capacidad de transporte de corriente no inferior a 1,25 veces la corriente de carga del circuito. En todo caso, la sección mínima será de 2,5 mm2."
+            },
+            {
+              "numero": "13.1.5",
+              "contenido": "Los equipos de calefacción que necesiten de conductores de alimentación de temperatura de servicio superior a 60º C deberán tenerlo indicado clara y permanentemente. Esta indicación deberá ser visible estando el equipo instalado como en condiciones normales de uso."
+            },
+            {
+              "numero": "13.1.6",
+              "contenido": "Las protecciones de los circuitos de calefacción deberán dimensionarse de modo de asegurar que los conductores de alimentación del circuito queden protegidos contra sobrecargas y cortocircuitos."
+            },
+            {
+              "numero": "13.1.7",
+              "contenido": "En los circuitos de calefacción se deberán adoptar algunas de las medidas de protección contra tensiones de contacto peligrosas indicadas en las secciones 9 y 10."
+            },
+            {
+              "numero": "13.1.8",
+              "contenido": "Los equipos de calefacción fijos deberán instalarse alejados y protegidos de materiales combustibles."
+            }
+          ]
+        },
+        {
+          "numero": "13.2",
+          "titulo": "Protecciones y comandos",
+          "articulos": [
+            {
+              "numero": "13.2.1",
+              "contenido": "Los dispositivos de desconexión de los equipos de calefacción deberán instalarse con vista al equipo controlado."
+            },
+            {
+              "numero": "13.2.2",
+              "contenido": "Se podrá usar como dispositivo de desconexión para un equipo de calefacción el interruptor o disyuntor del circuito, siempre que estén a la vista del equipo y fácilmente accesibles. En equipos enchufables se aceptará el enchufe como medio de desconexión, siempre que la potencia no exceda de 1 KW."
+            }
+          ]
+        },
+        {
+          "numero": "13.3",
+          "titulo": "Canalizaciones",
+          "articulos": [
+            {
+              "numero": "13.3.1",
+              "contenido": "Los circuitos de calefacción se canalizarán en alguno de los sistemas indicados en la sección Nº 8."
+            },
+            {
+              "numero": "13.3.2",
+              "contenido": "En recintos o en medios en que la temperatura exceda de 35º C, se deberán aplicar los factores de corrección de capacidad de transporte indicados en las tablas Nº 8.9 y Nº 8.9a."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "14",
+      "titulo": "SISTEMAS DE AUTOGENERACION",
+      "subsecciones": [
+        {
+          "numero": "14.0",
+          "titulo": "CONCEPTOS GENERALES",
+          "articulos": [
+            {
+              "numero": "14.0.1",
+              "contenido": "Los sistemas de autogeneración están destinados a proporcionar energía a instalaciones eléctricas en forma independiente de la red pública o en combinación con ésta. Según su finalidad se clasificarán en:",
+              "lista": [
+                "Sistemas de emergencia",
+                "Sistemas de corte de puntas",
+                "Sistemas de cogeneración"
+              ]
+            },
+            {
+              "numero": "14.0.2",
+              "contenido": "Todo sistema de autogeneración deberá ser construido de acuerdo a un proyecto el cual deberá ser presentado ante SEC o ante el organismo inspectivo que ésta designe, para su revisión antes de iniciarse su etapa de construcción."
+            },
+            {
+              "numero": "14.0.3",
+              "contenido": "Los sistemas de emergencia entrarán en funciones cuando la energía de la red pública no esté disponible y requerirán para su entrada en servicio de un sistema de partida y un sistema de transferencia. Estos sistemas pueden ser de accionamiento manual o automático."
+            },
+            {
+              "numero": "14.0.4",
+              "contenido": "Se entenderá por transferencia como el proceso de traspaso de carga desde la red pública al sistema de autogeneración o viceversa."
+            },
+            {
+              "numero": "14.0.5",
+              "contenido": "Los sistemas de corte de punta están destinados a eliminar o disminuir la demanda de potencia de una instalación en el horario de punta y de acuerdo a la forma en que se haga la transferencia pueden operar de dos maneras:",
+              "lista": [
+                "Sistemas de transferencia abierta, en caso que el traspaso de consumos desde la red pública al sistema de corte de puntas se haga sin interconexión eléctrica entre ambos sistemas",
+                "Sistemas de transferencia cerrada, en caso que el sistema de corte de puntas y la red pública permanezcan interconectados en forma momentánea, mientras dura el proceso de traspaso de carga."
+              ]
+            },
+            {
+              "numero": "14.0.6",
+              "contenido": "Para efectos de proyectar y dimensionar el esquema de protecciones de una sistema de corte de puntas de transferencia cerrada éste deberá tratarse como un sistema de cogeneración."
+            },
+            {
+              "numero": "14.0.7",
+              "contenido": "Un sistema de cogeneración corresponde a un sistema de autogeneración en que una parte de la demanda la suple la autogeneración, y la parte restante la entrega la red pública. Esto exige el funcionamiento en paralelo de la autogeneración y la red."
+            },
+            {
+              "numero": "14.0.8",
+              "contenido": "La Superintendencia llevará un registro nacional actualizado de todos los sistemas de cogeneración o de corte de puntas con transferencia cerrada, en operaciones el cual será puesto en conocimiento de las Empresas Eléctricas Concesionarias locales. En este registro se consignarán: el período de operación del sistema, horario de conexión y desconexión y tiempo estimado de permanencia de la condición paralelo entre el sistema y la red pública. La actualización de los datos de este registro será semestral."
+            },
+            {
+              "numero": "14.0.9",
+              "contenido": "Cualquier puesta en paralelo del sistema con la red pública fuera del período acordado en los términos del registro se deberá coordinar en cada oportunidad con la Empresa Eléctrica Concesionaria local; de no ser posible esta coordinación no podrá efectuarse la puesta en paralelo."
+            },
+            {
+              "numero": "14.0.10",
+              "contenido": "La Empresa Eléctrica Concesionaria local, en caso de trabajos en sus líneas que signifiquen la desenergización de ellas, deberá prevenir su posible reenergización por la presencia de cogeneradores, cumpliendo el siguiente procedimiento:",
+              "lista": [
+                "Verificando en el registro mencionado en 14.0.8 la existencia de cogeneradores en la zona en cuestión.",
+                "En caso afirmativo, avisará a cada uno de los clientes cogeneradores de la zona de la desconexión, aún cuando ésta se produzca fuera del horario y período de paralelismo consignado en el registro.",
+                "Desconectando a todos los clientes cogeneradores de la zona por todo el tiempo que duren los trabajos que mantengan desenergizada la línea. Esta desconexión se hará por la operación de las protecciones del empalme y la reposición de éstas sólo podrá ser efectuada por personal autorizado de la Empresa Eléctrica, una vez terminados los trabajos que originaron la desconexión."
+              ]
+            }
+          ],
+          "notas_aclaratorias": [
+            {
+              "tipo": "NA",
+              "contenido": "En la zona, el horario de punta corresponde al lapso comprendido entre las 18 y la 23 horas del período de invierno, entre el 1 de Mayo y el 30 de Septiembre de cada año. Este período podrá variar de acuerdo a lo dispuesto en el Decreto tarifario correspondiente"
+            }
+          ]
+        },
+        {
+          "numero": "14.1",
+          "titulo": "Sistemas de emergencia",
+          "articulos": [
+            {
+              "numero": "14.1.1",
+              "contenido": "Los sistemas de emergencia serán necesarios en recintos asistenciales, educacionales, hoteles, teatros, recintos deportivos, locales de reunión de personas, y todo otro recinto o institución de finalidades similares."
+            },
+            {
+              "numero": "14.1.2",
+              "contenido": "También deberán contar con el respaldo de sistemas de emergencia aquellos procesos industriales cuya interrupción accidental pueda provocar daños ambientales severos."
+            },
+            {
+              "numero": "14.1.3",
+              "contenido": "En el empalme y/o en el tablero general de toda instalación de consumo que cuente con un respaldo de un sistema de emergencia de transferencia y partida automáticas, se deberá colocar en forma fácilmente visible un letrero indicando esta condición e indicando la forma en que este sistema de emergencia se debe desconectar en caso de siniestros, cuando es necesario que la instalación quede totalmente desenergizada"
+            },
+            {
+              "numero": "14.1.4",
+              "contenido": "Los sistemas de emergencia alimentarán consumos tales como sistemas de sustentación de funciones biológicas vitales y sus sistemas periféricos esenciales para su funcionamiento, alumbrado y fuerza en salas de cirugía de centros asistenciales, sistemas de alarma contra incendio o contra robos, sistemas de combate y extinción de incendios, sistemas de alumbrado de escape y circulación de emergencia y todo otro consumo de características similares, como los considerados en la sección 11.5."
+            },
+            {
+              "numero": "14.1.5",
+              "contenido": "Aquellos procesos o sistemas industriales cuya interrupción provoque pérdidas económicas y que por esa razón sus usuarios o propietarios decidan alimentarlos desde una fuente alternativa a la red pública, no se considerarán sistemas de emergencia y estarán afectos sólo a las disposiciones generales de los sistemas de autogeneración establecidas en los párrafos precedentes pero no necesariamente estarán sujetos a las exigencias particulares de esta sección."
+            },
+            {
+              "numero": "14.1.6",
+              "contenido": "Las instalaciones pertenecientes a un sistema de emergencia se canalizarán mediante alguna de los métodos prescritos en la sección 8 y todos los equipos empleados, distintos de los equipos convencionales, deberán ser aprobados para el uso especifico en sistemas de emergencia."
+            },
+            {
+              "numero": "14.1.7",
+              "contenido": "Los sistemas de emergencia deberán ser probados periódicamente para comprobar su perfecto estado de funcionamiento y asegurar su correcto mantenimiento. De estas pruebas, por lo menos una cada año deberá ser supervisada por la Superintendencia o por el organismo inspectivo que ésta designe."
+            },
+            {
+              "numero": "14.1.8",
+              "contenido": "Se llevará un registro escrito de las pruebas periódicas efectuadas al sistema de emergencia, en el cual se indicara las frecuencias con que estas pruebas se efectúan, las pruebas hechas y sus resultados. Este registro estará disponible cada vez que la Superintendencia lo requiera, en particular en cada ocasión en que se hagan las pruebas bajo su supervisión."
+            },
+            {
+              "numero": "14.1.9",
+              "contenido": "En donde se utilicen baterías como fuente de alimentación para sistemas de emergencia, para hacer partir grupos de motor generador o para alimentar circuitos de control, deberá efectuarse un mantenimiento periódico, de acuerdo a las indicaciones del fabricante o las prácticas normales para estos casos."
+            },
+            {
+              "numero": "14.1.10",
+              "contenido": "Los elementos de control adecuados para probar el funcionamiento del sistema de emergencia en cualquier momento se ubicarán en el tablero general de la instalación, el tablero de transferencia u otra ubicación accesible que sea igualmente satisfactoria."
+            }
+          ]
+        },
+        {
+          "numero": "14.2",
+          "titulo": "CLASIFICACION DE LOS SISTEMAS DE EMERGENCIA",
+          "articulos": [
+            {
+              "numero": "14.2.1",
+              "contenido": "Desde el punto de vista de las necesidades de continuidad de servicio para asegurar el normal desarrollo de los procesos o actividades ligados al funcionamiento de sistemas de emergencia, éstos se clasificarán como sigue:",
+              "grupos": [
+                {
+                  "nombre": "Grupo 0",
+                  "descripcion": "En este grupo se encuentran aquellos sistemas de emergencia que alimenten consumos que, por la naturaleza de su finalidad no toleran interrupciones en su alimentación."
+                },
+                {
+                  "nombre": "Grupo 1",
+                  "descripcion": "En este grupo se encuentran aquellos sistemas de emergencia que alimenten consumos que no toleran interrupciones superiores a 0,20 segundos y variaciones de frecuencia no mayores a ± 0,5%."
+                },
+                {
+                  "nombre": "Grupo 2",
+                  "descripcion": "En este grupo se encuentran aquellos sistemas de emergencia que alimenten consumos que no toleran interrupciones superiores a 15 segundos."
+                },
+                {
+                  "nombre": "Grupo 3",
+                  "descripcion": "En este grupo se encuentran aquellos sistemas de emergencia que alimenten consumos que toleran interrupciones superiores a las indicadas pero en ningún caso superiores a 15 minutos."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "numero": "14.3",
+          "titulo": "Alimentación de sistemas de emergencia",
+          "articulos": [
+            {
+              "numero": "14.3.1",
+              "contenido": "La alimentación de sistemas de emergencia deberá hacerse en cada caso, mediante alguno de los métodos que se indican adelante, de modo de asegurar que la energía esté disponible en un tiempo no superior al previsto, de acuerdo a las condiciones indicadas en 14.2.1."
+            },
+            {
+              "numero": "14.3.2",
+              "contenido": "En donde sea necesario se deberá usar más de una fuente para alimentar sistemas de emergencia independientes."
+            },
+            {
+              "numero": "14.3.3",
+              "contenido": "Las fuentes de alimentación de los sistemas de emergencia deberán tener una capacidad y condiciones de funcionamiento adecuados para la operación de todos los equipos conectados a ellos."
+            },
+            {
+              "numero": "14.3.4",
+              "contenido": "Las fuentes de alimentación aceptadas para alimentar sistemas de emergencia y las características generales que ellas deben cumplir son las siguientes:"
+            }
+          ],
+          "subsecciones": [
+            {
+              "numero": "14.3.4.1",
+              "titulo": "Baterías de acumuladores",
+              "contenido": "Los acumuladores que se utilicen para alimentar sistemas de emergencia deberán ser de tipo estacionario; no se permitirá el uso de baterías de vehículos.",
+              "requisitos": [
+                "Los sistemas de emergencia alimentados por baterías podrán funcionar con una tensión de servicio distinta de la del sistema normal.",
+                "Estando en funcionamiento la batería deberá tener una capacidad y características tales como para mantener una tensión no menor al 85% del valor nominal, durante un periodo no inferior a 90 minutos, alimentando toda la carga conectada a este sistema.",
+                "Se preferirá el uso de baterías libres de mantenimiento; sin embargo, en donde se usen baterías plomo - ácido que requieran verificaciones periódicas del nivel del electrolito y en que se le deba agregar agua para mantener dicho nivel, éstas deberán tener vasos transparentes.",
+                "Las baterías irán montadas sobre soportes y bajo ellas se colocarán bandejas que cumplan las siguientes condiciones:",
+                "Los soportes podrán ser de madera tratada, de metal tratado o materiales tales como fibra de vidrio, de modo que sean resistentes a la corrosión provocada por acción del electrolito. En todo caso, las partes del soporte que estén en contacto directo con las baterías deberán ser de material no conductor.",
+                "Las bandejas irán colocadas bajo las baterías y serán de madera tratada u otro material no conductor resistente a la acción corrosiva del ácido.",
+                "Las baterías estarán ubicadas en un recinto adecuadamente ventilado, de modo de evitar la acumulación de una mezcla gaseosa explosiva.",
+                "La instalación de baterías deberá contar con un equipo cargador."
+              ]
+            },
+            {
+              "numero": "14.3.4.2",
+              "titulo": "Grupos motor-generador",
+              "contenido": "Los grupos motor - generador accionados por motores de combustión interna podrán utilizarse para alimentar sistemas de emergencia; aquellos grupos motor generador destinados a servir sistemas del grupo 1 y grupo 2 deberán contar con equipos de control, que aseguren la transferencia automática; los que alimentan sistemas del grupo 3 podrán ser de transferencia manual",
+              "requisitos": [
+                "Estos grupos motor generador deberán contar con un depósito de combustible que permita su funcionamiento a plena carga durante 90 minutos por lo menos.",
+                "Los equipos que utilicen baterías para su partida deberán tener un cargador automático."
+              ]
+            },
+            {
+              "numero": "14.3.4.3",
+              "titulo": "Empalmes separados",
+              "contenido": "Para sistemas clasificados en el grupo 3 se aceptará como alimentación del sistema de emergencia un empalme distinto del principal, el cual deberá ser tomado desde un alimentador de la red de distribución distinto al del empalme principal."
+            },
+            {
+              "numero": "14.3.4.4",
+              "titulo": "Unidades autoenergizadas",
+              "contenido": "Para sistemas de alumbrado de emergencia se podrán utilizar unidades autoenergizadas las que consisten en una batería recargable, libre de mantenimiento, un cargador, una o más lámparas montadas en la unidad, terminales que permitan la conexión de lámparas remotas y un sistema de control que conecte automáticamente las lámparas cuando falle la energía normal. La capacidad y características de la batería deberán ser tales como para mantener el 87,5% de su tensión nominal durante 90 minutos, a plena carga. Las unidades deberán montarse fijas en su ubicación, no removibles sin uso de herramientas y podrán ser alimentadas desde los circuitos normales de alumbrado, a través de enchufes montados a una altura conveniente."
+            },
+            {
+              "numero": "14.3.4.5",
+              "titulo": "Unidades de potencia sin interrupción (UPS)",
+              "contenido": "Las UPS consistirán en un banco de baterías el cual, mediante un sistema convertidor, transformará la tensión continua de salida en una tensión alterna casi sinusoidal con los valores nominales de tensión y frecuencia del sistema normal."
+            },
+            {
+              "numero": "14.3.4.6",
+              "contenido": "Las UPS alimentarán a los consumidores del Grupo 0 y deberán tener una autonomía suficiente como para permitir la entrada en funciones a plena carga de un sistema de alimentación de emergencia alternativo que sea capaz de entregar la potencia requerida a condiciones nominales por un lapso de tiempo ilimitado."
+            },
+            {
+              "numero": "14.3.4.7",
+              "contenido": "Las UPS deberán cumplir las exigencias de norma en cuanto a los valores tolerables de generación de armónicas."
+            }
+          ]
+        },
+        {
+          "numero": "14.4",
+          "titulo": "Circuitos de emergencia",
+          "articulos": [
+            {
+              "numero": "14.4.1",
+              "contenido": "En circuitos de alumbrado de emergencia no se podrán colocar enchufes ni conectar otro tipo de consumo distinto."
+            },
+            {
+              "numero": "14.4.2",
+              "contenido": "El alumbrado de emergencia se proyectará de acuerdo a las exigencias establecidas en la sección 11.5."
+            },
+            {
+              "numero": "14.4.3",
+              "contenido": "Los circuitos de alumbrado de emergencia podrán ser totalmente independientes de los circuitos normales e incluso permanecer apagados mientras no existan fallas, o bien podrán formar parte de los circuitos normales y operar en modo similar a los circuitos de fuerza de emergencia."
+            },
+            {
+              "numero": "14.4.4",
+              "contenido": "Los circuitos de fuerza de emergencia formarán parte de los circuitos normales conectados a una barra Independiente del tablero respectivo, la cual se transferirá a la fuente de emergencia en caso de falla. Se exceptúa de esta condición a las instalaciones de emergencia cuya fuente de alimentación está dimensionada para suplir la carga total de la instalación."
+            },
+            {
+              "numero": "14.4.5",
+              "contenido": "En donde existan circuitos independientes de alumbrado de emergencia, éstos se canalizarán independientes de los circuitos normales."
+            },
+            {
+              "numero": "14.4.6",
+              "contenido": "Los interruptores y elementos de control y protección de los circuitos de emergencia serán accesibles sólo a personal calificado."
+            },
+            {
+              "numero": "14.4.7",
+              "contenido": "En donde se proyecten luces de emergencia en el exterior se podrá comandar separadamente de las luces de emergencia interiores, individualmente o en grupos, mediante una fotocelda para evitar su funcionamiento durante el día. En este caso, estas luces deberán estar en circuitos separados de los de las luces de emergencia interior."
+            },
+            {
+              "numero": "14.4.8",
+              "contenido": "Los edificios de altura de cinco o más pisos deberán contar con un circuito de emergencia, que operará con independencia de la red eléctrica general del inmueble, para uso exclusivo de bomberos, que se mantendrá permanentemente desenergizado y sólo podrá ser energizado por ellos. Este circuito cumplirá además las siguientes condiciones:"
+            }
+          ],
+          "subsecciones": [
+            {
+              "numero": "14.4.8.1",
+              "contenido": "Su alimentación estará en el perímetro del edificio en un lugar facilmente accesible y para su conexión se dejará habilitado un enchufe macho especial del modelo definido por el cuerpo de bomberos"
+            },
+            {
+              "numero": "14.4.8.2",
+              "contenido": "La capacidad mínima de este circuito será de 5 kW en disposición monofásica"
+            },
+            {
+              "numero": "14.4.8.3",
+              "contenido": "La canalización se hará preferentemente embutida, utilizando ductos metálicos, los que deberán protegerse mediante un aislante térmico resistente a la llama directa"
+            },
+            {
+              "numero": "14.4.8.4",
+              "contenido": "Los conductores empleados serán aptos para una temperatura de servicio mínima de 250°C."
+            },
+            {
+              "numero": "14.4.8.5",
+              "contenido": "Este circuito alimentará enchufes embutidos del tipo P17, configuración 2P+T de 16 A, 220 V, según norma CEI 60309, con grado de protección IP 67, ubicados en cada piso, en el sector de la caja de escala"
+            }
+          ]
+        },
+        {
+          "numero": "14.5",
+          "titulo": "Sistemas de corte de puntas",
+          "articulos": [
+            {
+              "numero": "14.5.1",
+              "contenido": "Los sistemas de corte de puntas operarán de acuerdo a lo indicado en 14.0.5."
+            },
+            {
+              "numero": "14.5.2",
+              "contenido": "Un sistema de corte de puntas de transición abierta deberá contar con un circuito de control que le permita entrar en funcionamiento sólo cuando los consumos servidos estén separados de su fuente de alimentación principal. Este circuito de control podrá ser manual o automático, pero en ambos casos deberá contar con los enclavamientos necesarios para evitar la interconexión de la fuente de autogeneración con la fuente principal."
+            },
+            {
+              "numero": "14.5.3",
+              "contenido": "Un sistema de corte de puntas de transición cerrada se considerará como sistema de cogeneración y por lo tanto su equipamiento deberá cumplir las condiciones de aquellos, no importando lo corto que sea el período de permanencia en paralelo de la fuente principal y la fuente de autogeneración."
+            }
+          ]
+        },
+        {
+          "numero": "14.6",
+          "titulo": "Sistemas de cogeneración",
+          "articulos": [
+            {
+              "numero": "14.6.1",
+              "contenido": "Un sistema de cogeneración está destinado a funcionar en paralelo con la red pública por períodos de tiempo prolongados o indefinidos; por ello debe contar en su implementación con todo el equipamiento y protecciones necesarias para un adecuado funcionamiento, tanto desde el punto de vista técnico como el de seguridad, sean éstos los del propio sistema de cogeneración como los de la red a la cual se va a conectar."
+            },
+            {
+              "numero": "14.6.2",
+              "contenido": "Un sistema de cogeneración forma parte de la instalación de consumo respaldada por lo tanto, administrativamente debe ser incluido en la declaración de Anexo 1 como parte integrante de ésta y sus características de equipamiento y disposición de montaje deberán quedar registrados en los planos y memorias del proyecto correspondiente. Además, esta condición deberá ser comunicada expresamente a la Empresa Eléctrica de Distribución correspondiente, en esta comunicación se deberá dejar constancia de:"
+            }
+          ],
+          "subsecciones": [
+            {
+              "numero": "14.6.2.1",
+              "contenido": "Periodo de operación del sistema."
+            },
+            {
+              "numero": "14.6.2.2",
+              "contenido": "Horario de conexión del sistema."
+            },
+            {
+              "numero": "14.6.2.3",
+              "contenido": "Horario de operación del sistema."
+            },
+            {
+              "numero": "14.6.2.4",
+              "contenido": "Tiempo máximo de permanencia en paralelo, en caso de sistemas de corte de puntas con transición cerrada."
+            }
+          ],
+          "articulos_adicionales": [
+            {
+              "numero": "14.6.3",
+              "contenido": "Para el control de sus parámetros de funcionamiento y de sincronización con la red, un sistema de cogeneración debe contar a lo menos con los siguientes equipos:",
+              "lista": [
+                "Voltímetros que midan simultáneamente las tensiones de red y de fuente.",
+                "Frecuencímetros que midan simultáneamente las frecuencias de red y de fuente.",
+                "Medidor del factor de potencia del consumo.",
+                "Sincronoscopio, para sistemas de puesta en paralelo manual se aceptará como alternativa el uso de luces de sincronización."
+              ]
+            },
+            {
+              "numero": "14.6.4",
+              "contenido": "Para la protección y el control de la puesta en paralelo o separación de la fuente y la red en forma manual o automática el sistema de cogeneración deberá contar con los siguientes equipos",
+              "lista": [
+                "Contactores o interruptores de mando motorizado remoto.",
+                "Disyuntores de fuente y de red que permitan su desconexión por sobrecarga o cortocircuito.",
+                "Un relé de potencia inversa de alta sensibilidad para prevenir la energización de la red por la fuente de cogeneración cuando la red se desenergice por cualquier motivo programado o accidental.",
+                "Un relé de sincronismo que permita la puesta en paralelo automática cuando se alcance las condiciones de paralelismo.",
+                "Un control de repartición de cargas de accionamiento manual o automático."
+              ]
+            },
+            {
+              "numero": "14.6.5",
+              "contenido": "El relé de potencia inversa exigido en 14.6.4 deberá ser del tipo de regulación de potencia; no serán aceptables parta estos fines los relés de potencia inversa de ventana porcentual. No obstante lo anterior se podrá instalar un relé de ventana porcentual, adicional al relé exigido, si esta condición es técnicamente recomendable."
+            },
+            {
+              "numero": "14.6.6",
+              "contenido": "La sensibilidad de disparo del relé, medida en potencia, se fijará asumiendo que el relé operará contra una puesta a tierra de operación en la red de una resistencia de 150 Ohm."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "15",
+      "titulo": "INSTALACIONES EN HOSPITALES",
+      "subsecciones": [
+        {
+          "numero": "15.0",
+          "titulo": "CONCEPTOS GENERALES",
+          "articulos": [
+            {
+              "numero": "15.0.1",
+              "contenido": "Por tener relación exclusivamente con las disposiciones de esta sección, no fueron incluidos en la sección \"Terminología\", y se definen en este párrafo los siguientes términos:"
+            }
+          ],
+          "definiciones": [
+            {
+              "numero": "15.0.1.1",
+              "termino": "Área de operaciones",
+              "definicion": "Es la zona del hospital en que se realizan las intervenciones quirúrgicas. Comprende el siguiente grupo de dependencias:"
+            },
+            {
+              "numero": "15.0.1.2",
+              "termino": "Depósito de anestesia",
+              "definicion": "Recintos en los que se almacenan los anestésicos y se guardan los equipos de anestesia."
+            },
+            {
+              "numero": "15.0.1.3",
+              "termino": "Pabellón de cirugía",
+              "definicion": "Recintos en que se desarrollan las intervenciones quirúrgicas."
+            },
+            {
+              "numero": "15.0.1.4",
+              "termino": "Salas de esterilización menor",
+              "definicion": "Recintos en los cuales se esterilizan los instrumentos que se utilizarán en la intervención quirúrgica."
+            },
+            {
+              "numero": "15.0.1.5",
+              "termino": "Salas de lavado preoperatorio",
+              "definicion": "Recintos anexos al pabellón de cirugía en donde los médicos y sus asistentes se lavan para desinfectarse."
+            },
+            {
+              "numero": "15.0.1.6",
+              "termino": "Salas de parto",
+              "definicion": "Recintos en los que ocurren los nacimientos."
+            },
+            {
+              "numero": "15.0.1.7",
+              "termino": "Salas de preparto",
+              "definicion": "Salas de preparación al parto."
+            },
+            {
+              "numero": "15.0.1.8",
+              "termino": "Salas de preparación",
+              "definicion": "Salas en que los pacientes son preparados para una operación, por ejemplo se les administra anestésicos."
+            },
+            {
+              "numero": "15.0.1.9",
+              "termino": "Salas de recuperación",
+              "definicion": "Recintos en que se mantienen bajo observación al paciente mientras se disipan los efectos de la anestesia."
+            },
+            {
+              "numero": "15.0.1.10",
+              "termino": "Salas de yesos",
+              "definicion": "Dentro del alcance de esta norma son recintos en los cuales se aplica yeso al paciente, estando éste anestesiado."
+            },
+            {
+              "numero": "15.0.1.11",
+              "termino": "Servicio de urgencia",
+              "definicion": "Recintos en que se realizan operaciones de cirugía menor, en las cuales puede ser necesario anestesiar al paciente."
+            },
+            {
+              "numero": "15.0.1.12",
+              "termino": "Salas de exámenes intensivos",
+              "definicion": "Salas en que con ayuda de equipos electromédicos, se registran funciones biológicas de los pacientes y se observan sus reacciones."
+            },
+            {
+              "numero": "15.0.1.13",
+              "termino": "Salas de hospitalización",
+              "definicion": "Aquellas salas en las que permanecen los pacientes durante su estadía en un hospital o centro asistencial."
+            },
+            {
+              "numero": "15.0.1.14",
+              "termino": "Unidades de tratamiento intensivo",
+              "definicion": "Recintos en que el paciente es tratado con equipos electromédicos, que desarrollan alguna función biológica complementaria."
+            },
+            {
+              "numero": "15.0.1.15",
+              "termino": "Zona peligrosa",
+              "definicion": "Es la zona dentro de una sala de operaciones o recintos en que se utilicen anestésicos combustibles y en la que es probable encontrar una mezcla explosiva de aire u oxígeno con el anestésico."
+            }
+          ]
+        },
+        {
+          "numero": "15.1",
+          "titulo": "Consumos conectados a los sistemas de emergencia",
+          "articulos": [
+            {
+              "numero": "15.1.1",
+              "contenido": "Desde el punto de vista de la necesidad de continuidad de servicio para asegurar la supervivencia del enfermo y el eficiente funcionamiento del hospital, los consumos deberán considerarse dentro de los siguientes grupos de acuerdo a la clasificación dada en 14.2."
+            }
+          ],
+          "grupos": [
+            {
+              "numero": "15.1.1.1",
+              "nombre": "Grupo 0",
+              "descripcion": "En este grupo se encuentran todos los equipos que estén cumpliendo una función biológica suplementaria vital para el enfermo y/o los registros y procesamiento de datos mediante computadoras, en los cuales una detención del proceso significa un peligro para la vida del paciente."
+            },
+            {
+              "numero": "15.1.1.2",
+              "nombre": "Grupo 1",
+              "descripcion": "En este grupo se encuentran todos los equipos que estén cumpliendo una función biológica suplementaria vital para el enfermo y/o los registros y procesamiento de datos mediante computadoras, en los cuales una detención del proceso implica un alto riesgo para el éxito de la intervención quirúrgica, por ejemplo:",
+              "ejemplos": [
+                "Pabellones de cirugía cardiovascular",
+                "Pabellones de neurocirugía",
+                "Pabellones de cirugía de trasplante de órganos",
+                "Computadoras"
+              ]
+            },
+            {
+              "numero": "15.1.1.3",
+              "nombre": "Grupo 2",
+              "descripcion": "Dentro de este grupo se encuentran los equipos cuya finalidad es asegurar la continuidad de la terapia, diagnóstico o control del enfermo, como asimismo proporcionar algunos servicios básicos para mantener en cierto grado de operatividad y eficiencia el funcionamiento del hospital, por ejemplo:",
+              "ejemplos": [
+                "Unidades coronarias",
+                "Salas de post operados",
+                "Salas de tratamientos intensivos",
+                "Pabellones de cirugía general",
+                "Pabellones y salas de parto",
+                "Salas de prematuros",
+                "Unidades renales",
+                "Servicio de urgencia",
+                "Cámara de cultivo en laboratorios",
+                "Bomba de vacío central",
+                "Unidades de radiación nuclear",
+                "Luces de emergencia",
+                "Planta telefónica",
+                "Sistema buscapersonas",
+                "Radio comunicaciones",
+                "Sistema de llamado de enfermería"
+              ]
+            },
+            {
+              "numero": "15.1.1.4",
+              "nombre": "Grupo 3",
+              "descripcion": "En este grupo se encuentran equipos y servicios imprescindibles para el funcionamiento del hospital, pero cuya actividad no afecta directamente al enfermo. Por ejemplo:",
+              "ejemplos": [
+                "Refrigeradores de banco de sangre y medicamentos",
+                "Esterilización rápida",
+                "Extracción de pabellones y salas de parto",
+                "Radioscopia",
+                "Ascensores",
+                "Bombas de impulsión de agua potable",
+                "Calderas de vapor de alta presión"
+              ]
+            }
+          ],
+          "articulos_adicionales": [
+            {
+              "numero": "15.1.2",
+              "contenido": "Dependiendo de la importancia del centro asistencial o el hospital considerado, será exigible la existencia de uno o más de estos sistemas de emergencia."
+            },
+            {
+              "numero": "15.1.3",
+              "contenido": "Para hospitales y centros asistenciales de importancia (más de 150 camas) se aceptará la existencia de un doble alimentador en media tensión con un intercambiador automático, que impida la conexión de la instalación a ambos alimentadores simultáneamente, o bien, se aceptará conectar distintos transformadores o subestaciones a distintos alimentadores en media tensión, siempre que existan dispositivos de control que impidan la realimentación de la red de alta tensión por la puesta en paralelo de transformadores a través de su circuito secundario; sin embargo, esta solución deberá ser complementada por alguno de los sistemas indicados en 14.2, según corresponda."
+            },
+            {
+              "numero": "15.1.4",
+              "contenido": "En todo caso y cualquiera sea el tamaño del hospital o centro asistencial, deberán contar a lo menos con sistemas de alumbrado de emergencia y seguridad."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

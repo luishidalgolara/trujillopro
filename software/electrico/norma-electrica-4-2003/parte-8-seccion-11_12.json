@@ -1,0 +1,935 @@
+{
+  "seccion": "11-12",
+  "titulo": "INSTALACIONES DE ALUMBRADO Y FUERZA",
+  "subsecciones": [
+    {
+      "numero": "11.2.9",
+      "contenido": "En oficinas de superficie superior a los 40 m2, se instalarán 5 enchufes por los primeros 40 m2, más 3 enchufes por cada 40 m2 adicionales o fracción."
+    },
+    {
+      "numero": "11.2.10",
+      "contenido": "En locales industriales la cantidad de enchufes conectados a circuitos de alumbrado se determinará de acuerdo a las necesidades."
+    },
+    {
+      "numero": "11.2.11",
+      "contenido": "En locales comerciales deberán proyectarse circuitos exclusivos de enchufes y circuitos exclusivos de portalámparas. Se exceptúan de esta exigencia aquellos locales que por su área reducida necesitan sólo un circuito para su iluminación."
+    },
+    {
+      "numero": "11.2.12",
+      "contenido": "Todos los circuitos de enchufes en locales comerciales y oficinas deberán ser protegidos mediante protectores diferenciales y sus enchufes serán del tipo de alvéolos protegidos."
+    },
+    {
+      "numero": "11.3",
+      "titulo": "ALUMBRADO EN RECINTOS ASISTENCIALES Y EDUCACIONALES",
+      "articulos": [
+        {
+          "numero": "11.3.1",
+          "contenido": "Para determinar la potencia eléctrica necesaria a instalar para alumbrado de recintos asistenciales y educacionales, se deberá tener en cuenta el nivel de iluminación requerido, el tipo de fuente luminosa y el área del recinto por iluminar."
+        },
+        {
+          "numero": "11.3.2",
+          "contenido": "El nivel de iluminación mínimo según el tipo de local y tarea que en él se desarrolle, se determinará de acuerdo a lo señalado en la tabla Nº 11.25."
+        },
+        {
+          "numero": "11.3.3",
+          "contenido": "Para estos casos son válidas las disposiciones señaladas en 11.2.3, 11.2.5 y las de 11.2.4 aplicadas a los valores de la tabla Nº 11.25."
+        },
+        {
+          "numero": "11.3.4",
+          "contenido": "La cantidad de enchufes a instalar en recintos de locales asistenciales se determinará de acuerdo a las necesidades de cada recinto, debiendo haber, en todo caso, un mínimo de dos enchufes por recinto."
+        }
+      ],
+      "tablas": [
+        {
+          "numero": "11.24",
+          "titulo": "Iluminancias Mínimas para locales Comerciales e Industriales",
+          "datos": [
+            {"tipo_local": "Auditorios", "iluminancia_lux": "300"},
+            {"tipo_local": "Bancos", "iluminancia_lux": "500"},
+            {"tipo_local": "Bodegas", "iluminancia_lux": "150"},
+            {"tipo_local": "Bibliotecas públicas", "iluminancia_lux": "400"},
+            {"tipo_local": "Casinos, Restoranes, Cocina", "iluminancia_lux": "300"},
+            {"tipo_local": "Comedores", "iluminancia_lux": "150"},
+            {"tipo_local": "Fábricas en general", "iluminancia_lux": "300"},
+            {"tipo_local": "Imprentas", "iluminancia_lux": "500"},
+            {"tipo_local": "Laboratorios", "iluminancia_lux": "500"},
+            {"tipo_local": "Laboratorios de instrumentación", "iluminancia_lux": "700"},
+            {"tipo_local": "Naves de máquinas herramientas", "iluminancia_lux": "300"},
+            {"tipo_local": "Oficinas en general", "iluminancia_lux": "400"},
+            {"tipo_local": "Pasillos", "iluminancia_lux": "50"},
+            {"tipo_local": "Salas de trabajo con iluminación suplementaria en cada punto", "iluminancia_lux": "150"},
+            {"tipo_local": "Salas de dibujo profesional", "iluminancia_lux": "500"},
+            {"tipo_local": "Salas de tableros eléctricos", "iluminancia_lux": "300"},
+            {"tipo_local": "Subestaciones", "iluminancia_lux": "300"},
+            {"tipo_local": "Salas de venta", "iluminancia_lux": "300"},
+            {"tipo_local": "Talleres de servicio, reparaciones", "iluminancia_lux": "200"},
+            {"tipo_local": "Vestuarios industriales", "iluminancia_lux": "100"}
+          ]
+        },
+        {
+          "numero": "11.25",
+          "titulo": "Iluminancias Mínimas para Locales Educacionales y Asistenciales",
+          "datos": [
+            {"tipo_recinto": "Atención administrativa", "iluminancia_lux": "300"},
+            {"tipo_recinto": "Bibliotecas", "iluminancia_lux": "400"},
+            {"tipo_recinto": "Cocinas", "iluminancia_lux": "300"},
+            {"tipo_recinto": "Gimnasios", "iluminancia_lux": "200"},
+            {"tipo_recinto": "Oficinas", "iluminancia_lux": "400"},
+            {"tipo_recinto": "Pasillos", "iluminancia_lux": "100"},
+            {"tipo_recinto": "Policlínicos", "iluminancia_lux": "300"},
+            {"tipo_recinto": "Salas de cirugía menor", "iluminancia_lux": "500"},
+            {"tipo_recinto": "Salas de cirugía mayor, quirófanos (*)", "iluminancia_lux": "500"},
+            {"tipo_recinto": "Salas de clases, párvulos", "iluminancia_lux": "150"},
+            {"tipo_recinto": "Salas de clases, educación básica", "iluminancia_lux": "200"},
+            {"tipo_recinto": "Salas de clases, educación media", "iluminancia_lux": "250"},
+            {"tipo_recinto": "Salas de clases, educación superior", "iluminancia_lux": "300"},
+            {"tipo_recinto": "Salas de Dibujo", "iluminancia_lux": "600"},
+            {"tipo_recinto": "Salas de Espera", "iluminancia_lux": "150"},
+            {"tipo_recinto": "Salas de Pacientes", "iluminancia_lux": "100"},
+            {"tipo_recinto": "Salas de Profesores", "iluminancia_lux": "400"}
+          ],
+          "notas": [
+            "(*) Corresponde a la iluminación general del recinto, no considera el aporte de la lámpara quirúrgica."
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "11.3.5",
+      "contenido": "En cada sala de clases, en locales educacionales de enseñanza media, habrá instalado un mínimo de 3 enchufes. En salas de párvulos y de enseñanza básica sólo se exigirá 2 enchufes."
+    },
+    {
+      "numero": "11.3.6",
+      "contenido": "Todos los circuitos de enchufes en locales educacionales deberán ser protegidos mediante protectores diferenciales y sus enchufes serán del tipo de alvéolos protegidos."
+    },
+    {
+      "numero": "11.3.7",
+      "contenido": "Para determinar la cantidad de centros en los distintos recintos se aplicarán las disposiciones del párrafo 11.2, en la medida que corresponda."
+    },
+    {
+      "numero": "11.3.8",
+      "contenido": "Tanto los locales asistenciales como los locales educacionales deberán cumplir las disposiciones referentes a instalaciones eléctricas en locales de reunión de personas."
+    },
+    {
+      "numero": "11.3.9",
+      "contenido": "Para recintos asistenciales y educacionales es también válida la exigencia indicada en el párrafo 11.2.11."
+    },
+    {
+      "numero": "11.4",
+      "titulo": "INSTALACIONES ESPECIALES",
+      "subsecciones": [
+        {
+          "numero": "11.4.1",
+          "titulo": "Instalaciones para iluminación de piscinas, espejos de agua y similares",
+          "articulos": [
+            {
+              "numero": "11.4.1.1",
+              "contenido": "Las instalaciones para iluminación de piscinas, espejos de agua y similares, se alimentarán en lo posible con tensiones no superiores a 24 V, de acuerdo a lo indicado en 9.2.6.2."
+            },
+            {
+              "numero": "11.4.1.2",
+              "contenido": "En caso de que la tensión de 24 V o menos se obtenga mediante transformadores, éstos tendrán una potencia máxima de 5 KVA, serán del tipo doble aislación y tendrán una pantalla entre primario y secundario"
+            },
+            {
+              "numero": "11.4.1.3",
+              "contenido": "Si no es posible cumplir lo indicado en 11.4.1.1, se deberá proteger los circuitos de alimentación de la iluminación de piscinas o similares mediante interruptores diferenciales de sensibilidad no superior a 5 mA, de acuerdo a lo indicado en la sección 9.2.7.3."
+            }
+          ]
+        },
+        {
+          "numero": "11.4.2",
+          "titulo": "Recintos deportivos",
+          "articulos": [
+            {
+              "numero": "11.4.2.1",
+              "contenido": "Tanto en recintos deportivos al aire libre como en recintos bajo techo se deberá hacer un estudio y proyecto de iluminación para cada caso."
+            }
+          ]
+        },
+        {
+          "numero": "11.4.3",
+          "titulo": "Baños públicos",
+          "articulos": [
+            {
+              "numero": "11.4.3.1",
+              "contenido": "Los recintos de baños públicos y similares se considerarán recintos mojados; los artefactos que en ellos se instalen deberán ser a prueba de goteo, a lo menos IPX4 y sus instalaciones adecuadas para este tipo de ambiente."
+            },
+            {
+              "numero": "11.4.3.2",
+              "contenido": "Los comandos de circuitos y centros no deberán quedar al alcance del público."
+            },
+            {
+              "numero": "11.4.3.3",
+              "contenido": "Todos los circuitos de los recintos que se clasifiquen como mojados, deberán ser protegidos mediante protectores diferenciales de una sensibilidad no menor de 10 mA; en el caso de recintos húmedos el diferencial podrá tener una sensibilidad máxima de 30 mA."
+            }
+          ]
+        },
+        {
+          "numero": "11.4.4",
+          "titulo": "Instalaciones en lugares públicos",
+          "articulos": [
+            {
+              "numero": "11.4.4.1",
+              "contenido": "La instalación de todo tipo de artefactos o equipos en lugares públicos, que ocupen energía eléctrica para su funcionamiento, con tensiones de alimentación superiores a 24 V, deberán usar protectores diferenciales como medio de protección contra contactos indirectos."
+            },
+            {
+              "numero": "11.4.4.2",
+              "contenido": "Se considerarán dentro del alcance de esta disposición los letreros y paneles publicitarios, iluminaciones de efecto para fachadas, espejos de agua y similares, el alumbrado público que emplee postes metálicos como soporte de las luminarias y cualquier otro tipo de equipos que quede al alcance del público en general, en vías públicas, galerías comerciales, edificios públicos y similares."
+            },
+            {
+              "numero": "11.4.4.3",
+              "contenido": "Se aceptará el empleo de diferenciales de sensibilidades menores de 30 mA cuando se demuestre que las corrientes de fuga normales superan los 22 mA, como causa de la extensión de los circuitos protegidos. En tal caso el protector diferencial debe estar asociado a una puesta a tierra que cumpla las condiciones establecidas en 9.0.6.3."
+            },
+            {
+              "numero": "11.4.4.4",
+              "contenido": "Los equipos eléctricos empleados en este tipo de instalaciones deberán tener un índice de protección mínimo de IP54"
+            }
+          ],
+          "notas_aclaratorias": [
+            {
+              "tipo": "NA",
+              "contenido": "Es frecuente la confusión en el uso del término sensibilidad al relacionarla con la corriente nominal de disparo del protector diferencial; debe recordarse que una menor sensibilidad corresponde a una mayor corriente de disparo; a modo de ejemplo, en el caso considerado en artículo precedente un protector diferencial de 300 mA tendrá una menor sensibilidad que un protector diferencial de 30 mA."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "11.5",
+      "titulo": "ALUMBRADO DE EMERGENCIA",
+      "articulos": [
+        {
+          "numero": "11.5.1",
+          "contenido": "En esta sección se establecen las condiciones en que son exigibles los sistemas de iluminación de emergencia y las exigencias fotométricas que deben cumplir estos sistemas. La finalidad de este tipo de iluminación es proporcionar vías seguras de escape, sin posibilidad de confusiones, a las personas que en condiciones de emergencia se vean obligadas a abandonar los recintos en que se encuentren."
+        },
+        {
+          "numero": "11.5.2",
+          "contenido": "Para facilitar la comprensión de las disposiciones de esta sección refiérase al párrafo 4.1.6 de la sección Nº 4, Terminología."
+        },
+        {
+          "numero": "11.5.3",
+          "contenido": "Las exigencias contenidas en esta sección intentan asegurar buenas condiciones de visibilidad e identificación en las vías de salida de los lugares y locales en que presenten o se deban cumplir algunas de las condiciones siguientes:",
+          "lista": [
+            "Facilidad de evacuación",
+            "Iluminación antipánico",
+            "Ejecución de trabajos peligrosos"
+          ]
+        },
+        {
+          "numero": "11.5.4",
+          "contenido": "Los sistemas de alumbrado de emergencia deberán funcionar cuando la iluminación normal falla, por lo tanto deberán tener una fuente de alimentación distinta a la de aquella. La fuente de alimentación se seleccionará de modo de cumplir las exigencias del capítulo 14."
+        },
+        {
+          "numero": "11.5.5",
+          "contenido": "Las condiciones que deben cumplir los sistemas de alumbrado de seguridad se muestran en la tabla Nº 11.26."
+        },
+        {
+          "numero": "11.5.6",
+          "contenido": "Deberán instalarse luces de emergencia autoenergizadas a lo menos en los siguientes puntos de los recintos dentro del alcance de estas disposiciones:",
+          "lista": [
+            "Sobre cada puerta de salida de emergencia",
+            "Cerca de las escaleras, de modo que cada escalón reciba iluminación directa",
+            "Cerca de cada cambio de nivel del piso",
+            "En todo cambio de dirección de la vía de escape",
+            "En toda intersección de la vía de escape con corredores laterales",
+            "Al exterior de edificios en la vecindad de las salidas",
+            "Cerca de los equipos de extinción o de alarmas de incendios"
+          ],
+          "nota_adicional": "En todo caso, para fijar la cantidad de lámparas necesarias de instalar se deberá considerar que la falla de una lámpara no debe dejar ninguna zona completamente oscura."
+        },
+        {
+          "numero": "11.5.7",
+          "contenido": "En general las luminarias destinadas a iluminación de emergencia se montarán a no menos de 2 m sobre el nivel del suelo y el posible deslumbramiento producido por ellas se controlará limitando su intensidad luminosa dentro del campo de visión de los usuarios."
+        },
+        {
+          "numero": "11.5.8",
+          "contenido": "En las vías de evacuación ubicadas a un mismo nivel horizontal, para las zonas de alumbrado ambiental y en las zonas en que se desarrollen trabajos peligrosos la intensidad luminosa de las luminarias no debe sobrepasar los valores indicados en la tabla Nº 11.27, cualquiera que sea el plano vertical de observación, para todos los ángulos comprendidos entre 60º y 90º medidos respecto de la vertical descendente. Ver figura 1, de hoja de norma Nº 19."
+        },
+        {
+          "numero": "11.5.9",
+          "contenido": "Para todos los otros casos de vías de evacuación en desnivel o con otras condiciones o en otras zonas no consideradas en 11.5.8, los valores límite no deben sobrepasarse cualquiera que sea el ángulo. Ver figura 2 de hoja de norma Nº 19."
+        },
+        {
+          "numero": "11.5.10",
+          "contenido": "El cumplimiento de las exigencias establecidas en los párrafos precedentes se verificará por medición y/o por análisis de las características de los equipos establecidas en las fichas técnicas entregadas por los fabricantes, siempre que sus datos sean certificados por organismos solventes y reconocidos."
+        },
+        {
+          "numero": "11.5.11",
+          "contenido": "Junto a la iluminación de emergencia serán exigibles paneles luminosos de señalización a fin de guiar el camino hacia las salidas de seguridad, las que deben cumplir las exigencias siguientes:",
+          "subarticulos": [
+            {
+              "numero": "11.5.11.1",
+              "contenido": "Las señales de seguridad deben alcanzar al menos un 50 % de su intensidad lumínica en 5 segundos y el total en no más de 60 segundos."
+            },
+            {
+              "numero": "11.5.11.2",
+              "contenido": "El valor de la luminancia en toda la superficie de color de seguridad de un pictograma debe ser de 2 Cd/m2 en todas las direcciones indicadas en el anexo 4."
+            },
+            {
+              "numero": "11.5.11.3",
+              "contenido": "La razón de luminancia máxima a luminancia mínima no debe ser superior a 10."
+            },
+            {
+              "numero": "11.5.11.4",
+              "contenido": "La razón de luminancia Lblanco a luminancia Lcolor no debe ser inferior a 5 ni superior a 15 entre puntos vecinos. Ver apéndice 3."
+            },
+            {
+              "numero": "11.5.11.5",
+              "contenido": "Asumiendo que un pictograma de iluminación interna puede identificarse a una distancia superior a otro, iluminado desde el exterior, la distancia de identificación se determinará aplicando la formula siguiente: d = s * p",
+              "formula": {
+                "d": "distancia de identificación en m.",
+                "p": "altura del panel en m.",
+                "s": "constante igual a 100 para pictogramas de iluminación exterior y 200 para pictogramas de iluminación interior."
+              },
+              "referencia": "Ver hoja de norma Nº 20."
+            },
+            {
+              "numero": "11.5.11.5",
+              "contenido": "Los colores de las señales de seguridad deben cumplir las exigencias de la Norma ISO 3864."
+            }
+          ]
+        }
+      ],
+      "tablas": [
+        {
+          "numero": "11.26",
+          "titulo": "Características Mínimas de Operación de los Sistemas de Alumbrado de Emergencia",
+          "columnas": ["Tipo de iluminación", "Iluminancia mínima", "Razón Imax/Imin o uniformidad", "Autonomía (3)", "Tiempo recuperación", "Rendimiento color de la lámpara (5)"],
+          "datos": [
+            {
+              "tipo_iluminacion": "Evacuación",
+              "iluminancia_minima": "1lux, a nivel de suelo en zona central. (1) y (2)",
+              "razon_uniformidad": "Imax/Imin =40",
+              "autonomia": "1,5 hora",
+              "tiempo_recuperacion": "50 % de iluminancia en 5 segundos, 100 % en 60 segundos",
+              "rendimiento_color": "40"
+            },
+            {
+              "tipo_iluminacion": "Antipánico",
+              "iluminancia_minima": "0,5 lux, a nivel de suelo medido sobre local vacío, excluyendo franja periférica de 0,5 m. (6)",
+              "razon_uniformidad": "Imax/Imin =40",
+              "autonomia": "1,5 hora",
+              "tiempo_recuperacion": "50% de iluminancia en 5 segundos, 100% en 60 segundos",
+              "rendimiento_color": "40"
+            },
+            {
+              "tipo_iluminacion": "Trabajos Peligrosos",
+              "iluminancia_minima": "10 % de la iluminación normal, con un mínimo de 15 lux. (6)",
+              "razon_uniformidad": "U = 0,1",
+              "autonomia": "La necesaria para superar las condiciones de riesgo, con un mínimo de 3 horas",
+              "tiempo_recuperacion": "Recomendado mantener 100 % de iluminancia. Si no es posible, tiempo máximo 0,5 segundos (4)",
+              "rendimiento_color": "40"
+            }
+          ],
+          "condiciones_aplicacion": [
+            "1.- La condición se fija para una vía de evacuación de 2 m de largo. Vías de evacuación de longitudes mayores pueden considerarse como una sucesión de zonas de 2 m de largo o bien deben cumplir las exigencias dadas para iluminaciones de emergencia del tipo ambiental.",
+            "2.- La iluminancia fuera del eje de esta vía, en una zona de un ancho no inferior a la mitad de su largo, esta vía deberá tener una iluminancia no inferior a 0,5 lux.",
+            "3.- Se entiende por autonomía el tiempo durante el cual la fuente alternativa de alimentación del sistema de alumbrado de emergencia es capaz de mantener un valor no inferior al 80% para los parámetros de funcionamiento definidos por esta norma.",
+            "4.- Debe considerarse además que el efecto estroboscópico producido por el sistema seleccionado de alumbrado no debe ser perceptible.",
+            "5.- La luminaria empleada no debe modificar en forma notoria este parámetro.",
+            "6.- Los valores indicados se medirán en el punto mas alejado de la fuente, con exclusión de la franja periférica señalada."
+          ],
+          "notas_aclaratorias": [
+            {
+              "tipo": "NA",
+              "contenido": "Un contraste marcado entre una luminaria y su plano trasero puede producir deslumbramiento. El problema principal en la iluminación de vías de evacuación será evitar este deslumbramiento el cual puede evitar ver la señalización o discernir su contenido."
+            },
+            {
+              "tipo": "NA",
+              "contenido": "En el alcance de estas disposiciones se entenderá como \"cerca de\" a una distancia no mayor de 2 m medidos horizontalmente."
+            }
+          ]
+        },
+        {
+          "numero": "11.27",
+          "titulo": "Límites de Deslumbramiento",
+          "columnas": ["Altura de instalación de la luminaria sobre el nivel del suelo [m]", "Intensidad luminosa máxima para alumbrado antipánico y vías de evacuación Imax [Cd]", "Intensidad luminosa máxima para alumbrado en zonas de trabajos riesgosos Imax [Cd]"],
+          "datos": [
+            {
+              "altura": "h < 2,5",
+              "intensidad_antipanico": "500",
+              "intensidad_trabajos_riesgosos": "1.000"
+            },
+            {
+              "altura": "2,5 ≤ h < 3,0",
+              "intensidad_antipanico": "900",
+              "intensidad_trabajos_riesgosos": "1.800"
+            },
+            {
+              "altura": "3,0 ≤ h < 3,5",
+              "intensidad_antipanico": "1.600",
+              "intensidad_trabajos_riesgosos": "3.200"
+            },
+            {
+              "altura": "3,5 ≤ h < 4,0",
+              "intensidad_antipanico": "2.500",
+              "intensidad_trabajos_riesgosos": "5.000"
+            },
+            {
+              "altura": "4,0 ≤ h < 4,5",
+              "intensidad_antipanico": "3.500",
+              "intensidad_trabajos_riesgosos": "7.000"
+            },
+            {
+              "altura": "h ≥ 4,5",
+              "intensidad_antipanico": "5.000",
+              "intensidad_trabajos_riesgosos": "10.000"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "12",
+      "titulo": "INSTALACIONES DE FUERZA",
+      "subsecciones": [
+        {
+          "numero": "12.0",
+          "titulo": "EXIGENCIAS GENERALES",
+          "subsecciones": [
+            {
+              "numero": "12.0.1",
+              "titulo": "Conceptos generales",
+              "articulos": [
+                {
+                  "numero": "12.0.1.1",
+                  "contenido": "Se considerará instalación de fuerza a toda aquella instalación en que la energía eléctrica se use preferentemente para obtener energía mecánica y/o para intervenir en algún proceso productivo industrial."
+                },
+                {
+                  "numero": "12.0.1.2",
+                  "contenido": "Los circuitos de fuerza deberán estar separados de los circuitos de otro tipo de consumos, sin embargo, podrán tener alimentadores o subalimentadores comunes."
+                },
+                {
+                  "numero": "12.0.1.3",
+                  "contenido": "En las instalaciones de fuerza se empleará como sistema de canalización alguno de los indicados en la sección Nº 8 de esta norma, de acuerdo a las características del ambiente y de la instalación."
+                },
+                {
+                  "numero": "12.0.1.4",
+                  "contenido": "Los tableros o centros de control desde los cuales se protejan o comanden instalaciones de fuerza se construirán e instalarán de acuerdo a lo establecido en la sección Nº 6."
+                },
+                {
+                  "numero": "12.0.1.5",
+                  "contenido": "Todo tablero de comando o centro de control de equipos pertenecientes a una instalación de fuerza deberá instalarse con vista al equipo o máquina comandada."
+                },
+                {
+                  "numero": "12.0.1.6",
+                  "contenido": "Se exceptuarán de la exigencia del párrafo 12.0.1.5 a aquellas máquinas o equipos que por razones de operación o de terreno deban instalarse en puntos remotos, en estos casos, sin embargo, deberá existir un enclavamiento que impida alimentar el equipo cuando se esté trabajando en él. Este enclavamiento se implementará de alguna de las siguientes formas:",
+                  "lista": [
+                    "a) Enclavamiento instalado para ser operado desde un punto con vista al equipo;",
+                    "b) Un interruptor operado manualmente ubicado con vista al equipo que la desconecte de la alimentación.",
+                    "c) Interruptor operado en forma manual, instalado en una ubicación remota sin vista al equipo, que lo desconecte de la alimentación de fuerza, cuya operación esté restringida sólo a personal autorizado. Para cumplir este fin se bloqueará la operación del interruptor mediante uno o mas candados de seguridad y se seguirá un procedimiento establecido en forma escrita para bloquear o desbloquear este interruptor."
+                  ]
+                }
+              ]
+            },
+            {
+              "numero": "12.0.2",
+              "titulo": "Exigencias para los equipos",
+              "articulos": [
+                {
+                  "numero": "12.0.2.1",
+                  "contenido": "Todos los equipos eléctricos y motores que formen parte de una instalación de fuerza deberán ser de un tipo adecuado al ambiente y condiciones de montaje en que se instalan, de acuerdo a lo indicado en 5.4.2."
+                },
+                {
+                  "numero": "12.0.2.2",
+                  "contenido": "Todo motor deberá, traer marcada en forma legible e indeleble y colocada en un lugar fácilmente visible, una placa de características con a lo menos los siguientes datos:",
+                  "lista": [
+                    "Nombre del fabricante o su marca registrada.",
+                    "Voltaje nominal y corriente de plena carga.",
+                    "Frecuencia y número de fases.",
+                    "Temperatura ambiente nominal y elevación nominal de temperatura.",
+                    "Tiempo en que se alcanza la temperatura de régimen permanente partiendo en frío.",
+                    "Potencia nominal.",
+                    "Factor de potencia a potencia nominal.",
+                    "Número de certificado de aprobación entregado por un organismo competente."
+                  ],
+                  "nota_adicional": "Los motores de varias velocidades deberán tener indicadas la potencia nominal y corriente de plena carga para cada velocidad."
+                },
+                {
+                  "numero": "12.0.2.3",
+                  "contenido": "Los actuadores de partida de motores deberán estar marcados con el nombre del fabricante o su marca registrada, voltaje nominal, corriente o potencia nominal, y todo otro dato necesario para indicar el tipo de motor para el cual son adecuados. Un actuador que tenga protecciones incorporadas deberá traer marcadas la corriente nominal de éstas y su rango de regulación."
+                },
+                {
+                  "numero": "12.0.2.4",
+                  "contenido": "Los terminales de los motores y los actuadores deberán estar adecuadamente marcados, de modo que sea posible identificar las conexiones correctas. Los terminales de motores deberán estar encerrados en una caja de conexiones destinada exclusivamente a este fin. Las conexiones deben ser hechas dentro de esta caja, de modo que en ningún caso puedan recibir esfuerzos mecánicos y los ductos o cables de la canalización deberán fijarse a la caja de conexiones mediante boquillas o prensas estopa de material resistente a grasas o aceites."
+                }
+              ]
+            },
+            {
+              "numero": "12.0.3",
+              "titulo": "Condiciones de diseño",
+              "articulos": [
+                {
+                  "numero": "12.0.3.1",
+                  "contenido": "Como base para la determinación de la capacidad de transporte de conductores, capacidad y regulación de las protecciones, dimensionamiento de alimentadores, etc., se tomará la corriente indicada en la placa de características de los motores. Si se trata de motores de varias velocidades, se tomará la mayor de las corrientes indicadas en la placa, excepto en lo que se refiere a la regulación de las protecciones la que se fijará de acuerdo a la condición en que el motor esté trabajando."
+                },
+                {
+                  "numero": "12.0.3.2",
+                  "contenido": "Si se trata de motores de torque se utilizará como valor de referencia la corriente de rotor trabado. En el apéndice 4 se muestran características de los motores más usuales."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "numero": "12.1",
+          "titulo": "Condiciones de instalación de los motores",
+          "articulos": [
+            {
+              "numero": "12.1.1",
+              "contenido": "Los motores deben instalarse en condiciones que permitan una adecuada ventilación y un fácil mantenimiento."
+            },
+            {
+              "numero": "12.1.2",
+              "contenido": "Los motores abiertos que tengan colector o anillos rozantes no podrán instalarse en lugares en que existan materiales combustibles."
+            },
+            {
+              "numero": "12.1.3",
+              "contenido": "En ambientes en que existan polvos o fibras en suspensión y que éstos puedan depositarse sobre los motores en cantidades que impidan su normal ventilación o enfriamiento, deberán utilizarse motores cerrados, que no se sobrecalienten en dichas condiciones. Para casos extremos se deberá instalar un sistema cerrado de ventilación para él o los motores o se les instalará en un recinto separado, a prueba de polvo."
+            }
+          ]
+        },
+        {
+          "numero": "12.2",
+          "titulo": "Dimensionamiento de conductores",
+          "articulos": [
+            {
+              "numero": "12.2.1",
+              "contenido": "La sección mínima de conductor empleado para alimentar motores fijos será de 1,5 mm2."
+            },
+            {
+              "numero": "12.2.2",
+              "contenido": "La sección de los conductores que alimenten a un motor de régimen permanente será tal que asegurar una capacidad de transporte, por lo menos, igual a 1,25 veces la corriente de plena carga del motor."
+            },
+            {
+              "numero": "12.2.3",
+              "contenido": "La sección de los conductores que alimenten a un motor, sea éste de régimen periódico, intermitente o de breve duración, será tal que asegure una capacidad de transporte como mínimo igual a la corriente de plena carga afectada por un factor determinado de acuerdo a la tabla Nº 12.28."
+            },
+            {
+              "numero": "12.2.4",
+              "contenido": "La sección de los conductores conectados al rotor de un motor de rotor bobinado se fijará de acuerdo a 12.2.2 ó 12.2.3 según corresponda, considerando en este caso la corriente nominal del rotor."
+            },
+            {
+              "numero": "12.2.5",
+              "contenido": "La sección de los conductores que alimenten a un grupo de motores de régimen permanente será tal que asegure una capacidad de transporte como mínimo, igual a 1,25 veces la corriente de plena carga del motor de mayor potencia, más la suma de las corrientes de plena carga de todos los motores restantes."
+            },
+            {
+              "numero": "12.2.6",
+              "contenido": "En grupos de motores en que existan motores de régimen permanente, periódico, intermitente y/o de breve duración, la sección de los conductores que alimentan al grupo deberá permitir una capacidad de transporte para una corriente que se determina como sigue:",
+              "lista": [
+                "La suma de las corrientes de plena carga de los motores de régimen permanente, más",
+                "La suma de las corrientes de plena carga de los motores de régimen no permanente, afectada por el factor que corresponda, determinado de acuerdo a la tabla Nº 12.28, más",
+                "0,25 veces la corriente de plena carga del motor de mayor potencia afectada por el factor correspondiente de acuerdo a la tabla Nº 12.28 si el motor no es de régimen permanente."
+              ]
+            },
+            {
+              "numero": "12.2.7",
+              "contenido": "Si en grupos de motores existen enclavamientos que impidan el funcionamiento simultáneo de dos motores o de dos grupos de motores, la sección de los conductores se determinará tomando en cuenta sólo a aquellos que puedan funcionar simultáneamente."
+            },
+            {
+              "numero": "12.2.8",
+              "contenido": "La sección de los conductores que alimenten a una máquina de varios motores o de varios motores y otro tipo de consumo se fijará de modo tal que tengan una capacidad de transporte como mínimo igual a la corriente indicada en la placa de la máquina."
+            },
+            {
+              "numero": "12.2.9",
+              "contenido": "La sección de alimentadores y subalimentadores que den energía a instalaciones de fuerza o combinación de fuerza y otros consumos se determinará de acuerdo a lo establecido en la sección Nº 7."
+            },
+            {
+              "numero": "12.2.10",
+              "contenido": "Todo motor se considerará de régimen permanente, salvo que por las condiciones de proceso u operación sea imposible que trabaje en forma permanente."
+            },
+            {
+              "numero": "12.2.11",
+              "contenido": "Los tiempos de funcionamiento, indicados en la tabla Nº 12.28, son los períodos en los cuales los motores, por su diseño, alcanzan su temperatura nominal de trabajo y pueden operar; cumplido ese período necesitan un intervalo de refrigeración."
+            }
+          ],
+          "tablas": [
+            {
+              "numero": "12.28",
+              "titulo": "Factores de Dimensionamiento de Alimentación a Motores de Régimen No Permanente",
+              "columnas": ["Tipo de régimen", "5 minutos", "15 minutos", "30 – 60 minutos", "Más de 60 minutos"],
+              "datos": [
+                {
+                  "tipo_regimen": "Breve duración (operación de válvulas o descenso de rodillos y otros similares)",
+                  "5_min": "1,1",
+                  "15_min": "1,2",
+                  "30_60_min": "1,5",
+                  "mas_60_min": ""
+                },
+                {
+                  "tipo_regimen": "Intermitentes (bombas, ascensores, montacargas, puentes levadizos, máquinas herramientas, tornamesas, etc.)",
+                  "5_min": "0,85",
+                  "15_min": "0,85",
+                  "30_60_min": "0,9",
+                  "mas_60_min": "1,4"
+                },
+                {
+                  "tipo_regimen": "Periódicos (rodillos, laminadores, etc.)",
+                  "5_min": "0,85",
+                  "15_min": "0,9",
+                  "30_60_min": "0,95",
+                  "mas_60_min": "1,4"
+                },
+                {
+                  "tipo_regimen": "Variables",
+                  "5_min": "1,1",
+                  "15_min": "1,2",
+                  "30_60_min": "1,5",
+                  "mas_60_min": "2"
+                }
+              ],
+              "notas": [
+                "(*) Los tiempos de funcionamiento indicados son los períodos en los cuales los motores, por su diseño, alcanzan la temperatura nominal de trabajo y pueden operar; cumplido este período necesitan un intervalo de refrigeración."
+              ]
+            }
+          ]
+        },
+        {
+          "numero": "12.3",
+          "titulo": "PROTECCIONES Y COMANDOS",
+          "subsecciones": [
+            {
+              "numero": "12.3.1",
+              "titulo": "Protecciones de sobrecarga",
+              "articulos": [
+                {
+                  "numero": "12.3.1.1",
+                  "contenido": "Los conductores de circuito, los motores y los aparatos de control de motores deben protegerse de sobrecalentamientos debidos a sobrecargas, originadas durante la marcha del motor o provocadas por fallas en la partida. La protección de sobrecarga no protegerá contra cortocircuitos o fallas a tierra."
+                },
+                {
+                  "numero": "12.3.1.2",
+                  "contenido": "Todo motor de régimen permanente cuya potencia sea superior a 1 HP deberá protegerse, contra las sobrecargas, mediante un dispositivo de protección que responda a la corriente del motor. Este protector tendrá una capacidad nominal o estará regulado a no más de 1,25 veces la corriente nominal del motor si se trata de motores con factor de servicio no inferior a 1,15 ó, a no más de 1,15 veces la corriente nominal del motor para todo otro caso."
+                },
+                {
+                  "numero": "12.3.1.3",
+                  "contenido": "En caso que a través del protector no circule toda la corriente de carga del motor, como por ejemplo, si el protector queda incorporado a la conexión triángulo de los enrollados, el protector deberá regularse o tener una capacidad nominal de acuerdo a la corriente que por él circule, cumpliendo respecto de esta corriente las condiciones establecidas en 12.3.1.2."
+                },
+                {
+                  "numero": "12.3.1.4",
+                  "contenido": "Todo motor de régimen permanente de potencia nominal inferior a 1 HP y partida manual que tenga su comando al alcance de la vista, se considerará suficientemente protegido por las protecciones de cortocircuito y de falla a tierra del circuito, siempre que éstas cumplan con lo indicado en 12.3.2."
+                },
+                {
+                  "numero": "12.3.1.5",
+                  "contenido": "Los motores de régimen permanente de potencia inferior a 1 HP y partida automática se deberán proteger contra la sobrecarga en la forma indicada en 12.3.1.2 ó 12.3.1.3."
+                },
+                {
+                  "numero": "12.3.1.6",
+                  "contenido": "No obstante lo indicado en 12.3.1.5, se considerará a este tipo de motores suficientemente protegido contra la sobrecarga y no necesitarán de protector si forman parte de un equipo que normalmente no está sujeto a sobrecargas, o el equipo cuenta con otros dispositivos de seguridad que eviten la sobrecarga. En estos casos, el equipo deberá tener una placa que indique que cuenta con dichos dispositivos de protección."
+                },
+                {
+                  "numero": "12.3.1.7",
+                  "contenido": "En los motores de varias velocidades, cada conexión de enrollados, se considerará en forma independiente para los efectos de dimensionar las protecciones."
+                },
+                {
+                  "numero": "12.3.1.8",
+                  "contenido": "Los motores usados en condiciones de régimen de breve duración, intermitente o periódico, se considerarán protegidos contra la sobrecarga por las protecciones de cortocircuito y de falla a tierra, siempre que estas cumplan lo establecido en 12.3.2. Se considerará como régimen permanente a todo motor, salvo que por las condiciones de uso o de proceso sea imposible que pueda trabajar en forma permanente."
+                },
+                {
+                  "numero": "12.3.1.9",
+                  "contenido": "En el caso de motores comandados en forma manual, aún mediante contactor y botoneras, si el protector seleccionado para el motor no permite la partida de éste, se podrá puentear el protector durante la partida siempre que el dispositivo empleado para puentearlo sea de un tipo tal que no permanezca en dicha posición y las protecciones de cortocircuito estén dimensionadas de acuerdo a 12.3.2.2 y no queden puenteadas durante la partida. No se aceptará esta solución para motores de partida automática."
+                },
+                {
+                  "numero": "12.3.1.10",
+                  "contenido": "Se deberá colocar un elemento protector de sobrecarga en cada conductor activo de la alimentación al motor."
+                },
+                {
+                  "numero": "12.3.1.11",
+                  "contenido": "Los dispositivos protectores de sobrecarga al operar, deberán interrumpir la circulación de corriente en el motor."
+                }
+              ],
+              "notas_aclaratorias": [
+                {
+                  "tipo": "NA",
+                  "contenido": "El factor de servicio es un coeficiente usado en los motores fabricados de acuerdo a Normas Norteamericanas y señala la sobrecarga permanente que el motor tolera. Usualmente se lo identifica en placa por las letras F.S. o S.F."
+                },
+                {
+                  "tipo": "NA",
+                  "contenido": "El dispositivo usual de protección contra sobrecargas es el protector térmico."
+                }
+              ]
+            },
+            {
+              "numero": "12.3.2",
+              "titulo": "Protecciones de cortocircuito",
+              "articulos": [
+                {
+                  "numero": "12.3.2.1",
+                  "contenido": "Todo motor deberá contar con una protección de cortocircuito. Esta protección se dimensionará de modo tal que sea capaz de soportar sin operar, la corriente de partida del motor."
+                },
+                {
+                  "numero": "12.3.2.2",
+                  "contenido": "La capacidad nominal de las protecciones de cortocircuito de un motor se dimensionará comparando la característica de la corriente de partida y el correspondiente valor durante el período de aceleración del motor o máquina, si es que el motor parte acoplado a su carga, con la curva de respuesta de la protección seleccionada de modo que ésta no opere bajo condiciones normales de partida."
+                },
+                {
+                  "numero": "12.3.2.3",
+                  "contenido": "En los casos en que el fabricante de un equipo indique valores máximos para los dispositivos de protección de éste, o bien sobre los motores del equipo se indiquen dichos valores máximos, éstos no deberán sobrepasarse aún cuando de acuerdo al párrafo precedente sea permisible un valor superior."
+                },
+                {
+                  "numero": "12.3.2.4",
+                  "contenido": "Un grupo de motores de potencia individual no superior a 1 HP podrá tener una protección de cortocircuito única si se cumplen las condiciones siguientes:",
+                  "lista": [
+                    "La protección no podrá tener una capacidad nominal superior a 15 A.",
+                    "La corriente nominal de cada motor no deberá exceder 8 A.",
+                    "Se cumpla 12.3.2.4, si procede.",
+                    "Las protecciones individuales de sobrecarga deben cumplir 12.3.1."
+                  ]
+                },
+                {
+                  "numero": "12.3.2.5",
+                  "contenido": "Se aceptará que las protecciones de cortocircuito, de falla a tierra y de sobrecarga en marcha estén combinadas en un único dispositivo, en donde la capacidad nominal o la regulación de ésta proporcione protección de sobrecarga en marcha de acuerdo a las condiciones exigidas en 12.3.1."
+                },
+                {
+                  "numero": "12.3.2.6",
+                  "contenido": "Las protecciones de circuitos de motores deberán tener dispositivos de protección que actúen sobre todos los conductores activos."
+                },
+                {
+                  "numero": "12.3.2.7",
+                  "contenido": "Para máquinas de varios motores o en que existan consumos combinados se aceptará una única protección de cortocircuito, cuya capacidad nominal no deberá exceder el valor señalado en la placa de la máquina."
+                }
+              ]
+            },
+            {
+              "numero": "12.3.3",
+              "titulo": "Partidores e interruptores",
+              "articulos": [
+                {
+                  "numero": "12.3.3.1",
+                  "contenido": "Los motores podrán tener sistemas de partida directa o con tensión reducida. Se entenderá por partida directa a aquella en que en el instante de partida se aplica a los bobinados del motor, conectados en su conexión normal de funcionamiento, la tensión de la red; y por partida con tensión reducida a aquella en que mediante algún dispositivo adicional se aplica a los bobinados una tensión inferior a la de la red o se altera transitoriamente su conexión normal de funcionamiento."
+                },
+                {
+                  "numero": "12.3.3.2",
+                  "contenido": "Las empresas eléctricas de distribución fijarán en sus respectivas zonas la potencia máxima de los motores, alimentados desde empalmes en baja tensión, que podrán tener partida directa, de modo de lograr que la corriente de partida no produzca perturbaciones en el funcionamiento de instalaciones vecinas."
+                },
+                {
+                  "numero": "12.3.3.3",
+                  "contenido": "Para instalaciones conectadas a empalmes en media tensión, el instalador a cargo del proyecto o el montaje de la instalación deberá determinar la máxima potencia del motor que pueda tener partida directa, en función a la capacidad nominal y otras características del transformador que las alimente, considerando que la partida directa del motor no debe provocar perturbaciones en el resto de la instalación, en particular, no debe provocar problemas de parpadeo en los circuitos de alumbrado ni perturbaciones en los circuitos de procesamiento automático de datos."
+                },
+                {
+                  "numero": "12.3.3.4",
+                  "contenido": "Los motores fijos de potencias inferiores a 100 W de funcionamiento permanente y de alta impedancia, tales como motores de reloj, no necesitan de un partidor y podrán ser conectados desde la protección del circuito o mediante un enchufe."
+                },
+                {
+                  "numero": "12.3.3.5",
+                  "contenido": "Los motores portátiles de 200 W o menos no necesitan un partidor y podrán ser comandados mediante sus enchufes."
+                },
+                {
+                  "numero": "12.3.3.6",
+                  "contenido": "Los partidores podrán hacer partir o detener el motor y deberán tener una capacidad de ruptura suficiente como para abrir la corriente de rotor trabado."
+                },
+                {
+                  "numero": "12.3.3.7",
+                  "contenido": "Cada motor deberá tener su partidor individual. Este podrá ser un actuador de \"partida y parada\", un actuador estrella - triángulo, un autotransformador, un reóstato u otro aparato similar."
+                },
+                {
+                  "numero": "12.3.3.8",
+                  "contenido": "Todo motor deberá tener un interruptor que permita desconectar del circuito al motor y a su partidor."
+                },
+                {
+                  "numero": "12.3.3.9",
+                  "contenido": "El interruptor deberá ubicarse en un punto en que quede con vista al partidor del motor y deberá ser fácilmente accesible."
+                },
+                {
+                  "numero": "12.3.3.10",
+                  "contenido": "Para motores de partida directa el interruptor puede ser empleado como partidor, siempre que esté ubicado con vista al motor."
+                },
+                {
+                  "numero": "12.3.3.11",
+                  "contenido": "El interruptor que desconecta al motor del circuito deberá interrumpir todos los conductores activos de la alimentación."
+                },
+                {
+                  "numero": "12.3.3.12",
+                  "contenido": "Cuando la instalación consista en un único motor podrá usarse como interruptor de desconexión, el del tablero de distribución, siempre que éste esté ubicado con vista al motor."
+                }
+              ],
+              "notas_aclaratorias": [
+                {
+                  "tipo": "NA",
+                  "contenido": "Pese a tener mas de cuarenta años de vigencia y haberse superado todas las condiciones técnicas que sirvieron de sustento a la disposición normativa que fija en 3 KW la potencia máxima permitida para partida directa de motores en instalaciones con empalmes en B.T., las Empresas Eléctricas no han actualizado esta disposición. En general dicha potencia podrá aumentarse respetando siempre el principio de no provocar perturbaciones en otras instalaciones o servicios."
+                },
+                {
+                  "tipo": "NA",
+                  "contenido": "Se entenderá por partidor a un dispositivo de comando que permite hacer partir o detener un motor; la partida podrá ser directa o a tensión reducida. Eventualmente el partidor puede tener incluidas las protecciones de sobrecargas."
+                }
+              ]
+            },
+            {
+              "numero": "12.3.4",
+              "titulo": "Circuitos de control de motores",
+              "articulos": [
+                {
+                  "numero": "12.3.4.1",
+                  "contenido": "Se entenderá por circuito de control de motores aquel circuito que lleva señales eléctricas de mando para el motor o conjunto de motores pero a través del cual no circula la corriente de alimentación"
+                },
+                {
+                  "numero": "12.3.4.2",
+                  "contenido": "Los conductores y elementos del circuito de control que estén contenidos dentro de la caja del partidor o del equipo, se consideraran protegidos por las protecciones del motor."
+                },
+                {
+                  "numero": "12.3.4.3",
+                  "contenido": "Los conductores y elementos de control pertenecientes a un circuito montado fuera de la caja del equipo o partidor, deberán protegerse con protecciones de cortocircuito cuya capacidad se fijará de acuerdo a la capacidad de transporte de corriente de los conductores o la potencia de consumo de dichos elementos."
+                },
+                {
+                  "numero": "12.3.4.4",
+                  "contenido": "No obstante lo indicado en 12.3.4.3 se podrá prescindir de la protección separada del circuito de control, donde la capacidad nominal o la regulación de las protecciones del motor no excedan en dos veces la capacidad de transporte de corriente de los conductores de control o en donde una apertura del circuito de control pueda crear riesgos superiores como en el caso de una bomba de incendio u otros similares."
+                },
+                {
+                  "numero": "12.3.4.5",
+                  "contenido": "No será exigencia que los circuitos de control estén conectados a la tierra de servicio. Sin embargo, donde esta conexión sea necesaria, el circuito se dispondrá de tal manera que una conexión accidental a tierra no haga partir el o los motores controlados."
+                },
+                {
+                  "numero": "12.3.4.6",
+                  "contenido": "Los circuitos de control se canalizarán mediante alguno de los métodos prescritos en la sección Nº 8, según el ambiente y condiciones de montaje en cada caso."
+                },
+                {
+                  "numero": "12.3.4.7",
+                  "contenido": "Los circuitos de control deben contar con un interruptor que los separe de su fuente de alimentación. En donde se usa, además de la alimentación principal, una fuente independiente para alimentación exclusiva del circuito de control, dicho interruptor deberá abrir ambas fuentes, simultáneamente, o se colocarán juntos dos interruptores para abrir cada alimentación."
+                },
+                {
+                  "numero": "12.3.4.8",
+                  "contenido": "Si se usa un transformador para obtener tensión reducida para los circuitos de control, este transformador deberá ser desconectado de la alimentación por el interruptor indicado en 12.3.4.7."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "numero": "12.4",
+          "titulo": "INSTALACIÓN DE SOLDADORAS ELÉCTRICAS",
+          "articulos": [
+            {
+              "numero": "12.4.1",
+              "contenido": "En este párrafo se dan las prescripciones particulares que deberán cumplirse en la instalación de soldadoras eléctricas de arco o por resistencia u otros aparatos de soldadura similares, conectados a una instalación eléctrica."
+            }
+          ],
+          "subsecciones": [
+            {
+              "numero": "12.4.2",
+              "titulo": "Dimensionamiento de los conductores de alimentación",
+              "articulos": [
+                {
+                  "numero": "12.4.2.1",
+                  "contenido": "La capacidad de transporte de los conductores que alimenten a soldadoras individuales del tipo de transformador de CA o con rectificador para CC será, por lo menos, igual al valor de la corriente nominal del primario del transformador multiplicada por un coeficiente obtenido de la tabla Nº 12.29, de acuerdo al factor de funcionamiento de la soldadora."
+                },
+                {
+                  "numero": "12.4.2.2",
+                  "contenido": "Para las soldadoras no automáticas que tengan un ciclo de trabajo de una hora se adoptará un multiplicador de 0,75."
+                },
+                {
+                  "numero": "12.4.2.3",
+                  "contenido": "La capacidad de transporte de corriente de los conductores que alimenten soldadoras del tipo convertidor rotatorio o grupo motor generador será, por lo menos, igual al valor de la corriente nominal del motor multiplicado por un coeficiente obtenido de la tabla Nº12.30 de acuerdo al factor de funcionamiento de la soldadora. Para soldadoras no automáticas con un ciclo de trabajo de una hora el multiplicador será 0,8."
+                },
+                {
+                  "numero": "12.4.2.4",
+                  "contenido": "La capacidad de transporte de los conductores de alimentación de un grupo de soldadoras, sean estas del tipo transformador de CA, con rectificador o del tipo convertidor podrá ser menor que las sumas de las corrientes nominales de cada una de las soldadoras determinadas de acuerdo a 12.4.2.1 o 12.4.2.2, respectivamente; esta capacidad de transporte se determinará de acuerdo a la carga de cada soldadora fijada por el uso que se hace de ellas y considerando que en general no funcionarán simultáneamente."
+                },
+                {
+                  "numero": "12.4.2.5",
+                  "contenido": "El valor de la carga de cada soldadora deberá considerar su magnitud y su duración."
+                },
+                {
+                  "numero": "12.4.2.6",
+                  "contenido": "Por ofrecer un amplio margen de seguridad se recomienda emplear el siguiente criterio para determinar la carga total de un grupo de soldadoras: Determinando las corrientes individuales, de acuerdo a 12.4.2.1 ó 12.4.2.2, según corresponda, la carga total del grupo será la suma de las corrientes de las dos maquinas de mayor potencia, más la corriente de la tercera de mayor potencia por 0,85, más la corriente de la cuarta por 0,7, más la corriente de cada una de las restantes por 0,6. Se acepta emplear otros coeficientes más bajos en casos en que las condiciones de proceso aseguren una mayor diversidad de las cargas de las soldadoras."
+                }
+              ],
+              "tablas": [
+                {
+                  "numero": "12.29",
+                  "columnas": ["Factor de Funcionamiento", "Coeficiente"],
+                  "datos": [
+                    {"factor": "0,2", "coeficiente": "0,45"},
+                    {"factor": "0,3", "coeficiente": "0,55"},
+                    {"factor": "0,4", "coeficiente": "0,63"},
+                    {"factor": "0,5", "coeficiente": "0,71"},
+                    {"factor": "0,6", "coeficiente": "0,76"},
+                    {"factor": "0,7", "coeficiente": "0,84"},
+                    {"factor": "0,8", "coeficiente": "0,89"},
+                    {"factor": "0,9", "coeficiente": "0,95"},
+                    {"factor": "1,0", "coeficiente": "1,0"}
+                  ]
+                },
+                {
+                  "numero": "12.30",
+                  "columnas": ["Factor de Funcionamiento", "Coeficiente"],
+                  "datos": [
+                    {"factor": "0,2", "coeficiente": "0,55"},
+                    {"factor": "0,3", "coeficiente": "0,62"},
+                    {"factor": "0,4", "coeficiente": "0,69"},
+                    {"factor": "0,5", "coeficiente": "0,75"},
+                    {"factor": "0,6", "coeficiente": "0,81"},
+                    {"factor": "0,7", "coeficiente": "0,86"},
+                    {"factor": "0,8", "coeficiente": "0,91"},
+                    {"factor": "0,9", "coeficiente": "0,96"},
+                    {"factor": "1,0", "coeficiente": "1,0"}
+                  ]
+                }
+              ]
+            },
+            {
+              "numero": "12.4.3",
+              "titulo": "Protecciones y comandos",
+              "articulos": [
+                {
+                  "numero": "12.4.3.1",
+                  "contenido": "Cuando se trata de soldadoras del tipo transformador de CA o con rectificador para CC, cada soldadora deberá llevar una protección de cortocircuito de capacidad nominal o regulada a no más de 2 veces la corriente nominal del primario del transformador. Se puede omitir esta protección, si la protección del circuito cumple las condiciones indicadas."
+                },
+                {
+                  "numero": "12.4.3.2",
+                  "contenido": "Cada soldadora deberá comandarse desde un desconectador que permita separarla de la alimentación. Este desconectador puede estar incorporado como parte integral de ella, debiendo ser un interruptor de operación manual o un disyuntor de capacidad fijada de acuerdo a la capacidad de las protecciones."
+                },
+                {
+                  "numero": "12.4.3.3",
+                  "contenido": "Cuando se trata de soldadoras tipo convertidor o grupo motor generador, sus protecciones y comandos se dimensionarán de acuerdo a lo indicado en 12.3."
+                },
+                {
+                  "numero": "12.4.3.4",
+                  "contenido": "Los conductores que alimenten una o más soldadoras, deberán llevar protecciones de sobrecarga y cortocircuito, cuya capacidad nominal o regulación no exceda en 2 veces la corriente determinada de acuerdo a 12.4.2.1, 12.4.2.2, 12.4.2.3 ó 12.4.2.4.."
+                }
+              ]
+            },
+            {
+              "numero": "12.4.4",
+              "titulo": "Marcas",
+              "articulos": [
+                {
+                  "numero": "12.4.4.1",
+                  "contenido": "En la placa de características de las soldadoras eléctricas de arco deben aparecer, por lo menos, los siguientes datos:",
+                  "lista": [
+                    "Nombre del fabricante o su marca registrada.",
+                    "Potencia nominal en KVA.",
+                    "Factor de potencia.",
+                    "Voltaje nominal de alimentación.",
+                    "Voltaje máximo secundario en circuito abierto.",
+                    "Corriente nominal de carga.",
+                    "Corrientes del secundario.",
+                    "Frecuencia y número de fases.",
+                    "Velocidad en rpm, si procede.",
+                    "Condiciones de trabajo tales como factor de funcionamiento para un ciclo de una hora, y",
+                    "Certificación emitida por un organismo competente."
+                  ]
+                }
+              ]
+            },
+            {
+              "numero": "12.4.5",
+              "titulo": "Soldadoras por resistencia",
+              "articulos": [
+                {
+                  "numero": "12.4.5.1",
+                  "contenido": "La capacidad de transporte de los conductores que alimentan una soldadora de resistencia que opere con carga variable, no será menor que la corriente nominal del primario multiplicada por 0,7 si el control de la máquina es automático, o por 0,5 si el control es manual."
+                },
+                {
+                  "numero": "12.4.5.2",
+                  "contenido": "Para soldadoras individuales que trabajen con una carga fija y con un ciclo de trabajo invariable la capacidad de transporte se fijará multiplicando la corriente nominal del primario por un coeficiente determinado de la tabla Nº 12.31, obtenido en función al factor de funcionamiento."
+                },
+                {
+                  "numero": "12.4.5.3",
+                  "contenido": "La capacidad de transporte de los conductores que alimentan a grupos de soldadoras por resistencia será, por lo menos, igual a la corriente de la soldadora de mayor potencia más 0,6 veces la suma de las corrientes del resto de las soldadoras. La corriente de cada una de las soldadoras se obtendrá de acuerdo a 12.4.5.1 ó 12.4.5.2, según corresponda."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

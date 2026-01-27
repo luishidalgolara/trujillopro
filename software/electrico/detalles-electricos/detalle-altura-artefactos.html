@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Tipo Altura Artefactos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+
+        .detalle-container {
+            width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .titulo {
+            font-size: 42px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid black;
+        }
+
+        .titulo .editable {
+            background: #fffacd;
+            border: 1px dashed #ffa500;
+            padding: 5px 10px;
+            cursor: text;
+        }
+
+        .titulo .editable:hover {
+            background: #fff8b0;
+        }
+
+        .titulo .editable:focus {
+            outline: 2px solid #ffa500;
+            background: white;
+        }
+
+        .dibujo-container {
+            margin-top: 60px;
+            position: relative;
+            width: 100%;
+            height: 600px;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Estilos para las cotas editables */
+        .cota-editable {
+            font-size: 28px;
+            font-weight: bold;
+            fill: black;
+            font-family: Arial, sans-serif;
+        }
+
+        .cota-editable:hover {
+            fill: #ff6600;
+            cursor: pointer;
+        }
+
+        /* Botones */
+        .acciones {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            margin: 0 5px;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #27ae60;
+        }
+
+        .btn-secondary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #2980b9;
+        }
+
+        .btn-warning {
+            background: #f39c12;
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: #e67e22;
+        }
+
+        /* Modal para editar cotas */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 15% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .modal-content h3 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .acciones, .modal {
+                display: none;
+            }
+            .detalle-container {
+                box-shadow: none;
+            }
+            .titulo .editable {
+                background: transparent;
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="detalle-container">
+        <!-- TÍTULO EDITABLE -->
+        <div class="titulo">
+            <span class="editable" contenteditable="true" id="titulo">DETALLE TIPO ALTURA ARTEFACTOS</span>
+        </div>
+
+        <!-- DIBUJO TÉCNICO -->
+        <div class="dibujo-container">
+            <svg viewBox="0 0 1000 600">
+                <defs>
+                    <!-- Patrón de línea para cotas -->
+                    <marker id="arrowStart" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                        <path d="M 10 5 L 0 0 L 0 10 Z" fill="black"/>
+                    </marker>
+                    <marker id="arrowEnd" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                        <path d="M 0 5 L 10 0 L 10 10 Z" fill="black"/>
+                    </marker>
+                </defs>
+
+                <!-- HABITACIÓN (rectángulo principal) -->
+                <rect x="100" y="150" width="800" height="350" 
+                      fill="none" stroke="black" stroke-width="3"/>
+
+                <!-- VENTANA (parte superior central) -->
+                <g id="ventana">
+                    <!-- Marco exterior -->
+                    <rect x="340" y="200" width="180" height="150" 
+                          fill="none" stroke="black" stroke-width="3"/>
+                    <!-- División vertical -->
+                    <line x1="430" y1="200" x2="430" y2="350" 
+                          stroke="black" stroke-width="3"/>
+                    <!-- Líneas interiores izquierda -->
+                    <rect x="345" y="205" width="80" height="140" 
+                          fill="none" stroke="black" stroke-width="1.5"/>
+                    <!-- Líneas interiores derecha -->
+                    <rect x="435" y="205" width="80" height="140" 
+                          fill="none" stroke="black" stroke-width="1.5"/>
+                </g>
+
+                <!-- INTERRUPTOR (izquierda abajo) -->
+                <g id="interruptor">
+                    <!-- Caja del interruptor -->
+                    <rect x="230" y="420" width="30" height="20" 
+                          fill="white" stroke="black" stroke-width="2"/>
+                    <!-- Símbolo S dentro -->
+                    <text x="245" y="435" font-size="14" font-weight="bold" 
+                          text-anchor="middle" fill="black">S</text>
+                </g>
+
+                <!-- ENCHUFE (derecha centro) -->
+                <g id="enchufe">
+                    <!-- Caja del enchufe -->
+                    <rect x="620" y="300" width="30" height="30" 
+                          fill="white" stroke="black" stroke-width="2"/>
+                    <!-- Símbolo del enchufe (dos líneas paralelas) -->
+                    <line x1="628" y1="310" x2="628" y2="320" 
+                          stroke="black" stroke-width="2"/>
+                    <line x1="642" y1="310" x2="642" y2="320" 
+                          stroke="black" stroke-width="2"/>
+                </g>
+
+                <!-- LÍNEAS DE CONEXIÓN -->
+                <!-- Desde interruptor hacia arriba -->
+                <line x1="245" y1="420" x2="245" y2="380" 
+                      stroke="black" stroke-width="2" stroke-dasharray="5,5"/>
+                <line x1="245" y1="380" x2="280" y2="345" 
+                      stroke="black" stroke-width="2" stroke-dasharray="5,5"/>
+
+                <!-- Desde enchufe hacia abajo -->
+                <line x1="635" y1="330" x2="635" y2="380" 
+                      stroke="black" stroke-width="2" stroke-dasharray="5,5"/>
+                <line x1="635" y1="380" x2="670" y2="415" 
+                      stroke="black" stroke-width="2" stroke-dasharray="5,5"/>
+
+                <!-- COTA IZQUIERDA (2.40) -->
+                <g id="cota-izquierda">
+                    <!-- Línea vertical principal -->
+                    <line x1="50" y1="150" x2="50" y2="500" 
+                          stroke="black" stroke-width="2"/>
+                    <!-- Flechas -->
+                    <line x1="50" y1="150" x2="40" y2="165" 
+                          stroke="black" stroke-width="2"/>
+                    <line x1="50" y1="150" x2="60" y2="165" 
+                          stroke="black" stroke-width="2"/>
+                    <line x1="50" y1="500" x2="40" y2="485" 
+                          stroke="black" stroke-width="2"/>
+                    <line x1="50" y1="500" x2="60" y2="485" 
+                          stroke="black" stroke-width="2"/>
+                    <!-- Líneas de extensión -->
+                    <line x1="50" y1="150" x2="100" y2="150" 
+                          stroke="black" stroke-width="1"/>
+                    <line x1="50" y1="500" x2="100" y2="500" 
+                          stroke="black" stroke-width="1"/>
+                    <!-- Texto de cota -->
+                    <text x="30" y="330" font-size="32" font-weight="bold" 
+                          text-anchor="middle" fill="black" 
+                          transform="rotate(-90 30 330)" class="cota-editable" 
+                          id="cota-altura" onclick="editarCota('cota-altura', '2.40')">2.40</text>
+                </g>
+
+                <!-- COTA INFERIOR IZQUIERDA (0.40) -->
+                <g id="cota-inferior-izq">
+                    <!-- Línea horizontal -->
+                    <line x1="245" y1="550" x2="245" y2="500" 
+                          stroke="black" stroke-width="2"/>
+                    <!-- Flecha abajo -->
+                    <line x1="245" y1="550" x2="235" y2="540" 
+                          stroke="black" stroke-width="2"/>
+                    <line x1="245" y1="550" x2="255" y2="540" 
+                          stroke="black" stroke-width="2"/>
+                    <!-- Línea extensión -->
+                    <line x1="245" y1="500" x2="245" y2="420" 
+                          stroke="black" stroke-width="1" stroke-dasharray="3,3"/>
+                    <!-- Texto -->
+                    <text x="280" y="475" font-size="32" font-weight="bold" 
+                          fill="black" class="cota-editable" 
+                          id="cota-interruptor" onclick="editarCota('cota-interruptor', '0.40')">0.40</text>
+                </g>
+
+                <!-- COTA DERECHA (2.0) -->
+                <g id="cota-derecha">
+                    <!-- Línea horizontal -->
+                    <line x1="635" y1="550" x2="635" y2="330" 
+                          stroke="black" stroke-width="2"/>
+                    <!-- Flecha abajo -->
+                    <line x1="635" y1="550" x2="625" y2="540" 
+                          stroke="black" stroke-width="2"/>
+                    <line x1="635" y1="550" x2="645" y2="540" 
+                          stroke="black" stroke-width="2"/>
+                    <!-- Línea extensión -->
+                    <line x1="635" y1="500" x2="635" y2="330" 
+                          stroke="black" stroke-width="1" stroke-dasharray="3,3"/>
+                    <!-- Texto -->
+                    <text x="660" y="420" font-size="32" font-weight="bold" 
+                          fill="black" class="cota-editable" 
+                          id="cota-enchufe" onclick="editarCota('cota-enchufe', '2.0')">2.0</text>
+                </g>
+
+                <!-- CÍRCULOS EN LOS EXTREMOS DE COTAS -->
+                <circle cx="280" cy="345" r="18" fill="white" stroke="black" stroke-width="2"/>
+                <circle cx="280" cy="455" r="18" fill="white" stroke="black" stroke-width="2"/>
+                <circle cx="670" cy="415" r="18" fill="white" stroke="black" stroke-width="2"/>
+
+            </svg>
+        </div>
+
+        <!-- BOTONES DE ACCIÓN -->
+        <div class="acciones">
+            <button class="btn btn-primary" onclick="guardarDatos()">💾 Guardar</button>
+            <button class="btn btn-secondary" onclick="window.print()">🖨️ Imprimir</button>
+            <button class="btn btn-warning" onclick="restaurarDefecto()">🔄 Restaurar</button>
+        </div>
+    </div>
+
+    <!-- MODAL PARA EDITAR COTAS -->
+    <div id="modalCota" class="modal">
+        <div class="modal-content">
+            <h3>Editar Medida</h3>
+            <input type="text" id="inputCota" placeholder="Ingrese nueva medida">
+            <div class="modal-buttons">
+                <button class="btn btn-primary" onclick="guardarCota()">✓ Aceptar</button>
+                <button class="btn btn-warning" onclick="cerrarModal()">✕ Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cotaActual = null;
+
+        // Cargar datos guardados
+        window.addEventListener('DOMContentLoaded', function() {
+            const titulo = localStorage.getItem('detalle_titulo');
+            const cotaAltura = localStorage.getItem('detalle_cota_altura');
+            const cotaInterruptor = localStorage.getItem('detalle_cota_interruptor');
+            const cotaEnchufe = localStorage.getItem('detalle_cota_enchufe');
+
+            if (titulo) document.getElementById('titulo').textContent = titulo;
+            if (cotaAltura) document.getElementById('cota-altura').textContent = cotaAltura;
+            if (cotaInterruptor) document.getElementById('cota-interruptor').textContent = cotaInterruptor;
+            if (cotaEnchufe) document.getElementById('cota-enchufe').textContent = cotaEnchufe;
+        });
+
+        // Guardar título automáticamente
+        document.getElementById('titulo').addEventListener('blur', function() {
+            localStorage.setItem('detalle_titulo', this.textContent);
+        });
+
+        // Editar cota
+        function editarCota(id, valorDefecto) {
+            cotaActual = id;
+            const valorActual = document.getElementById(id).textContent;
+            document.getElementById('inputCota').value = valorActual;
+            document.getElementById('modalCota').style.display = 'block';
+            document.getElementById('inputCota').focus();
+            document.getElementById('inputCota').select();
+        }
+
+        // Guardar cota editada
+        function guardarCota() {
+            if (cotaActual) {
+                const nuevoValor = document.getElementById('inputCota').value;
+                document.getElementById(cotaActual).textContent = nuevoValor;
+                localStorage.setItem('detalle_' + cotaActual, nuevoValor);
+                cerrarModal();
+            }
+        }
+
+        // Cerrar modal
+        function cerrarModal() {
+            document.getElementById('modalCota').style.display = 'none';
+            cotaActual = null;
+        }
+
+        // Enter en input
+        document.getElementById('inputCota').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                guardarCota();
+            }
+        });
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalCota');
+            if (event.target == modal) {
+                cerrarModal();
+            }
+        }
+
+        // Guardar todos los datos
+        function guardarDatos() {
+            const titulo = document.getElementById('titulo').textContent;
+            const cotaAltura = document.getElementById('cota-altura').textContent;
+            const cotaInterruptor = document.getElementById('cota-interruptor').textContent;
+            const cotaEnchufe = document.getElementById('cota-enchufe').textContent;
+
+            localStorage.setItem('detalle_titulo', titulo);
+            localStorage.setItem('detalle_cota_altura', cotaAltura);
+            localStorage.setItem('detalle_cota_interruptor', cotaInterruptor);
+            localStorage.setItem('detalle_cota_enchufe', cotaEnchufe);
+
+            const btn = event.target;
+            const textoOriginal = btn.textContent;
+            btn.textContent = '✅ Guardado!';
+            setTimeout(() => {
+                btn.textContent = textoOriginal;
+            }, 2000);
+        }
+
+        // Restaurar valores por defecto
+        function restaurarDefecto() {
+            if (confirm('¿Restaurar valores por defecto?')) {
+                document.getElementById('titulo').textContent = 'DETALLE TIPO ALTURA ARTEFACTOS';
+                document.getElementById('cota-altura').textContent = '2.40';
+                document.getElementById('cota-interruptor').textContent = '0.40';
+                document.getElementById('cota-enchufe').textContent = '2.0';
+
+                localStorage.setItem('detalle_titulo', 'DETALLE TIPO ALTURA ARTEFACTOS');
+                localStorage.setItem('detalle_cota_altura', '2.40');
+                localStorage.setItem('detalle_cota_interruptor', '0.40');
+                localStorage.setItem('detalle_cota_enchufe', '2.0');
+
+                alert('✅ Valores restaurados');
+            }
+        }
+    </script>
+</body>
+</html>

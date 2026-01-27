@@ -1,0 +1,244 @@
+/* ========================================
+   ESTILOS ISOMÉTRICO ELÉCTRICO 3D
+   ======================================== */
+
+/* Ventana flotante */
+.isometric-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1000px;
+    height: 750px;
+    background: white;
+    border: 3px solid #2c3e50;
+    border-radius: 12px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.isometric-window.minimized {
+    height: 50px;
+}
+
+.isometric-window.minimized .isometric-content,
+.isometric-window.minimized .isometric-status {
+    display: none;
+}
+
+/* Header */
+.isometric-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: grab;
+    user-select: none;
+    border-bottom: 2px solid #5a67d8;
+}
+
+.isometric-header:active {
+    cursor: grabbing;
+}
+
+.isometric-title {
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.isometric-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Controles de escala */
+.scale-display {
+    min-width: 50px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+/* Botones */
+.iso-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.iso-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.iso-btn.integrate {
+    background: rgba(46, 204, 113, 0.3);
+    border-color: rgba(46, 204, 113, 0.5);
+}
+
+.iso-btn.integrate:hover {
+    background: rgba(46, 204, 113, 0.5);
+}
+
+.iso-btn.minimize {
+    background: rgba(241, 196, 15, 0.3);
+}
+
+.iso-btn.close {
+    background: rgba(231, 76, 60, 0.3);
+}
+
+/* Contenido */
+.isometric-content {
+    flex: 1;
+    overflow: auto;
+    padding: 20px;
+    background: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.isometric-content svg {
+    max-width: 100%;
+    max-height: 100%;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+}
+
+/* Barra de estado */
+.isometric-status {
+    background: rgba(44, 62, 80, 0.95);
+    color: #ecf0f1;
+    padding: 8px 16px;
+    font-size: 11px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
+   ISOMÉTRICO INTEGRADO EN EL PLANO
+   ======================================== */
+
+.isometric-integrated {
+    cursor: move;
+    transition: opacity 0.2s;
+}
+
+.isometric-integrated:hover .isometric-border {
+    stroke: #e74c3c;
+    stroke-width: 4;
+}
+
+.isometric-border {
+    pointer-events: none;
+}
+
+.resize-handle {
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.resize-handle:hover {
+    r: 10;
+    fill: #e74c3c;
+    filter: drop-shadow(0 0 4px rgba(231, 76, 60, 0.6));
+}
+
+/* Elementos isométricos */
+.isometric-element {
+    transition: transform 0.2s;
+}
+
+.isometric-element:hover {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* Animación de entrada */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.isometric-window {
+    animation: fadeInScale 0.3s ease-out;
+}
+
+/* Scrollbar personalizado */
+.isometric-content::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+.isometric-content::-webkit-scrollbar-track {
+    background: #ecf0f1;
+    border-radius: 6px;
+}
+
+.isometric-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #667eea, #764ba2);
+    border-radius: 6px;
+    border: 2px solid #ecf0f1;
+}
+
+.isometric-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #764ba2, #667eea);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .isometric-window {
+        width: 90vw;
+        height: 70vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .isometric-window {
+        width: 95vw;
+        height: 80vh;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .isometric-header {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .isometric-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .iso-btn {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+}

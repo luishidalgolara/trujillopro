@@ -1,0 +1,41 @@
+/* css/base.css - MODIFICADO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1a1a1a;
+    color: #e4e4e7;
+    overflow: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    height: 100vh;
+}
+
+.no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#grid path {
+    stroke: #e5e5e5;
+    stroke-width: 0.5;
+}
+
+body.dragging-text {
+    cursor: grabbing !important;
+}
+
+body.dragging-text * {
+    cursor: grabbing !important;
+}

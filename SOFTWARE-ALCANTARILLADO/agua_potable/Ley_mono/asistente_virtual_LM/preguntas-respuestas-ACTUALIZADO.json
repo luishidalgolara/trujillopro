@@ -1,0 +1,699 @@
+{
+  "preguntas_respuestas": [
+    {
+      "id": 1,
+      "categoria": "requisitos",
+      "pregunta": "¿Cuál es la superficie máxima para acogerme a la Ley del Mono?",
+      "pregunta_corta": "Superficie máxima",
+      "respuesta": "Hay dos opciones:\n\n• Opción 1: Vivienda menor a 90 m² con avalúo fiscal menor a 1.000 UF\n• Opción 2: Vivienda menor a 140 m² con avalúo fiscal menor a 2.000 UF\n\nEn ambos casos, el avalúo incluye vivienda y terreno juntos.",
+      "keywords": ["superficie", "metros", "m2", "90", "140", "tamaño"]
+    },
+    {
+      "id": 2,
+      "categoria": "requisitos",
+      "pregunta": "¿Cuándo debe haber sido construida mi vivienda?",
+      "pregunta_corta": "Fecha construcción",
+      "respuesta": "Tu vivienda debe haber sido construida ANTES del 4 de febrero de 2016, que es la fecha de publicación de la Ley 20.898.\n\nCualquier construcción posterior a esta fecha NO puede acogerse a esta ley.",
+      "keywords": ["fecha", "construcción", "2016", "febrero", "cuando", "antigüedad"]
+    },
+    {
+      "id": 3,
+      "categoria": "plazos",
+      "pregunta": "¿Hasta cuándo puedo regularizar mi vivienda?",
+      "pregunta_corta": "Plazo vigencia",
+      "respuesta": "La Ley del Mono está vigente hasta el 31 de diciembre de 2027.\n\nEsto significa que tienes hasta esa fecha para INGRESAR tu solicitud de regularización en la Dirección de Obras Municipales (DOM).",
+      "keywords": ["plazo", "vigencia", "2027", "cuando", "tiempo", "límite"]
+    },
+    {
+      "id": 4,
+      "categoria": "habitabilidad",
+      "pregunta": "¿Qué altura mínima deben tener los techos?",
+      "pregunta_corta": "Altura techos",
+      "respuesta": "La altura mínima de piso a cielo es de 2.0 metros (rebajada desde el estándar de 2.30m).\n\nPara pasadas peatonales bajo vigas o instalaciones horizontales, la altura mínima de 2.0 metros puede reducirse hasta en un 10% (es decir, hasta 1.8 metros).",
+      "keywords": ["altura", "techos", "cielo", "metros", "2.0", "vigas"]
+    },
+    {
+      "id": 5,
+      "categoria": "requisitos",
+      "pregunta": "¿Mi vivienda puede estar en zona rural?",
+      "pregunta_corta": "Zona rural",
+      "respuesta": "SÍ, la Ley del Mono aplica tanto para viviendas en áreas urbanas como rurales.\n\nLo importante es que NO esté en:\n• Áreas de riesgo\n• Zonas de protección\n• Terrenos declarados de utilidad pública\n• Bienes nacionales de uso público",
+      "keywords": ["rural", "urbana", "zona", "ubicación", "donde"]
+    },
+    {
+      "id": 6,
+      "categoria": "requisitos",
+      "pregunta": "¿Qué pasa si tengo multas en la municipalidad?",
+      "pregunta_corta": "Multas pendientes",
+      "respuesta": "Para acogerte a la ley, NO debes tener reclamaciones escritas pendientes por incumplimiento de normas urbanísticas en la DOM o Juzgado de Policía Local.\n\nDebes resolver cualquier reclamación pendiente antes de ingresar tu solicitud.",
+      "keywords": ["multas", "reclamaciones", "pendientes", "DOM", "municipalidad"]
+    },
+    {
+      "id": 7,
+      "categoria": "requisitos",
+      "pregunta": "¿Qué instalaciones debe tener mi vivienda?",
+      "pregunta_corta": "Instalaciones básicas",
+      "respuesta": "Tu vivienda debe cumplir con normas aplicables a las instalaciones interiores de:\n\n✓ Electricidad\n✓ Agua potable\n✓ Alcantarillado\n✓ Gas (cuando corresponda)\n\nTodas deben cumplir con la normativa vigente.",
+      "keywords": ["instalaciones", "electricidad", "agua", "alcantarillado", "gas", "servicios"]
+    },
+    {
+      "id": 8,
+      "categoria": "incendios",
+      "pregunta": "¿Qué es la resistencia al fuego F-15?",
+      "pregunta_corta": "Resistencia F-15",
+      "respuesta": "Para viviendas aisladas, pareadas o continuas de hasta 2 pisos y 90 m² o menos, todos los elementos y componentes soportantes deben tener resistencia al fuego de al menos F-15.\n\nEsto significa que pueden resistir el fuego durante 15 minutos sin colapsar.",
+      "keywords": ["fuego", "f-15", "resistencia", "incendio", "seguridad", "15"]
+    },
+    {
+      "id": 9,
+      "categoria": "habitabilidad",
+      "pregunta": "¿Necesito ventanas en todos los recintos?",
+      "pregunta_corta": "Ventanas obligatorias",
+      "respuesta": "Sí, los locales habitables deben tener al menos una ventana para entrada de aire y luz.\n\nSe permiten ventanas fijas selladas SI:\n• Hay ductos de ventilación adecuados\n• NO es un dormitorio\n• NO tiene artefactos de combustión\n\nBaños, cocinas y lavaderos sin ventana necesitan un ducto de ventilación de al menos 0.16 m².",
+      "keywords": ["ventanas", "ventilación", "aire", "luz", "ducto"]
+    },
+    {
+      "id": 10,
+      "categoria": "estabilidad",
+      "pregunta": "¿Necesito cálculo estructural?",
+      "pregunta_corta": "Cálculo estructural",
+      "respuesta": "NO se requiere cálculo estructural en estos casos:\n\na) Viviendas de madera de máx. 2 pisos con habitaciones ≤3m entre apoyos\n\nb) Viviendas de albañilería/hormigón de 1 piso con habitaciones ≤3m entre apoyos\n\nc) Viviendas mixtas de 2 pisos (1° piso albañilería/hormigón, 2° piso liviano) con habitaciones ≤3m entre apoyos\n\nEl profesional debe certificar condiciones de estabilidad.",
+      "keywords": ["cálculo", "estructural", "madera", "hormigón", "albañilería"]
+    },
+    {
+      "id": 11,
+      "categoria": "incendios",
+      "pregunta": "¿Qué pasa si mi vivienda está adosada?",
+      "pregunta_corta": "Viviendas adosadas",
+      "respuesta": "Si tu vivienda está adosada al deslinde:\n\n• El muro de adosamiento debe llegar hasta la cubierta con resistencia F-60 (60 minutos)\n• Debes tener un sistema de evacuación de aguas lluvia que no afecte a predios vecinos",
+      "keywords": ["adosada", "adosamiento", "muro", "f-60", "vecinos"]
+    },
+    {
+      "id": 12,
+      "categoria": "habitabilidad",
+      "pregunta": "¿Qué terminaciones debe tener mi vivienda?",
+      "pregunta_corta": "Terminaciones",
+      "respuesta": "El estándar de terminaciones NO puede ser inferior al definido en la Ordenanza General de Urbanismo y Construcciones (OGUC) para una 'obra gruesa habitable'.\n\nEsto significa que debe tener terminaciones básicas que permitan habitarla de forma digna y segura.",
+      "keywords": ["terminaciones", "obra gruesa", "habitable", "oguc", "estándar"]
+    },
+    {
+      "id": 13,
+      "categoria": "beneficios",
+      "pregunta": "¿Qué beneficios tiene esta ley?",
+      "pregunta_corta": "Beneficios principales",
+      "respuesta": "Principales beneficios:\n\n• Trámite simplificado (menos requisitos)\n• Permiso y recepción simultáneos\n• Descuento 75% si avalúo < 400 UF\n• Descuento 50% si avalúo > 400 UF\n• Exención 100% si propietario ≥65 años\n• Exención 100% si residente con discapacidad\n• No se exigen: antejardines, estacionamientos\n• Cierros hasta 2.2m permitidos",
+      "keywords": ["beneficios", "descuentos", "exención", "ventajas", "ahorro"]
+    },
+    {
+      "id": 14,
+      "categoria": "requisitos",
+      "pregunta": "¿Puedo regularizar si tengo subsidio del MINVU?",
+      "pregunta_corta": "Con subsidio MINVU",
+      "respuesta": "SÍ, si tu vivienda fue beneficiada con subsidios del Ministerio de Vivienda y Urbanismo para mejoramiento y/o ampliación, puede superar la superficie máxima establecida (90 o 140 m²).\n\nEsta es una excepción especial contemplada en la ley.",
+      "keywords": ["subsidio", "minvu", "ministerio", "vivienda", "mejoramiento"]
+    },
+    {
+      "id": 15,
+      "categoria": "proceso",
+      "pregunta": "¿Cuál es el primer paso para regularizar?",
+      "pregunta_corta": "Primer paso",
+      "respuesta": "El primer paso es verificar que tu vivienda cumple TODOS los requisitos:\n\n1. Superficie y avalúo dentro de límites\n2. Construida antes del 4/feb/2016\n3. No en zona de riesgo o protección\n4. Sin reclamaciones pendientes\n5. Instalaciones básicas funcionando\n6. Cumple normas de habitabilidad\n\nLuego, contratar un arquitecto para hacer los planos.",
+      "keywords": ["primer paso", "comenzar", "empezar", "iniciar"]
+    },
+    {
+      "id": 16,
+      "categoria": "general",
+      "pregunta": "¿Por qué se llama Ley del Mono?",
+      "pregunta_corta": "Nombre origen",
+      "respuesta": "En Chile, 'hacer un mono' es una expresión que significa 'hacer un dibujo o croquis'.\n\nEl nombre hace referencia a los planos o croquis de la vivienda que se necesitan para regularizarla.\n\nEl nombre oficial es Ley N° 20.898.",
+      "keywords": ["mono", "nombre", "por qué", "croquis", "dibujo"]
+    },
+    {
+      "id": 17,
+      "categoria": "documentos",
+      "pregunta": "¿Qué es el avalúo fiscal y dónde lo obtengo?",
+      "pregunta_corta": "Avalúo fiscal",
+      "respuesta": "El avalúo fiscal es el valor que el Servicio de Impuestos Internos (SII) asigna a tu propiedad (vivienda + terreno).\n\nPuedes obtener el certificado en:\n• Oficinas del SII\n• Sitio web del SII (sii.cl)\n• Municipalidad\n\nEste certificado es uno de los documentos requeridos.",
+      "keywords": ["avalúo", "fiscal", "sii", "valor", "certificado"]
+    },
+    {
+      "id": 18,
+      "categoria": "plazos",
+      "pregunta": "¿Cuánto demora el trámite completo?",
+      "pregunta_corta": "Tiempo trámite",
+      "respuesta": "Una vez ingresada la solicitud, la DOM tiene 90 días hábiles para revisar y responder.\n\nEn la práctica, si todo está en orden y no hay observaciones, el proceso completo suele tomar alrededor de 30 días.\n\nEl tiempo puede variar según la municipalidad.",
+      "keywords": ["tiempo", "demora", "cuánto", "plazo", "días", "90"]
+    },
+    {
+      "id": 19,
+      "categoria": "requisitos",
+      "pregunta": "¿Qué pasa si mi vivienda tiene más de 140 m²?",
+      "pregunta_corta": "Más de 140m²",
+      "respuesta": "Si tu vivienda supera los 140 m²:\n\n• NO puede acogerse a la Ley del Mono\n• EXCEPTO si fue beneficiada con subsidio MINVU para mejoramiento/ampliación\n\nDeberás regularizar por la vía tradicional normal.",
+      "keywords": ["140", "más", "supera", "excede", "grande"]
+    },
+    {
+      "id": 20,
+      "categoria": "proceso",
+      "pregunta": "¿Dónde debo presentar mi solicitud?",
+      "pregunta_corta": "Dónde presentar",
+      "respuesta": "Debes presentar tu solicitud en la Dirección de Obras Municipales (DOM) de la comuna donde está ubicada tu propiedad.\n\nLleva todos los documentos:\n• Declaración simple\n• Planos\n• Informe profesional\n• Certificado avalúo SII\n• Certificado TE1 (electricidad)",
+      "keywords": ["donde", "presentar", "dom", "municipalidad", "solicitud"]
+    },
+    {
+      "id": 21,
+      "categoria": "habitabilidad",
+      "pregunta": "¿Cuánto se puede reducir la altura bajo vigas?",
+      "pregunta_corta": "Reducción altura vigas",
+      "respuesta": "La altura mínima de 2.0 metros en pasadas peatonales bajo vigas o instalaciones horizontales puede reducirse hasta en un 10%.\n\nEsto significa:\n• Altura estándar: 2.0m\n• Reducción máxima: 10% = 0.2m\n• Altura mínima permitida: 1.8m",
+      "keywords": ["vigas", "reducción", "10%", "1.8", "altura", "mínima"]
+    },
+    {
+      "id": 22,
+      "categoria": "habitabilidad",
+      "pregunta": "¿Qué es obra gruesa habitable?",
+      "pregunta_corta": "Obra gruesa habitable",
+      "respuesta": "Obra gruesa habitable es el estándar mínimo de terminaciones definido en la OGUC.\n\nIncluye:\n• Muros levantados\n• Techumbre instalada\n• Ventanas y puertas\n• Pisos terminados básicos\n• Instalaciones sanitarias funcionando\n• Instalación eléctrica básica\n\nPermite habitar la vivienda de forma segura y digna.",
+      "keywords": ["obra gruesa", "habitable", "terminaciones", "mínimo", "oguc"]
+    },
+    {
+      "id": 23,
+      "categoria": "habitabilidad",
+      "pregunta": "¿Puedo tener ventanas fijas selladas en dormitorios?",
+      "pregunta_corta": "Ventanas dormitorios",
+      "respuesta": "NO, las ventanas fijas selladas NO están permitidas en dormitorios.\n\nLos dormitorios DEBEN tener:\n• Ventana que permita entrada de aire exterior\n• Ventilación natural directa\n• Apertura para renovación de aire\n\nTampoco se permiten ventanas fijas en recintos con artefactos de combustión.",
+      "keywords": ["dormitorio", "ventana", "fija", "sellada", "no permitido"]
+    },
+    {
+      "id": 24,
+      "categoria": "habitabilidad",
+      "pregunta": "¿Cómo ventilo baños y cocinas sin ventana?",
+      "pregunta_corta": "Ventilación sin ventana",
+      "respuesta": "Baños, cocinas y lavaderos sin ventana al exterior deben ventilarse mediante:\n\n• Ducto individual o colectivo\n• Sección libre mínima: 0.16 m²\n• Sin interrupciones en todo su recorrido\n• Puede reducirse si hay tiraje forzado\n\nEl ducto debe ser permanente y funcional.",
+      "keywords": ["ducto", "ventilación", "0.16", "baño", "cocina", "sin ventana"]
+    },
+    {
+      "id": 25,
+      "categoria": "habitabilidad",
+      "pregunta": "¿Qué es tiraje forzado?",
+      "pregunta_corta": "Tiraje forzado",
+      "respuesta": "El tiraje forzado es un sistema mecánico de ventilación que usa extractores o ventiladores para forzar la salida del aire.\n\nBeneficios:\n• Permite reducir la sección del ducto (menos de 0.16 m²)\n• Mejora la extracción de olores y humedad\n• Más eficiente que ventilación natural\n\nDebe ser instalado por profesional competente.",
+      "keywords": ["tiraje", "forzado", "extractor", "ventilador", "mecánico"]
+    },
+    {
+      "id": 26,
+      "categoria": "habitabilidad",
+      "pregunta": "¿Qué son artefactos de combustión?",
+      "pregunta_corta": "Artefactos combustión",
+      "respuesta": "Son equipos que queman combustible para generar calor:\n\n• Calefones (gas)\n• Estufas a gas o parafina\n• Calderas\n• Salamandras a leña\n• Cocinas a gas\n\nEstos recintos NO pueden tener ventanas fijas selladas, necesitan ventilación natural directa.",
+      "keywords": ["combustión", "calefón", "estufa", "gas", "caldera"]
+    },
+    {
+      "id": 27,
+      "categoria": "incendios",
+      "pregunta": "¿Cuál es la diferencia entre F-15 y F-60?",
+      "pregunta_corta": "F-15 vs F-60",
+      "respuesta": "La diferencia está en el tiempo de resistencia al fuego:\n\n• F-15: Resiste 15 minutos sin colapsar\n• F-60: Resiste 60 minutos sin colapsar\n\nF-15 se usa en:\n• Elementos soportantes de viviendas ≤90m²\n\nF-60 se usa en:\n• Muros de adosamiento hasta la cubierta\n• Mayor protección entre viviendas colindantes",
+      "keywords": ["f-15", "f-60", "diferencia", "resistencia", "tiempo"]
+    },
+    {
+      "id": 28,
+      "categoria": "incendios",
+      "pregunta": "¿Qué son viviendas aisladas, pareadas y continuas?",
+      "pregunta_corta": "Tipos viviendas",
+      "respuesta": "Clasificación según contacto con otras viviendas:\n\n• AISLADA: No comparte muros con otras viviendas\n• PAREADA: Comparte 1 muro con otra vivienda\n• CONTINUA: Comparte muros con viviendas a ambos lados\n\nTodas pueden acogerse a F-15 si tienen ≤2 pisos y ≤90m².",
+      "keywords": ["aislada", "pareada", "continua", "tipos", "clasificación"]
+    },
+    {
+      "id": 29,
+      "categoria": "incendios",
+      "pregunta": "¿Qué es un muro divisorio?",
+      "pregunta_corta": "Muro divisorio",
+      "respuesta": "Es el muro que separa dos unidades de vivienda.\n\nRequisitos según OGUC:\n• Debe evitar propagación de fuego\n• Resistencia al fuego adecuada\n• Separación completa hasta la cubierta\n• Impide paso de humo y gases\n\nEs diferente del muro de adosamiento (contra el deslinde).",
+      "keywords": ["muro", "divisorio", "separación", "unidades", "oguc"]
+    },
+    {
+      "id": 30,
+      "categoria": "incendios",
+      "pregunta": "¿Cómo debe ser el sistema de evacuación de aguas lluvia?",
+      "pregunta_corta": "Evacuación aguas",
+      "respuesta": "En viviendas adosadas, el sistema debe:\n\n• Recolectar aguas lluvia de la cubierta\n• NO descargar hacia predios vecinos\n• Conducir hacia la calle o sistema de alcantarillado\n• Evitar filtraciones al muro medianero\n• Puede usar canaletas, bajadas y colectores\n\nEs obligatorio para proteger propiedades vecinas.",
+      "keywords": ["aguas", "lluvia", "evacuación", "sistema", "adosamiento"]
+    },
+    {
+      "id": 31,
+      "categoria": "estabilidad",
+      "pregunta": "¿Qué significa 3.0 metros entre apoyos?",
+      "pregunta_corta": "3m entre apoyos",
+      "respuesta": "Es la distancia máxima entre elementos que soportan el peso de la estructura.\n\nEjemplo:\n• Entre columnas\n• Entre muros soportantes\n• Entre vigas principales\n\nSi las habitaciones tienen ≤3m entre apoyos, NO necesitas cálculo estructural (según tipo de construcción).",
+      "keywords": ["3 metros", "apoyos", "distancia", "columnas", "muros"]
+    },
+    {
+      "id": 32,
+      "categoria": "estabilidad",
+      "pregunta": "¿Qué es una estructura liviana para el segundo piso?",
+      "pregunta_corta": "Estructura liviana",
+      "respuesta": "Estructura liviana significa:\n\n• Construcción en madera\n• Tabiques de madera o metalcom\n• Revestimientos livianos (OSB, yeso-cartón)\n• NO albañilería ni hormigón\n• Menor peso sobre primer piso\n\nPermite combinación: 1° piso pesado + 2° piso liviano sin cálculo estructural.",
+      "keywords": ["liviana", "segundo piso", "madera", "tabique", "peso"]
+    },
+    {
+      "id": 33,
+      "categoria": "estabilidad",
+      "pregunta": "¿Qué es albañilería armada?",
+      "pregunta_corta": "Albañilería armada",
+      "respuesta": "Sistema constructivo con:\n\n• Bloques de hormigón o ladrillos\n• Fierros (enfierradura) en interior\n• Hormigón de relleno en celdas\n• Mayor resistencia sísmica\n• Más resistente que albañilería simple\n\nEs diferente de albañilería reforzada (pilares y cadenas).",
+      "keywords": ["albañilería", "armada", "fierros", "bloques", "hormigón"]
+    },
+    {
+      "id": 34,
+      "categoria": "estabilidad",
+      "pregunta": "¿Qué es albañilería reforzada?",
+      "pregunta_corta": "Albañilería reforzada",
+      "respuesta": "Sistema con:\n\n• Muros de ladrillo o bloque\n• Pilares de hormigón armado en esquinas\n• Cadenas de hormigón arriba y abajo\n• Refuerzos cada cierta distancia\n• Buena resistencia sísmica\n\nMás económica que albañilería armada.",
+      "keywords": ["albañilería", "reforzada", "pilares", "cadenas", "refuerzos"]
+    },
+    {
+      "id": 35,
+      "categoria": "estabilidad",
+      "pregunta": "¿Qué es hormigón armado?",
+      "pregunta_corta": "Hormigón armado",
+      "respuesta": "Sistema constructivo con:\n\n• Hormigón (cemento + áridos + agua)\n• Fierros (enfierradura) en su interior\n• Combinación de ambos materiales\n• Alta resistencia a compresión y tracción\n• Usado en muros, losas, pilares, vigas\n\nEs el sistema más resistente y duradero.",
+      "keywords": ["hormigón", "armado", "fierro", "cemento", "resistente"]
+    },
+    {
+      "id": 36,
+      "categoria": "estabilidad",
+      "pregunta": "¿Qué son entramados de piso?",
+      "pregunta_corta": "Entramados piso",
+      "respuesta": "Estructura de madera para soportar el piso:\n\n• Vigas o viguetas de madera\n• Colocadas de forma paralela\n• Espaciadas cada 40-60cm aprox.\n• Sobre ellas va el entablado o tablero\n• Sistema tradicional en construcción madera\n\nDebe cumplir distancia ≤3m entre apoyos.",
+      "keywords": ["entramado", "piso", "vigas", "viguetas", "madera"]
+    },
+    {
+      "id": 37,
+      "categoria": "estabilidad",
+      "pregunta": "¿Qué debe declarar el profesional competente?",
+      "pregunta_corta": "Declaración profesional",
+      "respuesta": "Cuando NO se requiere cálculo estructural, el profesional debe declarar:\n\n• La obra reúne condiciones de estabilidad\n• Cumple con el tipo de construcción declarado\n• Cumple condiciones mínimas del Capítulo 6 Título 5 OGUC\n• Elementos no sometidos a cálculo están correctos\n\nEs una declaración jurada con responsabilidad legal.",
+      "keywords": ["declaración", "profesional", "estabilidad", "certificar"]
+    },
+    {
+      "id": 38,
+      "categoria": "estabilidad",
+      "pregunta": "¿Puedo regularizar una vivienda de 3 pisos?",
+      "pregunta_corta": "3 pisos",
+      "respuesta": "NO, la Ley del Mono solo aplica para viviendas de máximo 2 pisos.\n\nSi tienes 3 o más pisos:\n• NO puedes usar esta ley\n• Debes regularizar por vía normal\n• Necesitarás cálculo estructural obligatorio\n• Más requisitos y costos\n\nLa ley busca simplificar viviendas pequeñas.",
+      "keywords": ["3 pisos", "tres", "máximo", "no permitido"]
+    },
+    {
+      "id": 39,
+      "categoria": "estabilidad",
+      "pregunta": "¿Qué es el Capítulo 6 del Título 5 de la OGUC?",
+      "pregunta_corta": "Capítulo 6 OGUC",
+      "respuesta": "Es la sección de la Ordenanza General de Urbanismo y Construcciones que establece:\n\n• Condiciones mínimas de elementos estructurales\n• Dimensiones mínimas de vigas, pilares, muros\n• Materiales permitidos\n• Normas de construcción sin cálculo\n• Requisitos de seguridad estructural\n\nEl profesional debe verificar cumplimiento.",
+      "keywords": ["capítulo 6", "título 5", "oguc", "condiciones", "mínimas"]
+    },
+    {
+      "id": 40,
+      "categoria": "proceso",
+      "pregunta": "¿Qué profesional puedo contratar para los planos?",
+      "pregunta_corta": "Profesional para planos",
+      "respuesta": "Según el Art. 17 de la LGUC, pueden hacer planos:\n\n• Arquitectos\n• Constructores civiles\n• Ingenieros civiles\n• Otros profesionales competentes con patente\n\nDeben:\n• Tener título profesional\n• Patente profesional municipal vigente\n• Firmar los planos y documentos",
+      "keywords": ["profesional", "arquitecto", "constructor", "ingeniero", "planos"]
+    },
+    {
+      "id": 41,
+      "categoria": "documentos",
+      "pregunta": "¿Qué debe incluir la declaración simple?",
+      "pregunta_corta": "Declaración simple",
+      "respuesta": "La declaración simple debe indicar:\n\n• Que eres el propietario del inmueble\n• Datos de la propiedad (dirección, rol)\n• Que no hay reclamaciones pendientes\n• Firma del propietario\n• RUT y datos personales\n\nEs un documento de responsabilidad del propietario.",
+      "keywords": ["declaración", "simple", "propietario", "documento"]
+    },
+    {
+      "id": 42,
+      "categoria": "documentos",
+      "pregunta": "¿Qué escala deben tener los planos?",
+      "pregunta_corta": "Escala planos",
+      "respuesta": "Se requieren dos tipos de planos:\n\n1. Plano de EMPLAZAMIENTO: Escala 1:500\n   - Muestra ubicación en el terreno\n   - Distancias a deslindes\n   - Norte\n\n2. Planos de PLANTAS: Escala 1:50\n   - Distribución de recintos\n   - Medidas detalladas\n   - Cotas y dimensiones",
+      "keywords": ["escala", "planos", "1:50", "1:500", "plantas"]
+    },
+    {
+      "id": 43,
+      "categoria": "documentos",
+      "pregunta": "¿Qué debe contener el informe del profesional?",
+      "pregunta_corta": "Informe profesional",
+      "respuesta": "El profesional competente debe certificar:\n\n• Cumplimiento normas de habitabilidad\n• Cumplimiento normas de seguridad\n• Cumplimiento normas de estabilidad\n• Que no está en terrenos prohibidos\n• Instalaciones cumplen normativa\n• Firma y timbre del profesional\n\nEs un documento técnico con responsabilidad legal.",
+      "keywords": ["informe", "certificar", "profesional", "cumplimiento"]
+    },
+    {
+      "id": 44,
+      "categoria": "documentos",
+      "pregunta": "¿Qué es el certificado TE1?",
+      "pregunta_corta": "Certificado TE1",
+      "respuesta": "Es el Certificado de Instalación Eléctrica emitido por la SEC (Superintendencia de Electricidad y Combustibles).\n\nCertifica que:\n• Instalación eléctrica cumple normas\n• Fue revisada por instalador autorizado\n• Es segura para uso\n\nSin TE1 NO puedes regularizar la vivienda.",
+      "keywords": ["te1", "sec", "electricidad", "certificado", "instalación"]
+    },
+    {
+      "id": 45,
+      "categoria": "documentos",
+      "pregunta": "¿Cómo obtengo el certificado TE1?",
+      "pregunta_corta": "Obtener TE1",
+      "respuesta": "Pasos para obtener TE1:\n\n1. Contratar instalador eléctrico autorizado SEC\n2. Revisar/corregir instalación eléctrica\n3. Instalador ingresa solicitud en SEC\n4. SEC revisa documentación\n5. Emite certificado TE1\n\nPuedes verificar instaladores en www.sec.cl",
+      "keywords": ["obtener", "te1", "instalador", "proceso", "sec"]
+    },
+    {
+      "id": 46,
+      "categoria": "costos",
+      "pregunta": "¿Cuánto cuestan los derechos municipales?",
+      "pregunta_corta": "Derechos municipales",
+      "respuesta": "El costo base se calcula según avalúo, PERO con descuentos:\n\n• Avalúo < 400 UF: 75% descuento\n• Avalúo > 400 UF: 50% descuento\n• Propietario ≥65 años: 100% exención\n• Residente con discapacidad: 100% exención\n\nEl monto exacto varía por municipalidad.",
+      "keywords": ["derechos", "municipales", "costo", "pago", "cuanto"]
+    },
+    {
+      "id": 47,
+      "categoria": "costos",
+      "pregunta": "¿Cuánto cobra un arquitecto por los planos?",
+      "pregunta_corta": "Honorarios arquitecto",
+      "respuesta": "Los honorarios varían según:\n\n• Complejidad de la vivienda\n• Superficie a regularizar\n• Región/ciudad\n• Profesional elegido\n\nRango aproximado: $300.000 - $800.000\n\nConsulta con varios profesionales para comparar.",
+      "keywords": ["honorarios", "arquitecto", "cobro", "precio", "cuánto"]
+    },
+    {
+      "id": 48,
+      "categoria": "costos",
+      "pregunta": "¿Cuánto cuesta el certificado TE1?",
+      "pregunta_corta": "Costo TE1",
+      "respuesta": "El certificado TE1 incluye:\n\n• Revisión de instalador: $50.000 - $150.000\n• Correcciones si hay fallas: Variable\n• Emisión certificado SEC: Sin costo directo\n\nEl costo total depende del estado de la instalación eléctrica.",
+      "keywords": ["costo", "te1", "precio", "cuánto", "instalación"]
+    },
+    {
+      "id": 49,
+      "categoria": "costos",
+      "pregunta": "¿Cuál es el costo total de regularizar?",
+      "pregunta_corta": "Costo total",
+      "respuesta": "Estimación de costos:\n\n• Planos arquitecto: $300.000 - $800.000\n• Certificado TE1: $50.000 - $150.000\n• Certificado avalúo SII: Gratis online\n• Derechos municipales: Variable con descuentos\n• TOTAL aproximado: $400.000 - $1.200.000\n\nDepende de complejidad y ubicación.",
+      "keywords": ["costo", "total", "cuánto", "precio", "inversión"]
+    },
+    {
+      "id": 50,
+      "categoria": "casos_especiales",
+      "pregunta": "¿Puedo regularizar solo una ampliación?",
+      "pregunta_corta": "Solo ampliación",
+      "respuesta": "SÍ, puedes regularizar solo la ampliación si:\n\n• La vivienda original ya está regularizada\n• La ampliación cumple los requisitos\n• El total no supera 90 o 140 m²\n• Fue construida antes de feb/2016\n\nSe regulariza como modificación parcial.",
+      "keywords": ["ampliación", "solo", "parte", "modificación"]
+    },
+    {
+      "id": 51,
+      "categoria": "casos_especiales",
+      "pregunta": "¿Puedo regularizar un segundo piso agregado?",
+      "pregunta_corta": "Segundo piso",
+      "respuesta": "SÍ, si cumple:\n\n• Total vivienda ≤ 90 o 140 m²\n• Construido antes feb/2016\n• Cumple normas de estabilidad\n• Estructura del 1° piso soporta el 2°\n• 2° piso liviano (si 1° es albañilería)\n\nProfesional debe certificar estabilidad.",
+      "keywords": ["segundo piso", "piso", "agregado", "altura"]
+    },
+    {
+      "id": 52,
+      "categoria": "casos_especiales",
+      "pregunta": "¿Qué pasa si mi vivienda está en condominio?",
+      "pregunta_corta": "En condominio",
+      "respuesta": "Puedes regularizar si:\n\n• Es tu unidad individual\n• No afecta bienes comunes\n• Cumples requisitos generales\n• Administración no se opone\n• Modificaciones solo en tu propiedad\n\nNo puedes regularizar áreas comunes.",
+      "keywords": ["condominio", "edificio", "departamento", "común"]
+    },
+    {
+      "id": 53,
+      "categoria": "casos_especiales",
+      "pregunta": "¿Puedo regularizar si la vivienda es heredada?",
+      "pregunta_corta": "Vivienda heredada",
+      "respuesta": "SÍ, pero primero debes:\n\n• Regularizar la posesión efectiva\n• Inscribir herencia en Conservador de Bienes Raíces\n• Estar inscrito como propietario\n• Luego puedes regularizar la construcción\n\nO todos los herederos firman autorización.",
+      "keywords": ["heredada", "herencia", "fallecido", "sucesión"]
+    },
+    {
+      "id": 54,
+      "categoria": "casos_especiales",
+      "pregunta": "¿Qué pasa si hay varios copropietarios?",
+      "pregunta_corta": "Copropietarios",
+      "respuesta": "Con varios dueños:\n\n• TODOS deben firmar la solicitud\n• O uno presenta con poder notarial de los demás\n• Acuerdo entre todos los propietarios\n• Un solo certificado para todos\n\nLa DOM puede pedir documento que acredite acuerdo.",
+      "keywords": ["copropietarios", "varios", "dueños", "propietarios"]
+    },
+    {
+      "id": 55,
+      "categoria": "casos_especiales",
+      "pregunta": "¿Puedo regularizar construcción en sitio eriazo?",
+      "pregunta_corta": "Sitio eriazo",
+      "respuesta": "SÍ, si el sitio eriazo:\n\n• Es de tu propiedad\n• Permite uso residencial\n• No está en zona de riesgo\n• Tiene factibilidad de servicios\n• Cumple Plan Regulador\n\nLa construcción debe cumplir todos los requisitos normales.",
+      "keywords": ["sitio", "eriazo", "terreno", "vacío"]
+    },
+    {
+      "id": 56,
+      "categoria": "casos_especiales",
+      "pregunta": "¿Qué pasa con construcciones muy antiguas?",
+      "pregunta_corta": "Muy antiguas",
+      "respuesta": "Construcciones antiguas (antes de 2016) SÍ pueden regularizarse si:\n\n• Cumplen requisitos actuales de habitabilidad\n• Están en buen estado estructural\n• Instalaciones funcionan y son seguras\n• No hay modificaciones post-2016\n\nLa antigüedad NO es problema si cumple normas.",
+      "keywords": ["antiguas", "viejas", "antigüedad", "años"]
+    },
+    {
+      "id": 57,
+      "categoria": "proceso",
+      "pregunta": "¿Qué hago si la DOM rechaza mi solicitud?",
+      "pregunta_corta": "Si rechazan",
+      "respuesta": "Si rechazan:\n\n1. Revisa las observaciones específicas\n2. Corrige los problemas indicados\n3. Presenta nuevamente con correcciones\n4. Si es injusto, puedes apelar\n5. Consulta con tu arquitecto\n\nLas observaciones suelen ser corregibles.",
+      "keywords": ["rechazo", "rechaza", "no aprueban", "negativa"]
+    },
+    {
+      "id": 58,
+      "categoria": "proceso",
+      "pregunta": "¿Qué son las observaciones de la DOM?",
+      "pregunta_corta": "Observaciones DOM",
+      "respuesta": "Son comentarios o correcciones que pide la DOM:\n\n• Errores en planos\n• Falta de información\n• Incumplimientos detectados\n• Documentos faltantes\n• Correcciones necesarias\n\nDebes responder y corregir en plazo indicado.",
+      "keywords": ["observaciones", "correcciones", "comentarios", "dom"]
+    },
+    {
+      "id": 59,
+      "categoria": "proceso",
+      "pregunta": "¿Cuánto tiempo tengo para responder observaciones?",
+      "pregunta_corta": "Plazo observaciones",
+      "respuesta": "Generalmente tienes:\n\n• 30 días hábiles para responder\n• Plazo puede variar por municipalidad\n• Se cuenta desde notificación\n• Puedes pedir prórroga justificada\n• Si no respondes, solicitud queda sin efecto\n\nRevisa la notificación para plazo exacto.",
+      "keywords": ["plazo", "responder", "observaciones", "tiempo", "días"]
+    },
+    {
+      "id": 60,
+      "categoria": "proceso",
+      "pregunta": "¿Puedo hacer correcciones durante el trámite?",
+      "pregunta_corta": "Correcciones trámite",
+      "respuesta": "SÍ, puedes:\n\n• Corregir errores en planos\n• Actualizar información\n• Agregar documentos faltantes\n• Modificar detalles técnicos\n\nMientras esté en revisión, es posible corregir.",
+      "keywords": ["correcciones", "modificar", "cambios", "durante"]
+    },
+    {
+      "id": 61,
+      "categoria": "beneficios",
+      "pregunta": "¿Qué pasa con antejardines?",
+      "pregunta_corta": "Antejardines",
+      "respuesta": "La Ley del Mono EXCEPTÚA la exigencia de antejardines.\n\nEsto significa:\n• NO necesitas dejar espacio de antejardín\n• Puedes construir más cerca de la calle\n• Excepción solo para esta ley\n\nEs uno de los beneficios del trámite simplificado.",
+      "keywords": ["antejardín", "antejardines", "frente", "calle"]
+    },
+    {
+      "id": 62,
+      "categoria": "beneficios",
+      "pregunta": "¿Qué pasa con estacionamientos?",
+      "pregunta_corta": "Estacionamientos",
+      "respuesta": "La Ley del Mono NO exige estacionamientos.\n\nBeneficios:\n• No necesitas demostrar estacionamiento\n• Libera espacio del terreno\n• Reduce costos\n\nNormalmente se exige 1 estacionamiento por vivienda.",
+      "keywords": ["estacionamiento", "cochera", "auto", "vehículo"]
+    },
+    {
+      "id": 63,
+      "categoria": "beneficios",
+      "pregunta": "¿Cuál es la altura máxima para cierros?",
+      "pregunta_corta": "Altura cierros",
+      "respuesta": "Los cierros pueden tener hasta 2.2 metros de altura.\n\nNormalmente:\n• Altura estándar: 1.8m - 2.0m\n• Con Ley del Mono: Hasta 2.2m\n\nEs una flexibilización para dar más privacidad.",
+      "keywords": ["cierros", "reja", "muro", "altura", "2.2"]
+    },
+    {
+      "id": 64,
+      "categoria": "beneficios",
+      "pregunta": "¿Puedo vender mi casa después de regularizar?",
+      "pregunta_corta": "Vender después",
+      "respuesta": "SÍ, después de regularizar puedes:\n\n• Vender la propiedad\n• Mayor valor comercial (plusvalía)\n• Comprador tiene documentación en regla\n• Facilita créditos hipotecarios\n• Mayor seguridad jurídica\n\nLa regularización AUMENTA el valor de venta.",
+      "keywords": ["vender", "venta", "plusvalía", "valor"]
+    },
+    {
+      "id": 65,
+      "categoria": "beneficios",
+      "pregunta": "¿Afecta mis contribuciones regularizar?",
+      "pregunta_corta": "Contribuciones",
+      "respuesta": "SÍ, puede aumentar las contribuciones porque:\n\n• Aumenta el avalúo fiscal\n• Se considera la superficie real\n• Mejoras quedan registradas\n\nPERO:\n• Vivienda vale más\n• Puedes vender a mejor precio\n• Accedes a subsidios\n\nEl beneficio supera el costo.",
+      "keywords": ["contribuciones", "impuestos", "aumenta", "avalúo"]
+    },
+    {
+      "id": 66,
+      "categoria": "general",
+      "pregunta": "¿Qué es la OGUC?",
+      "pregunta_corta": "Qué es OGUC",
+      "respuesta": "OGUC = Ordenanza General de Urbanismo y Construcciones\n\nEs el reglamento que:\n• Establece normas de construcción\n• Define estándares técnicos\n• Regula habitabilidad y seguridad\n• Complementa la LGUC\n• Decreto Supremo N° 47 de 1992",
+      "keywords": ["oguc", "ordenanza", "qué es", "reglamento"]
+    },
+    {
+      "id": 67,
+      "categoria": "general",
+      "pregunta": "¿Qué es la LGUC?",
+      "pregunta_corta": "Qué es LGUC",
+      "respuesta": "LGUC = Ley General de Urbanismo y Construcciones\n\nEs la ley principal que:\n• Regula construcción en Chile\n• Establece permisos y autorizaciones\n• Define profesionales competentes\n• Base legal de la construcción\n• DFL N° 458 de 1975",
+      "keywords": ["lguc", "ley", "general", "qué es"]
+    },
+    {
+      "id": 68,
+      "categoria": "general",
+      "pregunta": "¿Qué es la DOM?",
+      "pregunta_corta": "Qué es DOM",
+      "respuesta": "DOM = Dirección de Obras Municipales\n\nEs la oficina municipal que:\n• Revisa permisos de construcción\n• Aprueba planos\n• Fiscaliza construcciones\n• Otorga recepción final\n• Está en cada municipalidad",
+      "keywords": ["dom", "dirección", "obras", "qué es"]
+    },
+    {
+      "id": 69,
+      "categoria": "general",
+      "pregunta": "¿Qué son profesionales competentes Art. 17?",
+      "pregunta_corta": "Art. 17 LGUC",
+      "respuesta": "Son profesionales autorizados por ley para:\n\n• Firmar planos\n• Calcular estructuras\n• Dirigir obras\n\nIncluye:\n• Arquitectos\n• Constructores civiles\n• Ingenieros civiles\n• Otros con competencia específica",
+      "keywords": ["artículo 17", "profesionales", "competentes", "lguc"]
+    },
+    {
+      "id": 70,
+      "categoria": "general",
+      "pregunta": "¿Qué diferencia hay entre permiso y recepción?",
+      "pregunta_corta": "Permiso vs Recepción",
+      "respuesta": "PERMISO DE EDIFICACIÓN:\n• Autorización ANTES de construir\n• Revisa planos\n• Da el OK para empezar\n\nRECEPCIÓN FINAL:\n• Certificado DESPUÉS de construir\n• Verifica obra terminada\n• Confirma cumplimiento\n\nLey del Mono: Ambos simultáneos.",
+      "keywords": ["permiso", "recepción", "diferencia", "edificación"]
+    },
+    {
+      "id": 71,
+      "categoria": "proceso",
+      "pregunta": "¿Qué documentos debo llevar a la DOM?",
+      "pregunta_corta": "Documentos completos",
+      "respuesta": "Lista completa:\n\n1. Declaración simple firmada\n2. Plano emplazamiento (1:500)\n3. Planos plantas (1:50)\n4. Informe profesional competente\n5. Certificado avalúo fiscal SII\n6. Certificado TE1 (SEC)\n7. Patente profesional del arquitecto\n8. Formulario DOM específico",
+      "keywords": ["documentos", "llevar", "lista", "completa"]
+    },
+    {
+      "id": 72,
+      "categoria": "proceso",
+      "pregunta": "¿Puedo hacer el trámite online?",
+      "pregunta_corta": "Trámite online",
+      "respuesta": "Depende de tu municipalidad:\n\n• Algunas permiten ingreso online\n• Otras requieren presencial\n• Consulta en DOM de tu comuna\n• Puede haber plataforma digital municipal\n\nLa mayoría aún es presencial.",
+      "keywords": ["online", "digital", "internet", "presencial"]
+    },
+    {
+      "id": 73,
+      "categoria": "proceso",
+      "pregunta": "¿Necesito inspección en terreno?",
+      "pregunta_corta": "Inspección terreno",
+      "respuesta": "La DOM puede solicitar:\n\n• Inspección municipal en terreno\n• Verificar estado de la construcción\n• Comprobar lo indicado en planos\n• No siempre es obligatoria\n• Depende de cada caso\n\nSi la piden, debes permitir acceso.",
+      "keywords": ["inspección", "terreno", "visita", "municipal"]
+    },
+    {
+      "id": 74,
+      "categoria": "proceso",
+      "pregunta": "¿Qué pasa si mi vecino reclama?",
+      "pregunta_corta": "Reclamo vecino",
+      "respuesta": "Si hay reclamo de vecino:\n\n• DOM debe investigar\n• Puede detener proceso\n• Debes acreditar cumplimiento\n• Si no afecta al vecino, continúa\n• Conflictos graves pueden rechazar\n\nImportante tener todo en orden.",
+      "keywords": ["vecino", "reclamo", "queja", "conflicto"]
+    },
+    {
+      "id": 75,
+      "categoria": "proceso",
+      "pregunta": "¿Puedo modificar mi solicitud ya ingresada?",
+      "pregunta_corta": "Modificar solicitud",
+      "respuesta": "SÍ, mientras esté en revisión:\n\n• Puedes presentar modificaciones\n• Corregir errores\n• Actualizar planos\n• Agregar documentos\n\nPero una vez aprobada, cualquier cambio requiere nuevo permiso.",
+      "keywords": ["modificar", "cambiar", "solicitud", "ingresada"]
+    },
+    {
+      "id": 76,
+      "categoria": "casos_especiales",
+      "pregunta": "¿Puedo regularizar si arriendo la vivienda?",
+      "pregunta_corta": "Vivienda arrendada",
+      "respuesta": "Solo el PROPIETARIO puede regularizar, no el arrendatario.\n\nSi arriendas:\n• Debes contactar al dueño\n• Solo él puede iniciar trámite\n• Puede autorizarte como mandatario\n\nNo puedes hacerlo siendo solo arrendatario.",
+      "keywords": ["arriendo", "arrendatario", "propietario", "dueño"]
+    },
+    {
+      "id": 77,
+      "categoria": "casos_especiales",
+      "pregunta": "¿Qué pasa con viviendas sociales?",
+      "pregunta_corta": "Viviendas sociales",
+      "respuesta": "Viviendas sociales SÍ pueden regularizarse si:\n\n• Cumplen requisitos generales\n• Ampliaciones no autorizadas\n• Dentro de límites de superficie\n• Sin afectar estructura original\n\nMuchas veces califican para exenciones.",
+      "keywords": ["social", "subsidio", "minvu", "población"]
+    },
+    {
+      "id": 78,
+      "categoria": "casos_especiales",
+      "pregunta": "¿Puedo regularizar mediaguas o mejoras?",
+      "pregunta_corta": "Mediaguas",
+      "respuesta": "Mediaguas SÍ pueden regularizarse si:\n\n• Son de construcción sólida\n• Cumplen normas mínimas\n• Tienen fundaciones\n• Instalaciones adecuadas\n• ≤90 m² y <1000 UF\n\nDeben cumplir estándares de habitabilidad.",
+      "keywords": ["mediagua", "mejora", "emergencia", "básica"]
+    },
+    {
+      "id": 79,
+      "categoria": "casos_especiales",
+      "pregunta": "¿Qué pasa con construcciones prefabricadas?",
+      "pregunta_corta": "Prefabricadas",
+      "respuesta": "Construcciones prefabricadas SÍ se pueden regularizar si:\n\n• Están bien instaladas y ancladas\n• Cumplen normas de seguridad\n• Son permanentes (no temporales)\n• Tienen instalaciones completas\n• Dentro de límites de superficie\n\nDeben cumplir mismos requisitos.",
+      "keywords": ["prefabricada", "modular", "container", "movil"]
+    },
+    {
+      "id": 80,
+      "categoria": "tecnico",
+      "pregunta": "¿Qué pasa después de recibir el certificado?",
+      "pregunta_corta": "Después certificado",
+      "respuesta": "Después del certificado de regularización:\n\n• Archívalo de forma segura\n• Se actualiza en Conservador de Bienes Raíces\n• Aumenta avalúo fiscal\n• Puedes solicitar subsidios\n• Facilita venta futura\n• Mayor seguridad jurídica",
+      "keywords": ["después", "certificado", "siguiente", "luego"]
+    },
+    {
+      "id": 81,
+      "categoria": "tecnico",
+      "pregunta": "¿Puedo hacer más construcciones después?",
+      "pregunta_corta": "Construcciones futuras",
+      "respuesta": "Después de regularizar:\n\n• Nuevas construcciones necesitan permiso NORMAL\n• Ya NO puedes usar Ley del Mono para lo nuevo\n• Debe cumplir normativa estándar\n• Requiere proyecto completo\n\nLey del Mono es SOLO para construcciones pre-2016.",
+      "keywords": ["futuras", "nuevas", "construcciones", "después", "más"]
+    },
+    {
+      "id": 82,
+      "categoria": "tecnico",
+      "pregunta": "¿Qué pasa si la DOM no responde en 90 días?",
+      "pregunta_corta": "Sin respuesta 90 días",
+      "respuesta": "Si pasan 90 días hábiles sin respuesta:\n\n• Puedes invocar silencio administrativo\n• Consulta con abogado\n• Puede considerarse aprobación tácita\n• Varía según normativa municipal\n• Insiste con oficios a la DOM\n\nNo dejes pasar mucho tiempo.",
+      "keywords": ["90 días", "no responde", "silencio", "demora"]
+    },
+    {
+      "id": 83,
+      "categoria": "tecnico",
+      "pregunta": "¿Puedo apelar una decisión de la DOM?",
+      "pregunta_corta": "Apelar decisión",
+      "respuesta": "SÍ, puedes apelar mediante:\n\n• Recurso de reposición ante DOM\n• Recurso jerárquico ante SEREMI\n• Reclamo de ilegalidad\n• Asesoría con abogado\n• Plazo: 30 días desde notificación\n\nGuarda toda la documentación.",
+      "keywords": ["apelar", "recurso", "reposición", "reclamar"]
+    },
+    {
+      "id": 84,
+      "categoria": "tecnico",
+      "pregunta": "¿Necesito seguro durante el trámite?",
+      "pregunta_corta": "Seguro trámite",
+      "respuesta": "NO es obligatorio durante el trámite.\n\nPero es RECOMENDABLE:\n• Seguro de incendio\n• Seguro habitacional\n• Protege tu inversión\n• Cubre daños durante proceso\n\nConsulta con aseguradoras opciones.",
+      "keywords": ["seguro", "protección", "incendio", "obligatorio"]
+    },
+    {
+      "id": 85,
+      "categoria": "tecnico",
+      "pregunta": "¿Puedo vivir en la casa durante el trámite?",
+      "pregunta_corta": "Vivir durante trámite",
+      "respuesta": "SÍ, puedes seguir viviendo normalmente.\n\nEl trámite:\n• NO requiere desocupar\n• Es solo administrativo\n• Sin obras durante proceso\n• Mantén acceso para inspección si la piden\n\nLa vida diaria continúa normal.",
+      "keywords": ["vivir", "habitar", "durante", "trámite", "ocupar"]
+    }
+  ],
+  
+  "categorias": {
+    "requisitos": "Requisitos y condiciones",
+    "plazos": "Plazos y fechas",
+    "beneficios": "Beneficios y descuentos",
+    "proceso": "Proceso y trámites",
+    "general": "Información general",
+    "habitabilidad": "Normas de habitabilidad",
+    "incendios": "Seguridad contra incendios",
+    "estabilidad": "Estabilidad estructural",
+    "documentos": "Documentos necesarios",
+    "costos": "Costos y precios",
+    "casos_especiales": "Casos especiales",
+    "tecnico": "Aspectos técnicos"
+  }
+}

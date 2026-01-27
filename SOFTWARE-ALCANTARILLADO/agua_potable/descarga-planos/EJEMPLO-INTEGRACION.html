@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Planos Profesional - TRUKILLO</title>
+    
+    <!-- ESTILOS ORIGINALES -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/menu-detalles-ap.css">
+    <!-- ... resto de CSS ... -->
+    
+    <!-- ✅ NUEVO: SISTEMA DE EXPORTACIÓN -->
+    <link rel="stylesheet" href="descarga-planos/export-styles.css">
+    
+</head>
+<body>
+    <!-- CONTENIDO DEL SISTEMA -->
+    
+    <!-- LIBRERÍAS EXTERNAS ORIGINALES -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    
+    <!-- ✅ NUEVA: LIBRERÍA PARA PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <!-- ✅ NUEVO: SISTEMA DE EXPORTACIÓN (CARGAR PRIMERO) -->
+    <script src="descarga-planos/export-utils.js"></script>
+    <script src="descarga-planos/export-svg.js"></script>
+    <script src="descarga-planos/export-pdf.js"></script>
+    <script src="descarga-planos/export-core.js"></script>
+    
+    <!-- SCRIPTS ORIGINALES DEL SISTEMA -->
+    <script src="drawing-system/drawing-state.js"></script>
+    <script src="drawing-system/drawing-tools.js"></script>
+    <!-- ... resto de scripts originales ... -->
+    
+    <!-- Script de inicialización existente -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ... tu código existente ...
+        });
+    </script>
+
+    <!-- Botón flotante asistente -->
+    <script src="js/boton-flotante-asistente.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Planos Eléctricos Domiciliarios - ELEKTRA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="workspace.css">
+    <link rel="stylesheet" href="layout-fix.css">
+    
+    <!-- ESTILOS DE VIÑETA ELÉCTRICA -->
+    <link rel="stylesheet" href="viñeta-electrica/vineta-styles.css">
+    
+    <!-- ESTILOS DEL BUSCADOR -->
+    <link rel="stylesheet" href="buscador-electrico/styles.css">
+    
+    <!-- ESTILOS DEL TABLERO MODAL -->
+    <link rel="stylesheet" href="tablero-modal.css">
+    
+    <!-- ESTILOS DEL SELECTOR DE NIVEL -->
+    <link rel="stylesheet" href="level-selector.css">
+    
+    <!-- ESTILOS DE ELECTRODOMÉSTICOS -->
+    <link rel="stylesheet" href="electrodomesticos-styles.css">
+    <link rel="stylesheet" href="isometrico-electrico/isometrico-styles.css">    
+    
+    <!-- ESTILOS DEL ASISTENTE VIRTUAL -->
+    <link rel="stylesheet" href="asistente-virtual/asistente.css">       
+    
+    <!-- ✨ NUEVOS ESTILOS DE MODALES - MEMORIA Y EETT ✨ -->
+    <link rel="stylesheet" href="memoria-electrica/modal-styles.css">
+    <link rel="stylesheet" href="especificaciones-tecnicas/modal-styles.css">
+    <!-- SISTEMA DE PLANOS MÚLTIPLES -->
+    <link rel="stylesheet" href="sistema-planos-electricos/electrico-plano-styles.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="exportar-pdf/exportador-styles.css">
+    
+</head>
+<body>
+    <!-- HEADER PRINCIPAL -->
+    <div class="main-header">
+        <div class="header-left">
+            <div class="logo">
+                <div>⚡ ⚡ ⚡</div>
+                <div>TRUKILLO</div>
+                <div>DISEÑO ELÉCTRICO</div>                
+            </div>
+            <button class="btn-header btn-primary" onclick="cargarPlano()">
+                📁 CARGAR PDF/IMAGEN
+            </button>
+            <button class="btn-header btn-secondary" id="modeToggle" onclick="toggleMode()">
+                🖱️ Modo: Edición
+            </button>
+        </div>
+        
+        <div class="header-center">
+            <div class="format-selector">
+                <span class="format-label">Formato:</span>
+                <button class="format-btn active" onclick="changeFormat('A1')" id="btnA1">A1</button>
+                <button class="format-btn" onclick="changeFormat('A0')" id="btnA0">A0</button>
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <button class="btn-header" style="background: #e74c3c;" onclick="abrirTablero()">
+                ⚡ TABLERO ELÉCTRICO
+            </button>
+
+            <button class="btn-header" style="background: #3498db;" onclick="abrirUnifilar()">
+                📊 ESQUEMA UNIFILAR
+            </button>
+            
+            <button class="btn-header" style="background: #f39c12;" onclick="abrirCuadroCargas()">
+                📋 CUADRO DE CARGAS
+            </button>
+                                   
+            <!-- BOTÓN SIMBOLOGÍA INTEGRABLE AL PLANO -->
+            <button class="btn-header" style="background: #9b59b6;" onclick="abrirSimbologiaElectrica()">
+                📊 SIMBOLOGÍA ELÉCTRICA
+            </button>
+            
+            <!-- ✨ BOTÓN MEMORIA - AHORA CON MODAL INTEGRADO ✨ -->
+            <button class="btn-header" style="background: #1abc9c;" onclick="abrirMemoriaCalculo()">
+                📄 MEMORIA DE CÁLCULO
+            </button>
+
+            <!-- BOTÓN VIÑETA ELÉCTRICA -->
+            <button class="btn-header" style="background: #27ae60;" onclick="abrirVineta()">
+                📝 VIÑETA ELÉCTRICA
+            </button>
+
+            <button class="btn-header" style="background: #8e44ad;" onclick="abrirIsometrico()">
+                🏗️ ISOMÉTRICO 3D
+            </button>
+            
+            <button class="btn-header btn-success" onclick="mostrarModalExportacionPDF()">
+                💾 EXPORTAR PLANO
+            </button>
+            
+            <!-- ✨ BOTÓN EETT - AHORA CON MODAL INTEGRADO ✨ -->
+            <button class="btn-header" style="background: #d35400;" onclick="abrirEspecificaciones()">
+                📋 ESPECIFICACIONES TÉCNICAS
+            </button>
+        </div>
+    </div>
+    
+    <!-- BARRA DE HERRAMIENTAS -->
+    <div class="toolbar">
+        <div class="toolbar-section">
+            <span class="toolbar-label">ESCALA:</span>
+            <button class="btn-tool btn-scale active" onclick="selectScale('1:50')" data-scale="50">1:50</button>
+            <button class="btn-tool btn-scale" onclick="selectScale('1:75')" data-scale="75">1:75</button>
+            <button class="btn-tool btn-scale" onclick="selectScale('1:100')" data-scale="100">1:100</button>
+            <button class="btn-tool btn-scale" onclick="selectScale('1:125')" data-scale="125">1:125</button>
+            <button class="btn-tool btn-scale" onclick="selectScale('1:150')" data-scale="150">1:150</button>
+        </div>
+        
+        <div class="toolbar-section section-alimentacion">
+            <span class="toolbar-label">ALIMENTACIÓN:</span>            
+            <button class="btn-tool" onclick="selectTool('empalme')" title="Punto de empalme">🔌 Empalme</button>
+            <button class="btn-tool" onclick="selectTool('medidor')" title="Medidor eléctrico">📊 Medidor</button>
+            <button class="btn-tool" onclick="selectTool('tablero')" title="Tablero eléctrico">⚡ Tablero</button>
+        </div>
+        
+        <div class="toolbar-section section-iluminacion">
+            <span class="toolbar-label">ILUMINACIÓN:</span>
+            <button class="btn-tool" onclick="selectTool('luminaria-cielo')" title="Luminaria de techo">💡 Luminaria Cielo</button>
+            <button class="btn-tool" onclick="selectTool('aplique')" title="Aplique mural">🔆 Aplique Mural</button>
+            <button class="btn-tool" onclick="selectTool('luminaria-exterior')" title="Luminaria exterior">🌟 Exterior</button>
+            <button class="btn-tool" onclick="selectTool('luz-simple')" title="Punto luz + interruptor simple">💡 Luz Simple</button>
+            <button class="btn-tool" onclick="selectTool('luz-doble')" title="Punto luz + interruptor doble">💡 Luz Doble</button>
+            <button class="btn-tool" onclick="selectTool('conmutado')" title="Sistema conmutado escalera">🔀 Conmutado</button>
+        </div>
+        
+        <div class="toolbar-section section-enchufes">
+            <span class="toolbar-label">ENCHUFES:</span>
+            <button class="btn-tool" onclick="selectTool('enchufe-simple')" title="Enchufe simple 10A">🔌 Simple 10A</button>
+            <button class="btn-tool" onclick="selectTool('enchufe-doble')" title="Enchufe doble">🔌 Doble</button>
+            <button class="btn-tool" onclick="selectTool('enchufe-especial')" title="Enchufe especial (refrigerador)">🔌 Especial</button>
+            <button class="btn-tool" onclick="selectTool('enchufe-exterior')" title="Enchufe exterior IP">🔌 Exterior IP</button>
+        </div>
+        
+        <div class="toolbar-section section-interruptores">
+            <span class="toolbar-label">INTERRUPTORES:</span>
+            <button class="btn-tool" onclick="selectTool('int-simple')" title="Interruptor simple">🔘 Simple</button>
+            <button class="btn-tool" onclick="selectTool('int-doble')" title="Interruptor doble">🔘 Doble</button>
+            <button class="btn-tool" onclick="selectTool('conmutador')" title="Conmutador">🔀 Conmutador</button>
+            <button class="btn-tool" onclick="selectTool('pulsador')" title="Pulsador">⏺️ Pulsador</button>
+        </div>
+        
+        <div class="toolbar-section section-electrodomesticos">
+            <span class="toolbar-label">ELECTRODOMÉSTICOS:</span>
+            <button class="btn-tool" onclick="selectTool('lavadora')" title="Lavadora">🧺 Lavadora</button>
+            <button class="btn-tool" onclick="selectTool('secadora')" title="Secadora">🌀 Secadora</button>
+            <button class="btn-tool" onclick="selectTool('refrigerador')" title="Refrigerador">🧊 Refrigerador</button>
+            <button class="btn-tool" onclick="selectTool('microondas')" title="Microondas">🍽️ Microondas</button>
+            <button class="btn-tool" onclick="selectTool('horno')" title="Horno eléctrico">🔥 Horno</button>
+            <button class="btn-tool" onclick="selectTool('cocina')" title="Cocina eléctrica">🍳 Cocina</button>
+            <button class="btn-tool" onclick="selectTool('calefon')" title="Calefón/Terma">🚿 Calefón</button>
+        </div>
+        
+        <div class="toolbar-section section-canalizacion">
+            <span class="toolbar-label">CANALIZACIÓN:</span>
+            <button class="btn-tool" onclick="selectTool('ducto-pvc')" title="Ducto PVC">📏 Ducto PVC</button>
+            <button class="btn-tool" onclick="selectTool('ducto-emt')" title="Ducto EMT metálico">📏 Ducto EMT</button>
+            <button class="btn-tool" onclick="selectTool('conductor')" title="Línea de conductor">➖ Conductor</button>
+            <button class="btn-tool" onclick="selectTool('caja-derivacion')" title="Caja de derivación">📦 Caja Deriv.</button>
+        </div>
+        
+        <div class="toolbar-section section-tierra">
+            <span class="toolbar-label">PUESTA A TIERRA:</span>
+            <button class="btn-tool" onclick="selectTool('jabalina')" title="Jabalina de tierra">🔩 Jabalina</button>
+            <button class="btn-tool" onclick="selectTool('conductor-tierra')" title="Conductor protección">⚡ Conductor PE</button>
+            <button class="btn-tool" onclick="selectTool('tierra-enchufe')" title="Símbolo tierra">🌍 Tierra</button>
+        </div>
+
+        <div class="toolbar-section section-entre-niveles">
+            <span class="toolbar-label">CONEXIÓN NIVELES:</span>
+            <button class="btn-tool" onclick="selectTool('subida-nivel')" title="Punto de subida/bajada entre niveles">⬆️ Subida Nivel 2</button>
+        </div>
+        
+        <div class="toolbar-section section-dibujo">
+            <span class="toolbar-label">HERRAMIENTAS DIBUJO:</span>
+            <button class="btn-tool" onclick="selectTool('linea')" title="Dibujar línea recta">📏 Línea</button>
+            <button class="btn-tool" onclick="selectTool('polilinea')" title="Click múltiple, Click Derecho o Doble Click para finalizar">📐 Polilínea</button>
+            <button class="btn-tool" onclick="selectTool('circulo')" title="Dibujar círculo">⭕ Círculo</button>
+            <button class="btn-tool" onclick="selectTool('rectangulo')" title="Dibujar rectángulo">▭ Rectángulo</button>
+            <button class="btn-tool" onclick="selectTool('cuadrado')" title="Dibujar cuadrado">◻️ Cuadrado</button>
+        </div>
+        
+        <div class="toolbar-section section-color">
+            <span class="toolbar-label">COLOR:</span>
+            <div class="color-selector-inline">
+                <button class="color-btn active" onclick="selectColor('#000000')" style="background: #000000;" title="Negro"></button>
+                <button class="color-btn" onclick="selectColor('#FF0000')" style="background: #FF0000;" title="Rojo"></button>
+                <button class="color-btn" onclick="selectColor('#0000FF')" style="background: #0000FF;" title="Azul"></button>
+                <button class="color-btn" onclick="selectColor('#00FF00')" style="background: #00FF00;" title="Verde"></button>
+                <button class="color-btn" onclick="selectColor('#FFFF00')" style="background: #FFFF00;" title="Amarillo"></button>
+                <button class="color-btn" onclick="selectColor('#FF00FF')" style="background: #FF00FF;" title="Magenta"></button>
+                <button class="color-btn" onclick="selectColor('#00FFFF')" style="background: #00FFFF;" title="Cyan"></button>
+                <button class="color-btn" onclick="selectColor('#FFA500')" style="background: #FFA500;" title="Naranja"></button>
+            </div>
+            <input type="color" id="customColorPicker" value="#000000" title="Color personalizado" style="width: 40px; height: 30px; cursor: pointer; border: 2px solid #555; border-radius: 4px;">
+        </div>
+        
+        <div class="toolbar-section section-grosor">
+            <span class="toolbar-label">GROSOR:</span>
+            <input type="range" id="strokeWidthSlider" min="1" max="10" value="2" style="width: 100px;" title="Grosor de línea">
+            <span id="strokeWidthValue" style="color: #fff; font-weight: bold; min-width: 30px;">2px</span>
+        </div>
+        
+        <!-- ========================================
+             ✨ SECCIÓN DE ACCIONES CON NUEVOS BOTONES ✨
+             ======================================== -->
+        <div class="toolbar-section section-acciones">
+            <span class="toolbar-label">ACCIONES:</span>
+            <button class="btn-tool" onclick="toggleDibujo()" style="background: #e91e63;">
+                🎨 DIBUJO LIBRE
+            </button>
+            <button class="btn-tool" id="btnEtiquetas" onclick="toggleEtiquetas()" style="background: #f59e0b;">
+                🏷️ ETIQUETAS
+            </button>
+            
+            <!-- ========================================
+                 ⚡ NUEVOS BOTONES DE TRAZADO SEPARADO
+                 ======================================== -->
+            
+            <button class="btn-tool" onclick="generarTrazadoAutomatico()" style="background: #e74c3c;" title="Generar trazado completo de iluminación + enchufes">
+                ⚡ TRAZADO COMPLETO
+            </button>
+            
+            <button class="btn-tool" onclick="generarTrazadoIluminacion()" style="background: #f39c12;" title="Generar trazado solo de iluminación e interruptores">
+                💡 TRAZADO ILUMINACIÓN
+            </button>
+            
+            <button class="btn-tool" onclick="generarTrazadoEnchufes()" style="background: #3498db;" title="Generar trazado solo de enchufes y electrodomésticos">
+                🔌 TRAZADO ENCHUFES
+            </button>
+            
+            <button class="btn-tool" onclick="limpiarTrazado()" style="background: #95a5a6;" title="Limpiar trazado generado">
+                🧹 LIMPIAR TRAZADO
+            </button>
+            
+            <!-- ======================================== -->
+            
+            <button class="btn-tool" onclick="generarCircuitos()" style="background: #10b981;" title="Generar circuitos automáticos">⚡ Circuitos Auto</button>
+            <button class="btn-tool btn-danger" onclick="limpiarTodo()">🗑️ Limpiar</button>
+        </div>
+    </div>    
+    
+    <!-- ÁREA DE TRABAJO -->
+    <div class="main-container">
+        <div class="work-area">
+            <div class="canvas-title">ALGORITMO INTELIGENTE DE DISEÑO ELÉCTRICO DOMICILIARIO</div>
+            <div class="canvas-wrapper">
+                <div id="pdfLoading" class="pdf-loading" style="display: none;">
+                    <div class="spinner"></div>
+                    Cargando PDF...
+                </div>
+                <div class="drawing-board format-a1" id="drawingBoard">
+                    <svg id="plano" viewBox="0 0 841 594">
+                        <defs>
+                            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e5e5e5" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect width="100%" height="100%" fill="#ffffff" />
+                        <rect width="100%" height="100%" fill="url(#grid)" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        
+        <div class="right-panel" id="buscadorPanel">
+            <!-- BUSCADOR INTEGRADO -->
+            <iframe src="buscador-electrico/buscador-index.html" frameborder="0" style="width: 100%; height: 100%; border: none;"></iframe>
+        </div>
+    </div>
+    
+    <input type="file" id="fileInput" accept=".pdf,.svg,.jpg,.png" style="display: none;">
+    
+    <div class="status" id="status">Listo para diseñar</div>
+
+    <!-- MODAL CUADRO DE CARGAS ACTUALIZADO - NUEVO -->
+    <div class="modal-cuadro-cargas modal-cuadro-cargas-act" id="modalCuadroCargasACT">
+        <div class="ventana-cuadro-cargas ventana-cuadro-cargas-act" id="ventanaCuadroCargasACT">
+            <div class="modal-cuadro-cargas-header" id="headerCuadroCargasACT">
+                <div class="modal-cuadro-cargas-title modal-cuadro-cargas-act-title">
+                    ⚡ CUADRO DE CARGAS ELÉCTRICO ACTUALIZADO
+                </div>
+                <div class="modal-cuadro-cargas-buttons">
+                    <button class="btn-modal-cuadro-cargas close" onclick="cerrarCuadroCargasACT()">✕ CERRAR</button>
+                </div>
+            </div>
+            <div class="modal-cuadro-cargas-content">
+                <iframe id="iframeCuadroCargasACT" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL SIMBOLOGÍA -->
+    <div class="modal" id="modalSimbologia">
+        <div class="modal-window modal-large">
+            <div class="modal-header">
+                <div class="modal-title">📊 SIMBOLOGÍA ELÉCTRICA NORMALIZADA</div>
+                <button class="btn-close" onclick="cerrarModal('modalSimbologia')">✕</button>
+            </div>
+            <div class="simbologia-actions">
+                <button class="btn-integrar" onclick="integrarSimbologiaAlPlano()">
+                    ✨ INTEGRAR EN PLANO
+                </button>
+                <div class="simbologia-info">
+                    Coloca la tabla en el plano (arrastrable y redimensionable)
+                </div>
+            </div>
+            <div class="modal-content">
+                <div class="simbologia-grid">
+                    <div class="simbolo-card">
+                        <div class="simbolo-icon">💡</div>
+                        <div class="simbolo-name">Luminaria Cielo</div>
+                        <div class="simbolo-desc">Punto de luz en techo</div>
+                    </div>
+                    <div class="simbolo-card">
+                        <div class="simbolo-icon">🔌</div>
+                        <div class="simbolo-name">Enchufe Simple</div>
+                        <div class="simbolo-desc">10A - 220V</div>
+                    </div>
+                    <div class="simbolo-card">
+                        <div class="simbolo-icon">🔘</div>
+                        <div class="simbolo-name">Interruptor</div>
+                        <div class="simbolo-desc">Simple / Doble</div>
+                    </div>
+                    <div class="simbolo-card">
+                        <div class="simbolo-icon">⚡</div>
+                        <div class="simbolo-name">Tablero</div>
+                        <div class="simbolo-desc">Tablero Eléctrico</div>
+                    </div>
+                    <div class="simbolo-card">
+                        <div class="simbolo-icon">🌍</div>
+                        <div class="simbolo-name">Tierra</div>
+                        <div class="simbolo-desc">Puesta a tierra</div>
+                    </div>
+                    <div class="simbolo-card">
+                        <div class="simbolo-icon">📦</div>
+                        <div class="simbolo-name">Caja Derivación</div>
+                        <div class="simbolo-desc">Punto de conexión</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL TABLERO ELÉCTRICO INTERACTIVO -->
+    <div class="modal" id="modalTableroInteractivo">
+        <div class="modal-window">
+            <div class="modal-header">
+                <div class="modal-title">⚡ TABLERO ELÉCTRICO INTERACTIVO - SINCRONIZADO CON PLANO</div>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <button class="btn-header" style="background: #27ae60; padding: 8px 16px; font-size: 13px;" onclick="integrarTableroAlPlano()">
+                        📌 INTEGRAR TABLERO EN PLANO
+                    </button>
+                    <button class="btn-close" onclick="cerrarTablero()">✕</button>
+                </div>
+            </div>
+            <div class="modal-content">
+                <div class="tablero-container">
+                    <!-- Medidor de energía -->
+                    <div class="tablero-meter-section">
+                        <div class="tablero-meter-header">MEDIDOR DE ENERGÍA - Sincronizado Automáticamente</div>
+                        <div class="tablero-meter-display">
+                            <div class="tablero-meter-lcd">
+                                <span id="tableroEnergyReading">00000.0</span>
+                                <span class="meter-unit">kWh</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Estadísticas -->
+                        <div class="tablero-stats-grid">
+                            <div class="tablero-stat-card">
+                                <div class="tablero-stat-label">Potencia Total</div>
+                                <div class="tablero-stat-value" id="tableroPower">0<span class="stat-unit">W</span></div>
+                            </div>
+                            <div class="tablero-stat-card">
+                                <div class="tablero-stat-label">Corriente Total</div>
+                                <div class="tablero-stat-value" id="tableroCurrent">0.0<span class="stat-unit">A</span></div>
+                            </div>
+                            <div class="tablero-stat-card">
+                                <div class="tablero-stat-label">Tensión Nominal</div>
+                                <div class="tablero-stat-value">220<span class="stat-unit">V</span></div>
+                            </div>
+                            <div class="tablero-stat-card">
+                                <div class="tablero-stat-label">Estado del Sistema</div>
+                                <div class="tablero-stat-value status-ok" id="tableroStatus">NORMAL</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tablero-content">
+                        <!-- Circuitos Primer Nivel -->
+                        <div class="tablero-level-section">
+                            <div class="tablero-level-title">
+                                <span class="tablero-level-badge">1</span> Primer Nivel - Planta Baja
+                            </div>
+                            <div class="tablero-circuits-grid" id="tableroLevel1Grid">
+                                <!-- Los circuitos se generan automáticamente -->
+                            </div>
+                        </div>
+                        
+                        <!-- Circuitos Segundo Nivel -->
+                        <div class="tablero-level-section">
+                            <div class="tablero-level-title">
+                                <span class="tablero-level-badge">2</span> Segundo Nivel - Planta Alta
+                            </div>
+                            <div class="tablero-circuits-grid" id="tableroLevel2Grid">
+                                <!-- Los circuitos se generan automáticamente -->
+                            </div>
+                        </div>
+                        
+                        <!-- Información de circuitos -->
+                        <div class="tablero-info-section">
+                            <h4>🏠 Resumen Primer Nivel</h4>
+                            <div id="tableroLevel1List">
+                                <p class="empty-message">No hay circuitos en primer nivel</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tablero-info-section">
+                            <h4>🏠 Resumen Segundo Nivel</h4>
+                            <div id="tableroLevel2List">
+                                <p class="empty-message">No hay circuitos en segundo nivel</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POPUP SELECTOR DE NIVEL -->
+    <div class="level-selector-popup" id="levelSelectorPopup">
+        <div class="level-popup-header">
+            <div class="level-popup-title">🏠 Selecciona el Nivel</div>
+            <div class="level-popup-subtitle">¿En qué nivel de la casa irá este elemento?</div>
+        </div>
+        
+        <div class="level-buttons-container">
+            <div class="level-btn level-1" onclick="selectLevel(1)">
+                <div class="level-btn-badge">1</div>
+                <div class="level-btn-title">Primer Nivel</div>
+                <div class="level-btn-desc">Planta Baja</div>
+            </div>
+            
+            <div class="level-btn level-2" onclick="selectLevel(2)">
+                <div class="level-btn-badge">2</div>
+                <div class="level-btn-title">Segundo Nivel</div>
+                <div class="level-btn-desc">Planta Alta</div>
+            </div>
+        </div>
+        
+        <div class="level-popup-footer">
+            <button class="level-cancel-btn" onclick="cancelLevelSelection()">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- MÓDULOS DE JAVASCRIPT EXISTENTES -->
+    <script src="level-selector.js"></script>
+    <script src="tablero-integration.js"></script>
+    <script src="javascript/app-state.js"></script>
+    <script src="javascript/electric-symbols.js"></script>
+    <script src="javascript/utilities.js"></script>
+    
+    <!-- 📏 INDICADOR DE PORCENTAJE AL REDIMENSIONAR -->
+    <script src="javascript/resize-indicator.js"></script>
+    
+    <script src="javascript/image-controller.js"></script>
+    <script src="javascript/image-resize-manager.js"></script>
+    <!-- Cargador de PDF/Imagen -->
+    <script src="javascript/plano-loader.js"></script>
+    <script src="javascript/zoom-pan.js"></script>
+    
+    <!-- HERRAMIENTAS DE DIBUJO GEOMÉTRICO -->
+    <script src="javascript/drawing-tools.js"></script>
+    <script src="javascript/drawing-controls.js"></script>
+    
+    <!-- SISTEMA DE TRAZADO AUTOMÁTICO -->
+    <script src="trazado-automatico/config-tracer.js"></script>
+    <script src="trazado-automatico/hierarchy-detector.js"></script>
+    <script src="trazado-automatico/path-optimizer.js"></script>
+    <script src="trazado-automatico/line-renderer.js"></script>
+    <script src="trazado-automatico/main-tracer.js"></script>
+    
+    <script src="javascript/tools-manager.js"></script>
+    <script src="javascript/canvas-handler.js"></script>
+    <script src="javascript/labels-manager.js"></script>
+    <script src="zoom-monitor.js"></script>
+    <script src="javascript/mode-manager.js"></script>
+    <script src="javascript/file-manager.js"></script>
+    <script src="javascript/circuit-generator.js"></script>
+    <script src="javascript/cuadro-cargas-sync.js"></script>
+    
+    <!-- SISTEMA DE INTEGRACIÓN CUADRO DE CARGAS (orden importante) -->
+    <script src="cuadro-cargas-integracion/cuadroCargasCore.js"></script>
+    <script src="cuadro-cargas-integracion/cuadroCargasUI.js"></script>
+    <script src="cuadro-cargas-integracion/cuadroCargasArrastre.js"></script>
+    <script src="cuadro-cargas-integracion/cuadroCargasTabla.js"></script>
+    <script src="cuadro-cargas-integracion/cuadroCargasIntegracion.js"></script>
+    <script src="cuadro-cargas-integracion/cuadroCargasIndex.js"></script>
+    
+    <!-- SISTEMA DE INTEGRACIÓN TABLERO ELÉCTRICO (orden importante) -->
+    <script src="tablero-integracion/tableroIntegracionCore.js"></script>
+    <script src="tablero-integracion/tableroIntegracionUI.js"></script>
+    <script src="tablero-integracion/tableroIntegracionIndex.js"></script>
+    
+    <!-- SISTEMA DE ESQUEMA UNIFILAR (orden importante) -->
+    <script src="esquema-unifilar/unifilarCore.js"></script>
+    <script src="esquema-unifilar/unifilarCalculos.js"></script>
+    <script src="esquema-unifilar/unifilarDibujo.js"></script>
+    <script src="esquema-unifilar/unifilarIntegracion.js"></script>
+    <script src="esquema-unifilar/unifilarIndex.js"></script>
+    
+    <script src="javascript/modals-manager.js"></script>
+    <script src="javascript/export-manager.js"></script>
+    <script src="javascript/cleanup-manager.js"></script>
+    <script src="javascript/keyboard-handler.js"></script>
+    <script src="javascript/initialization.js"></script>
+    <script src="javascript/main.js"></script>
+
+    <!-- GESTOR DE VIÑETA ELÉCTRICA -->
+    <script src="viñeta-electrica/vineta-handler.js"></script>
+
+    <!-- Sistema Isométrico 3D Real -->
+    <script src="isometrico-electrico/isometrico-math.js"></script>
+    <script src="isometrico-electrico/isometrico-config.js"></script>
+    <script src="isometrico-electrico/isometrico-converter.js"></script>
+    <script src="isometrico-electrico/isometrico-renderer.js"></script>
+    <script src="isometrico-electrico/isometrico-generator.js"></script>    
+    <script src="isometrico-electrico/isometrico-zoom.js"></script>
+    <script src="isometrico-electrico/isometrico-ui.js"></script>
+    <script src="isometrico-electrico/isometrico-integracion.js"></script>
+
+    <!-- SISTEMA DE SIMBOLOGÍA ELÉCTRICA INTEGRABLE (orden importante) -->
+    <script src="simbologia-electrica/simbologiaElectricaCore.js"></script>
+    <script src="simbologia-electrica/simbologiaElectricaUI.js"></script>
+    <script src="simbologia-electrica/simbologiaElectricaArrastre.js"></script>
+    <script src="simbologia-electrica/simbologiaElectricaTabla.js"></script>
+    <script src="simbologia-electrica/simbologiaElectricaIntegracion.js"></script>
+    <script src="simbologia-electrica/simbologiaElectricaIndex.js"></script>
+
+    <!-- ========================================== -->
+    <!-- SISTEMA DE PREGUNTAS Y RESPUESTAS (PRIMERO) -->
+    <!-- ========================================== -->
+    <script src="preguntas-respuestas/index.js"></script>
+    <script src="preguntas-respuestas/01_normativa_general.js"></script>
+    <script src="preguntas-respuestas/02_tableros_protecciones.js"></script>
+    <script src="preguntas-respuestas/03_conductores_canalizaciones.js"></script>
+    <script src="preguntas-respuestas/04_tipos_conductores_capacidades.js"></script>
+    <script src="preguntas-respuestas/05_sistemas_canalizacion.js"></script>
+    <script src="preguntas-respuestas/06_cajas_bandejas_canalizaciones.js"></script>
+    <script src="preguntas-respuestas/07_proteccion_tensiones_peligrosas.js"></script>
+    <script src="preguntas-respuestas/08_puestas_a_tierra.js"></script>
+    <script src="preguntas-respuestas/09_instalaciones_alumbrado.js"></script>
+    <script src="preguntas-respuestas/10_instalaciones_fuerza.js"></script>
+
+    <!-- ========================================== -->
+    <!-- ASISTENTE VIRTUAL ELÉCTRICO (DESPUÉS) -->
+    <!-- ========================================== -->
+    <script src="asistente-virtual/asistenteKnowledge.js"></script>
+    <script src="asistente-virtual/asistenteCore.js"></script>
+    <script src="asistente-virtual/asistenteUI.js"></script>
+    <script src="asistente-virtual/asistenteIndex.js"></script>
+           
+    <!-- ✨ NUEVOS SCRIPTS DE INTEGRACIÓN - MEMORIA Y EETT ✨ -->
+    <script src="memoria-electrica/modal-integration.js"></script>
+    <script src="especificaciones-tecnicas/modal-integration.js"></script>
+
+    <script src="exportar-pdf/exportador-configuracion.js"></script>
+    <script src="exportar-pdf/exportador-core.js"></script>
+    <script src="exportar-pdf/exportador-ui.js"></script>
+
+    <!-- SISTEMA DE PLANOS ELÉCTRICOS MÚLTIPLES -->
+    <script src="sistema-planos-electricos/electrico-plano-instance.js"></script>
+    <script src="sistema-planos-electricos/electrico-plano-state.js"></script>
+    <script src="sistema-planos-electricos/electrico-plano-state-manager.js"></script>
+    <script src="sistema-planos-electricos/electrico-plano-manager.js"></script>
+    <script src="sistema-planos-electricos/electrico-plano-ui.js"></script>
+    <script src="sistema-planos-electricos/vineta-interceptor.js"></script>
+    <script src="sistema-planos-electricos/cuadro-cargas-interceptor.js"></script>
+    <script src="sistema-planos-electricos/electrico-plano-integration.js"></script>
+    
+    <!-- ========================================== -->
+    <!-- INICIALIZACIÓN DEL SISTEMA COMPLETO -->
+    <!-- ========================================== -->
+    <script>
+        // Inicializar sistema de integración cuando cargue la página
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Iniciando sistema ELEKTRA...');
+            
+            // ========================================
+            // INICIALIZAR TABLERO ELÉCTRICO
+            // ========================================
+            if (typeof initTableroIntegration === 'function') {
+                initTableroIntegration();
+                console.log('✅ Sistema de tablero integrado inicializado');
+            }
+            
+            // ========================================
+            // INICIALIZAR CUADRO DE CARGAS
+            // ========================================
+            if (typeof initCuadroCargas === 'function') {
+                initCuadroCargas();
+                console.log('✅ Sistema de Cuadro de Cargas inicializado');
+            }
+            
+            // ========================================
+            // INICIALIZAR SISTEMA DE PREGUNTAS Y RESPUESTAS
+            // ========================================
+            console.log('📚 Cargando base de conocimientos...');
+            
+            // Verificar que existe la función de carga
+            if (typeof cargarArchivoPR !== 'function') {
+                console.error('❌ Error: No se encontró la función cargarArchivoPR()');
+                console.error('❌ Verifica que el archivo preguntas-respuestas/index.js esté cargado correctamente');
+                return;
+            }
+            
+            // Cargar archivos de preguntas (orden: 01 a 10)
+            const archivos = [
+                { nombre: '01 - Normativa General', variable: preguntasRespuestas_01 },
+                { nombre: '02 - Tableros y Protecciones', variable: preguntasRespuestas_02 },
+                { nombre: '03 - Conductores y Canalizaciones', variable: preguntasRespuestas_03 },
+                { nombre: '04 - Tipos de Conductores', variable: preguntasRespuestas_04 },
+                { nombre: '05 - Sistemas de Canalización', variable: preguntasRespuestas_05 },
+                { nombre: '06 - Cajas y Bandejas', variable: preguntasRespuestas_06 },
+                { nombre: '07 - Protección Tensiones Peligrosas', variable: preguntasRespuestas_07 },
+                { nombre: '08 - Puestas a Tierra', variable: preguntasRespuestas_08 },
+                { nombre: '09 - Instalaciones de Alumbrado', variable: preguntasRespuestas_09 },
+                { nombre: '10 - Instalaciones de Fuerza', variable: preguntasRespuestas_10 }
+            ];
+            
+            let archivosExitosos = 0;
+            let archivosFallidos = 0;
+            
+            archivos.forEach((archivo, index) => {
+                if (typeof archivo.variable !== 'undefined') {
+                    try {
+                        cargarArchivoPR(archivo.variable);
+                        archivosExitosos++;
+                        console.log(`✅ Archivo ${String(index + 1).padStart(2, '0')} - ${archivo.nombre} cargado`);
+                    } catch (error) {
+                        archivosFallidos++;
+                        console.error(`❌ Error al cargar archivo ${String(index + 1).padStart(2, '0')}:`, error);
+                    }
+                } else {
+                    archivosFallidos++;
+                    console.warn(`⚠️ Archivo ${String(index + 1).padStart(2, '0')} - ${archivo.nombre} no encontrado`);
+                }
+            });
+            
+            // Mostrar resumen de carga
+            console.log('\n' + '='.repeat(60));
+            console.log(`📊 RESUMEN DE CARGA DE BASE DE CONOCIMIENTOS`);
+            console.log('='.repeat(60));
+            console.log(`✅ Archivos cargados exitosamente: ${archivosExitosos}/10`);
+            if (archivosFallidos > 0) {
+                console.log(`❌ Archivos con error: ${archivosFallidos}/10`);
+            }
+            
+            // Verificar estadísticas finales
+            if (typeof obtenerEstadisticasPR === 'function') {
+                const stats = obtenerEstadisticasPR();
+                console.log(`📚 Total de preguntas cargadas: ${stats.total_preguntas}`);
+                console.log(`🏷️ Categorías disponibles: ${stats.categorias_cargadas}`);
+                if (stats.categorias_disponibles && Array.isArray(stats.categorias_disponibles)) {
+                    console.log(`📂 Categorías: ${stats.categorias_disponibles.join(', ')}`);
+                }
+                console.log('='.repeat(60) + '\n');
+                
+                if (stats.total_preguntas === 0) {
+                    console.error('❌ ADVERTENCIA: No se cargaron preguntas. Verifica los archivos JS.');
+                } else {
+                    console.log(`✅ Sistema de asistente virtual listo con ${stats.total_preguntas} preguntas`);
+                }
+            }
+            
+            // ========================================
+            // CONFIRMACIÓN DE INTEGRACIÓN MEMORIA Y EETT
+            // ========================================
+            console.log('✅ Sistema de Modal Memoria Eléctrica integrado');
+            console.log('✅ Sistema de Modal Especificaciones Técnicas integrado');
+            
+            // ========================================
+            // INICIALIZAR HERRAMIENTAS DE DIBUJO
+            // ========================================
+            if (typeof initializeDrawingControls === 'function') {
+                initializeDrawingControls();
+                console.log('✅ Controles de color y grosor inicializados');
+            }
+            
+            // Agregar eventos de mouse para herramientas de dibujo
+            const plano = document.getElementById('plano');
+            if (plano) {
+                plano.addEventListener('mousemove', handleCanvasMouseMove);
+                plano.addEventListener('dblclick', handleCanvasDoubleClick);
+                console.log('✅ Eventos de dibujo configurados en canvas');
+            }
+            
+            // Agregar evento de teclado para eliminar formas
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Delete' || e.key === 'Backspace') {
+                    if (typeof deleteSelectedDrawing === 'function') {
+                        deleteSelectedDrawing();
+                    }
+                }
+                // ESC para cancelar polilínea
+                if (e.key === 'Escape') {
+                    if (AppState.currentTool === 'polilinea' && AppState.polylinePoints.length > 0) {
+                        AppState.polylinePoints = [];
+                        if (AppState.tempDrawingElement) {
+                            AppState.tempDrawingElement.remove();
+                            AppState.tempDrawingElement = null;
+                        }
+                        updateStatus('❌ Polilínea cancelada');
+                    }
+                }
+            });
+            console.log('✅ Teclas DELETE y ESC configuradas');
+            
+            console.log('✅ Sistema de Herramientas de Dibujo integrado');
+            
+            console.log('\n🎉 Sistema ELEKTRA completamente inicializado\n');
+        });
+    </script>
+</body>
+</html>

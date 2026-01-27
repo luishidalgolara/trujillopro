@@ -1,0 +1,170 @@
+/* =========================================
+   MODAL MEMORIA DE CÁLCULO - ALCANTARILLADO
+   Estilos para la ventana flotante
+   Este archivo se carga en index.html
+   ========================================= */
+
+/* =========================================
+   MODAL CONTENEDOR PRINCIPAL
+   ========================================= */
+.modal-memoria {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+}
+
+.modal-memoria.active {
+    display: flex !important;
+}
+
+/* =========================================
+   VENTANA MEMORIA
+   ========================================= */
+.ventana-memoria {
+    background: white;
+    width: 90%;
+    max-width: 1200px;
+    height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================================
+   HEADER DEL MODAL
+   ========================================= */
+.modal-memoria-header {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #3498db;
+    user-select: none;
+    cursor: move;
+}
+
+.modal-memoria-title {
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-memoria-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* =========================================
+   BOTONES DEL HEADER
+   ========================================= */
+.btn-modal-memoria {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-modal-memoria.close {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-modal-memoria.close:hover {
+    background: #c0392b;
+    transform: scale(1.1);
+}
+
+.btn-modal-memoria.minimize {
+    background: #f39c12;
+    color: white;
+}
+
+.btn-modal-memoria.minimize:hover {
+    background: #e67e22;
+    transform: scale(1.1);
+}
+
+/* =========================================
+   CONTENIDO DEL MODAL
+   ========================================= */
+.modal-memoria-content {
+    flex: 1;
+    overflow: hidden;
+    background: #ecf0f1;
+}
+
+.modal-memoria-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media screen and (max-width: 768px) {
+    .ventana-memoria {
+        width: 95%;
+        height: 95%;
+    }
+    
+    .modal-memoria-title {
+        font-size: 14px;
+    }
+    
+    .btn-modal-memoria {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+}
+
+/* =========================================
+   ESTADOS DE ANIMACIÓN
+   ========================================= */
+.modal-memoria.closing {
+    animation: modalFadeOut 0.2s ease-in forwards;
+}
+
+@keyframes modalFadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}

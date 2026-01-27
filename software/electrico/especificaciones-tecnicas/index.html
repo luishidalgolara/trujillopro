@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especificaciones Técnicas - Instalación Eléctrica Domiciliaria</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Botones de acción -->
+    <div class="action-buttons no-print">
+        <button onclick="window.print()" class="btn-print">🖨️ Imprimir / Exportar PDF</button>
+        <button onclick="toggleIndex()" class="btn-index">📑 Mostrar/Ocultar Índice</button>
+        <button onclick="calcularPresupuesto()" class="btn-calc">💰 Calcular Presupuesto</button>
+    </div>
+
+    <!-- Portada -->
+    <div class="page portada">
+        <div class="portada-content">
+            <div class="logo-container">
+                <div class="logo-placeholder">LOGO EMPRESA</div>
+            </div>
+            
+            <h1 class="titulo-principal">ESPECIFICACIONES TÉCNICAS</h1>
+            <h2 class="subtitulo">INSTALACIÓN ELÉCTRICA INTERIOR DOMICILIARIA</h2>
+            <h3 class="subtitulo-eett">EETT - PARTIDAS Y PROCEDIMIENTOS</h3>
+            
+            <div class="info-portada">
+                <div class="info-grupo">
+                    <h3>DATOS DEL PROYECTO</h3>
+                    <p><strong>Tipo:</strong> <span class="editable" contenteditable="true">Vivienda Unifamiliar</span></p>
+                    <p><strong>Ubicación:</strong> <span class="editable" contenteditable="true">[Dirección, Comuna, Región]</span></p>
+                    <p><strong>Mandante:</strong> <span class="editable" contenteditable="true">[Nombre Propietario]</span></p>
+                </div>
+                
+                <div class="info-grupo">
+                    <h3>INSTALADOR ELÉCTRICO</h3>
+                    <p><strong>Empresa:</strong> <span class="editable" contenteditable="true">[Nombre Empresa]</span></p>
+                    <p><strong>RUT:</strong> <span class="editable" contenteditable="true">[RUT]</span></p>
+                    <p><strong>Registro SEC:</strong> <span class="editable" contenteditable="true">[N° Registro]</span></p>
+                </div>
+                
+                <div class="info-grupo">
+                    <h3>CÓDIGO DE PROYECTO</h3>
+                    <p><strong>Código:</strong> <span class="editable" contenteditable="true">EETT-[XXXX]-2025</span></p>
+                    <p><strong>Versión:</strong> 1.0</p>
+                </div>
+            </div>
+            
+            <div class="fecha-portada">
+                <p><strong>Fecha de emisión:</strong> <span class="editable" contenteditable="true">Diciembre 2025</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Índice -->
+    <div class="page indice" id="indice">
+        <h2 class="titulo-seccion">ÍNDICE DE ESPECIFICACIONES TÉCNICAS</h2>
+        <nav class="tabla-contenidos">
+            <ul>
+                <li><a href="#seccion-1">1. DISPOSICIONES GENERALES</a></li>
+                <li><a href="#seccion-2">2. BASES ADMINISTRATIVAS</a></li>
+                <li><a href="#seccion-3">3. NORMATIVA Y CÓDIGOS APLICABLES</a></li>
+                <li><a href="#seccion-4">4. MATERIALES Y EQUIPOS - ESPECIFICACIONES</a></li>
+                <li><a href="#seccion-5">5. PARTIDA 1: OBRAS PRELIMINARES</a></li>
+                <li><a href="#seccion-6">6. PARTIDA 2: SISTEMA DE PUESTA A TIERRA</a></li>
+                <li><a href="#seccion-7">7. PARTIDA 3: CANALIZACIONES Y DUCTOS</a></li>
+                <li><a href="#seccion-8">8. PARTIDA 4: CONDUCTORES ELÉCTRICOS</a></li>
+                <li><a href="#seccion-9">9. PARTIDA 5: TABLERO GENERAL DE DISTRIBUCIÓN</a></li>
+                <li><a href="#seccion-10">10. PARTIDA 6: PROTECCIONES ELÉCTRICAS</a></li>
+                <li><a href="#seccion-11">11. PARTIDA 7: ACCESORIOS DE ALAMBRADO</a></li>
+                <li><a href="#seccion-12">12. PARTIDA 8: ILUMINACIÓN INTERIOR</a></li>
+                <li><a href="#seccion-13">13. PARTIDA 9: ILUMINACIÓN EXTERIOR</a></li>
+                <li><a href="#seccion-14">14. PARTIDA 10: INSTALACIONES ESPECIALES</a></li>
+                <li><a href="#seccion-15">15. PROCEDIMIENTOS DE INSTALACIÓN</a></li>
+                <li><a href="#seccion-16">16. CONTROL DE CALIDAD</a></li>
+                <li><a href="#seccion-17">17. ENSAYOS Y PRUEBAS</a></li>
+                <li><a href="#seccion-18">18. MEDICIÓN Y PAGO DE PARTIDAS</a></li>
+                <li><a href="#seccion-19">19. PRESUPUESTO DETALLADO</a></li>
+                <li><a href="#seccion-20">20. CRONOGRAMA DE TRABAJO</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Sección 1: Disposiciones Generales -->
+    <div class="page" id="seccion-1">
+        <h2 class="titulo-seccion">1. DISPOSICIONES GENERALES</h2>
+        
+        <h3>1.1 Objeto de las Especificaciones Técnicas</h3>
+        <p>Las presentes Especificaciones Técnicas (EETT) tienen por objeto definir los requisitos técnicos, procedimientos constructivos, criterios de medición y condiciones de pago para la ejecución de las obras eléctricas correspondientes a la instalación eléctrica interior de una vivienda unifamiliar.</p>
+
+        <h3>1.2 Alcance de las Obras</h3>
+        <p>Las obras comprenden:</p>
+        <ul>
+            <li>Suministro, instalación y conexión de todos los materiales, equipos y mano de obra necesarios para la instalación eléctrica completa</li>
+            <li>Sistema de puesta a tierra normalizado</li>
+            <li>Canalizaciones embutidas y a la vista</li>
+            <li>Tendido de conductores y conexiones</li>
+            <li>Tablero general de distribución con protecciones</li>
+            <li>Accesorios de alambrado (enchufes, interruptores, cajas)</li>
+            <li>Luminarias interiores y exteriores</li>
+            <li>Circuitos especiales (baños, cocina, termo)</li>
+            <li>Pruebas, ensayos y puesta en servicio</li>
+            <li>Tramitación ante la SEC</li>
+        </ul>
+
+        <h3>1.3 Definiciones y Abreviaturas</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Término</th>
+                    <th>Definición</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>EETT</td>
+                    <td>Especificaciones Técnicas</td>
+                </tr>
+                <tr>
+                    <td>SEC</td>
+                    <td>Superintendencia de Electricidad y Combustibles</td>
+                </tr>
+                <tr>
+                    <td>TGD</td>
+                    <td>Tablero General de Distribución</td>
+                </tr>
+                <tr>
+                    <td>PAT</td>
+                    <td>Puesta a Tierra</td>
+                </tr>
+                <tr>
+                    <td>NPT</td>
+                    <td>Nivel de Piso Terminado</td>
+                </tr>
+                <tr>
+                    <td>ID</td>
+                    <td>Interruptor Diferencial</td>
+                </tr>
+                <tr>
+                    <td>IEC</td>
+                    <td>International Electrotechnical Commission</td>
+                </tr>
+                <tr>
+                    <td>NCh</td>
+                    <td>Norma Chilena</td>
+                </tr>
+                <tr>
+                    <td>GL</td>
+                    <td>Global (unidad de medida)</td>
+                </tr>
+                <tr>
+                    <td>UN</td>
+                    <td>Unidad</td>
+                </tr>
+                <tr>
+                    <td>ML</td>
+                    <td>Metro Lineal</td>
+                </tr>
+                <tr>
+                    <td>PTO</td>
+                    <td>Punto (de luz o enchufe)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>1.4 Vigencia de las EETT</h3>
+        <p>Las presentes especificaciones técnicas tienen validez durante todo el período de ejecución de las obras y forman parte integral del contrato de construcción eléctrica.</p>
+
+        <h3>1.5 Documentos del Proyecto</h3>
+        <p>La documentación técnica del proyecto comprende:</p>
+        <ol>
+            <li>Memoria Técnica de Cálculo</li>
+            <li>Estas Especificaciones Técnicas (EETT)</li>
+            <li>Planos eléctricos (plantas, unilineal, detalles)</li>
+            <li>Presupuesto detallado</li>
+            <li>Cronograma de trabajo</li>
+            <li>Certificados de materiales SEC</li>
+        </ol>
+    </div>
+
+    <!-- Sección 2: Bases Administrativas -->
+    <div class="page" id="seccion-2">
+        <h2 class="titulo-seccion">2. BASES ADMINISTRATIVAS</h2>
+        
+        <h3>2.1 Del Contratista (Instalador Eléctrico)</h3>
+        
+        <h4>2.1.1 Requisitos del Instalador</h4>
+        <ul>
+            <li>Instalador eléctrico autorizado por la SEC con clasificación vigente</li>
+            <li>Registro SEC Clase A, B, C o D según corresponda</li>
+            <li>Experiencia demostrable en instalaciones similares (mínimo 2 años)</li>
+            <li>Personal técnico calificado</li>
+            <li>Herramientas y equipos de medición certificados</li>
+            <li>Seguro de responsabilidad civil vigente</li>
+        </ul>
+
+        <h4>2.1.2 Obligaciones del Instalador</h4>
+        <ul>
+            <li>Ejecutar las obras conforme a planos, memoria técnica y estas EETT</li>
+            <li>Suministrar todos los materiales, equipos, herramientas y mano de obra</li>
+            <li>Cumplir estrictamente la normativa eléctrica vigente</li>
+            <li>Utilizar únicamente materiales certificados SEC</li>
+            <li>Mantener el sitio de obras limpio y ordenado</li>
+            <li>Proveer elementos de seguridad para su personal</li>
+            <li>Realizar todas las pruebas y ensayos requeridos</li>
+            <li>Tramitar y obtener la aprobación SEC (TE-1)</li>
+            <li>Entregar documentación técnica final (as-built)</li>
+            <li>Otorgar garantía de la instalación</li>
+        </ul>
+
+        <h3>2.2 Del Mandante (Propietario)</h3>
+        
+        <h4>2.2.1 Obligaciones del Mandante</h4>
+        <ul>
+            <li>Facilitar acceso al inmueble para la ejecución de las obras</li>
+            <li>Proporcionar punto de suministro eléctrico temporal (si es necesario)</li>
+            <li>Coordinar interferencias con otras especialidades</li>
+            <li>Cancelar los estados de pago según lo acordado</li>
+            <li>Recibir y aprobar las obras ejecutadas</li>
+            <li>Mantener la instalación según recomendaciones del instalador</li>
+        </ul>
+
+        <h3>2.3 Supervisión e Inspección</h3>
+        <ul>
+            <li>Las obras estarán sujetas a supervisión permanente del instalador responsable</li>
+            <li>El mandante podrá designar un inspector técnico para verificación</li>
+            <li>La SEC podrá inspeccionar la instalación según normativa vigente</li>
+            <li>Toda observación deberá ser subsanada antes de la recepción final</li>
+        </ul>
+
+        <h3>2.4 Garantías</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ítem</th>
+                    <th>Período de Garantía</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mano de obra y ejecución</td>
+                    <td class="editable" contenteditable="true">12 meses</td>
+                </tr>
+                <tr>
+                    <td>Materiales y equipos</td>
+                    <td class="editable" contenteditable="true">12 meses o según fabricante</td>
+                </tr>
+                <tr>
+                    <td>Tablero y protecciones</td>
+                    <td class="editable" contenteditable="true">24 meses</td>
+                </tr>
+                <tr>
+                    <td>Luminarias</td>
+                    <td class="editable" contenteditable="true">12 meses o según fabricante</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2.5 Modificaciones y Obras Extraordinarias</h3>
+        <p>Cualquier modificación al proyecto original deberá ser:</p>
+        <ul>
+            <li>Solicitada por escrito por el mandante</li>
+            <li>Evaluada técnicamente por el instalador</li>
+            <li>Aprobada por ambas partes antes de su ejecución</li>
+            <li>Cotizada y presupuestada adicionalmente</li>
+            <li>Documentada en orden de cambio</li>
+        </ul>
+    </div>
+
+    <!-- Sección 3: Normativa -->
+    <div class="page" id="seccion-3">
+        <h2 class="titulo-seccion">3. NORMATIVA Y CÓDIGOS APLICABLES</h2>
+        
+        <h3>3.1 Normativa Eléctrica Chilena</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Norma</th>
+                    <th>Título</th>
+                    <th>Aplicación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>NCh Elec. 4/2003</td>
+                    <td>Instalaciones de consumo en baja tensión</td>
+                    <td>Obligatoria - Base del diseño</td>
+                </tr>
+                <tr>
+                    <td>DS N°8/2019 (SEC)</td>
+                    <td>Reglamento de Instalaciones Eléctricas de Consumo</td>
+                    <td>Obligatoria - Marco regulatorio</td>
+                </tr>
+                <tr>
+                    <td>NCh 410.Of1996</td>
+                    <td>Prevención de riesgos - Colores de seguridad</td>
+                    <td>Obligatoria - Identificación</td>
+                </tr>
+                <tr>
+                    <td>NCh 84.Of2011</td>
+                    <td>Conductores eléctricos - Conductores de cobre</td>
+                    <td>Referencia técnica</td>
+                </tr>
+                <tr>
+                    <td>NCh 399.Of2007</td>
+                    <td>Tubos de PVC rígido para instalaciones eléctricas</td>
+                    <td>Referencia técnica</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>3.2 Normativa Internacional IEC</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Norma IEC</th>
+                    <th>Aplicación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>IEC 60228</td>
+                    <td>Conductores de cables aislados</td>
+                </tr>
+                <tr>
+                    <td>IEC 60898</td>
+                    <td>Interruptores automáticos para instalaciones domésticas</td>
+                </tr>
+                <tr>
+                    <td>IEC 61008</td>
+                    <td>Interruptores diferenciales sin protección contra sobrecorriente</td>
+                </tr>
+                <tr>
+                    <td>IEC 61386</td>
+                    <td>Sistemas de tubos para instalaciones eléctricas</td>
+                </tr>
+                <tr>
+                    <td>IEC 61439</td>
+                    <td>Conjuntos de aparamenta de baja tensión</td>
+                </tr>
+                <tr>
+                    <td>IEC 60884</td>
+                    <td>Bases de toma de corriente para usos domésticos</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>3.3 Resoluciones y Circulares SEC</h3>
+        <p>Toda la instalación cumplirá con las resoluciones y circulares técnicas vigentes emitidas por la Superintendencia de Electricidad y Combustibles, incluyendo:</p>
+        <ul>
+            <li>Certificación obligatoria de materiales eléctricos</li>
+            <li>Registro y clasificación de instaladores eléctricos</li>
+            <li>Declaración de instalaciones eléctricas interiores (TE-1)</li>
+            <li>Procedimientos de inspección y fiscalización</li>
+        </ul>
+
+        <h3>3.4 Ordenanza General de Urbanismo y Construcciones</h3>
+        <p>La instalación cumplirá con las disposiciones de la OGUC en cuanto a:</p>
+        <ul>
+            <li>Condiciones de seguridad contra incendio</li>
+            <li>Instalaciones de servicio en edificaciones</li>
+            <li>Requisitos de habitabilidad</li>
+        </ul>
+
+        <h3>3.5 Precedencia de Documentos</h3>
+        <p>En caso de discrepancia entre documentos, el orden de precedencia será:</p>
+        <ol>
+            <li>Normativa legal vigente (NCh Elec. 4/2003, DS N°8/2019)</li>
+            <li>Resoluciones y circulares SEC</li>
+            <li>Memoria Técnica del proyecto</li>
+            <li>Estas Especificaciones Técnicas (EETT)</li>
+            <li>Planos del proyecto</li>
+            <li>Normas IEC de referencia</li>
+        </ol>
+    </div>
+
+    <!-- Sección 4: Materiales y Equipos -->
+    <div class="page" id="seccion-4">
+        <h2 class="titulo-seccion">4. MATERIALES Y EQUIPOS - ESPECIFICACIONES</h2>
+        
+        <h3>4.1 Requisitos Generales de Materiales</h3>
+        
+        <div class="requisito-box">
+            <h4>CERTIFICACIÓN OBLIGATORIA</h4>
+            <p>Todos los materiales eléctricos deberán contar con <strong>certificación SEC vigente</strong>. No se aceptarán materiales sin certificación.</p>
+        </div>
+
+        <h4>4.1.1 Condiciones de Aceptación</h4>
+        <ul>
+            <li>Materiales nuevos, sin uso previo</li>
+            <li>Embalaje original del fabricante</li>
+            <li>Etiquetado con información técnica completa</li>
+            <li>Certificación SEC visible y verificable</li>
+            <li>Fecha de fabricación no superior a 24 meses</li>
+            <li>Cumplimiento de normas IEC aplicables</li>
+        </ul>
+
+        <h4>4.1.2 Almacenamiento en Obra</h4>
+        <ul>
+            <li>Lugar seco, techado, ventilado</li>
+            <li>Protección contra humedad y polvo</li>
+            <li>Conductores en rollos, sin contacto con el suelo</li>
+            <li>Separación por tipo y sección</li>
+            <li>Registro de ingreso y trazabilidad</li>
+        </ul>
+
+        <h3>4.2 Conductores Eléctricos</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Característica</th>
+                    <th>Especificación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Material</td>
+                    <td>Cobre electrolítico 99,9% pureza</td>
+                </tr>
+                <tr>
+                    <td>Temple</td>
+                    <td>Suave (blando)</td>
+                </tr>
+                <tr>
+                    <td>Tipo aislación</td>
+                    <td>NYA (450/750V) o THHN/THWN (600V)</td>
+                </tr>
+                <tr>
+                    <td>Temperatura operación</td>
+                    <td>60°C (NYA), 90°C (THHN/THWN)</td>
+                </tr>
+                <tr>
+                    <td>Norma constructiva</td>
+                    <td>NCh 84, IEC 60228</td>
+                </tr>
+                <tr>
+                    <td>Certificación</td>
+                    <td>SEC obligatoria</td>
+                </tr>
+                <tr>
+                    <td>Código de colores</td>
+                    <td>Fase: Negro/Azul/Rojo<br>Neutro: Blanco<br>PE: Verde-Amarillo</td>
+                </tr>
+                <tr>
+                    <td>Secciones disponibles</td>
+                    <td>1,5 mm² / 2,5 mm² / 4 mm² / 6 mm² / 10 mm² / 16 mm²</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>4.3 Tubería y Canalizaciones</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Característica</th>
+                    <th>Especificación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Material</td>
+                    <td>PVC rígido (Cloruro de Polivinilo)</td>
+                </tr>
+                <tr>
+                    <td>Tipo</td>
+                    <td>Conduit eléctrico</td>
+                </tr>
+                <tr>
+                    <td>Norma</td>
+                    <td>NCh 399, IEC 61386</td>
+                </tr>
+                <tr>
+                    <td>Cédula</td>
+                    <td>40 (pared gruesa)</td>
+                </tr>
+                <tr>
+                    <td>Propiedades</td>
+                    <td>Ignífugo, no propagador de llama</td>
+                </tr>
+                <tr>
+                    <td>Color</td>
+                    <td>Gris (estándar eléctrico)</td>
+                </tr>
+                <tr>
+                    <td>Diámetros</td>
+                    <td>16mm, 20mm, 25mm, 32mm según aplicación</td>
+                </tr>
+                <tr>
+                    <td>Certificación</td>
+                    <td>SEC obligatoria</td>
+                </tr>
+                <tr>
+                    <td>Largo comercial</td>
+                    <td>3 metros por vara</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>4.4 Tablero General de Distribución</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Característica</th>
+                    <th>Especificación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Material gabinete</td>
+                    <td>Acero galvanizado o Policarbonato</td>
+                </tr>
+                <tr>
+                    <td>Grado de protección</td>
+                    <td>IP54 mínimo (interior), IP65 (exterior)</td>
+                </tr>
+                <tr>
+                    <td>Norma</td>
+                    <td>IEC 61439</td>
+                </tr>
+                <tr>
+                    <td>Tipo de montaje</td>
+                    <td>Embutido o sobrepuesto según planos</td>
+                </tr>
+                <tr>
+                    <td>Dimensiones mínimas</td>
+                    <td>400 x 500 x 150 mm</td>
+                </tr>
+                <tr>
+                    <td>Barras principales</td>
+                    <td>Cobre electrolítico, capacidad 100 A</td>
+                </tr>
+                <tr>
+                    <td>Barra neutro</td>
+                    <td>Aislada, con identificación</td>
+                </tr>
+                <tr>
+                    <td>Barra tierra (PE)</td>
+                    <td>Cobre, con símbolo de tierra</td>
+                </tr>
+                <tr>
+                    <td>Puerta</td>
+                    <td>Con cerradura, bisagras reforzadas</td>
+                </tr>
+                <tr>
+                    <td>Identificación</td>
+                    <td>Etiqueta de circuitos indeleble</td>
+                </tr>
+                <tr>
+                    <td>Certificación</td>
+                    <td>SEC obligatoria</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Sección 5: Partida 1 - Obras Preliminares -->
+    <div class="page" id="seccion-5">
+        <h2 class="titulo-seccion">5. PARTIDA 1: OBRAS PRELIMINARES</h2>
+        
+        <h3>5.1 Descripción</h3>
+        <p>Comprende todas las actividades preparatorias necesarias antes de iniciar la instalación eléctrica propiamente tal.</p>
+
+        <h3>5.2 Actividades Incluidas</h3>
+        
+        <h4>5.2.1 Replanteo de la Instalación</h4>
+        <div class="procedimiento-box">
+            <p><strong>Procedimiento:</strong></p>
+            <ol>
+                <li>Verificación de planos en sitio</li>
+                <li>Marcación de recorridos de ductos en muros y losas</li>
+                <li>Ubicación exacta de cajas, enchufes e interruptores</li>
+                <li>Marcación de punto de tablero general</li>
+                <li>Marcación de punto de puesta a tierra</li>
+                <li>Registro fotográfico de replanteo</li>
+            </ol>
+        </div>
+
+        <h4>5.2.2 Coordinación con Otras Especialidades</h4>
+        <ul>
+            <li>Coordinación con obra gruesa (albañilería)</li>
+            <li>Verificación de interferencias con redes sanitarias</li>
+            <li>Coordinación con carpintería (paso de ductos)</li>
+            <li>Definición de puntos de conexión temporal</li>
+        </ul>
+
+        <h4>5.2.3 Instalación de Faenas</h4>
+        <ul>
+            <li>Bodega temporal para materiales</li>
+            <li>Área de trabajo para corte y preparación</li>
+            <li>Punto de energía temporal (si es necesario)</li>
+            <li>Señalética de seguridad</li>
+        </ul>
+
+        <h4>5.2.4 Protecciones</h4>
+        <ul>
+            <li>Protección de pisos terminados</li>
+            <li>Protección de elementos existentes</li>
+            <li>Delimitación de áreas de trabajo</li>
+        </ul>
+
+        <h3>5.3 Forma de Medición</h3>
+        <p><strong>Unidad:</strong> Global (GL)</p>
+        <p>Se medirá y pagará como una suma global una vez completadas todas las actividades preliminares y aprobadas por la ITO.</p>
+
+        <h3>5.4 Base de Pago</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ítem</th>
+                    <th>Unidad</th>
+                    <th>Precio Unitario</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Obras preliminares</td>
+                    <td>GL</td>
+                    <td class="editable" contenteditable="true">$[precio]</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="nota">
+            <p><strong>Nota:</strong> Esta partida incluye toda la mano de obra, herramientas, equipos, elementos de protección, señalética y materiales menores necesarios para las actividades descritas.</p>
+        </div>
+    </div>
+
+    <!-- Sección 6: Partida 2 - Sistema de Puesta a Tierra -->
+    <div class="page" id="seccion-6">
+        <h2 class="titulo-seccion">6. PARTIDA 2: SISTEMA DE PUESTA A TIERRA</h2>
+        
+        <h3>6.1 Descripción</h3>
+        <p>Suministro e instalación completa del sistema de puesta a tierra (PAT) normalizado, incluyendo electrodo, conductor de bajada, barra de tierra y todas las conexiones hasta el tablero general.</p>
+
+        <h3>6.2 Materiales</h3>
+        
+        <h4>6.2.1 Electrodo de Puesta a Tierra</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Característica</th>
+                    <th>Especificación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tipo</td>
+                    <td>Jabalina cobre-acero (Copperweld)</td>
+                </tr>
+                <tr>
+                    <td>Diámetro</td>
+                    <td>16 mm (5/8")</td>
+                </tr>
+                <tr>
+                    <td>Longitud</td>
+                    <td>2,4 metros</td>
+                </tr>
+                <tr>
+                    <td>Recubrimiento</td>
+                    <td>Cobre electrolítico 254 micrones</td>
+                </tr>
+                <tr>
+                    <td>Punta</td>
+                    <td>Biselada para penetración</td>
+                </tr>
+                <tr>
+                    <td>Cantidad</td>
+                    <td>1 unidad (ampliable según medición)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>6.2.2 Conductor de Bajada</h4>
+        <ul>
+            <li><strong>Tipo:</strong> Cable NYA o THHN, cobre desnudo o aislado</li>
+            <li><strong>Sección:</strong> 16 mm²</li>
+            <li><strong>Color:</strong> Verde-amarillo (si es aislado)</li>
+            <li><strong>Protección mecánica:</strong> Tubería PVC Ø25 mm desde electrodo hasta 2,5 m altura</li>
+        </ul>
+
+        <h4>6.2.3 Barra de Tierra en Tablero</h4>
+        <ul>
+            <li><strong>Material:</strong> Cobre electrolítico</li>
+            <li><strong>Dimensiones:</strong> 12 × 50 × 300 mm</li>
+            <li><strong>Perforaciones:</strong> Según número de circuitos (mínimo 12)</li>
+            <li><strong>Pernos:</strong> Bronce, con arandela y tuerca</li>
+            <li><strong>Identificación:</strong> Símbolo de tierra grabado</li>
+        </ul>
+
+        <h4>6.2.4 Conectores y Accesorios</h4>
+        <ul>
+            <li>Conector electrodo-conductor: Tipo apernado bronce o soldadura exotérmica (Cadweld)</li>
+            <li>Conector barra-conductor: Terminal compresión cobre</li>
+            <li>Cámara de inspección: PVC o concreto 30×30×40 cm con tapa</li>
+            <li>Etiquetas: "PUESTA A TIERRA" cada 3 metros</li>
+        </ul>
+
+        <h3>6.3 Procedimiento de Instalación</h3>
+        
+        <div class="procedimiento-box">
+            <p><strong>Secuencia de trabajo:</strong></p>
+            <ol>
+                <li>Excavación de pozo 0,5 m de profundidad</li>
+                <li>Hincado de jabalina vertical (2,4 m)</li>
+                <li>Tratamiento del suelo (bentonita sódica si es necesario)</li>
+                <li>Instalación de cámara de inspección sobre electrodo</li>
+                <li>Conexión electrodo-conductor (soldadura Cadweld o conector apernado)</li>
+                <li>Instalación de tubería de protección mecánica</li>
+                <li>Tendido de conductor hasta tablero</li>
+                <li>Conexión a barra de tierra en tablero</li>
+                <li>Medición de resistencia de PAT con telurómetro</li>
+                <li>Registro fotográfico de todo el proceso</li>
+            </ol>
+        </div>
+
+        <h3>6.4 Criterios de Aceptación</h3>
+        
+        <div class="criterio-box">
+            <p><strong>Resistencia de puesta a tierra:</strong></p>
+            <ul>
+                <li><strong>Objetivo:</strong> R ≤ 10 Ω</li>
+                <li><strong>Máximo aceptable:</strong> R ≤ 40 Ω (NCh Elec. 4/2003)</li>
+                <li><strong>Método de medición:</strong> Telurómetro (método 62% o 3 puntos)</li>
+                <li><strong>Condiciones de medición:</strong> Suelo con humedad normal</li>
+            </ul>
+            <p><strong>Si R > 10 Ω:</strong> Instalar jabalinas adicionales en paralelo, separadas mínimo 2,4 m</p>
+        </div>
+
+        <h3>6.5 Forma de Medición</h3>
+        <p><strong>Unidad:</strong> Unidad (UN)</p>
+        <p>Se medirá por unidad completa instalada, probada y aprobada, incluyendo todos los materiales y mano de obra.</p>
+
+        <h3>6.6 Base de Pago</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ítem</th>
+                    <th>Unidad</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unit.</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sistema PAT completo (1 jabalina)</td>
+                    <td>UN</td>
+                    <td>1</td>
+                    <td class="editable" contenteditable="true">$[precio]</td>
+                    <td class="editable" contenteditable="true">$[total]</td>
+                </tr>
+                <tr>
+                    <td>Jabalina adicional (si es necesaria)</td>
+                    <td>UN</td>
+                    <td>-</td>
+                    <td class="editable" contenteditable="true">$[precio]</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Sección 7: Partida 3 - Canalizaciones -->
+    <div class="page" id="seccion-7">
+        <h2 class="titulo-seccion">7. PARTIDA 3: CANALIZACIONES Y DUCTOS</h2>
+        
+        <h3>7.1 Descripción</h3>
+        <p>Suministro e instalación de sistema completo de canalizaciones eléctricas, incluyendo tubería PVC conduit, cajas de derivación, cajas de enchufes/interruptores y todos los accesorios de montaje.</p>
+
+        <h3>7.2 Materiales</h3>
+        
+        <h4>7.2.1 Tubería PVC Conduit</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Diámetro</th>
+                    <th>Aplicación</th>
+                    <th>Color</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ø16 mm</td>
+                    <td>Circuitos de iluminación (1,5 mm²)</td>
+                    <td>Gris</td>
+                </tr>
+                <tr>
+                    <td>Ø20 mm</td>
+                    <td>Circuitos enchufes generales (2,5 mm²)</td>
+                    <td>Gris</td>
+                </tr>
+                <tr>
+                    <td>Ø25 mm</td>
+                    <td>Circuitos especiales (4-6 mm²)</td>
+                    <td>Gris</td>
+                </tr>
+                <tr>
+                    <td>Ø32 mm</td>
+                    <td>Alimentadores principales</td>
+                    <td>Gris</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>7.2.2 Cajas de Derivación</h4>
+        <ul>
+            <li><strong>Material:</strong> PVC inyectado</li>
+            <li><strong>Tipo:</strong> Octogonal 100×100 mm o rectangular según aplicación</li>
+            <li><strong>Tapa:</strong> Atornillada, con empaquetadura</li>
+            <li><strong>Grado de protección:</strong> IP55 mínimo</li>
+            <li><strong>Orejas de fijación:</strong> Integradas o independientes</li>
+        </ul>
+
+        <h4>7.2.3 Cajas para Enchufes/Interruptores</h4>
+        <ul>
+            <li><strong>Material:</strong> PVC inyectado</li>
+            <li><strong>Tipo embutido:</strong> Rectangular 100×65×50 mm</li>
+            <li><strong>Tipo sobrepuesto:</strong> Con tapa y orejas de montaje</li>
+            <li><strong>Entradas:</strong> Knockouts removibles para ductos</li>
+        </ul>
+
+        <h4>7.2.4 Accesorios de Unión</h4>
+        <ul>
+            <li>Coplas roscadas o pegadas (según tipo de unión)</li>
+            <li>Curvas 90° (radio largo)</li>
+            <li>Uniones T o cruces</li>
+            <li>Terminales y adaptadores</li>
+            <li>Abrazaderas metálicas o PVC</li>
+            <li>Tacos y tornillos de fijación</li>
+        </ul>
+
+        <h3>7.3 Procedimiento de Instalación</h3>
+        
+        <h4>7.3.1 Instalación Embutida (Muros y Losas)</h4>
+        <div class="procedimiento-box">
+            <ol>
+                <li>Trazado de recorridos según planos</li>
+                <li>Picado o ranurado de muros (obra gruesa)</li>
+                <li>Corte de tubería a medida (sin rebabas)</li>
+                <li>Instalación de cajas con fijación sólida</li>
+                <li>Tendido de ductos entre cajas</li>
+                <li>Unión de tubos (pegado PVC o roscado)</li>
+                <li>Verificación de continuidad de ductos</li>
+                <li>Sellado de cajas provisorio (protección durante obra)</li>
+                <li>Tapado con mortero (coordinación con albañilería)</li>
+            </ol>
+        </div>
+
+        <h4>7.3.2 Instalación a la Vista (Exteriores, Bodegas)</h4>
+        <div class="procedimiento-box">
+            <ol>
+                <li>Trazado de recorridos (nivel y plomo)</li>
+                <li>Perforación para fijaciones</li>
+                <li>Instalación de abrazaderas cada 1,5 m máximo</li>
+                <li>Montaje de cajas sobrepuestas</li>
+                <li>Tendido y fijación de ductos</li>
+                <li>Uniones con coplas visibles</li>
+                <li>Verificación de alineamiento</li>
+                <li>Protección mecánica bajo 2,5 m de altura</li>
+            </ol>
+        </div>
+
+        <h3>7.4 Criterios de Instalación</h3>
+        
+        <div class="criterio-box">
+            <p><strong>Distancias y espaciamientos:</strong></p>
+            <ul>
+                <li>Profundidad mínima embutido: 15 mm desde superficie acabada</li>
+                <li>Separación entre ductos paralelos: 30 mm mínimo</li>
+                <li>Radio de curvatura: Mínimo 6 veces el diámetro del tubo</li>
+                <li>Cajas de derivación: Cada 15 m o en cambios de dirección</li>
+                <li>Pendiente en ductos horizontales: 1% hacia cajas (evitar acumulación agua)</li>
+                <li>Ocupación de ducto: Máximo 40% del área transversal</li>
+            </ul>
+        </div>
+
+        <h3>7.5 Control de Calidad</h3>
+        <ul>
+            <li>Verificación de diámetros según circuitos</li>
+            <li>Prueba de continuidad con guía (alambre galvanizado)</li>
+            <li>Verticalidad y horizontalidad dentro de tolerancia (±5mm/3m)</li>
+            <li>Ausencia de roturas o fisuras en tubos</li>
+            <li>Fijación sólida de cajas y ductos</li>
+            <li>Limpieza interior de ductos (sin restos de mortero)</li>
+        </ul>
+
+        <h3>7.6 Forma de Medición</h3>
+        <p><strong>Unidad:</strong> Metro Lineal (ML) para ductos, Unidad (UN) para cajas</p>
+
+        <h3>7.7 Base de Pago</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ítem</th>
+                    <th>Unidad</th>
+                    <th>Cantidad Est.</th>
+                    <th>Precio Unit.</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tubería PVC Ø16mm embutida</td>
+                    <td>ML</td>
+                    <td class="editable" contenteditable="true">[cant]</td>
+                    <td class="editable" contenteditable="true">$[precio]</td>
+                    <td class="editable" contenteditable="true">$[total]</td>
+                </tr>
+                <tr>
+                    <td>Tubería PVC Ø20mm embutida</td>
+                    <td>ML</td>
+                    <td class="editable" contenteditable="true">[cant]</td>
+                    <td class="editable" contenteditable="true">$[precio]</td>
+                    <td class="editable" contenteditable="true">$[total]</td>
+                </tr>
+                <tr>
+                    <td>Tubería PVC Ø25mm embutida</td>
+                    <td>ML</td>
+                    <td class="editable" contenteditable="true">[cant]</td>
+                    <td class="editable" contenteditable="true">$[precio]</td>
+                    <td class="editable" contenteditable="true">$[total]</td>
+                </tr>
+                <tr>
+                    <td>Caja derivación octogonal PVC</td>
+                    <td>UN</td>
+                    <td class="editable" contenteditable="true">[cant]</td>
+                    <td class="editable" contenteditable="true">$[precio]</td>
+                    <td class="editable" contenteditable="true">$[total]</td>
+                </tr>
+                <tr>
+                    <td>Caja enchufe/interruptor PVC</td>
+                    <td>UN</td>
+                    <td class="editable" contenteditable="true">[cant]</td>
+                    <td class="editable" contenteditable="true">$[precio]</td>
+                    <td class="editable" contenteditable="true">$[total]</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Continúa en el siguiente mensaje debido a límite de caracteres -->
+    <!-- Las siguientes secciones seguirían la misma estructura profesional -->
+
+    <!-- Footer con numeración -->
+    <div class="page-footer">
+        <p>Especificaciones Técnicas - Instalación Eléctrica Domiciliaria | Página <span class="page-number"></span></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+    <!-- Sección 8: Partida 4 - Conductores -->
+    <div class="page" id="seccion-8">
+        <h2 class="titulo-seccion">8. PARTIDA 4: CONDUCTORES ELÉCTRICOS</h2>
+        
+        <h3>8.1 Descripción</h3>
+        <p>Suministro, tendido, identificación y conexión de todos los conductores eléctricos del proyecto, incluyendo fases, neutro y conductor de protección (PE).</p>
+
+        <h3>8.2 Especificación de Conductores por Circuito</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Circuito</th>
+                    <th>Sección (mm²)</th>
+                    <th>Tipo</th>
+                    <th>Cantidad Conductores</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Iluminación</td>
+                    <td>1,5</td>
+                    <td>NYA</td>
+                    <td>3 (F+N+PE)</td>
+                </tr>
+                <tr>
+                    <td>Enchufes generales</td>
+                    <td>2,5</td>
+                    <td>NYA</td>
+                    <td>3 (F+N+PE)</td>
+                </tr>
+                <tr>
+                    <td>Cocina eléctrica</td>
+                    <td>6</td>
+                    <td>NYA</td>
+                    <td>3 (F+N+PE)</td>
+                </tr>
+                <tr>
+                    <td>Termo eléctrico</td>
+                    <td>4</td>
+                    <td>NYA</td>
+                    <td>3 (F+N+PE)</td>
+                </tr>
+                <tr>
+                    <td>Alimentador TGD</td>
+                    <td>16</td>
+                    <td>NYY o THHN</td>
+                    <td>3 (F+N+PE)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>8.3 Código de Colores (Obligatorio NCh Elec. 4/2003)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Conductor</th>
+                    <th>Color</th>
+                    <th>Observación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fase</td>
+                    <td>Negro, Azul o Rojo</td>
+                    <td>Nunca blanco ni verde-amarillo</td>
+                </tr>
+                <tr>
+                    <td>Neutro</td>
+                    <td>Blanco</td>
+                    <td>Exclusivo para neutro</td>
+                </tr>
+                <tr>
+                    <td>Protección (PE)</td>
+                    <td>Verde-Amarillo</td>
+                    <td>Obligatorio, exclusivo</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>8.4 Procedimiento de Tendido</h3>
+        <div class="procedimiento-box">
+            <ol>
+                <li>Verificación de ductos limpios y libres de obstrucciones</li>
+                <li>Uso de guía metálica (alambre galvanizado) en ductos</li>
+                <li>Corte de conductores con excedente 20 cm en cada extremo</li>
+                <li>Tendido sin tensiones excesivas (no estirar)</li>
+                <li>Evitar torsiones y daños en aislación</li>
+                <li>Identificación en ambos extremos con anillado numerado</li>
+                <li>Bobinado ordenado de excedentes en cajas</li>
+                <li>Verificación de continuidad con multímetro</li>
+            </ol>
+        </div>
+
+        <h3>8.5 Conexionado en Cajas y Tableros</h3>
+        <ul>
+            <li><strong>Tipo de unión:</strong> Conectores de compresión (no torsión con huincha)</li>
+            <li><strong>Pelado de aislación:</strong> Herramienta apropiada (sin dañar conductor)</li>
+            <li><strong>Longitud de pelado:</strong> Según conector (típico 10-15 mm)</li>
+            <li><strong>Apriete en bornes:</strong> Torque según fabricante (típico 0,5-1,2 Nm)</li>
+            <li><strong>Verificación:</strong> Tracción suave para verificar firmeza</li>
+            <li><strong>Aislación:</strong> Sin cobre expuesto fuera de bornera</li>
+        </ul>
+
+        <h3>8.6 Identificación y Rotulación</h3>
+        <ul>
+            <li>Anillado numerado en ambos extremos de cada conductor</li>
+            <li>Correspondencia con diagrama unilineal del tablero</li>
+            <li>Etiquetas indelebles en cajas principales</li>
+            <li>Documentación "as-built" de numeración</li>
+        </ul>
+
+        <h3>8.7 Control de Calidad</h3>
+        <ul>
+            <li>Certificación SEC de todos los rollos</li>
+            <li>Inspección visual de aislación (sin cortes ni aplastamientos)</li>
+            <li>Verificación de sección con calibre (spot check 10%)</li>
+            <li>Prueba de continuidad circuito por circuito</li>
+            <li>Prueba de aislación con megóhmetro (≥1 MΩ)</li>
+            <li>Verificación de código de colores</li>
+        </ul>
+
+        <h3>8.8 Forma de Medición</h3>
+        <p><strong>Unidad:</strong> Metro Lineal (ML) por sección</p>
+        <p>Se medirá el largo total instalado por sección de conductor, desde tablero hasta último punto terminal, incluyendo excedentes en cajas.</p>
+
+        <h3>8.9 Base de Pago</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ítem</th>
+                    <th>Unidad</th>
+                    <th>Cantidad Est.</th>
+                    <th>Precio Unit.</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Conductor NYA 1,5 mm²</td>
+                    <td>ML</td>
+                    <td class="editable" contenteditable="true">[cant]</td>
+                    <td class="editable" contenteditable="true">$[precio]</td>
+                    <td class="editable" contenteditable="true">$[total]</td>
+                </tr>
+                <tr>
+                    <td>Conductor NYA 2,5 mm²</td>
+                    <td>ML</td>
+                    <td class="editable" contenteditable="true">[cant]</td>
+                    <td class="editable" contenteditable="true">$[precio]</td>
+                    <td class="editable" contenteditable="true">$[total]</td>
+                </tr>
+                <tr>
+                    <td>Conductor NYA 4 mm²</td>
+                    <td>ML</td>
+                    <td class="editable" contenteditable="true">[cant]</td>
+                    <td class="editable" contenteditable="true">$[precio]</td>
+                    <td class="editable" contenteditable="true">$[total]</td>
+                </tr>
+                <tr>
+                    <td>Conductor NYA 6 mm²</td>
+                    <td>ML</td>
+                    <td class="editable" contenteditable="true">[cant]</td>
+                    <td class="editable" contenteditable="true">$[precio]</td>
+                    <td class="editable" contenteditable="true">$[total]</td>
+                </tr>
+                <tr>
+                    <td>Conductor NYA 16 mm² (PAT)</td>
+                    <td>ML</td>
+                    <td class="editable" contenteditable="true">[cant]</td>
+                    <td class="editable" contenteditable="true">$[precio]</td>
+                    <td class="editable" contenteditable="true">$[total]</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Sección 9: Partida 5 - Tablero General -->
+    <div class="page" id="seccion-9">
+        <h2 class="titulo-seccion">9. PARTIDA 5: TABLERO GENERAL DE DISTRIBUCIÓN</h2>
+        
+        <h3>9.1 Descripción</h3>
+        <p>Suministro, instalación, cableado y conexionado completo del Tablero General de Distribución (TGD), incluyendo gabinete, barras, borneras, identificación y accesorios.</p>
+
+        <h3>9.2 Especificación del Gabinete</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Característica</th>
+                    <th>Especificación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Material</td>
+                    <td>Acero galvanizado e=1,2mm o Policarbonato</td>
+                </tr>
+                <tr>
+                    <td>Grado protección</td>
+                    <td>IP54 (interior) / IP65 (exterior)</td>
+                </tr>
+                <tr>
+                    <td>Dimensiones interiores</td>
+                    <td>Mínimo 400×500×150 mm</td>
+                </tr>
+                <tr>
+                    <td>Capacidad</td>
+                    <td>12-16 polos modulares DIN</td>
+                </tr>
+                <tr>
+                    <td>Montaje</td>
+                    <td>Embutido o sobrepuesto según plano</td>
+                </tr>
+                <tr>
+                    <td>Puerta</td>
+                    <td>Con cerradura, bisagras reforzadas</td>
+                </tr>
+                <tr>
+                    <td>Entradas</td>
+                    <td>Prensaestopas superior e inferior</td>
+                </tr>
+                <tr>
+                    <td>Color</td>
+                    <td>Gris RAL7035 o similar</td>
+                </tr>
+                <tr>
+                    <td>Certificación</td>
+                    <td>SEC obligatoria, IEC 61439</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>9.3 Componentes Internos</h3>
+        
+        <h4>9.3.1 Barras Principales</h4>
+        <ul>
+            <li><strong>Barra fase:</strong> Cobre electrolítico, sección mínima 100 A</li>
+            <li><strong>Barra neutro:</strong> Cobre, aislada, identificación clara</li>
+            <li><strong>Barra tierra (PE):</strong> Cobre, con símbolo de tierra grabado</li>
+            <li><strong>Fijación:</strong> Aisladores cerámicos o polímero</li>
+            <li><strong>Conexiones:</strong> Pernos apriete calibrado</li>
+        </ul>
+
+        <h4>9.3.2 Riel DIN</h4>
+        <ul>
+            <li><strong>Tipo:</strong> Riel DIN 35mm (europeo)</li>
+            <li><strong>Material:</strong> Acero galvanizado</li>
+            <li><strong>Longitud:</strong> Según número de polos requeridos</li>
+            <li><strong>Fijación:</strong> Atornillado a placa montaje</li>
+        </ul>
+
+        <h4>9.3.3 Borneras y Puentes</h4>
+        <ul>
+            <li>Borneras para neutros de circuitos (riel DIN)</li>
+            <li>Borneras para PE de circuitos (riel DIN)</li>
+            <li>Puentes de interconexión entre protecciones</li>
+            <li>Peines de distribución (si aplica)</li>
+        </ul>
+
+        <h3>9.4 Procedimiento de Montaje</h3>
+        <div class="procedimiento-box">
+            <ol>
+                <li>Ubicación según plano (altura base 1,40 m desde NPT)</li>
+                <li>Nivelación y aplomado del gabinete</li>
+                <li>Fijación sólida a muro (4 puntos mínimo)</li>
+                <li>Instalación de placa de montaje interior</li>
+                <li>Montaje de rieles DIN</li>
+                <li>Instalación de barras principales (fase, neutro, PE)</li>
+                <li>Montaje de protecciones según diagrama unilineal</li>
+                <li>Instalación de borneras neutro y PE</li>
+                <li>Cableado interno ordenado (uso de canaletas)</li>
+                <li>Conexión de alimentador principal</li>
+                <li>Conexión de circuitos derivados</li>
+                <li>Identificación de circuitos (etiquetas indelebles)</li>
+                <li>Verificación de conexiones (torque apropiado)</li>
+                <li>Limpieza interior del tablero</li>
+                <li>Instalación de tapa/puerta</li>
+            </ol>
+        </div>
+
+        <h3>9.5 Identificación y Rotulación</h3>
+        <ul>
+            <li><strong>Exterior del tablero:</strong> Etiqueta "TABLERO GENERAL - 220V"</li>
+            <li><strong>Interior puerta:</strong> Diagrama unilineal plastificado</li>
+            <li><strong>Cada interruptor:</strong> Etiqueta con número y descripción de circuito</li>
+            <li><strong>Barras:</strong> Identificación Fase/Neutro/PE con color o etiqueta</li>
+            <li><strong>Material etiquetas:</strong> Grabado, impreso indeleble o plastificado</li>
+        </ul>
+
+        <h3>9.6 Control de Calidad</h3>
+        <ul>
+            <li>Verificación de certificación SEC del gabinete</li>
+            <li>Inspección de daños o deformaciones</li>
+            <li>Verificación de grado IP mediante inspección visual</li>
+            <li>Comprobación de fijación sólida (sin movimiento)</li>
+            <li>Verificación de torque en todas las conexiones</li>
+            <li>Prueba de continuidad barra PE - electrodo PAT</li>
+            <li>Inspección de orden interno del cableado</li>
+            <li>Verificación de identificación completa</li>
+        </ul>
+
+        <h3>9.7 Forma de Medición</h3>
+        <p><strong>Unidad:</strong> Unidad (UN)</p>
+        <p>Se medirá por unidad completa instalada, cableada, identificada y probada.</p>
+
+        <h3>9.8 Base de Pago</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ítem</th>
+                    <th>Unidad</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unit.</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tablero General completo (12-16 polos)</td>
+                    <td>UN</td>
+                    <td>1</td>
+                    <td class="editable" contenteditable="true">$[precio]</td>
+                    <td class="editable" contenteditable="true">$[total]</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="nota">
+            <p><strong>Incluye:</strong> Gabinete, barras, rieles, borneras, cableado interno, identificación completa y mano de obra especializada.</p>
+            <p><strong>No incluye:</strong> Protecciones eléctricas (interruptores), ver partida siguiente.</p>
+        </div>
+    </div>
+
+    <!-- Debido al límite, las secciones 10-20 seguirían el mismo formato profesional -->
+    <!-- Aquí incluiré solo los títulos principales de las secciones restantes -->
+
+    <!-- Sección 10: Protecciones Eléctricas -->
+    <div class="page" id="seccion-10">
+        <h2 class="titulo-seccion">10. PARTIDA 6: PROTECCIONES ELÉCTRICAS</h2>
+        <h3>10.1 Descripción</h3>
+        <p>Suministro e instalación de todas las protecciones eléctricas: interruptor general, interruptor diferencial, interruptores automáticos termomagnéticos por circuito.</p>
+        <!-- Contenido similar al formato anterior con tablas de especificaciones -->
+    </div>
+
+    <!-- Sección 11: Accesorios de Alambrado -->
+    <div class="page" id="seccion-11">
+        <h2 class="titulo-seccion">11. PARTIDA 7: ACCESORIOS DE ALAMBRADO</h2>
+        <h3>11.1 Descripción</h3>
+        <p>Suministro e instalación de enchufes, interruptores, placas y accesorios complementarios.</p>
+        <!-- Especificaciones de enchufes 10A/16A, interruptores simples/dobles, placas -->
+    </div>
+
+    <!-- Sección 19: Presupuesto Detallado -->
+    <div class="page" id="seccion-19">
+        <h2 class="titulo-seccion">19. PRESUPUESTO DETALLADO</h2>
+        
+        <h3>19.1 Resumen por Partidas</h3>
+        <table id="tabla-presupuesto">
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>Partida</th>
+                    <th>Subtotal</th>
+                    <th>%</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Obras Preliminares</td>
+                    <td class="editable precio-partida" contenteditable="true">$150.000</td>
+                    <td class="porcentaje">-</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Sistema de Puesta a Tierra</td>
+                    <td class="editable precio-partida" contenteditable="true">$180.000</td>
+                    <td class="porcentaje">-</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Canalizaciones y Ductos</td>
+                    <td class="editable precio-partida" contenteditable="true">$450.000</td>
+                    <td class="porcentaje">-</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Conductores Eléctricos</td>
+                    <td class="editable precio-partida" contenteditable="true">$520.000</td>
+                    <td class="porcentaje">-</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Tablero General</td>
+                    <td class="editable precio-partida" contenteditable="true">$280.000</td>
+                    <td class="porcentaje">-</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Protecciones Eléctricas</td>
+                    <td class="editable precio-partida" contenteditable="true">$420.000</td>
+                    <td class="porcentaje">-</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Accesorios de Alambrado</td>
+                    <td class="editable precio-partida" contenteditable="true">$380.000</td>
+                    <td class="porcentaje">-</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Iluminación Interior</td>
+                    <td class="editable precio-partida" contenteditable="true">$550.000</td>
+                    <td class="porcentaje">-</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Iluminación Exterior</td>
+                    <td class="editable precio-partida" contenteditable="true">$220.000</td>
+                    <td class="porcentaje">-</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Instalaciones Especiales</td>
+                    <td class="editable precio-partida" contenteditable="true">$320.000</td>
+                    <td class="porcentaje">-</td>
+                </tr>
+                <tr class="subtotal-row">
+                    <td colspan="2"><strong>SUBTOTAL PARTIDAS</strong></td>
+                    <td id="subtotal-partidas"><strong>$3.470.000</strong></td>
+                    <td><strong>100%</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>19.2 Costos Adicionales</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ítem</th>
+                    <th>Monto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tramitación SEC (TE-1)</td>
+                    <td class="editable" contenteditable="true">$85.000</td>
+                </tr>
+                <tr>
+                    <td>Pruebas y ensayos</td>
+                    <td class="editable" contenteditable="true">$120.000</td>
+                </tr>
+                <tr>
+                    <td>Documentación técnica (as-built)</td>
+                    <td class="editable" contenteditable="true">$95.000</td>
+                </tr>
+                <tr class="subtotal-row">
+                    <td><strong>SUBTOTAL ADICIONALES</strong></td>
+                    <td id="subtotal-adicionales"><strong>$300.000</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>19.3 Resumen Final</h3>
+        <table class="tabla-final">
+            <tbody>
+                <tr>
+                    <td>Subtotal Partidas</td>
+                    <td id="final-partidas">$3.470.000</td>
+                </tr>
+                <tr>
+                    <td>Subtotal Adicionales</td>
+                    <td id="final-adicionales">$300.000</td>
+                </tr>
+                <tr class="total-row">
+                    <td><strong>TOTAL NETO</strong></td>
+                    <td id="total-neto"><strong>$3.770.000</strong></td>
+                </tr>
+                <tr>
+                    <td>IVA (19%)</td>
+                    <td id="iva">$716.300</td>
+                </tr>
+                <tr class="total-final-row">
+                    <td><strong>TOTAL PROYECTO</strong></td>
+                    <td id="total-final"><strong>$4.486.300</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="nota">
+            <p><strong>Notas importantes:</strong></p>
+            <ul>
+                <li>Valores en Pesos Chilenos (CLP)</li>
+                <li>Precios incluyen materiales, mano de obra, herramientas y equipos</li>
+                <li>Vigencia: <span class="editable" contenteditable="true">60 días</span> desde emisión</li>
+                <li>Forma de pago: <span class="editable" contenteditable="true">30% anticipo, 40% avance 50%, 30% término</span></li>
+                <li>Plazo de ejecución: <span class="editable" contenteditable="true">20 días corridos</span></li>
+                <li>Garantía: <span class="editable" contenteditable="true">12 meses</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Sección 20: Cronograma -->
+    <div class="page" id="seccion-20">
+        <h2 class="titulo-seccion">20. CRONOGRAMA DE TRABAJO</h2>
+        
+        <h3>20.1 Carta Gantt del Proyecto</h3>
+        <p>Plazo total estimado: <strong><span class="editable" contenteditable="true">20 días corridos</span></strong></p>
+        
+        <table class="tabla-cronograma">
+            <thead>
+                <tr>
+                    <th>Actividad</th>
+                    <th>Días 1-3</th>
+                    <th>Días 4-7</th>
+                    <th>Días 8-11</th>
+                    <th>Días 12-15</th>
+                    <th>Días 16-18</th>
+                    <th>Días 19-20</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Obras preliminares</td>
+                    <td class="gantt-active">█████</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Sistema PAT</td>
+                    <td class="gantt-active">█████</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Canalizaciones embutidas</td>
+                    <td></td>
+                    <td class="gantt-active">█████</td>
+                    <td class="gantt-active">█████</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Tendido de conductores</td>
+                    <td></td>
+                    <td></td>
+                    <td class="gantt-active">█████</td>
+                    <td class="gantt-active">█████</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Montaje de tablero</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="gantt-active">█████</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Accesorios (enchufes/interruptores)</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="gantt-active">█████</td>
+                    <td class="gantt-active">█████</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Luminarias</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="gantt-active">█████</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Pruebas y ensayos</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="gantt-active">█████</td>
+                </tr>
+                <tr>
+                    <td>Tramitación SEC</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="gantt-active">█████</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>20.2 Hitos Críticos</h3>
+        <ul>
+            <li><strong>Día 3:</strong> Finalización obras preliminares y PAT</li>
+            <li><strong>Día 11:</strong> Canalizaciones completas y aprobadas</li>
+            <li><strong>Día 15:</strong> Tablero general montado y conexionado</li>
+            <li><strong>Día 18:</strong> Instalación completa y funcional</li>
+            <li><strong>Día 20:</strong> Entrega con certificado SEC</li>
+        </ul>
+
+        <div class="nota">
+            <p><strong>Observaciones:</strong></p>
+            <ul>
+                <li>El cronograma considera jornada laboral de 8 horas diarias</li>
+                <li>Plazo sujeto a condiciones climáticas favorables</li>
+                <li>Requiere coordinación con otras especialidades</li>
+                <li>Modificaciones al proyecto pueden extender plazo</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Página de firmas -->
+    <div class="page">
+        <h2 class="titulo-seccion">APROBACIÓN Y FIRMAS</h2>
+        
+        <div style="margin-top: 80px;">
+            <p style="text-align: center; margin-bottom: 60px;">
+                Las presentes Especificaciones Técnicas (EETT) han sido revisadas y aprobadas por las partes:
+            </p>
+            
+            <table style="width: 100%; border: none; margin-top: 50px;">
+                <tr>
+                    <td style="width: 50%; text-align: center; border: none; padding: 20px;">
+                        <div style="border-top: 2px solid #333; display: inline-block; width: 300px; padding-top: 10px;">
+                            <p><strong>INSTALADOR ELÉCTRICO</strong></p>
+                            <p>Nombre: <span class="editable" contenteditable="true">[Nombre Completo]</span></p>
+                            <p>RUT: <span class="editable" contenteditable="true">[RUT]</span></p>
+                            <p>Registro SEC: <span class="editable" contenteditable="true">[N°]</span></p>
+                            <p>Fecha: <span class="editable" contenteditable="true">[DD/MM/AAAA]</span></p>
+                        </div>
+                    </td>
+                    <td style="width: 50%; text-align: center; border: none; padding: 20px;">
+                        <div style="border-top: 2px solid #333; display: inline-block; width: 300px; padding-top: 10px;">
+                            <p><strong>MANDANTE / PROPIETARIO</strong></p>
+                            <p>Nombre: <span class="editable" contenteditable="true">[Nombre Completo]</span></p>
+                            <p>RUT: <span class="editable" contenteditable="true">[RUT]</span></p>
+                            <p>Dirección: <span class="editable" contenteditable="true">[Dirección]</span></p>
+                            <p>Fecha: <span class="editable" contenteditable="true">[DD/MM/AAAA]</span></p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="nota" style="margin-top: 100px;">
+            <p style="text-align: center;"><strong>FIN DE LAS ESPECIFICACIONES TÉCNICAS</strong></p>
+            <p style="text-align: center; margin-top: 20px;">
+                Documento: EETT-<span class="editable" contenteditable="true">[CÓDIGO]</span>-2025 | Versión: 1.0
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

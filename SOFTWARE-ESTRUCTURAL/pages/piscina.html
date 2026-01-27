@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño de Piscina</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/piscina.css">
+    <link rel="stylesheet" href="../css/cortes.css">
+</head>
+<body>
+    <header>
+        <h1>Diseño de Piscina de Hormigón Armado</h1>
+        <p>Cálculo de Muros y Fondo con Presión Hidrostática</p>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="back-button">← Volver al Menú</a>
+        
+        <div class="content-wrapper">
+            <div class="input-section">
+                <h2>📝 Datos de Entrada</h2>
+                
+                <div class="form-group">
+                    <label>Largo de Piscina (L):</label>
+                    <input type="number" id="largo" value="10.0" step="0.5">
+                    <small>m</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Ancho de Piscina (A):</label>
+                    <input type="number" id="ancho" value="5.0" step="0.5">
+                    <small>m</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Profundidad Máxima (H):</label>
+                    <input type="number" id="profundidad" value="2.0" step="0.1">
+                    <small>m</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Espesor de Muros:</label>
+                    <input type="number" id="espesorMuro" value="0.20" step="0.05">
+                    <small>m (mínimo 20 cm)</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Espesor de Fondo:</label>
+                    <input type="number" id="espesorFondo" value="0.25" step="0.05">
+                    <small>m</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Resistencia del Hormigón (f'c):</label>
+                    <select id="fc">
+                        <option value="25" selected>H25 (25 MPa)</option>
+                        <option value="30">H30 (30 MPa)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Acero de Refuerzo (fy):</label>
+                    <select id="fy">
+                        <option value="420" selected>A63-42H (420 MPa)</option>
+                    </select>
+                </div>
+                
+                <button class="btn-calculate" onclick="calcularPiscina()">
+                    🔨 Calcular Piscina
+                </button>
+            </div>
+            
+            <div class="output-section">
+                <h2>📊 Resultados del Diseño</h2>
+                <div class="vista-controles">
+                    <button class="btn-vista active" id="btn3d" onclick="cambiarVista('3d')">
+                        🔷 Vista 3D
+                    </button>
+                    <button class="btn-vista" id="btnCorteA" onclick="cambiarVista('corteA')">
+                        ✂️ Corte A-A
+                    </button>
+                    <button class="btn-vista" id="btnCorteB" onclick="cambiarVista('corteB')">
+                        ✂️ Corte B-B
+                    </button>
+                    <button class="btn-vista" id="btnAcero" onclick="cambiarVista('acero')">
+                        🔧 Solo Acero
+                    </button>
+                </div>
+                <div class="vista-container">
+                    <div id="canvas3d" class="active"></div>
+                    <canvas id="canvasCorteA" width="800" height="600"></canvas>
+                    <canvas id="canvasCorteB" width="800" height="600"></canvas>
+                    <div id="canvasAcero"></div>
+                </div>
+                <div class="results" id="resultados">
+                    <p style="text-align: center; color: #7f8c8d; padding: 2rem;">
+                        Ingrese los datos y presione "Calcular" para ver los resultados
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 - Software de Cálculos Estructurales Chile</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="../js/utils/normativa-chile.js"></script>
+    <script src="../js/utils/calculos-comunes.js"></script>
+    <script src="../js/utils/three-config.js"></script>
+    <script src="../js/utils/acero-cuantificacion.js"></script>
+    <script src="../js/utils/cortes-detalle.js"></script>
+    <script src="../js/cortes-piscina.js"></script>
+    <script src="../js/piscina.js"></script>
+</body>
+</html>

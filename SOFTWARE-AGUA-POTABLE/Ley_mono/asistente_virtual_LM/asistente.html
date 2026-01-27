@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente Virtual - Ley del Mono</title>
+    <link rel="stylesheet" href="asistente-base.css">
+    <link rel="stylesheet" href="asistente-header.css">
+    <link rel="stylesheet" href="asistente-tabs.css">
+    <link rel="stylesheet" href="asistente-chat.css">
+    <link rel="stylesheet" href="asistente-faq.css">
+    <link rel="stylesheet" href="asistente-formularios.css">
+    <link rel="stylesheet" href="asistente-modal.css">
+    <link rel="stylesheet" href="asistente-responsive.css">
+</head>
+<body>
+    <div class="asistente-container">
+        <!-- HEADER -->
+        <div class="asistente-header">
+            <div class="header-avatar">
+                <div class="avatar-icon">🤖</div>
+                <div class="status-indicator"></div>
+            </div>
+            <div class="header-info">
+                <h1 class="header-title">Asistente Virtual</h1>
+                <p class="header-subtitle">Ley del Mono 20.898</p>
+            </div>
+            <button class="btn-info" id="btnInfo" title="Información del asistente">ℹ️</button>
+        </div>
+
+        <!-- TABS -->
+        <div class="asistente-tabs">
+            <button class="tab-btn active" id="tabChat" onclick="cambiarTab('chat')">
+                💬 Chat Interactivo
+            </button>
+            <button class="tab-btn" id="tabFaq" onclick="cambiarTab('faq')">
+                📚 Todas las Preguntas (85)
+            </button>
+            <button class="tab-btn" id="tabFormularios" onclick="cambiarTab('formularios')">
+                📄 Formularios Regularización Ley N°20.898
+            </button>
+        </div>
+
+        <!-- TAB CONTENT: CHAT -->
+        <div id="chatTabContent" class="tab-content active">
+            <!-- CHAT CONTAINER -->
+            <div class="chat-container" id="chatContainer">
+                <!-- Mensaje de bienvenida -->
+                <div class="message bot-message">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                            <strong>👋 ¡Hola! Soy tu asistente virtual de la Ley del Mono</strong><br><br>
+                            Tengo <strong>85 preguntas y respuestas</strong> listas para ti:<br>
+                            • Requisitos de regularización<br>
+                            • Plazos y vigencia<br>
+                            • Documentos necesarios<br>
+                            • Beneficios y descuentos<br>
+                            • Proceso paso a paso<br><br>
+                            💡 <strong>Cambia a la pestaña "Todas las Preguntas"</strong> para ver el listado completo.
+                        </div>
+                        <div class="message-time">Ahora</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PREGUNTAS SUGERIDAS -->
+            <div class="suggestions-container" id="suggestionsContainer">
+                <div class="suggestions-title">💡 Preguntas populares:</div>
+                <div class="suggestions-scroll" id="suggestionsScroll">
+                    <!-- Las sugerencias se cargan dinámicamente -->
+                </div>
+            </div>
+
+            <!-- INPUT AREA -->
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <textarea 
+                        id="userInput" 
+                        class="user-input" 
+                        placeholder="Escribe tu pregunta aquí..."
+                        rows="1"
+                    ></textarea>
+                    <button class="btn-send" id="btnSend" title="Enviar mensaje">
+                        <span class="send-icon">📤</span>
+                    </button>
+                </div>
+                <div class="input-hint">
+                    Presiona Enter para enviar, Shift+Enter para nueva línea
+                </div>
+            </div>
+
+            <!-- TYPING INDICATOR -->
+            <div class="typing-indicator" id="typingIndicator" style="display: none;">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+        </div>
+
+        <!-- TAB CONTENT: FAQ -->
+        <div id="faqTabContent" class="tab-content">
+            <!-- CONTROLES FAQ -->
+            <div class="faq-controles">
+                <!-- Buscador -->
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input 
+                        type="text" 
+                        id="searchFaq" 
+                        class="search-input"
+                        placeholder="Buscar pregunta o palabra clave..."
+                    >
+                    <button id="btnClearSearchFaq" class="btn-clear-search" style="display: none;">✕</button>
+                </div>
+
+                <!-- Filtros de Categorías -->
+                <div class="categorias-filtros">
+                    <div class="categorias-titulo">Filtrar por categoría:</div>
+                    <div class="categorias-buttons" id="categoriasButtonsFaq">
+                        <!-- Se generan dinámicamente -->
+                    </div>
+                </div>
+
+                <!-- Ordenamiento -->
+                <div class="orden-control">
+                    <label for="ordenSelectFaq">Ordenar por:</label>
+                    <select id="ordenSelectFaq" class="orden-select">
+                        <option value="alfabetico">A - Z (Alfabético)</option>
+                        <option value="categoria">Por Categoría</option>
+                        <option value="id">Por Número (1-85)</option>
+                    </select>
+                </div>
+
+                <!-- Contador -->
+                <div class="resultados-contador" id="contadorResultadosFaq">
+                    Mostrando 85 de 85 preguntas
+                </div>
+
+                <!-- Botones de Acción -->
+                <div class="acciones-rapidas">
+                    <button id="btnExpandirTodoFaq" class="btn-accion">📖 Expandir Todo</button>
+                    <button id="btnColapsarTodoFaq" class="btn-accion">📕 Colapsar Todo</button>
+                </div>
+            </div>
+
+            <!-- LISTA DE PREGUNTAS (FAQ ACORDEÓN) -->
+            <div class="faq-lista" id="faqLista">
+                <!-- Las preguntas se generan dinámicamente -->
+            </div>
+
+            <!-- Sin resultados -->
+            <div class="no-results" id="noResultsFaq" style="display: none;">
+                <div class="no-results-icon">🔍</div>
+                <h3>No se encontraron resultados</h3>
+                <p>Intenta con otras palabras clave o selecciona una categoría diferente</p>
+                <button id="btnResetBusquedaFaq" class="btn-reset">Limpiar búsqueda</button>
+            </div>
+        </div>
+
+        <!-- TAB CONTENT: FORMULARIOS -->
+        <div id="formulariosTabContent" class="tab-content">
+            <div class="formularios-container">
+                <div class="formularios-header">
+                    <h2>📄 Formularios Oficiales de Regularización</h2>
+                    <p>Descarga los formularios oficiales del MINVU para la Ley N°20.898</p>
+                </div>
+
+                <div class="formularios-lista">
+                    <!-- Formulario 12.1 -->
+                    <a href="https://www.minvu.gob.cl/wp-content/uploads/2019/07/Formulario-12.1-Ley-20.898-Titulo-I-art.-1%C2%B0.pdf" target="_blank" class="formulario-item">
+                        <div class="formulario-numero">12.1</div>
+                        <div class="formulario-info">
+                            <h3>Formulario 12.1</h3>
+                            <p>Ley 20.898 - Título I Art. 1°</p>
+                        </div>
+                        <div class="formulario-icon">📥</div>
+                    </a>
+
+                    <!-- Formulario 12.2 -->
+                    <a href="https://www.minvu.gob.cl/wp-content/uploads/2019/07/Formulario-12.2-Ley-20.898-Titulo-I-Art.-1%C2%B0.pdf" target="_blank" class="formulario-item">
+                        <div class="formulario-numero">12.2</div>
+                        <div class="formulario-info">
+                            <h3>Formulario 12.2</h3>
+                            <p>Ley 20.898 - Título I Art. 1°</p>
+                        </div>
+                        <div class="formulario-icon">📥</div>
+                    </a>
+
+                    <!-- Formulario 12.3 -->
+                    <a href="https://www.minvu.gob.cl/wp-content/uploads/2019/07/Formulario-12.3-Ley-20.898-Titulo-I-Art.-1%C2%B0.pdf" target="_blank" class="formulario-item">
+                        <div class="formulario-numero">12.3</div>
+                        <div class="formulario-info">
+                            <h3>Formulario 12.3</h3>
+                            <p>Ley 20.898 - Título I Art. 1°</p>
+                        </div>
+                        <div class="formulario-icon">📥</div>
+                    </a>
+
+                    <!-- Formulario 12.4 -->
+                    <a href="https://www.minvu.gob.cl/wp-content/uploads/2019/07/Formulario-12.4-Ley-20.898-Titulo-I-Art.-3%C2%B0.pdf" target="_blank" class="formulario-item">
+                        <div class="formulario-numero">12.4</div>
+                        <div class="formulario-info">
+                            <h3>Formulario 12.4</h3>
+                            <p>Ley 20.898 - Título I Art. 3°</p>
+                        </div>
+                        <div class="formulario-icon">📥</div>
+                    </a>
+
+                    <!-- Formulario 12.5 -->
+                    <a href="https://www.minvu.gob.cl/wp-content/uploads/2019/07/Formulario-12.5-Ley-20.898-Titulo-I-Art.-3%C2%B0.pdf" target="_blank" class="formulario-item">
+                        <div class="formulario-numero">12.5</div>
+                        <div class="formulario-info">
+                            <h3>Formulario 12.5</h3>
+                            <p>Ley 20.898 - Título I Art. 3°</p>
+                        </div>
+                        <div class="formulario-icon">📥</div>
+                    </a>
+
+                    <!-- Formulario 12.6 -->
+                    <a href="https://www.minvu.gob.cl/wp-content/uploads/2019/07/Formulario-12.6-Ley-20.898-Titulo-II.pdf" target="_blank" class="formulario-item">
+                        <div class="formulario-numero">12.6</div>
+                        <div class="formulario-info">
+                            <h3>Formulario 12.6</h3>
+                            <p>Ley 20.898 - Título II</p>
+                        </div>
+                        <div class="formulario-icon">📥</div>
+                    </a>
+
+                    <!-- Formulario 12.7 -->
+                    <a href="https://www.minvu.gob.cl/wp-content/uploads/2019/07/Formulario-12.7-Ley-20.898-Titulo-II.pdf" target="_blank" class="formulario-item">
+                        <div class="formulario-numero">12.7</div>
+                        <div class="formulario-info">
+                            <h3>Formulario 12.7</h3>
+                            <p>Ley 20.898 - Título II</p>
+                        </div>
+                        <div class="formulario-icon">📥</div>
+                    </a>
+
+                    <!-- Formulario 12.9 -->
+                    <a href="https://www.minvu.gob.cl/wp-content/uploads/2019/07/12.9-Certificado-Regularizacion-o-Recepcion-Titulo-III-Vivienda-con-Subsidio.pdf" target="_blank" class="formulario-item">
+                        <div class="formulario-numero">12.9</div>
+                        <div class="formulario-info">
+                            <h3>Formulario 12.9</h3>
+                            <p>Certificado Regularización - Título III (Vivienda con Subsidio)</p>
+                        </div>
+                        <div class="formulario-icon">📥</div>
+                    </a>
+                </div>
+
+                <div class="formularios-footer">
+                    <p>ℹ️ Los formularios se abrirán en una nueva pestaña y podrás descargarlos directamente desde el sitio oficial del MINVU.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL INFO -->
+    <div class="modal-overlay" id="modalOverlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>ℹ️ Información del Asistente</h2>
+                <button class="modal-close" id="modalClose">✕</button>
+            </div>
+            <div class="modal-body">
+                <h3>🤖 Dos formas de obtener ayuda:</h3>
+                <p><strong>1. Chat Interactivo:</strong> Pregunta directamente y el asistente buscará la mejor respuesta.</p>
+                <p><strong>2. Todas las Preguntas:</strong> Explora las 85 preguntas organizadas, con buscador y filtros.</p>
+                
+                <h3>📚 Contenido disponible:</h3>
+                <ul>
+                    <li>85 preguntas y respuestas completas</li>
+                    <li>12 categorías diferentes</li>
+                    <li>Búsqueda inteligente</li>
+                    <li>3 tipos de ordenamiento</li>
+                </ul>
+
+                <h3>📊 Categorías:</h3>
+                <p>Requisitos, Habitabilidad, Incendios, Estabilidad, Proceso, Documentos, Costos, Casos Especiales, Técnico, General, Plazos, Beneficios</p>
+
+                <h3>⚠️ Importante:</h3>
+                <p>Este asistente proporciona información general. Para casos específicos, consulta con un profesional o la DOM de tu municipalidad.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="preguntas-respuestas-ACTUALIZADO.json" type="application/json"></script>
+    <script src="asistente.js"></script>
+</body>
+</html>

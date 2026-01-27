@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuadro de Cargas de Alumbrado</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background: #f5f5f5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        .titulo {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .tabla-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            min-width: 1400px;
+            border-collapse: collapse;
+            border: 3px solid black;
+        }
+
+        th, td {
+            border: 2px solid black;
+            padding: 12px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        th {
+            background: #f0f0f0;
+            font-weight: bold;
+        }
+
+        .header-principal {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .columna-tda {
+            font-style: italic;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .columna-ubicacion {
+            background: #f9f9f9;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .fila-total {
+            background: #e8e8e8;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .input-editable {
+            width: 70px;
+            text-align: center;
+            border: 1px solid #3498db;
+            padding: 6px;
+            font-size: 13px;
+            font-weight: bold;
+            background: #fffacd;
+        }
+
+        .input-editable:focus {
+            outline: 2px solid #2980b9;
+            background: white;
+        }
+
+        .calculado {
+            background: #d5f4e6;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .acciones {
+            margin-top: 30px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 14px 30px;
+            font-size: 15px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+        }
+
+        .btn-info {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+        }
+
+        .info-calculo {
+            margin-top: 30px;
+            padding: 20px;
+            background: #e8f4f8;
+            border-left: 5px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .info-calculo h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .info-calculo ul {
+            margin-left: 25px;
+        }
+
+        .info-calculo li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .btn-eliminar {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .btn-eliminar:hover {
+            background: #c0392b;
+            transform: scale(1.1);
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .acciones, .info-calculo, .btn-eliminar {
+                display: none;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .input-editable {
+                border: none;
+                background: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="titulo">CUADRO DE CARGAS DE ALUMBRADO</div>
+
+        <div class="tabla-container">
+            <table id="tablaCuadro">
+                <thead>
+                    <tr>
+                        <th rowspan="2" class="header-principal">TDA</th>
+                        <th rowspan="2" class="header-principal">CTO</th>
+                        <th colspan="4" class="header-principal">PORTALÁMPARA</th>
+                        <th rowspan="2" class="header-principal">ENCHUFE<br>1000 W</th>
+                        <th rowspan="2" class="header-principal">TOTAL<br>CENTROS</th>
+                        <th rowspan="2" class="header-principal">POTENCIA<br>WATTS</th>
+                        <th rowspan="2" class="header-principal">FASE</th>
+                        <th colspan="2" class="header-principal">PROTECCIONES</th>
+                        <th colspan="2" class="header-principal">CANALIZACIÓN</th>
+                        <th rowspan="2" class="header-principal columna-ubicacion">UBICACIÓN</th>
+                        <th rowspan="2" class="header-principal" style="width: 60px;">ACCIÓN</th>
+                    </tr>
+                    <tr>
+                        <th>100 W</th>
+                        <th>60 W</th>
+                        <th>150 W</th>
+                        <th>1000 W</th>
+                        <th>DIST.</th>
+                        <th>DIF.</th>
+                        <th>COND.mm</th>
+                        <th>DUCTO</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaCuerpo">
+                    <!-- Fila 1 -->
+                    <tr>
+                        <td rowspan="3" class="columna-tda">1</td>
+                        <td>1</td>
+                        <td><input type="number" class="input-editable" value="6" onchange="calcular()"></td>
+                        <td><input type="number" class="input-editable" value="1" onchange="calcular()"></td>
+                        <td><input type="number" class="input-editable" value="0" onchange="calcular()"></td>
+                        <td><input type="number" class="input-editable" value="0" onchange="calcular()"></td>
+                        <td><input type="number" class="input-editable" value="0" onchange="calcular()"></td>
+                        <td class="calculado" id="total-1">7</td>
+                        <td class="calculado" id="potencia-1">680</td>
+                        <td>R</td>
+                        <td><input type="text" class="input-editable" value="1*10 A" style="width: 80px;"></td>
+                        <td><input type="text" class="input-editable" value="" style="width: 80px;"></td>
+                        <td><input type="text" class="input-editable" value="NYA 1.5" style="width: 80px;"></td>
+                        <td><input type="text" class="input-editable" value="Conduit PVC 16 mm" style="width: 140px;"></td>
+                        <td class="columna-ubicacion"><input type="text" class="input-editable" value="Iluminación General" style="width: 180px;"></td>
+                        <td><button class="btn-eliminar" onclick="eliminarFila(this)">🗑️</button></td>
+                    </tr>
+                    <!-- Fila 2 -->
+                    <tr>
+                        <td>2</td>
+                        <td><input type="number" class="input-editable" value="0" onchange="calcular()"></td>
+                        <td><input type="number" class="input-editable" value="0" onchange="calcular()"></td>
+                        <td><input type="number" class="input-editable" value="6" onchange="calcular()"></td>
+                        <td><input type="number" class="input-editable" value="0" onchange="calcular()"></td>
+                        <td><input type="number" class="input-editable" value="0" onchange="calcular()"></td>
+                        <td class="calculado" id="total-2">6</td>
+                        <td class="calculado" id="potencia-2">900</td>
+                        <td>R</td>
+                        <td><input type="text" class="input-editable" value="1*16 A" style="width: 80px;"></td>
+                        <td><input type="text" class="input-editable" value="2*5 A<br>30 mA" style="width: 80px;"></td>
+                        <td><input type="text" class="input-editable" value="NYA 2.5" style="width: 80px;"></td>
+                        <td><input type="text" class="input-editable" value="Conduit PVC 16 mm" style="width: 140px;"></td>
+                        <td class="columna-ubicacion"><input type="text" class="input-editable" value="Enchufes Estar Dorm" style="width: 180px;"></td>
+                        <td><button class="btn-eliminar" onclick="eliminarFila(this)">🗑️</button></td>
+                    </tr>
+                    <!-- Fila 3 -->
+                    <tr>
+                        <td>3</td>
+                        <td><input type="number" class="input-editable" value="2" onchange="calcular()"></td>
+                        <td><input type="number" class="input-editable" value="2" onchange="calcular()"></td>
+                        <td><input type="number" class="input-editable" value="2" onchange="calcular()"></td>
+                        <td><input type="number" class="input-editable" value="2" onchange="calcular()"></td>
+                        <td><input type="number" class="input-editable" value="2" onchange="calcular()"></td>
+                        <td class="calculado" id="total-3">7</td>
+                        <td class="calculado" id="potencia-3">2620</td>
+                        <td>R</td>
+                        <td><input type="text" class="input-editable" value="1*16 A" style="width: 80px;"></td>
+                        <td><input type="text" class="input-editable" value="2*5 A<br>30 mA" style="width: 80px;"></td>
+                        <td><input type="text" class="input-editable" value="NYA 2.5" style="width: 80px;"></td>
+                        <td><input type="text" class="input-editable" value="Conduit PVC 16 mm" style="width: 140px;"></td>
+                        <td class="columna-ubicacion"><input type="text" class="input-editable" value="Enchufes e Iluminacion Cocina Baño" style="width: 180px;"></td>
+                        <td><button class="btn-eliminar" onclick="eliminarFila(this)">🗑️</button></td>
+                    </tr>
+                    <!-- Fila TOTAL -->
+                    <tr class="fila-total">
+                        <td colspan="2">TOTAL</td>
+                        <td class="calculado" id="total-100w">8</td>
+                        <td class="calculado" id="total-60w">3</td>
+                        <td class="calculado" id="total-150w">7</td>
+                        <td class="calculado" id="total-1000w-porta">2</td>
+                        <td class="calculado" id="total-1000w-enchufe">2</td>
+                        <td class="calculado" id="total-centros">20</td>
+                        <td class="calculado" id="total-potencia">4200</td>
+                        <td>R</td>
+                        <td colspan="4"></td>
+                        <td class="columna-ubicacion">Toda la Casa</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- BOTONES -->
+        <div class="acciones">
+            <button class="btn btn-primary" onclick="guardarDatos()">💾 Guardar Datos</button>
+            <button class="btn btn-secondary" onclick="window.print()">🖨️ Imprimir</button>
+            <button class="btn btn-warning" onclick="restaurarDefecto()">🔄 Restaurar</button>
+            <button class="btn btn-info" onclick="agregarFila()">➕ Agregar Circuito</button>
+        </div>
+
+        <!-- INFORMACIÓN DE CÁLCULO -->
+        <div class="info-calculo">
+            <h3>📊 Fórmulas de Cálculo Automático</h3>
+            <ul>
+                <li><strong>TOTAL CENTROS</strong> = Suma de todos los portalámparas + enchufes 1000W</li>
+                <li><strong>POTENCIA (W)</strong> = (Portalámpara 100W × 100) + (Portalámpara 60W × 60) + (Enchufe 150W × 150) + (Portalámpara 1000W × 1000) + (Enchufe 1000W × 1000)</li>
+                <li><strong>CORRIENTE (A)</strong> = Potencia (W) ÷ Voltaje (220V)</li>
+                <li><strong>Sección de Conductor</strong>:
+                    <ul>
+                        <li>≤ 10A → 1.5 mm² (NYA 1.5)</li>
+                        <li>10A - 20A → 2.5 mm² (NYA 2.5)</li>
+                        <li>> 20A → 4.0 mm² (NYA 4.0)</li>
+                    </ul>
+                </li>
+                <li><strong>Protección Diferencial</strong>: 30 mA para circuitos de enchufes</li>
+                <li><strong>TOTAL</strong>: Suma automática de todas las columnas</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // CÁLCULO AUTOMÁTICO
+        function calcular() {
+            // Obtener todas las filas (excluyendo TOTAL)
+            const filas = document.querySelectorAll('#tablaCuerpo tr:not(.fila-total)');
+            
+            let totalGeneral100w = 0;
+            let totalGeneral60w = 0;
+            let totalGeneral150w = 0;
+            let totalGeneral1000wPorta = 0;
+            let totalGeneral1000wEnchufe = 0;
+            let totalGeneralCentros = 0;
+            let totalGeneralPotencia = 0;
+
+            // Calcular cada fila
+            filas.forEach((fila, index) => {
+                const inputs = fila.querySelectorAll('input[type="number"]');
+                
+                const porta100 = parseInt(inputs[0].value) || 0;
+                const porta60 = parseInt(inputs[1].value) || 0;
+                const enchufe150 = parseInt(inputs[2].value) || 0;
+                const porta1000 = parseInt(inputs[3].value) || 0;
+                const enchufe1000 = parseInt(inputs[4].value) || 0;
+
+                // Calcular total de centros
+                const totalCentros = porta100 + porta60 + enchufe150 + porta1000 + enchufe1000;
+                
+                // Calcular potencia
+                const potencia = (porta100 * 100) + (porta60 * 60) + (enchufe150 * 150) + (porta1000 * 1000) + (enchufe1000 * 1000);
+
+                // Actualizar celdas calculadas
+                document.getElementById(`total-${index + 1}`).textContent = totalCentros;
+                document.getElementById(`potencia-${index + 1}`).textContent = potencia;
+
+                // Sumar a totales generales
+                totalGeneral100w += porta100;
+                totalGeneral60w += porta60;
+                totalGeneral150w += enchufe150;
+                totalGeneral1000wPorta += porta1000;
+                totalGeneral1000wEnchufe += enchufe1000;
+                totalGeneralCentros += totalCentros;
+                totalGeneralPotencia += potencia;
+            });
+
+            // Actualizar fila TOTAL
+            document.getElementById('total-100w').textContent = totalGeneral100w;
+            document.getElementById('total-60w').textContent = totalGeneral60w;
+            document.getElementById('total-150w').textContent = totalGeneral150w;
+            document.getElementById('total-1000w-porta').textContent = totalGeneral1000wPorta;
+            document.getElementById('total-1000w-enchufe').textContent = totalGeneral1000wEnchufe;
+            document.getElementById('total-centros').textContent = totalGeneralCentros;
+            document.getElementById('total-potencia').textContent = totalGeneralPotencia;
+
+            console.log('✅ Cálculos actualizados');
+        }
+
+        // GUARDAR DATOS
+        function guardarDatos() {
+            const datos = {
+                filas: []
+            };
+
+            const filas = document.querySelectorAll('#tablaCuerpo tr:not(.fila-total)');
+            
+            filas.forEach((fila, index) => {
+                const inputs = fila.querySelectorAll('input');
+                const filaDatos = {
+                    circuito: index + 1,
+                    valores: []
+                };
+                
+                inputs.forEach(input => {
+                    filaDatos.valores.push(input.value);
+                });
+                
+                datos.filas.push(filaDatos);
+            });
+
+            localStorage.setItem('cuadro_cargas_alumbrado', JSON.stringify(datos));
+            
+            mostrarNotificacion('✅ Datos guardados correctamente', 'success');
+        }
+
+        // CARGAR DATOS
+        window.addEventListener('DOMContentLoaded', function() {
+            const datosGuardados = localStorage.getItem('cuadro_cargas_alumbrado');
+            
+            if (datosGuardados) {
+                const datos = JSON.parse(datosGuardados);
+                const filas = document.querySelectorAll('#tablaCuerpo tr:not(.fila-total)');
+                
+                datos.filas.forEach((filaDatos, index) => {
+                    if (filas[index]) {
+                        const inputs = filas[index].querySelectorAll('input');
+                        filaDatos.valores.forEach((valor, i) => {
+                            if (inputs[i]) {
+                                inputs[i].value = valor;
+                            }
+                        });
+                    }
+                });
+                
+                calcular();
+                console.log('✅ Datos cargados desde localStorage');
+            } else {
+                calcular();
+            }
+        });
+
+        // RESTAURAR DEFECTO
+        function restaurarDefecto() {
+            if (confirm('⚠️ ¿Restaurar valores por defecto?\n\nSe perderán todos los cambios no guardados.')) {
+                localStorage.removeItem('cuadro_cargas_alumbrado');
+                location.reload();
+            }
+        }
+
+        // AGREGAR FILA
+        let contadorCircuitos = 3;
+
+        function agregarFila() {
+            contadorCircuitos++;
+            
+            const tbody = document.getElementById('tablaCuerpo');
+            const filaTotal = tbody.querySelector('.fila-total');
+            
+            const nuevaFila = document.createElement('tr');
+            nuevaFila.innerHTML = `
+                <td class="columna-tda">1</td>
+                <td>${contadorCircuitos}</td>
+                <td><input type="number" class="input-editable" value="0" onchange="calcular()"></td>
+                <td><input type="number" class="input-editable" value="0" onchange="calcular()"></td>
+                <td><input type="number" class="input-editable" value="0" onchange="calcular()"></td>
+                <td><input type="number" class="input-editable" value="0" onchange="calcular()"></td>
+                <td><input type="number" class="input-editable" value="0" onchange="calcular()"></td>
+                <td class="calculado" id="total-${contadorCircuitos}">0</td>
+                <td class="calculado" id="potencia-${contadorCircuitos}">0</td>
+                <td>R</td>
+                <td><input type="text" class="input-editable" value="" style="width: 80px;"></td>
+                <td><input type="text" class="input-editable" value="" style="width: 80px;"></td>
+                <td><input type="text" class="input-editable" value="" style="width: 80px;"></td>
+                <td><input type="text" class="input-editable" value="" style="width: 140px;"></td>
+                <td class="columna-ubicacion"><input type="text" class="input-editable" value="Nuevo Circuito" style="width: 180px;"></td>
+                <td><button class="btn-eliminar" onclick="eliminarFila(this)">🗑️</button></td>
+            `;
+            
+            tbody.insertBefore(nuevaFila, filaTotal);
+            calcular();
+            actualizarNumerosCircuito();
+            mostrarNotificacion('✅ Circuito agregado correctamente', 'success');
+        }
+
+        // ELIMINAR FILA
+        function eliminarFila(boton) {
+            const fila = boton.closest('tr');
+            const numFilas = document.querySelectorAll('#tablaCuerpo tr:not(.fila-total)').length;
+            
+            if (numFilas <= 1) {
+                mostrarNotificacion('⚠️ Debe haber al menos un circuito', 'warning');
+                return;
+            }
+            
+            if (confirm('¿Eliminar este circuito?')) {
+                fila.remove();
+                calcular();
+                actualizarNumerosCircuito();
+                mostrarNotificacion('✅ Circuito eliminado', 'success');
+            }
+        }
+
+        // ACTUALIZAR NÚMEROS DE CIRCUITO
+        function actualizarNumerosCircuito() {
+            const filas = document.querySelectorAll('#tablaCuerpo tr:not(.fila-total)');
+            filas.forEach((fila, index) => {
+                const celdaCircuito = fila.querySelectorAll('td')[1];
+                celdaCircuito.textContent = index + 1;
+            });
+        }
+
+        // NOTIFICACIONES
+        function mostrarNotificacion(mensaje, tipo = 'info') {
+            const colores = {
+                'success': '#27ae60',
+                'warning': '#f39c12',
+                'error': '#e74c3c',
+                'info': '#3498db'
+            };
+
+            const notif = document.createElement('div');
+            notif.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${colores[tipo]};
+                color: white;
+                padding: 15px 25px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                z-index: 10000;
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                font-weight: bold;
+                animation: slideIn 0.3s ease;
+            `;
+            notif.textContent = mensaje;
+            document.body.appendChild(notif);
+
+            setTimeout(() => {
+                notif.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notif.remove(), 300);
+            }, 3000);
+        }
+
+        // Calcular inicialmente
+        calcular();
+
+        console.log('✅ Cuadro de Cargas de Alumbrado cargado');
+        console.log('💡 Los cálculos se actualizan automáticamente al cambiar valores');
+    </script>
+
+    <style>
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+    </style>
+</body>
+</html>

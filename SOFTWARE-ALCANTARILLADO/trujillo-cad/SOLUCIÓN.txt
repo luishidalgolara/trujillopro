@@ -1,0 +1,74 @@
+╔════════════════════════════════════════════════════════════╗
+║          SOLUCIÓN AL PROBLEMA DE HERRAMIENTAS             ║
+╚════════════════════════════════════════════════════════════╝
+
+🔴 PROBLEMA:
+Las herramientas Circle, Rectangle, Select y Erase no se cargan
+cuando abres el archivo directamente con "firefox index.html"
+
+⚠️  CAUSA:
+Firefox bloquea la carga de módulos JavaScript cuando usas file://
+por razones de seguridad (CORS policy).
+
+✅ SOLUCIÓN (Elige una):
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📍 OPCIÓN 1: Servidor Python (RECOMENDADA)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Abre terminal en la carpeta trujillo-cad:
+   cd /ruta/a/trujillo-cad
+
+2. Ejecuta el script:
+   ./start-server.sh
+
+   O manualmente:
+   python3 -m http.server 8000
+
+3. Abre en Firefox:
+   http://localhost:8000
+
+4. ✅ ¡LISTO! Todas las herramientas funcionarán
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📍 OPCIÓN 2: Deshabilitar CORS en Firefox (NO RECOMENDADO)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Cierra Firefox completamente
+2. Abre terminal y ejecuta:
+   firefox --allow-file-access-from-files index.html
+
+⚠️  No recomendado por seguridad
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📍 OPCIÓN 3: Extensión Live Server en VS Code
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Abre VS Code en la carpeta trujillo-cad
+2. Instala extensión "Live Server"
+3. Click derecho en index.html → "Open with Live Server"
+4. ✅ Se abrirá automáticamente en http://localhost:5500
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔍 VERIFICACIÓN:
+
+Después de usar cualquier opción, abre la consola (F12) y deberías ver:
+  ✅ TODAS LAS CLASES CARGADAS CORRECTAMENTE
+
+En vez de:
+  ❌ Herramienta 'circle' no encontrada
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📞 ¿SIGUE SIN FUNCIONAR?
+
+Si después de usar el servidor HTTP sigue fallando:
+1. Presiona Ctrl+Shift+R (forzar recarga)
+2. Revisa la consola (F12) y pégame los errores
+3. Ve a pestaña "Red/Network" y busca archivos en rojo
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

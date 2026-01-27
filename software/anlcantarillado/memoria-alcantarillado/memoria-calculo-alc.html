@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memoria de Cálculo - Alcantarillado</title>
+    <link rel="stylesheet" href="memoria-estilos-alc.css">
+</head>
+<body>
+    <div class="page">
+        <div class="portada">
+            <h1>INSTALACIONES SANITARIAS DE ALCANTARILLADO<br>DE AGUAS SERVIDAS DOMICILIARIAS.</h1>
+            
+            <div class="datos-proyecto">
+                <p><strong>NOMBRE PROYECTO</strong> <input type="text" class="campo-editable" id="nombreProyecto" placeholder=""></p>
+                <p><strong>UBICACION</strong> <input type="text" class="campo-editable" id="ubicacion" placeholder=""> N° 220</p>
+                <p><strong>COMUNA</strong> <input type="text" class="campo-editable" id="comuna" placeholder=""></p>
+                <p><strong>CIUDAD</strong> <input type="text" class="campo-editable" id="ciudad" placeholder=""></p>
+            </div>
+
+            <div class="datos-responsables">
+                <p><strong>PROPIETARIO</strong> : <input type="text" class="campo-editable" id="propietario" placeholder=""></p>
+                <p><strong>PROYECTISTA</strong> : TRUJILLO</p>
+                <p><strong>FECHA</strong> : <input type="text" class="campo-editable" id="fecha" placeholder=""></p>
+            </div>
+
+            <h2 class="titulo-memoria">M E M O R I A  D E  C A L C U L O</h2>
+        </div>
+    </div>
+
+    <div class="page">
+        <h3>1.0.- ANTECEDENTES</h3>
+        <p>La presente memoria de cálculo se refiere a las instalaciones domiciliarias de Alcantarillado de Aguas Servidas del proyecto ubicado en <input type="text" class="campo-editable-inline" id="ubicacionMemoria" placeholder="dirección">, comuna de <input type="text" class="campo-editable-inline" id="comunaMemoria" placeholder="comuna">.</p>
+
+        <h3>2.0.- ALCANTARILLADO DE AGUAS SERVIDAS</h3>
+        <p>La evacuación de aguas servidas de las instalaciones se realizan hacia el colector público existente, mediante la unión domiciliaria existente, en cañería de P.V.C. Sanitario de diámetro 110mm.</p>
+
+        <h3>2.1.- EVACUACION GRAVITACIONAL DE A.S.</h3>
+        <p>Debido a las características topográficas del lugar las aguas servidas evacuarán gravitacionalmente al colector público existente.</p>
+
+        <h3>2.2.- UNIDADES DE EQUIVALENCIA HIDRAULICA</h3>
+        <p>Para los efectos de cálculo, los artefactos de la instalación, se han considerado como clase 3, según los valores indicados en RIDAA. En la tabla siguiente se indica el cuadro de artefactos y UEH.</p>
+
+        <h4>CUADRO DE UEH TOTAL</h4>
+        <table id="tablaUEHMemoria">
+            <thead>
+                <tr>
+                    <th>ARTEFACTO</th>
+                    <th>SIGLA</th>
+                    <th>N°</th>
+                    <th>UEH UNIT</th>
+                    <th>UEH PARCIAL</th>
+                </tr>
+            </thead>
+            <tbody id="tablaUEHBody">
+                <!-- Generado dinámicamente -->
+            </tbody>
+            <tfoot>
+                <tr class="total-row">
+                    <td colspan="3"><strong>TOTALES</strong></td>
+                    <td></td>
+                    <td><strong id="totalUEH">0</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <h3>2.3.- CAÑERIA DE DESCARGA Y HORIZONTALES</h3>
+        <p>Los diámetros de las cañerías de descarga y horizontales fueron determinadas de acuerdo a lo indicado en el RIDAA.</p>
+
+        <p>Las descargas se han proyectado con cañerías de descarga, descompresión y ventilación.</p>
+
+        <h3>2.4.- VERIFICACION HIDRAULICA</h3>
+        <p>Los colectores se diseñan en función de los caudales que escurren en cada uno de ellos, considerando que dicho caudal de porteo.</p>
+
+        <p>En el dimensionamiento de las obras proyectadas se utiliza la fórmula de Manning, dada por la siguiente expresión:</p>
+
+        <div class="formula-manning">
+            <p class="formula-titulo">Donde:</p>
+            <table class="tabla-formula">
+                <tr>
+                    <td>Q</td>
+                    <td>: Caudal de porteo (m3/s)</td>
+                </tr>
+                <tr>
+                    <td>i</td>
+                    <td>: Pendiente (°/1)</td>
+                </tr>
+                <tr>
+                    <td>n</td>
+                    <td>: Coeficiente de Manning</td>
+                </tr>
+                <tr>
+                    <td>A</td>
+                    <td>: Area mojada (m2)</td>
+                </tr>
+                <tr>
+                    <td>Rh</td>
+                    <td>: Radio hidráulico (m).</td>
+                </tr>
+            </table>
+        </div>
+
+        <p>El coeficientes de Manning adoptados son los siguientes:</p>
+
+        <p class="indentado">n = 0,013 para colectores de cemento comprimido</p>
+        <p class="indentado">n = 0,010 para colectores de P.V.C.</p>
+
+        <p>Para las condiciones de la instalación, se tiene:</p>
+
+        <table class="tabla-simple">
+            <tr>
+                <td>Caudal máximo horario</td>
+                <td>= 0,76 lts/seg</td>
+            </tr>
+            <tr>
+                <td>Diámetro UD</td>
+                <td>= 100 mm</td>
+            </tr>
+            <tr>
+                <td>Pendiente UD</td>
+                <td>= 0.03 m/m</td>
+            </tr>
+        </table>
+
+        <table class="tabla-simple">
+            <tr>
+                <td>Altura normal</td>
+                <td>= 2 mm</td>
+                <td>< 100mm</td>
+                <td>OK</td>
+            </tr>
+            <tr>
+                <td>Velocidad</td>
+                <td>= 0,8 m/seg</td>
+                <td>> 0,6 m/seg</td>
+                <td>OK</td>
+            </tr>
+        </table>
+
+        <h3>3.0.- CONCLUSIONES</h3>
+        <p>El diseño de las instalaciones de alcantarillado cumple con todas las normativas vigentes y asegura un correcto funcionamiento del sistema de evacuación de aguas servidas.</p>
+
+        <p>Total UEH del proyecto: <strong><span id="totalUEHFinal">0</span></strong></p>
+    </div>
+
+    <script src="memoria-script-alc.js"></script>
+</body>
+</html>

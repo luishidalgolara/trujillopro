@@ -1,0 +1,54 @@
+.nivel-2 {
+    opacity: 0.9;
+}
+
+.nivel-2 circle {
+    filter: drop-shadow(0 0 4px rgba(231, 76, 60, 0.6));
+}
+
+.pipe-line.nivel-2 {
+    stroke: #ef4444 !important;
+    stroke-width: 4 !important;
+}
+
+.flow-arrow.nivel-2 polygon {
+    fill: #ef4444 !important;
+}
+
+.pipe-label-group.nivel-2 .guide-line {
+    stroke: #ef4444 !important;
+}
+
+.pipe-label-group.nivel-2 rect {
+    stroke: #ef4444 !important;
+    fill: white !important;
+}
+
+.pipe-label-group.nivel-2 text {
+    fill: #ef4444 !important;
+}
+
+#modalNivel {
+    animation: modalFadeIn 0.2s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+#btnNivel1:hover {
+    background: #2980b9 !important;
+    transform: scale(1.05);
+}
+
+#btnNivel2:hover {
+    background: #c0392b !important;
+    transform: scale(1.05);
+}

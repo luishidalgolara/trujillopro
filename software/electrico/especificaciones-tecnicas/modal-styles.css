@@ -1,0 +1,339 @@
+/* ============================================
+   MODAL ESPECIFICACIONES TÉCNICAS - ESTILOS
+   Integración con ELEKTRA
+   ============================================ */
+
+/* Overlay del modal */
+.modal-eett-electrica {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    animation: fadeInEETT 0.3s ease-out;
+}
+
+.modal-eett-electrica.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenedor principal del modal */
+.modal-eett-container {
+    width: 95%;
+    height: 95%;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideInEETT 0.4s ease-out;
+}
+
+/* Header del modal - degradado naranja/azul */
+.modal-eett-header {
+    background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
+    color: white;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #ff6f00;
+}
+
+.modal-eett-title {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.modal-eett-title::before {
+    content: "📋";
+    font-size: 28px;
+}
+
+/* Botones del header */
+.modal-eett-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-modal-eett {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-modal-eett.calc {
+    background: #16a085;
+    color: white;
+}
+
+.btn-modal-eett.calc:hover {
+    background: #138d75;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(22, 160, 133, 0.4);
+}
+
+.btn-modal-eett.print {
+    background: #4caf50;
+    color: white;
+}
+
+.btn-modal-eett.print:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+.btn-modal-eett.download {
+    background: #2196f3;
+    color: white;
+}
+
+.btn-modal-eett.download:hover {
+    background: #1976d2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+}
+
+.btn-modal-eett.close {
+    background: #f44336;
+    color: white;
+}
+
+.btn-modal-eett.close:hover {
+    background: #d32f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.4);
+}
+
+/* Contenido del modal */
+.modal-eett-content {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: #eceff1;
+}
+
+.modal-eett-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white;
+}
+
+/* Loading spinner */
+.modal-eett-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.modal-eett-loading.active {
+    display: flex;
+}
+
+.modal-eett-spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #0d47a1;
+    border-radius: 50%;
+    animation: spinEETT 1s linear infinite;
+}
+
+.modal-eett-loading-text {
+    font-size: 16px;
+    color: #666;
+    font-weight: 600;
+}
+
+/* Footer informativo */
+.modal-eett-footer {
+    background: #f5f5f5;
+    padding: 15px 30px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #666;
+}
+
+.modal-eett-info {
+    display: flex;
+    gap: 20px;
+}
+
+.modal-eett-info-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.modal-eett-info-icon {
+    font-size: 16px;
+}
+
+/* Badge especial para EETT */
+.modal-eett-badge {
+    background: linear-gradient(135deg, #ff6f00 0%, #ff8f00 100%);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* Animaciones */
+@keyframes fadeInEETT {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInEETT {
+    from {
+        transform: scale(0.9) translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes spinEETT {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .modal-eett-container {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+    
+    .modal-eett-header {
+        padding: 15px 20px;
+    }
+    
+    .modal-eett-title {
+        font-size: 18px;
+    }
+    
+    .btn-modal-eett {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+    
+    .modal-eett-footer {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .modal-eett-info {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* Efecto de cierre */
+.modal-eett-electrica.closing {
+    animation: fadeOutEETT 0.3s ease-out;
+}
+
+.modal-eett-electrica.closing .modal-eett-container {
+    animation: slideOutEETT 0.3s ease-out;
+}
+
+@keyframes fadeOutEETT {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutEETT {
+    from {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0.9) translateY(-20px);
+        opacity: 0;
+    }
+}
+
+/* Scroll personalizado para el iframe */
+.modal-eett-iframe::-webkit-scrollbar {
+    width: 12px;
+}
+
+.modal-eett-iframe::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.modal-eett-iframe::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
+    border-radius: 6px;
+}
+
+.modal-eett-iframe::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #1976d2 0%, #2196f3 100%);
+}
+
+/* Indicador de funcionalidad especial */
+.modal-eett-feature-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #16a085;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(22, 160, 133, 0.3);
+    animation: pulseEETT 2s infinite;
+}
+
+@keyframes pulseEETT {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 2px 8px rgba(22, 160, 133, 0.3);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 4px 16px rgba(22, 160, 133, 0.5);
+    }
+}

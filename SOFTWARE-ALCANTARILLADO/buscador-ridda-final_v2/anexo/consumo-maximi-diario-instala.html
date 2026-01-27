@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumos Máximos Diarios</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        h2 {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid black;
+        }
+        
+        td {
+            border: 1px solid black;
+            padding: 12px 15px;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+        
+        .col-descripcion {
+            width: 65%;
+            text-align: left;
+        }
+        
+        .col-valores {
+            width: 35%;
+            text-align: left;
+        }
+        
+        .row-height {
+            height: 50px;
+        }
+        
+        .row-multi {
+            height: auto;
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            CONSUMOS MAXIMOS DIARIOS EN INSTALACIONES<br>
+            DOMICILIARIAS DE AGUA POTABLE
+        </h1>
+        
+        <h2>Valores referenciales</h2>
+        
+        <table>
+            <tbody>
+                <tr class="row-height">
+                    <td class="col-descripcion">Casa Habitación</td>
+                    <td class="col-valores">80 - 450 L/hab/día</td>
+                </tr>
+                <tr class="row-height">
+                    <td class="col-descripcion">Vivienda Social</td>
+                    <td class="col-valores">70 L/hab/día</td>
+                </tr>
+                <tr class="row-height">
+                    <td class="col-descripcion">Edificio de departamentos con arranque único, comprendidos usos domésticos, lavado, riego, calefacción.</td>
+                    <td class="col-valores">450 L/hab/día</td>
+                </tr>
+                <tr class="row-height">
+                    <td class="col-descripcion">Edificio de departamentos. Con arranque independiente o remarcador e incluyendo sólo uso doméstico.</td>
+                    <td class="col-valores">80 -300 L/hab/día</td>
+                </tr>
+                <tr class="row-multi">
+                    <td class="col-descripcion">Establecimientos educacionales</td>
+                    <td class="col-valores">
+                        50 L/alumno ext./día<br>
+                        100 L/alumno m/p./día<br>
+                        200 L/alumno int./día
+                    </td>
+                </tr>
+                <tr class="row-height">
+                    <td class="col-descripcion">Establecimientos hospitalarios</td>
+                    <td class="col-valores">1.300 -2.000 L/cama/día</td>
+                </tr>
+                <tr class="row-height">
+                    <td class="col-descripcion">Locales industriales por operarios por turno</td>
+                    <td class="col-valores">150 L/día</td>
+                </tr>
+                <tr class="row-multi">
+                    <td class="col-descripcion">Locales comerciales y oficinas</td>
+                    <td class="col-valores">
+                        150 L/empleado/día<br>
+                        10 L/m2/día como mínimo
+                    </td>
+                </tr>
+                <tr class="row-height">
+                    <td class="col-descripcion">Bares, restaurantes, fuentes de soda y similares</td>
+                    <td class="col-valores">40 L/m2/día</td>
+                </tr>
+                <tr class="row-height">
+                    <td class="col-descripcion">Salas de espectáculos, sin considerar acondicionamientos de aire</td>
+                    <td class="col-valores">25 L/butaca/día</td>
+                </tr>
+                <tr class="row-height">
+                    <td class="col-descripcion">Jardines y prados</td>
+                    <td class="col-valores">10 L/m2/día</td>
+                </tr>
+                <tr class="row-height">
+                    <td class="col-descripcion">Dispensarios, policlínicas y otros establecimientos similares</td>
+                    <td class="col-valores">100 L/m2/día</td>
+                </tr>
+                <tr class="row-height">
+                    <td class="col-descripcion">Regimientos y cuarteles (a lo cual hay que agregar otros consumos)</td>
+                    <td class="col-valores">200 L/hombre/día</td>
+                </tr>
+                <tr class="row-height">
+                    <td class="col-descripcion">Hoteles y residenciales</td>
+                    <td class="col-valores">200 L/cama/día</td>
+                </tr>
+                <tr class="row-height">
+                    <td class="col-descripcion">Piscinas residenciales con equipos de recirculación</td>
+                    <td class="col-valores">1 cambio al mes</td>
+                </tr>
+                <tr class="row-height">
+                    <td class="col-descripcion">Piscinas residenciales sin equipos de recirculación</td>
+                    <td class="col-valores">1 cambio total cada 10 días</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

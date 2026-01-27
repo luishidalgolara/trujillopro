@@ -1,0 +1,935 @@
+{
+  "seccion_6_tableros_continuacion": {
+    "subsecciones": {
+      "6.2_especificaciones_de_construccion_continuacion": {
+        "tablas": {
+          "tabla_6.2": {
+            "numero": "Tabla Nº 6.2",
+            "titulo": "Espesor Mínimo de la Plancha de Acero para Cajas, Gabinetes o Armarios",
+            "encabezados": [
+              "Superficie libre [m2]",
+              "Espesor de la plancha [mm]"
+            ],
+            "datos": [
+              {
+                "superficie_libre_m2": "0,25",
+                "espesor_plancha_mm": "1,2"
+              },
+              {
+                "superficie_libre_m2": "0,75",
+                "espesor_plancha_mm": "1,5"
+              },
+              {
+                "superficie_libre_m2": "1",
+                "espesor_plancha_mm": "1,8"
+              },
+              {
+                "superficie_libre_m2": "sobre 1",
+                "espesor_plancha_mm": "2,0"
+              }
+            ]
+          },
+          "tabla_6.3": {
+            "numero": "Tabla Nº 6.3",
+            "titulo": "Distancias entre Partes Energizadas Desnudas dentro de un Tablero",
+            "encabezados": [
+              "Tensiones de servicio [V]",
+              "Distinta polaridad tendido al aire [mm]",
+              "Distinta polaridad montada sobre la misma superficie [mm]",
+              "Partes energizadas con respecto a tierra [mm]"
+            ],
+            "datos": [
+              {
+                "tension_servicio_v": "0 a 200",
+                "distinta_polaridad_aire_mm": "15",
+                "distinta_polaridad_superficie_mm": "20",
+                "partes_energizadas_tierra_mm": "15"
+              },
+              {
+                "tension_servicio_v": "201 a 400",
+                "distinta_polaridad_aire_mm": "20",
+                "distinta_polaridad_superficie_mm": "35",
+                "partes_energizadas_tierra_mm": "15"
+              },
+              {
+                "tension_servicio_v": "401 a 1000",
+                "distinta_polaridad_aire_mm": "30",
+                "distinta_polaridad_superficie_mm": "50",
+                "partes_energizadas_tierra_mm": "30"
+              }
+            ]
+          },
+          "tabla_6.4": {
+            "numero": "Tabla Nº 6.4",
+            "titulo": "Capacidad de Corriente para Barras de Cobre de Sección Rectangular Corriente Permanente en Amperes",
+            "encabezados": [
+              "Dimensiones de las barras [mm2]",
+              "Barras pintadas - I [A]",
+              "Barras pintadas - II [A]",
+              "Barras pintadas - III [A]",
+              "Barras pintadas - 50mm* II-II [A]",
+              "Barras desnudas - I [A]",
+              "Barras desnudas - II [A]",
+              "Barras desnudas - III [A]",
+              "Barras desnudas - 50mm* II-II [A]"
+            ],
+            "datos": [
+              {
+                "dimensiones_mm2": "12x2",
+                "barras_pintadas_I": "125",
+                "barras_pintadas_II": "225",
+                "barras_pintadas_III": "",
+                "barras_pintadas_50mm": "",
+                "barras_desnudas_I": "110",
+                "barras_desnudas_II": "200",
+                "barras_desnudas_III": "",
+                "barras_desnudas_50mm": ""
+              },
+              {
+                "dimensiones_mm2": "15x2",
+                "barras_pintadas_I": "155",
+                "barras_pintadas_II": "270",
+                "barras_pintadas_III": "",
+                "barras_pintadas_50mm": "",
+                "barras_desnudas_I": "140",
+                "barras_desnudas_II": "240",
+                "barras_desnudas_III": "",
+                "barras_desnudas_50mm": ""
+              },
+              {
+                "dimensiones_mm2": "15x3",
+                "barras_pintadas_I": "185",
+                "barras_pintadas_II": "330",
+                "barras_pintadas_III": "",
+                "barras_pintadas_50mm": "",
+                "barras_desnudas_I": "170",
+                "barras_desnudas_II": "300",
+                "barras_desnudas_III": "",
+                "barras_desnudas_50mm": ""
+              },
+              {
+                "dimensiones_mm2": "20x2",
+                "barras_pintadas_I": "205",
+                "barras_pintadas_II": "350",
+                "barras_pintadas_III": "",
+                "barras_pintadas_50mm": "",
+                "barras_desnudas_I": "185",
+                "barras_desnudas_II": "315",
+                "barras_desnudas_III": "",
+                "barras_desnudas_50mm": ""
+              },
+              {
+                "dimensiones_mm2": "20x3",
+                "barras_pintadas_I": "245",
+                "barras_pintadas_II": "425",
+                "barras_pintadas_III": "",
+                "barras_pintadas_50mm": "",
+                "barras_desnudas_I": "220",
+                "barras_desnudas_II": "380",
+                "barras_desnudas_III": "",
+                "barras_desnudas_50mm": ""
+              },
+              {
+                "dimensiones_mm2": "20x5",
+                "barras_pintadas_I": "325",
+                "barras_pintadas_II": "560",
+                "barras_pintadas_III": "",
+                "barras_pintadas_50mm": "",
+                "barras_desnudas_I": "295",
+                "barras_desnudas_II": "500",
+                "barras_desnudas_III": "",
+                "barras_desnudas_50mm": ""
+              },
+              {
+                "dimensiones_mm2": "25x3",
+                "barras_pintadas_I": "300",
+                "barras_pintadas_II": "520",
+                "barras_pintadas_III": "",
+                "barras_pintadas_50mm": "",
+                "barras_desnudas_I": "270",
+                "barras_desnudas_II": "460",
+                "barras_desnudas_III": "",
+                "barras_desnudas_50mm": ""
+              },
+              {
+                "dimensiones_mm2": "25x5",
+                "barras_pintadas_I": "395",
+                "barras_pintadas_II": "670",
+                "barras_pintadas_III": "",
+                "barras_pintadas_50mm": "",
+                "barras_desnudas_I": "350",
+                "barras_desnudas_II": "600",
+                "barras_desnudas_III": "",
+                "barras_desnudas_50mm": ""
+              },
+              {
+                "dimensiones_mm2": "30x3",
+                "barras_pintadas_I": "355",
+                "barras_pintadas_II": "610",
+                "barras_pintadas_III": "",
+                "barras_pintadas_50mm": "",
+                "barras_desnudas_I": "315",
+                "barras_desnudas_II": "540",
+                "barras_desnudas_III": "",
+                "barras_desnudas_50mm": ""
+              },
+              {
+                "dimensiones_mm2": "30x5",
+                "barras_pintadas_I": "450",
+                "barras_pintadas_II": "780",
+                "barras_pintadas_III": "",
+                "barras_pintadas_50mm": "",
+                "barras_desnudas_I": "400",
+                "barras_desnudas_II": "700",
+                "barras_desnudas_III": "",
+                "barras_desnudas_50mm": ""
+              },
+              {
+                "dimensiones_mm2": "40x3",
+                "barras_pintadas_I": "460",
+                "barras_pintadas_II": "790",
+                "barras_pintadas_III": "",
+                "barras_pintadas_50mm": "",
+                "barras_desnudas_I": "425",
+                "barras_desnudas_II": "710",
+                "barras_desnudas_III": "",
+                "barras_desnudas_50mm": ""
+              },
+              {
+                "dimensiones_mm2": "40x5",
+                "barras_pintadas_I": "600",
+                "barras_pintadas_II": "1.000",
+                "barras_pintadas_III": "",
+                "barras_pintadas_50mm": "",
+                "barras_desnudas_I": "520",
+                "barras_desnudas_II": "900",
+                "barras_desnudas_III": "",
+                "barras_desnudas_50mm": ""
+              },
+              {
+                "dimensiones_mm2": "40x10",
+                "barras_pintadas_I": "850",
+                "barras_pintadas_II": "1.500",
+                "barras_pintadas_III": "2.060",
+                "barras_pintadas_50mm": "2.800",
+                "barras_desnudas_I": "760",
+                "barras_desnudas_II": "1.350",
+                "barras_desnudas_III": "1.850",
+                "barras_desnudas_50mm": "2.500"
+              },
+              {
+                "dimensiones_mm2": "50x5",
+                "barras_pintadas_I": "720",
+                "barras_pintadas_II": "1.220",
+                "barras_pintadas_III": "1.750",
+                "barras_pintadas_50mm": "2.300",
+                "barras_desnudas_I": "630",
+                "barras_desnudas_II": "1.100",
+                "barras_desnudas_III": "1.650",
+                "barras_desnudas_50mm": "2.100"
+              },
+              {
+                "dimensiones_mm2": "50x10",
+                "barras_pintadas_I": "1.030",
+                "barras_pintadas_II": "1.800",
+                "barras_pintadas_III": "2.450",
+                "barras_pintadas_50mm": "3.330",
+                "barras_desnudas_I": "920",
+                "barras_desnudas_II": "1.600",
+                "barras_desnudas_III": "2.250",
+                "barras_desnudas_50mm": "3.000"
+              },
+              {
+                "dimensiones_mm2": "60x5",
+                "barras_pintadas_I": "850",
+                "barras_pintadas_II": "1.430",
+                "barras_pintadas_III": "1.950",
+                "barras_pintadas_50mm": "2.650",
+                "barras_desnudas_I": "760",
+                "barras_desnudas_II": "1.250",
+                "barras_desnudas_III": "1.760",
+                "barras_desnudas_50mm": "2.400"
+              },
+              {
+                "dimensiones_mm2": "60x10",
+                "barras_pintadas_I": "1.200",
+                "barras_pintadas_II": "2.100",
+                "barras_pintadas_III": "2.800",
+                "barras_pintadas_50mm": "3.700",
+                "barras_desnudas_I": "1.060",
+                "barras_desnudas_II": "1.900",
+                "barras_desnudas_III": "2.600",
+                "barras_desnudas_50mm": "3.500"
+              },
+              {
+                "dimensiones_mm2": "80x5",
+                "barras_pintadas_I": "1.070",
+                "barras_pintadas_II": "1.900",
+                "barras_pintadas_III": "2.500",
+                "barras_pintadas_50mm": "3.200",
+                "barras_desnudas_I": "870",
+                "barras_desnudas_II": "1.700",
+                "barras_desnudas_III": "2.300",
+                "barras_desnudas_50mm": "3.000"
+              },
+              {
+                "dimensiones_mm2": "80x10",
+                "barras_pintadas_I": "1.560",
+                "barras_pintadas_II": "2.500",
+                "barras_pintadas_III": "3.300",
+                "barras_pintadas_50mm": "4.500",
+                "barras_desnudas_I": "1.380",
+                "barras_desnudas_II": "2.300",
+                "barras_desnudas_III": "3.100",
+                "barras_desnudas_50mm": "4.200"
+              },
+              {
+                "dimensiones_mm2": "100x5",
+                "barras_pintadas_I": "1.350",
+                "barras_pintadas_II": "2.300",
+                "barras_pintadas_III": "3.000",
+                "barras_pintadas_50mm": "3.800",
+                "barras_desnudas_I": "1.200",
+                "barras_desnudas_II": "2.050",
+                "barras_desnudas_III": "2.850",
+                "barras_desnudas_50mm": "3.500"
+              },
+              {
+                "dimensiones_mm2": "100x10",
+                "barras_pintadas_I": "1.880",
+                "barras_pintadas_II": "3.100",
+                "barras_pintadas_III": "4.000",
+                "barras_pintadas_50mm": "5.400",
+                "barras_desnudas_I": "1.700",
+                "barras_desnudas_II": "2.800",
+                "barras_desnudas_III": "3.650",
+                "barras_desnudas_50mm": "5.000"
+              },
+              {
+                "dimensiones_mm2": "120x10",
+                "barras_pintadas_I": "2.250",
+                "barras_pintadas_II": "3.500",
+                "barras_pintadas_III": "4.500",
+                "barras_pintadas_50mm": "6.100",
+                "barras_desnudas_I": "2.000",
+                "barras_desnudas_II": "3.100",
+                "barras_desnudas_III": "4.100",
+                "barras_desnudas_50mm": "5.100"
+              },
+              {
+                "dimensiones_mm2": "160x10",
+                "barras_pintadas_I": "2.800",
+                "barras_pintadas_II": "4.400",
+                "barras_pintadas_III": "5.800",
+                "barras_pintadas_50mm": "7.800",
+                "barras_desnudas_I": "2.500",
+                "barras_desnudas_II": "3.900",
+                "barras_desnudas_III": "5.300",
+                "barras_desnudas_50mm": "7.300"
+              },
+              {
+                "dimensiones_mm2": "200x10",
+                "barras_pintadas_I": "3.350",
+                "barras_pintadas_II": "5.300",
+                "barras_pintadas_III": "6.900",
+                "barras_pintadas_50mm": "9.400",
+                "barras_desnudas_I": "3.000",
+                "barras_desnudas_II": "4.750",
+                "barras_desnudas_III": "6.350",
+                "barras_desnudas_50mm": "8.800"
+              }
+            ],
+            "nota": "(*) Medida mínima para la luz entre pares de barras. Se recomienda utilizar preferentemente barras planas de bordes redondeados."
+          }
+        },
+        "subsecciones": {
+          "6.2.1_formas_constructivas_continuacion": {
+            "articulos": [
+              {
+                "numero": "6.2.1.14",
+                "texto": "Las distancias mínimas entre partes desnudas energizadas dentro de un tablero serán determinadas de acuerdo a la Tabla Nº 6.3. Se exceptúan de esta exigencia a las distancias entre contactos de dispositivos de protección y de maniobra las cuales deberán cumplir con las Normas específicas respectivas.",
+                "referencia_tabla": "Tabla Nº 6.3"
+              },
+              {
+                "numero": "6.2.1.15",
+                "texto": "Los tableros deberán construirse con un índice de protección (grado IP) adecuado al medio ambiente y condiciones de instalación. En general no se aceptará la construcción de tableros de tipo abierto. Ver 5.3.2.",
+                "nota_aclaratoria": "De acuerdo a esta disposición no será aceptable la construcción de tableros grados IP00 y como referencia se sugiere considerar un grado IP 41 como mínimo para tableros en interior e IP44 como mínimo para tableros instalados en exterior."
+              },
+              {
+                "numero": "6.2.1.16",
+                "texto": "La altura mínima de montaje de los dispositivos de comando o accionamiento colocados en un tablero será de 0,60 m y la altura máxima será de 2,0 m, ambas distancias medidas respecto del nivel de piso terminado."
+              }
+            ]
+          },
+          "6.2.2_material_electrico": {
+            "numero": "6.2.2",
+            "titulo": "Material eléctrico",
+            "articulos": [
+              {
+                "numero": "6.2.2.1",
+                "texto": "Los conductores de alimentación que lleguen a un tablero deberán hacerlo a puentes de conexión o barras metálicas de distribución desde donde se harán las derivaciones para la conexión de los dispositivos de comando o protección constitutivos del tablero. No se aceptará el cableado de un tablero con conexiones hechas de dispositivo a dispositivo."
+              },
+              {
+                "numero": "6.2.2.2",
+                "texto": "Las barras de distribución se deberán montar rígidamente soportadas en las cajas, gabinetes o armarios; estos soportes deberán ser aislantes."
+              },
+              {
+                "numero": "6.2.2.3",
+                "texto": "La cantidad y dimensiones de los soportes de barras se fijarán de acuerdo al cálculo de esfuerzos dinámicos que se originen en la más alta corriente de cortocircuito estimada para el tablero y teniendo en consideración la presencia de armónicas de corriente o tensión que puedan originar resonancias mecánicas de las barras."
+              },
+              {
+                "numero": "6.2.2.4",
+                "texto": "Tanto las barras como los conductores del cableado interno de los tableros deberán cumplir el código de colores indicado en 8.0.4.15."
+              },
+              {
+                "numero": "6.2.2.5",
+                "texto": "La capacidad de transporte de corriente de las barras de distribución de un tablero se fijará de acuerdo a la tabla Nº 6.4.",
+                "referencia_tabla": "Tabla Nº 6.4"
+              },
+              {
+                "numero": "6.2.2.6",
+                "texto": "Todo el cableado interno de los tableros que corresponda a la alimentación de los consumos externos se deberá hacer llegar a regletas de conexiones de modo tal que los conductores externos provenientes de estos consumos se conecten a estas regletas y no directamente a los terminales de los dispositivos de protección o comando."
+              },
+              {
+                "numero": "6.2.2.7",
+                "texto": "Todos los tableros cuya capacidad sea igual o superior a 200 Amperes deberán llevar instrumentos de medida que indiquen la tensión y corriente sobre cada fase."
+              },
+              {
+                "numero": "6.2.2.8",
+                "texto": "Todos los tableros deberán llevar luces piloto sobre cada fase para indicación de tablero energizado. Se exceptúan de esta exigencia a los tableros de uso doméstico o similar de menos de ocho circuitos."
+              },
+              {
+                "numero": "6.2.2.9",
+                "texto": "Los tableros generales y generales auxiliares considerados en 6.2.2.7 y aquellos cuyas características de funcionamiento lo exijan deberán llevar luces piloto de indicación del estado de funcionamiento de cada uno de los alimentadores, subalimentadores o circuitos controlados desde ellos."
+              },
+              {
+                "numero": "6.2.2.10",
+                "texto": "Los dispositivos de control, luces piloto, instrumentos de medida u otros similares montados en un tablero y que necesiten de energía eléctrica para su funcionamiento, deberán ser alimentados desde circuitos independientes cuya protección podrá ser como máximo de 10 Amperes y de la capacidad de ruptura adecuada."
+              }
+            ]
+          },
+          "6.2.3_orden_de_conexionado": {
+            "numero": "6.2.3",
+            "titulo": "Orden de conexionado",
+            "articulos": [
+              {
+                "numero": "6.2.3.1",
+                "texto": "Los conductores del lado de la alimentación llegarán siempre al dispositivo de maniobra y de allí al dispositivo de protección, en caso que éstos constituyan elementos separados."
+              },
+              {
+                "numero": "6.2.3.2",
+                "texto": "Los conductores de alimentación deberán llegar siempre a los contactos fijos de interruptores, disyuntores, seccionadores o contactores; si por alguna razón ineludible no resulta posible cumplir esta exigencia, esta condición deberá indicarse claramente en un letrero colocado bajo el dispositivo correspondiente."
+              },
+              {
+                "numero": "6.2.3.3",
+                "texto": "En los tableros cuyas protecciones sean fusibles tipo D los conductores del lado de la alimentación llegarán siempre al contacto central de la base."
+              },
+              {
+                "numero": "6.2.3.4",
+                "texto": "En tableros en que se usen fusibles como limitadores de corriente de cortocircuito, en serie con disyuntores, los conductores de la alimentación llegarán primero a los fusibles."
+              }
+            ]
+          },
+          "6.2.4_conexion_a_tierra": {
+            "numero": "6.2.4",
+            "titulo": "Conexión a tierra",
+            "articulos": [
+              {
+                "numero": "6.2.4.1",
+                "texto": "Todo tablero deberá contar con una barra o puente de conexión a tierra."
+              },
+              {
+                "numero": "6.2.4.2",
+                "texto": "Si la caja, gabinete o armario que contiene a un tablero es metálico, deberá protegerse contra tensiones peligrosas."
+              },
+              {
+                "numero": "6.2.4.3",
+                "texto": "Las conexiones a tierra de un tablero deberán cumplir con lo dispuesto en la sección 10"
+              }
+            ]
+          }
+        }
+      },
+      "6.3_disposiciones_aplicables_a_tableros_generales": {
+        "numero": "6.3",
+        "titulo": "DISPOSICIONES APLICABLES A TABLEROS GENERALES",
+        "articulos": [
+          {
+            "numero": "6.3.1",
+            "texto": "Se deberá colocar un tablero general en toda instalación en que exista más de un tablero de distribución y la distancia entre estos tableros y el empalme sea superior a 10 m."
+          },
+          {
+            "numero": "6.3.2",
+            "texto": "También se deberá colocar un tablero general en aquellas instalaciones en que existiendo un único tablero de distribución, éste esté separado más de 30 m del equipo de medida del empalme y el alimentador de este tablero no quede protegido por la protección del empalme.",
+            "nota_aclaratoria": "Debe entenderse que las disposiciones de 6.3.1 y 6.3.2 son aplicables en conjunto de modo que prima la condición de no existencia de tablero general en caso de que el alimentador esté protegido por la protección del empalme."
+          },
+          {
+            "numero": "6.3.3",
+            "texto": "Todo tablero del cual dependan más de seis alimentadores deberá llevar un interruptor general o protecciones generales que permitan operar sobre toda la instalación en forma simultánea.",
+            "nota_aclaratoria": "Dado el hecho de que generalmente esta exigencia se cumple instalando un disyuntor, lo que significa una protección y un elemento de comando reunidos en un solo aparato, se tiende a establecer que la norma exige una protección en esta posición, sin embargo 6.3.3 indica que es suficiente con un interruptor (elemento de comando)."
+          },
+          {
+            "numero": "6.3.4",
+            "texto": "Los tableros generales auxiliares se colocarán en aquellas instalaciones en que se necesite derivar desde un alimentador, subalimentadores, para energizar distintos tableros de distribución en forma individual o en grupo."
+          },
+          {
+            "numero": "6.3.5",
+            "texto": "En un tablero general no podrán colocarse dispositivos de operación o protección para alimentadores de distintas tensiones."
+          }
+        ]
+      },
+      "6.4_disposiciones_aplicables_a_tableros_de_distribucion": {
+        "numero": "6.4",
+        "titulo": "DISPOSICIONES APLICABLES A TABLEROS DE DISTRIBUCIÓN",
+        "articulos": [
+          {
+            "numero": "6.4.1",
+            "texto": "En un tablero de distribución de Alumbrado no deberán colocarse más de 42 dispositivos de protección distintos a las protecciones generales. Para los efectos de aplicación de esta disposición una protección bipolar se considerará como dos dispositivos de protección y una protección tripolar como tres."
+          },
+          {
+            "numero": "6.4.2",
+            "texto": "Todo tablero de distribución cuya capacidad sea inferior o igual a 200 Amperes o cuyo alimentador tenga un dispositivo de protección de capacidad nominal inferior o igual a 200 Amperes, no necesitará de dispositivos de operación o protección generales."
+          },
+          {
+            "numero": "6.4.3",
+            "texto": "En caso de que varios tableros de distribución sean alimentados desde un alimentador común y las protecciones de este tenga una capacidad superior a 200 Amperes, cada tablero de distribución deberá llevar dispositivos de operación y protección generales, aunque su capacidad individual sea inferior a 200 Amperes."
+          },
+          {
+            "numero": "6.4.4",
+            "texto": "Cuando exista un único tablero de distribución en una instalación se aplicará 6.3.3."
+          },
+          {
+            "numero": "6.4.5",
+            "texto": "En un tablero de distribución en que se alimentan circuitos de distintos servicios, tales como fuerza, alumbrado, calefacción u otros, las protecciones se deberán agrupar ordenadamente ocupando distintas secciones del tablero. Se colocarán protecciones generales correspondientes a cada servicio cuando las condiciones de seguridad y funcionamiento lo requieran."
+          }
+        ]
+      }
+    }
+  },
+  "seccion_7_alimentadores": {
+    "numero": "7",
+    "titulo": "ALIMENTADORES",
+    "subsecciones": {
+      "7.0_conceptos_generales": {
+        "numero": "7.0",
+        "titulo": "Conceptos Generales",
+        "articulos": [
+          {
+            "numero": "7.0.1",
+            "texto": "Se clasificarán en:",
+            "clasificacion": [
+              {
+                "tipo": "Alimentadores propiamente tales",
+                "definicion": "son aquellos que van entre el equipo de medida y el primer tablero de la instalación, o los controlados desde el tablero general y que alimentan tableros generales auxiliares o tableros de distribución."
+              },
+              {
+                "tipo": "Subalimentadores",
+                "definicion": "son aquellos que se derivan desde un alimentador directamente o a través de un tablero da paso, o bien, los controlados desde un tablero general auxiliar."
+              }
+            ]
+          },
+          {
+            "numero": "7.0.2",
+            "texto": "En un circuito, a los conductores a través de los cuales se distribuye la energía se denominarán líneas de distribución y a los conductores que alimentan a un consumo específico o llegan al punto de comando de éste se les denominará derivaciones y, en general, no se les aplicarán las disposiciones de esta sección."
+          },
+          {
+            "numero": "7.0.3",
+            "texto": "Los alimentadores de una propiedad no deben pasar por partes de una propiedad vecina. En el caso de edificios, para llegar desde el punto de empalme hasta la propiedad respectiva deberán utilizarse los espacios de uso común. Si por razones de arquitectura o de construcción no es posible utilizar los pasillos o pozos de servicio para llevar canalizaciones de alimentadores, se considerará espacios de uso común tanto a los muros exteriores del edificio como aquellos muros que dan a pasillos o escaleras. Si se utilizan muros exteriores se deberá emplear sistemas de canalización que aseguren una resistencia a la corrosión y una hermeticidad adecuadas."
+          }
+        ]
+      },
+      "7.1_especificaciones": {
+        "numero": "7.1",
+        "titulo": "ESPECIFICACIONES",
+        "subsecciones": {
+          "7.1.1_canalizaciones": {
+            "numero": "7.1.1",
+            "titulo": "Canalizaciones",
+            "articulos": [
+              {
+                "numero": "7.1.1.1",
+                "texto": "Los alimentadores se canalizarán, utilizando alguno de los sistemas da canalización indicados en la sección 8."
+              },
+              {
+                "numero": "7.1.1.2",
+                "texto": "La sección de los conductores de los alimentadores y subalimentadores será, por lo menos, la suficiente para servir las cargas determinadas de acuerdo a 7.2. En todo caso la sección mínima permisible será de 2,5 mm2."
+              },
+              {
+                "numero": "7.1.1.3",
+                "texto": "La sección de los conductores de los alimentadores o subalimentadores será tal que la caída de tensión provocada por la corriente máxima que circula por ellos determinada de acuerdo a 7.2.1.1, no exceda del 3% de la tensión nominal de la alimentación, siempre que la caída de tensión total en el punto más desfavorable de la instalación no exceda del 5% de dicha tensión. Estos valores son válidos para alimentadores de alumbrado, fuerza, calefacción o combinación de estos consumos."
+              },
+              {
+                "numero": "7.1.1.4",
+                "texto": "Los alimentadores destinados a energizar departamentos u oficinas en edificios de altura, considerados en el párrafo 5.1.14, se canalizarán a través de conductos verticales ubicados estratégicamente en la construcción."
+              },
+              {
+                "numero": "7.1.1.5",
+                "texto": "Los conductos serán accesibles en todos los pisos pero permanecerán cerrados mediante puertas con cerraduras con llave."
+              },
+              {
+                "numero": "7.1.1.6",
+                "texto": "La canalización de estos alimentadores será preferentemente a través de ductos cerrados individuales, pero en caso de usar escalerillas portaconductores se deberá cumplir las siguientes condiciones:",
+                "condiciones": [
+                  "Sólo podrán utilizarse cables multiconductores y estos deberán tener chaquetas y aislaciones del tipo de emisión no tóxica.",
+                  "Los cables serán en un solo tramo; no se permitirán uniones en estos alimentadores.",
+                  "Se tenderán estos cables ordenadamente manteniendo su posición relativa dentro de las escalerillas a lo largo de todo su recorrido. Para mantener este ordenamiento los cables serán peinados y amarrados a los travesaños de la escalerilla en tramos no superiores a 2,0 m.",
+                  "Sólo se podrán disponer los alimentadores en una capa y existirá una separación de a lo menos 1 cm entre cable y cable.",
+                  "Los alimentadores se marcarán piso a piso mediante identificadores tipo collarín plástico de modo de permitir su fácil identificación para facilitar trabajos de mantenimiento o reemplazo."
+                ]
+              }
+            ]
+          },
+          "7.1.2_protecciones": {
+            "numero": "7.1.2",
+            "titulo": "Protecciones",
+            "articulos": [
+              {
+                "numero": "7.1.2.1",
+                "texto": "Los alimentadores se deberán proteger tanto a la sobrecarga como al cortocircuito, con las protecciones adecuadas a cada situación."
+              },
+              {
+                "numero": "7.1.2.2",
+                "texto": "Los alimentadores se protegerán a la sobrecarga de acuerdo a la potencia utilizada, estando limitada la protección máxima por la capacidad de transporte de corriente de los conductores."
+              },
+              {
+                "numero": "7.1.2.3",
+                "texto": "En alimentadores que lleven un conductor de puesta a tierra no deberán colocarse protecciones en este conductor, a menos, que la protección sea de un tipo tal que opere simultáneamente sobre todos los conductores del alimentador."
+              },
+              {
+                "numero": "7.1.2.4",
+                "texto": "Las derivaciones tomadas desde un alimentador deberán protegerse contra las sobrecargas y los cortocircuitos. Se exceptuarán de esta exigencia a aquellas derivaciones de no más de 10 m de largo, cuya sección no sea inferior a un tercio de la del alimentador y que sean canalizadas en ductos cerrados y, a aquellas que queden protegidas por la protección del alimentador."
+              },
+              {
+                "numero": "7.1.2.5",
+                "texto": "Cada alimentador deberá tener un dispositivo individual de operación."
+              }
+            ]
+          }
+        }
+      },
+      "7.2_dimensionamiento": {
+        "numero": "7.2",
+        "titulo": "DIMENSIONAMIENTO",
+        "subsecciones": {
+          "7.2.1_estimacion_de_cargas": {
+            "numero": "7.2.1",
+            "titulo": "Estimación de cargas",
+            "articulos": [
+              {
+                "numero": "7.2.1.1",
+                "texto": "La carga nominal de un alimentador, según la cual se dimensionará, no será menor que la suma de las cargas de todos los circuitos que sirve el alimentador, determinadas de acuerdo a las secciones 11 y siguientes, y sujetas a las siguientes disposiciones:",
+                "disposiciones": [
+                  {
+                    "literal": "a)",
+                    "texto": "Para alimentadores que sirven cargas permanentes o una combinación de cargas permanentes y cargas intermitentes, el alimentador y sus protecciones se dimensionarán de acuerdo a la suma de las cargas intermitentes, afectadas por el factor de diversidad correspondiente más la carga permanente afectada por el factor de demanda correspondiente."
+                  },
+                  {
+                    "literal": "b)",
+                    "texto": "Para alimentadores que sirven consumos de alumbrado exclusivamente a la carga total de los circuitos determinada de acuerdo a la sección 11 se le aplicarán los factores de demanda señalados en la tabla Nº 7.5. Estos factores de demanda no se aplicarán sobre subalimentadores en los que puede estar presente la totalidad de la carga en forma permanente o esporádica por períodos superiores a 15 minutos. Se aceptarán factores de demanda distintos a los valores indicados en esta tabla, cuando mediante un estudio realizado sobre la base de las características de uso de instalación o las de proceso, se justifique dicho valor."
+                  },
+                  {
+                    "literal": "c)",
+                    "texto": "En donde las demandas máximas de los distintos subalimentadores no coincidan en el tiempo, se podrá aplicar a la carga del alimentador correspondiente un factor de diversidad fijado de acuerdo a las condiciones específicas de cada caso."
+                  },
+                  {
+                    "literal": "d)",
+                    "texto": "No se podrá aplicar factores de diversidad a las cargas de subalimentadores."
+                  }
+                ]
+              },
+              {
+                "numero": "7.2.1.2",
+                "texto": "El conductor neutro de un alimentador se dimensionará según el siguiente criterio:",
+                "criterios": [
+                  {
+                    "literal": "a)",
+                    "texto": "El neutro de alimentadores monofásicos tendrá la misma sección del conductor de fase."
+                  },
+                  {
+                    "literal": "b)",
+                    "texto": "El neutro de alimentadores trifásicos que sirvan Cargas Lineales tales como alumbrado incandescente, calefacción y fuerza, se dimensionará de modo tal que su sección sea a lo menos igual al 50% de la sección de las fases."
+                  },
+                  {
+                    "literal": "c)",
+                    "texto": "El neutro de alimentadores trifásicos o de circuitos trifásicos que sirvan cargas no lineales, tales como rectificadores, reguladores de velocidad, etc., se dimensionará de modo tal que su sección sea a lo menos igual a la sección de los conductores de fases. En alimentadores trifásicos que sirvan cargas no lineales tales como alumbrado mediante lámparas de descarga, circuitos de sistemas informáticos de procesamiento de datos, controladores de velocidad de motores alternos mediante variadores de frecuencia, partidores suaves o equipos similares en los cuales se generan armónicas que estarán presentes en el conductor neutro, la sección de este conductor deberá ser a lo menos igual a la sección de los conductores de las fases. Estas exigencias se aplicarán también al dimensionamiento de los neutros de circuitos."
+                  }
+                ]
+              }
+            ],
+            "tabla_7.5": {
+              "numero": "Tabla Nº 7.5",
+              "titulo": "Factores de Demanda para Cálculo de Alimentadores de Alumbrado",
+              "encabezados": [
+                "Tipo de consumidor",
+                "Potencia sobre la que se aplica el factor de demanda - Tramo",
+                "Potencia sobre la que se aplica el factor de demanda - KW",
+                "Factor de demanda"
+              ],
+              "datos": [
+                {
+                  "tipo_consumidor": "Casa habitación",
+                  "tramo": "Primeros",
+                  "potencia_kw": "3,0",
+                  "factor_demanda": "1,00"
+                },
+                {
+                  "tipo_consumidor": "Casa habitación",
+                  "tramo": "Sobre",
+                  "potencia_kw": "3,0",
+                  "factor_demanda": "0,35"
+                },
+                {
+                  "tipo_consumidor": "Hospitales",
+                  "tramo": "Primeros",
+                  "potencia_kw": "50,0",
+                  "factor_demanda": "0,40"
+                },
+                {
+                  "tipo_consumidor": "Hospitales",
+                  "tramo": "Sobre",
+                  "potencia_kw": "50,0",
+                  "factor_demanda": "0,20"
+                },
+                {
+                  "tipo_consumidor": "Hoteles y moteles",
+                  "tramo": "Primeros",
+                  "potencia_kw": "20",
+                  "factor_demanda": "0,50"
+                },
+                {
+                  "tipo_consumidor": "Hoteles y moteles",
+                  "tramo": "Desde",
+                  "potencia_kw": "20,1 a 100",
+                  "factor_demanda": "0,40"
+                },
+                {
+                  "tipo_consumidor": "Hoteles y moteles",
+                  "tramo": "Sobre",
+                  "potencia_kw": "100,0",
+                  "factor_demanda": "0,30"
+                },
+                {
+                  "tipo_consumidor": "Bodegas",
+                  "tramo": "Primeros",
+                  "potencia_kw": "15",
+                  "factor_demanda": "1,00"
+                },
+                {
+                  "tipo_consumidor": "Bodegas",
+                  "tramo": "Sobre",
+                  "potencia_kw": "15",
+                  "factor_demanda": "0,50"
+                },
+                {
+                  "tipo_consumidor": "Todo otro tipo",
+                  "tramo": "Toda la potencia",
+                  "potencia_kw": "",
+                  "factor_demanda": "1,00"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "seccion_8_materiales_y_sistemas_de_canalizacion": {
+    "numero": "8",
+    "titulo": "MATERIALES Y SISTEMAS DE CANALIZACIÓN",
+    "subsecciones": {
+      "8.0_conceptos_generales": {
+        "numero": "8.0",
+        "titulo": "CONCEPTOS GENERALES",
+        "subsecciones": {
+          "8.0.1_conductores": {
+            "numero": "8.0.1",
+            "titulo": "Conductores",
+            "articulos": [
+              {
+                "numero": "8.0.1.1",
+                "texto": "Todas las disposiciones de esta Norma se han establecido considerando el uso de conductores de cobre aislado, con la sola excepción de aquellos artículos en que se acepta el uso de conductores desnudos."
+              },
+              {
+                "numero": "8.0.1.2",
+                "texto": "La sección mínima a usar en circuitos de potencia será de 1,5 mm2."
+              },
+              {
+                "numero": "8.0.1.3",
+                "texto": "Todo conductor que se instale en cualquier tipo de ducto, cuya sección sea superior a 10 mm2 deberá ser del tipo cableado."
+              },
+              {
+                "numero": "8.0.1.4",
+                "texto": "En un mismo ducto cerrado sólo podrán llevarse los conductores pertenecientes a consumos de un mismo servicio y alimentados por una misma tensión de servicio. Esta disposición será aplicable también a cajas de paso, derivación, cámaras en canalizaciones subterráneas, etc.",
+                "nota_aclaratoria": "En el alcance de esta disposición se definirán servicios de: Potencia que comprende alumbrado, fuerza y calefacción; Computación; Control; Comunicaciones. Las tensiones de servicio para potencia serán las establecidas en la norma NSEC 8En 78 y la de los restantes servicios, las definidas en las normas nacionales o extranjeras homologadas que se apliquen en cada caso."
+              },
+              {
+                "numero": "8.0.1.5",
+                "texto": "En un mismo ducto cerrado sólo podrán llevarse los conductores pertenecientes a un mismo circuito. Se exceptuarán de esta disposición los conductores canalizados en bandejas, escalerillas o canaletas, los que estarán afectos a las disposiciones de los párrafos 8.2.19, 8.2.20 y 8.2.21, respectivamente."
+              },
+              {
+                "numero": "8.0.1.6",
+                "texto": "Los conductores de la excitación, de controles, de relés o de instrumentos de medida que están conectados a un artefacto de no más de 15 KW de potencia o a un motor o su partidor y que operen a su misma tensión de servicio podrán ocupar el mismo ducto que los conductores de la alimentación."
+              },
+              {
+                "numero": "8.0.1.7",
+                "texto": "Se permitirá el uso de conductores en paralelo, unidos en ambos extremos formando un conductor único, en líneas de potencia cuya sección sea de 50 mm2 o superior, cumpliendo las condiciones siguientes:",
+                "condiciones": [
+                  "que los conductores que formen el conjunto tengan el mismo largo,",
+                  "que la sección de cada uno de los conductores que forma el conjunto sea la misma,",
+                  "que la aislación de cada uno de los conductores que forma el conjunto sea del mismo tipo,",
+                  "que en sus extremos tengan el mismo tipo de terminales de conexión y que éstos sean de la misma dimensión."
+                ],
+                "adicional": "Al conjunto de conductores resultante se le deberá aplicar el factor de corrección de la capacidad de transporte por cantidad de conductores indicado en la tabla Nº 8.8."
+              },
+              {
+                "numero": "8.0.1.8",
+                "texto": "Para longitudes de línea superiores a 50 m, canalizadas en bandejas, escalerillas o en líneas en que cada fase va canalizada en ductos separados, sea que se utilicen conductores simples o conductores en paralelo se deberán efectuar transposiciones de ubicación para mantener el equilibrio de impedancias de la línea y mantener con esto el equilibrio en la distribución de corrientes por fase. Estas transposiciones se harán dentro de las bandejas o escalerillas o en cámaras o cajas de paso en líneas en ductos.",
+                "nota_aclaratoria": "En líneas en que los conductores de las tres fases están canalizadas en un único ducto el ordenamiento natural que adoptan las líneas en el interior hace innecesaria la ejecución de transposiciones."
+              }
+            ]
+          },
+          "8.0.2_proteccion_contra_las_condiciones_de_ambientes_desfavorables": {
+            "numero": "8.0.2",
+            "titulo": "Protección contra las condiciones de ambientes desfavorables",
+            "articulos": [
+              {
+                "numero": "8.0.2.1",
+                "texto": "Los conductores expuestos a la acción de aceites, grasas, solventes, vapores, gases, humos u otras sustancias que puedan degradar las características del conductor o su aislación deberán seleccionarse de modo que las características típicas sean adecuadas al ambiente."
+              },
+              {
+                "numero": "8.0.2.2",
+                "texto": "Los sistemas de canalización, de acuerdo al medio ambiente en que se instalen, deberán cumplir lo establecido en 5.4.2."
+              },
+              {
+                "numero": "8.0.2.3",
+                "texto": "En locales muy húmedos, en donde los muros son lavados frecuentemente o muros construidos con materiales higroscópicos, el sistema completo de canalización, si es a la vista, debe quedar separado del muro o superficie soportante por lo menos 1 cm. En estos casos, si la canalización es embutida o preembutida sólo podrán usarse tuberías no metálicas como medio de canalización."
+              }
+            ]
+          },
+          "8.0.3_canalizaciones_a_distintas_temperaturas": {
+            "numero": "8.0.3",
+            "titulo": "Canalizaciones a distintas temperaturas",
+            "articulos": [
+              {
+                "numero": "8.0.3.1",
+                "texto": "En instalaciones en que partes de una misma canalización queden sometidas a temperaturas ambientes muy dispares, como por ejemplo en bodegas refrigeradas o enfriadas, deberá evitarse mediante la colocación de los sellos adecuados, la circulación del aire desde la parte más caliente a la más fría a través de los ductos de canalización."
+              },
+              {
+                "numero": "8.0.3.2",
+                "texto": "En tramos largos de canalización deberán colocarse juntas de dilatación que compensen las expansiones o contracciones de los ductos debido a las variaciones de temperatura."
+              },
+              {
+                "numero": "8.0.3.3",
+                "texto": "Deberá prestarse especial atención al seleccionar un conductor que las condiciones ambientales más las condiciones de operación no sobrepasen los límites nominales de temperatura de funcionamiento. Los factores que definen la temperatura de operación de un conductor son:",
+                "factores": [
+                  "La temperatura ambiente; debe tenerse en cuenta que ésta es variable durante el día y en forma estacional.",
+                  "El calor generado internamente por efecto joule.",
+                  "La mayor o menor facilidad de disipación al ambiente del calor generado.",
+                  "La presencia de otros conductores vecinos que contribuyen a elevar la temperatura ambiente y dificultan la disipación del calor generado internamente."
+                ]
+              }
+            ]
+          },
+          "8.0.4_canalizaciones_y_conductores": {
+            "numero": "8.0.4",
+            "titulo": "Canalizaciones y conductores",
+            "articulos": [
+              {
+                "numero": "8.0.4.1",
+                "texto": "Los ductos metálicos, sus accesorios, cajas, gabinetes y armarios metálicos que formen un conjunto, deberán estar unidos en forma mecánicamente rígida y el conjunto deberá asegurar una conductividad eléctrica efectiva."
+              },
+              {
+                "numero": "8.0.4.2",
+                "texto": "Se recomienda evitar, en lo posible, la mezcla de canalizaciones de ductos metálicos con ductos no metálicos. En donde esta situación no pueda ser evitada la unión se efectuará a través de una caja de paso metálica la que se conectará al conductor de protección del circuito correspondiente; en caso de no existir este conductor en esa sección del circuito, deberá ser tendido para estos fines."
+              },
+              {
+                "numero": "8.0.4.3",
+                "texto": "Los elementos metálicos integrantes de un sistema de canalización deberán protegerse contra tensiones peligrosas de acuerdo a lo indicado en las secciones 9 ó 10 según corresponda."
+              },
+              {
+                "numero": "8.0.4.4",
+                "texto": "Todo ducto debe ser continuo entre accesorio y accesorio y entre caja y caja. Los sistemas de acoplamiento aprobados no se consideran discontinuidad."
+              },
+              {
+                "numero": "8.0.4.5",
+                "texto": "Todos los conductores deben ser continuos entre caja y caja o entre artefactos y artefactos. No se permiten las uniones de conductores dentro de los ductos."
+              },
+              {
+                "numero": "8.0.4.6",
+                "texto": "En cada caja de derivación, de enchufes o de interruptores, deberán dejarse chicotes, de por lo menos 15 cm de largo, para ejecutar la unión respectiva."
+              },
+              {
+                "numero": "8.0.4.7",
+                "texto": "Al alambrar una instalación se deberán seguir las siguientes indicaciones:",
+                "indicaciones": [
+                  "Todo el sistema de ductos debe estar instalado completo o en secciones completas antes de alambrar.",
+                  "Hasta donde sea posible, debe evitarse el alambrar mientras la edificación no se encuentre en un estado de avance tal que se asegure una protección adecuada de la canalización contra daños físicos, humedad y agentes atmosféricos que puedan dañarla.",
+                  "En el momento de efectuar el alambrado debe verificarse que los sistemas de ductos estén limpios y libres de agentes extraños a la canalización.",
+                  "Si se usan lubricantes para el tendido de los conductores, debe verificarse que éstos sean de un tipo que no altere las características de la aislación."
+                ]
+              },
+              {
+                "numero": "8.0.4.8",
+                "texto": "Las canalizaciones eléctricas deben colocarse retiradas a no menos de 0,15 m de ductos de calefacción, conductos, ductos de escape de gases o aire caliente. En caso de no poder obtenerse esta distancia, la canalización deberá aislarse térmicamente en todo el recorrido que pueda ser afectada. Las canalizaciones eléctricas no podrán ubicarse en un conducto común con tuberías de gas o combustible, ni a una distancia inferior a 0,60 m en ambientes abiertos."
+              },
+              {
+                "numero": "8.0.4.9",
+                "texto": "Las canalizaciones que se coloquen en entretechos deberán ejecutarse con conductores en tuberías. Si las cajas de derivación quedan en el entretecho éste deberá permitir un tránsito expedito a través de él de modo tal que el acceso a las cajas de derivación sea fácil y expedito. Su altura en la zona más alta no deberá ser inferior a 1,40 m."
+              },
+              {
+                "numero": "8.0.4.10",
+                "texto": "La altura libre sobre el punto en que se coloque una caja de derivación en un entretecho no deberá ser inferior a 0,50 m."
+              },
+              {
+                "numero": "8.0.4.11",
+                "texto": "El acceso al entretecho en que vaya colocada una canalización eléctrica debe asegurarse mediante una escotilla o puerta de 0,50 m x 0,50 m como mínimo. La altura mínima del techo sobre el punto en que deberá estar ubicada la escotilla será de 0,80 m."
+              },
+              {
+                "numero": "8.0.4.12",
+                "texto": "Se permitirá instalaciones en entretechos que no cumplan las dimensiones establecidas en los párrafos precedentes siempre que las cajas de derivación sean accesibles desde el interior del recinto."
+              },
+              {
+                "numero": "8.0.4.13",
+                "texto": "Las canalizaciones eléctricas deben identificarse adecuadamente para diferenciarlas de las de otros servicios."
+              },
+              {
+                "numero": "8.0.4.14",
+                "texto": "Las canalizaciones eléctricas deben ejecutarse de modo que en cualquier momento se pueda medir su aislamiento, localizar posibles fallas o reemplazar conductores en caso de ser necesario"
+              },
+              {
+                "numero": "8.0.4.15",
+                "texto": "Los conductores de una canalización eléctrica se identificarán según el siguiente Código de Colores:",
+                "codigo_colores": [
+                  {
+                    "conductor": "Conductor de la fase 1",
+                    "color": "azul"
+                  },
+                  {
+                    "conductor": "Conductor de la fase 2",
+                    "color": "negro"
+                  },
+                  {
+                    "conductor": "Conductor de la fase 3",
+                    "color": "rojo"
+                  },
+                  {
+                    "conductor": "Conductor de neutro y tierra de servicio",
+                    "color": "blanco"
+                  },
+                  {
+                    "conductor": "Conductor de protección",
+                    "color": "verde o verde/amarillo"
+                  }
+                ]
+              },
+              {
+                "numero": "8.0.4.16",
+                "texto": "Para secciones superiores a 21 mm2, si el mercado nacional sólo ofreciera conductores con aislaciones de color negro, se deberán marcar los conductores cada 10 m, con un tipo de pintura de buena adherencia a la aislación u otro método que garantice la permanencia en el tiempo de la marca, respetando el código de colores establecido en 8.0.4.15."
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

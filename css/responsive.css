@@ -1,0 +1,132 @@
+/* ========================================
+   RESPONSIVE - Media Queries
+======================================== */
+
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 80px;
+    }
+    
+    .container {
+        padding: 0 20px;
+    }
+    
+    /* Hero */
+    .hero-stats {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;
+    }
+    
+    /* Grids */
+    .problem-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modules-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .package-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .comparison-header, .comparison-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .comparison-cell {
+        padding: 15px;
+    }
+    
+    .pricing-comparison {
+        grid-template-columns: 1fr;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .footer-links {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
+    
+    .btn-cta-primary, .btn-cta-secondary {
+        width: 100%;
+    }
+    
+    /* Gallery */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Typography adjustments */
+    .hero-title {
+        font-size: clamp(32px, 10vw, 60px);
+    }
+    
+    .section-title {
+        font-size: clamp(28px, 8vw, 48px);
+    }
+    
+    /* AI Features */
+    .ai-features {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0 20px;
+    }
+    
+    .hero-stats {
+        gap: 20px;
+    }
+    
+    .stat-number {
+        font-size: 36px;
+    }
+    
+    .module-card {
+        padding: 30px;
+    }
+    
+    .problem-card {
+        padding: 30px;
+    }
+    
+    .benefit-card {
+        padding: 30px;
+    }
+    
+    .pricing-card {
+        padding: 30px;
+    }
+    
+    .package-banner {
+        padding: 30px;
+    }
+    
+    .price-main {
+        font-size: 42px;
+    }
+}

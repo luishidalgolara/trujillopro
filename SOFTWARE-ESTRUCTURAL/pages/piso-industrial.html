@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piso Industrial</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/piso-industrial.css">
+    <link rel="stylesheet" href="../css/cortes.css">
+</head>
+<body>
+    <header>
+        <h1>Diseño de Piso Industrial sobre Terreno</h1>
+        <p>Losas sobre Terreno - Método Westergaard</p>
+    </header>
+    <div class="container">
+        <a href="../index.html" class="back-button">← Volver al Menú</a>
+        <div class="content-wrapper">
+            <div class="input-section">
+                <h2>📝 Datos de Entrada</h2>
+                <div class="form-group">
+                    <label>Espesor de Losa (h):</label>
+                    <input type="number" id="espesor" value="15" step="1">
+                    <small>cm</small>
+                </div>
+                <div class="form-group">
+                    <label>Carga de Servicio (P):</label>
+                    <input type="number" id="carga" value="100" step="10">
+                    <small>kN (carga de montacargas, racks, etc)</small>
+                </div>
+                <div class="form-group">
+                    <label>Módulo de Reacción del Suelo (k):</label>
+                    <input type="number" id="modSubrasante" value="40" step="5">
+                    <small>MN/m³ (típico: 30-80)</small>
+                </div>
+                <div class="form-group">
+                    <label>Separación entre Juntas:</label>
+                    <input type="number" id="separacionJuntas" value="5.0" step="0.5">
+                    <small>m (típico: 4-6m)</small>
+                </div>
+                <div class="form-group">
+                    <label>Área de Contacto de Carga:</label>
+                    <input type="number" id="areaContacto" value="0.20" step="0.05">
+                    <small>m² (típico montacargas: 0.15-0.25 m²)</small>
+                </div>
+                <div class="form-group">
+                    <label>Resistencia del Hormigón (f'c):</label>
+                    <select id="fc">
+                        <option value="25" selected>H25 (25 MPa)</option>
+                        <option value="30">H30 (30 MPa)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Tipo de Refuerzo:</label>
+                    <select id="tipoRefuerzo">
+                        <option value="malla" selected>Malla Electrosoldada</option>
+                        <option value="barras">Barras de Acero</option>
+                        <option value="fibras">Fibras de Acero</option>
+                    </select>
+                </div>
+                <button class="btn-calculate" onclick="calcularPisoIndustrial()">
+                    🔨 Calcular Piso Industrial
+                </button>
+            </div>
+            <div class="output-section">
+                <h2>📊 Resultados del Diseño</h2>
+                                <div class="vista-controles">
+                    <button class="btn-vista active" id="btn3d" onclick="cambiarVista('3d')">
+                        🔷 Vista 3D
+                    </button>
+                    <button class="btn-vista" id="btnCorte" onclick="cambiarVista('corte')">
+                        ✂️ Ver Corte A-A
+                    </button>
+                </div>
+                <div class="vista-container">
+                    <div id="canvas3d" class="active"></div>
+                    <canvas id="canvasCorte" width="800" height="600"></canvas>
+                </div>
+                <div class="results" id="resultados">
+                    <p style="text-align: center; color: #7f8c8d; padding: 2rem;">
+                        Ingrese los datos y presione "Calcular"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer><p>© 2025 - Software de Cálculos Estructurales Chile</p></footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="../js/utils/normativa-chile.js"></script>
+    <script src="../js/utils/calculos-comunes.js"></script>
+    <script src="../js/utils/three-config.js"></script>
+    <script src="../js/utils/acero-cuantificacion.js"></script>
+    <script src="../js/utils/cortes-detalle.js"></script>
+    <script src="../js/piso-industrial.js"></script>
+</body>
+</html>

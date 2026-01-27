@@ -1,0 +1,151 @@
+/* ================================
+   CONTENEDOR DE WORKSPACE
+   ================================ */
+.workspace-container {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+    transition: all 0.3s ease;
+}
+
+.workspace-container.panel-hidden {
+    height: calc(100vh - 70px);
+}
+
+/* ================================
+   ÁREA DE TRABAJO PRINCIPAL
+   ================================ */
+.workspace {
+    flex: 1;
+    background: linear-gradient(135deg, #151515 0%, #252525 50%, #151515 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    padding: 0;
+    position: relative;
+}
+
+.workspace::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 25% 25%, rgba(0, 212, 255, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(0, 255, 136, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.zoom-container {
+    transform-origin: center center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 1;
+}
+
+.plan-title-external {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.plan-title-external h2 {
+    color: #ffffff;
+    font-size: 1.6em;
+    font-weight: 700;
+    margin: 0;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    border-radius: 12px;
+    border: 2px solid #00d4ff;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(0, 212, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    backdrop-filter: blur(10px);
+}
+
+.drawing-board {
+    background: #ffffff;
+    border: 4px solid #000000;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.8),
+        0 0 40px rgba(0, 212, 255, 0.3),
+        inset 0 0 0 2px rgba(0, 212, 255, 0.1);
+    position: relative;
+    background-image: 
+        linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: crosshair;
+    border-radius: 4px;
+}
+
+.drawing-board.navigation-mode {
+    cursor: grab;
+    border-color: #00ff88;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.8),
+        0 0 40px rgba(0, 255, 136, 0.3);
+}
+
+.drawing-board.navigation-mode:active {
+    cursor: grabbing;
+}
+
+/* ================================
+   TAMAÑOS DEL PLANO
+   ================================ */
+.format-a1 {
+    width: 900px;
+    height: 630px;
+}
+
+.format-a0 {
+    width: 1300px;
+    height: 920px;
+}
+
+/* ================================
+   ELEMENTOS DEL PLANO
+   ================================ */
+.drawing-board::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 2px solid rgba(0, 0, 0, 1);  /* ← NEGRO */
+    pointer-events: none;
+    border-radius: 2px;
+}
+
+/* ================================
+   ELEMENTOS DINÁMICOS
+   ================================ */
+.dynamic-text {
+    cursor: move;
+    transition: all 0.3s ease;
+}
+
+.dynamic-text:hover {
+    filter: drop-shadow(0 2px 6px rgba(0, 212, 255, 0.3));
+}
+
+.dynamic-rose {
+    cursor: move;
+    transition: all 0.3s ease;
+}
+
+.dynamic-rose:hover {
+    filter: drop-shadow(0 2px 6px rgba(0, 212, 255, 0.3));
+}

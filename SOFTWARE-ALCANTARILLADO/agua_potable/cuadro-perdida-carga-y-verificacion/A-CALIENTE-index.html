@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuadro de Pérdida de Carga K</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            color: #2c3e50;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            font-weight: 500;
+            color: #546e7a;
+            letter-spacing: 0.5px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 3px solid #2c3e50;
+        }
+
+        thead {
+            background: #eceff1;
+        }
+
+        th {
+            padding: 12px 8px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 11px;
+            border: 1px solid #90a4ae;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        th.main-header {
+            background: #cfd8dc;
+            font-size: 12px;
+        }
+
+        td {
+            padding: 10px 8px;
+            text-align: center;
+            border: 1px solid #cfd8dc;
+            font-size: 13px;
+        }
+
+        tbody tr {
+            transition: background-color 0.2s;
+        }
+
+        tbody tr:hover {
+            background: #e3f2fd;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        tbody tr:nth-child(even):hover {
+            background: #e3f2fd;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            padding: 6px;
+            border: 1px solid #b0bec5;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 13px;
+            background: white;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #0288d1;
+            background: #e1f5fe;
+        }
+
+        input[type="text"].nudo-input {
+            width: 100px;
+            padding: 6px;
+            border: 1px solid #b0bec5;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 13px;
+            background: white;
+            font-weight: 500;
+        }
+
+        input[type="text"].nudo-input:focus {
+            outline: none;
+            border-color: #0288d1;
+            background: #e1f5fe;
+        }
+
+        .k-value {
+            font-weight: 500;
+            color: #37474f;
+        }
+
+        .total-k {
+            font-weight: 700;
+            color: #0277bd;
+            font-size: 14px;
+        }
+
+        .total-section {
+            margin-top: 0;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #e3f2fd;
+            border: 2px solid #0277bd;
+            border-top: none;
+            text-align: right;
+            font-size: 16px;
+            font-weight: 700;
+            color: #0277bd;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 30px;
+            border: 2px solid #2c3e50;
+            background: white;
+            color: #2c3e50;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            background: #2c3e50;
+            color: white;
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        .delete-row-btn {
+            padding: 4px 8px;
+            border: 1px solid #c62828;
+            background: white;
+            color: #c62828;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-radius: 3px;
+        }
+
+        .delete-row-btn:hover {
+            background: #c62828;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 2px solid #cfd8dc;
+            font-size: 12px;
+            color: #546e7a;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .subtitle {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 8px 4px;
+                font-size: 10px;
+            }
+
+            input[type="number"] {
+                width: 50px;
+                font-size: 11px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>CUADRO DE PÉRDIDA DE CARGA K</h1>
+            <div class="subtitle">AGUA CALIENTE – P.P. PN-10/PN-12,5</div>
+        </div>
+
+        <div class="table-wrapper">
+            <table id="kTable">
+                <thead>
+                    <tr>
+                        <th class="main-header" rowspan="2">Nudos</th>
+                        <th class="main-header" colspan="2">TEE 90° Ø32mm<br>K=1.80</th>
+                        <th class="main-header" colspan="2">Codo 90° Ø32mm<br>K=0.90</th>
+                        <th class="main-header" colspan="2">TEE 90° Ø25mm<br>K=1.80</th>
+                        <th class="main-header" colspan="2">Codo 90° Ø25mm<br>K=0.90</th>
+                        <th class="main-header" rowspan="2">TOTAL K</th>
+                        <th class="main-header" rowspan="2">ELIMINAR</th>
+                    </tr>
+                    <tr>
+                        <th>Cantidad</th>
+                        <th>K</th>
+                        <th>Cantidad</th>
+                        <th>K</th>
+                        <th>Cantidad</th>
+                        <th>K</th>
+                        <th>Cantidad</th>
+                        <th>K</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="total-section">
+            TOTAL GENERAL: <span id="grandTotal">0.00</span>
+        </div>
+
+        <div class="buttons">
+            <button onclick="addRow()">Agregar Fila</button>
+            <button onclick="resetData()">Limpiar Todo</button>
+            <button onclick="exportToExcel()">Exportar a Excel</button>
+        </div>
+
+        <div class="footer">
+            Coeficientes K según Método Cinético, Anexo B (informativo), NCh2485.
+        </div>
+    </div>
+
+    <script>
+        // Datos en memoria
+        let tableData = [];
+        let rowCount = 0;
+
+        function calculateK(input) {
+            const qty = parseInt(input.value) || 0;
+            const k = parseFloat(input.getAttribute('data-k'));
+            return qty * k;
+        }
+
+        function updateRow(row) {
+            const inputs = row.querySelectorAll('.qty');
+            const kValues = row.querySelectorAll('.k-value');
+            let totalK = 0;
+
+            inputs.forEach((input, index) => {
+                const k = calculateK(input);
+                kValues[index].textContent = k.toFixed(2);
+                totalK += k;
+            });
+
+            row.querySelector('.total-k').textContent = totalK.toFixed(2);
+            updateGrandTotal();
+        }
+
+        function updateGrandTotal() {
+            const rows = document.querySelectorAll('#tableBody tr');
+            let grandTotal = 0;
+            
+            rows.forEach(row => {
+                const totalK = parseFloat(row.querySelector('.total-k').textContent) || 0;
+                grandTotal += totalK;
+            });
+            
+            document.getElementById('grandTotal').textContent = grandTotal.toFixed(2);
+        }
+
+        function createRow(nudoValue = '') {
+            rowCount++;
+            const row = document.createElement('tr');
+            row.setAttribute('data-row', rowCount);
+            
+            if (!nudoValue) {
+                nudoValue = rowCount === 1 ? '1-2' : `${rowCount-1}-${rowCount}`;
+            }
+            
+            row.innerHTML = `
+                <td><input type="text" class="nudo-input" value="${nudoValue}"></td>
+                <td><input type="number" min="0" value="0" data-k="1.80" class="qty"></td>
+                <td class="k-value">0.00</td>
+                <td><input type="number" min="0" value="0" data-k="0.90" class="qty"></td>
+                <td class="k-value">0.00</td>
+                <td><input type="number" min="0" value="0" data-k="1.80" class="qty"></td>
+                <td class="k-value">0.00</td>
+                <td><input type="number" min="0" value="0" data-k="0.90" class="qty"></td>
+                <td class="k-value">0.00</td>
+                <td class="total-k">0.00</td>
+                <td><button class="delete-row-btn" onclick="deleteRow(this)">✕</button></td>
+            `;
+
+            return row;
+        }
+
+        function addRow() {
+            const tbody = document.getElementById('tableBody');
+            const newRow = createRow();
+            tbody.appendChild(newRow);
+            attachRowListeners(newRow);
+            updateRow(newRow);
+        }
+
+        function attachRowListeners(row) {
+            row.querySelectorAll('.qty').forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.value < 0) this.value = 0;
+                    updateRow(row);
+                });
+            });
+
+            const nudoInput = row.querySelector('.nudo-input');
+            if (nudoInput) {
+                nudoInput.addEventListener('input', () => updateGrandTotal());
+            }
+        }
+
+        function resetData() {
+            if (confirm('¿Está seguro que desea eliminar todas las filas?')) {
+                const tbody = document.getElementById('tableBody');
+                tbody.innerHTML = '';
+                rowCount = 0;
+                updateGrandTotal();
+            }
+        }
+
+        function deleteRow(btn) {
+            const row = btn.closest('tr');
+            if (document.querySelectorAll('#tableBody tr').length > 1) {
+                row.remove();
+                updateGrandTotal();
+            } else {
+                alert('Debe mantener al menos una fila en la tabla.');
+            }
+        }
+
+        function exportToExcel() {
+            const wb = XLSX.utils.book_new();
+            
+            const data = [];
+            data.push(['CUADRO DE PÉRDIDA DE CARGA K']);
+            data.push(['AGUA CALIENTE – P.P. PN-10/PN-12,5']);
+            data.push([]);
+            
+            const headers1 = ['Nudos', 'TEE 90° Ø32mm K=1.80', '', 'Codo 90° Ø32mm K=0.90', '', 'TEE 90° Ø25mm K=1.80', '', 'Codo 90° Ø25mm K=0.90', '', 'TOTAL K'];
+            const headers2 = ['', 'Cantidad', 'K', 'Cantidad', 'K', 'Cantidad', 'K', 'Cantidad', 'K', ''];
+            
+            data.push(headers1);
+            data.push(headers2);
+            
+            const rows = document.querySelectorAll('#tableBody tr');
+            rows.forEach(row => {
+                const rowData = [];
+                rowData.push(row.querySelector('.nudo-input').value);
+                
+                const inputs = row.querySelectorAll('.qty');
+                const kValues = row.querySelectorAll('.k-value');
+                
+                inputs.forEach((input, index) => {
+                    rowData.push(input.value);
+                    rowData.push(kValues[index].textContent);
+                });
+                
+                rowData.push(row.querySelector('.total-k').textContent);
+                data.push(rowData);
+            });
+            
+            data.push([]);
+            data.push(['', '', '', '', '', '', '', '', 'TOTAL GENERAL:', document.getElementById('grandTotal').textContent]);
+            data.push([]);
+            data.push(['Coeficientes K según Método Cinético, Anexo B (informativo), NCh2485.']);
+            
+            const ws = XLSX.utils.aoa_to_sheet(data);
+            
+            // Ajustar anchos de columna
+            ws['!cols'] = [
+                { wch: 12 }, { wch: 10 }, { wch: 8 }, { wch: 10 }, { wch: 8 },
+                { wch: 10 }, { wch: 8 }, { wch: 10 }, { wch: 8 }, { wch: 15 }
+            ];
+            
+            XLSX.utils.book_append_sheet(wb, ws, 'Pérdida de Carga K');
+            XLSX.writeFile(wb, 'Cuadro_Perdida_Carga_K_Agua_Caliente.xlsx');
+        }
+
+        // Inicializar con una fila vacía
+        document.addEventListener('DOMContentLoaded', function() {
+            addRow();
+        });
+    </script>
+</body>
+</html>

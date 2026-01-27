@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablero Eléctrico Interactivo Profesional</title>
+    <link rel="stylesheet" href="tablero_interactivo.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚡ Tablero Eléctrico Profesional</h1>
+            <p>Sistema de Gestión y Monitoreo de Circuitos Eléctricos</p>
+        </div>
+        
+        <div class="panel-container">
+            <!-- Tornillos de montaje -->
+            <div class="mounting-screw screw-tl"></div>
+            <div class="mounting-screw screw-tr"></div>
+            <div class="mounting-screw screw-bl"></div>
+            <div class="mounting-screw screw-br"></div>
+            
+            <div class="panel-inner">
+                <!-- Medidor de energía -->
+                <div class="meter-section">
+                    <div class="meter-header">MEDIDOR DE ENERGÍA - Modelo DDS-1234</div>
+                    <div class="meter-display">
+                        <div class="meter-lcd">
+                            <span id="energyReading">00000.0</span>
+                            <span class="meter-unit">kWh</span>
+                        </div>
+                        <div class="meter-indicators">
+                            <div class="indicator">
+                                <div class="indicator-led led-red"></div>
+                                <span>CONSUMO</span>
+                            </div>
+                            <div class="indicator">
+                                <div class="indicator-led led-off"></div>
+                                <span>EXPORTA</span>
+                            </div>
+                            <div class="indicator">
+                                <div class="indicator-led led-green"></div>
+                                <span>ACTIVO</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Estadísticas -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">Potencia Total</div>
+                            <div class="stat-value" id="totalPower">0<span class="stat-unit">W</span></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Corriente Total</div>
+                            <div class="stat-value" id="totalCurrent">0.0<span class="stat-unit">A</span></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Tensión Nominal</div>
+                            <div class="stat-value">220<span class="stat-unit">V</span></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Estado del Sistema</div>
+                            <div class="stat-value status-ok" id="systemStatus">NORMAL</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Panel de control para agregar circuitos -->
+                <div class="control-panel">
+                    <h3>➕ Agregar Nuevo Circuito</h3>
+                    <div class="add-circuit-form">
+                        <div class="form-group">
+                            <label>Nivel</label>
+                            <select id="circuitLevel">
+                                <option value="1">Primer Nivel</option>
+                                <option value="2">Segundo Nivel</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Capacidad (A)</label>
+                            <select id="breakerAmp">
+                                <option value="10">C10 (10A)</option>
+                                <option value="16">C16 (16A)</option>
+                                <option value="20">C20 (20A)</option>
+                                <option value="25">C25 (25A)</option>
+                                <option value="32">C32 (32A)</option>
+                                <option value="40">C40 (40A)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre del Circuito</label>
+                            <input type="text" id="circuitName" placeholder="Ej: Cocina, Baño, etc.">
+                        </div>
+                        <div class="form-group">
+                            <label>Potencia Estimada (W)</label>
+                            <input type="number" id="circuitPower" placeholder="1000" min="0" step="100">
+                        </div>
+                        <div class="form-group">
+                            <label>Sección Cable (mm²)</label>
+                            <select id="cableSection">
+                                <option value="1.5">1.5 mm²</option>
+                                <option value="2.5">2.5 mm²</option>
+                                <option value="4.0">4.0 mm²</option>
+                                <option value="6.0">6.0 mm²</option>
+                                <option value="10.0">10.0 mm²</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="addCircuit()">
+                        ➕ Agregar Circuito
+                    </button>
+                </div>
+                
+                <!-- Interruptores principales -->
+                <div class="panel-title">Interruptores Principales</div>
+                <div class="breakers-grid">
+                    <!-- Interruptor Principal -->
+                    <div class="breaker" data-breaker="main" data-type="main">
+                        <div class="din-rail-slot left"></div>
+                        <div class="din-rail-slot right"></div>
+                        
+                        <div class="breaker-terminal-top">
+                            <div class="terminal-screw"></div>
+                        </div>
+                        
+                        <div class="breaker-window">
+                            <div class="window-screw"></div>
+                        </div>
+                        
+                        <div class="breaker-label">40A</div>
+                        <div class="breaker-circuit">Principal</div>
+                        
+                        <div class="breaker-switch">
+                            <div class="switch-top">OFF</div>
+                            <div class="switch-toggle"></div>
+                        </div>
+                        
+                        <div class="breaker-led">
+                            <div class="led-indicator">
+                                <div class="led-text">OFF</div>
+                            </div>
+                        </div>
+                        
+                        <div class="breaker-terminal-bottom">
+                            <div class="terminal-screw"></div>
+                        </div>
+                        
+                        <div class="breaker-power">0W</div>
+                        <div class="breaker-cert">IEC 60898</div>
+                    </div>
+                    
+                    <!-- Diferencial -->
+                    <div class="breaker differential" data-breaker="differential" data-type="differential">
+                        <div class="din-rail-slot left"></div>
+                        <div class="din-rail-slot right"></div>
+                        
+                        <div class="breaker-terminal-top">
+                            <div class="terminal-screw"></div>
+                        </div>
+                        
+                        <div class="breaker-window">
+                            <div class="window-screw"></div>
+                        </div>
+                        
+                        <div class="breaker-label">30mA</div>
+                        <div class="breaker-circuit">Diferencial</div>
+                        
+                        <div class="breaker-switch">
+                            <div class="switch-top">OFF</div>
+                            <div class="switch-toggle"></div>
+                        </div>
+                        
+                        <div class="breaker-led">
+                            <div class="led-indicator">
+                                <div class="led-text">OFF</div>
+                            </div>
+                        </div>
+                        
+                        <div class="breaker-terminal-bottom">
+                            <div class="terminal-screw"></div>
+                        </div>
+                        
+                        <div class="breaker-power">0W</div>
+                        <div class="breaker-cert">IEC 61008</div>
+                    </div>
+                </div>
+                
+                <!-- Circuitos Primer Nivel -->
+                <div class="level-section">
+                    <div class="panel-title level-title">
+                        <span class="level-badge">1</span> Primer Nivel - Planta Baja
+                    </div>
+                    <div class="breakers-grid" id="level1Grid">
+                        <!-- Los circuitos de primer nivel se agregarán aquí -->
+                    </div>
+                </div>
+                
+                <!-- Circuitos Segundo Nivel -->
+                <div class="level-section">
+                    <div class="panel-title level-title">
+                        <span class="level-badge">2</span> Segundo Nivel - Planta Alta
+                    </div>
+                    <div class="breakers-grid" id="level2Grid">
+                        <!-- Los circuitos de segundo nivel se agregarán aquí -->
+                    </div>
+                </div>
+                
+                <!-- Información de circuitos -->
+                <div class="circuit-info">
+                    <h3>📋 Información de Circuitos Activos</h3>
+                    
+                    <div class="level-info-section">
+                        <h4>🏠 Primer Nivel - Planta Baja</h4>
+                        <div class="circuit-list" id="level1List">
+                            <p class="empty-message">No hay circuitos en primer nivel</p>
+                        </div>
+                    </div>
+                    
+                    <div class="level-info-section">
+                        <h4>🏠 Segundo Nivel - Planta Alta</h4>
+                        <div class="circuit-list" id="level2List">
+                            <p class="empty-message">No hay circuitos en segundo nivel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Alerta -->
+    <div class="alert" id="alert"></div>
+    
+    <script src="tablero_interactivo.js"></script>
+</body>
+</html>

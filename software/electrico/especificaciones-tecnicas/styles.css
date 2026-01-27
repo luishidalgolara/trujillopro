@@ -1,0 +1,771 @@
+/* ============================================
+   ESPECIFICACIONES TÉCNICAS ELÉCTRIC AS - ESTILOS
+   Formato: Carta (8.5" x 11" / 215.9mm x 279.4mm)
+   ============================================ */
+
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables CSS */
+:root {
+    /* Colores principales */
+    --color-primario: #0d47a1;
+    --color-secundario: #1565c0;
+    --color-acento: #ff6f00;
+    --color-texto: #212121;
+    --color-texto-claro: #757575;
+    --color-fondo: #ffffff;
+    --color-borde: #e0e0e0;
+    --color-tabla-header: #f5f5f5;
+    --color-success: #4caf50;
+    --color-warning: #ff9800;
+    --color-info: #2196f3;
+    
+    /* Tipografía */
+    --fuente-principal: 'Arial', 'Helvetica', sans-serif;
+    --fuente-mono: 'Courier New', monospace;
+    
+    /* Espaciado */
+    --margen-superior: 25mm;
+    --margen-inferior: 25mm;
+    --margen-izquierdo: 20mm;
+    --margen-derecho: 20mm;
+}
+
+/* Configuración del body */
+body {
+    font-family: var(--fuente-principal);
+    font-size: 11pt;
+    line-height: 1.6;
+    color: var(--color-texto);
+    background-color: #eceff1;
+    padding: 20px;
+}
+
+/* Página formato carta */
+.page {
+    width: 215.9mm;
+    min-height: 279.4mm;
+    background: var(--color-fondo);
+    padding: var(--margen-superior) var(--margen-derecho) var(--margen-inferior) var(--margen-izquierdo);
+    margin: 0 auto 20px auto;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+    position: relative;
+    page-break-after: always;
+}
+
+.page:last-of-type {
+    margin-bottom: 0;
+}
+
+/* ============================================
+   PORTADA
+   ============================================ */
+
+.portada {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
+    color: white;
+}
+
+.portada-content {
+    width: 100%;
+}
+
+.logo-container {
+    margin-bottom: 30px;
+}
+
+.logo-placeholder {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    color: white;
+    font-size: 10pt;
+    background-color: rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+}
+
+.titulo-principal {
+    font-size: 36pt;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitulo {
+    font-size: 20pt;
+    font-weight: 600;
+    margin-bottom: 10px;
+    opacity: 0.95;
+}
+
+.subtitulo-eett {
+    font-size: 14pt;
+    font-weight: 500;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    letter-spacing: 2px;
+}
+
+.portada .info-portada {
+    margin-top: 50px;
+    text-align: left;
+}
+
+.portada .info-grupo {
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-left: 4px solid var(--color-acento);
+    backdrop-filter: blur(10px);
+}
+
+.portada .info-grupo h3 {
+    font-size: 11pt;
+    color: white;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.portada .info-grupo p {
+    margin: 5px 0;
+    font-size: 10pt;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.portada .fecha-portada {
+    margin-top: 50px;
+    font-size: 11pt;
+    font-weight: 600;
+}
+
+/* ============================================
+   ÍNDICE
+   ============================================ */
+
+.indice {
+    padding-top: 40px;
+}
+
+.tabla-contenidos ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tabla-contenidos li {
+    margin-bottom: 12px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.tabla-contenidos li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--color-primario);
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+.tabla-contenidos a {
+    text-decoration: none;
+    color: var(--color-texto);
+    display: block;
+    padding: 10px 12px;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+    border-radius: 0 5px 5px 0;
+}
+
+.tabla-contenidos a:hover {
+    background-color: #e3f2fd;
+    border-left-color: var(--color-primario);
+    padding-left: 20px;
+    transform: translateX(5px);
+}
+
+/* ============================================
+   TÍTULOS Y ENCABEZADOS
+   ============================================ */
+
+.titulo-seccion {
+    font-size: 16pt;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(90deg, var(--color-primario) 0%, var(--color-secundario) 100%);
+    margin-bottom: 25px;
+    padding: 12px 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(13, 71, 161, 0.3);
+}
+
+h3 {
+    font-size: 13pt;
+    font-weight: 600;
+    color: var(--color-primario);
+    margin-top: 25px;
+    margin-bottom: 12px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #e3f2fd;
+}
+
+h4 {
+    font-size: 11pt;
+    font-weight: 600;
+    color: var(--color-secundario);
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+/* ============================================
+   PÁRRAFOS Y TEXTO
+   ============================================ */
+
+p {
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+ul, ol {
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+strong {
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+/* ============================================
+   TABLAS
+   ============================================ */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 10pt;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+thead {
+    background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-secundario) 100%);
+    color: white;
+}
+
+thead th {
+    padding: 12px 10px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 9pt;
+    letter-spacing: 0.5px;
+}
+
+tbody tr {
+    border-bottom: 1px solid var(--color-borde);
+    transition: background-color 0.2s ease;
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--color-tabla-header);
+}
+
+tbody tr:hover {
+    background-color: #e3f2fd;
+}
+
+tbody td {
+    padding: 10px;
+    text-align: left;
+}
+
+.total-row {
+    background-color: #fff3e0 !important;
+    font-weight: 600;
+    border-top: 2px solid var(--color-primario);
+    border-bottom: 2px solid var(--color-primario);
+}
+
+.total-row td {
+    padding: 12px 10px;
+}
+
+.subtotal-row {
+    background-color: #e8f5e9 !important;
+    font-weight: 600;
+    border-top: 2px solid var(--color-success);
+}
+
+.total-final-row {
+    background: linear-gradient(135deg, #ff6f00 0%, #ff8f00 100%);
+    color: white !important;
+    font-weight: bold;
+    font-size: 11pt;
+}
+
+.total-final-row td {
+    padding: 15px 10px;
+}
+
+/* Tabla de presupuesto */
+.tabla-final {
+    font-size: 11pt;
+}
+
+.tabla-final td {
+    padding: 12px;
+}
+
+/* Tabla de cronograma */
+.tabla-cronograma {
+    font-size: 9pt;
+}
+
+.tabla-cronograma th {
+    font-size: 8pt;
+    padding: 8px 5px;
+}
+
+.tabla-cronograma td {
+    text-align: center;
+    padding: 8px 5px;
+}
+
+.gantt-active {
+    background-color: var(--color-primario) !important;
+    color: white;
+    font-weight: bold;
+}
+
+/* ============================================
+   CAJAS ESPECIALES
+   ============================================ */
+
+.procedimiento-box {
+    background: linear-gradient(135deg, #e3f2fd 0%, #f5f5f5 100%);
+    border-left: 4px solid var(--color-primario);
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.procedimiento-box p {
+    margin: 10px 0;
+    font-weight: 600;
+    color: var(--color-primario);
+    text-align: left;
+}
+
+.procedimiento-box ol {
+    margin-top: 10px;
+}
+
+.criterio-box {
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+    border-left: 4px solid var(--color-acento);
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.criterio-box p {
+    margin: 8px 0;
+    text-align: left;
+}
+
+.criterio-box strong {
+    color: var(--color-acento);
+}
+
+.requisito-box {
+    background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+    border: 2px solid #e53935;
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.requisito-box h4 {
+    color: #c62828;
+    margin: 0 0 10px 0;
+    font-size: 12pt;
+}
+
+.nota {
+    background-color: #fff9c4;
+    border: 1px solid #fbc02d;
+    border-radius: 5px;
+    padding: 15px 20px;
+    margin: 20px 0;
+}
+
+.nota p {
+    margin: 5px 0;
+    text-align: left;
+}
+
+.nota strong {
+    color: #f57f17;
+}
+
+.nota ul {
+    margin-top: 10px;
+}
+
+/* ============================================
+   CAMPOS EDITABLES
+   ============================================ */
+
+.editable {
+    background-color: #fff9c4;
+    padding: 3px 8px;
+    border-radius: 3px;
+    border: 1px dashed #fbc02d;
+    cursor: text;
+    display: inline-block;
+    min-width: 80px;
+    transition: all 0.3s ease;
+}
+
+.editable:hover {
+    background-color: #fff59d;
+    border-color: #f57f17;
+    box-shadow: 0 0 5px rgba(245, 127, 23, 0.3);
+}
+
+.editable:focus {
+    outline: 2px solid var(--color-acento);
+    background-color: white;
+    border-color: var(--color-acento);
+}
+
+.portada .editable {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: white;
+}
+
+.portada .editable:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.portada .editable:focus {
+    background-color: white;
+    color: var(--color-texto);
+}
+
+/* ============================================
+   PIE DE PÁGINA
+   ============================================ */
+
+.page-footer {
+    display: none;
+    position: fixed;
+    bottom: 15mm;
+    left: 20mm;
+    right: 20mm;
+    text-align: center;
+    font-size: 9pt;
+    color: var(--color-texto-claro);
+    border-top: 1px solid var(--color-borde);
+    padding-top: 8px;
+}
+
+/* ============================================
+   BOTONES DE ACCIÓN
+   ============================================ */
+
+.action-buttons {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.action-buttons button {
+    padding: 12px 20px;
+    font-size: 10pt;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-print {
+    background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-secundario) 100%);
+    color: white;
+}
+
+.btn-print:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(13, 71, 161, 0.4);
+}
+
+.btn-index {
+    background: linear-gradient(135deg, var(--color-acento) 0%, #ff8f00 100%);
+    color: white;
+}
+
+.btn-index:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(255, 111, 0, 0.4);
+}
+
+.btn-calc {
+    background: linear-gradient(135deg, var(--color-success) 0%, #66bb6a 100%);
+    color: white;
+}
+
+.btn-calc:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(76, 175, 80, 0.4);
+}
+
+/* ============================================
+   ESTILOS PARA IMPRESIÓN
+   ============================================ */
+
+@media print {
+    .no-print,
+    .action-buttons {
+        display: none !important;
+    }
+    
+    @page {
+        size: letter;
+        margin: 0;
+    }
+    
+    body {
+        background: white;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .page {
+        width: 100%;
+        min-height: auto;
+        margin: 0;
+        padding: var(--margen-superior) var(--margen-derecho) var(--margen-inferior) var(--margen-izquierdo);
+        box-shadow: none;
+        page-break-after: always;
+        page-break-inside: avoid;
+    }
+    
+    h2, h3, h4 {
+        page-break-after: avoid;
+        page-break-inside: avoid;
+    }
+    
+    table {
+        page-break-inside: avoid;
+    }
+    
+    .procedimiento-box,
+    .criterio-box,
+    .requisito-box,
+    .nota {
+        page-break-inside: avoid;
+    }
+    
+    .page-footer {
+        display: block;
+    }
+    
+    .editable {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+    }
+    
+    .portada .editable {
+        color: white;
+    }
+    
+    a {
+        color: var(--color-texto);
+        text-decoration: none;
+    }
+    
+    .page {
+        counter-increment: page;
+    }
+    
+    .page-number::after {
+        content: counter(page);
+    }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media screen and (max-width: 900px) {
+    body {
+        padding: 10px;
+    }
+    
+    .page {
+        width: 100%;
+        min-height: auto;
+        padding: 20px;
+    }
+    
+    .action-buttons {
+        position: static;
+        margin-bottom: 20px;
+        justify-content: center;
+    }
+    
+    .titulo-principal {
+        font-size: 24pt;
+    }
+    
+    .subtitulo {
+        font-size: 16pt;
+    }
+    
+    table {
+        font-size: 9pt;
+    }
+    
+    thead th {
+        padding: 8px 5px;
+        font-size: 8pt;
+    }
+    
+    tbody td {
+        padding: 8px 5px;
+    }
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   UTILIDADES
+   ============================================ */
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.mt-20 {
+    margin-top: 20px !important;
+}
+
+.font-bold {
+    font-weight: 600 !important;
+}
+
+/* ============================================
+   SCROLLBAR PERSONALIZADO
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #eceff1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-primario);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-secundario);
+}
+
+/* ============================================
+   ESTADOS ESPECIALES
+   ============================================ */
+
+.precio-partida {
+    font-weight: 600;
+    color: var(--color-primario);
+}
+
+.porcentaje {
+    font-style: italic;
+    color: var(--color-texto-claro);
+}

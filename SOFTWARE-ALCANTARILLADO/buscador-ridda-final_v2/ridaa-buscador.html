@@ -1,0 +1,90 @@
+<!-- buscador-ridda-final_v2/ridaa-buscador.html -->
+<div class="ridaa-container" id="ridaaContainer">
+    <div class="ridaa-header">
+        <div class="ridaa-title">
+            <span class="ridaa-title-text">RIDAA - Reglamento</span>
+        </div>
+        <button class="ridaa-toggle-btn" id="ridaaToggleBtn" onclick="toggleRidaaPanel()">
+            <span id="toggleIcon">◀</span>
+        </button>
+    </div>
+    
+    <div class="ridaa-content" id="ridaaContent">
+        <div class="ridaa-search-box">
+            <input 
+                type="text" 
+                id="ridaaSearchInput" 
+                class="ridaa-search-input" 
+                placeholder="Buscar artículos, normas, definiciones..."
+                autocomplete="off"
+            >
+            <button class="ridaa-search-btn" onclick="ejecutarBusqueda()">
+                🔍
+            </button>
+        </div>
+
+        <div class="ridaa-filters">
+            <button class="ridaa-filter-btn active" data-filter="all" onclick="filtrarPorTipo('all')">
+                Todos
+            </button>
+            <button class="ridaa-filter-btn" data-filter="articulos" onclick="filtrarPorTipo('articulos')">
+                Artículos
+            </button>
+            <button class="ridaa-filter-btn" data-filter="normas" onclick="filtrarPorTipo('normas')">
+                Normas
+            </button>
+            <button class="ridaa-filter-btn" data-filter="definiciones" onclick="filtrarPorTipo('definiciones')">
+                Definiciones
+            </button>
+        </div>
+
+        <!-- BOTÓN ANEXOS RIDAA -->
+        <div class="ridaa-anexos-container">
+            <button class="ridaa-anexos-btn" onclick="toggleAnexosRidaa()">
+                📊 ANEXOS RIDAA ▼
+            </button>
+            <div class="ridaa-anexos-dropdown" id="ridaaAnexosDropdown">
+                <button class="ridaa-anexo-item" onclick="abrirAnexoRidaa('siglas-simbolos-utilizados-proyectos.html', 'Siglas y Símbolos')">
+                    📋 Siglas y Símbolos
+                </button>
+                <button class="ridaa-anexo-item" onclick="abrirAnexoRidaa('consumo-maximi-diario-instala.html', 'Consumos Máximos Diarios')">
+                    💧 Consumos Máximos Diarios
+                </button>
+                <button class="ridaa-anexo-item" onclick="abrirAnexoRidaa('tipos-artefactos-y-gastos.html', 'Tipos de Artefactos y Gastos')">
+                    🚰 Tipos de Artefactos y Gastos
+                </button>
+                <button class="ridaa-anexo-item" onclick="abrirAnexoRidaa('unidades-equivalentes-ueh-d-descarga.html', 'Unidades Equivalentes UEH')">
+                    📊 Unidades Equivalentes UEH
+                </button>
+                <button class="ridaa-anexo-item" onclick="abrirAnexoRidaa('capacidad-tuberias-horizontales.html', 'Capacidad Tuberías Horizontales')">
+                    🔧 Capacidad Tuberías Horizontales
+                </button>
+                <button class="ridaa-anexo-item" onclick="abrirAnexoRidaa('solucion-arbolito.html', 'Solución Arbolito')">
+                    🌳 Solución Arbolito
+                </button>
+            </div>
+        </div>
+
+        <!-- BOTÓN TABLA DE CONTENIDOS -->
+        <button class="ridaa-tabla-contenidos-btn" onclick="abrirTablaContenidos()">
+            📑 TABLA DE CONTENIDOS
+        </button>
+
+        <div class="ridaa-stats" id="ridaaStats">
+            <span>Resultados: <strong id="resultCount">0</strong></span>
+        </div>
+
+        <div class="ridaa-results" id="ridaaResults">
+            <div class="ridaa-empty-state">
+                <div class="ridaa-empty-icon">📖</div>
+                <p>Busca información del RIDAA</p>
+                <small>Escribe en el buscador para comenzar</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Botón flotante para mostrar cuando está colapsado -->
+<button class="ridaa-show-btn" id="ridaaShowBtn" onclick="toggleRidaaPanel()" style="display: none;">
+    ▶ RIDAA
+</button>

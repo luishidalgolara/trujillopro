@@ -1,0 +1,242 @@
+{
+  "continuacion_articulo_48": {
+    "numero": "Artículo 48º (continuación)",
+    "modelos_adicionales": [
+      {
+        "tipo": "b",
+        "nombre": "Certificación según marca de conformidad con normas chilenas:",
+        "contenido": "Este modelo de certificación comprende un ensayo de tipo, una evaluación del sistema de control de calidad de la fábrica y su aceptación, supervisión por parte del organismo de certificación del artículo 45º.\nMientras exista este modelo de certificación, los productos amparados por la Marca de Conformidad con Norma deberán llevar un sello que indique la Norma Chilena con la cual el producto cumple, sin perjuicio de que el organismo de certificación emita certificados que avalen la producción en general. Los requisitos, procedimientos y condiciones para otorgar, mantener o suspender la marca de conformidad con Norma Chilena están contenidos en el Reglamento de Marca de Conformidad con Norma del INN."
+      },
+      {
+        "tipo": "c",
+        "nombre": "Certificación permanente de producción:",
+        "contenido": "En este caso se sigue el mismo procedimiento que en la Marca de Conformidad con Norma, con la diferencia que los términos de referencia para la certificación, en vez de una Norma Chilena, se puede cumplir con una especificación técnica o parte de una Norma Chilena. En este, los productos deben llevar un sello distintivo del organismo que entrega la certificación."
+      },
+      {
+        "tipo": "d",
+        "nombre": "Certificación de prototipo:",
+        "contenido": "Este modelo de certificación sólo se utilizará para la autorización de los productos por parte de la Superintendencia de Servicios Sanitarios."
+      }
+    ]
+  },
+  "titulos": [
+    {
+      "numero": "TITULO II",
+      "nombre": "De la Presentación y Contenido del Proyecto de Instalaciones Domiciliarias",
+      "parrafos": [
+        {
+          "numero": "Párrafo I",
+          "nombre": "Presentación del Proyecto",
+          "articulos": [
+            {
+              "numero": "Artículo 49º",
+              "texto": "La presentación y contenido del proyecto de Instalaciones Domiciliarias deberá cumplir con lo siguiente:",
+              "requisitos": {
+                "a": {
+                  "texto": "La Memoria y Especificaciones Técnicas deberán presentarse mecanografiados en papel y en forma adicional en archivos magnéticos, cuando hayan sido confeccionados en dicho medio."
+                },
+                "b": {
+                  "texto": "Los Planos deberán cumplir con las siguientes pautas:",
+                  "pautas": [
+                    {
+                      "codigo": "b.a",
+                      "texto": "El tamaño de los planos estará comprendido entre los formatos A-3 y A-0, conforme a las Normas NCh 13 y 494. Las escalas se seleccionarán entre las siguientes:",
+                      "escalas": {
+                        "b.a.a": {
+                          "nombre": "Planos de conjuntos o loteos:",
+                          "valores": "1:100; 1:200; 1:250, 1:500 y 1:1000"
+                        },
+                        "b.a.b": {
+                          "nombre": "Planos de la propiedad, plantas de pisos:",
+                          "valores": "1:50; 1:100; 1:200; 1:250; 1:500"
+                        },
+                        "b.a.c": {
+                          "nombre": "Planos de detalles y cortes:",
+                          "valores": "1:1; 1:5; 1:10; 1:20; 1:25 ó 1:50"
+                        }
+                      },
+                      "nota": "En general se usará la escala 1:100 para plantas de pisos. Cuando ésta no sea adecuada, se recurrirá a la más conveniente de las indicadas, de modo de obtener una buena presentación y máxima claridad en la interpretación de los planos."
+                    },
+                    {
+                      "codigo": "b.b",
+                      "texto": "Para su confección se empleará poliéster translúcido con tinta indeleble negra. Deberá presentarse en forma que puedan plegarse en formatos de 210 mm. de ancho por 297 mm. de alto con una tolerancia de ± 10 mm. Adicionalmente se presentarán en archivos magnéticos, cuando hayan sido confeccionados en por dicho medio."
+                    },
+                    {
+                      "codigo": "b.c",
+                      "texto": "La carátula deberá ir ubicada en la esquina inferior derecha, debiendo plegarse el plano de manera que ésta quede siempre ubicada en primer plano, tanto en los proyectos de agua potable como en los de alcantarillado. El detalle será el establecido en el Anexo Nº 2 Carátula."
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "numero": "Párrafo II",
+          "nombre": "Contenido del Proyecto",
+          "articulos": [
+            {
+              "numero": "Artículo 50º",
+              "texto": "Los proyectos deberán contener memoria, planos y especificaciones técnicas como documentos independientes. Sin embargo, en aquellos que correspondan a viviendas hasta de dos pisos, con 75 UEH o menos y diámetro máximo de arranque y medidor de agua potable de 25 mm. y que no incluyan obras complementarias, tales como estanques, sistema de elevación u otros, se podrá establecer en el plano la memoria y especificaciones técnicas mínimas. Los proyectos no contemplados en esta excepción se califican como proyectos de envergadura.\nSe entenderá por Memoria, la exposición de los antecedentes, recursos, requerimientos, métodos de estudio y cálculo de las soluciones propuestas, la que deberá contener las bases técnicas que correspondan para el diseño de los proyectos de conformidad a lo establecido en este Reglamento:",
+              "contenido": {
+                "a": {
+                  "nombre": "Proyectos de agua potable:",
+                  "items": [
+                    "a.a. Número estimado de usuarios",
+                    "a.b. Dotaciones consideradas.",
+                    "a.c. Materiales utilizados.",
+                    "a.d. Cálculo de gastos instalados, probable y consumo máximo diario.",
+                    "a.e. Cálculo de presiones.",
+                    "a.f. Cálculo del medidor.",
+                    "a.g. Cálculo y características de obras y equipos especiales.",
+                    "a.h. Cálculo del consumo del período de punta",
+                    "a.i. Bases técnicas del sistema de riego, si lo hubiera."
+                  ]
+                },
+                "b": {
+                  "nombre": "Proyectos de Alcantarillado:",
+                  "items": [
+                    "b.a. Número estimado de usuarios",
+                    "b.b. Número de artefactos a instalar.",
+                    "b.c. Gasto instalado de cada artefacto.",
+                    "b.d. Dotaciones y cuadro de UEH.",
+                    "b.e. Caudales de aguas servidas.",
+                    "b.f. Criterios de diseño y dimensionamiento, bases de cálculo utilizadas.",
+                    "b.g. Solución de aguas lluvia independiente del sistema de alcantarillado de aguas servidas."
+                  ]
+                }
+              },
+              "planos": {
+                "descripcion": "Los Planos, son la expresión gráfica del proyecto y su contenido determina la geometría completa de la obra. Junto con las especificaciones técnicas deben definir todos los requisitos necesarios para la construcción, los que constarán esencialmente de lo siguiente:",
+                "items": [
+                  "a. Plano de ubicación de la propiedad con sus dimensiones, referida a puntos de referencia (PR), fácilmente identificable, indicando el norte.",
+                  "b. Planta de cada piso con indicación de cotas referidas al punto de la solera ubicado sobre la unión domiciliaria de alcantarillado (CS) a otro adecuado.",
+                  "c. Ubicación y protección del medidor.",
+                  "d. Si se precisa describir más detalladamente parte de las instalaciones domiciliarias de agua potable y alcantarillado (IDAA) se utilizarán cortes de detalle a escala adecuada.",
+                  "e. Cuando sea necesario en los proyectos de envergadura deberá incluirse un esquema isométrico.",
+                  "f. Las instalaciones de agua potable y alcantarillado deberán ir en planos separados.",
+                  "g. Los proyectos de las instalaciones de agua fría y caliente podrán ir en un mismo plano, pero en plantas separadas."
+                ],
+                "nota": "Las siglas y símbolos para designar materiales, artefactos, etc. se indican en el Anexo Nº 1 de este Reglamento. Cuando por necesidad del proyecto se utilicen otros, se especificará en el mismo plano su significado."
+              },
+              "especificaciones_tecnicas": "Las Especificaciones Técnicas representarán la expresión escrita de las condiciones del proyecto. Tendrán por objeto impartir las instrucciones técnicas sobre los procedimientos constructivos, los materiales que se emplearán, las tolerancias y pruebas que deberán cumplirse."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "TITULO III",
+      "nombre": "Diseño y cálculo de las Instalaciones Domiciliarias de Agua Potable",
+      "articulos": [
+        {
+          "numero": "Artículo 51º",
+          "texto": "El diseño y cálculo de las instalaciones domiciliarias de agua potable (IDAP) debe garantizar en toda circunstancia la preservación de la potabilidad del agua y un suministro adecuado a cualquier artefacto, ciñéndose para ello a las normas chilenas, instrucciones de la Superintendencia y las prácticas corrientemente empleadas en ingeniería sanitaria. Asimismo, el diseño y los materiales consultados deben asegurar el buen funcionamiento y durabilidad de las instalaciones, durante la vida útil prevista del inmueble al cual va a servir.\nEn un proyecto domiciliario de agua potable y alcantarillado no podrá haber exceso de soluciones diseñadas al límite de las normas de este Reglamento, salvo aquellos casos excepcionales calificados por la Superintendencia."
+        },
+        {
+          "numero": "Artículo 52º",
+          "texto": "Los cálculos y condiciones básicas de las IDAP deberán cumplir con lo indicado en la norma chilena NCh 2485 y con las siguientes especificaciones:",
+          "especificaciones": {
+            "a": {
+              "nombre": "Diámetros mínimos",
+              "contenido": "El diámetro mínimo de las tuberías a utilizar en las instalaciones domiciliarias de agua potable será D = 13 mm, para tuberías de cobre y D = 16 mm. para tuberías de material plástico. Todos los diámetros deberán determinarse mediante cálculo.\nSin embargo lo anterior, se podrá utilizar tubería de cobre de diámetro D = 10 mm, en el tramo a la vista de la conexión a la llave o artefacto, con una longitud máxima de 20 cm."
+            },
+            "b": {
+              "nombre": "Gastos máximos instalados y probables",
+              "items": [
+                {
+                  "codigo": "b.a",
+                  "texto": "En el Anexo Nº 3, se indican los gastos instalados por artefactos, que debe utilizarse para el cálculo de los diámetros de las tuberías. Se emplearán los mismos valores para instalaciones de agua fría como para aquellas de agua caliente.\nLa suma de los gastos instalados con agua fría determinará el gasto máximo instalado en L/min.\nSalvo consideraciones propias del proyecto, se podrá efectuar el cálculo de los caudales totales, sin incluir el consumo de agua caliente de calefón, calderas u otros."
+                },
+                {
+                  "codigo": "b.b",
+                  "texto": "El gasto máximo probable (QMP) en L/min., se calculará a partir del gasto instalado mediante la siguiente fórmula:\nRamales con grifería corriente:\nQ.M.P. = 1.7391* QI^ 0.6891\nDonde:\nQI: Gasto instalado en L/min.\nQMP: Gasto máximo probable en L/min."
+                },
+                {
+                  "codigo": "b.c",
+                  "texto": "Para ramales con válvulas automáticas se deberán cumplir con las especificaciones del fabricante.\nEl gasto máximo probable total de una instalación con ramales que cuenten simultáneamente con grifería corriente y válvulas automáticas. (Instalaciones mixtas), está dado por la suma de los gastos máximos probables independientes de ambos tipos de artefactos, salvo justificación del proyectista."
+                },
+                {
+                  "codigo": "b.d",
+                  "texto": "En todo caso, para el dimensionamiento de las instalaciones se podrá emplear un gasto de diseño diferente al gasto máximo probable. Su valor mínimo deberá ser debidamente justificado por el proyectista y su máximo corresponderá al gasto instalado, el que deberá ser aceptado en forma expresa por el Prestador, todo lo cual quedará establecido en el plano del proyecto."
+                },
+                {
+                  "codigo": "b.e",
+                  "texto": "El cálculo de los diámetros, pérdidas de carga y presiones en cada punto, deberá resumirse en forma de cuadro ordenado según tramos de tuberías.\nSe recomienda la utilización de un cuadro de cálculos similar al que se indica a continuación, al que el proyectista podrá hacer las variaciones que estime conveniente, de acuerdo con la complejidad del proyecto.",
+                  "tabla": {
+                    "columnas": [
+                      "Tramo",
+                      "Longitud m (Real, Equivalente)",
+                      "D m",
+                      "Gasto máximo L/min (Instalado, Probable)",
+                      "Velocidad m/seg",
+                      "Pérdida de carga (Unitaria m/m, En el tramo m, Acumulada m)",
+                      "Cota m (Piezométrica, Terreno o artefacto)",
+                      "Presión m"
+                    ]
+                  }
+                }
+              ]
+            },
+            "c": {
+              "nombre": "Cálculos y condiciones del medidor:",
+              "items": [
+                {
+                  "codigo": "c.a",
+                  "nombre": "Pérdida de carga en el medidor",
+                  "texto": "Para el cálculo de la pérdida de carga en el medidor podrá utilizarse la fórmula siguiente, para medidores de transmisión mecánica de diámetro igual o inferior a 38 mm.\nK= 0.036 (QMP/C)2.\nEn que:\nQMP: Gasto máximo probable en L/min.\nC: Capacidad máxima del medidor en m3/día.\nK: Pérdida de carga en m.\nEn todo caso, será obligación del proyectista justificar técnicamente el empleo de otra expresión o de valores específicos correspondientes a medidores de otras características distintas a los mecánicos. Para medidores de diámetros superiores a 38 mm. deben utilizarse las tablas que entreguen los fabricantes:"
+                },
+                {
+                  "codigo": "c.b",
+                  "nombre": "Capacidad máxima de los medidores",
+                  "texto": "Para la determinación del diámetro del medidor se podrá utilizar la tabla siguiente hasta un diámetro de 38 mm. o especificaciones del fabricante. Para diámetros superiores deberá recurrirse a las especificaciones del fabricante del medidor correspondiente.",
+                  "tabla": {
+                    "columnas": ["Diámetro medidor (mm)", "Consumo máximo diario (m3/día) (C)", "Gasto máximo probable (l/min) (QMP)"],
+                    "filas": [
+                      ["13", "3", "50"],
+                      ["19", "5", "80"],
+                      ["25", "7", "117"],
+                      ["38", "20", "333"]
+                    ]
+                  },
+                  "nota": "Para calcular el diámetro del medidor requerido, se aplicará la tabla anterior en función de la demanda máxima de la instalación en m3/día, conforme a las tablas que la Superintendencia emitirá periódicamente.\nPara tal efecto, los consumos máximos diarios en instalaciones domiciliarias de agua potable establecidos en el Anexo Nº 4 sólo tendrán valor referencial, pudiendo modificarse estas tablas mediante resoluciones de la Superintendencia. Sin perjuicio de lo anterior, el proyectista podrá justificar otros valores.\nEn instalaciones sin estanque será necesario calcular además, el gasto de diseño de la instalación en l/min. a base de los valores que figuran en Anexo Nº 3, y se determinará el diámetro del medidor de acuerdo con la tabla anterior.\nEn caso de discordancia con el diámetro fijado por el consumo máximo diario, se adoptará el mayor.\nExcepcionalmente, con notificación previa al usuario, el prestador podrá modificar, a su costo, el diámetro del medidor, basándose en mediciones efectivas del consumo que registre el inmueble.\nCualquier discrepancia con relación a esta disposición, entre el prestador y el interesado, a solicitud de cualquiera de las partes, resolverá la Superintendencia."
+                },
+                {
+                  "codigo": "c.c",
+                  "nombre": "Instalación de medidores y remarcadores",
+                  "texto": "Los medidores y remarcadores deben ser instalados de acuerdo con lo estipulado en las Normas Chilenas.\nEstos deben ser colocados en posición horizontal, salvo aquellos expresamente fabricados para ser colocados en otras posiciones. Los diámetros de las tuberías ubicadas antes y después del medidor deberán ser iguales a lo menos en una extensión de 5 diámetros, o de acuerdo con las especificaciones del fabricante.\nLos medidores se instalarán junto a la línea oficial a la entrada del inmueble si es posible y en todo caso, en un lugar de fácil acceso y sin obstáculos para su lectura.\nEn edificios y conjuntos habitacionales que tengan una conexión única a la matriz pública de agua potable, el proyecto de la instalación domiciliaria de agua potable del edificio o conjunto deberá incluir la instalación de un medidor remarcador en los espacios comunes para cada departamento o inmueble, y medidores remarcadores para registrar los consumos comunes.\nEn los arranques cuyo diámetro sea igual o superior a 50 mm., debe considerarse la instalación de un filtro de rejilla antes del medidor si éste no lo lleva incorporado.\nLos medidores deberán ir instalados con protección adecuada, contra daños producidos por golpes y factores climáticos propios de la zona.\nLas pasadas de las tuberías de agua potable a los pisos superiores de los edificios de departamentos habitacionales a oficinas, no podrán proyectarse por el interior de los departamentos, debiendo ubicarse en sitios comunes que siempre tengan acceso a través de un espacio general del edificio y que permita la instalación del remarcador."
+                }
+              ]
+            },
+            "d": {
+              "nombre": "Determinación de las pérdidas de carga",
+              "items": [
+                {
+                  "codigo": "d.a",
+                  "texto": "La determinación de las pérdidas de carga, será efectuada por el proyectista de acuerdo con fórmulas, tablas y ábacos correspondientes a cada materia, no aceptándose sobre el punto de salida del artefacto situado más desfavorablemente, una presión menor a 4 mca para IDAP alimentadas desde la matriz, considerándose ésta en condición de presión de día de máximo consumo en período de punta, ó 7 mca cuando se abastece desde medios mecánicos, ni una velocidad superior a 2,5 m/s en las tuberías exteriores y de distribución principal y 2 m/s en las tuberías de la red interior.\nLa velocidad en tuberías deberá corresponder a las señaladas en el punto 5.3 de la norma chilena NCh 2485. Sin embargo lo anterior en casos de materiales con nuevas tecnologías que acepten velocidades mayores a las indicadas, éstas podrán utilizarse previa justificación técnica del fabricante o importador ante la Superintendencia, y previa solicitud de modificación de la referida norma ante el INN."
+                },
+                {
+                  "codigo": "d.b",
+                  "texto": "El cálculo de las pérdidas de carga se iniciará en la llave de paso ubicada después del medidor, siendo necesario considerar aquellas producidas en las tuberías de la instalación interior y calentador empleado, indicando las características técnicas de este último en el plano del proyecto."
+                },
+                {
+                  "codigo": "d.c",
+                  "nombre": "Llaves de paso",
+                  "texto": "Toda sala de servicio (baño, cocina, etc.), deberá llevar a lo menos una llave de paso de agua fría y otra de agua caliente, que permita independizarla del resto de los servicios del inmueble."
+                },
+                {
+                  "codigo": "d.d",
+                  "texto": "La presión mínima para el diseño de la instalación domiciliaria de agua potable será la establecida en la Norma Chilena NCh 2485. En los casos de excepción que permite esta norma, respecto a que no se alcance la presión mínima 14 m.c.a. después de la llave de paso aguas abajo del medidor, el prestador deberá justificar técnicamente esta situación teniendo presente que la red pública debe cumplir siempre con las presiones mínimas especificadas en la NCh 691."
+                },
+                {
+                  "codigo": "d.e",
+                  "texto": "El diámetro definitivo del medidor será aprobado por el Prestador sobre la base del proyecto domiciliario presentado y podrá ser distinto al diámetro del arranque, no pudiendo afectar la calidad de la instalación interior."
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

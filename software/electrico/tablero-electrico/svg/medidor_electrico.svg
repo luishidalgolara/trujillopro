@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <!-- Definiciones -->
+  <defs>
+    <linearGradient id="plasticBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8e8e8;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#d0d0d0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b8b8b8;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="screenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8ab8d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5a8ca8;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="3" dy="4" stdDeviation="4" flood-opacity="0.3"/>
+    </filter>
+    <linearGradient id="metalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#b8936c;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8B7355;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6d5a47;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Cuerpo principal del medidor -->
+  <rect x="50" y="50" width="300" height="400" rx="8" fill="url(#plasticBody)" stroke="#888" stroke-width="2" filter="url(#shadow)"/>
+  
+  <!-- Borde superior decorativo -->
+  <rect x="50" y="50" width="300" height="15" rx="8" fill="#f0f0f0" opacity="0.6"/>
+  
+  <!-- Panel frontal con relieve -->
+  <rect x="60" y="70" width="280" height="360" rx="5" fill="#e0e0e0" stroke="#aaa" stroke-width="1"/>
+  
+  <!-- Marca y modelo superior -->
+  <rect x="80" y="90" width="240" height="35" rx="3" fill="#2c3e50"/>
+  <text x="200" y="108" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">MEDIDOR DE ENERGÍA</text>
+  <text x="200" y="120" font-family="Arial, sans-serif" font-size="10" fill="#bdc3c7" text-anchor="middle">Modelo: DDS-1234</text>
+  
+  <!-- Pantalla LCD digital -->
+  <rect x="80" y="140" width="240" height="100" rx="4" fill="url(#screenGradient)" stroke="#34495e" stroke-width="2"/>
+  
+  <!-- Marco interno de pantalla -->
+  <rect x="85" y="145" width="230" height="90" rx="2" fill="#7fa8c2" opacity="0.3"/>
+  
+  <!-- Display digital - números grandes -->
+  <g id="lcd-display">
+    <!-- Fondo del display -->
+    <rect x="95" y="155" width="210" height="50" rx="2" fill="#5a7a8c"/>
+    
+    <!-- Números digitales -->
+    <text x="105" y="195" font-family="'Courier New', monospace" font-size="36" font-weight="bold" fill="#00ff00" text-anchor="start">01234.5</text>
+    
+    <!-- Unidad kWh -->
+    <text x="295" y="195" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#00ff00" text-anchor="end">kWh</text>
+  </g>
+  
+  <!-- Indicadores inferiores de la pantalla -->
+  <g id="lcd-indicators">
+    <circle cx="100" cy="220" r="4" fill="#ff0000" opacity="0.8"/>
+    <text x="110" y="224" font-family="Arial, sans-serif" font-size="9" fill="#fff">CONSUMO</text>
+    
+    <circle cx="180" cy="220" r="4" fill="#ffaa00" opacity="0"/>
+    <text x="190" y="224" font-family="Arial, sans-serif" font-size="9" fill="#fff">EXPORTA</text>
+    
+    <circle cx="255" cy="220" r="4" fill="#00ff00" opacity="0.8"/>
+    <text x="265" y="224" font-family="Arial, sans-serif" font-size="9" fill="#fff">ACTIVO</text>
+  </g>
+  
+  <!-- Información técnica -->
+  <rect x="80" y="260" width="240" height="80" rx="3" fill="#fff" stroke="#ccc" stroke-width="1"/>
+  
+  <text x="90" y="278" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#000">Especificaciones:</text>
+  <text x="90" y="295" font-family="Arial, sans-serif" font-size="10" fill="#333">Tensión: 220V / 50Hz</text>
+  <text x="90" y="310" font-family="Arial, sans-serif" font-size="10" fill="#333">Corriente máx: 60A</text>
+  <text x="90" y="325" font-family="Arial, sans-serif" font-size="10" fill="#333">Clase: 1.0 (IEC 62052-11)</text>
+  
+  <!-- LED de pulso -->
+  <circle cx="285" cy="295" r="6" fill="#ff0000" stroke="#990000" stroke-width="1.5"/>
+  <circle cx="285" cy="295" r="3" fill="#ff3333" opacity="0.7"/>
+  <text x="285" y="315" font-family="Arial, sans-serif" font-size="8" fill="#666" text-anchor="middle">1000 imp/kWh</text>
+  
+  <!-- Botón de navegación -->
+  <circle cx="200" cy="365" r="18" fill="#34495e" stroke="#2c3e50" stroke-width="2"/>
+  <circle cx="200" cy="365" r="12" fill="#4a6278" stroke="#34495e" stroke-width="1"/>
+  <text x="200" y="370" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">▶</text>
+  <text x="200" y="395" font-family="Arial, sans-serif" font-size="8" fill="#666" text-anchor="middle">PANTALLA</text>
+  
+  <!-- Información del fabricante -->
+  <rect x="80" y="405" width="240" height="20" rx="2" fill="#ebebeb" stroke="#ccc" stroke-width="1"/>
+  <text x="200" y="419" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#000" text-anchor="middle">Electromedidores Inteligentes</text>
+  
+  <!-- Código de barras / QR simulado -->
+  <rect x="150" y="435" width="100" height="10" rx="1" fill="#000"/>
+  <line x1="155" y1="436" x2="155" y2="444" stroke="#fff" stroke-width="1.5"/>
+  <line x1="160" y1="436" x2="160" y2="444" stroke="#fff" stroke-width="0.8"/>
+  <line x1="165" y1="436" x2="165" y2="444" stroke="#fff" stroke-width="1.2"/>
+  <line x1="170" y1="436" x2="170" y2="444" stroke="#fff" stroke-width="0.8"/>
+  <line x1="175" y1="436" x2="175" y2="444" stroke="#fff" stroke-width="1.5"/>
+  <line x1="180" y1="436" x2="180" y2="444" stroke="#fff" stroke-width="0.8"/>
+  <line x1="185" y1="436" x2="185" y2="444" stroke="#fff" stroke-width="1.2"/>
+  <line x1="190" y1="436" x2="190" y2="444" stroke="#fff" stroke-width="1.5"/>
+  <line x1="195" y1="436" x2="195" y2="444" stroke="#fff" stroke-width="0.8"/>
+  <line x1="200" y1="436" x2="200" y2="444" stroke="#fff" stroke-width="1.2"/>
+  <line x1="205" y1="436" x2="205" y2="444" stroke="#fff" stroke-width="0.8"/>
+  <line x1="210" y1="436" x2="210" y2="444" stroke="#fff" stroke-width="1.5"/>
+  <line x1="215" y1="436" x2="215" y2="444" stroke="#fff" stroke-width="1.2"/>
+  <line x1="220" y1="436" x2="220" y2="444" stroke="#fff" stroke-width="0.8"/>
+  <line x1="225" y1="436" x2="225" y2="444" stroke="#fff" stroke-width="1.5"/>
+  <line x1="230" y1="436" x2="230" y2="444" stroke="#fff" stroke-width="0.8"/>
+  <line x1="235" y1="436" x2="235" y2="444" stroke="#fff" stroke-width="1.2"/>
+  <line x1="240" y1="436" x2="240" y2="444" stroke="#fff" stroke-width="1.5"/>
+  
+  <!-- Número de serie -->
+  <text x="200" y="460" font-family="'Courier New', monospace" font-size="9" fill="#666" text-anchor="middle">S/N: 2024-DDS-567890</text>
+  
+  <!-- Terminales de conexión superiores (borneras) -->
+  <g id="terminals">
+    <!-- Terminal 1 (Entrada Fase) - MARRÓN -->
+    <rect x="70" y="15" width="40" height="30" rx="2" fill="url(#metalGradient)" stroke="#5c4a3a" stroke-width="1"/>
+    <circle cx="90" cy="30" r="6" fill="#555" stroke="#333" stroke-width="1"/>
+    <line x1="87.5" y1="30" x2="92.5" y2="30" stroke="#888" stroke-width="1"/>
+    <rect x="72" y="17" width="6" height="6" fill="#8B4513"/>
+    <text x="90" y="10" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#000" text-anchor="middle">FASE</text>
+    <text x="90" y="55" font-family="Arial, sans-serif" font-size="7" fill="#666" text-anchor="middle">(L) Entrada</text>
+    
+    <!-- Terminal 2 (Entrada Neutro) - AZUL -->
+    <rect x="120" y="15" width="40" height="30" rx="2" fill="url(#metalGradient)" stroke="#5c4a3a" stroke-width="1"/>
+    <circle cx="140" cy="30" r="6" fill="#555" stroke="#333" stroke-width="1"/>
+    <line x1="137.5" y1="30" x2="142.5" y2="30" stroke="#888" stroke-width="1"/>
+    <rect x="122" y="17" width="6" height="6" fill="#4169E1"/>
+    <text x="140" y="10" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#000" text-anchor="middle">NEUTRO</text>
+    <text x="140" y="55" font-family="Arial, sans-serif" font-size="7" fill="#666" text-anchor="middle">(N) Entrada</text>
+    
+    <!-- Terminal 3 (Tierra) - AMARILLO/VERDE -->
+    <rect x="185" y="15" width="40" height="30" rx="2" fill="url(#metalGradient)" stroke="#5c4a3a" stroke-width="1"/>
+    <circle cx="205" cy="30" r="6" fill="#555" stroke="#333" stroke-width="1"/>
+    <line x1="202.5" y1="30" x2="207.5" y2="30" stroke="#888" stroke-width="1"/>
+    <rect x="187" y="17" width="3" height="6" fill="#FFD700"/>
+    <rect x="190" y="17" width="3" height="6" fill="#32CD32"/>
+    <text x="205" y="10" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#000" text-anchor="middle">TIERRA</text>
+    <text x="205" y="55" font-family="Arial, sans-serif" font-size="7" fill="#666" text-anchor="middle">(PE)</text>
+    
+    <!-- Terminal 4 (Salida Fase) - MARRÓN -->
+    <rect x="240" y="15" width="40" height="30" rx="2" fill="url(#metalGradient)" stroke="#5c4a3a" stroke-width="1"/>
+    <circle cx="260" cy="30" r="6" fill="#555" stroke="#333" stroke-width="1"/>
+    <line x1="257.5" y1="30" x2="262.5" y2="30" stroke="#888" stroke-width="1"/>
+    <rect x="242" y="17" width="6" height="6" fill="#8B4513"/>
+    <text x="260" y="10" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#000" text-anchor="middle">FASE</text>
+    <text x="260" y="55" font-family="Arial, sans-serif" font-size="7" fill="#666" text-anchor="middle">(L) Salida</text>
+    
+    <!-- Terminal 5 (Salida Neutro) - AZUL -->
+    <rect x="290" y="15" width="40" height="30" rx="2" fill="url(#metalGradient)" stroke="#5c4a3a" stroke-width="1"/>
+    <circle cx="310" cy="30" r="6" fill="#555" stroke="#333" stroke-width="1"/>
+    <line x1="307.5" y1="30" x2="312.5" y2="30" stroke="#888" stroke-width="1"/>
+    <rect x="292" y="17" width="6" height="6" fill="#4169E1"/>
+    <text x="310" y="10" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#000" text-anchor="middle">NEUTRO</text>
+    <text x="310" y="55" font-family="Arial, sans-serif" font-size="7" fill="#666" text-anchor="middle">(N) Salida</text>
+  </g>
+  
+  <!-- Orificios de montaje -->
+  <circle cx="70" cy="80" r="4" fill="#666" stroke="#444" stroke-width="1"/>
+  <circle cx="330" cy="80" r="4" fill="#666" stroke="#444" stroke-width="1"/>
+  <circle cx="70" cy="420" r="4" fill="#666" stroke="#444" stroke-width="1"/>
+  <circle cx="330" cy="420" r="4" fill="#666" stroke="#444" stroke-width="1"/>
+  
+  <!-- Sello de seguridad (precinto) -->
+  <rect x="315" y="385" width="25" height="40" rx="3" fill="#ffcc00" stroke="#cc9900" stroke-width="1.5"/>
+  <circle cx="327.5" cy="395" r="3" fill="#cc9900"/>
+  <text x="327.5" y="418" font-family="Arial, sans-serif" font-size="7" font-weight="bold" fill="#000" text-anchor="middle" transform="rotate(-90 327.5 418)">SELLADO</text>
+  
+  <!-- Tapa de comunicación (puerto óptico) -->
+  <rect x="140" y="355" width="30" height="20" rx="2" fill="#34495e" stroke="#2c3e50" stroke-width="1"/>
+  <circle cx="155" cy="365" r="6" fill="#4a6278" stroke="#34495e" stroke-width="1"/>
+  <text x="120" y="370" font-family="Arial, sans-serif" font-size="7" fill="#666">ÓPTICO</text>
+  
+  <!-- Certificaciones y marcas -->
+  <g id="certifications">
+    <circle cx="90" cy="365" r="12" fill="#fff" stroke="#ccc" stroke-width="1"/>
+    <text x="90" y="370" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#000" text-anchor="middle">CE</text>
+    
+    <rect x="248" y="355" width="22" height="20" rx="2" fill="#fff" stroke="#ccc" stroke-width="1"/>
+    <text x="259" y="369" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#000" text-anchor="middle">IEC</text>
+  </g>
+  
+  <!-- Detalles de textura y realismo -->
+  <rect x="55" y="55" width="290" height="3" rx="2" fill="#fff" opacity="0.3"/>
+  <rect x="55" y="443" width="290" height="3" rx="2" fill="#000" opacity="0.15"/>
+</svg>

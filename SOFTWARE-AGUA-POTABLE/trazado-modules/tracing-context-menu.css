@@ -1,0 +1,106 @@
+/**
+ * ============================================
+ * TRACING CONTEXT MENU - STYLES
+ * Estilos para menú contextual de trazado
+ * ============================================
+ */
+
+/* Contenedor del menú */
+.context-menu-tracing {
+    position: fixed;
+    background: #ffffff;
+    border: 2px solid #e74c3c;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(231, 76, 60, 0.3);
+    padding: 8px;
+    min-width: 280px;
+    z-index: 999999;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* ⭐ SIN TRANSICIÓN - APARECE INSTANTÁNEAMENTE */
+}
+
+/* Menú activo - APARECE AL INSTANTE */
+.context-menu-tracing.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: all !important;
+    /* ⭐ SIN TRANSICIONES NI TRANSFORMS */
+}
+
+/* Items del menú */
+.context-menu-tracing .context-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.1s ease, transform 0.1s ease; /* ⭐ Solo hover rápido */
+    user-select: none;
+    gap: 12px;
+    color: #1a1a1a !important; /* ⭐ NEGRO OSCURO SIEMPRE VISIBLE */
+    font-weight: 700 !important; /* ⭐ MUY NEGRITA */
+    opacity: 1 !important; /* ⭐ SIEMPRE VISIBLE */
+}
+
+.context-menu-tracing .context-menu-item:hover {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: #ffffff !important; /* ⭐ BLANCO AL HACER HOVER */
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+.context-menu-tracing .context-menu-item:active {
+    transform: translateX(4px) scale(0.98);
+}
+
+/* Icono del menú */
+.context-menu-tracing .menu-icon {
+    font-size: 18px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    opacity: 1 !important; /* ⭐ SIEMPRE VISIBLE */
+}
+
+/* Texto del menú */
+.context-menu-tracing .menu-text {
+    font-size: 14px;
+    font-weight: 600;
+    flex: 1;
+    white-space: nowrap;
+    opacity: 1 !important; /* ⭐ SIEMPRE VISIBLE */
+    color: inherit !important;
+}
+
+/* Divisor */
+.context-menu-tracing .context-menu-divider {
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #e74c3c 20%, 
+        #e74c3c 80%, 
+        transparent 100%);
+    margin: 6px 8px;
+    opacity: 0.3;
+}
+
+/* Borde superior con gradiente */
+.context-menu-tracing::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        #e74c3c 0%, 
+        #f39c12 50%, 
+        #e74c3c 100%);
+    border-radius: 12px 12px 0 0;
+}

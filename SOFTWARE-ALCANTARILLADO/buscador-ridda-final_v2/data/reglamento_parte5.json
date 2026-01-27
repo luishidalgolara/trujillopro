@@ -1,0 +1,180 @@
+{
+  "titulos": [
+    {
+      "numero": "TITULO IV",
+      "nombre": "Red de Incendio",
+      "articulos": [
+        {
+          "numero": "Artículo 53º",
+          "texto": "En toda edificación, se deberá considerar un sistema de redes para la provisión de agua, que se denominará red de incendio (red húmeda y red seca). Mientras no exista una norma específica al respecto, estas redes deberán ser proyectadas de acuerdo con las disposiciones mínimas que a continuación se indican:",
+          "disposiciones": {
+            "a": {
+              "nombre": "RED HUMEDA",
+              "items": [
+                {
+                  "codigo": "a.a",
+                  "texto": "En los inmuebles destinados a la reunión de personas tales como hospitales, comercio, escuelas, industrias, edificios públicos, deportivos y otros destinados al mismo efecto, así como también en los edificios de tres o más pisos se deberá considerar para utilización contra fuegos incipientes, una boca de incendio de 25 mm. como mínimo por piso, conectada al sistema de distribución de agua del edificio.\n\nLas bocas de incendio se distribuirán de manera que ningún punto del inmueble quede a una distancia mayor de veinticinco metros de ellos, con una manguera que cubra el punto más alejado y su acceso será expedito y de fácil accionamiento de válvulas y mangueras."
+                },
+                {
+                  "codigo": "a.b",
+                  "texto": "En edificios de departamentos las bocas de incendio deberán ubicarse en espacios comunes, y en aquellos casos que no se pueda cumplir con la distancia señalada en el inciso precedente, podrán aceptarse mangueras de longitud superior a 25 metros, siempre que permitan contar una presión de 8 m.c.a., a la salida de la manguera."
+                },
+                {
+                  "codigo": "a.c",
+                  "texto": "Cada boca de incendio se ubicará en un nicho con puerta de vidrio debidamente señalizado, en lugares de fácil acceso y rápida ubicación, excepto las escalas presurizadas. Este nicho se ubicará a una altura entre 0,9 m. y 1,5 m. sobre el nivel del piso, y contará una manguera resistente a una temperatura de 80° C, con certificado de calidad y especificada para estos efectos."
+                },
+                {
+                  "codigo": "a.d",
+                  "texto": "La boca de incendio tendrá llave de salida del tipo cierre rápido, válvula del tipo bola o globo angular de 45°, a la que deberá conectarse una manguera de diámetro igual al de la boca de incendio, con su respectivo pitón. Las mangueras que deberán ser del tipo semirígidas, no podrán estar sometidas en ningún caso a presiones mayores que 70 mca."
+                },
+                {
+                  "codigo": "a.e",
+                  "texto": "En las bocas de incendio de 25 mm., el pitón de la manguera tendrá una boquilla cuyo diámetro interior será mayor o igual a 7 mm."
+                },
+                {
+                  "codigo": "a.f",
+                  "texto": "En cada vivienda unifamiliar, vivienda social a inmuebles similares destinados a otros fines y que enfrenten a la red pública, deberán contar a lo menos con una llave de salida con hilo exterior, de un diámetro igual al del arranque de agua potable."
+                },
+                {
+                  "codigo": "a.g",
+                  "texto": "Según las características de la edificación, en el diseño de la red de distribución que alimenta la red húmeda deberá considerarse la operación simultánea de dos o más bocas de incendio."
+                }
+              ]
+            },
+            "b": {
+              "nombre": "RED SECA",
+              "items": [
+                {
+                  "codigo": "b.a",
+                  "texto": "En los edificios de cinco o más pisos de altura se deberá instalar una red seca para agua independiente de la red de distribución de agua para el consumo. Será una tubería matriz para utilización exclusiva del Cuerpo de Bomberos, de acero galvanizado ASTM A-53 con unión roscada y tendrá un diámetro mínimo de 100 mm. No obstante, su capacidad deberá verificarse para un caudal total de 24 l/s, con una presión de 50 m.c.a. en la boca de salida más desfavorable."
+                },
+                {
+                  "codigo": "b.b",
+                  "texto": "La red seca deberá ir ubicada de tal manera que se permita su inspección, y no podrá situarse en lugares comunes con conductores eléctricos. En la parte superior la tubería llevará una ventosa a otro dispositivo automático que permita evacuar el aire del sistema cada vez que sea usado. En la parte más baja del sistema descrito, se dispondrá de una llave de purga que permita desaguar completamente la tubería una vez usada."
+                },
+                {
+                  "codigo": "b.c",
+                  "texto": "La parte inferior de esta tubería se prolongará hasta el exterior del edificio donde rematará en dos bocas de 75 mm. ubicadas a un metro de altura sobre el nivel de piso terminado adyacente y en un lugar de fácil acceso e inmediato a las vías principales de entrada al edificio. Las citadas bocas estarán provistas de sendas válvulas de retención o válvulas bola con válvulas de retención en la vertical, o bifurcación con chapaleta de desviación según DIN 14.361, con válvula de retención en la vertical, que rematarán en uniones Storz que permitan el acople de la unión Storz DIN 14.322. Cada una de ellas tendrá su correspondiente tapa Storz, asegurada con cadenilla, que la proteja de deterioro o del ingreso de cuerpos extraños."
+                },
+                {
+                  "codigo": "b.d",
+                  "texto": "La red seca tendrá bocas de salidas debidamente señalizadas en todos los pisos incluidos los subterráneos, que se ubicarán en los espacios comunes y en lugares de fácil acceso, exceptuando las cajas de escalas presurizadas. Deberá cuidarse que ningún punto de cada piso quede a una distancia mayor de cuarenta metros de una boca de salida. Estas bocas estarán provistas de su correspondiente llave globo angular de 45° o llave de bola, que rematarán en una unión Storz de 52 mm. (2\") que permita acoplar la unión Storz DIN 14.322. Las salidas estarán protegidas por las correspondientes tapas Storz, con cadenillas, que las resguarden de deterioros o del ingreso de cuerpos extraños."
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "numero": "TITULO V",
+      "nombre": "Estanques de Agua Potable",
+      "articulos": [
+        {
+          "numero": "Artículo 54º",
+          "texto": "Los cálculos y condiciones básicas de los estanques de agua potable deberán cumplir con lo indicado en la norma chilena NCh 2794."
+        },
+        {
+          "numero": "Artículo 55º",
+          "texto": "En los edificios de cuatro o más pisos, deberán proyectarse y construirse estanques de regulación inferior, o inferior y superior, cuya capacidad total conjunta sea superior al 50% del consumo medio diario de los departamentos, oficinas y locales comerciales, abastecidos por el sistema de elevación, salvo justificación técnica en contrario. La capacidad útil total del estanque superior deberá ser mayor al 5% de dicho consumo.\n\nSi todos los pisos de edificios de cuatro o más pisos, están ubicados bajo la cota de solera respecto de la ubicación del medidor, podrá no instalarse el estanque en los casos en que la presión disponible en el artefacto más desfavorable con el caudal máximo probable sea igual o superior a la reglamentaria, después de considerar las pérdidas de carga en el arranque, medidor y tuberías."
+        },
+        {
+          "numero": "Artículo 56º",
+          "texto": "Los establecimientos hospitalarios deberán contar con estanque de una capacidad mínima de un 100% del consumo medio diario."
+        },
+        {
+          "numero": "Artículo 57º",
+          "texto": "En los edificios con consumo industrial se deberán consultar estanques cuando se requieran, según las condiciones establecidas en el Certificado de Factibilidad otorgado por el Prestador, y de acuerdo con el tipo de industrias."
+        },
+        {
+          "numero": "Artículo 58º",
+          "texto": "Los estanques deberán ser diseñados de manera de preservar la calidad del agua, empleándose materiales probadamente impermeables, resistentes y no tóxicos, y deberán ubicarse de manera de evitar la contaminación por efecto de entrada de materias extrañas o de agua diferente a la de la alimentación, salvo lo señalado en el artículo 39º del presente Reglamento."
+        },
+        {
+          "numero": "Artículo 59º",
+          "texto": "Los estanques no deberán ubicarse próximos a instalaciones de aguas servidas, y deberán asegurar que en caso de rotura o filtración, éstas no puedan contaminar el agua potable."
+        },
+        {
+          "numero": "Artículo 60º",
+          "texto": "Los estanques de 20 m3 o más, deberán estar divididos en dos (2) o más compartimentos."
+        },
+        {
+          "numero": "Artículo 61º",
+          "texto": "Una vez estabilizado el nivel del agua y terminada la absorción de la misma, se procederá a medir la estanqueidad de la estructura. Su pérdida no deberá ser mayor que el 0,5% de la altura de aguas en 24 horas."
+        },
+        {
+          "numero": "Artículo 62º",
+          "texto": "En forma previa al inicio de operación del servicio, se deberá limpiar y desinfectar los estanques, mediante la aplicación de una solución de 50 mg. de cloro por litro de agua o de hipoclorito de sodio al 10%, durante seis (6) horas."
+        },
+        {
+          "numero": "Artículo 63º",
+          "texto": "Cada estanque deberá contar por lo menos con una tubería de alimentación con una válvula de corte automático por llenado, la que se ubicará inmediata a la escotilla de acceso. Estas válvulas deberán cumplir con la presión estática máxima de trabajo indicada en la norma de diseño norma chilena NCh 691. En caso contrario, deberá disponerse un dispositivo reductor de presión."
+        },
+        {
+          "numero": "Artículo 64º",
+          "texto": "Cada estanque contará con una tubería de rebase a lo menos cinco centímetros sobre el nivel máximo del agua, que deberá tener un área mínima a lo menos igual al doble del área del tubo de entrada. En todo caso deberá poder desaguar el gasto de entrada."
+        },
+        {
+          "numero": "Artículo 65º",
+          "texto": "Las aguas provenientes del rebase deberán conducirse al sistema de desagüe del edificio, asegurándose que no exista posibilidad de contaminación. Además, deberá incluir algún sistema que haga notorio cualquier pérdida de agua."
+        },
+        {
+          "numero": "Artículo 66º",
+          "texto": "Se deberá evitar que las aguas provenientes del rebase ingresen hacia la sala de bombas. En caso contrario, deberá instalarse un pozo acumulador con bomba sentina dimensionada para evacuar a lo menos la totalidad del gasto de entrada."
+        },
+        {
+          "numero": "Artículo 67º",
+          "texto": "Deberá contemplarse un desagüe, cuyas aguas se dispondrán al sistema de desagüe del edificio a otro propio, evitando cualquier posibilidad de contaminación. El desagüe se deberá instalar en una depresión de a lo menos 0,20 m. de profundidad, ubicada en la parte más baja de cada estanque y deberá permitir un vaciado completo de cada unidad en un máximo de cuatro horas."
+        },
+        {
+          "numero": "Artículo 68º",
+          "texto": "En caso de que condiciones existentes no permitan un desagüe gravitacional del estanque, éste podrá realizarse mediante el mismo equipo de bombeo. La descarga puede ir al alcantarillado, previo paso por una pileta ubicada a una cota que evite que esta sea un punto de rebase, sin que su tubería se introduzca directamente en ésta y cuya boca de descarga se ubicará a una altura no inferior a 0,2 m. de ella, con sendas válvulas de corta en la impulsión y en la tubería de desagüe."
+        },
+        {
+          "numero": "Artículo 69º",
+          "texto": "Toda la superficie interna del estanque deberá ser lisa y su radier deberá tener una pendiente hacia el desagüe, con un valor mínimo del 1%. En estanques de hormigón armado el recubrimiento de las armaduras de las superficies en contacto con el agua no será inferior a 2 cm."
+        },
+        {
+          "numero": "Artículo 70º",
+          "texto": "El nivel máximo posible de agua en los estanques considerando incluso la carga necesaria para el rebase deberá estar a lo menos 0,10 m. bajo el intradós de la boca de alimentación."
+        },
+        {
+          "numero": "Artículo 71º",
+          "texto": "La distancia vertical entre el techo del estanque y la clave del tubo de entrada dependerá del diámetro de éste y de los mecanismos de entrada, no pudiendo ser menor que cinco veces el diámetro de la cañería de alimentación, medido desde su clave, ni inferior a 0,10 m."
+        },
+        {
+          "numero": "Artículo 72º",
+          "texto": "Se dispondrán las tuberías y accesorios en forma tal, que puedan atenderse los consumos con cualquiera de los compartimentos en operación independiente."
+        },
+        {
+          "numero": "Artículo 73º",
+          "texto": "Cada compartimento tendrá una tubería de aspiración con un diámetro que garantice una velocidad, inferior a 2.5 m/s. Esta tubería contará con coladores de rejilla, cuya área de perforación será igual o superior al de la tubería y de material resistente a la corrosión. Los coladores deberán instalarse en un pozo de aspiración el que podrá ser el mismo que se utiliza para el desagüe, con altura máxima de dos diámetros de la tubería de aspiración, sobre la boca de entrada del desagüe."
+        },
+        {
+          "numero": "Artículo 74º",
+          "texto": "Cada compartimento deberá tener una ventilación cuya área no sea inferior a la de la tubería de succión, con su acceso debidamente protegido contra agentes externos, contaminación y oxidación, no pudiendo ventilar hacia la sala de bombas. En el caso que se use una tubería vertical, ésta deberá terminar en una U invertida con acceso protegido."
+        },
+        {
+          "numero": "Artículo 75º",
+          "texto": "Todos los estanques deberán tener una escotilla de acceso y su dimensión no será inferior a 0,60 metros libre por lado, con tapa cerrada. En el caso de accesos horizontales, éstos deberán contar con tapa estanca para evitar la entrada de agua exterior y su borde superior estará a una altura mínima de 0,15 metros respecto del piso."
+        },
+        {
+          "numero": "Artículo 76º",
+          "texto": "Deberá procurarse que la entrada y salida del agua se haga por extremos opuestos."
+        },
+        {
+          "numero": "Artículo 77º",
+          "texto": "Todo estanque deberá contar para su acceso con escalines de un material resistente, inoxidable y atóxico."
+        },
+        {
+          "numero": "Artículo 78º",
+          "texto": "Todo inserto en los muros del estanque, bajo el nivel de aguas, deberá ser metálico y deberá tener en la parte media del paso del muro, un anillo atóxico cuyo diámetro exterior no será inferior a 1,5 veces el diámetro de la tubería."
+        },
+        {
+          "numero": "Artículo 79º",
+          "texto": "La cota de fondo de los estanques elevados será la necesaria para suministrar agua a lo menos con las presiones mínimas indicadas a los artefactos instalados. Para efectos de determinar la presión inicial, se deberá considerar como altura de aguas en dicho estanque la que corresponda cuando esté vacío."
+        }
+      ]
+    }
+  ]
+}

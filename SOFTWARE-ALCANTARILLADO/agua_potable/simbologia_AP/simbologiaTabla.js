@@ -1,0 +1,143 @@
+// ============================================================
+// SIMBOLOGÍA TABLA - Gestión de filas y selección
+// ============================================================
+
+function inicializarSeleccionFilas() {
+    const ventana = document.getElementById('simbologiaWindow');
+    if (!ventana) return;
+    
+    const filas = ventana.querySelectorAll('.tabla-simbologia tbody tr');
+    filas.forEach(fila => {
+        fila.style.cursor = 'pointer';
+        fila.addEventListener('click', function(e) {
+            if (e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT') return;
+            seleccionarFila(fila);
+        });
+    });
+}
+
+function seleccionarFila(fila) {
+    const ventana = document.getElementById('simbologiaWindow');
+    if (!ventana) return;
+    
+    // Limpiar selección anterior
+    const filas = ventana.querySelectorAll('.tabla-simbologia tbody tr');
+    filas.forEach(f => {
+        f.style.background = '';
+        f.classList.remove('fila-seleccionada');
+    });
+    
+    // Seleccionar nueva fila
+    fila.style.background = '#e8f4f8';
+    fila.classList.add('fila-seleccionada');
+    setFilaSeleccionada(fila);
+    
+    // Mostrar botón eliminar
+    mostrarBotonEliminar();
+}
+
+function mostrarBotonEliminar() {
+    const ventana = document.getElementById('simbologiaWindow');
+    if (!ventana) return;
+    
+    // Eliminar botón anterior si existe
+    const btnAnterior = ventana.querySelector('#btnEliminarFilaSeleccionada');
+    if (btnAnterior) btnAnterior.remove();
+    
+    // Crear nuevo botón
+    const btn = document.createElement('button');
+    btn.id = 'btnEliminarFilaSeleccionada';
+    btn.innerHTML = '❌ ELIMINAR FILA';
+    btn.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #e74c3c;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 14px;
+        z-index: 1000;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    `;
+    
+    btn.addEventListener('click', function() {
+        const filaActual = getFilaSeleccionada();
+        if (filaActual && confirm('¿Eliminar esta fila de la simbología?')) {
+            filaActual.remove();
+            setFilaSeleccionada(null);
+            btn.remove();
+        }
+    });
+    
+    ventana.appendChild(btn);
+}
+
+function agregarFilaSimbologia() {
+    const ventana = document.getElementById('simbologiaWindow');
+    if (!ventana) return;
+    
+    const tabla = ventana.querySelector('#tablaSimbologia');
+    if (!tabla) return;
+    
+    const tbody = tabla.querySelector('tbody');
+    const nuevaFila = document.createElement('tr');
+    nuevaFila.style.cursor = 'pointer';
+    
+    nuevaFila.innerHTML = `
+        <td><input type="text" placeholder="Nombre del elemento" value="NUEVO ELEMENTO"></td>
+        <td class="simbolo-celda"><input type="text" placeholder="Símbolo" value="--" style="text-align: center;"></td>
+    `;
+    
+    nuevaFila.addEventListener('click', function(e) {
+        if (e.target.tagName === 'INPUT') return;
+        seleccionarFila(nuevaFila);
+    });
+    
+    tbody.appendChild(nuevaFila);
+}
+
+function seleccionarFilaIntegrada(wrapper, fila) {
+    const filas = wrapper.querySelectorAll('.tabla-simbologia tbody tr');
+    filas.forEach(f => {
+        f.style.background = '';
+    });
+    
+    fila.style.background = '#e8f4f8';
+    
+    let btnEliminar = wrapper.querySelector('.btn-eliminar-fila-integrada');
+    if (btnEliminar) btnEliminar.remove();
+    
+    btnEliminar = document.createElement('button');
+    btnEliminar.className = 'btn-eliminar-fila-integrada';
+    btnEliminar.innerHTML = '❌ ELIMINAR FILA';
+    btnEliminar.style.cssText = `
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: #e74c3c;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 12px;
+        z-index: 100;
+    `;
+    
+    btnEliminar.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (confirm('¿Eliminar esta fila de la simbología?')) {
+            fila.remove();
+            btnEliminar.remove();
+        }
+    });
+    
+    wrapper.appendChild(btnEliminar);
+}
+
+console.log('✅ Simbología Tabla inicializado');

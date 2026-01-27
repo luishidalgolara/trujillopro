@@ -1,0 +1,428 @@
+/* ========================================
+   COMPONENTS - Botones, Tarjetas, etc.
+======================================== */
+
+/* Buttons */
+.btn-primary, .btn-secondary {
+    padding: 16px 32px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+    letter-spacing: 0.05em;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(0, 102, 255, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.btn-package {
+    padding: 18px 40px;
+    background: white;
+    color: var(--primary);
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+}
+
+.btn-package:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.btn-pricing {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+}
+
+.btn-pricing:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(0, 102, 255, 0.3);
+}
+
+.btn-cta-primary, .btn-cta-secondary {
+    padding: 18px 40px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+}
+
+.btn-cta-primary {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    border: none;
+}
+
+.btn-cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(0, 102, 255, 0.3);
+}
+
+.btn-cta-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.btn-cta-secondary:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* Cards */
+.problem-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 35px;
+    transition: all 0.4s var(--ease);
+}
+
+.problem-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.problem-bad {
+    border-left: 3px solid var(--danger);
+}
+
+.problem-good {
+    border-left: 3px solid var(--success);
+    background: rgba(0, 208, 132, 0.03);
+}
+
+.card-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    filter: grayscale(1);
+}
+
+.card-icon-good {
+    filter: grayscale(0);
+}
+
+.problem-card h3 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.card-subtitle {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.feature-list {
+    list-style: none;
+    margin-bottom: 25px;
+}
+
+.feature-list li {
+    padding: 12px 0;
+    padding-left: 30px;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 14px;
+}
+
+.feature-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+}
+
+.problem-good .feature-list li:before {
+    content: "✓";
+    color: var(--success);
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.price-tag {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.price-tag-good {
+    color: var(--success);
+}
+
+.price-label {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* Module Cards - PADDING REDUCIDO */
+.module-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px;
+    transition: all 0.4s var(--ease);
+    cursor: pointer;
+}
+
+.module-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--primary);
+    box-shadow: 0 20px 40px rgba(0, 102, 255, 0.2);
+}
+
+.module-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.module-card h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.module-card > p {
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.module-features {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.module-features li {
+    font-size: 12px;
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+    color: var(--text-muted);
+}
+
+.module-features li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+}
+
+.module-price {
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+}
+
+.module-price .price {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.module-price .period {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* Botón Abrir Aplicación en Módulos */
+.btn-module-app {
+    width: 100%;
+    padding: 12px 20px;
+    margin-top: 20px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+    letter-spacing: 0.05em;
+}
+
+.btn-module-app:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(0, 102, 255, 0.3);
+}
+
+/* Benefit Cards */
+.benefit-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 35px;
+    transition: all 0.4s var(--ease);
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.benefit-number {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+}
+
+.benefit-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.benefit-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Pricing Cards */
+.pricing-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    transition: all 0.4s var(--ease);
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+}
+
+.pricing-competitor {
+    opacity: 0.7;
+}
+
+.pricing-trujillo {
+    border: 2px solid var(--primary);
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.05), rgba(0, 217, 255, 0.05));
+    position: relative;
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 20px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.pricing-logo {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.pricing-amount {
+    font-family: var(--font-display);
+    margin-bottom: 15px;
+}
+
+.amount {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.period {
+    font-size: 18px;
+    color: var(--text-muted);
+}
+
+.pricing-detail {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.pricing-difference {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.pricing-bad {
+    background: rgba(255, 51, 102, 0.1);
+    color: var(--danger);
+}
+
+.pricing-good {
+    background: rgba(0, 208, 132, 0.1);
+    color: var(--success);
+}
+
+.pricing-features {
+    list-style: none;
+    text-align: left;
+    margin: 30px 0;
+}
+
+.pricing-features li {
+    padding: 10px 0;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}

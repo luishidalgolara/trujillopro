@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Planos Profesional - TRUKILLO</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/menu-detalles-ap.css">
+    <link rel="stylesheet" href="css/cuadro-gastos-dom.css">
+    <link rel="stylesheet" href="verificacion/verificacion.css">
+    <link rel="stylesheet" href="nivel_2_ap/nivel-2-styles.css">
+    <link rel="stylesheet" href="css/modal-eett.css">
+    <link rel="stylesheet" href="css/modal-memoria.css">
+    <link rel="stylesheet" href="memoria/memoria-estilos.css">
+    <link rel="stylesheet" href="css/simbologia.css">
+    <link rel="stylesheet" href="css/tracing-context-menu.css">
+    <link rel="stylesheet" href="viñeta-ap/viñetaap.css">
+    <link rel="stylesheet" href="drawing-system/drawing-styles.css">
+    <link rel="stylesheet" href="cuadro-piezas/cuadro-piezas-modal.css">
+    <link rel="stylesheet" href="notas-obligatorias/notas-integration.css">
+    <link rel="stylesheet" href="multi-plane-system/plane-styles.css">
+    <link rel="stylesheet" href="css/ubicacion-autocomplete.css">
+    <link rel="stylesheet" href="css/boton-flotante-asistente.css">
+    <link rel="stylesheet" href="descarga-planos/export-styles.css">
+    
+</head>
+<body>
+    <div class="main-header">
+        <div class="header-left">
+            <div class="logo">
+                <div>⚬ ⚬ ⚬</div>
+                <div>TRUKILLO</div>
+                <div>AGUA POTABLE</div>                
+            </div>
+            <button class="btn-header btn-primary" onclick="window.appActions.loadFloorPlan()">
+                📁 CARGAR PDF/IMAGEN
+            </button>
+            <button class="btn-header btn-secondary" id="modeToggle" onclick="window.appActions.toggleMode()">
+                🖱️ Modo: Edición
+            </button>
+        </div>
+        
+        <div class="header-center">
+            <div class="format-selector">
+                <span class="format-label">Formato:</span>
+                <button class="format-btn active" onclick="window.appActions.changeFormat('A1')" id="btnA1">A1</button>
+                <button class="format-btn" onclick="window.appActions.changeFormat('A0')" id="btnA0">A0</button>
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <div class="btn-detalles-ap-container">
+                <button class="btn-header dropdown-detalles-ap-btn" onclick="toggleMenuDetallesAP()">
+                    🔧 DETALLES DISPONIBLES ▼
+                </button>
+                <div class="dropdown-detalles-ap" id="dropdownDetallesAP">
+                    <button class="dropdown-item-ap" onclick="abrirDetalleAP('detallesap/alternativa-collar.html', 'Alternativa Collar')">
+                        🔧 Alternativa Collar
+                    </button>
+                    <button class="dropdown-item-ap" onclick="abrirDetalleAP('detallesap/arranque-atravieso.html', 'Arranque con Atravieso')">
+                        🔧 Arranque con Atravieso
+                    </button>
+                    <button class="dropdown-item-ap" onclick="abrirDetalleAP('detallesap/arranque-sin-atravieso.html', 'Arranque sin Atravieso')">
+                        🔧 Arranque sin Atravieso
+                    </button>
+                    <button class="dropdown-item-ap" onclick="abrirDetalleAP('detallesap/arranque-tuberias-pp.html', 'Arranque Tuberías PP')">
+                        🔧 Arranque Tuberías PP
+                    </button>
+                    <button class="dropdown-item-ap" onclick="abrirDetalleAP('detallesap/nicho-medidor.html', 'Nicho Medidor')">
+                        🔧 Nicho Medidor
+                    </button>
+                    <button class="dropdown-item-ap" onclick="abrirDetalleAP('detallesap/red-humeda.html', 'Red Húmeda')">
+                        🔧 Red Húmeda
+                    </button>
+                    <button class="dropdown-item-ap" onclick="abrirDetalleAP('detallesap/relleno-zanja.html', 'Relleno Zanja')">
+                        🔧 Relleno Zanja
+                    </button>
+                </div>
+            </div>
+            
+            <button class="btn-header" style="background: #16a085;" onclick="abrirVineta()">
+                📄 VIÑETA ESSBIO
+            </button>
+
+            <button class="btn-header" style="background: #e67e22;" onclick="abrirCuadroPiezas()">
+                📋 CUADRO MEDIDOR
+            </button>
+            
+            <button class="btn-header btn-warning" onclick="abrirCuadroGastosDom()">
+                📊 CUADRO DE GASTOS DOMICILIARIO
+            </button>
+            
+            <button class="btn-header" style="background: #9b59b6;" onclick="abrirSimbologia()">
+                📊 SIMBOLOGÍA
+            </button>
+            
+            <button class="btn-header" style="background: #8b5cf6;" onclick="window.appActions.verificarDiametros()">
+                🔍 VERIFICAR DIÁMETROS
+            </button>
+            
+            <button class="btn-header" style="background: #6366f1;" onclick="abrirMemoriaCalculo()">
+                📋 MEMORIA DE CÁLCULO
+            </button>
+            
+            <button class="btn-header btn-success" onclick="window.appActions.exportResults()">
+                📋 EXPORTAR RESULTADOS
+            </button>
+            
+            <button class="btn-header" style="background: #f59e0b;" onclick="abrirEETT()">
+                📄 EETT SANITARIOS
+            </button>
+
+            <button class="btn-header" style="background: #d35400;" onclick="abrirNotasObligatorias()">
+                📋 NOTAS OBLIGATORIAS
+            </button>
+        </div>
+    </div>
+    
+    <div class="toolbar">
+        <div class="toolbar-section">
+            <span class="toolbar-label">ESCALA:</span>
+            <button class="btn-tool btn-scale active" onclick="window.appActions.selectScale('1:50')" data-scale="50">1:50</button>
+            <button class="btn-tool btn-scale" onclick="window.appActions.selectScale('1:75')" data-scale="75">1:75</button>
+            <button class="btn-tool btn-scale" onclick="window.appActions.selectScale('1:100')" data-scale="100">1:100</button>
+            <button class="btn-tool btn-scale" onclick="window.appActions.selectScale('1:125')" data-scale="125">1:125</button>
+            <button class="btn-tool btn-scale" onclick="window.appActions.selectScale('1:150')" data-scale="150">1:150</button>
+            <button class="btn-tool btn-scale" onclick="window.appActions.selectScale('1:200')" data-scale="200">1:200</button>
+        </div>
+        
+        <div class="toolbar-section section-fuente">
+            <span class="toolbar-label">FUENTE:</span>
+            <button class="btn-tool" onclick="window.appActions.selectTool('medidor-agua')" title="Conexión principal desde red pública">💧 Medidor</button>
+            <button class="btn-tool" onclick="window.appActions.selectTool('conexion-nivel-1')" title="Punto de alimentación para 1° nivel">🟢 Conexión 1° Nivel</button>
+            <button class="btn-tool" onclick="window.appActions.selectTool('conexion-nivel-2')" title="Punto de alimentación para 2° nivel - Solo agua fría">🔵 Conexión 2° Nivel</button>
+        </div>
+        
+        <div class="toolbar-section section-calentamiento">
+            <span class="toolbar-label">CALENTAMIENTO:</span>
+            <button class="btn-tool" onclick="window.appActions.selectTool('calefon')" title="Calentador a gas">🔥 Calefón</button>
+            <button class="btn-tool" onclick="window.appActions.selectTool('termo-electrico')" title="Calentador eléctrico">⚡ Termo</button>
+            <button class="btn-tool" onclick="window.appActions.selectTool('caldera')" title="Sistema de caldera">🏠 Caldera</button>
+        </div>
+        
+        <div class="toolbar-section section-sanitarios">
+            <span class="toolbar-label">SANITARIOS:</span>
+            <button class="btn-tool" onclick="window.appActions.selectTool('wc')" title="Solo agua fría">🚽 WC</button>
+            <button class="btn-tool" onclick="window.appActions.selectTool('lavatorio')" title="Agua fría + caliente">🚰 Lavatorio</button>
+            <button class="btn-tool" onclick="window.appActions.selectTool('bano-tina')" title="Alta demanda">🛁 Tina</button>
+            <button class="btn-tool" onclick="window.appActions.selectTool('ducha')" title="Alta demanda">🚿 Ducha</button>
+            <button class="btn-tool" onclick="window.appActions.selectTool('bidet')" title="Agua fría + caliente">🪑 Bidet</button>
+            <button class="btn-tool" onclick="window.appActions.selectTool('urinario')" title="Solo agua fría">🚹 Urinario</button>
+        </div>
+        
+        <div class="toolbar-section section-cocina">
+            <span class="toolbar-label">COCINA/LAVADO:</span>
+            <button class="btn-tool" onclick="window.appActions.selectTool('lavaplatos')" title="Agua fría + caliente">🍽️ Lavaplatos</button>
+            <button class="btn-tool" onclick="window.appActions.selectTool('lavacopas')" title="Agua fría + caliente">🍷 Lavacopas</button>
+            <button class="btn-tool" onclick="window.appActions.selectTool('lavadora')" title="Alta demanda">🧺 Lavadora</button>
+            <button class="btn-tool" onclick="window.appActions.selectTool('lavadero')" title="Agua fría + caliente">🧽 Lavadero</button>
+            <button class="btn-tool" onclick="window.appActions.selectTool('llave-jardin')" title="Solo agua fría">🌿 Llave Jardín</button>
+        </div>
+        
+        <div class="toolbar-section section-infra">
+            <span class="toolbar-label">INFRAESTRUCTURA:</span>
+            <button class="btn-tool" onclick="window.appActions.selectTool('valvula-corte')">🔴 Válvula</button>
+            <button class="btn-tool" onclick="window.appActions.selectTool('union-tee')">⚫ Unión Tee</button>
+            <button class="btn-tool" onclick="window.appActions.selectTool('punto-conexion')" title="Matriz existente">💧 Matriz</button>
+        </div>
+        
+        <div class="toolbar-section section-acciones">
+            <span class="toolbar-label">ACCIONES:</span>
+            <button class="btn-tool" onclick="DrawingCore.toggle()" style="background: #e91e63;">
+                🎨 DIBUJO
+            </button>
+            <button class="btn-tool" id="btnEtiquetas" onclick="window.appActions.toggleEtiquetaMode()" style="background: #f59e0b;">
+                🏷️ ETIQUETAS
+            </button>
+            <button class="btn-tool" id="btnTrazadoNivel1" style="background: #10b981;" title="Generar trazado automático nivel 1">⚡ Trazado 1° Nivel</button>
+            <button class="btn-tool" onclick="window.appActions.generarTrazadoNivel2()" style="background: #e74c3c;" title="Generar trazado automático nivel 2">⚡ Trazado 2° Nivel</button>
+            <button class="btn-tool" onclick="generateIsometric()" style="background: #3b82f6;" title="Generar isométrico nivel 1">🎯 Isométrico 1° Nivel</button>
+            <button class="btn-tool" onclick="generateIsometricN2()" style="background: #c0392b;" title="Generar isométrico nivel 2">🎯 Isométrico 2° Nivel</button>
+            <button class="btn-tool btn-danger" onclick="window.appActions.clearAll()">🗑️ Limpiar</button>
+        </div>
+
+       </div>    
+    
+    <div class="main-container">
+        <div class="work-area">
+            <div class="canvas-title">ALGORITMO INTELIGENTE DE DISEÑO AGUA POTABLE</div>
+            <div class="canvas-wrapper">
+                <div id="pdfLoading" class="pdf-loading" style="display: none;">
+                    <div class="spinner"></div>
+                    Cargando PDF...
+                </div>
+                <div class="drawing-board format-a1" id="drawingBoard">
+                    <svg id="plano" viewBox="0 0 841 594">
+                        <defs>
+                            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e5e5e5" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect width="100%" height="100%" fill="#ffffff" />
+                        <rect width="100%" height="100%" fill="url(#grid)" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        
+        <div class="right-panel">
+            <iframe 
+                src="Ley_mono/ley-mono.html" 
+                id="leyMonoFrame"
+                style="width: 100%; height: 100%; border: none; display: block;"
+                title="Buscador Ley del Mono 20.898">
+            </iframe>
+        </div>
+    </div>
+    
+    <input type="file" id="fileInput" accept=".pdf,.svg,.jpg,.png" style="display: none;">
+    
+    <div class="status" id="status"></div>
+
+    <!-- MODAL DETALLES AP -->
+    <div class="modal-detalles-ap" id="modalDetallesAP">
+        <div class="ventana-detalles-ap" id="ventanaDetallesAP">
+            <div class="modal-detalle-header" id="headerDetallesAP">
+                <div class="modal-detalle-title">🔧 DETALLE</div>
+                <div class="modal-detalle-buttons">
+                    <button class="btn-modal-detalle close" onclick="cerrarDetalleAP()">✕</button>
+                </div>
+            </div>
+            <div class="modal-detalle-content">
+                <iframe id="iframeDetallesAP" src="" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CUADRO GASTOS DOMICILIARIO -->
+    <div class="modal-cuadro-gastos" id="modalCuadroGastos">
+        <div class="ventana-cuadro-gastos" id="ventanaCuadroGastos">
+            <div class="modal-cuadro-header" id="headerCuadroGastos">
+                <div class="modal-cuadro-title">📊 CUADRO DE GASTOS DOMICILIARIO</div>
+                <div class="modal-cuadro-buttons">
+                    <button class="btn-modal-cuadro close" onclick="cerrarCuadroGastos()">✕</button>
+                </div>
+            </div>
+            <div class="modal-cuadro-content">
+                <iframe id="iframeCuadroGastos" src="" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL VERIFICACIÓN HIDRÁULICA -->
+    <div class="modal-verificacion" id="modalVerificacion">
+        <div class="ventana-verificacion" id="ventanaVerificacion">
+            <div class="modal-verificacion-header" id="headerVerificacion">
+                <div class="modal-verificacion-title">🔍 VERIFICACIÓN HIDRÁULICA - HAZEN-WILLIAMS</div>
+                <div class="modal-verificacion-buttons">
+                    <button class="btn-modal-verificacion minimize" onclick="minimizarVerificacion()">−</button>
+                    <button class="btn-modal-verificacion maximize" onclick="maximizarVerificacion()">□</button>
+                    <button class="btn-modal-verificacion close" onclick="cerrarVerificacion()">✕</button>
+                </div>
+            </div>
+            <div class="modal-verificacion-content" id="contenidoVerificacion">
+                <div class="verificacion-loading">
+                    <div class="spinner"></div>
+                    Calculando pérdidas de carga...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL EETT SANITARIOS -->
+    <div class="modal-eett" id="modalEETT">
+        <div class="ventana-eett">
+            <div class="modal-eett-header">
+                <div class="modal-eett-title">📄 ESPECIFICACIONES TÉCNICAS SANITARIAS</div>
+                <div class="modal-eett-buttons">
+                    <button class="btn-modal-eett close" onclick="cerrarEETT()">✕</button>
+                </div>
+            </div>
+            <div class="modal-eett-content">
+                <iframe id="iframeEETT" src=""></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL MEMORIA DE CÁLCULO -->
+    <div class="modal-memoria" id="modalMemoriaCalculo">
+        <div class="ventana-memoria">
+            <div class="modal-memoria-header">
+                <div class="modal-memoria-title">📋 MEMORIA DE CÁLCULO</div>
+                <div class="modal-memoria-buttons">
+                    <button class="btn-modal-memoria close" onclick="cerrarMemoriaCalculo()">✕</button>
+                </div>
+            </div>
+            <div class="modal-memoria-content">
+                <iframe id="iframeMemoriaCalculo" src=""></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL NOTAS OBLIGATORIAS -->
+    <div class="modal-notas" id="modalNotasObligatorias">
+        <div class="ventana-notas">
+            <div class="modal-notas-header">
+                <div class="modal-notas-title">
+                    📋 NOTAS OBLIGATORIAS - ESSBIO / NUEVOSUR
+                </div>
+                <div class="modal-notas-buttons">
+                    <button class="btn-modal-notas close" onclick="cerrarNotasObligatorias()">✕</button>
+                </div>
+            </div>
+            <div class="modal-notas-content">
+                <div class="notas-documento">
+                    <div class="notas-titulo">NOTAS:</div>
+                    <div class="notas-texto-completo" id="contenidoNotasCompleto">
+                        <p>Estas notas son de cumplimiento obligatorio según las normativas de ESSBIO S.A. y NUEVOSUR S.A. para instalaciones domiciliarias de agua potable.</p>
+                    </div>
+                    
+                    <div id="contenidoNotasLista">
+                        <!-- Las notas se generan dinámicamente -->
+                    </div>
+                </div>
+            </div>
+            <div class="notas-footer">
+                <button class="btn-exportar-notas" onclick="exportarNotasTexto()">
+                    📥 Exportar Notas a Texto
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <!-- SISTEMA DE DIBUJO -->
+    <script src="drawing-system/drawing-state.js"></script>
+    <script src="drawing-system/drawing-tools.js"></script>
+    <script src="drawing-system/drawing-renderer.js"></script>
+    <script src="drawing-system/drawing-colors.js"></script>
+    <script src="drawing-system/drawing-text.js"></script>
+    <script src="drawing-system/drawing-ortho.js"></script>
+    <script src="drawing-system/drawing-events.js"></script>
+    <script src="drawing-system/drawing-ui.js"></script>
+    <script src="drawing-system/drawing-core.js"></script>
+    <script src="drawing-system/drawing-integration.js"></script>
+
+    <!-- EDITOR DE PUNTOS TRAZADO MODULAR -->
+    <script src="trazado-modules/point-editor-state.js"></script>
+    <script src="trazado-modules/point-editor-ui.js"></script>
+    <script src="trazado-modules/point-editor-drag.js"></script>
+    <script src="trazado-modules/point-editor-detection.js"></script>
+    <script src="trazado-modules/point-editor-actions.js"></script>
+    <script src="trazado-modules/tracing-context-menu.js"></script>
+    
+    <!-- NIVEL 1 - ISOMÉTRICO -->
+    <script src="isometrico/generator.js"></script>
+    <script src="isometrico/svg.js"></script>
+    <script src="isometrico/labels.js"></script>
+    <script src="isometrico/ui.js"></script>
+    <script src="isometrico/integration.js"></script>
+    
+    <!-- NIVEL 2 - MANAGER Y CLASSIFIER (PRIMERO - EXPONEN VARIABLES GLOBALES) -->
+    <script src="nivel_2_ap/nivel-2-manager.js" type="module"></script>
+    <script src="nivel_2_ap/nivel-2-classifier.js" type="module"></script>
+    <script src="nivel_2_ap/nivel-2-tracing.js" type="module"></script>
+    <script src="js/conexion-nivel-2.js" type="module"></script>
+    
+    <!-- NIVEL 2 - ISOMÉTRICO (DESPUÉS - USAN LAS VARIABLES GLOBALES) -->
+    <script src="nivel_2_ap/isometrico_n2/generator-n2.js"></script>
+    <script src="nivel_2_ap/isometrico_n2/svg-n2.js"></script>
+    <script src="nivel_2_ap/isometrico_n2/labels-n2.js"></script>
+    <script src="nivel_2_ap/isometrico_n2/ui-n2.js"></script>
+    <script src="nivel_2_ap/isometrico_n2/integration-n2.js"></script>
+    
+    <!-- VERIFICACIÓN HIDRÁULICA -->
+    <script src="verificacion/calculations.js" type="module"></script>
+    <script src="verificacion/verificacion-integration.js" type="module"></script>
+    
+    <!-- SIMBOLOGÍA -->
+    <script src="simbologia_AP/simbologiaCore.js"></script>
+    <script src="simbologia_AP/simbologiaUI.js"></script>
+    <script src="simbologia_AP/simbologiaArrastre.js"></script>
+    <script src="simbologia_AP/simbologiaTabla.js"></script>
+    <script src="simbologia_AP/simbologiaIntegracion.js"></script>
+    <script src="simbologia_AP/index.js"></script>
+    
+    <!-- DRAGGABLE TEXTS MODULAR -->
+    <script type="module" src="draggable-texts/index.js"></script>
+    
+    <!-- UTILIDADES Y MAIN -->
+    <script src="js/menu-detalles-ap.js"></script>
+    <script src="js/cuadro-gastos-dom-integration.js"></script>
+    <script src="js/modal-eett.js"></script>
+    <script src="js/modal-memoria-calculo.js"></script>
+    <script src="memoria/memoria-script.js"></script>
+    <script src="js/format-manager.js" type="module"></script>
+    <script type="module" src="js/main.js"></script>
+    
+    <!-- VINETA HANDLER -->
+    <script src="viñeta-ap/viñeta-handler.js"></script>
+
+    <!-- ✅ SISTEMA DE DIBUJO SIMPLE -->
+    <script src="js/simple-drawing.js"></script>
+
+    <script src="cuadro-piezas/cuadro-piezas-integration.js"></script>       
+
+    <!-- NOTAS OBLIGATORIAS -->
+    <script src="notas-obligatorias/notas-integration.js"></script>  
+    
+    <!-- SISTEMA MULTI-PLANO -->
+    <script src="multi-plane-system/plane-state.js"></script>
+    <script src="multi-plane-system/plane-instance.js"></script>
+    <script src="multi-plane-system/plane-manager-cleanup.js"></script>
+    <script src="multi-plane-system/plane-manager-helpers.js"></script>
+    <script src="multi-plane-system/plane-manager-state.js"></script>
+    <script src="multi-plane-system/plane-manager-export.js"></script>
+    <script src="multi-plane-system/plane-manager-core.js"></script>
+    <script src="multi-plane-system/plane-thumbnails-ui.js"></script>
+    <script src="multi-plane-system/plane-integration.js"></script>
+    <!-- DESCARGA DE PLANOS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="descarga-planos/export-utils.js"></script>
+    <script src="descarga-planos/export-svg.js"></script>
+    <script src="descarga-planos/export-pdf.js"></script>
+    <script src="descarga-planos/export-core.js"></script>
+ 
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnTrazado = document.getElementById('btnTrazadoNivel1');
+            if (btnTrazado) {
+                btnTrazado.addEventListener('click', function() {
+                    if (window.appActions && window.appActions.generateIntelligentTracing) {
+                        window.appActions.generateIntelligentTracing();
+                    } else {
+                        console.error('⚠️ window.appActions.generateIntelligentTracing no está disponible aún');
+                    }
+                });
+            }
+            console.log('🔍 Verificando generateIsometricN2:', typeof generateIsometricN2);
+            console.log('🔍 Verificando window.isometricGeneratorN2:', typeof window.isometricGeneratorN2);
+        });
+    </script>
+
+    <!-- BOTÓN FLOTANTE ASISTENTE VIRTUAL -->
+    <button 
+        id="btnAsistenteFlotante" 
+        class="btn-asistente-flotante" 
+        title="Asistente Virtual - Ley del Mono (Ctrl + H)">
+        🤖
+        <span class="tooltip">¿Necesitas ayuda?</span>
+    </button>
+
+    <!-- MODAL ASISTENTE VIRTUAL -->
+    <div id="modalAsistenteOverlay" class="modal-asistente-overlay">
+        <div class="modal-asistente-contenido">
+            <!-- Header del Modal -->
+            <div class="modal-asistente-header">
+                <div class="modal-asistente-titulo">
+                    <div class="modal-asistente-icono">🤖</div>
+                    <div class="modal-asistente-texto">
+                        <h3>Asistente Virtual</h3>
+                        <p>Ley del Mono 20.898</p>
+                    </div>
+                </div>
+                <button id="btnCerrarAsistente" class="btn-cerrar-asistente" title="Cerrar (ESC)">✕</button>
+            </div>
+            
+            <!-- Iframe con el Asistente -->
+            <iframe 
+                src="Ley_mono/asistente_virtual_LM/asistente.html" 
+                class="modal-asistente-iframe"
+                title="Asistente Virtual Ley del Mono">
+            </iframe>
+        </div>
+    </div>
+
+    <!-- Script del Botón Flotante -->
+    <script src="js/boton-flotante-asistente.js"></script>
+
+</body>
+</html>

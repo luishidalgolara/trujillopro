@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador Normativa Eléctrica</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="buscador-container">
+        <!-- HEADER -->
+        <div class="buscador-header">
+            <h2>⚡ NORMATIVA ELÉCTRICA</h2>
+            <p class="subtitulo">NCh Elec 4/2003</p>
+        </div>
+
+        <!-- BARRA DE BÚSQUEDA -->
+        <div class="search-box">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="🔍 Buscar en la normativa..." 
+                autocomplete="off"
+            >
+            <button id="clearBtn" class="clear-btn">✕</button>
+        </div>
+
+        <!-- FILTROS RÁPIDOS -->
+        <div class="filtros-rapidos">
+            <button class="filtro-btn active" data-filter="all">Todos</button>
+            <button class="filtro-btn" data-filter="requisitos">⚡ Requisitos Básicos</button>
+            <button class="filtro-btn" data-filter="circuitos">🔌 Circuitos Típicos</button>
+            <button class="filtro-btn" data-filter="diametros">📏 Diámetros Ducto</button>
+        </div>
+
+        <!-- SECCIÓN: REQUISITOS BÁSICOS -->
+        <div class="seccion-info" id="requisitosBasicos">
+            <h3>⚡ Requisitos Básicos</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="label">Tensión: 220V / 50Hz</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Diferencial: ≤ 30mA</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Tierra: ≤ 5Ω</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Sección mínima: 2.5mm²</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN: CIRCUITOS TÍPICOS -->
+        <div class="seccion-info" id="circuitosTipicos">
+            <h3>🔌 Circuitos Típicos</h3>
+            <div class="circuito-list">
+                <div class="circuito-item">
+                    <span class="nombre">C1: Iluminación - 10A</span>
+                </div>
+                <div class="circuito-item">
+                    <span class="nombre">C2: Enchufes - 16A</span>
+                </div>
+                <div class="circuito-item">
+                    <span class="nombre">C3: Cocina - 25A</span>
+                </div>
+                <div class="circuito-item">
+                    <span class="nombre">C4: Lavadora - 16A</span>
+                </div>
+                <div class="circuito-item">
+                    <span class="nombre">C5: Refrigerador - 10A</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN: DIÁMETROS DUCTO -->
+        <div class="seccion-info" id="diametrosDucto">
+            <h3>📏 Diámetros Ducto</h3>
+            <div class="diametro-list">
+                <div class="diametro-item">
+                    <span class="medida">Ø16mm: 2-3 conductores</span>
+                </div>
+                <div class="diametro-item">
+                    <span class="medida">Ø20mm: 4-5 conductores</span>
+                </div>
+                <div class="diametro-item">
+                    <span class="medida">Ø25mm: 6-8 conductores</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULTADOS DE BÚSQUEDA -->
+        <div class="resultados-container" id="resultadosContainer" style="display: none;">
+            <h3>Resultados de búsqueda</h3>
+            <div id="resultadosList"></div>
+        </div>
+
+        <!-- MENSAJE VACÍO -->
+        <div class="empty-message" id="emptyMessage" style="display: none;">
+            <p>No se encontraron resultados</p>
+        </div>
+
+        <!-- MENSAJE DE CARGA -->
+        <div class="loading-message" id="loadingMessage" style="display: none;">
+            <div class="spinner-buscador"></div>
+            <p>Cargando normativa eléctrica...</p>
+        </div>
+    </div>
+
+    <!-- MODAL DETALLE -->
+    <div class="modal-detalle" id="modalDetalle">
+        <div class="modal-detalle-overlay" onclick="cerrarModalDetalle()"></div>
+        <div class="modal-detalle-content">
+            <div class="modal-detalle-header">
+                <h3 id="modalTitulo"></h3>
+                <button class="modal-detalle-close" onclick="cerrarModalDetalle()">✕</button>
+            </div>
+            <div class="modal-detalle-body" id="modalContenido">
+                <!-- Contenido dinámico -->
+            </div>
+        </div>
+    </div>
+
+    <script src="buscador.js"></script>
+</body>
+</html>

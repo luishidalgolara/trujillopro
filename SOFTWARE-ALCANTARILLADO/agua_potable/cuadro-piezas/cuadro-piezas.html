@@ -1,0 +1,222 @@
+<!-- cuadro-piezas/cuadro-piezas.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuadro de Piezas - Editable</title>
+    <link rel="stylesheet" href="cuadro-piezas.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header-section">
+            <h1>CUADRO DE PIEZAS</h1>
+            <div class="controls">
+                <button class="btn-add" onclick="cuadroPiezas.agregarFila()">➕ Agregar Fila</button>
+                <button class="btn-save" onclick="cuadroPiezas.guardarDatos()">💾 Guardar</button>
+                <button class="btn-export" onclick="cuadroPiezas.exportarPDF()">📄 Exportar PDF</button>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+            <table id="tablaPiezas">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>DESIGNACIÓN</th>
+                        <th>SEGÚN Nch N°</th>
+                        <th>MATERIAL</th>
+                        <th>DIÁMETROS</th>
+                        <th>OBSERVACIONES</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTabla">
+                    <tr data-id="1">
+                        <td class="col-num">1</td>
+                        <td contenteditable="true">COLLARIN Fe Fdo. O TOMA EN CARGA CON BANDA DE ACERO</td>
+                        <td contenteditable="true">1128-1369-1721<br>1863-2530-404</td>
+                        <td contenteditable="true">FE. FDO. CAUCHO<br>ACERO INOXIDABLE,</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true">TIPO GOLF TORRE O EQUIVALENTE</td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(1)">🗑️</button></td>
+                    </tr>
+                    <tr data-id="2">
+                        <td class="col-num">2</td>
+                        <td contenteditable="true">PERNOS</td>
+                        <td contenteditable="true">301-2836</td>
+                        <td contenteditable="true">ACERO INOXIDABLE</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(2)">🗑️</button></td>
+                    </tr>
+                    <tr data-id="3">
+                        <td class="col-num">3</td>
+                        <td contenteditable="true">LLAVE COLLAR He-He</td>
+                        <td contenteditable="true">700-731-784</td>
+                        <td contenteditable="true">BRONCE</td>
+                        <td contenteditable="true">32mm</td>
+                        <td contenteditable="true"></td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(3)">🗑️</button></td>
+                    </tr>
+                    <tr data-id="4">
+                        <td class="col-num">4</td>
+                        <td contenteditable="true">CODO Hi-He</td>
+                        <td contenteditable="true">396</td>
+                        <td contenteditable="true">BRONCE</td>
+                        <td contenteditable="true">32mm</td>
+                        <td contenteditable="true">LA BISAGRA SERA ARMADA AL LADO IZQUIERDO DEL COLLAR PARA QUE SE PRODUZCA EL APRIETE EN CASO DE CARGA SOBRE LA CAÑERIA</td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(4)">🗑️</button></td>
+                    </tr>
+                    <tr data-id="5">
+                        <td class="col-num">5</td>
+                        <td contenteditable="true">CODO Hi-So</td>
+                        <td contenteditable="true">396</td>
+                        <td contenteditable="true">BRONCE</td>
+                        <td contenteditable="true">32mm</td>
+                        <td contenteditable="true">BISAGRA</td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(5)">🗑️</button></td>
+                    </tr>
+                    <tr data-id="6">
+                        <td class="col-num">6</td>
+                        <td contenteditable="true">CAÑERIA DE COBRE TIPO L</td>
+                        <td contenteditable="true">951/1</td>
+                        <td contenteditable="true">COBRE</td>
+                        <td contenteditable="true">32mm</td>
+                        <td contenteditable="true"></td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(6)">🗑️</button></td>
+                    </tr>
+                    <tr data-id="7">
+                        <td class="col-num">7</td>
+                        <td contenteditable="true">UNION AMERICANA So-So</td>
+                        <td contenteditable="true">396</td>
+                        <td contenteditable="true">BRONCE</td>
+                        <td contenteditable="true">32mm</td>
+                        <td contenteditable="true"></td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(7)">🗑️</button></td>
+                    </tr>
+                    <tr data-id="8">
+                        <td class="col-num">8</td>
+                        <td contenteditable="true">ADAPTADOR PP-Cu</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true">PP</td>
+                        <td contenteditable="true">32mm</td>
+                        <td contenteditable="true"></td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(8)">🗑️</button></td>
+                    </tr>
+                    <tr data-id="9">
+                        <td class="col-num">9</td>
+                        <td contenteditable="true">CAÑERIA DE PROTECCION</td>
+                        <td contenteditable="true">399 - 2252</td>
+                        <td contenteditable="true">PVC CLASE 4<br>O SANITARIO</td>
+                        <td contenteditable="true">50mm</td>
+                        <td contenteditable="true">EN CRUCES DE CALZADA, DE SOLERA A SOLERA</td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(9)">🗑️</button></td>
+                    </tr>
+                    <tr data-id="10">
+                        <td class="col-num">10</td>
+                        <td contenteditable="true">CODO So-So</td>
+                        <td contenteditable="true">396</td>
+                        <td contenteditable="true">BRONCE</td>
+                        <td contenteditable="true">32mm</td>
+                        <td contenteditable="true"></td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(10)">🗑️</button></td>
+                    </tr>
+                    <tr data-id="11">
+                        <td class="col-num">11</td>
+                        <td contenteditable="true">TUERCA</td>
+                        <td contenteditable="true">2836</td>
+                        <td contenteditable="true">BRONCE</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true">ROSCA DIFERENCIADA</td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(11)">🗑️</button></td>
+                    </tr>
+                    <tr data-id="12">
+                        <td class="col-num">12</td>
+                        <td contenteditable="true">MEDIDOR DE TRANSMISION MAGNETICA CLASE B O SUPERIOR</td>
+                        <td contenteditable="true">1730</td>
+                        <td contenteditable="true">BRONCE</td>
+                        <td contenteditable="true">19mm</td>
+                        <td contenteditable="true">CUPULA DE VIDRIO, ROSCA DIFERENCIADA<br>PARA DIAMETRO 13, 19, 25 Y 38mm</td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(12)">🗑️</button></td>
+                    </tr>
+                    <tr data-id="13">
+                        <td class="col-num">13</td>
+                        <td contenteditable="true">TERMINAL PITON</td>
+                        <td contenteditable="true">2836</td>
+                        <td contenteditable="true">BRONCE</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(13)">🗑️</button></td>
+                    </tr>
+                    <tr data-id="14">
+                        <td class="col-num">14</td>
+                        <td contenteditable="true">LLAVE DE PASO Hi-Hi BOLA</td>
+                        <td contenteditable="true">700-731-784</td>
+                        <td contenteditable="true">BRONCE</td>
+                        <td contenteditable="true">32mm</td>
+                        <td contenteditable="true">TIPO BOLA SEGUN DETALLE</td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(14)">🗑️</button></td>
+                    </tr>
+                    <tr data-id="15">
+                        <td class="col-num">15</td>
+                        <td contenteditable="true">NICHO PROTECTOR CON RADIER</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(15)">🗑️</button></td>
+                    </tr>
+                    <tr data-id="16">
+                        <td class="col-num">16</td>
+                        <td contenteditable="true">LLAVE ANTIFRAUDE, DE BOLA, ANGULAR HE-HE</td>
+                        <td contenteditable="true">700-731-784</td>
+                        <td contenteditable="true">BRONCE</td>
+                        <td contenteditable="true">32mm</td>
+                        <td contenteditable="true">PARA ALTERNATIVA LLAVE ANTIFRAUDE<br>EN EL VARAL DE SUBIDA</td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(16)">🗑️</button></td>
+                    </tr>
+                    <tr data-id="17">
+                        <td class="col-num">17</td>
+                        <td contenteditable="true">TERMINAL Hi-So</td>
+                        <td contenteditable="true">396</td>
+                        <td contenteditable="true">BRONCE</td>
+                        <td contenteditable="true">32mm</td>
+                        <td contenteditable="true"></td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(17)">🗑️</button></td>
+                    </tr>
+                    <tr data-id="18">
+                        <td class="col-num">18</td>
+                        <td contenteditable="true">TERMINAL He-So</td>
+                        <td contenteditable="true">396</td>
+                        <td contenteditable="true">BRONCE</td>
+                        <td contenteditable="true">32mm</td>
+                        <td contenteditable="true"></td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(18)">🗑️</button></td>
+                    </tr>
+                    <tr data-id="19">
+                        <td class="col-num">19</td>
+                        <td contenteditable="true">CAÑERIA DE PP</td>
+                        <td contenteditable="true">1618 OF 80</td>
+                        <td contenteditable="true">PP</td>
+                        <td contenteditable="true">32mm</td>
+                        <td contenteditable="true">SOLO PARA ARRANQUES CON ATRAVIESO</td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(19)">🗑️</button></td>
+                    </tr>
+                    <tr data-id="20">
+                        <td class="col-num">20</td>
+                        <td contenteditable="true">REDUCCION</td>
+                        <td contenteditable="true">1618 OF 80</td>
+                        <td contenteditable="true">PP</td>
+                        <td contenteditable="true">32mm a 19mm</td>
+                        <td contenteditable="true">SOLO PARA ARRANQUES CON ATRAVIESO</td>
+                        <td><button class="btn-delete" onclick="cuadroPiezas.eliminarFila(20)">🗑️</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="cuadro-piezas.js"></script>
+</body>
+</html>

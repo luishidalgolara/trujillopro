@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño de Cercha Metálica</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/cercha.css">
+    <link rel="stylesheet" href="../css/cortes.css">
+</head>
+<body>
+    <header>
+        <h1>Diseño de Cercha Metálica</h1>
+        <p>Análisis Estructural de Cerchas</p>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="back-button">← Volver al Menú</a>
+        
+        <div class="content-wrapper">
+            <!-- Sección de Entrada -->
+            <div class="input-section">
+                <h2>📝 Datos de Entrada</h2>
+                
+                <div class="form-group">
+                    <label>Tipo de Cercha:</label>
+                    <select id="tipoCercha">
+                        <option value="howe" selected>Cercha Howe</option>
+                        <option value="pratt">Cercha Pratt</option>
+                        <option value="warren">Cercha Warren</option>
+                        <option value="fink">Cercha Fink (Techo)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Luz de la Cercha (L):</label>
+                    <input type="number" id="luz" value="12.0" step="0.5">
+                    <small>m</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Altura de la Cercha (H):</label>
+                    <input type="number" id="altura" value="2.0" step="0.1">
+                    <small>m (en el centro para techos)</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Número de Paneles:</label>
+                    <input type="number" id="paneles" value="6" step="1" min="4" max="12">
+                    <small>divisiones de la luz</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Carga Permanente (D):</label>
+                    <input type="number" id="cargaMuerta" value="1.5" step="0.1">
+                    <small>kN/m (peso de cubierta + instalaciones)</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Sobrecarga de Techo (L):</label>
+                    <input type="number" id="sobrecarga" value="1.0" step="0.1">
+                    <small>kN/m (mantenimiento + nieve/viento)</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Separación entre Cerchas:</label>
+                    <input type="number" id="separacion" value="4.0" step="0.5">
+                    <small>m</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Acero Estructural:</label>
+                    <select id="aceroTipo">
+                        <option value="A36" selected>ASTM A36 (Fy = 250 MPa)</option>
+                        <option value="A572">ASTM A572 Gr.50 (Fy = 345 MPa)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Perfil de Cordones:</label>
+                    <select id="perfilCordon">
+                        <option value="L50x50x5">L 50x50x5</option>
+                        <option value="L60x60x6" selected>L 60x60x6</option>
+                        <option value="L75x75x6">L 75x75x6</option>
+                        <option value="L80x80x8">L 80x80x8</option>
+                        <option value="2L60x60x6">2L 60x60x6</option>
+                        <option value="2L75x75x6">2L 75x75x6</option>
+                    </select>
+                    <small>cordones superior e inferior</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Perfil de Diagonales:</label>
+                    <select id="perfilDiagonal">
+                        <option value="L40x40x4" selected>L 40x40x4</option>
+                        <option value="L50x50x5">L 50x50x5</option>
+                        <option value="L60x60x6">L 60x60x6</option>
+                    </select>
+                </div>
+                
+                <button class="btn-calculate" onclick="calcularCercha()">
+                    🔨 Analizar Cercha
+                </button>
+            </div>
+            
+            <!-- Sección de Salida -->
+            <div class="output-section">
+                <h2>📊 Resultados del Análisis</h2>
+                
+                                <div class="vista-controles">
+                    <button class="btn-vista active" id="btn3d" onclick="cambiarVista('3d')">
+                        🔷 Vista 3D
+                    </button>
+                    <button class="btn-vista" id="btnCorte" onclick="cambiarVista('corte')">
+                        ✂️ Ver Corte A-A
+                    </button>
+                </div>
+                <div class="vista-container">
+                    <div id="canvas3d" class="active"></div>
+                    <canvas id="canvasCorte" width="800" height="600"></canvas>
+                </div>
+                
+                <div class="results" id="resultados">
+                    <p style="text-align: center; color: #7f8c8d; padding: 2rem;">
+                        Ingrese los datos y presione "Analizar" para ver los resultados
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 - Software de Cálculos Estructurales Chile</p>
+    </footer>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <!-- Scripts del proyecto -->
+    <script src="../js/utils/normativa-chile.js"></script>
+    <script src="../js/utils/calculos-comunes.js"></script>
+    <script src="../js/utils/three-config.js"></script>
+    <script src="../js/utils/acero-cuantificacion.js"></script>
+    <script src="../js/utils/cortes-detalle.js"></script>
+    <script src="../js/cercha.js"></script>
+</body>
+</html>

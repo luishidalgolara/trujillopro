@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador Ley del Mono 20.898</title>
+    <link rel="stylesheet" href="ley-mono.css">
+</head>
+<body>
+    <div class="ley-mono-container">
+        <!-- HEADER -->
+        <div class="ley-mono-header">
+            <div class="header-icon">📋</div>
+            <div class="header-text">
+                <h1>LEY DEL MONO</h1>
+                <p>Ley N° 20.898 - Regularización</p>
+            </div>
+        </div>
+
+        <!-- BUSCADOR -->
+        <div class="search-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="Buscar requisitos, plazos, documentos..."
+                    autocomplete="off"
+                >
+                <button id="clearBtn" class="clear-btn" style="display: none;">✕</button>
+            </div>
+        </div>
+
+        <!-- FILTROS POR CATEGORÍA -->
+        <div class="categories-container">
+            <button class="category-btn active" data-category="all">
+                📚 Todas
+            </button>
+            <button class="category-btn" data-category="requisitos">
+                ✅ Requisitos
+            </button>
+            <button class="category-btn" data-category="plazos">
+                📅 Plazos
+            </button>
+            <button class="category-btn" data-category="documentos">
+                📄 Documentos
+            </button>
+            <button class="category-btn" data-category="beneficios">
+                💰 Beneficios
+            </button>
+            <button class="category-btn" data-category="proceso">
+                🔧 Proceso
+            </button>
+        </div>
+
+        <!-- CONTADOR DE RESULTADOS -->
+        <div class="results-counter" id="resultsCounter">
+            <span id="counterText">Mostrando todos los temas</span>
+        </div>
+
+        <!-- RESULTADOS -->
+        <div class="results-container" id="resultsContainer">
+            <!-- Los resultados se generan dinámicamente con JS -->
+        </div>
+
+        <!-- FOOTER INFO -->
+        <div class="ley-mono-footer">
+            <div class="footer-item">
+                <span class="footer-icon">📅</span>
+                <div class="footer-text">
+                    <strong>Vigencia</strong>
+                    <p>Hasta 31/12/2027</p>
+                </div>
+            </div>
+            <div class="footer-item">
+                <span class="footer-icon">📞</span>
+                <div class="footer-text">
+                    <strong>Municipalidad</strong>
+                    <p>Dirección de Obras</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="ley-mono-data.js"></script>
+    <script src="ley-mono.js"></script>
+</body>
+</html>

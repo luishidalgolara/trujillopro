@@ -1,0 +1,492 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Planos Profesional con Trazado Inteligente</title>
+
+    <!-- ==================== ARCHIVOS CSS ==================== -->
+    
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/toolbar.css">
+    <link rel="stylesheet" href="css/panels.css">
+    <link rel="stylesheet" href="css/workspace.css">
+    <link rel="stylesheet" href="css/svg-elements.css">
+    <link rel="stylesheet" href="css/modals.css">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="viñeta-esbbio.css">
+    <link rel="stylesheet" href="menu-detalles.css">
+    <link rel="stylesheet" href="notas/notas-dropdown.css">
+    <link rel="stylesheet" href="nivel_2/nivel-2-styles.css">
+    <link rel="stylesheet" href="nivel_2/isometrico/nivel-2-isometric-styles.css">
+    <link rel="stylesheet" href="z-index-manager/z-index-styles.css">
+    <link rel="stylesheet" href="css/tracing-context-menu.css">
+    <link rel="stylesheet" href="memoria-alcantarillado/memoria-modal-alc.css">
+    <link rel="stylesheet" href="modal-eett-alc.css">
+    <link rel="stylesheet" href="multi-plane-system-alc/plane-styles.css">    
+    <link rel="stylesheet" href="buscador-ridda-final_v2/anexo/anexos-modal.css">
+    <link rel="stylesheet" href="buscador-ridda-final_v2/anexo/tabla-contenidos-ridaa.css">
+    <link rel="stylesheet" href="buscador-ridda-final_v2/css/ridaa-faqs-styles.css">
+    <link rel="stylesheet" href="asistente-ridaa/asistente-styles.css">
+
+    
+    
+
+    <!-- Scripts externos -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <!-- TOOLBAR PRINCIPAL -->
+        <div class="toolbar">
+            <div class="toolbar-left">
+                <div class="app-title">
+                    <div>⚬ ⚬ ⚬ TRUKILLO</div>
+                    <div>ALCANTARILLADO</div>
+                </div>
+                <button class="upload-btn" onclick="document.getElementById('pdfFiles').click()">
+                    📄 Cargar PDF/Imagen
+                </button>
+                <input type="file" id="pdfFiles" class="file-input" accept=".pdf,.jpg,.png,.svg">                
+              
+                <button class="vineta-btn" onclick="abrirVineta()">
+                    📋 VIÑETA ESSBIO
+                </button>
+
+                <button class="vineta-btn" onclick="abrirCuadroUEH()">
+                    📊 CUADRO U.E.H
+                </button>
+
+                <!-- ⭐ NUEVO BOTÓN MEMORIA ALCANTARILLADO -->
+                <button class="vineta-btn" onclick="abrirMemoriaCalculoAlc()">
+                    📋 MEMORIA DE CÁLCULO
+                </button>
+
+                <button class="vineta-btn" onclick="abrirEETTAlcantarillado()">
+                    📄 EETT ALCANTARILLADO
+                </button>
+
+                <div class="btn-detalles-container">
+                    <button class="vineta-btn dropdown-detalles-btn" onclick="toggleMenuDetalles()">
+                        🔧 DETALLES DISPONIBLES ▼
+                    </button>
+                    <div class="dropdown-detalles" id="dropdownDetalles">
+                        <button class="dropdown-item" onclick="abrirDetalle('./detalles/camaradom.html', 'Cámara Domiciliaria')">
+                            ⚫ Cámara Domiciliaria
+                        </button>
+                        <button class="dropdown-item" onclick="abrirDetalle('./detalles/uniondomiciliaria.html', 'Unión Domiciliaria')">
+                            🔗 Unión Domiciliaria
+                        </button>
+                        <button class="dropdown-item" onclick="abrirDetalle('./detalles/tapa.html', 'Tapa')">
+                            🔲 Tapa
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="toolbar-center">
+                <div class="format-selector">
+                    <button class="format-btn active" onclick="changeFormat('A1')" id="btnA1">A1</button>
+                    <button class="format-btn" onclick="changeFormat('A0')" id="btnA0">A0</button>
+                </div>
+            </div>
+
+            <div class="toolbar-right">
+                <button class="action-btn download-btn" onclick="downloadPDF()" id="downloadBtn">
+                    📥 Descargar PDF
+                </button>
+                
+                <button class="action-btn agua-potable-btn" onclick="abrirProyectoAguaPotable()" id="aguaPotableBtn">
+                    💧 Crear Proyecto Agua Potable
+                </button>
+               <button class="action-btn agua-potable-btn" onclick="abrirProyectoElectrico()" id="electricoBtn">
+                     ⚡ Crear Proyecto Eléctrico
+               </button>
+            </div>
+        </div>
+
+        <!-- PANEL DE TRAZADO INTELIGENTE -->
+        <div class="tracing-panel">
+            <div class="panel-group">
+                <span>Modo:</span>
+                <button class="mode-btn" id="modeToggle" onclick="toggleMode()">🖱️ Edición</button>
+            </div>
+            
+            <div class="panel-group">
+                <span>Escala:</span>
+                <button class="scale-btn" onclick="selectScale('1:1')" data-scale="1">1:1</button>
+                <button class="scale-btn active" onclick="selectScale('1:50')" data-scale="50">1:50</button>
+                <button class="scale-btn" onclick="selectScale('1:75')" data-scale="75">1:75</button>
+                <button class="scale-btn" onclick="selectScale('1:100')" data-scale="100">1:100</button>
+                <button class="scale-btn" onclick="selectScale('1:125')" data-scale="125">1:125</button>
+                <button class="scale-btn" onclick="selectScale('1:150')" data-scale="150">1:150</button>
+                <button class="scale-btn" onclick="selectScale('1:200')" data-scale="200">1:200</button>
+            </div>
+
+            <div class="panel-group">
+                <span>Sanitarios:</span>
+                <button class="tool-btn" onclick="selectTool('wc')">🚽 WC</button>
+                <button class="tool-btn" onclick="selectTool('lavatorio')">🚰 Lavatorio</button>
+                <button class="tool-btn" onclick="selectTool('bano-tina')">🛁 Baño Tina</button>
+                <button class="tool-btn" onclick="selectTool('ducha')">🚿 Ducha</button>
+                <button class="tool-btn" onclick="selectTool('bidet')">🪑 Bidet</button>
+                <button class="tool-btn" onclick="selectTool('urinario')">🚹 Urinario</button>
+            </div>
+
+            <div class="panel-group">
+                <span>Cocina/Lavado:</span>
+                <button class="tool-btn" onclick="selectTool('lavaplatos')">🍽️ Lavaplatos</button>
+                <button class="tool-btn" onclick="selectTool('lavacopas')">🍷 Lavacopas</button>
+                <button class="tool-btn" onclick="selectTool('lavadora')">🧺 Lavadora</button>
+                <button class="tool-btn" onclick="selectTool('lavadero')">🧽 Lavadero</button>
+            </div>
+
+            <div class="panel-group">
+                <span>Dibujo CAD:</span>
+                <button class="tool-btn" onclick="selectDrawingTool('line')" title="LINE (L)">📏 LINE</button>
+                <button class="tool-btn" onclick="selectDrawingTool('pline')" title="PLINE (PL)">〰️ PLINE</button>
+                <button class="tool-btn" onclick="selectDrawingTool('circle')" title="CIRCLE (C)">⭕ CIRCLE</button>
+                <button class="tool-btn" onclick="selectDrawingTool('arc')" title="ARC (A)">⌒ ARC</button>
+                <button class="tool-btn" onclick="selectDrawingTool('rectangle')" title="RECTANG">▭ RECT</button>
+                <button class="tool-btn" onclick="selectDrawingTool('spline')" title="SPLINE">〜 SPLINE</button>
+                <button class="tool-btn" onclick="selectDrawingTool('polygon')" title="POLYGON">⬡ POLYGON</button>
+            </div>
+
+            <div class="panel-group">
+                <span>Infraestructura:</span>
+                <button class="tool-btn" onclick="selectTool('camara-inspeccion')">⚫ Cámara Inspección</button>
+                <button class="tool-btn" onclick="selectTool('camara-publica')">🔴 Cámara Pública</button>
+                <button class="tool-btn" onclick="selectTool('caja-registro')">▣ Caja Registro</button>
+                <button class="tool-btn" onclick="selectTool('punto-descarga')">💧 Punto Descarga</button>
+            </div>
+
+            <div class="panel-group">
+                <span>Anotaciones:</span>
+                <button class="tool-btn" onclick="selectTool('texto')">📝 Texto</button>
+                <button class="tool-btn" onclick="selectTool('rosa-norte')">🧭 Rosa Norte</button>
+                <div class="btn-notas-container">
+                    <button class="tool-btn dropdown-notas-btn" onclick="toggleMenuNotas()">
+                        📋 NOTAS OBLIGATORIAS ▼
+                    </button>
+                    <div class="dropdown-notas" id="dropdownNotas">
+                        <button class="dropdown-item-nota" onclick="insertarNota('nota1')">
+                            📝 NOTA 1
+                        </button>
+                        <button class="dropdown-item-nota" onclick="insertarNota('nota2')">
+                            📝 NOTA 2
+                        </button>
+                    </div>
+                </div>
+                <button class="tool-btn" onclick="abrirTablaNch2702()" style="background: #e67e22;">
+                    📊 TABLA NCh 2702
+                </button>
+                <button class="tool-btn" onclick="abrirSimbologia()" style="background: #9b59b6;">
+                    📊 SIMBOLOGÍA
+                </button>
+            </div>
+
+            <div class="panel-group">
+                <span>Acciones:</span>
+                <button class="tool-btn" onclick="generateTracing()" style="background: #27ae60;">⚡ Generar Trazado 1° Nivel</button>
+                <button class="tool-btn" onclick="generarTrazadoNivel2()" style="background: #e74c3c;">⚡ Generar Trazado 2° Nivel</button>
+                <button class="tool-btn" onclick="generateIsometric()" style="background: #9b59b6;">🎯 Generar Isométrico 1° Nivel</button>
+                <button class="tool-btn" onclick="generateIsometricNivel2()" style="background: #c0392b;">🎯 Generar Isométrico 2° Nivel</button>                
+                <button class="tool-btn" onclick="toggleMeasuringMode()" style="background: #3498db;">📏 Medir Distancia</button>
+                <!-- ⭐ NUEVO BOTÓN EDICIÓN DE PUNTOS -->
+                 <button class="tool-btn" id="btnEditarPuntos" onclick="toggleModoEdicionTrazado()" style="background: #f59e0b;">
+                    ✏️ Editar Puntos Trazado
+                 </button>
+                <button class="tool-btn" onclick="clearTracing()" style="background: #e74c3c;">🗑️ Limpiar Trazado</button>
+            </div>
+        </div>
+
+        <!-- WORKSPACE CONTAINER -->
+        <div class="workspace-container">
+            <!-- WORKSPACE PRINCIPAL -->
+            <div class="workspace" id="workspace">
+                <div class="zoom-container" id="zoomContainer">
+                    <!-- Plan Title Outside -->
+                    <div class="plan-title-external">
+                        <h2 id="planTitle">PLANO PROFESIONAL - TRUJILLO</h2>
+                    </div>
+                    
+                    <div class="drawing-board format-a1" id="drawingBoard">
+                        <!-- SVG Layer para archivos SVG -->
+                        <div class="svg-layer" id="svgLayer"></div>
+                        
+                        <svg class="tracing-svg" id="tracingSvg" viewBox="0 0 841 594">
+                            <defs>
+                                <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e0e0e0" stroke-width="0.5"/>
+                                </pattern>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+   
+    <!-- STATUS BAR -->
+    <div class="status-bar" id="statusBar"></div>
+
+    <!-- EMAIL MODAL -->
+    <div class="email-modal" id="emailModal">
+        <div class="email-content">
+            <h3 style="color: #2c3e50; margin-bottom: 20px;">📧 Enviar Plano por Email</h3>
+            <input type="email" class="email-input" id="emailInput" placeholder="Email de destino">
+            <input type="text" class="email-input" id="subjectInput" placeholder="Asunto" value="Plano Profesional">
+            <div class="email-buttons">
+                <button class="email-send" onclick="sendEmail()">Enviar</button>
+                <button class="email-cancel" onclick="hideEmailModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TEXT MODAL -->
+    <div class="email-modal" id="textModal">
+        <div class="email-content">
+            <h3 style="color: #2c3e50; margin-bottom: 20px;">📝 Configurar Texto</h3>
+            <input type="text" class="email-input" id="textContent" placeholder="Texto a insertar" value="TEXTO">
+            <select class="email-input" id="textFont">
+                <option value="Arial">Arial</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Helvetica">Helvetica</option>
+                <option value="Roboto">Roboto</option>
+                <option value="Calibri">Calibri</option>
+            </select>
+            <select class="email-input" id="textSize">
+                <option value="8">8px</option>
+                <option value="10">10px</option>
+                <option value="12" selected>12px</option>
+                <option value="14">14px</option>
+                <option value="16">16px</option>
+                <option value="18">18px</option>
+                <option value="24">24px</option>
+                <option value="36">36px</option>
+            </select>
+            <div class="email-buttons">
+                <button class="email-send" onclick="createTextElement()">Crear</button>
+                <button class="email-cancel" onclick="hideTextModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VINETA MODAL -->
+    <div class="vineta-modal" id="vinetaModal">
+        <div class="vineta-window" id="vinetaWindow">
+            <div class="vineta-header" id="vinetaHeader">
+                <div class="vineta-title">📋 VIÑETA ESSBIO - Proyecto Alcantarillado</div>
+                <div class="vineta-header-buttons">
+                    <button class="vineta-btn-header minimize" onclick="minimizarVineta()">━</button>
+                    <button class="vineta-btn-header close" onclick="cerrarVineta()">✕</button>
+                </div>
+            </div>
+            <div class="vineta-content">
+                <iframe id="vinetaIframe" src="" frameborder="0"></iframe>
+            </div>
+            <div class="vineta-resize-handle" id="vinetaResize"></div>
+        </div>
+    </div>
+
+    <!-- ⭐ NUEVO MODAL MEMORIA ALCANTARILLADO -->
+    <div class="modal-memoria" id="modalMemoriaAlc">
+        <div class="ventana-memoria">
+            <div class="modal-memoria-header">
+                <div class="modal-memoria-title">📋 MEMORIA DE CÁLCULO - ALCANTARILLADO</div>
+                <div class="modal-memoria-buttons">
+                    <button class="btn-modal-memoria close" onclick="cerrarMemoriaAlc()">✕</button>
+                </div>
+            </div>
+            <div class="modal-memoria-content">
+                <iframe id="iframeMemoriaAlc" src=""></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL EETT ALCANTARILLADO -->
+    <div class="modal-eett-alc" id="modalEETTAlc">
+        <div class="ventana-eett-alc">
+            <div class="modal-eett-alc-header">
+                <div class="modal-eett-alc-title">📄 ESPECIFICACIONES TÉCNICAS - ALCANTARILLADO</div>
+                <div class="modal-eett-alc-buttons">
+                    <button class="btn-modal-eett-alc close" onclick="cerrarEETTAlc()">✕</button>
+                </div>
+            </div>
+            <div class="modal-eett-alc-content">
+                <iframe id="iframeEETTAlc" src=""></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    
+    <!-- ASISTENTES CAD MODULARES -->
+    <script src="asistentes-CAD/cad-styles.js"></script>
+    <script src="asistentes-CAD/osnap-core.js"></script>
+    <script src="asistentes-CAD/osnap-detectors.js"></script>
+    <script src="asistentes-CAD/ortho-system.js"></script>
+    <script src="asistentes-CAD/cad-init.js"></script>
+
+    <!-- EDITOR CAD -->
+    <script src="editor/editor-coordinates.js"></script>
+    <script src="editor/editor-loaders.js"></script>
+    <script src="editor/editor-manipulation.js"></script>
+    <script src="editor/editor-plans.js"></script>
+    <script src="editor/editor-init.js"></script>
+    <script src="editor/editor-zoom.js"></script>
+    <script src="editor/editor-drag.js"></script>
+    <script src="editor/editor-export.js"></script>
+    <script src="editor/editor-panel.js"></script>
+
+    <!-- HERRAMIENTAS DE DIBUJO -->
+    <!-- CONTADOR AUTOMÁTICO DE ARTEFACTOS -->
+    <script src="contador-artefactos.js"></script>
+    <script src="undo-redo.js"></script>
+    <script src="herramientas-dibujo/drawing-core.js"></script>
+    <script src="herramientas-dibujo/drawing-basic.js"></script>
+    <script src="herramientas-dibujo/drawing-advanced.js"></script>
+    <script src="herramientas-dibujo/drawing-edit.js"></script>
+    <script src="herramientas-dibujo/drawing-events.js"></script>
+    <script src="herramientas-dibujo/color-picker-aci.js"></script>
+    <script src="herramientas-dibujo/measuring-tool.js"></script>
+    
+    <!-- MOTOR ISOMÉTRICO MODULAR -->
+    <script src="motor-isometrico/isometric-generator.js"></script>
+    <script src="motor-isometrico/isometric-svg.js"></script>
+    <script src="motor-isometrico/isometric-labels.js"></script>
+    <script src="motor-isometrico/isometric-ui.js"></script>
+    <script src="motor-isometrico/isometric-integration.js"></script>    
+   
+    
+    <!-- TRAZADO MODULAR -->
+    <script src="trazado/tracing-core.js"></script>
+    <script src="trazado/tracing-connections.js"></script>
+    <script src="trazado/tracing-labels.js"></script>
+    <!-- EDITOR DE PUNTOS TRAZADO MODULAR -->
+    <script src="trazado-modules/point-editor-state.js"></script>
+    <script src="trazado-modules/point-editor-ui.js"></script>
+    <script src="trazado-modules/point-editor-drag.js"></script>
+    <script src="trazado-modules/point-editor-detection.js"></script>
+    <script src="trazado-modules/point-editor-actions.js"></script>
+    
+    <script src="trazado/tracing-navigation.js"></script>
+    <script src="trazado/tracing-drag.js"></script>
+    <script src="trazado/tracing-annotations.js"></script>
+    <script src="trazado/tracing-selection.js"></script>
+    <script src="trazado/tracing-coordinates.js"></script>
+    <script src="trazado/tracing-elements.js"></script>
+    <script src="trazado/tracing-modes.js"></script>
+    <script src="trazado/selection-system.js"></script>    
+    <script src="foreignobject-selection-extension.js"></script>
+    <script src="trazado/tracing-events.js"></script>
+
+    <!-- TRAZADO INTELIGENTE -->
+    <script src="trazado-inteligente/ridaa-config.js"></script>
+    <script src="trazado-inteligente/ridaa-helpers.js"></script>
+    <script src="trazado-inteligente/ridaa-classifier.js"></script>
+    <script src="trazado-inteligente/ridaa-mst-algorithm.js"></script>
+    <script src="trazado-inteligente/ridaa-connections.js"></script> 
+    <script src="ventilacion-auto/ridaa-connections.js"></script>    
+    <script src="trazado-inteligente/ridaa-validation.js"></script>
+    <script src="trazado-inteligente/ridaa-main.js"></script>
+
+    <!-- VINETA HANDLER -->
+    <script src="vineta-handler.js"></script>
+
+    <!-- MENU DETALLES -->
+    <script src="menu-detalles.js"></script>
+
+    <!-- CUADRO U.E.H - INTEGRACIÓN INDEPENDIENTE -->
+    <script src="cuadro-ueh-integration.js"></script>
+
+    <!-- NOTAS PLANO -->
+    <script src="notas/notas-plano.js"></script>
+    <script src="trazado/camara-info-container.js"></script>
+    
+    <!-- SIMBOLOGÍA HANDLER -->
+    <script src="simbologia/simbologiaCore.js"></script>
+    <script src="simbologia/simbologiaUI.js"></script>
+    <script src="simbologia/simbologiaArrastre.js"></script>
+    <script src="simbologia/simbologiaTabla.js"></script>
+    <script src="simbologia/simbologiaIntegracion.js"></script>
+    <script src="simbologia/index.js"></script>
+        
+    <script src="nivel_2/nivel-2-contador.js"></script>
+    <script src="nivel_2/nivel-2-manager.js"></script>
+    <script src="nivel_2/nivel-2-classifier.js"></script>
+    <script src="nivel_2/nivel-2-labels.js"></script>
+    <script src="nivel_2/nivel-2-drag.js"></script>
+    <script src="nivel_2/nivel-2-trazado.js"></script>
+    <script src="nivel_2/nivel-2-init.js"></script>
+
+    <script src="nivel_2/isometrico/nivel-2-isometric-generator.js"></script>
+    <script src="nivel_2/isometrico/nivel-2-isometric-svg.js"></script>
+    <script src="nivel_2/isometrico/nivel-2-isometric-labels.js"></script>
+    <script src="nivel_2/isometrico/nivel-2-isometric-ui.js"></script>
+    <script src="nivel_2/isometrico/nivel-2-isometric-integration.js"></script>
+
+    <!-- TABLA NCh 2702 HANDLER -->
+    <script src="tabla-nch2702-handler.js"></script>
+
+    <!-- Z-INDEX MANAGER - SISTEMA DE CAPAS -->
+    <script src="z-index-manager/z-index-core.js"></script>
+    <script src="z-index-manager/z-index-detector.js"></script>
+    <script src="z-index-manager/z-index-context-menu.js"></script>
+    <script src="z-index-manager/z-index-init.js"></script>  
+
+    <!-- ⭐ MEMORIA ALCANTARILLADO HANDLER -->
+    <script src="memoria-alcantarillado/memoria-alc-handler.js"></script>
+
+    <!-- ⭐ EETT ALCANTARILLADO HANDLER -->
+    <script src="eett-alc-handler.js"></script>
+    <script src="trazado/tracing-context-menu.js"></script>
+
+    <!-- ⭐ SISTEMA MULTI-PLANO ALCANTARILLADO -->    
+    <script src="multi-plane-system-alc/plane-state.js"></script>
+    <script src="multi-plane-system-alc/plane-instance.js"></script>
+    <script src="multi-plane-system-alc/plane-manager-cleanup.js"></script>
+    <script src="multi-plane-system-alc/plane-manager-helpers.js"></script>
+    <script src="multi-plane-system-alc/plane-manager-state-save.js"></script>
+    <script src="multi-plane-system-alc/plane-manager-state-load.js"></script>
+    <script src="multi-plane-system-alc/plane-manager-state-controls.js"></script>
+    <script src="multi-plane-system-alc/plane-manager-state-core.js"></script>
+    <script src="multi-plane-system-alc/plane-manager-export.js"></script>
+    <script src="multi-plane-system-alc/plane-manager-core.js"></script>
+    <script src="multi-plane-system-alc/plane-thumbnails-ui.js"></script>
+    <script src="multi-plane-system-alc/plane-integration.js"></script>
+    <script src="multi-plane-system-alc/plane-debug.js"></script>
+
+    <script src="buscador-ridda-final_v2/ridaa-integration.js"></script>
+    <script src="buscador-ridda-final_v2/anexo/anexos-handler-ridaa.js"></script>
+
+    <!-- AGREGA ESTOS 5 NUEVOS MÓDULOS V2 -->
+    <script src="buscador-ridda-final_v2/ridaa-processor-v2.js"></script>
+    <script src="buscador-ridda-final_v2/ridaa-indexer.js"></script>
+    <script src="buscador-ridda-final_v2/ridaa-search-v2.js"></script>
+    <script src="buscador-ridda-final_v2/ridaa-result-renderer.js"></script>
+    <script src="buscador-ridda-final_v2/ridaa-integration-v2.js"></script>
+    <script src="buscador-ridda-final_v2/anexo/tabla-contenidos-ridaa.js"></script>
+
+    <!-- ASISTENTE RIDAA -->   
+    <script src="asistente-ridaa/preguntas-respuestas/reglamento_parte1.js"></script> 
+    <script src="asistente-ridaa/preguntas-respuestas/reglamento_parte2.js"></script>
+    <script src="asistente-ridaa/preguntas-respuestas/reglamento_parte3.js"></script>
+    <script src="asistente-ridaa/preguntas-respuestas/reglamento_parte4.js"></script>
+    <script src="asistente-ridaa/preguntas-respuestas/reglamento_parte5.js"></script>
+    <script src="asistente-ridaa/preguntas-respuestas/reglamento_parte6.js"></script>
+    <script src="asistente-ridaa/preguntas-respuestas/reglamento_parte7.js"></script>
+    
+    <!-- Core del Asistente -->
+    <script src="asistente-ridaa/asistente-core.js"></script>
+    <script src="asistente-ridaa/asistente-ui.js"></script>
+    <script src="asistente-ridaa/asistente-init.js"></script>
+    
+    <!-- INTEGRACION -->
+    <script src="proyecto-electrico-handler.js"></script>
+
+    
+        
+</body>
+</html>

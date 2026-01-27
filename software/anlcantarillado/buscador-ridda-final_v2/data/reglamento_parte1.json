@@ -1,0 +1,192 @@
+{
+  "metadata": {
+    "titulo": "REGLAMENTO DE INSTALACIONES DOMICILIARIAS DE AGUA POTABLE Y DE ALCANTARILLADO",
+    "ministerio": "MINISTERIO DE OBRAS PÚBLICAS",
+    "fechaPublicacion": "28.01.2003",
+    "fechaPromulgacion": "25.01.2002",
+    "numero": "50",
+    "modificaciones": [
+      "Decreto MOP Nº 669 del 08.09.2008",
+      "Decreto MOP Nº 130 del 20.02.2004",
+      "Decreto MOP Nº 752 del 21.07.2003"
+    ],
+    "encabezado": "Texto incluye últimas modificaciones realizadas por: Decreto MOP Nº 669 del 08.09.2008, Decreto MOP Nº 130 del 20.02.2004 y Decreto MOP Nº 752 del 21.07.2003",
+    "subtitulo": "APRUEBA EL REGLAMENTO DE INSTALACIONES DOMICILIARIAS DE AGUA POTABLE Y DE ALCANTARILLADO",
+    "vistos": "El artículo 32º Nº 8 de la Constitución Política de la República, la ley Nº 18.902, lo dispuesto en el artículo 51º y el inciso 2º del artículo 2º del DFL MOP Nº 382/88, lo informado por la Superintendencia de Servicios Sanitarios en su oficio Nº 810, de fecha 30 de marzo de 1999.",
+    "considerando": [
+      "Que es necesario actualizar y regular de manera general las normas aplicables a los proyectos, construcción y puesta en servicio de las instalaciones domiciliarias de agua potable y de alcantarillado, estableciendo además sus disposiciones técnicas.",
+      "Que el artículo 51º del DFL MOP Nº 382/88, \"Ley General de Servicios Sanitarios\", establece que las disposiciones técnicas que regulen el diseño, construcción y puesta en explotación de las instalaciones domiciliarias de agua potable y de alcantarillado de aguas servidas, serán establecidas en un Reglamento.",
+      "Que los Reglamentos que deben dictarse para la aplicación de la citada ley, de acuerdo al artículo 2º del DFL MOP Nº 382/88 serán expedidos a través del Ministerio de Obras Públicas"
+    ],
+    "decreto": "Apruébase el siguiente Reglamento de Instalaciones Domiciliarias de Agua Potable y de Alcantarillado:"
+  },
+  "partes": [
+    {
+      "numero": "PRIMERA PARTE",
+      "titulos": [
+        {
+          "numero": "TITULO I",
+          "nombre": "Objeto y definiciones",
+          "articulos": [
+            {
+              "numero": "Artículo 1º",
+              "texto": "El presente Reglamento regula los proyectos, la construcción y puesta en servicio de las instalaciones domiciliarias de agua potable y de alcantarillado y establece las normas técnicas para este tipo de instalaciones en todo el territorio nacional.\nLas normas técnicas, tablas y Anexos de este Reglamento sólo son aplicables a una sola unidad de vivienda o edificio (instalaciones interiores)."
+            },
+            {
+              "numero": "Artículo 2º",
+              "texto": "Para los fines de este Reglamento se entenderá por:",
+              "definiciones": [
+                {
+                  "numero": "1",
+                  "titulo": "INSTALACION DOMICILIARIA DE AGUA POTABLE",
+                  "contenido": "Las obras necesarias para dotar de este servicio a un inmueble desde la salida de la llave de paso colocada a continuación del medidor o de los sistemas propios de abastecimiento de agua potable, hasta los artefactos."
+                },
+                {
+                  "numero": "2",
+                  "titulo": "INSTALACION DOMICILIARIA DE ALCANTARILLADO DE AGUAS SERVIDAS",
+                  "contenido": "Las obras necesarias para evacuar las aguas servidas domésticas del inmueble, desde los artefactos hasta la última cámara domiciliaria, inclusive, o hasta los sistemas propios de disposición."
+                },
+                {
+                  "numero": "3",
+                  "titulo": "ARRANQUE DE AGUA POTABLE",
+                  "contenido": "El tramo de la red pública de distribución, comprendido desde el punto de su conexión a la tubería de distribución hasta la llave de paso colocada después del medidor inclusive."
+                },
+                {
+                  "numero": "4",
+                  "titulo": "UNION DOMICILIARIA DE ALCANTARILLADO",
+                  "contenido": "El tramo de la red pública de recolección comprendido desde su punto de empalme a la tubería de recolección, hasta la última cámara de inspección domiciliaria exclusive."
+                },
+                {
+                  "numero": "5",
+                  "titulo": "REDES PÚBLICAS DE DISTRIBUCION DE AGUA POTABLE",
+                  "contenido": "Son aquellas instalaciones exigidas por la urbanización conforme a la ley, inclusive los arranques de agua potable, operadas y administradas por el prestador del servicio público de distribución, a las que se conectan las instalaciones domiciliarias de agua potable."
+                },
+                {
+                  "numero": "6",
+                  "titulo": "REDES PÚBLICAS DE RECOLECCION DE AGUAS SERVIDAS",
+                  "contenido": "Aquellas instalaciones exigidas por la urbanización conforme a la ley, incluyendo las uniones domiciliarias de alcantarillado, operadas y administradas por el prestador del servicio público de recolección, a las que se empalman las instalaciones domiciliarias de alcantarillado de aguas servidas."
+                },
+                {
+                  "numero": "7",
+                  "titulo": "REDES PRIVADAS DE DISTRIBUCION DE AGUA POTABLE",
+                  "contenido": "Aquella parte de la instalación domiciliaria de agua potable, ubicadas aguas abajo del arranque domiciliario y que sirve a más de un inmueble, vivienda o departamento, hasta los sistemas propios de elevación o hasta la llave de paso ubicada inmediatamente después del elemento de medición individual, según corresponda. Estas redes deben ser proyectadas y construidas en las vías de circulación o espacios de usos comunes al exterior de las edificaciones."
+                },
+                {
+                  "numero": "8",
+                  "titulo": "REDES PRIVADAS DE RECOLECCION DE AGUAS SERVIDAS",
+                  "contenido": "Aquella parte de la instalación domiciliaria de alcantarillado, ubicada aguas arriba de la unión domiciliaria y que sirve a más de un inmueble, vivienda o departamento, hasta los sistemas propios de elevación o hasta la última cámara de la instalación interior de cada edificación que conforma el conjunto, según corresponda.\nEstas redes deben ser proyectadas y construidas en las vías de circulación o espacios de usos comunes al exterior de las edificaciones."
+                },
+                {
+                  "numero": "9",
+                  "titulo": "INSTALACION INTERIOR DE AGUA POTABLE",
+                  "contenido": "Son aquellas obras necesarias para dotar de agua potable al interior de cada vivienda o departamento, perteneciente a cualquier tipo de conjunto, ubicadas a continuación del elemento de medición individual. En caso de tratarse de una propiedad que no forma parte de un conjunto, corresponde a la instalación domiciliaria de agua potable."
+                },
+                {
+                  "numero": "10",
+                  "titulo": "INSTALACION INTERIOR DE ALCANTARILLADO DE AGUAS SERVIDAS",
+                  "contenido": "Son aquellas obras necesarias para la evacuación de las aguas servidas domésticas de cada vivienda o departamento, perteneciente a cualquier tipo de conjunto, ubicadas aguas arriba de la última cámara domiciliaria de cada inmueble. En caso de tratarse de una propiedad que no forma parte de un conjunto, corresponde a la instalación domiciliaria de alcantarillado."
+                },
+                {
+                  "numero": "11",
+                  "titulo": "CONEXION",
+                  "contenido": "Es la unión física del arranque de agua potable y la tubería de la red pública de distribución."
+                },
+                {
+                  "numero": "12",
+                  "titulo": "EMPALME",
+                  "contenido": "Es la unión física entre la unión domiciliaria de alcantarillado y la tubería de la red pública de recolección."
+                },
+                {
+                  "numero": "13",
+                  "titulo": "ULTIMA CAMARA DOMICILIARIA",
+                  "contenido": "Es la cámara ubicada dentro de la propiedad del usuario, que está más próxima al colector público de aguas servidas, entendiéndose por ésta, la última cámara en el sentido del flujo de evacuación."
+                },
+                {
+                  "numero": "14",
+                  "titulo": "USUARIOS O CLIENTES DE UN PRESTADOR DE SERVICIO PUBLICO DE DISTRIBUCION DE AGUA POTABLE O DE RECOLECCION DE AGUAS SERVIDAS",
+                  "contenido": "La persona natural o jurídica que habite o resida en el inmueble que recibe el servicio, cualquiera sea el título para habitar o residir en él."
+                },
+                {
+                  "numero": "15",
+                  "titulo": "PETICIONARIO DE SERVICIO DE AGUA POTABLE O DE ALCANTARILLADO PARA UN INMUEBLE",
+                  "contenido": "Es la persona natural o jurídica que solicite el servicio, sea el propietario o una persona autorizada por él."
+                },
+                {
+                  "numero": "16",
+                  "titulo": "PRESTADOR O CONCESIONARIO",
+                  "contenido": "Es la persona natural o jurídica, habilitada para el otorgamiento de los servicios públicos de distribución de agua potable o de recolección de aguas servidas, que se obliga a entregarlos a quien los solicite dentro de su área o zona de concesión, en las condiciones establecidas en la Ley, el Reglamento y su respectivo decreto de concesión."
+                },
+                {
+                  "numero": "17",
+                  "titulo": "CERTIFICADO DE FACTIBILIDAD",
+                  "contenido": "Es el documento formal emitido por las concesionarias de servicios públicos sanitarios, mediante el cual asumen la obligación de otorgar los servicios a un futuro usuario, expresando los términos y condiciones para tal efecto."
+                },
+                {
+                  "numero": "18",
+                  "titulo": "CERTIFICADO DE INSTALACIONES DE AGUA POTABLE Y DE ALCANTARILLADO",
+                  "contenido": "El documento que acredita que las instalaciones de agua potable y de alcantarillado de la propiedad están conectadas a las redes de los Prestadores e incorporada en los registros comerciales de estos últimos, o que cuentan con un sistema propio de abastecimiento de agua potable o disposición de aguas servidas debidamente autorizado por el Servicio de Salud correspondiente, denominado también en la Ordenanza de Urbanismo y Construcciones \"Certificado de instalaciones de agua potable y desagües\"."
+                },
+                {
+                  "numero": "19",
+                  "titulo": "ARRANQUE INTERIOR DE AGUA POTABLE",
+                  "contenido": "El tramo de la red privada de distribución de agua potable, comprendido desde el punto de su conexión a la tubería privada de distribución hasta la llave de paso colocada después del medidor remarcador inclusive, que se conecta a la instalación interior de agua potable de la edificación."
+                },
+                {
+                  "numero": "20",
+                  "titulo": "UNIÓN DOMICILIARIA INTERIOR DE ALCANTARILLADO",
+                  "contenido": "El tramo de la red privada de recolección, comprendido desde el punto de empalme a la tubería privada de recolección, hasta la última cámara de inspección domiciliaria exclusive de la instalación interior de alcantarillado de la edificación."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "numero": "TITULO II",
+          "nombre": "Disposiciones Generales",
+          "articulos": [
+            {
+              "numero": "Artículo 3º",
+              "texto": "Las disposiciones de este Reglamento son obligatorias para las personas que proyecten o construyan instalaciones domiciliadas de agua potable o de alcantarillado de aguas servidas domésticas y para los prestadores de servicios sanitarios y los Servicios de Salud, cuando corresponda."
+            },
+            {
+              "numero": "Artículo 4º",
+              "texto": "Todo propietario de inmueble urbano edificado, con frente a una red pública de agua potable o de alcantarillado, deberá instalar a su costa, tanto las instalaciones domiciliarias de agua potable y alcantarillado, como el arranque de agua potable y la unión domiciliaria de alcantarillado, incluida su conexión y empalme, dentro del plazo de seis y doce meses, respectivamente, contado desde la puesta en explotación de dichas redes, o desde la notificación respectiva al propietario, por parte de la concesionaria.\nLos predios en que no se cumpla con esta obligación, podrán ser clausurados por la autoridad de Salud correspondiente, de oficio o a petición del prestador."
+            },
+            {
+              "numero": "Artículo 5º",
+              "texto": "Las redes privadas de distribución de agua potable o de recolección de aguas servidas, que se proyecten y construyan en vías privadas de circulación peatonal y/o vehicular o espacios de usos comunes al exterior de edificios y conjuntos habitacionales, deben cumplir con las condiciones técnicas de las redes públicas en conformidad a lo establecido en las normas chilenas NCh 691 y NCh 1105, respectivamente, y la NCh 1104. Sin embargo, para todos los efectos legales, administrativos y operacionales mantienen su carácter de red privada y su mantención será de cargo del usuario."
+            },
+            {
+              "numero": "Artículo 6º",
+              "texto": "El diseño y construcción de las instalaciones domiciliarias de agua potable y alcantarillado, y los materiales, componentes, artefactos, equipos y sistemas utilizados en las instalaciones domiciliarias de los inmuebles deberán cumplir con las Normas Chilenas Oficiales correspondientes. A falta de ellas se aplicará la normativa o especificación técnica extranjera, o bien, las especificaciones técnicas que fije la Superintendencia de Servicios Sanitarios, en adelante \"la Superintendencia\", por resolución fundada.\nPara estos efectos dicha Superintendencia mantendrá un listado actualizado de materiales y componentes que se puedan utilizar en instalaciones domiciliarias de agua potable y alcantarillado.\nLas denuncias por uso indebido o no autorizado de materiales en las instalaciones domiciliarias deberán hacerse a la Superintendencia, sin perjuicio de las competencias para resolver que la ley asigna a las entidades administrativas y judiciales correspondientes.\nAtendiendo a condicionantes técnicas locales, previa aprobación de la Superintendencia, el prestador podrá objetar el uso de determinados materiales."
+            },
+            {
+              "numero": "Artículo 7º",
+              "texto": "El mantenimiento de las instalaciones domiciliarias de agua potable y de alcantarillado es de exclusiva responsabilidad y cargo del propietario del inmueble. El mantenimiento del arranque de agua potable y de la unión domiciliaria de alcantarillado será ejecutado por el prestador en los términos dispuestos en el DFL MOP Nº 70, de 1988, del Ministerio de Obras Públicas."
+            },
+            {
+              "numero": "Artículo 8º",
+              "texto": "Los urbanizadores habilitados para construir las redes públicas, podrán construir conjuntamente con ellas los arranques y uniones domiciliarias y sus respectivas conexiones y empalmes. Como también podrán ejecutar los nudos o cámaras que interconecten dichas redes con las que se encuentren en uso.\nLa ejecución de estas obras sólo podrá iniciarse una vez que se cuente con los proyectos de extensión de redes de agua potable o de alcantarillado aprobados por el prestador.\nLa ejecución de las obras sólo podrá iniciarse una vez que el contratista cuente con la autorización del prestador."
+            },
+            {
+              "numero": "Artículo 8° bis",
+              "texto": "Las empresas de servicios sanitarios tendrán un plazo máximo de 30 días para pronunciarse sobre los proyectos de redes públicas de distribución de agua potable y de recolección de aguas servidas, tanto de aquellos que correspondan a redes para nuevos loteos como a extensiones propiamente tales. Vencido este plazo sin que hubiere respuesta del prestador se entenderá que éste aprueba el proyecto, pudiendo el interesado dar aviso de Inicio de la construcción de las obras y comenzar su construcción 3 días después de ingresado este aviso en la respectiva empresa sanitaria.\nSólo por razones debidamente fundadas, tratándose de situaciones excepcionales, las empresas sanitarias podrán ampliar este plazo por una sola vez hasta por 30 días, lo que se comunicará al interesado por carta certificada, remitida antes que expire el plazo inicial.\nUna vez terminadas las obras de redes públicas de distribución de agua potable y/o de recolección de aguas servidas, tanto de aquellas que correspondan a nuevos loteos como a extensiones propiamente tales, y el prestador haya recibido conforme los antecedentes técnicos y legales correspondientes, el urbanizador podrá solicitar por escrito la recepción final. El prestador dispondrá de un plazo máximo de 10 días para realizar dicha recepción final y emitir los certificados correspondientes, plazo que se contará a partir de la fecha en que el interesado la haya solicitado por escrito.\nSólo por razones debidamente fundadas y tratándose de situaciones excepcionales, la concesionaria podrá ampliar el plazo por una sola vez hasta por 5 días, lo que comunicará al interesado por carta certificada, ingresada a correo antes que expire el plazo inicial. En caso de discrepancia entre el interesado y la concesionaria, resolverá la Superintendencia.\nEn caso de rechazar la concesionaria la solicitud o de no aprobar la recepción, deberá comunicarlo al interesado dentro del plazo de 3 días."
+            },
+            {
+              "numero": "Artículo 9º",
+              "texto": "Los proyectos y construcción de instalaciones domiciliarias, incluyendo arranques, uniones domiciliarias, conexiones y empalmes podrán ser ejecutados por ingenieros civiles, arquitectos, ingenieros de ejecución en obras sanitarias, ingenieros constructores, constructores civiles y en general, por cualquier profesional de la construcción habilitado para ello por disposiciones legales y reglamentarias vigentes. También podrán intervenir en el ámbito de la construcción los profesionales y técnicos a que se refiere el artículo 33°."
+            },
+            {
+              "numero": "Artículo 10º",
+              "texto": "Los proyectos con características técnicas de redes públicas contemplados en el artículo 5º de este Reglamento podrán ser presentados en planos separados al del resto de las instalaciones domiciliarias, debiendo ser proyectados y firmados por un ingeniero civil, como responsable del proyecto de la red privada."
+            },
+            {
+              "numero": "Artículo 11º",
+              "texto": "Para los efectos del presente reglamento se aplicarán en su integridad las normas del artículo 18º de la Ley General de Urbanismo y Construcciones, relativas a las responsabilidades del propietario primer vendedor de una construcción, de los proyectistas, constructores y personas jurídicas."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

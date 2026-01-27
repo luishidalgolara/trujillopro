@@ -1,0 +1,13 @@
+/* css/view-controls.css */
+.view-controls {
+    background: #374151;
+    border-radius: 10px;
+    padding: 20px;
+    border: 2px solid #8b5cf6;
+}
+
+.control-hint {
+    font-size: 13px;
+    color: #d1d5db;
+    line-height: 1.5;
+}

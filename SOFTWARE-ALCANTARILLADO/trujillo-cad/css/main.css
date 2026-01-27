@@ -1,0 +1,205 @@
+/* ===================================
+   TRUJILLO CAD - Estilos Principales
+   =================================== */
+
+:root {
+    /* Colores principales - Tema oscuro profesional */
+    --bg-primary: #1e1e1e;
+    --bg-secondary: #2d2d2d;
+    --bg-canvas: #0d0d0d;
+    --border-color: #3d3d3d;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --accent-blue: #00a8ff;
+    --accent-green: #00ff88;
+    --grid-color: rgba(255, 255, 255, 0.08);
+    
+    /* Dimensiones */
+    --toolbar-height: 60px;
+    --statusbar-height: 32px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===================================
+   BARRA DE HERRAMIENTAS
+   =================================== */
+
+.toolbar {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    height: var(--toolbar-height);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.toolbar-section {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.tool-button {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    transition: all 0.2s ease;
+    min-height: 40px;
+}
+
+.tool-button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-blue);
+}
+
+.tool-button.active {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    color: #000;
+    font-weight: 500;
+}
+
+.tool-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+.tool-button.active svg {
+    stroke: #000;
+}
+
+/* ===================================
+   ÁREA DE DIBUJO (CANVAS)
+   =================================== */
+
+.canvas-container {
+    flex: 1;
+    background: var(--bg-canvas);
+    position: relative;
+    overflow: hidden;
+}
+
+#cad-canvas {
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+}
+
+/* ===================================
+   BARRA DE ESTADO
+   =================================== */
+
+.status-bar {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    height: var(--statusbar-height);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    gap: 16px;
+    font-size: 12px;
+    font-family: 'Consolas', 'Monaco', monospace;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.status-value {
+    color: var(--accent-green);
+    font-weight: 600;
+    min-width: 60px;
+}
+
+.status-message {
+    color: var(--text-primary);
+}
+
+.status-divider {
+    width: 1px;
+    height: 16px;
+    background: var(--border-color);
+}
+
+/* ===================================
+   INDICADORES VISUALES
+   =================================== */
+
+.temporary-line {
+    stroke: var(--accent-blue);
+    stroke-width: 1;
+    stroke-dasharray: 5, 5;
+    animation: dash 0.5s linear infinite;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: -10;
+    }
+}
+
+/* ===================================
+   SCROLLBAR PERSONALIZADA
+   =================================== */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* ===================================
+   UTILIDADES
+   =================================== */
+
+.hidden {
+    display: none !important;
+}
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}

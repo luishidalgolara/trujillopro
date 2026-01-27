@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software de Cálculos Estructurales - Chile V3.0</title>
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .version-badge { background: #27ae60; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; margin-left: 1rem; }
+        .seccion-titulo { color: #2c3e50; margin-top: 2.5rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 3px solid #3498db; }
+        .badge-nuevo { background: #e74c3c; color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; margin-left: 0.5rem; }
+        .badge-cortes { background: #27ae60; color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.7rem; margin-top: 0.5rem; display: inline-block; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Software de Cálculos Estructurales <span class="version-badge">V3.0 ✨</span></h1>
+        <p>Cálculos según Normativa Chilena (NCh430, NCh433)</p>
+        <p style="color: #27ae60; font-weight: bold;">✂️ Con Cortes Técnicos + 📊 Cuantificación de Acero</p>
+    </header>
+    <main>
+        <div class="menu-container">
+            <h2>Seleccione el Elemento a Calcular (11 Módulos Disponibles)</h2>
+            
+            <h3 class="seccion-titulo">🏗️ Fundaciones</h3>
+            <div class="menu-grid">
+                <a href="pages/zapata-corrida.html" class="menu-card">
+                    <div class="card-icon">🏗️</div>
+                    <h3>Zapata Corrida</h3>
+                    <p>Diseño y cálculo de zapatas corridas</p>
+                    <span class="badge-cortes">✂️ Con Cortes</span>
+                </a>
+                <a href="pages/zapata-aislada.html" class="menu-card">
+                    <div class="card-icon">⬛</div>
+                    <h3>Zapata Aislada</h3>
+                    <p>Diseño y cálculo de zapatas aisladas</p>
+                    <span class="badge-cortes">✂️ Con Cortes</span>
+                </a>
+                <a href="pages/losa-cimentacion.html" class="menu-card">
+                    <div class="card-icon">🔲</div>
+                    <h3>Losa de Cimentación <span class="badge-nuevo">NUEVO</span></h3>
+                    <p>Cálculo de losas de fundación</p>
+                    <span class="badge-cortes">✂️ Con Cortes</span>
+                </a>
+            </div>
+            
+            <h3 class="seccion-titulo">🏛️ Elementos Verticales</h3>
+            <div class="menu-grid">
+                <a href="pages/columna.html" class="menu-card">
+                    <div class="card-icon">🏛️</div>
+                    <h3>Columna</h3>
+                    <p>Diseño de columnas de hormigón armado</p>
+                    <span class="badge-cortes">✂️ Con Cortes</span>
+                </a>
+                <a href="pages/muro-contencion.html" class="menu-card">
+                    <div class="card-icon">🧱</div>
+                    <h3>Muro de Contención <span class="badge-nuevo">NUEVO</span></h3>
+                    <p>Diseño de muros con empuje de tierra</p>
+                    <span class="badge-cortes">✂️ Con Cortes</span>
+                </a>
+            </div>
+            
+            <h3 class="seccion-titulo">📏 Elementos Horizontales</h3>
+            <div class="menu-grid">
+                <a href="pages/viga.html" class="menu-card">
+                    <div class="card-icon">📏</div>
+                    <h3>Viga</h3>
+                    <p>Análisis y diseño de vigas</p>
+                    <span class="badge-cortes">✂️ Con Cortes</span>
+                </a>
+                <a href="pages/losa.html" class="menu-card">
+                    <div class="card-icon">📐</div>
+                    <h3>Losa</h3>
+                    <p>Cálculo de losas de hormigón</p>
+                    <span class="badge-cortes">✂️ Con Cortes</span>
+                </a>
+                <a href="pages/piso-industrial.html" class="menu-card">
+                    <div class="card-icon">🏭</div>
+                    <h3>Piso Industrial <span class="badge-nuevo">NUEVO</span></h3>
+                    <p>Losas sobre terreno y juntas</p>
+                    <span class="badge-cortes">✂️ Con Cortes</span>
+                </a>
+            </div>
+            
+            <h3 class="seccion-titulo">🎯 Elementos Especiales</h3>
+            <div class="menu-grid">
+                <a href="pages/escalera.html" class="menu-card">
+                    <div class="card-icon">🪜</div>
+                    <h3>Escalera <span class="badge-nuevo">NUEVO</span></h3>
+                    <p>Diseño de escaleras de hormigón</p>
+                    <span class="badge-cortes">✂️ Con Cortes</span>
+                </a>
+                <a href="pages/cercha.html" class="menu-card">
+                    <div class="card-icon">🔺</div>
+                    <h3>Cercha Metálica <span class="badge-nuevo">NUEVO</span></h3>
+                    <p>Análisis estructural de cerchas</p>
+                    <span class="badge-cortes">✂️ Con Cortes</span>
+                </a>
+                <a href="pages/piscina.html" class="menu-card">
+                    <div class="card-icon">🏊</div>
+                    <h3>Piscina <span class="badge-nuevo">NUEVO</span></h3>
+                    <p>Diseño de muros y fondo de piscinas</p>
+                    <span class="badge-cortes">✂️ Con Cortes</span>
+                </a>
+            </div>
+            
+            <div style="background: #ecf0f1; padding: 2rem; border-radius: 10px; margin-top: 3rem; text-align: center;">
+                <h3 style="color: #2c3e50;">⭐ Versión 3.0 - Funcionalidades Profesionales</h3>
+                <p style="margin-top: 1rem;">✂️ Cortes Técnicos 2D • 📊 Cuantificación de Acero • 🔷 Visualización 3D • 🇨🇱 Normativa Chilena</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>© 2025 - Software de Cálculos Estructurales Chile • Versión 3.0</p>
+    </footer>
+</body>
+</html>

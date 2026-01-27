@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificación Hidráulica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            color: #2c3e50;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .nota {
+            font-size: 11px;
+            text-align: right;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #eceff1;
+            border-left: 3px solid #546e7a;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 3px solid #2c3e50;
+            font-size: 11px;
+        }
+
+        thead {
+            background: #cfd8dc;
+        }
+
+        th {
+            padding: 8px 4px;
+            text-align: center;
+            font-weight: 700;
+            border: 1px solid #546e7a;
+            color: #2c3e50;
+            font-size: 10px;
+            line-height: 1.2;
+        }
+
+        th.group-header {
+            background: #b0bec5;
+            font-size: 11px;
+        }
+
+        td {
+            padding: 8px 4px;
+            text-align: center;
+            border: 1px solid #cfd8dc;
+            font-size: 11px;
+        }
+
+        tbody tr {
+            transition: background-color 0.2s;
+        }
+
+        tbody tr:hover {
+            background: #e3f2fd;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        tbody tr:nth-child(even):hover {
+            background: #e3f2fd;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 4px;
+            border: 1px solid #b0bec5;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 11px;
+            background: white;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #0288d1;
+            background: #e1f5fe;
+        }
+
+        .calc-cell {
+            background: #fff9c4 !important;
+            font-weight: 500;
+            color: #f57f17;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 25px;
+            border: 2px solid #2c3e50;
+            background: white;
+            color: #2c3e50;
+            font-family: 'Roboto', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            background: #2c3e50;
+            color: white;
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        .description-cell {
+            text-align: left !important;
+            padding-left: 8px !important;
+            font-size: 10px;
+        }
+
+        .delete-btn {
+            background: #ef5350;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 3px;
+            transition: all 0.2s;
+        }
+
+        .delete-btn:hover {
+            background: #c62828;
+            transform: scale(1.1);
+        }
+
+        .delete-btn:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                padding: 15px;
+            }
+
+            table {
+                font-size: 9px;
+            }
+
+            th, td {
+                padding: 4px 2px;
+            }
+
+            input[type="text"],
+            input[type="number"],
+            select {
+                font-size: 9px;
+                padding: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>VERIFICACIÓN HIDRÁULICA</h1>
+        </div>
+
+        <div class="nota">
+            NOTA: LOS COEFICIENTES DE PÉRDIDA SINGULAR K A UTILIZAR SON LOS DADOS<br>
+            SEGÚN MÉTODO CINÉTICO ANEXO B (informativo), EXTRAIDOS DE NCh2485.
+        </div>
+
+        <div class="table-wrapper">
+            <table id="hydraulicTable">
+                <thead>
+                    <tr>
+                        <th rowspan="3">Tramo</th>
+                        <th rowspan="3">Material</th>
+                        <th colspan="2" class="group-header">Gasto Máximo</th>
+                        <th rowspan="3">Caudal<br>Diseño</th>
+                        <th colspan="2" class="group-header">Diámetro</th>
+                        <th rowspan="3">Velocidad</th>
+                        <th rowspan="3">K<br>singular</th>
+                        <th colspan="4" class="group-header">Pérdidas</th>
+                        <th colspan="2" class="group-header">Cota (m)</th>
+                        <th rowspan="3">Presión</th>
+                        <th rowspan="3">Descripción</th>
+                        <th rowspan="3">Eliminar</th>
+                    </tr>
+                    <tr>
+                        <th rowspan="2">Ql</th>
+                        <th rowspan="2">QMP</th>
+                        <th rowspan="2">Nominal</th>
+                        <th rowspan="2">Interno</th>
+                        <th rowspan="2">Js</th>
+                        <th rowspan="2">L</th>
+                        <th rowspan="2">J</th>
+                        <th rowspan="2">J*[L]</th>
+                        <th rowspan="2">J*[L]+Js</th>
+                        <th rowspan="2">Δ Cota Terreno</th>
+                    </tr>
+                    <tr>
+                        <th>L/min</th>
+                        <th>L/min</th>
+                        <th>m3/s</th>
+                        <th>mm</th>
+                        <th>mm</th>
+                        <th>m/s</th>
+                        <th></th>
+                        <th>m</th>
+                        <th>m</th>
+                        <th>m</th>
+                        <th>m</th>
+                        <th>m</th>
+                        <th>o Artefacto</th>
+                        <th>m</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="buttons">
+            <button onclick="addRow()">Agregar Fila</button>
+            <button onclick="exportToExcel()">Exportar a Excel</button>
+            <button onclick="resetTable()">Reiniciar Tabla</button>
+        </div>
+    </div>
+
+    <script>
+        const defaultData = [
+            {tramo: 'MAP-1', material: 'PP PN10', ql: 125, qmp: 48, caudal: 0.0008, nomDiam: 32, intDiam: 26.2, vel: 1.50, kSing: 3.60, js: 0.41, l: 0.30, j: 0.11, jl: 0.03, jljs: 0.44, piezom: 14.0, deltaCota: 0.00, presion: 13.6, desc: ''},
+            {tramo: '1-2', material: 'PP PN10', ql: 75, qmp: 34, caudal: 0.0006, nomDiam: 32, intDiam: 26.2, vel: 1.05, kSing: 3.60, js: 0.20, l: 7.60, j: 0.06, jl: 0.45, jljs: 0.65, piezom: 13.6, deltaCota: 0.00, presion: 12.9, desc: ''},
+            {tramo: '2-3', material: 'PP PN10', ql: 42, qmp: 30, caudal: 0.0005, nomDiam: 25, intDiam: 20.4, vel: 1.53, kSing: 1.80, js: 0.21, l: 2.75, j: 0.16, jl: 0.43, jljs: 0.64, piezom: 12.9, deltaCota: 0.00, presion: 12.3, desc: ''},
+            {tramo: '3-4', material: 'PP PN10', ql: 30, qmp: 30, caudal: 0.0005, nomDiam: 25, intDiam: 20.4, vel: 1.53, kSing: 1.80, js: 0.21, l: 2.10, j: 0.16, jl: 0.33, jljs: 0.54, piezom: 12.3, deltaCota: 0.00, presion: 11.7, desc: ''},
+            {tramo: '4-5', material: 'PP PN10', ql: 30, qmp: 30, caudal: 0.0005, nomDiam: 25, intDiam: 20.4, vel: 1.53, kSing: 2.70, js: 0.32, l: 0.10, j: 0.16, jl: 0.02, jljs: 0.34, piezom: 11.7, deltaCota: 0.00, presion: 11.4, desc: ''},
+            {tramo: '5-6', material: 'PP PN10', ql: 15, qmp: 15, caudal: 0.0003, nomDiam: 25, intDiam: 20.4, vel: 0.77, kSing: 1.80, js: 0.05, l: 0.81, j: 0.05, jl: 0.04, jljs: 0.09, piezom: 11.4, deltaCota: 0.00, presion: 11.3, desc: ''},
+            {tramo: '6-Lv', material: 'PP PN10', ql: 15, qmp: 15, caudal: 0.0003, nomDiam: 25, intDiam: 20.4, vel: 0.77, kSing: 0.20, js: 0.01, l: 1.20, j: 0.05, jl: 0.06, jljs: 0.06, piezom: 11.3, deltaCota: 1.20, presion: 10.0, desc: 'Sube al artefacto'},
+            {tramo: '4-C', material: 'PP PN10', ql: 35, qmp: 27, caudal: 0.0005, nomDiam: 25, intDiam: 20.4, vel: 1.38, kSing: 0.20, js: 0.02, l: 3.40, j: 0.13, jl: 0.44, jljs: 0.46, piezom: 11.7, deltaCota: 3.90, presion: 7.4, desc: 'Hcalefon + K = (1,4+2,5) =3,9'},
+            {tramo: 'C-C1', material: 'PP PN12,5', ql: 35, qmp: 27, caudal: 0.0005, nomDiam: 25, intDiam: 19.4, vel: 1.52, kSing: 3.60, js: 0.43, l: 5.42, j: 0.16, jl: 0.89, jljs: 1.32, piezom: 7.4, deltaCota: -1.40, presion: 7.4, desc: 'Baja de Calefont'},
+            {tramo: 'C1-C2', material: 'PP PN12,5', ql: 23, qmp: 23, caudal: 0.0004, nomDiam: 25, intDiam: 19.4, vel: 1.30, kSing: 2.70, js: 0.23, l: 2.73, j: 0.12, jl: 0.34, jljs: 0.57, piezom: 7.4, deltaCota: 0.00, presion: 6.9, desc: ''},
+            {tramo: 'C2-C3', material: 'PP PN12,5', ql: 15, qmp: 15, caudal: 0.0003, nomDiam: 25, intDiam: 19.4, vel: 0.85, kSing: 0.90, js: 0.03, l: 1.00, j: 0.06, jl: 0.06, jljs: 0.09, piezom: 6.9, deltaCota: 0.00, presion: 6.8, desc: ''},
+            {tramo: 'C3-B°', material: 'PP PN12,5', ql: 15, qmp: 15, caudal: 0.0003, nomDiam: 25, intDiam: 19.4, vel: 0.85, kSing: 0.20, js: 0.01, l: 2.00, j: 0.06, jl: 0.12, jljs: 0.12, piezom: 6.8, deltaCota: 2.00, presion: 4.7, desc: 'Sube al artefacto'}
+        ];
+
+        let currentData = [];
+
+        function createRow(data) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td><input type="text" class="tramo" value="${data.tramo}"></td>
+                <td>
+                    <select class="material">
+                        <option value="PP PN10" ${data.material === 'PP PN10' ? 'selected' : ''}>PP PN10</option>
+                        <option value="PP PN12,5" ${data.material === 'PP PN12,5' ? 'selected' : ''}>PP PN12,5</option>
+                        <option value="PP PN16" ${data.material === 'PP PN16' ? 'selected' : ''}>PP PN16</option>
+                        <option value="COBRE" ${data.material === 'COBRE' ? 'selected' : ''}>COBRE</option>
+                    </select>
+                </td>
+                <td><input type="number" class="ql" step="0.1" value="${data.ql}"></td>
+                <td><input type="number" class="qmp" step="0.1" value="${data.qmp}"></td>
+                <td><input type="number" class="caudal" step="0.0001" value="${data.caudal}"></td>
+                <td><input type="number" class="nomDiam" step="1" value="${data.nomDiam}"></td>
+                <td><input type="number" class="intDiam" step="0.1" value="${data.intDiam}"></td>
+                <td><input type="number" class="vel" step="0.01" value="${data.vel}"></td>
+                <td><input type="number" class="kSing" step="0.01" value="${data.kSing}"></td>
+                <td class="calc-cell js-calc">${data.js.toFixed(2)}</td>
+                <td><input type="number" class="l" step="0.01" value="${data.l}"></td>
+                <td><input type="number" class="j" step="0.01" value="${data.j}"></td>
+                <td class="calc-cell jl-calc">${data.jl.toFixed(2)}</td>
+                <td class="calc-cell jljs-calc">${data.jljs.toFixed(2)}</td>
+                <td><input type="number" class="piezom" step="0.1" value="${data.piezom}"></td>
+                <td><input type="number" class="deltaCota" step="0.01" value="${data.deltaCota}"></td>
+                <td class="calc-cell presion-calc">${data.presion.toFixed(1)}</td>
+                <td class="description-cell"><input type="text" class="desc" value="${data.desc}"></td>
+                <td><button class="delete-btn" onclick="deleteRow(this)">🗑️</button></td>
+            `;
+            return row;
+        }
+
+        function calculateRow(row) {
+            const vel = parseFloat(row.querySelector('.vel').value) || 0;
+            const kSing = parseFloat(row.querySelector('.kSing').value) || 0;
+            const l = parseFloat(row.querySelector('.l').value) || 0;
+            const j = parseFloat(row.querySelector('.j').value) || 0;
+            const piezom = parseFloat(row.querySelector('.piezom').value) || 0;
+            const deltaCota = parseFloat(row.querySelector('.deltaCota').value) || 0;
+
+            const js = (kSing * Math.pow(vel, 2)) / (2 * 9.81);
+            const jl = j * l;
+            const jljs = jl + js;
+            const presion = piezom - jljs - deltaCota;
+
+            row.querySelector('.js-calc').textContent = js.toFixed(2);
+            row.querySelector('.jl-calc').textContent = jl.toFixed(2);
+            row.querySelector('.jljs-calc').textContent = jljs.toFixed(2);
+            row.querySelector('.presion-calc').textContent = presion.toFixed(1);
+
+            saveToLocalStorage();
+        }
+
+        function attachListeners(row) {
+            const inputs = row.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                input.addEventListener('input', () => calculateRow(row));
+            });
+        }
+
+        function loadDefaultData() {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            currentData = JSON.parse(JSON.stringify(defaultData));
+            
+            currentData.forEach(data => {
+                const row = createRow(data);
+                tbody.appendChild(row);
+                attachListeners(row);
+            });
+            
+            saveToLocalStorage();
+        }
+
+        function addRow() {
+            const tbody = document.getElementById('tableBody');
+            const newData = {
+                tramo: '', material: 'PP PN10', ql: 0, qmp: 0, caudal: 0, 
+                nomDiam: 25, intDiam: 20.4, vel: 0, kSing: 0, js: 0, 
+                l: 0, j: 0, jl: 0, jljs: 0, piezom: 0, deltaCota: 0, 
+                presion: 0, desc: ''
+            };
+            const row = createRow(newData);
+            tbody.appendChild(row);
+            attachListeners(row);
+            saveToLocalStorage();
+        }
+
+        function deleteRow(btn) {
+            if (confirm('¿Estás seguro de que quieres eliminar esta fila?')) {
+                const row = btn.closest('tr');
+                row.remove();
+                saveToLocalStorage();
+            }
+        }
+
+        function saveToLocalStorage() {
+            const rows = document.querySelectorAll('#tableBody tr');
+            const data = [];
+            
+            rows.forEach(row => {
+                const rowData = {
+                    tramo: row.querySelector('.tramo').value,
+                    material: row.querySelector('.material').value,
+                    ql: parseFloat(row.querySelector('.ql').value) || 0,
+                    qmp: parseFloat(row.querySelector('.qmp').value) || 0,
+                    caudal: parseFloat(row.querySelector('.caudal').value) || 0,
+                    nomDiam: parseFloat(row.querySelector('.nomDiam').value) || 0,
+                    intDiam: parseFloat(row.querySelector('.intDiam').value) || 0,
+                    vel: parseFloat(row.querySelector('.vel').value) || 0,
+                    kSing: parseFloat(row.querySelector('.kSing').value) || 0,
+                    js: parseFloat(row.querySelector('.js-calc').textContent) || 0,
+                    l: parseFloat(row.querySelector('.l').value) || 0,
+                    j: parseFloat(row.querySelector('.j').value) || 0,
+                    jl: parseFloat(row.querySelector('.jl-calc').textContent) || 0,
+                    jljs: parseFloat(row.querySelector('.jljs-calc').textContent) || 0,
+                    piezom: parseFloat(row.querySelector('.piezom').value) || 0,
+                    deltaCota: parseFloat(row.querySelector('.deltaCota').value) || 0,
+                    presion: parseFloat(row.querySelector('.presion-calc').textContent) || 0,
+                    desc: row.querySelector('.desc').value
+                };
+                data.push(rowData);
+            });
+            
+            localStorage.setItem('hydraulicData', JSON.stringify(data));
+        }
+
+        function loadFromLocalStorage() {
+            const saved = localStorage.getItem('hydraulicData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                const tbody = document.getElementById('tableBody');
+                tbody.innerHTML = '';
+                
+                data.forEach(rowData => {
+                    const row = createRow(rowData);
+                    tbody.appendChild(row);
+                    attachListeners(row);
+                });
+            } else {
+                loadDefaultData();
+            }
+        }
+
+        function resetTable() {
+            if (confirm('¿Estás seguro de que quieres reiniciar la tabla con los datos por defecto?')) {
+                loadDefaultData();
+            }
+        }
+
+        function exportToExcel() {
+            const wb = XLSX.utils.book_new();
+            const data = [];
+            
+            data.push(['VERIFICACIÓN HIDRÁULICA']);
+            data.push([]);
+            data.push(['NOTA: LOS COEFICIENTES DE PÉRDIDA SINGULAR K A UTILIZAR SON LOS DADOS']);
+            data.push(['SEGÚN MÉTODO CINÉTICO ANEXO B (informativo), EXTRAIDOS DE NCh2485.']);
+            data.push([]);
+            
+            const headers = [
+                'Tramo', 'Material', 'Ql (L/min)', 'QMP (L/min)', 'Caudal Diseño (m3/s)', 
+                'Diám. Nominal (mm)', 'Diám. Interno (mm)', 'Velocidad (m/s)', 
+                'K singular', 'Js (m)', 'L (m)', 'J (m)', 'J*[L] (m)', 'J*[L]+Js (m)', 
+                'Piezométrico (m)', 'Δ Cota Terreno (m)', 'Presión (m)', 'Descripción'
+            ];
+            data.push(headers);
+            
+            const rows = document.querySelectorAll('#tableBody tr');
+            rows.forEach(row => {
+                const rowData = [
+                    row.querySelector('.tramo').value,
+                    row.querySelector('.material').value,
+                    row.querySelector('.ql').value,
+                    row.querySelector('.qmp').value,
+                    row.querySelector('.caudal').value,
+                    row.querySelector('.nomDiam').value,
+                    row.querySelector('.intDiam').value,
+                    row.querySelector('.vel').value,
+                    row.querySelector('.kSing').value,
+                    row.querySelector('.js-calc').textContent,
+                    row.querySelector('.l').value,
+                    row.querySelector('.j').value,
+                    row.querySelector('.jl-calc').textContent,
+                    row.querySelector('.jljs-calc').textContent,
+                    row.querySelector('.piezom').value,
+                    row.querySelector('.deltaCota').value,
+                    row.querySelector('.presion-calc').textContent,
+                    row.querySelector('.desc').value
+                ];
+                data.push(rowData);
+            });
+            
+            const ws = XLSX.utils.aoa_to_sheet(data);
+            XLSX.utils.book_append_sheet(wb, ws, 'Verificación Hidráulica');
+            XLSX.writeFile(wb, 'Verificacion_Hidraulica.xlsx');
+        }
+
+        document.addEventListener('DOMContentLoaded', loadFromLocalStorage);
+    </script>
+</body>
+</html>

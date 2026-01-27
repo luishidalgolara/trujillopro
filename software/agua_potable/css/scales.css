@@ -1,0 +1,45 @@
+/* css/scales.css */
+.scale-compact {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: #374151;
+    border: 1px solid #f59e0b;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-left: 20px;
+}
+
+.scale-compact span {
+    color: #fbbf24;
+    font-weight: bold;
+    font-size: 12px;
+    min-width: auto;
+    margin-right: 8px;
+}
+
+.btn-scale-small {
+    background: linear-gradient(45deg, #6b7280, #4b5563);
+    color: #f9fafb;
+    border: 1px solid #4b5563;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: bold;
+    min-width: 50px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-scale-small:hover {
+    background: linear-gradient(45deg, #4b5563, #374151);
+    border-color: #f59e0b;
+    box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
+}
+
+.btn-scale-small.active {
+    background: linear-gradient(45deg, #f59e0b, #d97706);
+    border-color: #fbbf24;
+    color: #1f2937;
+    box-shadow: 0 2px 4px rgba(245, 158, 11, 0.4);
+}

@@ -1,0 +1,500 @@
+/* ===================================
+   ESTILOS DEL SISTEMA MULTI-PLANO ELÉCTRICO
+   =================================== */
+
+.planos-electricos-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 180px;
+    background: linear-gradient(to top, rgba(10, 10, 20, 0.98), rgba(15, 15, 30, 0.96));
+    backdrop-filter: blur(20px);
+    border-top: 4px solid rgba(255, 193, 7, 0.5);
+    box-shadow: 0 -6px 25px rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+
+.planos-electricos-container.colapsado {
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ========================================
+   HEADER DE LA BARRA
+   ======================================== */
+
+.planos-electricos-header {
+    padding: 12px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(255, 193, 7, 0.25);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.planos-electricos-titulo {
+    font-size: 14px;
+    font-weight: bold;
+    color: rgba(255, 193, 7, 1);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 6px rgba(255, 193, 7, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.planos-electricos-acciones {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* ========================================
+   BOTONES DE ACCIÓN
+   ======================================== */
+
+.btn-agregar-plano-electrico {
+    background: linear-gradient(135deg, #ffc107, #ff9800);
+    color: #000;
+    border: none;
+    padding: 9px 22px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-agregar-plano-electrico:hover {
+    background: linear-gradient(135deg, #ffeb3b, #ffc107);
+    box-shadow: 0 6px 18px rgba(255, 193, 7, 0.7);
+    transform: translateY(-2px);
+}
+
+.btn-agregar-plano-electrico:active {
+    transform: translateY(0);
+}
+
+.btn-exportar-planos {
+    background: rgba(76, 175, 80, 0.9);
+    color: white;
+    border: 1px solid rgba(76, 175, 80, 1);
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-exportar-planos:hover {
+    background: rgba(76, 175, 80, 1);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.5);
+    transform: translateY(-2px);
+}
+
+.btn-colapsar-planos {
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-colapsar-planos:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: white;
+}
+
+/* ========================================
+   CONTENIDO (MINIATURAS)
+   ======================================== */
+
+.planos-electricos-contenido {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 14px 25px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 18px;
+}
+
+.planos-electricos-contenido::-webkit-scrollbar {
+    height: 10px;
+}
+
+.planos-electricos-contenido::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+}
+
+.planos-electricos-contenido::-webkit-scrollbar-thumb {
+    background: rgba(255, 193, 7, 0.5);
+    border-radius: 5px;
+}
+
+.planos-electricos-contenido::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 193, 7, 0.7);
+}
+
+/* ========================================
+   MINIATURAS DE PLANOS
+   ======================================== */
+
+.plano-electrico-miniatura {
+    position: relative;
+    min-width: 220px;
+    width: 220px;
+    height: 130px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.plano-electrico-miniatura:hover {
+    border-color: rgba(255, 193, 7, 0.7);
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(255, 193, 7, 0.4);
+    z-index: 10;
+}
+
+.plano-electrico-miniatura.activo {
+    border-color: rgba(255, 193, 7, 1);
+    background: rgba(255, 193, 7, 0.15);
+    box-shadow: 0 0 30px rgba(255, 193, 7, 0.6),
+                0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ========================================
+   PREVIEW DEL PLANO
+   ======================================== */
+
+.plano-electrico-preview {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid rgba(255, 193, 7, 0.2);
+    
+    /* Patrón de transparencia estilo tablero */
+    background-image: 
+        linear-gradient(45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%);
+    background-size: 12px 12px;
+    background-position: 0 0, 0 6px, 6px -6px, -6px 0px;
+}
+
+.plano-electrico-preview svg {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+}
+
+.plano-electrico-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+}
+
+.plano-vacio {
+    color: #999;
+    font-size: 11px;
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.cargando-preview {
+    color: #999;
+    font-size: 11px;
+    text-align: center;
+}
+
+/* ========================================
+   NOMBRE DEL PLANO
+   ======================================== */
+
+.plano-electrico-nombre {
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.85));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+    letter-spacing: 0.5px;
+}
+
+/* ========================================
+   INFO (FORMATO Y ESCALA)
+   ======================================== */
+
+.plano-electrico-info {
+    position: absolute;
+    bottom: 42px;
+    left: 8px;
+    display: flex;
+    gap: 5px;
+    z-index: 5;
+}
+
+.formato-badge,
+.escala-badge {
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffc107;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 3px 7px;
+    border-radius: 4px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.escala-badge {
+    color: #4caf50;
+    border-color: rgba(76, 175, 80, 0.3);
+}
+
+/* ========================================
+   ACCIONES (DUPLICAR, RENOMBRAR, ELIMINAR)
+   ======================================== */
+
+.plano-electrico-acciones {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: none;
+    gap: 6px;
+    z-index: 10;
+}
+
+.plano-electrico-miniatura:hover .plano-electrico-acciones {
+    display: flex;
+    animation: fadeInActions 0.2s ease;
+}
+
+@keyframes fadeInActions {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.plano-electrico-btn {
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+}
+
+.plano-electrico-btn:hover {
+    transform: scale(1.25);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.6);
+}
+
+.plano-electrico-btn.duplicar {
+    background: rgba(33, 150, 243, 0.95);
+}
+
+.plano-electrico-btn.duplicar:hover {
+    background: rgba(33, 150, 243, 1);
+}
+
+.plano-electrico-btn.renombrar {
+    background: rgba(255, 152, 0, 0.95);
+}
+
+.plano-electrico-btn.renombrar:hover {
+    background: rgba(255, 152, 0, 1);
+}
+
+.plano-electrico-btn.eliminar {
+    background: rgba(244, 67, 54, 0.95);
+}
+
+.plano-electrico-btn.eliminar:hover {
+    background: rgba(244, 67, 54, 1);
+}
+
+.plano-electrico-btn:active {
+    transform: scale(1.1);
+}
+
+/* ========================================
+   BOTÓN FLOTANTE PARA MOSTRAR PLANOS
+   ======================================== */
+
+.btn-mostrar-planos-electricos {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #ffc107, #ff9800);
+    color: #000;
+    border: none;
+    padding: 18px 32px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 25px rgba(255, 193, 7, 0.7);
+    z-index: 9998;
+    display: none;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-mostrar-planos-electricos.visible {
+    display: flex;
+    animation: slideUpButton 0.3s ease;
+}
+
+@keyframes slideUpButton {
+    from { 
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to { 
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.btn-mostrar-planos-electricos:hover {
+    background: linear-gradient(135deg, #ffeb3b, #ffc107);
+    box-shadow: 0 8px 30px rgba(255, 193, 7, 0.9);
+    transform: translateY(-4px);
+}
+
+.btn-mostrar-planos-electricos:active {
+    transform: translateY(0);
+}
+
+/* ========================================
+   INDICADOR DE PLANO ACTIVO
+   ======================================== */
+
+.plano-electrico-miniatura.activo::before {
+    content: '▶';
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: rgba(255, 193, 7, 1);
+    font-size: 16px;
+    z-index: 11;
+    text-shadow: 0 0 12px rgba(255, 193, 7, 0.9),
+                 0 2px 5px rgba(0, 0, 0, 0.6);
+    animation: pulseActive 2s infinite;
+}
+
+@keyframes pulseActive {
+    0%, 100% { 
+        opacity: 1; 
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.6;
+        transform: scale(0.9);
+    }
+}
+
+/* ========================================
+   BADGE CON NÚMERO DE PLANO
+   ======================================== */
+
+.plano-electrico-miniatura::after {
+    content: attr(data-index);
+    position: absolute;
+    bottom: 42px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffc107;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px 9px;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 193, 7, 0.4);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .planos-electricos-container {
+        height: 140px;
+    }
+    
+    .plano-electrico-miniatura {
+        min-width: 160px;
+        width: 160px;
+        height: 95px;
+    }
+    
+    .planos-electricos-titulo {
+        font-size: 12px;
+    }
+    
+    .btn-agregar-plano-electrico {
+        padding: 7px 16px;
+        font-size: 11px;
+    }
+    
+    .plano-electrico-nombre {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+}

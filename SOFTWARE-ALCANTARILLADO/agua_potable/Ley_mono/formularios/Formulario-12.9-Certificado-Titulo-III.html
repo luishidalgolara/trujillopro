@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario 12.9 - Certificado Recepción Definitiva (Título III)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
+        .container { max-width: 1000px; margin: 0 auto; background-color: white; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .header { text-align: center; border: 2px solid #000; padding: 15px; margin-bottom: 20px; background-color: #e8e8e8; }
+        .header h1 { font-size: 18px; margin-bottom: 5px; }
+        .header h2 { font-size: 14px; margin-bottom: 5px; }
+        .header p { font-size: 11px; margin: 3px 0; }
+        .section { margin-bottom: 25px; border: 1px solid #333; padding: 15px; }
+        .section-title { background-color: #d0d0d0; padding: 8px; font-weight: bold; margin: -15px -15px 15px -15px; font-size: 14px; }
+        .form-row { display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
+        .form-col { flex: 1; min-width: 200px; }
+        label { display: block; font-size: 11px; font-weight: bold; margin-bottom: 5px; color: #333; }
+        input[type="text"], input[type="number"], input[type="date"], textarea, select {
+            width: 100%; padding: 8px; border: 1px solid #666; font-size: 12px; background-color: white;
+        }
+        textarea { resize: vertical; min-height: 60px; }
+        .radio-group { display: flex; gap: 20px; align-items: center; }
+        input[type="radio"] { width: 18px; height: 18px; cursor: pointer; }
+        .note { background-color: #fff9e6; border: 1px solid #e6d700; padding: 10px; margin: 15px 0; font-size: 10px; font-style: italic; }
+        .vistos-section { background-color: #f9f9f9; border: 2px solid #000; padding: 15px; margin: 20px 0; font-size: 12px; }
+        .resuelvo-section { background-color: #e6f2ff; border: 2px solid #0066cc; padding: 15px; margin: 20px 0; font-size: 12px; }
+        .button-group { display: flex; gap: 10px; justify-content: center; margin-top: 30px; }
+        button { padding: 12px 30px; font-size: 14px; cursor: pointer; border: none; border-radius: 4px; }
+        .btn-primary { background-color: #0066cc; color: white; }
+        .btn-primary:hover { background-color: #0052a3; }
+        .btn-secondary { background-color: #6c757d; color: white; }
+        .btn-secondary:hover { background-color: #545b62; }
+        .signature-area { margin-top: 40px; text-align: center; }
+        .signature-line { border-top: 2px solid #000; margin: 60px auto 10px; width: 400px; padding-top: 5px; font-size: 11px; }
+        .highlight-box { background-color: #e6ffe6; border: 2px solid #00cc00; padding: 15px; margin: 20px 0; }
+        @media print {
+            body { padding: 0; background-color: white; }
+            .container { box-shadow: none; max-width: 100%; }
+            .button-group { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>FORMULARIO 12.9 Ley 20.898 Título III</h1>
+            <h2>CERTIFICADO</h2>
+            <p><strong>VIVIENDA FINANCIADA CON SUBSIDIOS PARA ATENDER LA CATÁSTROFE DEL 27 DE FEBRERO DE 2010</strong></p>
+            <p>ACOGIDA AL TÍTULO III DE LA LEY N° 20.898</p>
+            <p style="margin-top: 10px; font-weight: bold;">RECEPCIÓN DEFINITIVA</p>
+        </div>
+
+        <div class="section">
+            <div class="form-row">
+                <div class="form-col"><label>DIRECCIÓN DE OBRAS MUNICIPALES DE:</label><input type="text" id="dom_municipalidad"></div>
+                <div class="form-col"><label>REGIÓN:</label><input type="text" id="region"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-col"><label>Nº DE CERTIFICADO</label><input type="text" id="numero_certificado"></div>
+                <div class="form-col"><label>Fecha de Aprobación</label><input type="date" id="fecha_aprobacion"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-col"><label>ROL SII</label><input type="text" id="rol_sii"></div>
+                <div class="form-col">
+                    <label>URBANO / RURAL</label>
+                    <div class="radio-group">
+                        <input type="radio" name="ubicacion" value="urbano" id="urbano"><label for="urbano">URBANO</label>
+                        <input type="radio" name="ubicacion" value="rural" id="rural"><label for="rural">RURAL</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vistos-section">
+            <h3 style="margin-bottom: 15px;">VISTOS:</h3>
+            <p style="margin-bottom: 10px;">A) Las atribuciones emanadas del Art. 10° de la Ley N° 20.898.</p>
+            
+            <p style="margin-bottom: 5px;">B) La solicitud de Regularización (Permiso y Recepción definitiva) de vivienda existente, financiada con subsidios para atender la catástrofe del 27 de febrero de 2010, suscrita por el representante legal del SERVIU REGIÓN</p>
+            <div class="form-row">
+                <div class="form-col"><label>REGIÓN SERVIU</label><input type="text" id="serviu_region"></div>
+            </div>
+            <p style="margin: 10px 0 5px;">correspondiente al expediente Nº</p>
+            <div class="form-row">
+                <div class="form-col"><label>EXPEDIENTE Nº</label><input type="text" id="expediente_numero"></div>
+                <div class="form-col"><label>DE FECHA</label><input type="date" id="expediente_fecha"></div>
+            </div>
+            
+            <p style="margin: 15px 0 5px;">C) Los antecedentes exigidos en el título III artículo 10° de la Ley N° 20.898.</p>
+            
+            <p style="margin: 15px 0 5px;">D) La exención de pago de derechos municipales establecida en el artículo 10° de la Ley N° 20.898 según los antecedentes acreditados por el SERVIU correspondiente y que constan en el expediente del numeral B).</p>
+        </div>
+
+        <div class="highlight-box">
+            <p style="font-size: 12px; font-weight: bold; text-align: center; margin-bottom: 10px;">
+                VIVIENDA FINANCIADA CON SUBSIDIOS DEL MINVU PARA LA CATÁSTROFE DEL 27/02/2010 - EXENTA DE PAGO
+            </p>
+        </div>
+
+        <div class="resuelvo-section">
+            <h3 style="margin-bottom: 15px;">RESUELVO:</h3>
+            <p style="margin-bottom: 10px;">1.- Otorgar Certificado de</p>
+            <div class="form-row">
+                <div class="form-col">
+                    <label>TIPO DE CERTIFICADO</label>
+                    <div class="radio-group">
+                        <input type="radio" name="tipo_certificado" value="regularizacion" id="cert_reg">
+                        <label for="cert_reg">REGULARIZACIÓN</label>
+                        <input type="radio" name="tipo_certificado" value="recepcion" id="cert_rec">
+                        <label for="cert_rec">RECEPCIÓN DEFINITIVA</label>
+                    </div>
+                </div>
+            </div>
+            <p style="margin: 10px 0;">de la vivienda existente con una superficie de</p>
+            <div class="form-row">
+                <div class="form-col"><label>SUPERFICIE (m²)</label><input type="number" id="superficie" step="0.01"></div>
+            </div>
+            <p style="margin: 10px 0;">ubicada en</p>
+            <div class="form-row">
+                <div class="form-col"><label>CONDOMINIO / CALLE / AVENIDA / PASAJE</label><input type="text" id="calle"></div>
+                <div class="form-col" style="flex: 0.5;"><label>N°</label><input type="text" id="numero"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-col"><label>MANZANA</label><input type="text" id="manzana"></div>
+                <div class="form-col"><label>LOTE Nº</label><input type="text" id="lote"></div>
+                <div class="form-col"><label>LOCALIDAD O LOTEO</label><input type="text" id="localidad"></div>
+                <div class="form-col"><label>SECTOR</label><input type="text" id="sector"></div>
+            </div>
+            <p style="margin-top: 10px; font-size: 11px;">de conformidad a plano y antecedentes timbrados por esta DOM, que forman parte del presente certificado de <strong>REGULARIZACIÓN / RECEPCIÓN DEFINITIVA</strong></p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">2.- INDIVIDUALIZACIÓN DEL PROPIETARIO</div>
+            <div class="form-row">
+                <div class="form-col"><label>NOMBRE O RAZÓN SOCIAL DEL PROPIETARIO</label><input type="text" id="prop_nombre"></div>
+                <div class="form-col"><label>R.U.T.</label><input type="text" id="prop_rut"></div>
+            </div>
+            <div style="margin-top: 15px; background-color: #e6f7ff; padding: 10px; border: 1px solid #0099cc;">
+                <p style="font-size: 11px; font-weight: bold; margin-bottom: 10px;">(Permiso y Recepción definitiva)</p>
+                <div class="form-row">
+                    <div class="form-col">
+                        <label>REPRESENTANTE LEGAL DEL SERVIU QUE SOLICITA EL PERMISO EN REPRESENTACIÓN DEL PROPIETARIO</label>
+                        <input type="text" id="serviu_representante">
+                    </div>
+                    <div class="form-col">
+                        <label>R.U.T.</label>
+                        <input type="text" id="serviu_rep_rut">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top: 15px;">
+                <label>(URBANO O RURAL)</label>
+                <input type="text" id="ubicacion_desc">
+            </div>
+        </div>
+
+        <div class="section">
+            <label style="font-weight: bold; margin-bottom: 10px; display: block;">NOTA (PARA SITUACIONES ESPECIALES)</label>
+            <textarea id="nota_especial" rows="4"></textarea>
+        </div>
+
+        <div class="note" style="background-color: #e6ffe6;">
+            <strong>IMPORTANTE:</strong> Este certificado corresponde a viviendas financiadas con subsidios del MINVU para atender la catástrofe del 27 de febrero de 2010. Está EXENTO de pago de derechos municipales según lo establecido en el artículo 10° de la Ley N° 20.898.
+        </div>
+
+        <div class="signature-area">
+            <div class="signature-line">DIRECTOR DE OBRAS MUNICIPALES<br>NOMBRE Y FIRMA</div>
+            <div style="margin-top: 30px; border: 2px solid #000; padding: 20px; height: 100px; width: 300px; margin: 30px auto;">TIMBRE</div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn-secondary" onclick="limpiarFormulario()">Limpiar Formulario</button>
+            <button class="btn-primary" onclick="guardarFormulario()">Guardar Datos</button>
+            <button class="btn-primary" onclick="window.print()">Imprimir / PDF</button>
+        </div>
+    </div>
+
+    <script>
+        function guardarFormulario() {
+            const formData = {};
+            document.querySelectorAll('input, select, textarea').forEach(input => {
+                if (input.type === 'radio') {
+                    if (input.checked) formData[input.name] = input.value;
+                } else {
+                    formData[input.id] = input.value;
+                }
+            });
+            localStorage.setItem('formulario_12_9', JSON.stringify(formData));
+            alert('Formulario guardado exitosamente');
+        }
+
+        function cargarFormulario() {
+            const savedData = localStorage.getItem('formulario_12_9');
+            if (savedData) {
+                const formData = JSON.parse(savedData);
+                Object.keys(formData).forEach(key => {
+                    const element = document.getElementById(key) || document.querySelector(`[name="${key}"]`);
+                    if (element) {
+                        if (element.type === 'radio') {
+                            if (element.value === formData[key]) element.checked = true;
+                        } else {
+                            element.value = formData[key];
+                        }
+                    }
+                });
+            }
+        }
+
+        function limpiarFormulario() {
+            if (confirm('¿Está seguro que desea limpiar todos los datos del formulario?')) {
+                document.querySelectorAll('input, select, textarea').forEach(element => {
+                    if (element.type === 'radio') {
+                        element.checked = false;
+                    } else {
+                        element.value = '';
+                    }
+                });
+                localStorage.removeItem('formulario_12_9');
+                alert('Formulario limpiado');
+            }
+        }
+
+        window.addEventListener('load', cargarFormulario);
+    </script>
+</body>
+</html>

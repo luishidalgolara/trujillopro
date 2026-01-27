@@ -1,0 +1,90 @@
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+/* Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scrollLineMove {
+    0%, 100% { 
+        transform: translateY(-10px); 
+        opacity: 0; 
+    }
+    50% { 
+        transform: translateY(10px); 
+        opacity: 1; 
+    }
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes ripple {
+    from {
+        transform: scale(0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s var(--ease-out) forwards;
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    animation: slideInLeft 0.8s var(--ease-out) forwards;
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(40px);
+    animation: slideInRight 0.8s var(--ease-out) forwards;
+}
+
+/* Smooth Scrolling Elements - SIMPLIFICADO */
+.scroll-reveal {
+    opacity: 1;
+    /* Eliminado transform para evitar scroll-linked issues */
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+}

@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memoria Técnica - Instalación Eléctrica Domiciliaria</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Botones de acción -->
+    <div class="action-buttons no-print">
+        <button onclick="window.print()" class="btn-print">🖨️ Imprimir / Exportar PDF</button>
+        <button onclick="toggleIndex()" class="btn-index">📑 Mostrar/Ocultar Índice</button>
+    </div>
+
+    <!-- Portada -->
+    <div class="page portada">
+        <div class="portada-content">
+            <div class="logo-container">
+                <!-- Espacio para logo de la empresa -->
+                <div class="logo-placeholder">LOGO EMPRESA</div>
+            </div>
+            
+            <h1 class="titulo-principal">MEMORIA TÉCNICA</h1>
+            <h2 class="subtitulo">INSTALACIÓN ELÉCTRICA INTERIOR DOMICILIARIA</h2>
+            
+            <div class="info-portada">
+                <div class="info-grupo">
+                    <h3>DATOS DEL PROYECTO</h3>
+                    <p><strong>Tipo:</strong> <span class="editable" contenteditable="true">Vivienda Unifamiliar</span></p>
+                    <p><strong>Ubicación:</strong> <span class="editable" contenteditable="true">[Dirección, Comuna, Región]</span></p>
+                    <p><strong>Rol:</strong> <span class="editable" contenteditable="true">[Número de Rol]</span></p>
+                </div>
+                
+                <div class="info-grupo">
+                    <h3>INSTALADOR ELÉCTRICO</h3>
+                    <p><strong>Razón Social:</strong> <span class="editable" contenteditable="true">[Nombre Empresa/Instalador]</span></p>
+                    <p><strong>RUT:</strong> <span class="editable" contenteditable="true">[RUT]</span></p>
+                    <p><strong>Registro SEC:</strong> <span class="editable" contenteditable="true">[N° Registro]</span></p>
+                    <p><strong>Clasificación:</strong> <span class="editable" contenteditable="true">[Clase A/B/C/D]</span></p>
+                </div>
+                
+                <div class="info-grupo">
+                    <h3>PROPIETARIO</h3>
+                    <p><strong>Nombre:</strong> <span class="editable" contenteditable="true">[Nombre Completo]</span></p>
+                    <p><strong>RUT:</strong> <span class="editable" contenteditable="true">[RUT]</span></p>
+                </div>
+            </div>
+            
+            <div class="fecha-portada">
+                <p><strong>Fecha:</strong> <span class="editable" contenteditable="true">Diciembre 2025</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Índice -->
+    <div class="page indice" id="indice">
+        <h2 class="titulo-seccion">ÍNDICE</h2>
+        <nav class="tabla-contenidos">
+            <ul>
+                <li><a href="#seccion-1">1. IDENTIFICACIÓN DEL PROYECTO</a></li>
+                <li><a href="#seccion-2">2. MARCO NORMATIVO Y REGLAMENTARIO</a></li>
+                <li><a href="#seccion-3">3. DESCRIPCIÓN GENERAL DE LA INSTALACIÓN</a></li>
+                <li><a href="#seccion-4">4. CÁLCULO DE DEMANDA ELÉCTRICA</a></li>
+                <li><a href="#seccion-5">5. EMPALME Y ACOMETIDA</a></li>
+                <li><a href="#seccion-6">6. TABLERO GENERAL DE DISTRIBUCIÓN (TGD)</a></li>
+                <li><a href="#seccion-7">7. CONDUCTORES Y CANALIZACIONES</a></li>
+                <li><a href="#seccion-8">8. CÁLCULO DE CAÍDA DE TENSIÓN</a></li>
+                <li><a href="#seccion-9">9. SISTEMA DE PUESTA A TIERRA (PAT)</a></li>
+                <li><a href="#seccion-10">10. PROTECCIONES ELÉCTRICAS</a></li>
+                <li><a href="#seccion-11">11. INSTALACIONES ESPECIALES</a></li>
+                <li><a href="#seccion-12">12. MATERIALES Y EQUIPOS</a></li>
+                <li><a href="#seccion-13">13. PLANIMETRÍA Y DOCUMENTACIÓN GRÁFICA</a></li>
+                <li><a href="#seccion-14">14. CRITERIOS DE INSTALACIÓN Y MONTAJE</a></li>
+                <li><a href="#seccion-15">15. PRUEBAS Y ENSAYOS</a></li>
+                <li><a href="#seccion-16">16. MANTENCIÓN Y OPERACIÓN</a></li>
+                <li><a href="#seccion-17">17. GESTIÓN DE RESIDUOS</a></li>
+                <li><a href="#seccion-18">18. RESPONSABILIDADES</a></li>
+                <li><a href="#seccion-19">19. CERTIFICACIONES Y TRAMITACIÓN</a></li>
+                <li><a href="#seccion-20">20. PRESUPUESTO REFERENCIAL</a></li>
+                <li><a href="#seccion-21">21. ANEXOS</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Sección 1: Identificación del Proyecto -->
+    <div class="page" id="seccion-1">
+        <h2 class="titulo-seccion">1. IDENTIFICACIÓN DEL PROYECTO</h2>
+        
+        <h3>1.1 Datos Generales del Proyecto</h3>
+        <ul>
+            <li><strong>Tipo de proyecto:</strong> Instalación Eléctrica Interior Domiciliaria</li>
+            <li><strong>Destino:</strong> Vivienda Unifamiliar</li>
+            <li><strong>Ubicación:</strong> <span class="editable" contenteditable="true">[Dirección completa, Comuna, Región]</span></li>
+            <li><strong>Rol de la propiedad:</strong> <span class="editable" contenteditable="true">[Número de rol]</span></li>
+            <li><strong>Superficie construida:</strong> <span class="editable" contenteditable="true">[m²]</span></li>
+            <li><strong>Propietario:</strong> <span class="editable" contenteditable="true">[Nombre completo]</span></li>
+            <li><strong>RUT propietario:</strong> <span class="editable" contenteditable="true">[RUT]</span></li>
+        </ul>
+
+        <h3>1.2 Identificación del Instalador Eléctrico</h3>
+        <ul>
+            <li><strong>Razón social/Nombre:</strong> <span class="editable" contenteditable="true">[Nombre de la empresa o instalador]</span></li>
+            <li><strong>RUT:</strong> <span class="editable" contenteditable="true">[RUT]</span></li>
+            <li><strong>Clasificación SEC:</strong> <span class="editable" contenteditable="true">[Clase A, B, C o D según corresponda]</span></li>
+            <li><strong>N° Registro SEC:</strong> <span class="editable" contenteditable="true">[Número de registro]</span></li>
+            <li><strong>Representante legal:</strong> <span class="editable" contenteditable="true">[Nombre]</span></li>
+            <li><strong>Dirección:</strong> <span class="editable" contenteditable="true">[Dirección completa]</span></li>
+            <li><strong>Teléfono/Email:</strong> <span class="editable" contenteditable="true">[Contacto]</span></li>
+        </ul>
+
+        <h3>1.3 Características del Sistema Eléctrico</h3>
+        <ul>
+            <li><strong>Tipo de suministro:</strong> Monofásico</li>
+            <li><strong>Tensión nominal:</strong> 220 V</li>
+            <li><strong>Frecuencia:</strong> 50 Hz</li>
+            <li><strong>Número de niveles:</strong> 2 pisos</li>
+            <li><strong>Uso predominante:</strong> Habitacional permanente</li>
+            <li><strong>Empresa distribuidora:</strong> <span class="editable" contenteditable="true">[Enel, CGE, Saesa, según zona]</span></li>
+        </ul>
+    </div>
+
+    <!-- Sección 2: Marco Normativo -->
+    <div class="page" id="seccion-2">
+        <h2 class="titulo-seccion">2. MARCO NORMATIVO Y REGLAMENTARIO</h2>
+        
+        <p>El diseño, cálculo, materiales y ejecución de la instalación eléctrica se desarrollan en estricto cumplimiento de:</p>
+        
+        <ul>
+            <li><strong>NCh Elec. 4/2003:</strong> Instalaciones de consumo en baja tensión (versión vigente)</li>
+            <li><strong>Decreto Supremo N°8 de 2019 (SEC):</strong> Reglamento de Instalaciones Eléctricas de Consumo</li>
+            <li><strong>NCh 410.Of1996:</strong> Prevención de riesgos - Colores de seguridad</li>
+            <li><strong>Resoluciones y circulares técnicas SEC</strong> vigentes</li>
+            <li><strong>Normas técnicas de la empresa distribuidora</strong> local aplicables al empalme</li>
+            <li><strong>Ordenanza General de Urbanismo y Construcciones</strong> (OGUC)</li>
+            <li><strong>Ley N°20.571:</strong> Generación distribuida (si aplica)</li>
+        </ul>
+    </div>
+
+    <!-- Sección 3: Descripción General -->
+    <div class="page" id="seccion-3">
+        <h2 class="titulo-seccion">3. DESCRIPCIÓN GENERAL DE LA INSTALACIÓN</h2>
+        
+        <h3>3.1 Alcance del Proyecto</h3>
+        <p>La presente instalación eléctrica comprende el diseño, especificación técnica y bases de cálculo para la implementación completa del sistema eléctrico interior de una vivienda unifamiliar de dos niveles, abarcando desde el punto de empalme hasta todos los puntos de consumo terminal.</p>
+
+        <h3>3.2 Sistema de Distribución</h3>
+        <p>La instalación contempla:</p>
+        <ul>
+            <li>Empalme monofásico desde red de distribución pública</li>
+            <li>Medidor de energía en envolvente normalizada</li>
+            <li>Tablero General de Distribución (TGD) ubicado en primer nivel, zona de fácil acceso</li>
+            <li>Red de distribución interior mediante circuitos especializados</li>
+            <li>Sistema de protección escalonada contra sobrecorrientes y fallas a tierra</li>
+            <li>Sistema de puesta a tierra normalizado</li>
+        </ul>
+
+        <h3>3.3 Criterios de Diseño</h3>
+        <ul>
+            <li><strong>Seguridad:</strong> Protección de personas y bienes mediante dispositivos certificados</li>
+            <li><strong>Funcionalidad:</strong> Distribución racional de circuitos independientes</li>
+            <li><strong>Confiabilidad:</strong> Uso de materiales certificados SEC</li>
+            <li><strong>Eficiencia energética:</strong> Minimización de pérdidas por caída de tensión</li>
+            <li><strong>Mantenibilidad:</strong> Facilidad de inspección y mantención futura</li>
+            <li><strong>Escalabilidad:</strong> Previsión para cargas futuras (20% reserva)</li>
+        </ul>
+    </div>
+
+    <!-- Sección 4: Cálculo de Demanda -->
+    <div class="page" id="seccion-4">
+        <h2 class="titulo-seccion">4. CÁLCULO DE DEMANDA ELÉCTRICA</h2>
+        
+        <h3>4.1 Inventario de Cargas por Categoría</h3>
+
+        <h4>4.1.1 Iluminación Interior</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Descripción</th>
+                    <th>Cantidad</th>
+                    <th>Potencia Unit. (W)</th>
+                    <th>Potencia Total (W)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Iluminación LED 1° piso</td>
+                    <td>8 puntos</td>
+                    <td>60</td>
+                    <td>480</td>
+                </tr>
+                <tr>
+                    <td>Iluminación LED 2° piso</td>
+                    <td>10 puntos</td>
+                    <td>60</td>
+                    <td>600</td>
+                </tr>
+                <tr>
+                    <td>Iluminación exterior</td>
+                    <td>4 puntos</td>
+                    <td>40</td>
+                    <td>160</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="3"><strong>Subtotal Iluminación</strong></td>
+                    <td><strong>1.240 W</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>4.1.2 Enchufes de Uso General</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ubicación</th>
+                    <th>N° enchufes</th>
+                    <th>Potencia asignada (W)</th>
+                    <th>Potencia Total (W)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Living-comedor</td>
+                    <td>6</td>
+                    <td>150</td>
+                    <td>900</td>
+                </tr>
+                <tr>
+                    <td>Dormitorios (3)</td>
+                    <td>9</td>
+                    <td>150</td>
+                    <td>1.350</td>
+                </tr>
+                <tr>
+                    <td>Baños (2)</td>
+                    <td>4</td>
+                    <td>150</td>
+                    <td>600</td>
+                </tr>
+                <tr>
+                    <td>Cocina (generales)</td>
+                    <td>3</td>
+                    <td>150</td>
+                    <td>450</td>
+                </tr>
+                <tr>
+                    <td>Circulaciones</td>
+                    <td>2</td>
+                    <td>150</td>
+                    <td>300</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="3"><strong>Subtotal Enchufes Generales</strong></td>
+                    <td><strong>3.600 W</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>4.1.3 Cargas Especiales (Uso Específico)</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Equipo</th>
+                    <th>Cantidad</th>
+                    <th>Potencia Nominal (W)</th>
+                    <th>Potencia Total (W)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cocina eléctrica</td>
+                    <td>1</td>
+                    <td>3.000</td>
+                    <td>3.000</td>
+                </tr>
+                <tr>
+                    <td>Horno eléctrico</td>
+                    <td>1</td>
+                    <td>2.000</td>
+                    <td>2.000</td>
+                </tr>
+                <tr>
+                    <td>Lavadora</td>
+                    <td>1</td>
+                    <td>1.500</td>
+                    <td>1.500</td>
+                </tr>
+                <tr>
+                    <td>Termo eléctrico (50 lt)</td>
+                    <td>1</td>
+                    <td>2.000</td>
+                    <td>2.000</td>
+                </tr>
+                <tr>
+                    <td>Calefactor baño</td>
+                    <td>1</td>
+                    <td>1.500</td>
+                    <td>1.500</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="3"><strong>Subtotal Cargas Especiales</strong></td>
+                    <td><strong>10.000 W</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>4.2 Potencia Total Instalada</h3>
+        <div class="calculo-box">
+            <p><strong>Potencia instalada total = 1.240 + 3.600 + 10.000 = 14.840 W ≈ 14,84 kW</strong></p>
+        </div>
+
+        <h3>4.3 Aplicación de Factores de Demanda (según NCh Elec. 4/2003)</h3>
+        <p>Según tabla 2.2.1 de NCh Elec. 4/2003:</p>
+        
+        <ul>
+            <li><strong>Iluminación:</strong> 100% primeros 1.000 W + 35% excedente
+                <br>Demanda = 1.000 + (240 × 0,35) = 1.084 W</li>
+            <li><strong>Enchufes generales:</strong> 100% primeros 1.500 W + 35% excedente
+                <br>Demanda = 1.500 + (2.100 × 0,35) = 2.235 W</li>
+            <li><strong>Cargas especiales:</strong> 100% (operación simultánea considerada)
+                <br>Demanda = 10.000 W</li>
+        </ul>
+
+        <div class="calculo-box">
+            <p><strong>Demanda Máxima Simultánea (DMS):</strong></p>
+            <p>DMS = 1.084 + 2.235 + 10.000 = 13.319 W ≈ 13,32 kW</p>
+        </div>
+
+        <h3>4.4 Corriente de Diseño</h3>
+        <div class="calculo-box">
+            <p>I<sub>diseño</sub> = P / V = 13.320 / 220 = 60,5 A</p>
+            <p>Considerando factor de potencia promedio (0,9):</p>
+            <p>I<sub>diseño real</sub> = 60,5 / 0,9 = 67,2 A</p>
+            <p><strong>Corriente de diseño adoptada: 70 A</strong> (con margen de seguridad y previsión futura)</p>
+        </div>
+    </div>
+
+    <!-- Sección 5: Empalme y Acometida -->
+    <div class="page" id="seccion-5">
+        <h2 class="titulo-seccion">5. EMPALME Y ACOMETIDA</h2>
+        
+        <h3>5.1 Características del Empalme</h3>
+        <ul>
+            <li><strong>Tipo:</strong> <span class="editable" contenteditable="true">Monofásico aéreo/subterráneo [según corresponda]</span></li>
+            <li><strong>Capacidad nominal:</strong> 70 A</li>
+            <li><strong>Tensión nominal:</strong> 220 V</li>
+            <li><strong>Punto de conexión:</strong> Desde red de distribución pública</li>
+            <li><strong>Conductor acometida:</strong> Cable NYY 3×16 mm² (F+N+PE) para empalme subterráneo, o según norma de empresa distribuidora</li>
+        </ul>
+
+        <h3>5.2 Medidor de Energía</h3>
+        <ul>
+            <li><strong>Ubicación:</strong> Muro perimetral, altura 1,80 m desde nivel piso terminado</li>
+            <li><strong>Tipo:</strong> Electrónico monofásico, bidireccional [si aplica ERNC]</li>
+            <li><strong>Envolvente:</strong> Normalizada según empresa distribuidora, IP54, policarbonato</li>
+            <li><strong>Puesta a tierra:</strong> Conectada a sistema general de PAT</li>
+        </ul>
+    </div>
+
+    <!-- Sección 6: Tablero General -->
+    <div class="page" id="seccion-6">
+        <h2 class="titulo-seccion">6. TABLERO GENERAL DE DISTRIBUCIÓN (TGD)</h2>
+        
+        <h3>6.1 Ubicación y Características</h3>
+        <ul>
+            <li><strong>Ubicación:</strong> Primer piso, <span class="editable" contenteditable="true">[especificar zona: hall de acceso, bodega, etc.]</span></li>
+            <li><strong>Altura de montaje:</strong> Base a 1,40 m desde NPT</li>
+            <li><strong>Tipo de tablero:</strong> Metálico embutido/sobrepuesto, grado IP54</li>
+            <li><strong>Dimensiones mínimas:</strong> 400 × 500 × 150 mm</li>
+            <li><strong>Barras:</strong> Cobre electrolítico, capacidad 100 A</li>
+            <li><strong>Accesibilidad:</strong> Libre de obstáculos, iluminado, ventilado</li>
+        </ul>
+
+        <h3>6.2 Protecciones del Tablero General</h3>
+        
+        <h4>6.2.1 Interruptor General</h4>
+        <ul>
+            <li><strong>Tipo:</strong> Interruptor automático termomagnético</li>
+            <li><strong>Capacidad:</strong> 2P × 63 A, curva C</li>
+            <li><strong>Poder de corte:</strong> 6 kA mínimo</li>
+            <li><strong>Certificación:</strong> SEC, IEC 60898</li>
+        </ul>
+
+        <h4>6.2.2 Protección Diferencial General</h4>
+        <ul>
+            <li><strong>Tipo:</strong> Interruptor diferencial (ID)</li>
+            <li><strong>Capacidad:</strong> 2P × 63 A</li>
+            <li><strong>Sensibilidad:</strong> 30 mA (protección personas)</li>
+            <li><strong>Tipo:</strong> Clase AC o A</li>
+            <li><strong>Certificación:</strong> SEC, IEC 61008</li>
+        </ul>
+
+        <h3>6.3 Circuitos Derivados y Protecciones</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>Circuito</th>
+                    <th>Protección (A)</th>
+                    <th>Tipo</th>
+                    <th>Sección (mm²)</th>
+                    <th>Observaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>C1</td>
+                    <td>Iluminación 1° piso</td>
+                    <td>10</td>
+                    <td>1P+N</td>
+                    <td>1,5</td>
+                    <td>Cable NYA en ducto PVC</td>
+                </tr>
+                <tr>
+                    <td>C2</td>
+                    <td>Iluminación 2° piso</td>
+                    <td>10</td>
+                    <td>1P+N</td>
+                    <td>1,5</td>
+                    <td>Cable NYA en ducto PVC</td>
+                </tr>
+                <tr>
+                    <td>C3</td>
+                    <td>Iluminación exterior</td>
+                    <td>10</td>
+                    <td>1P+N</td>
+                    <td>2,5</td>
+                    <td>Cable THHN IP65</td>
+                </tr>
+                <tr>
+                    <td>C4</td>
+                    <td>Enchufes generales living</td>
+                    <td>16</td>
+                    <td>1P+N</td>
+                    <td>2,5</td>
+                    <td>Cable NYA en ducto PVC</td>
+                </tr>
+                <tr>
+                    <td>C5</td>
+                    <td>Enchufes generales dormitorios</td>
+                    <td>16</td>
+                    <td>1P+N</td>
+                    <td>2,5</td>
+                    <td>Cable NYA en ducto PVC</td>
+                </tr>
+                <tr>
+                    <td>C6</td>
+                    <td>Enchufes baños</td>
+                    <td>16</td>
+                    <td>1P+N</td>
+                    <td>2,5</td>
+                    <td>ID adicional 30mA</td>
+                </tr>
+                <tr>
+                    <td>C7</td>
+                    <td>Cocina eléctrica</td>
+                    <td>25</td>
+                    <td>2P</td>
+                    <td>6</td>
+                    <td>Cable NYA en ducto PVC Ø25mm</td>
+                </tr>
+                <tr>
+                    <td>C8</td>
+                    <td>Horno eléctrico</td>
+                    <td>16</td>
+                    <td>2P</td>
+                    <td>4</td>
+                    <td>Cable NYA en ducto PVC</td>
+                </tr>
+                <tr>
+                    <td>C9</td>
+                    <td>Lavadora</td>
+                    <td>16</td>
+                    <td>1P+N</td>
+                    <td>2,5</td>
+                    <td>Enchufe exclusivo con PAT</td>
+                </tr>
+                <tr>
+                    <td>C10</td>
+                    <td>Termo eléctrico</td>
+                    <td>16</td>
+                    <td>1P+N</td>
+                    <td>4</td>
+                    <td>Cable NYA en ducto PVC</td>
+                </tr>
+                <tr>
+                    <td>C11</td>
+                    <td>Calefactor baño</td>
+                    <td>16</td>
+                    <td>1P+N</td>
+                    <td>2,5</td>
+                    <td>ID adicional 30mA</td>
+                </tr>
+                <tr>
+                    <td>C12</td>
+                    <td>Reserva</td>
+                    <td>16</td>
+                    <td>1P+N</td>
+                    <td>2,5</td>
+                    <td>Previsión futura</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="nota">
+            <p><strong>Notas:</strong></p>
+            <ul>
+                <li>Todos los circuitos incluyen conductor de protección (PE) de igual sección que fase</li>
+                <li>Color conductores: Fase (negro/azul), Neutro (blanco), PE (verde-amarillo)</li>
+                <li>Identificación mediante anillado en tablero</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Sección 7: Conductores y Canalizaciones -->
+    <div class="page" id="seccion-7">
+        <h2 class="titulo-seccion">7. CONDUCTORES Y CANALIZACIONES</h2>
+        
+        <h3>7.1 Especificaciones de Conductores</h3>
+        <p>Todos los conductores serán de <strong>cobre electrolítico</strong>, temple suave, certificados SEC:</p>
+        <ul>
+            <li><strong>Tipo para circuitos embutidos:</strong> NYA (450/750 V) o THHN/THWN (600 V)</li>
+            <li><strong>Tipo para circuitos a la vista:</strong> THHN/THWN (600 V) mínimo</li>
+            <li><strong>Color de aislación:</strong>
+                <ul>
+                    <li>Fase: Negro, azul o rojo</li>
+                    <li>Neutro: Blanco</li>
+                    <li>Tierra protección: Verde-amarillo (obligatorio)</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>7.2 Dimensionamiento de Conductores</h3>
+        <p>El cálculo de secciones considera:</p>
+        <ul>
+            <li>Corriente admisible (capacidad de corriente) según tabla 7-1 NCh Elec. 4/2003</li>
+            <li>Caída de tensión máxima 3% (circuitos terminales)</li>
+            <li>Temperatura ambiente 30°C</li>
+            <li>Agrupamiento en ductos (factor de corrección aplicado)</li>
+        </ul>
+
+        <h3>7.3 Sistemas de Canalización</h3>
+        
+        <h4>7.3.1 Instalación Embutida (circuitos interiores)</h4>
+        <ul>
+            <li><strong>Material:</strong> Tubería PVC rígido (conduit), certificada SEC</li>
+            <li><strong>Diámetros:</strong> Según cantidad y sección de conductores (máx. 40% ocupación)
+                <ul>
+                    <li>Iluminación: Ø16 mm</li>
+                    <li>Enchufes generales: Ø20 mm</li>
+                    <li>Cargas especiales: Ø25-32 mm</li>
+                </ul>
+            </li>
+            <li><strong>Instalación:</strong> Embutida en muros y losas, con cajas de derivación cada 15 m o en cambios de dirección</li>
+            <li><strong>Cajas de derivación:</strong> PVC, cierre hermético, accesibles</li>
+        </ul>
+
+        <h4>7.3.2 Instalación a la Vista (exteriores, bodega)</h4>
+        <ul>
+            <li><strong>Material:</strong> Tubería PVC conduit rígido o EMT según zona</li>
+            <li><strong>Fijación:</strong> Abrazaderas cada 1,5 m máximo</li>
+            <li><strong>Protección mecánica:</strong> Altura mínima 2,5 m o con protección adicional bajo 2,5 m</li>
+        </ul>
+    </div>
+
+    <!-- Sección 8: Caída de Tensión -->
+    <div class="page" id="seccion-8">
+        <h2 class="titulo-seccion">8. CÁLCULO DE CAÍDA DE TENSIÓN</h2>
+        
+        <h3>8.1 Criterio de Diseño</h3>
+        <p>Según NCh Elec. 4/2003, cláusula 2.2.4:</p>
+        <ul>
+            <li><strong>Circuitos de alumbrado:</strong> Máximo 3%</li>
+            <li><strong>Circuitos de fuerza:</strong> Máximo 5%</li>
+            <li><strong>Para el conjunto (acometida + circuito):</strong> Máximo 6%</li>
+        </ul>
+
+        <h3>8.2 Ejemplo de Cálculo (Circuito Crítico)</h3>
+        <div class="calculo-box">
+            <p><strong>Circuito C7 - Cocina eléctrica:</strong></p>
+            <ul>
+                <li>Potencia: 3.000 W</li>
+                <li>Tensión: 220 V</li>
+                <li>Corriente: I = 3.000/220 = 13,6 A</li>
+                <li>Longitud: 25 m (estimada)</li>
+                <li>Conductor: 6 mm² cobre</li>
+            </ul>
+            
+            <p><strong>Fórmula monofásica:</strong></p>
+            <p>ΔV = 2 × L × I × ρ / S</p>
+            <p>ΔV = 2 × 25 × 13,6 × 0,018 / 6</p>
+            <p>ΔV = 2,04 V</p>
+            
+            <p><strong>Porcentaje de caída:</strong></p>
+            <p>%ΔV = (2,04 / 220) × 100 = 0,93% &lt; 3% ✓ CUMPLE</p>
+        </div>
+
+        <h3>8.3 Resumen de Caídas de Tensión</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Circuito</th>
+                    <th>Caída (V)</th>
+                    <th>Caída (%)</th>
+                    <th>Cumplimiento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>C1-C3 (Iluminación)</td>
+                    <td>&lt; 2,5</td>
+                    <td>&lt; 1,2%</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>C4-C6 (Enchufes)</td>
+                    <td>&lt; 3,5</td>
+                    <td>&lt; 1,6%</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>C7-C11 (Cargas especiales)</td>
+                    <td>&lt; 4,0</td>
+                    <td>&lt; 1,8%</td>
+                    <td>✓</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Sección 9: Puesta a Tierra -->
+    <div class="page" id="seccion-9">
+        <h2 class="titulo-seccion">9. SISTEMA DE PUESTA A TIERRA (PAT)</h2>
+        
+        <h3>9.1 Objetivo y Normativa</h3>
+        <p>Sistema diseñado según NCh Elec. 4/2003, sección 9, para protección contra:</p>
+        <ul>
+            <li>Contactos indirectos</li>
+            <li>Descargas atmosféricas</li>
+            <li>Sobretensiones</li>
+        </ul>
+
+        <h3>9.2 Componentes del Sistema</h3>
+        
+        <h4>9.2.1 Electrodo de Puesta a Tierra</h4>
+        <ul>
+            <li><strong>Tipo:</strong> Jabalina de cobre-acero (Copperweld)</li>
+            <li><strong>Dimensiones:</strong> Ø 16 mm × 2,4 m de longitud</li>
+            <li><strong>Cantidad:</strong> 1 unidad (ampliable si resistencia &gt; 40Ω)</li>
+            <li><strong>Ubicación:</strong> Enterrada verticalmente a 0,5 m del muro perimetral</li>
+            <li><strong>Profundidad:</strong> Cabeza a 0,5 m bajo nivel terreno</li>
+        </ul>
+
+        <h4>9.2.2 Conductor de Puesta a Tierra</h4>
+        <ul>
+            <li><strong>Conductor bajada:</strong> Cable NYA o THHN 16 mm² Cu, aislado verde-amarillo</li>
+            <li><strong>Protección mecánica:</strong> Tubería PVC Ø25 mm desde electrodo hasta tablero</li>
+            <li><strong>Identificación:</strong> Etiquetado "PUESTA A TIERRA" cada 3 m</li>
+        </ul>
+
+        <h4>9.2.3 Barra de Puesta a Tierra (en TGD)</h4>
+        <ul>
+            <li><strong>Material:</strong> Cobre electrolítico</li>
+            <li><strong>Dimensiones:</strong> 12 × 50 × 300 mm</li>
+            <li><strong>Conexiones:</strong> Pernos de bronce para cada circuito PE</li>
+            <li><strong>Identificación:</strong> Símbolo de tierra normalizado</li>
+        </ul>
+
+        <h3>9.3 Valor de Resistencia de Puesta a Tierra</h3>
+        <ul>
+            <li><strong>Objetivo:</strong> R ≤ 10 Ω (ideal para vivienda)</li>
+            <li><strong>Máximo aceptable:</strong> R ≤ 40 Ω (según NCh Elec. 4/2003)</li>
+            <li><strong>Verificación:</strong> Medición con telurómetro previo a recepción</li>
+            <li><strong>Mejoramiento:</strong> Si R &gt; 10Ω, instalar jabalinas adicionales en paralelo con separación ≥ 2,4 m</li>
+        </ul>
+
+        <h3>9.4 Uniones y Conexiones</h3>
+        <ul>
+            <li><strong>Tipo:</strong> Soldadura exotérmica (Cadweld) o conectores apernados de bronce</li>
+            <li><strong>Prohibición:</strong> Uniones con estaño-plomo</li>
+            <li><strong>Continuidad:</strong> Verificación de continuidad en todos los puntos</li>
+        </ul>
+
+        <h3>9.5 Red de Conductores de Protección (PE)</h3>
+        <ul>
+            <li>Todos los circuitos poseen conductor PE desde TGD</li>
+            <li>Enchufes con contacto de tierra obligatorio</li>
+            <li>Continuidad hasta estructura metálica de luminarias, cajas, electrodomésticos</li>
+        </ul>
+    </div>
+
+    <!-- Sección 10: Protecciones Eléctricas -->
+    <div class="page" id="seccion-10">
+        <h2 class="titulo-seccion">10. PROTECCIONES ELÉCTRICAS</h2>
+        
+        <h3>10.1 Protección contra Sobrecorrientes</h3>
+        
+        <h4>10.1.1 Interruptores Automáticos Termomagnéticos</h4>
+        <ul>
+            <li><strong>Función:</strong> Protección contra sobrecargas y cortocircuitos</li>
+            <li><strong>Capacidad de corte:</strong> Mínimo 6 kA</li>
+            <li><strong>Curva de disparo:</strong> Tipo C (cargas generales) o Tipo D (motores)</li>
+            <li><strong>Cumplimiento:</strong> IEC 60898, certificación SEC</li>
+        </ul>
+
+        <div class="calculo-box">
+            <p><strong>Coordinación de protecciones:</strong></p>
+            <p>I<sub>protección</sub> ≥ I<sub>circuito</sub></p>
+            <p>I<sub>protección</sub> ≤ 1,45 × I<sub>admisible conductor</sub></p>
+        </div>
+
+        <h3>10.2 Protección contra Contactos Indirectos</h3>
+        
+        <h4>10.2.1 Interruptores Diferenciales</h4>
+        <ul>
+            <li><strong>Ubicación:</strong>
+                <ul>
+                    <li>ID general: 2P × 63 A × 30 mA (TGD)</li>
+                    <li>ID adicionales: Circuitos baños (C6, C11)</li>
+                </ul>
+            </li>
+            <li><strong>Sensibilidad:</strong> 30 mA (protección personas)</li>
+            <li><strong>Tiempo de actuación:</strong> ≤ 30 ms</li>
+            <li><strong>Cumplimiento:</strong> IEC 61008-1</li>
+        </ul>
+
+        <div class="calculo-box">
+            <p><strong>Esquema de protección TT:</strong></p>
+            <p>Condición de seguridad: R<sub>A</sub> × I<sub>Δn</sub> ≤ U<sub>L</sub></p>
+            <p>Donde:</p>
+            <ul>
+                <li>R<sub>A</sub>: Resistencia de puesta a tierra (≤10Ω)</li>
+                <li>I<sub>Δn</sub>: Corriente diferencial nominal (0,03 A)</li>
+                <li>U<sub>L</sub>: Tensión límite contacto (50 V)</li>
+            </ul>
+            <p><strong>Verificación:</strong> 10 × 0,03 = 0,3 V &lt; 50 V ✓ CUMPLE</p>
+        </div>
+
+        <h3>10.3 Protección contra Sobretensiones Transitorias (SPD)</h3>
+        <p>Recomendación (no obligatorio en viviendas, pero buena práctica):</p>
+        <ul>
+            <li><strong>Tipo:</strong> Supresor de picos Clase II</li>
+            <li><strong>Ubicación:</strong> TGD, conexión F-N-PE</li>
+            <li><strong>Nivel de protección:</strong> Up ≤ 1,5 kV</li>
+            <li><strong>Uso:</strong> Protección de equipos electrónicos sensibles</li>
+        </ul>
+    </div>
+
+    <!-- Sección 11: Instalaciones Especiales -->
+    <div class="page" id="seccion-11">
+        <h2 class="titulo-seccion">11. INSTALACIONES ESPECIALES</h2>
+        
+        <h3>11.1 Circuitos en Baños</h3>
+        <p>Clasificación de zonas según NCh Elec. 4/2003, cláusula 8.2:</p>
+        <ul>
+            <li><strong>Zona 0:</strong> Interior tina/ducha - No se permite instalación eléctrica</li>
+            <li><strong>Zona 1:</strong> Sobre tina/ducha (2,25 m altura) - Solo equipos IPX4, 12V</li>
+            <li><strong>Zona 2:</strong> 0,6 m alrededor zona 1 - Luminarias IPX4, protección ID</li>
+            <li><strong>Zona 3:</strong> Resto del baño - Enchufes con ID 30 mA</li>
+        </ul>
+
+        <p><strong>Requisitos:</strong></p>
+        <ul>
+            <li>Enchufes a mínimo 0,6 m de ducha/tina</li>
+            <li>Protección diferencial obligatoria (30 mA)</li>
+            <li>Equipos con IP44 mínimo</li>
+            <li>Conductor de protección a todas las masas metálicas</li>
+        </ul>
+
+        <h3>11.2 Cocina</h3>
+        <ul>
+            <li>Circuito exclusivo para cocina/horno (no compartir)</li>
+            <li>Enchufe industrial 32 A para cocina o conexión directa</li>
+            <li>Ventilación adecuada</li>
+            <li>Instalación según instrucciones fabricante</li>
+        </ul>
+
+        <h3>11.3 Iluminación Exterior</h3>
+        <ul>
+            <li>Luminarias IP65 mínimo</li>
+            <li>Conductor tipo THHN, resistente UV</li>
+            <li>Protección diferencial 30 mA</li>
+            <li>Altura mínima 2,5 m o protección mecánica adicional</li>
+        </ul>
+    </div>
+
+    <!-- Sección 12: Materiales y Equipos -->
+    <div class="page" id="seccion-12">
+        <h2 class="titulo-seccion">12. MATERIALES Y EQUIPOS</h2>
+        
+        <h3>12.1 Certificaciones Requeridas</h3>
+        <p>Todos los materiales y equipos deben contar con:</p>
+        <ul>
+            <li><strong>Certificación SEC</strong> vigente (obligatorio)</li>
+            <li>Cumplimiento normas IEC aplicables</li>
+            <li>Marcado CE (equipos importados)</li>
+            <li>Declaración de conformidad del fabricante</li>
+        </ul>
+
+        <h3>12.2 Especificación de Materiales Principales</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ítem</th>
+                    <th>Especificación</th>
+                    <th>Norma</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Conductores</td>
+                    <td>Cobre 99,9%, temple suave</td>
+                    <td>NCh 84, IEC 60228</td>
+                </tr>
+                <tr>
+                    <td>Tubería PVC</td>
+                    <td>Cédula 40, ignífuga</td>
+                    <td>NCh 399, IEC 61386</td>
+                </tr>
+                <tr>
+                    <td>Tableros</td>
+                    <td>IP54, acero galvanizado/policarbonato</td>
+                    <td>IEC 61439</td>
+                </tr>
+                <tr>
+                    <td>Interruptores</td>
+                    <td>Termomagnéticos certificados SEC</td>
+                    <td>IEC 60898</td>
+                </tr>
+                <tr>
+                    <td>Diferenciales</td>
+                    <td>Sensibilidad 30mA, clase AC/A</td>
+                    <td>IEC 61008</td>
+                </tr>
+                <tr>
+                    <td>Enchufes</td>
+                    <td>10A/16A, c/tierra, certificados</td>
+                    <td>IEC 60884</td>
+                </tr>
+                <tr>
+                    <td>Cajas derivación</td>
+                    <td>PVC, IP55, con tapa atornillada</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Electrodo PAT</td>
+                    <td>Copperweld Ø16mm × 2,4m</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>12.3 Almacenamiento y Manipulación</h3>
+        <ul>
+            <li>Almacenamiento en lugar seco, techado</li>
+            <li>Conductores en rollos, protegidos de humedad</li>
+            <li>Verificación de certificados previo a instalación</li>
+            <li>Registro de trazabilidad de materiales críticos</li>
+        </ul>
+    </div>
+
+    <!-- Sección 13: Planimetría -->
+    <div class="page" id="seccion-13">
+        <h2 class="titulo-seccion">13. PLANIMETRÍA Y DOCUMENTACIÓN GRÁFICA</h2>
+        
+        <h3>13.1 Planos Requeridos</h3>
+        <p>La documentación técnica incluye (adjuntar):</p>
+        <ol>
+            <li><strong>Plano de emplazamiento:</strong> Ubicación del inmueble</li>
+            <li><strong>Plano de planta general:</strong> Distribución de circuitos por nivel</li>
+            <li><strong>Diagrama unilinear:</strong> Esquema eléctrico del TGD</li>
+            <li><strong>Detalle de tablero:</strong> Disposición de protecciones</li>
+            <li><strong>Detalle puesta a tierra:</strong> Ubicación y características del electrodo</li>
+            <li><strong>Isométrico de canalizaciones:</strong> Recorridos principales</li>
+        </ol>
+
+        <h3>13.2 Simbología</h3>
+        <p>Se utilizará simbología normalizada según NCh Elec. 4/2003, Anexo C:</p>
+        <ul>
+            <li>Luminarias: 🔆 (con letra indicando tipo)</li>
+            <li>Enchufes: ⏚ (con tierra)</li>
+            <li>Interruptores: S (simple), S2 (doble), etc.</li>
+            <li>Tableros: [TGD]</li>
+            <li>Ductos: Línea continua con indicación de sección</li>
+        </ul>
+    </div>
+
+    <!-- Sección 14: Criterios de Instalación -->
+    <div class="page" id="seccion-14">
+        <h2 class="titulo-seccion">14. CRITERIOS DE INSTALACIÓN Y MONTAJE</h2>
+        
+        <h3>14.1 Requisitos Generales</h3>
+        <ul>
+            <li>Instalación según planos aprobados</li>
+            <li>Supervisión por instalador autorizado SEC clase <span class="editable" contenteditable="true">[indicar]</span></li>
+            <li>Pruebas y ensayos previos a energización</li>
+            <li>Registro fotográfico de etapas críticas</li>
+        </ul>
+
+        <h3>14.2 Secuencia de Trabajos</h3>
+        <ol>
+            <li>Replanteo y marcado de recorridos</li>
+            <li>Instalación de ductos embutidos (obra gruesa)</li>
+            <li>Montaje de cajas de derivación y enchufes</li>
+            <li>Instalación de tablero general</li>
+            <li>Tendido de conductores (rotulados)</li>
+            <li>Sistema de puesta a tierra</li>
+            <li>Conexionado en tablero</li>
+            <li>Pruebas y mediciones</li>
+            <li>Energización progresiva</li>
+        </ol>
+
+        <h3>14.3 Uniones y Conexiones</h3>
+        <ul>
+            <li><strong>En cajas:</strong> Con conectores de compresión (no torsión)</li>
+            <li><strong>En tableros:</strong> Terminales de compresión, torque según fabricante</li>
+            <li><strong>Identificación:</strong> Anillados numerados en ambos extremos</li>
+            <li><strong>Sellado:</strong> Cajas con tapa asegurada</li>
+        </ul>
+
+        <h3>14.4 Alturas de Montaje Normalizadas</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Elemento</th>
+                    <th>Altura desde NPT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Enchufes generales</td>
+                    <td>0,30 m - 0,40 m</td>
+                </tr>
+                <tr>
+                    <td>Enchufes baños</td>
+                    <td>1,20 m (fuera zonas de protección)</td>
+                </tr>
+                <tr>
+                    <td>Interruptores</td>
+                    <td>1,20 m</td>
+                </tr>
+                <tr>
+                    <td>Tablero general (base)</td>
+                    <td>1,40 m</td>
+                </tr>
+                <tr>
+                    <td>Luminarias pared</td>
+                    <td>2,00 m mínimo</td>
+                </tr>
+                <tr>
+                    <td>Cajas paso cielo</td>
+                    <td>Según losa</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Sección 15: Pruebas y Ensayos -->
+    <div class="page" id="seccion-15">
+        <h2 class="titulo-seccion">15. PRUEBAS Y ENSAYOS</h2>
+        
+        <h3>15.1 Protocolo de Pruebas Previas a Energización</h3>
+        <p>Todas las pruebas serán documentadas en <strong>Protocolo de Puesta en Servicio:</strong></p>
+
+        <h4>15.1.1 Inspección Visual</h4>
+        <ul>
+            <li>✓ Completitud de la instalación</li>
+            <li>✓ Ausencia de daños en conductores y equipos</li>
+            <li>✓ Correcta identificación de circuitos</li>
+            <li>✓ Apriete de conexiones</li>
+            <li>✓ Presencia de certificaciones SEC</li>
+        </ul>
+
+        <h4>15.1.2 Resistencia de Aislación</h4>
+        <ul>
+            <li><strong>Instrumento:</strong> Megóhmetro 500 V CC</li>
+            <li><strong>Procedimiento:</strong> Entre fase-neutro y fase-tierra</li>
+            <li><strong>Valor mínimo aceptable:</strong> ≥ 1 MΩ (para instalación nueva)</li>
+            <li><strong>Registro:</strong> Por cada circuito</li>
+        </ul>
+
+        <h4>15.1.3 Continuidad de Conductores de Protección</h4>
+        <ul>
+            <li><strong>Instrumento:</strong> Multímetro en modo continuidad</li>
+            <li><strong>Procedimiento:</strong> Entre barra PE y cada punto terminal</li>
+            <li><strong>Valor máximo:</strong> &lt; 0,5 Ω</li>
+            <li><strong>Registro:</strong> Todos los puntos con PE</li>
+        </ul>
+
+        <h4>15.1.4 Resistencia de Puesta a Tierra</h4>
+        <ul>
+            <li><strong>Instrumento:</strong> Telurómetro (método 62% o 3 puntos)</li>
+            <li><strong>Valor objetivo:</strong> ≤ 10 Ω</li>
+            <li><strong>Valor máximo:</strong> ≤ 40 Ω (según NCh Elec. 4/2003)</li>
+            <li><strong>Acción si no cumple:</strong> Instalación de jabalinas adicionales</li>
+        </ul>
+
+        <h4>15.1.5 Funcionamiento de Protecciones Diferenciales</h4>
+        <ul>
+            <li><strong>Procedimiento:</strong> Botón de test en cada ID</li>
+            <li><strong>Verificación:</strong> Disparo inmediato al presionar test</li>
+            <li><strong>Resultado:</strong> OK / No OK</li>
+        </ul>
+
+        <h4>15.1.6 Funcionamiento de Interruptores Automáticos</h4>
+        <ul>
+            <li><strong>Procedimiento:</strong> Apertura/cierre manual</li>
+            <li><strong>Verificación:</strong> Accionamiento correcto, sin trabas</li>
+            <li><strong>Registro:</strong> Estado por posición</li>
+        </ul>
+
+        <h4>15.1.7 Polaridad y Secuencia de Fases</h4>
+        <ul>
+            <li><strong>Procedimiento:</strong> Con multímetro o detector de polaridad</li>
+            <li><strong>Verificación:</strong>
+                <ul>
+                    <li>Fase: 220V respecto a tierra</li>
+                    <li>Neutro: ~0V respecto a tierra</li>
+                    <li>PE: Continuidad con electrodo</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>15.2 Energización Progresiva</h3>
+        <ol>
+            <li>Energización de acometida (con todos los circuitos OFF)</li>
+            <li>Verificación tensión en tablero: 220 V ± 10%</li>
+            <li>Energización circuito por circuito</li>
+            <li>Verificación ausencia de fallas</li>
+            <li>Prueba de carga en circuitos críticos</li>
+        </ol>
+
+        <h3>15.3 Documentación de Resultados</h3>
+        <ul>
+            <li>Planilla de pruebas firmada por instalador</li>
+            <li>Fotografías de megóhmetro y mediciones</li>
+            <li>Certificado de resistencia de PAT</li>
+            <li>Observaciones y no conformidades (si las hay)</li>
+        </ul>
+    </div>
+
+    <!-- Sección 16: Mantención y Operación -->
+    <div class="page" id="seccion-16">
+        <h2 class="titulo-seccion">16. MANTENCIÓN Y OPERACIÓN</h2>
+        
+        <h3>16.1 Manual de Operación para Usuario</h3>
+        <p>Se entregará al propietario manual que incluye:</p>
+        <ul>
+            <li>Diagrama unilineal simplificado del TGD</li>
+            <li>Descripción de cada circuito</li>
+            <li>Instrucciones de reposición de protecciones</li>
+            <li>Información de contacto instalador eléctrico</li>
+            <li>Fecha de revisión periódica recomendada</li>
+        </ul>
+
+        <h3>16.2 Plan de Mantención Preventiva</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Actividad</th>
+                    <th>Frecuencia</th>
+                    <th>Responsable</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Inspección visual tablero</td>
+                    <td>6 meses</td>
+                    <td>Propietario</td>
+                </tr>
+                <tr>
+                    <td>Prueba botón test ID</td>
+                    <td>1 mes</td>
+                    <td>Propietario</td>
+                </tr>
+                <tr>
+                    <td>Verificación apriete conexiones</td>
+                    <td>1 año</td>
+                    <td>Instalador</td>
+                </tr>
+                <tr>
+                    <td>Medición resistencia PAT</td>
+                    <td>2 años</td>
+                    <td>Instalador</td>
+                </tr>
+                <tr>
+                    <td>Termografía tablero</td>
+                    <td>5 años</td>
+                    <td>Instalador</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>16.3 Consideraciones de Seguridad</h3>
+        <ul>
+            <li><strong>No intervenir</strong> la instalación sin desconectar el interruptor general</li>
+            <li><strong>No modificar</strong> secciones de conductores o protecciones sin asesoría técnica</li>
+            <li><strong>No sobrecargar</strong> enchufes con extensiones múltiples</li>
+            <li><strong>Reportar</strong> inmediatamente: olor a quemado, chispas, calentamiento anormal</li>
+        </ul>
+    </div>
+
+    <!-- Sección 17: Gestión de Residuos -->
+    <div class="page" id="seccion-17">
+        <h2 class="titulo-seccion">17. GESTIÓN DE RESIDUOS</h2>
+        
+        <h3>17.1 Manejo de Residuos de Construcción</h3>
+        <p>Conforme a normativa ambiental:</p>
+        <ul>
+            <li><strong>Conductores:</strong> Recuperación de cobre para reciclaje</li>
+            <li><strong>PVC:</strong> Disposición en vertedero autorizado o reciclaje</li>
+            <li><strong>Embalajes:</strong> Separación y reciclaje de cartón/plástico</li>
+            <li><strong>Residuos peligrosos:</strong> No aplica (instalación nueva)</li>
+        </ul>
+    </div>
+
+    <!-- Sección 18: Responsabilidades -->
+    <div class="page" id="seccion-18">
+        <h2 class="titulo-seccion">18. RESPONSABILIDADES</h2>
+        
+        <h3>18.1 Instalador Eléctrico</h3>
+        <ul>
+            <li>Ejecución conforme a planos y normativa</li>
+            <li>Uso de materiales certificados SEC</li>
+            <li>Realización de pruebas y ensayos</li>
+            <li>Entrega de TE-1 (Declaración de Instalador)</li>
+            <li>Garantía de obra: <span class="editable" contenteditable="true">[indicar plazo]</span></li>
+        </ul>
+
+        <h3>18.2 Propietario</h3>
+        <ul>
+            <li>Mantención de la instalación en el tiempo</li>
+            <li>No alteración sin consulta a instalador autorizado</li>
+            <li>Conservación de documentación técnica</li>
+            <li>Pago de derechos de inspección SEC</li>
+        </ul>
+
+        <h3>18.3 Superintendencia de Electricidad y Combustibles (SEC)</h3>
+        <ul>
+            <li>Fiscalización de cumplimiento normativo</li>
+            <li>Inspección (en caso de ser seleccionado)</li>
+            <li>Emisión de Certificado TE-1 (si procede)</li>
+        </ul>
+    </div>
+
+    <!-- Sección 19: Certificaciones -->
+    <div class="page" id="seccion-19">
+        <h2 class="titulo-seccion">19. CERTIFICACIONES Y TRAMITACIÓN</h2>
+        
+        <h3>19.1 Documentos a Presentar ante SEC</h3>
+        <ol>
+            <li><strong>Formulario TE-1:</strong> Declaración de instalación eléctrica interior</li>
+            <li><strong>Memoria técnica:</strong> Este documento</li>
+            <li><strong>Planos:</strong> Planta general y diagrama unilineal</li>
+            <li><strong>Certificado instalador:</strong> Vigencia registro SEC</li>
+            <li><strong>Certificados materiales:</strong> Conductores, protecciones, tablero</li>
+            <li><strong>Protocolo de pruebas:</strong> Resultados de ensayos</li>
+        </ol>
+
+        <h3>19.2 Plazo de Tramitación</h3>
+        <ul>
+            <li><strong>Presentación ante SEC:</strong> Dentro de 15 días corridos desde término de obra</li>
+            <li><strong>Inspección SEC:</strong> Según sorteo (aprox. 20% de proyectos)</li>
+            <li><strong>Certificado TE-1:</strong> Emisión automática si no hay inspección, o posterior a inspección aprobada</li>
+        </ul>
+    </div>
+
+    <!-- Sección 20: Presupuesto -->
+    <div class="page" id="seccion-20">
+        <h2 class="titulo-seccion">20. PRESUPUESTO REFERENCIAL</h2>
+        
+        <h3>20.1 Resumen de Costos</h3>
+        <p><em>(valores referenciales, sujetos a cotización)</em></p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Ítem</th>
+                    <th>Unidad</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unit.</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Materiales eléctricos</td>
+                    <td>GL</td>
+                    <td>1</td>
+                    <td class="editable" contenteditable="true">$[X]</td>
+                    <td class="editable" contenteditable="true">$[X]</td>
+                </tr>
+                <tr>
+                    <td>Mano de obra instalación</td>
+                    <td>GL</td>
+                    <td>1</td>
+                    <td class="editable" contenteditable="true">$[X]</td>
+                    <td class="editable" contenteditable="true">$[X]</td>
+                </tr>
+                <tr>
+                    <td>Pruebas y puesta en marcha</td>
+                    <td>GL</td>
+                    <td>1</td>
+                    <td class="editable" contenteditable="true">$[X]</td>
+                    <td class="editable" contenteditable="true">$[X]</td>
+                </tr>
+                <tr>
+                    <td>Tramitación SEC</td>
+                    <td>UN</td>
+                    <td>1</td>
+                    <td class="editable" contenteditable="true">$[X]</td>
+                    <td class="editable" contenteditable="true">$[X]</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="4"><strong>TOTAL</strong></td>
+                    <td><strong class="editable" contenteditable="true">$[X]</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="nota">
+            <p><strong>Notas:</strong></p>
+            <ul>
+                <li>Valores no incluyen IVA</li>
+                <li>Presupuesto válido por <span class="editable" contenteditable="true">[días]</span> días</li>
+                <li>Incluye garantía de <span class="editable" contenteditable="true">[meses]</span> meses</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Sección 21: Anexos -->
+    <div class="page" id="seccion-21">
+        <h2 class="titulo-seccion">21. ANEXOS</h2>
+        
+        <h3>Listado de Anexos</h3>
+        <ul>
+            <li><strong>Anexo A:</strong> Certificados SEC de materiales principales</li>
+            <li><strong>Anexo B:</strong> Planos eléctricos (plantas y unilineal)</li>
+            <li><strong>Anexo C:</strong> Catálogos técnicos de equipos</li>
+            <li><strong>Anexo D:</strong> Protocolo de pruebas (formato en blanco)</li>
+            <li><strong>Anexo E:</strong> Manual de operación para usuario</li>
+        </ul>
+
+        <div class="nota" style="margin-top: 50px;">
+            <p style="text-align: center;"><strong>FIN DE LA MEMORIA TÉCNICA</strong></p>
+        </div>
+
+        <div style="margin-top: 80px; border-top: 2px solid #333; padding-top: 20px;">
+            <table style="width: 100%; border: none;">
+                <tr>
+                    <td style="width: 50%; text-align: center; border: none;">
+                        <p>_______________________________</p>
+                        <p><strong>Firma Instalador Eléctrico</strong></p>
+                        <p>Nombre: <span class="editable" contenteditable="true">[Nombre]</span></p>
+                        <p>RUT: <span class="editable" contenteditable="true">[RUT]</span></p>
+                        <p>Registro SEC: <span class="editable" contenteditable="true">[N°]</span></p>
+                    </td>
+                    <td style="width: 50%; text-align: center; border: none;">
+                        <p>_______________________________</p>
+                        <p><strong>Firma Propietario</strong></p>
+                        <p>Nombre: <span class="editable" contenteditable="true">[Nombre]</span></p>
+                        <p>RUT: <span class="editable" contenteditable="true">[RUT]</span></p>
+                        <p>Fecha: <span class="editable" contenteditable="true">[Fecha]</span></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer con numeración de página -->
+    <div class="page-footer">
+        <p>Memoria Técnica - Instalación Eléctrica Domiciliaria | Página <span class="page-number"></span></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

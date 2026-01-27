@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama Unifilar Técnico - Ejemplo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        svg {
+            display: block;
+            margin: 0 auto;
+        }
+        .linea {
+            stroke: black;
+            stroke-width: 2;
+            fill: none;
+        }
+        .linea-gruesa {
+            stroke: black;
+            stroke-width: 3;
+            fill: none;
+        }
+        .caja {
+            fill: white;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .texto {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11px;
+            fill: black;
+        }
+        .texto-grande {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            fill: black;
+        }
+        .texto-titulo {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 10px;
+            fill: black;
+        }
+        .circulo-numero {
+            fill: white;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .tierra {
+            stroke: black;
+            stroke-width: 2;
+            fill: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Diagrama Unifilar</h1>
+        <div class="subtitle">Sistema Eléctrico - 220V</div>
+        
+        <svg width="700" height="800" xmlns="http://www.w3.org/2000/svg">
+            <!-- RED ELÉCTRICA (E) -->
+            <rect x="320" y="20" width="60" height="40" class="caja"/>
+            <text x="350" y="45" text-anchor="middle" class="texto-grande">E</text>
+            <text x="350" y="10" text-anchor="middle" class="texto-titulo">E.E. SAESA</text>
+            
+            <!-- Línea vertical con especificaciones -->
+            <line x1="350" y1="60" x2="350" y2="120" class="linea"/>
+            
+            <!-- Especificaciones del cable de acometida -->
+            <rect x="120" y="75" width="180" height="55" fill="white" stroke="black" stroke-width="1"/>
+            <text x="130" y="90" class="texto">S: 2 x 4 mm2 RZ1-K</text>
+            <text x="130" y="105" class="texto">C: Aéreo</text>
+            <text x="130" y="120" class="texto">L: 30 METROS</text>
+            
+            <!-- MEDIDOR (M) -->
+            <rect x="320" y="120" width="60" height="50" class="caja"/>
+            <text x="350" y="150" text-anchor="middle" class="texto-grande">M</text>
+            
+            <!-- Texto IADA (protección sobretensión) -->
+            <text x="315" y="145" text-anchor="end" class="texto-titulo">IADA</text>
+            
+            <!-- Símbolo de protección (círculo) -->
+            <circle cx="290" cy="155" r="12" fill="white" stroke="black" stroke-width="2"/>
+            <line x1="283" y1="162" x2="297" y2="148" class="linea"/>
+            
+            <!-- Especificaciones Int. Aut. -->
+            <text x="120" y="145" class="texto-titulo">Int. Aut. 1 Ø 5AIIIr</text>
+            <text x="120" y="160" class="texto-titulo">Corva D</text>
+            <text x="120" y="175" class="texto-titulo">Cap. Rup. 10 K.A.</text>
+            
+            <!-- Línea vertical -->
+            <line x1="350" y1="170" x2="350" y2="220" class="linea"/>
+            
+            <!-- Especificaciones cable y tipo -->
+            <rect x="420" y="185" width="200" height="30" fill="white" stroke="black" stroke-width="1"/>
+            <text x="430" y="200" class="texto">S: Ts. 1 x 4 mm2</text>
+            <text x="430" y="212" class="texto">C: La.g. 5/8" Ø</text>
+            
+            <!-- Símbolo de tierra -->
+            <g class="tierra" transform="translate(350, 230)">
+                <line x1="0" y1="0" x2="0" y2="15"/>
+                <line x1="-15" y1="15" x2="15" y2="15"/>
+                <line x1="-10" y1="20" x2="10" y2="20"/>
+                <line x1="-5" y1="25" x2="5" y2="25"/>
+            </g>
+            
+            <!-- Cámara registro -->
+            <rect x="380" y="250" width="180" height="20" fill="white" stroke="black" stroke-width="1"/>
+            <text x="390" y="263" class="texto">Cámara reg. 160 mm Ø H. 0.40</text>
+            
+            <!-- Línea vertical con especificaciones -->
+            <line x1="350" y1="270" x2="350" y2="330" class="linea"/>
+            
+            <!-- Especificaciones cable subida -->
+            <rect x="120" y="285" width="180" height="45" fill="white" stroke="black" stroke-width="1"/>
+            <text x="130" y="300" class="texto">S: 2 x 10 mm2 RZ1-K</text>
+            <text x="130" y="315" class="texto">C: Conduit PVC</text>
+            <text x="130" y="325" class="texto">L: 40 METROS</text>
+            
+            <!-- T.D.A. (Tablero) -->
+            <text x="50" y="360" class="texto-grande">T.D.A.</text>
+            
+            <!-- Conexión a barra -->
+            <text x="390" y="345" class="texto-titulo">Ts.</text>
+            <text x="390" y="360" class="texto-titulo">CONECTADO A</text>
+            <text x="390" y="375" class="texto-titulo">BARRA CU 5/8"Ø x 1.5 mts.</text>
+            
+            <!-- Barra horizontal principal -->
+            <line x1="150" y1="380" x2="650" y2="380" class="linea-gruesa"/>
+            
+            <!-- Texto barra colectora -->
+            <text x="200" y="395" class="texto-titulo">Barra colectora 50A</text>
+            
+            <!-- Indicadores de interruptores en barra -->
+            <text x="490" y="360" class="texto-titulo">Int. Aut. Omnp. 25 Amp.</text>
+            <text x="490" y="375" class="texto-titulo">Curva C.</text>
+            <text x="490" y="390" class="texto-titulo">Cap. Rup. 6 K.A.</text>
+            
+            <text x="580" y="360" class="texto-titulo">Int. Aut. 10 Amp.</text>
+            <text x="580" y="375" class="texto-titulo">Curva C.</text>
+            <text x="580" y="390" class="texto-titulo">Cap. Rup. 6 K.A.</text>
+            
+            <text x="50" y="430" class="texto-titulo">Int. Aut. 16 Amp.</text>
+            <text x="50" y="445" class="texto-titulo">Curva C.</text>
+            <text x="50" y="460" class="texto-titulo">Cap. Rup. 6 K.A.</text>
+            
+            <!-- Interruptor diferencial -->
+            <rect x="620" y="410" width="60" height="30" fill="white" stroke="black" stroke-width="1"/>
+            <text x="650" y="428" text-anchor="middle" class="texto-titulo">Int. Dif.</text>
+            
+            <text x="620" y="455" class="texto-titulo">2x25 Amp.</text>
+            <text x="620" y="468" class="texto-titulo">30 mA.</text>
+            
+            <!-- Símbolo tierra conectada a barra -->
+            <g class="tierra" transform="translate(650, 480)">
+                <line x1="0" y1="0" x2="0" y2="15"/>
+                <line x1="-15" y1="15" x2="15" y2="15"/>
+                <line x1="-10" y1="20" x2="10" y2="20"/>
+                <line x1="-5" y1="25" x2="5" y2="25"/>
+            </g>
+            <text x="620" y="520" class="texto-titulo">Ts.</text>
+            <text x="590" y="535" class="texto-titulo">Conectado a</text>
+            <text x="580" y="548" class="texto-titulo">barra CU 5/8" x 1.5 mts.</text>
+            
+            <!-- Línea general punteada del tablero -->
+            <rect x="160" y="400" width="480" height="200" fill="none" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+            
+            <!-- CIRCUITO 1 -->
+            <line x1="200" y1="380" x2="200" y2="420" class="linea"/>
+            
+            <!-- Breaker C1 -->
+            <rect x="185" y="420" width="30" height="40" class="caja"/>
+            <text x="200" y="433" text-anchor="middle" class="texto-titulo">1x10A</text>
+            <text x="200" y="445" text-anchor="middle" class="texto-titulo">C</text>
+            <text x="200" y="457" text-anchor="middle" class="texto-titulo">6kA</text>
+            
+            <!-- Símbolo de protección diferencial -->
+            <rect x="175" y="475" width="50" height="35" fill="white" stroke="black" stroke-width="1"/>
+            <text x="200" y="488" text-anchor="middle" class="texto-titulo">2x25A</text>
+            <text x="200" y="503" text-anchor="middle" class="texto-titulo">30mA</text>
+            <circle cx="185" cy="495" r="8" fill="white" stroke="black" stroke-width="1"/>
+            <line x1="182" y1="498" x2="188" y2="492" stroke="black" stroke-width="1"/>
+            
+            <!-- Línea y especificación -->
+            <line x1="200" y1="510" x2="200" y2="540" class="linea"/>
+            <text x="160" y="530" class="texto-titulo">S: . 3x1.5 mm2</text>
+            
+            <!-- Círculo numerado -->
+            <circle cx="200" cy="560" r="20" class="circulo-numero"/>
+            <text x="200" y="568" text-anchor="middle" class="texto-grande">1</text>
+            
+            <!-- CIRCUITO 2 -->
+            <line x1="280" y1="380" x2="280" y2="420" class="linea"/>
+            
+            <rect x="265" y="420" width="30" height="40" class="caja"/>
+            <text x="280" y="433" text-anchor="middle" class="texto-titulo">1x16A</text>
+            <text x="280" y="445" text-anchor="middle" class="texto-titulo">C</text>
+            <text x="280" y="457" text-anchor="middle" class="texto-titulo">6kA</text>
+            
+            <rect x="255" y="475" width="50" height="35" fill="white" stroke="black" stroke-width="1"/>
+            <text x="280" y="488" text-anchor="middle" class="texto-titulo">2x25A</text>
+            <text x="280" y="503" text-anchor="middle" class="texto-titulo">30mA</text>
+            <circle cx="265" cy="495" r="8" fill="white" stroke="black" stroke-width="1"/>
+            <line x1="262" y1="498" x2="268" y2="492" stroke="black" stroke-width="1"/>
+            
+            <line x1="280" y1="510" x2="280" y2="540" class="linea"/>
+            <text x="240" y="530" class="texto-titulo">S: . 3x2.5 mm2</text>
+            
+            <circle cx="280" cy="560" r="20" class="circulo-numero"/>
+            <text x="280" y="568" text-anchor="middle" class="texto-grande">2</text>
+            
+            <!-- CIRCUITO 3 -->
+            <line x1="360" y1="380" x2="360" y2="420" class="linea"/>
+            
+            <rect x="345" y="420" width="30" height="40" class="caja"/>
+            <text x="360" y="433" text-anchor="middle" class="texto-titulo">1x20A</text>
+            <text x="360" y="445" text-anchor="middle" class="texto-titulo">C</text>
+            <text x="360" y="457" text-anchor="middle" class="texto-titulo">6kA</text>
+            
+            <rect x="335" y="475" width="50" height="35" fill="white" stroke="black" stroke-width="1"/>
+            <text x="360" y="488" text-anchor="middle" class="texto-titulo">2x25A</text>
+            <text x="360" y="503" text-anchor="middle" class="texto-titulo">30mA</text>
+            <circle cx="345" cy="495" r="8" fill="white" stroke="black" stroke-width="1"/>
+            <line x1="342" y1="498" x2="348" y2="492" stroke="black" stroke-width="1"/>
+            
+            <line x1="360" y1="510" x2="360" y2="540" class="linea"/>
+            <text x="320" y="530" class="texto-titulo">S: . 3x4 mm2</text>
+            
+            <circle cx="360" cy="560" r="20" class="circulo-numero"/>
+            <text x="360" y="568" text-anchor="middle" class="texto-grande">3</text>
+            
+            <!-- CIRCUITO 4 -->
+            <line x1="440" y1="380" x2="440" y2="420" class="linea"/>
+            
+            <rect x="425" y="420" width="30" height="40" class="caja"/>
+            <text x="440" y="433" text-anchor="middle" class="texto-titulo">1x10A</text>
+            <text x="440" y="445" text-anchor="middle" class="texto-titulo">C</text>
+            <text x="440" y="457" text-anchor="middle" class="texto-titulo">6kA</text>
+            
+            <rect x="415" y="475" width="50" height="35" fill="white" stroke="black" stroke-width="1"/>
+            <text x="440" y="488" text-anchor="middle" class="texto-titulo">2x25A</text>
+            <text x="440" y="503" text-anchor="middle" class="texto-titulo">30mA</text>
+            <circle cx="425" cy="495" r="8" fill="white" stroke="black" stroke-width="1"/>
+            <line x1="422" y1="498" x2="428" y2="492" stroke="black" stroke-width="1"/>
+            
+            <line x1="440" y1="510" x2="440" y2="540" class="linea"/>
+            <text x="400" y="530" class="texto-titulo">S: . 3x1.5 mm2</text>
+            
+            <circle cx="440" cy="560" r="20" class="circulo-numero"/>
+            <text x="440" y="568" text-anchor="middle" class="texto-grande">4</text>
+            
+            <!-- CIRCUITO 5 -->
+            <line x1="520" y1="380" x2="520" y2="420" class="linea"/>
+            
+            <rect x="505" y="420" width="30" height="40" class="caja"/>
+            <text x="520" y="433" text-anchor="middle" class="texto-titulo">1x16A</text>
+            <text x="520" y="445" text-anchor="middle" class="texto-titulo">C</text>
+            <text x="520" y="457" text-anchor="middle" class="texto-titulo">6kA</text>
+            
+            <rect x="495" y="475" width="50" height="35" fill="white" stroke="black" stroke-width="1"/>
+            <text x="520" y="488" text-anchor="middle" class="texto-titulo">2x25A</text>
+            <text x="520" y="503" text-anchor="middle" class="texto-titulo">30mA</text>
+            <circle cx="505" cy="495" r="8" fill="white" stroke="black" stroke-width="1"/>
+            <line x1="502" y1="498" x2="508" y2="492" stroke="black" stroke-width="1"/>
+            
+            <line x1="520" y1="510" x2="520" y2="540" class="linea"/>
+            <text x="480" y="530" class="texto-titulo">S: . 3x2.5 mm2</text>
+            
+            <circle cx="520" cy="560" r="20" class="circulo-numero"/>
+            <text x="520" y="568" text-anchor="middle" class="texto-grande">5</text>
+            
+            <!-- Indicador 2x40A general -->
+            <text x="320" y="360" class="texto-titulo">2x40A</text>
+            <text x="320" y="373" class="texto-titulo">C</text>
+            <text x="315" y="386" class="texto-titulo">6kA</text>
+            
+            <!-- Nota técnica inferior -->
+            <rect x="150" y="620" width="500" height="30" fill="#fff9e6" stroke="#ffa500" stroke-width="1"/>
+            <text x="160" y="638" class="texto-titulo">⚠ Diagrama según normativa NCh Elec 4/2003 | SEC Chile</text>
+            
+        </svg>
+        
+        <div style="margin-top: 20px; padding: 15px; background: #e8f4f8; border-radius: 4px; border-left: 4px solid #3498db;">
+            <p style="margin: 0; font-size: 13px; color: #333;">
+                <strong>Este es un ejemplo de diagrama técnico profesional.</strong><br>
+                Usa líneas limpias, símbolos estándar, especificaciones técnicas completas y un diseño monocromático profesional.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

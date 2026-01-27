@@ -1,0 +1,215 @@
+/* ========================================
+   MODAL NOTAS OBLIGATORIAS
+   ======================================== */
+
+.modal-notas {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 3000;
+    pointer-events: none;
+}
+
+.modal-notas.active {
+    display: block;
+    pointer-events: auto;
+}
+
+.ventana-notas {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 1400px;
+    height: 90vh;
+    background: white;
+    border: 3px solid #d35400;
+    border-radius: 12px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 3001;
+}
+
+.modal-notas-header {
+    background: linear-gradient(135deg, #d35400 0%, #e67e22 100%);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 9px 9px 0 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-notas-title {
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.modal-notas-controls {
+    display: flex;
+    gap: 10px;
+    margin-right: 10px;
+}
+
+.modal-notas-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-modal-notas {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    transition: all 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.btn-modal-notas:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-modal-notas.close {
+    background: rgba(231, 76, 60, 0.8);
+    border-color: #e74c3c;
+}
+
+.btn-modal-notas.close:hover {
+    background: #e74c3c;
+}
+
+.modal-notas-content {
+    flex: 1;
+    padding: 30px 40px;
+    overflow-y: auto;
+    background: #f8f9fa;
+    border-radius: 0 0 9px 9px;
+}
+
+/* DOCUMENTO DE NOTAS DENTRO DEL MODAL */
+.notas-documento {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 35px 40px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    font-family: 'Courier New', monospace;
+    line-height: 1.5;
+}
+
+.notas-titulo {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid #2c3e50;
+    color: #2c3e50;
+    text-decoration: underline;
+}
+
+.notas-texto-completo {
+    color: #2c3e50;
+    font-size: 13px;
+    text-align: justify;
+    white-space: pre-line;
+    word-wrap: break-word;
+}
+
+.notas-footer {
+    background: #ecf0f1;
+    padding: 20px;
+    border-radius: 0 0 9px 9px;
+    text-align: center;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn-exportar-notas {
+    background: linear-gradient(135deg, #27ae60, #229954);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+}
+
+.btn-exportar-notas:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+}
+
+/* ========================================
+   NOTAS INTEGRADAS EN EL PLANO
+   ======================================== */
+
+.notas-integradas {
+    transition: all 0.3s ease;
+}
+
+.notas-integradas:hover {
+    box-shadow: 0 8px 25px rgba(211, 84, 0, 0.4);
+}
+
+/* Scrollbar personalizado */
+.modal-notas-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.modal-notas-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.modal-notas-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #d35400, #e67e22);
+    border-radius: 10px;
+}
+
+.modal-notas-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #e67e22, #d35400);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .ventana-notas {
+        width: 95%;
+        max-height: 90vh;
+    }
+    
+    .modal-notas-content {
+        padding: 20px 15px;
+    }
+    
+    .notas-documento {
+        padding: 20px;
+    }
+    
+    .modal-notas-title {
+        font-size: 16px;
+    }
+    
+    .notas-texto-completo {
+        font-size: 12px;
+    }
+}

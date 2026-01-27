@@ -1,0 +1,369 @@
+/* ===================================
+   ESPECIFICACIONES TÉCNICAS - CSS
+   Tamaño: Carta (8.5" × 11")
+   Márgenes exactos del documento original
+   =================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Medidas exactas del documento original */
+    --page-width: 8.5in;
+    --page-height: 11in;
+    --margin-top: 0.98in;
+    --margin-bottom: 0.83in;
+    --margin-left: 0.79in;
+    --margin-right: 0.79in;
+    
+    /* Colores */
+    --text-color: #000000;
+    --bg-color: #ffffff;
+}
+
+/* ===================================
+   CONFIGURACIÓN DE PÁGINA PARA IMPRESIÓN
+   =================================== */
+
+@page {
+    size: letter; /* 8.5in × 11in */
+    margin: 0.98in 0.79in 0.83in 0.79in;
+}
+
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .page {
+        page-break-after: always;
+        margin: 0;
+        padding: 0;
+        width: 8.5in;
+        height: 11in;
+    }
+    
+    .page:last-child {
+        page-break-after: auto;
+    }
+    
+    /* Evitar saltos de página no deseados */
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+    
+    p {
+        orphans: 3;
+        widows: 3;
+    }
+}
+
+/* ===================================
+   VISTA EN PANTALLA
+   =================================== */
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #525659;
+    padding: 40px 0;
+    margin: 0;
+}
+
+.container {
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* ===================================
+   PÁGINAS - EFECTO HOJA REAL
+   =================================== */
+
+.page {
+    width: 8.5in;
+    height: 11in;
+    background-color: #ffffff;
+    position: relative;
+    margin: 0 auto 30px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    page-break-after: always;
+}
+
+/* Borde visual de la hoja */
+.page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid #d0d0d0;
+    pointer-events: none;
+}
+
+.page-content {
+    position: absolute;
+    top: var(--margin-top);
+    left: var(--margin-left);
+    right: var(--margin-right);
+    bottom: var(--margin-bottom);
+    color: var(--text-color);
+    overflow: hidden;
+}
+
+/* Visualización de márgenes (solo en pantalla) */
+@media screen {
+    .page::after {
+        content: '';
+        position: absolute;
+        top: var(--margin-top);
+        left: var(--margin-left);
+        right: var(--margin-right);
+        bottom: var(--margin-bottom);
+        border: 1px dashed #e0e0e0;
+        pointer-events: none;
+        opacity: 0.3;
+    }
+}
+
+/* ===================================
+   TIPOGRAFÍA
+   =================================== */
+
+.titulo-principal {
+    font-size: 14pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 16pt;
+    letter-spacing: 0.3em;
+    line-height: 1.4;
+}
+
+.titulo {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 14pt;
+    margin-bottom: 10pt;
+    line-height: 1.3;
+}
+
+.subtitulo {
+    font-size: 11pt;
+    font-weight: normal;
+    margin-left: 0.5in;
+    margin-top: 8pt;
+    margin-bottom: 8pt;
+    line-height: 1.4;
+}
+
+.subtitulo-especial {
+    font-size: 11pt;
+    font-weight: bold;
+    margin-top: 12pt;
+    margin-bottom: 10pt;
+    line-height: 1.4;
+}
+
+.normal {
+    font-size: 11pt;
+    font-weight: normal;
+    text-align: justify;
+    margin-bottom: 8pt;
+    line-height: 1.4;
+    text-indent: 0;
+}
+
+.lista-item {
+    font-size: 11pt;
+    font-weight: normal;
+    margin-left: 0.75in;
+    margin-bottom: 6pt;
+    line-height: 1.4;
+    text-indent: -0.2in;
+    padding-left: 0.2in;
+}
+
+/* ===================================
+   ESPACIADO ESPECIAL
+   =================================== */
+
+.espaciado-extra {
+    margin-bottom: 16pt;
+}
+
+.sin-margen {
+    margin-bottom: 0;
+}
+
+/* ===================================
+   NÚMEROS DE PÁGINA
+   =================================== */
+
+.page-number {
+    position: absolute;
+    bottom: 0.4in;
+    right: 0.79in;
+    font-size: 10pt;
+    color: #666;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* ===================================
+   BOTONES DE CONTROL (solo pantalla)
+   =================================== */
+
+.controles {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+@media print {
+    .controles {
+        display: none;
+    }
+    
+    .page-number {
+        display: none;
+    }
+    
+    body {
+        background: white;
+    }
+    
+    .page {
+        margin: 0;
+        box-shadow: none;
+    }
+    
+    .page::before,
+    .page::after {
+        display: none;
+    }
+}
+
+.btn-imprimir {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-imprimir:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+/* ===================================
+   INFORMACIÓN DEL DOCUMENTO
+   =================================== */
+
+.info-documento {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    font-size: 13px;
+    z-index: 1000;
+    max-width: 350px;
+}
+
+@media print {
+    .info-documento {
+        display: none;
+    }
+}
+
+/* ===================================
+   FORMULARIO DE DATOS DEL PROYECTO
+   =================================== */
+
+.form-proyecto {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px solid #e5e7eb;
+}
+
+.form-proyecto h4 {
+    font-size: 13px;
+    font-weight: bold;
+    color: #2563eb;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    color: #374151;
+    margin-bottom: 4px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.btn-actualizar {
+    width: 100%;
+    background-color: #10b981;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: all 0.3s;
+}
+
+.btn-actualizar:hover {
+    background-color: #059669;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.info-documento h3 {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #2563eb;
+}
+
+.info-documento p {
+    margin: 4px 0;
+    color: #666;
+}

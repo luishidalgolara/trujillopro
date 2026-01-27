@@ -1,0 +1,222 @@
+{
+  "parte": "TITULO IV",
+  "parrafos": [
+    {
+      "numero": "Párrafo I",
+      "nombre": "Procedimiento para la ejecución de las Instalaciones Domiciliarias de Agua Potable y Alcantarillado",
+      "articulos": [
+        {
+          "numero": "Artículo 12º",
+          "texto": "La tramitación administrativa correspondiente al proyecto y construcción de las Instalaciones Domiciliarias de Agua Potable y Alcantarillado (IDAA), contempla las siguientes etapas:",
+          "etapas": [
+            "Otorgamiento de la Factibilidad de servicios.",
+            "Presentación del proyecto.",
+            "De la iniciación de obras.",
+            "Autorización de Conexión y Empalme de las Instalaciones de Agua Potable y de alcantarillado de aguas servidas.",
+            "Recepción de las instalaciones."
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "Párrafo II",
+      "nombre": "Otorgamiento de la Factibilidad de servicios sanitarios",
+      "articulos": [
+        {
+          "numero": "Artículo 13º",
+          "texto": "Previo a la elaboración de un proyecto de instalación domiciliaria y/o de red pública, el peticionario deberá solicitar el Certificado de Factibilidad de dación de servicio de agua potable o de alcantarillado, según corresponda.\nEl otorgamiento de las factibilidades y los respectivos certificados, deberá atenerse a lo establecido en el Párrafo 4° del Título IV del DS MOP 1199/2004.\nLos certificados a que se refiere el primer inciso, deberán expresar la factibilidad y en caso necesario, las condiciones exigidas. El interesado, podrá solicitar por escrito el cambio del punto de conexión a la red pública indicado en el certificado de factibilidad; caso en el cual, la empresa sanitaria informará por escrito la aceptación o rechazo de esta solicitud.\nEl prestador sólo podrá denegar la factibilidad, en caso que la propiedad de que se trata, se encuentre fuera del territorio operacional de la concesión.\nSi el prestador no pudiere otorgar el servicio de manera inmediata por no disponer de la infraestructura necesaria, en la factibilidad deberá identificar las obras que requiere y el mínimo plazo técnicamente necesario para su construcción y puesta en servicio y los demás antecedentes pertinentes, según el artículo 33 de la ley General de Servicios Sanitarios."
+        },
+        {
+          "numero": "Artículo 14º",
+          "texto": "Para el otorgamiento de la factibilidad de dación de servicios sanitarios, el peticionario deberá entregar la siguiente información:",
+          "informacion": {
+            "a": {
+              "titulo": "Antecedentes del propietario:",
+              "items": [
+                "a.a) Nombre",
+                "a.b) Domicilio",
+                "a.c) Teléfono o fax",
+                "a.d) Correo electrónico",
+                "a.e) RUT",
+                "a.f) Firma"
+              ]
+            },
+            "b": {
+              "titulo": "Antecedentes del proyectista:",
+              "items": [
+                "b.a) Nombre",
+                "b.b) Domicilio",
+                "b.c) Teléfono o fax",
+                "b.d) Correo electrónico",
+                "b.e) RUT",
+                "b.f) Firma"
+              ]
+            },
+            "c": {
+              "titulo": "Antecedentes del inmueble:",
+              "items": [
+                "c.a) Calle y número.",
+                "c.b) Población, comuna y ciudad.",
+                "c.c) Croquis de ubicación.",
+                "c.d) Datos del arranque y de la unión domiciliaria, en caso de existir.",
+                "c.e) Datos de la fuente propia, en caso de existir.",
+                "c.f) Terreno bajo cota de rasante o de solera, en caso de existir."
+              ]
+            },
+            "d": {
+              "titulo": "Datos del proyecto:",
+              "items": [
+                "d.a) Tipo y destino de la obra.",
+                "d.b) Nº de edificaciones.",
+                "d.c) Nº de pisos.",
+                "d.d) Consumos estimados de agua potable en m3/día.",
+                "d.e) Caudal de aguas servidas (UEH) y volumen máximo de descarga (m3/mes).",
+                "d.f) Consumo estimado en m3/día para conexión provisional en caso de ser necesario."
+              ]
+            }
+          },
+          "nota": "En caso de proyectos que cuenten con un sistema particular de abastecimiento de agua potable o disposición de aguas servidas, deberá adjuntarse una descripción general con indicación de la capacidad de esos sistemas en m3/día."
+        },
+        {
+          "numero": "Artículo 15º",
+          "texto": "La información que deberán entregar los prestadores en el Certificado de Factibilidad es la siguiente:",
+          "informacion": {
+            "a": {
+              "titulo": "Agua Potable:",
+              "items": [
+                "a.a) Ubicación, diámetro y material de la tubería de la red pública de distribución o del arranque según corresponda.",
+                "a.b) La presión para el diseño de la instalación domiciliaria de agua potable será la establecida en la norma chilena NCh 2485."
+              ],
+              "nota": "Cada certificado deberá contener un número identificatorio único."
+            },
+            "b": {
+              "titulo": "Alcantarillado:",
+              "items": [
+                "b.a) Ubicación, profundidad, diámetro y material de la tubería de la red pública de recolección.",
+                "b.b) Datos de la unión domiciliaria, si existiera.",
+                "b.c) Condicionantes técnicas especiales.",
+                "b.d) Cada certificado deberá tener un número identificatorio único."
+              ]
+            },
+            "c": {
+              "titulo": "Otros antecedentes:",
+              "items": [
+                "c.a) Fecha de emisión del certificado y período de validez de las condicionantes técnicas.",
+                "c.b) Indicar si exigirá aportes financieros reembolsables, en los términos que prevé el DFL MOP 70 de 1988."
+              ]
+            }
+          }
+        },
+        {
+          "numero": "Artículo 16º",
+          "texto": "Las discrepancias entre el prestador y el interesado en lo que se refiere a las condiciones establecidas en el artículo anterior, serán resueltas por la Superintendencia, a través de una resolución fundada, tal como lo establece el artículo 33º del DFL MOP 382/88."
+        }
+      ]
+    },
+    {
+      "numero": "Párrafo III",
+      "nombre": "Presentación del proyecto",
+      "articulos": [
+        {
+          "numero": "Artículo 17º",
+          "texto": "Una vez otorgada la factibilidad, y previamente aprobado el proyecto de la red publica, si corresponde, el proyectista deberá entregar al prestador la siguiente información:",
+          "informacion": [
+            "a) Proyecto informativo de la instalación domiciliaria, confeccionado y firmado en dos copias por un proyectista, a los que se refieren los artículos 9 y 10 del presente Reglamento.",
+            "b) Cuando se trate de una instalación que cuente con fuente propia de agua potable, se deberá entregar, además, la información necesaria de estas instalaciones.",
+            "c) Cuando existan viviendas con el nivel de piso terminado bajo la cota de solera, el proyectista deberá presentar al prestador una solución técnica que evite el anegamiento de la vivienda debido a la obstrucción del colector público, la que deberá quedar consignada en el proyecto correspondiente.",
+            "d) Número del certificado de factibilidad."
+          ]
+        },
+        {
+          "numero": "Artículo 18º",
+          "texto": "El prestador archivará provisionalmente una copia del proyecto informativo si no formulare observaciones sobre el mismo, dentro del término de 20 días desde recibido. Asimismo, en caso de formular observaciones, el prestador dispondrá de un plazo total de 27 días, para aprobar el proyecto. Estos plazos se interrumpirán, en caso que el prestador formule observaciones, y comenzarán a correr nuevamente por los días no transcurridos, una vez que el interesado reingrese el proyecto corregido.\nSi las correcciones al proyecto no subsanaran las observaciones planteadas por el prestador, en el siguiente reingreso la empresa contará por una sola vez con un plazo adicional de 20 días, contados desde la fecha del reingreso. De persistir las observaciones sin ser subsanadas, los plazos para las revisiones comenzarán a correr como si se tratase de un nuevo proyecto ingresado.\nConforme a dicho proyecto se fijarán los valores de los aportes de financiamiento reembolsables, exigidos en el certificado de factibilidad."
+        },
+        {
+          "numero": "Artículo 19º",
+          "texto": "Para construir las instalaciones domiciliarias el propietario deberá hacer entrega del proyecto a un contratista, quien deberá proceder a firmar la copia del proyecto informativo que se encuentra en poder del prestador o en el Servicio de Salud correspondiente."
+        }
+      ]
+    },
+    {
+      "numero": "Párrafo IV",
+      "nombre": "De la Iniciación de Obras",
+      "articulos": [
+        {
+          "numero": "Artículo 20º",
+          "texto": "Una vez archivado provisoriamente el proyecto y subsanadas las eventuales observaciones que dentro del plazo del artículo 18º le hubiere formulado el prestador, el interesado podrá dar inicio a la ejecución de las instalaciones."
+        },
+        {
+          "numero": "Artículo 21º",
+          "texto": "El interesado suministrará e instalará el medidor de agua potable de acuerdo con las Normas Técnicas Chilenas Oficiales que correspondan y los planos tipo de arranques de agua potable del prestador, recibidos sin observaciones por la SISS y disponibles en su Centro de Documentación Especializada, salvo las excepciones en cuanto al diseño del medidor u otras de igual significado, debidamente autorizadas por la Superintendencia de Servicios Sanitarias.\nEl interesado podrá convenir con el prestador que éste le suministre y ejecute la instalación del respectivo medidor. El costo del medidor y su instalación deberá convenirse entre las partes y corresponde considerarlo como aporte de terceros, de acuerdo con el artículo 23º del DFL MOP Nº 70/88."
+        }
+      ]
+    },
+    {
+      "numero": "Párrafo V",
+      "nombre": "Autorización de Conexión y Empalme de las Instalaciones de Agua Potable y Alcantarillado",
+      "articulos": [
+        {
+          "numero": "Artículo 22º",
+          "texto": "Para otorgar la autorización de conexión y empalme, es necesario que el peticionario entregue al prestador, previamente, los siguientes antecedentes:",
+          "antecedentes": [
+            "a) Original y dos copias del proyecto definitivo de la instalación construida, que debe ser firmado por alguno de los profesionales o técnicos especialistas de los indicados en los artículos 9º y 33º de este Reglamento, con su numeración oficial avalada por el certificado municipal correspondiente, para su archivo por dicho prestador.",
+            "b) Certificado de número de la propiedad, emitido por la Municipalidad respectiva.",
+            "c) En caso que la conexión o empalme no sea ejecutada por el prestador, sino que por un contratista autorizado, contratado por el propietario, se deben indicar además los siguientes antecedentes del contratista: Nombre; Domicilio; RUT"
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "Párrafo VI",
+      "nombre": "De la Recepción de las Instalaciones",
+      "articulos": [
+        {
+          "numero": "Artículo 23º",
+          "texto": "Entregada conforme la información por el peticionario, de acuerdo al artículo anterior, el prestador señalará día y hora para la conexión o empalme y determinará los demás requisitos y exigencias que fueren necesarias."
+        },
+        {
+          "numero": "Artículo 24º",
+          "texto": "Cumplido el trámite del artículo anterior, el prestador concurrirá a recibir el arranque y la unión domiciliaria y, en su caso, emitirá el certificado de Instalaciones de Agua Potable y de Alcantarillado señalado en el artículo 2º número 18 de este Reglamento, en el cual dejará constancia de la recepción conforme de dichas obras, con indicación del inmueble objeto del servicio, el número de cliente correspondiente al enrolamiento comercial, el número de medidor y su lectura inicial y el caudal comprometido.\nEl prestador dispondrá de un plazo máximo de 10 días para practicar la recepción final, recibir el arranque y la unión domiciliaria y emitir el certificado de instalaciones de agua potable y de alcantarillado, plazo que se contará a partir de la fecha en que el interesado solicite por escrito dicha recepción. Dicho plazo podrá prorrogarse por 3 días más, en caso debidamente justificados."
+        },
+        {
+          "numero": "Artículo 25º",
+          "texto": "Los interesados podrán contratar un revisor independiente de los referidos en el artículo 18° para que certifique que los proyectos y las obras de instalaciones domiciliarias han sido ejecutados cumpliendo con las disposiciones legales y reglamentarias, debiendo emitir un informe al efecto. Estos informes a voluntad de los interesados, podrán incorporarse al certificado a que alude el artículo 24° de este Reglamento.\nLas empresas de servicios sanitarios a petición de los interesados, podrán dar la certificación a que se refiere este artículo. Los precios por otorgar sus informes deberán haber sido informados previamente a la Superintendencia, en conformidad a lo previsto en el inciso 2° del artículo 21 del DFL MOP 70/88."
+        }
+      ]
+    },
+    {
+      "numero": "Párrafo VII",
+      "nombre": "Disposiciones Varias",
+      "articulos": [
+        {
+          "numero": "Artículo 26º",
+          "texto": "Los proyectos y certificados de factibilidad de los sistemas particulares de abastecimiento de agua potable o de disposición de aguas servidas serán aprobados y extendidos por los Servicios de Salud respectivos."
+        },
+        {
+          "numero": "Artículo 27º",
+          "texto": "Aquellas fuentes nuevas emisoras de agua residuales que, con el propósito de dar cumplimiento a la Norma de emisión vigente para la descarga de dichas aguas en redes de alcantarillado público, soliciten al prestador factibilidad para su conexión a dichas redes, deberán indicar en su solicitud de factibilidad, el volumen de residuo máximo a descargar en m3/mes.\nTratándose de fuentes con descargas de aguas residuales sometidas a la normativa de emisión vigente para la descarga de dichas aguas en redes de alcantarillado público, y que cuenten actualmente con factibilidad de alcantarillado por parte de su prestador, para proceder a descargar un volumen mayor de residuos, deberán requerir la modificación de dicha factibilidad, con una frecuencia no superior a una vez cada 2 años."
+        },
+        {
+          "numero": "Artículo 28º",
+          "texto": "Para el caso de fuentes emisoras de aguas residuales sometidas a la normativa de emisión vigente para la descarga de dichas aguas en redes de alcantarillado público, y que hayan solicitado factibilidad de alcantarillado por un volumen máximo mensual, se deberá indicar de manera explícita en el certificado de factibilidad, la autorización para descargar dicho volumen."
+        },
+        {
+          "numero": "Artículo 29º",
+          "texto": "Para otorgar servicio a inmuebles individuales con características de viviendas de tipo social, que no pertenezcan a conjuntos o loteos, con medidores de agua potable de 13 mm y su respectiva unión domiciliaria de alcantarillado, el prestador podrá hacer exigible, en vez del proyecto de instalación domiciliaria, sólo un croquis de las instalaciones correspondientes, firmado por un proyectista de los indicados en el artículo 9º de este Reglamento."
+        },
+        {
+          "numero": "Artículo 30º",
+          "texto": "En caso de ocurrir cambios de contratista durante la ejecución de las instalaciones domiciliarias, aquel que asume los trabajos, en conjunto con el propietario, deberán efectuar la notificación escrita con la firma de ambos al prestador."
+        },
+        {
+          "numero": "Artículo 31º",
+          "texto": "Si durante la construcción de las instalaciones domiciliarias, fuere necesario efectuar modificaciones al proyecto inicial, dichas modificaciones deberán incluirse en el proyecto definitivo que debe entregarse al prestador conforme al artículo 22º.\nLos proyectos archivados por el prestador serán de consulta pública."
+        },
+        {
+          "numero": "Artículo 32º",
+          "texto": "Los prestadores deberán otorgar con carácter provisional, por un plazo no superior a seis meses prorrogables, un arranque de agua potable o una unión domiciliaria de alcantarillado, requerido para la instalación de faenas o para la construcción de las edificaciones. En estos casos se exigirá que se haya emitido una factibilidad favorable para atender la edificación que se construirá en el inmueble."
+        }
+      ]
+    }
+  ]
+}

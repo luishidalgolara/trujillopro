@@ -1,0 +1,114 @@
+.modal-cuadro-piezas {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 3000;
+    pointer-events: none;
+}
+
+.modal-cuadro-piezas.active {
+    display: block;
+    pointer-events: auto;
+}
+
+.ventana-cuadro-piezas {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 1400px;
+    height: 90vh;
+    background: white;
+    border: 3px solid #e67e22;
+    border-radius: 12px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 3001;
+}
+
+.modal-cuadro-piezas-header {
+    background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 9px 9px 0 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-cuadro-piezas-title {
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.modal-cuadro-piezas-controls {
+    display: flex;
+    gap: 10px;
+    margin-right: 10px;
+}
+
+.modal-cuadro-piezas-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-modal-cuadro-piezas {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    transition: all 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.btn-modal-cuadro-piezas:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-modal-cuadro-piezas.close {
+    background: rgba(231, 76, 60, 0.8);
+    border-color: #e74c3c;
+}
+
+.btn-modal-cuadro-piezas.close:hover {
+    background: #e74c3c;
+}
+
+.modal-cuadro-piezas-content {
+    flex: 1;
+    padding: 0;
+    overflow: auto;
+    background: #f8f9fa;
+    border-radius: 0 0 9px 9px;
+}
+
+.modal-cuadro-piezas-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+.cuadro-piezas-integrado {
+    transition: all 0.3s ease;
+}
+
+.cuadro-piezas-integrado:hover {
+    box-shadow: 0 8px 25px rgba(230, 126, 34, 0.4);
+}

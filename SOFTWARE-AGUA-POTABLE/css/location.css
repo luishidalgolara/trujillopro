@@ -1,0 +1,98 @@
+/* css/location.css */
+.location-group {
+    background: #374151;
+    border: 2px solid #10b981;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 25px 0;
+    position: relative;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.location-group::before {
+    content: '🏠 UBICACIÓN DEL PROYECTO';
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: #1f2937;
+    color: #10b981;
+    padding: 5px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 6px;
+    letter-spacing: 1px;
+}
+
+.location-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.location-input {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.location-input label {
+    color: #f9fafb;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.address-field {
+    padding: 12px;
+    border: 2px solid #4b5563;
+    border-radius: 8px;
+    background: #1f2937;
+    color: #f9fafb;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.address-field:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.address-field::placeholder {
+    color: #9ca3af;
+}
+
+.company-result {
+    padding: 12px;
+    background: #4b5563;
+    border-radius: 8px;
+    border-left: 4px solid #10b981;
+    font-size: 13px;
+    color: #d1d5db;
+    transition: all 0.3s ease;
+    min-height: 50px;
+}
+
+.company-result.detected {
+    background: #065f46;
+    border-left-color: #fbbf24;
+    color: #fbbf24;
+    font-weight: bold;
+}
+
+.company-result.detected::before {
+    content: '✅ ';
+    margin-right: 8px;
+}
+
+.company-result.error {
+    background: #7f1d1d;
+    border-left-color: #ef4444;
+    color: #fca5a5;
+}
+
+.company-result.error::before {
+    content: '⚠️ ';
+    margin-right: 8px;
+}

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requisitos de Cámaras Prefabricadas según NCh 2702</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .tabla-container {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 900px;
+        }
+        
+        .titulo {
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-decoration: underline;
+            letter-spacing: 0.5px;
+        }
+        
+        .tabla {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #000;
+        }
+        
+        .tabla th,
+        .tabla td {
+            border: 1px solid #000;
+            padding: 6px 8px;
+            text-align: center;
+            font-size: 9px;
+        }
+        
+        .tabla th {
+            background: #f0f0f0;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+        
+        .tabla td {
+            vertical-align: middle;
+        }
+        
+        /* Columna COMPONENTE */
+        .col-componente {
+            width: 15%;
+            font-weight: bold;
+        }
+        
+        /* Columna PROFUNDIDAD */
+        .col-profundidad {
+            width: 12%;
+        }
+        
+        /* Columnas de datos numéricos */
+        .col-diametro {
+            width: 12%;
+        }
+        
+        .col-espesor {
+            width: 14%;
+        }
+        
+        .col-resistencia {
+            width: 16%;
+        }
+        
+        .col-impermeabilidad {
+            width: 16%;
+        }
+        
+        /* Header principal */
+        .header-principal {
+            font-weight: bold;
+            font-size: 9px;
+            line-height: 1.3;
+        }
+        
+        /* Unidades de medida */
+        .unidad {
+            font-weight: normal;
+            font-size: 8px;
+        }
+        
+        /* Filas de módulos */
+        .fila-modulo {
+            background: #ffffff;
+        }
+        
+        /* Primera columna que agrupa filas */
+        .celda-agrupada {
+            vertical-align: middle;
+            font-weight: bold;
+        }
+        
+        /* Supresión de valor */
+        .valor-suprimido {
+            font-size: 12px;
+        }
+        
+        /* Botones de acción */
+        .botones-container {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #45a049;
+        }
+        
+        .btn-success {
+            background: #2196F3;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #0b7dda;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .tabla-container {
+                box-shadow: none;
+                padding: 0;
+            }
+            
+            .botones-container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tabla-container">
+        <div class="titulo">
+            REQUISITOS DE CÁMARAS PREFABRICADAS SEGÚN NCh 2702
+        </div>
+        
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th class="col-componente header-principal">COMPONENTE</th>
+                    <th class="col-profundidad header-principal">
+                        PROFUNDIDAD<br>
+                        <span class="unidad">m</span>
+                    </th>
+                    <th class="col-diametro header-principal">
+                        DIAMETRO<br>INTERIOR<br>
+                        <span class="unidad">m</span>
+                    </th>
+                    <th class="col-diametro header-principal">
+                        DIAMETRO<br>INTERIOR<br>ULTIMA<br>CAMARA<br>
+                        <span class="unidad">m</span>
+                    </th>
+                    <th class="col-espesor header-principal">
+                        ESPESOR<br>MINIMO DE<br>PARED<br>
+                        <span class="unidad">mm</span>
+                    </th>
+                    <th class="col-resistencia header-principal">
+                        RESISTENCIA<br>MINIMA A LA<br>COMPRESION<br>DIAMETRAL<br>
+                        <span class="unidad">KN/m</span>
+                    </th>
+                    <th class="col-impermeabilidad header-principal">
+                        IMPERMEABILIDAD<br>MAXIMA DE<br>EDICION DE AGUA<br>
+                        <span class="unidad">cm³/m</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- FILA 1: 0.45 - 1 -->
+                <tr class="fila-modulo">
+                    <td class="celda-agrupada" rowspan="4">MODULO</td>
+                    <td class="col-profundidad">0.45 – 1</td>
+                    <td class="col-diametro">0.60</td>
+                    <td class="col-diametro">0.80</td>
+                    <td class="col-espesor">57</td>
+                    <td class="col-resistencia">28</td>
+                    <td class="col-impermeabilidad">300</td>
+                </tr>
+                
+                <!-- FILA 2: 1 - 2 -->
+                <tr class="fila-modulo">
+                    <td class="col-profundidad">1 – 2</td>
+                    <td class="col-diametro">0.80</td>
+                    <td class="col-diametro">1.00</td>
+                    <td class="col-espesor">77</td>
+                    <td class="col-resistencia">33</td>
+                    <td class="col-impermeabilidad">360</td>
+                </tr>
+                
+                <!-- FILA 3: MAYOR DE 2 - primera parte -->
+                <tr class="fila-modulo">
+                    <td class="col-profundidad" rowspan="2">MAYOR DE 2</td>
+                    <td class="col-diametro">1.00</td>
+                    <td class="col-diametro valor-suprimido">–</td>
+                    <td class="col-espesor">95</td>
+                    <td class="col-resistencia">37</td>
+                    <td class="col-impermeabilidad">440</td>
+                </tr>
+                
+                <!-- FILA 4: MAYOR DE 2 - segunda parte -->
+                <tr class="fila-modulo">
+                    <td class="col-diametro valor-suprimido">–</td>
+                    <td class="col-diametro">1.20</td>
+                    <td class="col-espesor">105</td>
+                    <td class="col-resistencia">39</td>
+                    <td class="col-impermeabilidad">520</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="botones-container">
+            <button class="btn btn-success" onclick="insertarEnPlano()">📌 Insertar en Plano</button>
+            <button class="btn btn-primary" onclick="window.print()">🖨️ Imprimir</button>
+        </div>
+    </div>
+    
+    <script>
+        function insertarEnPlano() {
+            // Enviar mensaje al padre para insertar en el plano
+            window.parent.postMessage({
+                tipo: 'insertarTablaNch2702'
+            }, '*');
+        }
+        
+        console.log('✅ Tabla Requisitos NCh 2702 cargada correctamente');
+    </script>
+</body>
+</html>

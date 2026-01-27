@@ -1,0 +1,989 @@
+{
+  "seccion_8.2_sistemas_de_canalizacion_final": {
+    "subsecciones": {
+      "8.2.21_canalizaciones_en_canaletas": {
+        "numero": "8.2.21",
+        "titulo": "Canalizaciones en canaletas",
+        "articulos": [
+          {
+            "numero": "8.2.21.1",
+            "texto": "Las canaletas son vaciados hechos en el suelo o piso de una construcción, cuya finalidad es la de alojar los conductores o tuberías de circuitos eléctricos de distintos servicios o de circuitos de control."
+          },
+          {
+            "numero": "8.2.21.2",
+            "texto": "Los muros de las canaletas serán de ladrillo u hormigón y el piso será de hormigón; su construcción deberá asegurar una resistencia mecánica adecuada y su acabado interior será de un estuco afinado de grano perdido o de una textura equivalente. Sus bordes superiores deberán protegerse contra desmoronamientos mediante el empleo de ángulos metálicos. Ver hoja de norma Nº 9."
+          },
+          {
+            "numero": "8.2.21.3",
+            "texto": "Las canaletas se construirán sólo en tramos rectos y sus costados deberán ser paralelos en toda su longitud."
+          },
+          {
+            "numero": "8.2.21.4",
+            "texto": "Las canaletas se utilizarán cuando las condiciones del terreno hagan difícil o no recomendable el empleo de otros sistemas de canalización y en ellas se podrán colocar sólo cables multiconductores o monoconductores de una sección mínima de 10 mm2."
+          },
+          {
+            "numero": "8.2.21.5",
+            "texto": "Todos los conductores que se coloquen en las canaletas deberán cumplir con lo indicado en 8.2.19.10."
+          },
+          {
+            "numero": "8.2.21.6",
+            "texto": "El uso de canaletas como sistema de canalización se permitirá preferentemente en recintos techados. En caso de construirse canaletas a la intemperie, los cables que se coloquen en ellas deberán ser aptos para trabajar sumergidos y las eventuales uniones o derivaciones que sean necesarias de ejecutar en ellas se aislarán con un sistema aprobado para trabajar en las mismas condiciones. En todo caso el piso de la canaleta deberá tener pendiente y el sistema contará con drenajes similares a los indicados en 8.2.16.3 y 8.2.17.1."
+          },
+          {
+            "numero": "8.2.21.7",
+            "texto": "Esta prohibido el uso de canaletas en recintos peligrosos."
+          },
+          {
+            "numero": "8.2.21.8",
+            "texto": "Los conductores deberán colocarse ordenadamente en el fondo de la canaleta cuidando al tenderlos que mantengan su posición relativa durante todo su recorrido, sin entrecruzarse; sin embargo, cuando la longitud de los recorridos de cables exceda de 50 m deberán hacerse las transposiciones indicadas en 8.0.1.7. No podrá disponerse, en estas condiciones, de más de una capa de conductores o cables en una canaleta. Si la cantidad de conductores es tal que su colocación sólo es posible hacerla en más de una capa se podrán colocar soportes dentro de la canaleta que permitan llevar los conductores excedentes en una capa separada. Ver hoja de norma Nº 10."
+          },
+          {
+            "numero": "8.2.21.9",
+            "texto": "La distancia vertical entre soportes será tal que permita un espacio libre entre conductores igual al diámetro del conductor mayor, con un mínimo de 15 mm."
+          },
+          {
+            "numero": "8.2.21.10",
+            "texto": "La distancia horizontal entre soportes deberá permitir manipular cómodamente los distintos conductores o cables."
+          },
+          {
+            "numero": "8.2.21.11",
+            "texto": "Los conductores deberán sujetarse a los soportes firmemente mediante amarras de cáñamo o plásticas, de resistencia mecánica adecuada."
+          },
+          {
+            "numero": "8.2.21.12",
+            "texto": "La distancia entre soportes para un mismo cable no deberá ser superior a 1 m."
+          },
+          {
+            "numero": "8.2.21.13",
+            "texto": "A lo largo de toda la canaleta o sistemas de canaletas podrá ir colocada una barra o conductor desnudo, instalados sobre un costado de la canaleta, independiente del resto de los conductores, al cual se podrán conectar todos los conductores de protección de los distintos alimentadores o circuitos que vayan en la canaleta."
+          },
+          {
+            "numero": "8.2.21.14",
+            "texto": "La barra o conductor de protección mencionado en 8.2.21.13, se fijará firmemente a los costados de la canaleta mediante uniones apernadas colocadas a una distancia no superior a 1 m. Las derivaciones que se hagan desde esta barra o conductor podrán ser apernadas o soldadas con soldaduras de alto punto de fusión; todas las prensas y pernos que se usen para estos fines deberán ser de bronce."
+          },
+          {
+            "numero": "8.2.21.15",
+            "texto": "Este conductor o barra de protección deberá estar conectado a la puesta a tierra de la instalación por lo menos en cada extremo y se deberá hacer conexiones intermedias a la puesta a tierra cuando existan tramos superiores a 50 metros."
+          },
+          {
+            "numero": "8.2.21.16",
+            "texto": "Las salidas de conductores de las canaletas se harán a través de cualquier sistema de canalización aprobado para tales condiciones."
+          },
+          {
+            "numero": "82.21.17",
+            "texto": "Si las salidas se hacen en tuberías, los conductores se protegerán con una boquilla adecuada para evitar deterioros de la aislación."
+          },
+          {
+            "numero": "8.2.21.18",
+            "texto": "Las salidas verticales en un sistema de canaletas se harán efectuando una cavidad achaflanada en un muro de la canaleta. Ver hoja de norma Nº 11."
+          },
+          {
+            "numero": "8.2.21.19",
+            "texto": "En la salida o derivación de conductores desde la canaleta se deberá evitar que éstos se desordenen o entrecrucen. El sistema de canaletas deberá ir tapado en toda su longitud con tapas de acero diamantado, tapas de hormigón armado o de un material que asegure una resistencia mecánica adecuada a la intensidad de tránsito que es dable esperar. En todo caso el acabado exterior de la tapa debe ser antideslizante."
+          },
+          {
+            "numero": "8.2.21.20",
+            "texto": "Las tapas estarán divididas en tramos de longitudes no superiores a 1 m y cada sección de tapa deberá llevar manillas que permitan su fácil manipulación. Ver Hoja de Norma Nº 9."
+          }
+        ]
+      },
+      "8.2.22_barras_omnibus": {
+        "numero": "8.2.22",
+        "titulo": "Barras ómnibus",
+        "articulos": [
+          {
+            "numero": "8.2.22.1",
+            "texto": "Las barras ómnibus son sistemas de barras desnudas portadoras de energía, montadas sobre soportes aislantes, cubiertas en toda su longitud por una carcaza metálica o aislante y que, junto con sus accesorios y aparatos forman un sistema completo de canalización."
+          },
+          {
+            "numero": "8.2.22.2",
+            "texto": "Las barras ómnibus se podrán usar sólo en instalaciones a la vista u ocultas en lugares accesibles. No se podrán instalar en sitios en que queden expuestas a la acción de vapores corrosivos o daños físicos severos, en fosos de ascensores o montacargas, en ningún tipo de recintos peligrosos, a la Intemperie ni en recintos húmedos o mojados, salvo, en este último caso, que su construcción sea aprobada para su uso en dichas condiciones."
+          },
+          {
+            "numero": "8.2.22.3",
+            "texto": "Las barras ómnibus tendrán soportes cada 1,50 m, a menos que tengan algún tipo de soporte aprobado para distancias mayores, pero en ningún caso esta distancia podrá exceder de 3 m. Para tendidos verticales los soportes deberán ser diseñados para trabajar en dicha posición."
+          },
+          {
+            "numero": "8.2.22.4",
+            "texto": "Las barras ómnibus podrán atravesar muros o pisos, siempre que las pasadas se hagan con una sola pieza del sistema y no se produzcan uniones en ella. La pasada a través de un piso sólo se podrá hacer en barras ómnibus totalmente cerradas (sin perforaciones de ventilación) o con una cubierta de estas características que alcance hasta una altura mínima de 2 m sobre el nivel del piso."
+          },
+          {
+            "numero": "8.2.22.5",
+            "texto": "Todos los extremos de los sistemas de barras ómnibus deberán cerrarse."
+          },
+          {
+            "numero": "8.2.22.6",
+            "texto": "Desde las barras ómnibus sólo se podrán hacer derivaciones con otras barras ómnibus o con accesorios aprobados específicamente para estos usos."
+          },
+          {
+            "numero": "8.2.22.7",
+            "texto": "Los sistemas de barras ómnibus se protegerán contra la sobrecarga y los cortocircuitos con protecciones dimensionadas de acuerdo a su capacidad de transporte de corriente."
+          },
+          {
+            "numero": "8.2.22.8",
+            "texto": "Las derivaciones hechas desde una barra ómnibus con reducción de la sección de las barras deberán ser protegidas contra la sobrecarga y los cortocircuitos. Se podrán omitir estas protecciones en el caso que la sección de la barra de derivación no sea inferior a un tercio de la barra principal y la longitud de la derivación no exceda de 15 m."
+          },
+          {
+            "numero": "8.2.22.9",
+            "texto": "Cuando una barra ómnibus se utilice como alimentador, las derivaciones deberán contener las protecciones de los circuitos correspondientes."
+          },
+          {
+            "numero": "8.2.22.10",
+            "texto": "En las barras ómnibus que se usen como líneas de distribución de circuitos, en las cuales las cargas puedan conectarse en cualquier punto, dichas cargas deberán limitarse en cantidad y magnitud de modo de mantener las características nominales de los circuitos."
+          },
+          {
+            "numero": "8.2.22.11",
+            "texto": "Las barras ómnibus deben marcarse con su voltaje y corriente nominales y con el nombre del fabricante o su marca registrada. Estos datos deberán quedar visibles después de instalada la barra."
+          }
+        ]
+      }
+    }
+  },
+  "seccion_9_medidas_de_proteccion_contra_tensiones_peligrosas": {
+    "numero": "9",
+    "titulo": "MEDIDAS DE PROTECCION CONTRA TENSIONES PELIGROSAS",
+    "subsecciones": {
+      "9.0_generalidades": {
+        "numero": "9.0",
+        "titulo": "GENERALIDADES",
+        "articulos": [
+          {
+            "numero": "9.0.1",
+            "texto": "Al accionar un sistema o circuito eléctrico el operador corre el riesgo de quedar sometido a tensiones peligrosas por contacto directo o por contacto indirecto."
+          },
+          {
+            "numero": "9.0.2",
+            "texto": "Se entenderá que queda sometido a una tensión por contacto directo, cuando toca con alguna parte de su cuerpo una parte del circuito o sistema que en condiciones normales esta energizada."
+          },
+          {
+            "numero": "9.0.3",
+            "texto": "Se entenderá que queda sometido a una tensión por contacto indirecto, cuando toca con alguna parte de su cuerpo una parte metálica de un equipo eléctrico que en condiciones normales está desenergizada, pero que en condiciones de falla se energiza."
+          },
+          {
+            "numero": "9.0.4",
+            "texto": "Se protegerá al operador o usuario de una instalación o equipo eléctrico contra los contactos directos, utilizando alguna de las medidas prescritas en 9.1 o mediante combinación de ellas."
+          },
+          {
+            "numero": "9.0.5",
+            "texto": "Se protegerá al operador o usuario de una instalación o equipo eléctrico contra los contactos indirectos, limitando al mínimo el tiempo de la falla, haciendo que el valor del voltaje con respecto a tierra que se alcance en la parte fallada sea igual o inferior al valor de seguridad, o bien, haciendo que la corriente que pueda circular a través del cuerpo del operador, en caso de falla, no exceda de un cierto valor de seguridad predeterminado. El cumplimiento de estas condiciones se logrará aplicando alguna de las medidas contenidas en 9.2 o en la sección 10."
+          },
+          {
+            "numero": "9.0.6",
+            "texto": "Para los efectos de fijar las medidas de seguridad originadas en la aplicación de los conceptos contenidos en 9.0.2 a 9.0.5, se establecen los siguientes valores:",
+            "valores": [
+              {
+                "numero": "9.0.6.1",
+                "texto": "Se aplicará la definición de zona alcanzable establecida en 5.4.4.1 y hoja de norma Nº 2."
+              },
+              {
+                "numero": "9.0.6.2",
+                "texto": "El valor de resistencia del cuerpo humano se considera igual a 2.000 Ohm, para los efectos de aplicación de esta Norma.",
+                "nota_aclaratoria": "Este valor de la resistencia del cuerpo humano debe considerarse sólo como un valor referencial, utilizable exclusivamente en el ámbito de la norma y restringido a alguno de sus aspectos específicos. No existe un único valor de la resistencia o impedancia equivalente del cuerpo puesto que su comportamiento está definido básicamente por la piel y la condición en que esta se encuentra en el momento del choque eléctrico. La resistencia del cuerpo entre ambas manos, con un contacto sin piel de por medio, tiene un valor medio para varones de edad intermedia del orden de 500 Ohm; sin embargo la presencia de una piel sana, seca y un poco más gruesa que el promedio, puede elevar el valor equivalente a cifras del orden de 1 Megohm. Desgraciadamente la piel pierde esta calidad de casi aislante con suma facilidad y por una amplia diversidad de motivos, de modo que para fines de estudios de seguridad esta cifra tan alta solo debe tomarse como un dato anecdótico, sin valor práctico."
+              },
+              {
+                "numero": "9.0.6.3",
+                "texto": "Para los efectos de aplicación de esta Norma, se considerarán como máximos valores de tensión a los cuales puede quedar sometido el cuerpo humano sin ningún riesgo, 50 V en lugares secos y 24 V en lugares húmedos o mojados en general y en salas de operaciones quirúrgicas en particular."
+              },
+              {
+                "numero": "9.0.6.4",
+                "texto": "Se considerará piso aislante aquel que tenga una resistencia superior a 50.000 Ohm, en instalaciones que operen a una tensión de servicio de 380/220 V y a una frecuencia de 50 Hz. Para establecer la calidad de aislante de un piso se efectuará una medida de resistencia colocando sobre él un paño húmedo de forma cuadrada y de aproximadamente 270 mm de lado; sobre él se colocará una placa metálica limpia, sin óxido, de forma cuadrada y de 250 mm por lado; sobre esta última se colocará una placa de madera de igual dimensión y de un espesor mínimo de 20 mm; el conjunto se cargará con un peso de aproximadamente 70 Kg. Ver hoja de norma Nº 12.",
+                "procedimiento_medicion": "Se medirá la tensión mediante un voltímetro de resistencia interna R, de aproximadamente 3.000 Ohm, sucesivamente entre: Un conductor de fase y la placa metálica: esta tensión la llamaremos V2. Entre el mismo conductor de fase y una toma de tierra eléctricamente distinta de la placa y de resistencia despreciable frente a Ri; esta tensión la llamaremos V1.",
+                "formula": "R = R × (V1/V2)",
+                "criterio_aceptacion": "En un mismo local se efectuarán por lo menos tres mediciones. Si existe un elemento conductor en la zona, por lo menos una de las mediciones deberá hacerse a una distancia de 1,00 m de él. Para que el piso sea considerado aislante ninguna de las mediciones deberá arrojar valores inferiores a 50.000 Ohm. La disposición descrita aquí no es aplicable a sistemas o circuitos con neutro aislado de tierra."
+              }
+            ]
+          }
+        ]
+      },
+      "9.1_medidas_de_proteccion_contra_contactos_directos": {
+        "numero": "9.1",
+        "titulo": "MEDIDAS DE PROTECCION CONTRA CONTACTOS DIRECTOS",
+        "articulos": [
+          {
+            "numero": "9.1.1",
+            "texto": "Se considerará suficiente protección contra los contactos directos con partes energizadas que funcionen a más de 50 V, la adopción de una o más de las medidas siguientes:",
+            "medidas": [
+              {
+                "numero": "9.1.1.1",
+                "texto": "Colocación de la parte energizada fuera de la zona alcanzable por una persona, definida en 9.0.6.1."
+              },
+              {
+                "numero": "9.1.1.2",
+                "texto": "Colocando las partes activas en bóvedas, salas o recintos similares, accesibles únicamente a personal calificado."
+              },
+              {
+                "numero": "9.1.1.3",
+                "texto": "Separando las partes energizadas mediante rejas, tabiques o disposiciones similares, de modo que ninguna persona pueda entrar en contacto accidental con ellas y que sólo personal calificado tenga acceso a la zona así delimitada."
+              },
+              {
+                "numero": "9.1.1.4",
+                "texto": "Recubriendo las partes energizadas con aislantes apropiados, capaces de conservar sus propiedades a través del tiempo y que limiten las corrientes de fuga a valores no superiores a 1 miliampere. Las pinturas, barnices, lacas y productos similares no se considerarán como una aislación satisfactoria para estos fines."
+              }
+            ]
+          }
+        ]
+      },
+      "9.2_medidas_de_proteccion_contra_contactos_indirectos": {
+        "numero": "9.2",
+        "titulo": "MEDIDAS DE PROTECCION CONTRA CONTACTOS INDIRECTOS",
+        "articulos": [
+          {
+            "numero": "9.2.1",
+            "texto": "La primera medida contra los contactos indirectos es evitar que estos se produzcan y esto se logrará manteniendo la aislación en los diversos puntos de la instalación en sus valores adecuados."
+          },
+          {
+            "numero": "9.2.2",
+            "texto": "Se considera que una instalación tiene un adecuado valor de resistencia de aislación si ejecutadas las mediciones en la forma que se describe a continuación se obtienen valores no inferiores a los prescritos:",
+            "procedimientos": [
+              {
+                "numero": "9.2.2.1",
+                "texto": "La resistencia de aislación de una instalación de baja tensión se medirá aplicando una tensión no inferior a 500 V y utilizando instrumentos de corriente continua. Durante el proceso de medición los conductores de la instalación o la parte de ella que se quiere medir, incluido el neutro, estarán desconectados de la fuente de alimentación."
+              },
+              {
+                "numero": "9.2.2.2",
+                "texto": "Se efectuará una primera medición de aislación con respecto a tierra, para lo cual se unirán entre si todos los conductores de la instalación, exceptuando el de protección; se conectarán todos los artefactos de consumo y todos los interruptores estarán en la posición \"cerrado\". Se aceptará también que la medición se ejecute midiendo la aislación de cada conductor en forma individual, sin necesidad de unirlos. A continuación se efectuará una medida de aislación entre conductores, para lo cual éstos se separarán, se desconectarán los artefactos de consumo y los interruptores se mantendrán en la posición \"cerrado\"'. La medida se efectuará sucesivamente tomando los conductores de dos en dos."
+              },
+              {
+                "numero": "9.2.2.3",
+                "texto": "El valor mínimo de resistencia de aislación será de 300.000 Ohm para instalaciones con tensiones de servicio de hasta 220 V. Para tensiones superiores se aceptará una resistencia de aislación de 1.000 Ohm por volt de tensión de servicio para toda la instalación, si su extensión no excede de 100 m. Las instalaciones de extensión superior a 100 m se separarán en tramos no superiores a dicho valor, cada uno de los cuales deberá cumplir con el valor de resistencia de aislación prescrito."
+              }
+            ]
+          },
+          {
+            "numero": "9.2.3",
+            "texto": "Asumiendo que aún en una instalación en condiciones óptimas, ante una situación de falla, una parte metálica del equipo puede quedar energizada, y además de la verificación y cumplimiento de lo prescrito en 9.2.2, se deberán tomar medidas complementarias para protección contra tensiones de contacto peligrosas. Estas medidas se clasificarán en dos grupos: los sistemas de protección clase A y los sistemas de protección clase B."
+          },
+          {
+            "numero": "9.2.4",
+            "texto": "En los sistemas de protección clase A, se trata de tomar medidas destinadas a suprimir el riesgo haciendo que los contactos no sean peligrosos, o bien impidiendo los contactos simultáneos entre las masas y los elementos conductores entre los cuales puedan aparecer tensiones peligrosas. Dentro de esta clase encontraremos los siguientes sistemas de protección:",
+            "sistemas_clase_A": [
+              "Empleo de transformadores de aislación.",
+              "Empleo de tensiones extra bajas.",
+              "Empleo de aislación de protección o doble aislación.",
+              "Conexiones equipotenciales."
+            ]
+          },
+          {
+            "numero": "9.2.5",
+            "texto": "En los sistemas de protección clase B se exige la puesta a tierra o puesta a neutro de las carcazas metálicas, asociando ésta a un dispositivo de corte automático que produzca la desconexión de la parte de la instalación fallada; dentro de esta clase encontramos los siguientes sistemas:",
+            "sistemas_clase_B": [
+              "Puesta a tierra de protección y dispositivo de corte automático operado por corriente de falla.",
+              "Neutralización y dispositivo de corte automático operado por corriente de falla."
+            ]
+          },
+          {
+            "numero": "9.2.6",
+            "texto": "Sistemas de protección clase A. La aplicación de estas medidas, por sus características, serán posibles en casos muy restringidos y sólo para ciertos equipos o partes de la instalación.",
+            "sistemas": [
+              {
+                "numero": "9.2.6.1",
+                "titulo": "Empleo de transformadores de aislación",
+                "texto": "Este sistema consiste en alimentar el o los circuitos que se desea proteger a través de un transformador, generalmente de razón 1/1, cuyo secundario este aislado de tierra. Se deberán cumplir las condiciones siguientes:",
+                "condiciones": [
+                  "Su construcción será de tipo doble aislación.",
+                  "El circuito secundario no tendrá ningún punto común con el circuito primario ni con ningún otro circuito distinto.",
+                  "No se emplearán conductores ni contactos de tierra de protección en los circuitos conectados al secundario.",
+                  "Las carcazas de los equipos conectados al secundario no estarán conectados a tierra ni a la carcaza de otros equipos conectados a otros circuitos, pero la carcaza de todos los equipos conectados al circuito secundario y que pueden tocarse simultáneamente, estarán interconectados mediante un conductor de protección.",
+                  "El límite de tensión y de potencia para transformadores de aislación monofásicos será de 220 V y 10 KVA; para otros transformadores de aislación estos valores límites serán de 380 V y 18 KVA, respectivamente.",
+                  "En trabajos que se efectúen dentro de recipientes metálicos, tales como estanques, calderas, etc., los transformadores de aislación deben instalarse fuera de estos recipientes."
+                ],
+                "recomendacion": "Este tipo de protección es aconsejable de usar en instalaciones que se efectúen en o sobre calderas, andamiajes metálicos, cascos navales y, en general, donde las condiciones de trabajo sean extremadamente peligrosas por tratarse de locales o ubicaciones muy conductoras. El empleo de este sistema de protección hará innecesaria la adopción de medidas adicionales."
+              },
+              {
+                "numero": "9.2.6.2",
+                "titulo": "Empleo de tensiones extra bajas",
+                "texto": "En este sistema se empleará como tensión de servicio un valor de 42 V ó 24 V, de acuerdo a lo prescrito en 9.0.6.3. Su aplicación requiere del cumplimiento de las siguientes condiciones:",
+                "condiciones": [
+                  "La tensión extra baja será proporcionada por transformadores, generadores o baterías cuyas características sean las adecuadas para este tipo de trabajo.",
+                  "El circuito no será puesto a tierra ni se conectará con circuitos de tensión más elevada, ya sea directamente o mediante conductores de protección.",
+                  "No se podrá efectuar una transformación de media o alta tensión a tensión extra baja."
+                ],
+                "recomendacion": "El empleo de este sistema de protección es recomendable en instalaciones erigidas en recintos o lugares muy conductores y hará innecesaria la adopción de otras medidas adicionales de protección",
+                "nota_aclaratoria": "Como ejemplo de lugares muy conductores pueden citarse piscinas en que se utilicen circuitos de iluminación subacuática, circuitos de alimentación a tinas domésticas de hidromasaje, saunas, etc."
+              },
+              {
+                "numero": "9.2.6.3",
+                "titulo": "Empleo de aislación de protección o doble aislación",
+                "texto": "Este sistema consiste en recubrir todas las partes accesibles de carcazas metálicas con un material aislante apropiado, que cumpla lo prescrito en 9.1.1.4 ó utilizar carcazas aislantes que cumplan iguales condiciones.",
+                "nota_aclaratoria": "El empleo de materiales no conductores en la construcción de las carcazas de electrodomésticos y maquinas herramientas portátiles ha hecho que este sistema de protección haya alcanzado una gran difusión y efectividad"
+              },
+              {
+                "numero": "9.2.6.4",
+                "titulo": "Conexiones equipotenciales",
+                "texto": "Este sistema consiste en unir todas las partes metálicas de la canalización y las masas de los equipos eléctricos entre sí y con los elementos conductores ajenos a la instalación que sean accesibles simultáneamente, para evitar que puedan aparecer tensiones peligrosas entre ellos. Esta medida puede, además, comprender la puesta a tierra de la unión equipotencial para evitar que aparezcan tensiones peligrosas entre la unión y el piso. En las condiciones indicadas, deben insertarse partes aislantes en los elementos conductores unidos a la conexión equipotencial, por ejemplo, coplas o uniones aislantes en sistemas de cañerías, a fin de evitar la transferencia de tensiones a puntos alejados de la conexión. Las puertas y ventanas metálicas o los marcos metálicos que estén colocados en muros no conductores y fuera del contacto de otras estructuras metálicas no necesitan conectarse a la conexión equipotencial.",
+                "recomendacion": "El empleo de este sistema de protección es recomendable en lugares mojados, debiendo asociarse a uno de los sistemas de protección clase B."
+              }
+            ]
+          },
+          {
+            "numero": "9.2.7",
+            "texto": "Sistemas de protección clase B. Son aquellos que se indican a continuación; en ellos, las puestas a tierra deberán cumplir lo prescrito en la sección 10.",
+            "sistemas": [
+              {
+                "numero": "9.2.7.1",
+                "titulo": "Dispositivos automáticos de corte por corriente de falla asociados con una puesta a tierra de protección",
+                "texto": "Este sistema consiste en la conexión a una tierra de protección de todas las carcazas metálicas de los equipos y la protección de los circuitos mediante un dispositivo de corte automático sensible a las corrientes de falla, el cual desconectará la instalación o el equipo fallado; Ver hoja de norma Nº 13. La aplicación de este sistema requiere del cumplimiento de las siguientes condiciones:",
+                "condiciones_neutro_a_tierra": {
+                  "literal": "a)",
+                  "titulo": "En instalaciones con neutro a tierra:",
+                  "requisitos": [
+                    "La corriente de falla deberá ser de una magnitud tal que asegure la operación del dispositivo de protección en un tiempo no superior a 5 segundos.",
+                    "Una masa cualquiera no puede permanecer a un potencial que exceda el valor de seguridad prescrito en 9.0.6.3, en relación con una toma de tierra.",
+                    "Todas las masas de una instalación deben estar conectadas a la misma toma de tierra."
+                  ]
+                },
+                "condiciones_neutro_flotante": {
+                  "literal": "b)",
+                  "titulo": "En instalaciones con neutro flotante o conectado a tierra a través de una impedancia",
+                  "texto": "Se cumplirán las mismas condiciones de a); en donde no se pueda cumplir la primera condición, deberán cumplirse las siguientes otras condiciones:",
+                  "requisitos": [
+                    "Deberá existir un dispositivo automático de señalización que muestre cuando se haya presentado una primera falla de aislación en la instalación.",
+                    "En caso de fallas simultáneas que afecten la aislación de fases distintas o de una fase y neutro, la separación de la parte fallada de la instalación debe asegurarse mediante dispositivos de corte automático que interrumpan todos los conductores de alimentación, incluso el neutro."
+                  ]
+                }
+              },
+              {
+                "numero": "9.2.7.2",
+                "texto": "Como dispositivos de corte automático para la aplicación de las medidas contenidas en 9.2.7.1 se podrán emplear fusibles o disyuntores, siempre que sus características de operación sean adecuadas. El empleo de estos dispositivos exigirá que la impedancia de falla tenga un valor extremadamente bajo y el valor de la resistencia de la tierra de protección debe ser tal que no permita la aparición de tensiones que excedan los valores de seguridad. En general, esto sólo será posible de obtener cuando el terreno sea buen conductor y cuando en la red exista un gran número de puestas a tierra de servicio. Ver sección 10. En instalaciones en que la impedancia de falla y la puesta a tierra de protección tengan valores tales que no permitan el cumplimiento de las prescripciones de 9.2.7.1, se deberán utilizar los protectores diferenciales como dispositivos asociados a los de corte automático."
+              },
+              {
+                "numero": "9.2.7.3",
+                "titulo": "Empleo de protectores diferenciales",
+                "texto": "Las condiciones de operación de un protector diferencial se establecen en la definición 4.1.27.4 de la sección Terminología, para una mejor comprensión de su alcance ver hoja de norma Nº 13. En los casos en que el diferencial se emplee en instalaciones de uso doméstico o similar en caso de falla deberá interrumpir el suministro eléctrico al circuito protegido, aún en ausencia del conductor neutro. Otras características de este sistema de protección son las siguientes:",
+                "caracteristicas": [
+                  "El valor mínimo de corriente de falla diferencial a partir del cual el dispositivo opera determina la sensibilidad del aparato.",
+                  {
+                    "concepto": "El valor de resistencia de la puesta a tierra a que debe asociarse un protector diferencial se determinará de acuerdo a la sensibilidad de éste y debe cumplir la relación:",
+                    "formula": "R = Vs / Is",
+                    "donde": "Siendo IS el valor de la sensibilidad del diferencial expresado en Amperes, VS el voltaje de seguridad de acuerdo a 9.0.6.3 y R la resistencia de puesta a tierra de protección."
+                  },
+                  "De forma similar, se puede emplear estos aparatos cuando se aplica el sistema de neutralización como medio de protección, cumpliendo las prescripciones del párrafo 9.2.7.4."
+                ]
+              },
+              {
+                "numero": "9.2.7.4",
+                "titulo": "Neutralización",
+                "texto": "Este sistema consiste en unir las masas de la instalación al conductor neutro, de forma tal que las fallas francas de aislación se transformen en un cortocircuito fase-neutro, provocando la operación de los aparatos de protección del circuito. Ver hoja de norma Nº 14. En la implementación de este sistema se pueden adoptar dos modalidades: la conexión directa de las carcazas al neutro de la instalación, figura 1 de hoja de norma Nº 14, o la conexión de las carcazas a un conductor de protección asociado al neutro de la instalación, figura 2 de hoja de norma Nº 14. Sin embargo, para los fines de aplicación de esta Norma sólo se considerará aceptable la Neutralización con un conductor de protección asociado al neutro. Para utilizar este sistema de protección deben cumplirse las siguientes condiciones:",
+                "condiciones": [
+                  "La red de distribución deberá cumplir lo establecido en 10.1.6.",
+                  "Los dispositivos de protección deberán ser disyuntores o fusibles.",
+                  "La corriente de falla estimada en el punto será de una magnitud tal que asegure la operación de las protecciones en un tiempo no superior a 5 segundos.",
+                  "Todas las carcazas de los equipos deberán estar unidas a un conductor de protección, el que estará unido al neutro de la instalación.",
+                  "En caso de instalaciones alimentadas desde una subestación propia, el conductor de protección se conectará directamente al borne de neutro del transformador o al electrodo de tierra de servicio del mismo. En este caso la resistencia de la puesta a tierra de servicio de la subestación deberá tener un valor inferior a 20 Ohm.",
+                  "En caso de instalaciones con empalme en BT el conductor de protección se conectará al neutro en el empalme, debiendo además asociarse el sistema de neutralización a otro sistema de protección contra contactos indirectos que garantice que no existirán tensiones peligrosas ante un eventual corte del neutro de la red de distribución.",
+                  "La sección del conductor de protección será igual a la del neutro.",
+                  "El conductor de protección será aislado y de iguales características que el neutro"
+                ],
+                "recomendacion": "Se recomienda emplear el sistema de neutralización asociado a protectores diferenciales de alta sensibilidad, efectuando la unión entre el neutro y el conductor de protección antes del diferencial."
+              }
+            ]
+          }
+        ]
+      },
+      "9.3_proteccion_contra_sobretensiones": {
+        "numero": "9.3",
+        "titulo": "Protección contra sobretensiones en instalaciones y equipos",
+        "articulos": [
+          {
+            "numero": "9.3",
+            "texto": "Se recomienda instalar dispositivos protectores o supresores de sobretensión en circuitos de una instalación de consumo que alimente a consumos constituidos por equipos electrónicos, tales como computadores, máquinas de fax, impresoras, plantas telefónicas, reproductores de audio y vídeo, etc."
+          }
+        ]
+      }
+    }
+  },
+  "seccion_10_puestas_a_tierra": {
+    "numero": "10",
+    "titulo": "PUESTAS A TIERRA",
+    "subsecciones": {
+      "10.0_conceptos_generales": {
+        "numero": "10.0",
+        "titulo": "CONCEPTOS GENERALES",
+        "articulos": [
+          {
+            "numero": "10.0.1",
+            "texto": "En una instalación podrá existir una puesta a tierra de servicio y una puesta a tierra de protección."
+          },
+          {
+            "numero": "10.0.2",
+            "texto": "Se entenderá por tierra de servicio la puesta a tierra de un punto de la alimentación, en particular el neutro del empalme en caso de instalaciones conectadas en BT o el neutro del transformador que alimente la instalación en caso de empalmes en media o alta tensión, alimentados con transformadores monofásicos o trifásicos con su secundario conectado en estrella."
+          },
+          {
+            "numero": "10.0.3",
+            "texto": "Se entenderá por tierra de protección a la puesta a tierra de toda pieza conductora que no forma parte del circuito activo, pero que en condiciones de falla puede quedar energizada. Su finalidad es proteger a las personas contra tensiones de contacto peligrosas."
+          }
+        ]
+      },
+      "10.1_tierra_de_servicio": {
+        "numero": "10.1",
+        "titulo": "TIERRA DE SERVICIO",
+        "articulos": [
+          {
+            "numero": "10.1.1",
+            "texto": "El conductor neutro de cada instalación de consumo deberá conectarse a una puesta a tierra de servicio."
+          },
+          {
+            "numero": "10.1.2",
+            "texto": "La puesta a tierra de servicio se efectuará en un punto lo más próximo posible al empalme, preferentemente en el punto de unión de la acometida con la instalación."
+          },
+          {
+            "numero": "10.1.3",
+            "texto": "En el conductor neutro de la instalación no se deberá colocar protecciones ni interruptores, excepto que éstos actúen simultáneamente sobre los conductores activos y el neutro."
+          },
+          {
+            "numero": "10.1.4",
+            "texto": "La sección del conductor de puesta a tierra de servicio se fijará de acuerdo a la tabla Nº 10.21."
+          },
+          {
+            "numero": "10.1.5",
+            "texto": "El conductor de puesta a tierra de servicio tendrá aislación de color blanco, de acuerdo al código de colores establecido en el párrafo 8.0.4.15."
+          },
+          {
+            "numero": "10.1.6",
+            "texto": "En instalaciones de consumo conectadas a la red de media tensión a través de transformadores, se deberá tener puestas a tierra de servicio que cumplan con las siguientes condiciones:",
+            "condiciones": [
+              {
+                "numero": "10.1.6.1",
+                "texto": "La tierra de servicio se diseñará de modo tal que, en caso de circulación de una corriente de falla permanente, la tensión de cualquier conductor activo con respecto a tierra no sobrepase los 250 V."
+              },
+              {
+                "numero": "10.1.6.2",
+                "texto": "El conductor neutro se pondrá a tierra en la proximidad de la subestación y en distintos puntos de la red de distribución interna en BT, a distancias no superiores a 200 m y en los extremos de líneas, cuando las líneas de distribución excedan dicha longitud. La resistencia combinada de todas las puestas a tierra resultantes de la aplicación de esta exigencia no deberá exceder de 5 Ohm."
+              },
+              {
+                "numero": "10.1.6.3",
+                "texto": "En general, se usará la puesta a tierra de protección de MT en la subestación como puesta a tierra de servicio. En condiciones especiales, determinadas por los requerimientos de un proyecto en particular, se podrá separar la tierra de servicio de BT de la tierra de protección de MT. Esta condición deberá quedar claramente establecida y justificada en el proyecto.",
+                "nota_aclaratoria": "Esta disposición primará sobre cualquier disposición en contrario que aparezca en la Norma vigente NSEC 20 En 78. Subestaciones Interiores"
+              }
+            ]
+          },
+          {
+            "numero": "10.1.7",
+            "texto": "La sección mínima del conductor de puesta a tierra de servicio será de 21 mm2, si se usa conductor de cobre."
+          },
+          {
+            "numero": "10.1.8",
+            "texto": "Si dentro de las zona servida por la red interna de distribución considerada en 10.1.6 existen redes metálicas de tuberías de agua, se recomienda evitar la unión del neutro de la red con dichas tuberías. Esta unión sólo será aceptable en caso que exista una dificultad física que imposibilite la separación y se deberán adoptar las medidas necesarias para evitar que través de estas tuberías se transfieran potenciales peligrosos."
+          }
+        ],
+        "tabla_10.21": {
+          "numero": "Tabla Nº 10.21",
+          "titulo": "Secciones Nominales para Conductores de Puesta a Tierra de Servicio",
+          "encabezados": [
+            "Sección nominal del conductor de acometida [mm2]",
+            "Sección nominal del conductor de tierra de servicio [mm2]"
+          ],
+          "datos": [
+            {
+              "acometida": "hasta 6",
+              "tierra_servicio": "4"
+            },
+            {
+              "acometida": "entre 10 y 25",
+              "tierra_servicio": "10"
+            },
+            {
+              "acometida": "entre 35 y 70",
+              "tierra_servicio": "16"
+            },
+            {
+              "acometida": "entre 95 y 120",
+              "tierra_servicio": "35"
+            },
+            {
+              "acometida": "entre 150 y 240",
+              "tierra_servicio": "50"
+            },
+            {
+              "acometida": "entre 300 y 400",
+              "tierra_servicio": "70"
+            }
+          ]
+        }
+      },
+      "10.2_tierra_de_proteccion": {
+        "numero": "10.2",
+        "titulo": "TIERRA DE PROTECCIÓN",
+        "articulos": [
+          {
+            "numero": "10.2.1",
+            "texto": "Toda pieza conductora que pertenezca a la instalación eléctrica o forme parte de un equipo eléctrico y que no sea parte integrante del circuito, podrá conectarse a una puesta a tierra de protección para evitar tensiones de contacto peligrosas."
+          },
+          {
+            "numero": "10.2.2",
+            "texto": "La puesta a tierra de protección se diseñará de modo de evitar la permanencia de tensiones de contacto en las piezas conductoras señaladas en 10.2.1, superiores al valor de tensión de seguridad prescrito en 9.0.6.3."
+          },
+          {
+            "numero": "10.2.3",
+            "texto": "La protección ofrecida por una tierra se logrará mediante una puesta a tierra individual por cada equipo protegido, o bien, mediante una puesta a tierra común y un conductor de protección al cual se conectarán los equipos protegidos. Ver hoja de norma Nº 15."
+          },
+          {
+            "numero": "10.2.4",
+            "texto": "La resistencia de cada puesta a tierra de protección en cualquiera de las dos soluciones no deberá ser superior a:",
+            "formula": "RTP = VS / IO = VS / (K × IN)",
+            "donde": "Donde VS es la tensión de seguridad de acuerdo a 9.0.6.3, e IO es la corriente de operación de la protección del circuito o del equipo protegido por la puesta a tierra, IO=K*IN; siendo IN la corriente nominal de la protección considerada y K una constante determinada de la tabla Nº 10.22."
+          },
+          {
+            "numero": "10.2.5",
+            "texto": "Adicional a lo establecido en 10.2.4, la suma de la resistencia de la puesta a tierra de servicio más la resistencia de la puesta a tierra de protección, las resistencias de las conexiones del conductor neutro y de la línea de protección, no deberán exceder, en cada caso, de:",
+            "formula": "Rs = 220 / IO"
+          },
+          {
+            "numero": "10.2.6",
+            "texto": "En caso de no poder cumplir las exigencias indicadas en 10.2.4 y 10.2.5, se deberá adoptar alguna de las medidas de protección contra contactos indirectos indicadas en la sección 9."
+          },
+          {
+            "numero": "10.2.7",
+            "texto": "El conductor de tierra de protección deberá cumplir el código de colores indicado en 8.0.4.15 y su sección se fijará de acuerdo a la tabla Nº 10.23."
+          },
+          {
+            "numero": "10.2.8",
+            "texto": "Las uniones entre el conductor de puesta a tierra y el electrodo de puesta a tierra, o las uniones entre los conductores que formen el electrodo de tierra se harán mediante abrazaderas, prensas de unión o soldaduras de alto punto de fusión. No se aceptará el empleo de soldadura de plomo - estaño como único método de unión en puestas a tierra; sin embargo, se le podrá usar como complemento al uso de abrazaderas o prensas de unión. Los materiales empleados en estas uniones y su forma de ejecución serán resistentes a la corrosión.",
+            "nota_aclaratoria": "No debe confundirse el sistema de tierra de protección con otros sistemas de protección contra contactos indirectos. Al depender de la resistencia del circuito tierra de protección -conductores de unión - tierra de servicio, la efectividad de este sistema de protección se ve considerablemente limitado y su aplicación se restringe sólo a circuitos o equipos protegidos por protecciones de baja capacidad nominal; no más de 16 A, en instalaciones sobre terrenos de muy buena conductividad. En nuestro país se ha confundido tradicionalmente el sistema de tierra de protección con el de neutralización, sistema este último de muy amplia aplicación; un análisis rápido de las condiciones de cada uno de estos sistemas esquematizados en las hojas de norma Nº 14 y Nº 15 mostrará que son conceptualmente muy diferentes."
+          }
+        ],
+        "tabla_10.22": {
+          "numero": "Tabla Nº 10.22",
+          "titulo": "Factor K para Cálculo de Corriente de Operación",
+          "encabezados": [
+            "Tipo de protección",
+            "Factor K - Para tableros de distribución",
+            "Factor K - Para acometidas de empalmes y tableros generales"
+          ],
+          "datos": [
+            {
+              "tipo": "Fusibles - Rápido",
+              "tableros_dist": "2,5",
+              "acometidas": ""
+            },
+            {
+              "tipo": "Fusibles - Lento",
+              "tableros_dist": "3,5",
+              "acometidas": ""
+            },
+            {
+              "tipo": "Fusibles - Hasta 50 A",
+              "tableros_dist": "",
+              "acometidas": "3,5"
+            },
+            {
+              "tipo": "Fusibles - Sobre 63 A",
+              "tableros_dist": "",
+              "acometidas": "5"
+            },
+            {
+              "tipo": "Disyuntores caja moldeada sobre 63 A",
+              "tableros_dist": "1,25(*)",
+              "acometidas": "1,25"
+            },
+            {
+              "tipo": "Disyuntores pequeños, curva tipo C",
+              "tableros_dist": "3,5",
+              "acometidas": "2,5"
+            },
+            {
+              "tipo": "Disyuntores pequeños, curva tipo B",
+              "tableros_dist": "2,5",
+              "acometidas": "2,5"
+            }
+          ],
+          "nota": "(*) En caso de disyuntores regulables el factor k se aplicará sobre el valor de corriente regulada"
+        },
+        "tabla_10.23": {
+          "numero": "Tabla Nº 10.23",
+          "titulo": "Secciones Nominales para Conductores de Protección",
+          "encabezados": [
+            "Sección nominal de los conductores activos [mm2]",
+            "Sección nominal del conductor de protección [mm2]"
+          ],
+          "datos": [
+            {
+              "activos": "1,5",
+              "proteccion": "1,5"
+            },
+            {
+              "activos": "2,5",
+              "proteccion": "2,5"
+            },
+            {
+              "activos": "4",
+              "proteccion": "2,5"
+            },
+            {
+              "activos": "6",
+              "proteccion": "4"
+            },
+            {
+              "activos": "10",
+              "proteccion": "6"
+            },
+            {
+              "activos": "16",
+              "proteccion": "6"
+            },
+            {
+              "activos": "25",
+              "proteccion": "10"
+            },
+            {
+              "activos": "35",
+              "proteccion": "10"
+            },
+            {
+              "activos": "50",
+              "proteccion": "16"
+            },
+            {
+              "activos": "70",
+              "proteccion": "16"
+            },
+            {
+              "activos": "95 hasta 185",
+              "proteccion": "25"
+            },
+            {
+              "activos": "240 hasta 300",
+              "proteccion": "35"
+            },
+            {
+              "activos": "400 o más",
+              "proteccion": "50"
+            }
+          ]
+        }
+      },
+      "10.3_electrodos_de_puesta_a_tierra": {
+        "numero": "10.3",
+        "titulo": "ELECTRODOS DE PUESTA A TIERRA",
+        "articulos": [
+          {
+            "numero": "10.3.1",
+            "texto": "Para la selección y disposición de los electrodos de tierra se tendrá en cuenta la calidad del suelo, parámetros eléctricos del sistema y la superficie de terreno disponible."
+          },
+          {
+            "numero": "10.3.2",
+            "texto": "La resistencia de puesta a tierra de un electrodo dependerá de la resistividad especifica del terreno en que éste se instale. En la tabla Nº 10.24 se muestran las resistencias obtenidas con distintos tipos de electrodos de diversas dimensiones, enterrados en un terreno homogéneo de 100 Ohm - metro de resistividad."
+          },
+          {
+            "numero": "10.3.3",
+            "texto": "Para valores de resistividad específica del terreno distinto de 100 Ohm - metro se multiplicará el valor indicado en esta tabla por la razón ρ/100. Se aceptará el uso de las barras de hormigón armado de zapatas y vigas de fundación de edificios como electrodos de tierra, siempre que la longitud total de inferior a 0,75 m, y su diámetro no sea inferior a 10 mm. La longitud requerida puede obtenerse con una o más barras. Las uniones entre las barras embutidas en el hormigón y entre éstas y su conexión al exterior se harán mediante soldaduras de alto punto de fusión.",
+            "nota_aclaratoria": "Las soldaduras de alto punto de fusión disponibles son la soldadura oxi - acetileno y la soldadura por reacción exotérmica"
+          },
+          {
+            "numero": "10.3.4.1",
+            "texto": "Electrodos de cable o de cinta enterrados adoptando algunas de las disposiciones indicadas en la hoja de norma Nº 14."
+          },
+          {
+            "numero": "10.3.4.2",
+            "texto": "Electrodos de barra, formados por barras redondas, tubos o perfiles metálicos enterrados en forma vertical. Si para obtener la resistencia de puesta a tierra exigida es necesario enterrar más de una barra, la distancia entre ellas deberá ser como mínimo el doble del largo de cada una."
+          },
+          {
+            "numero": "10.3.4.3",
+            "texto": "Electrodos de plancha, formados por planchas metálicas corrugadas o lisas, continuas o perforadas, enterradas en el suelo en forma vertical. Las dimensiones mínimas recomendadas para estas planchas son de 0,5 m x 1 m y 4 mm de espesor. Si es necesario colocar varias planchas para obtener la resistencia de puesta a tierra exigida, la distancia mínima entre ellas será de 3 m."
+          },
+          {
+            "numero": "10.3.4.4",
+            "texto": "Se podrá usar también como electrodo de tierra un conductor de cobre desnudo con una sección mínima de 16 mm2 y de una longitud no inferior a 20 m, colocado a lo largo de los cimientos de una construcción y cubierto por el hormigón de éstos. El conductor será colocado en la parte más baja del cimiento y deberá estar cubierto por un mínimo de 5 cm de hormigón."
+          }
+        ],
+        "tabla_10.24": {
+          "numero": "Tabla Nº 10.24",
+          "titulo": "Resistencia de Puesta a Tierra en Terrenos de Resistividad Específica de 100 Ω-m",
+          "encabezados": [
+            "Tipo de electrodo de tierra",
+            "Cable o cinta largo [m]",
+            "Barras largo [m]",
+            "Plancha vertical canto superior enterrado a 1 m"
+          ],
+          "datos": [
+            {
+              "tipo": "Cable/cinta",
+              "dimensiones": [
+                "10",
+                "25",
+                "50",
+                "100"
+              ],
+              "resistencias": [
+                "20",
+                "10",
+                "5",
+                "3"
+              ]
+            },
+            {
+              "tipo": "Barras",
+              "dimensiones": [
+                "1",
+                "2",
+                "3",
+                "5"
+              ],
+              "resistencias": [
+                "70",
+                "40",
+                "30",
+                "20"
+              ]
+            },
+            {
+              "tipo": "Plancha",
+              "dimensiones": [
+                "0,5 x 1",
+                "1 x 1"
+              ],
+              "resistencias": [
+                "35",
+                "25"
+              ]
+            }
+          ]
+        }
+      },
+      "10.4_medicion_de_la_resistencia_de_puesta_a_tierra": {
+        "numero": "10.4",
+        "titulo": "MEDICIÓN DE LA RESISTENCIA DE PUESTA A TIERRA",
+        "articulos": [
+          {
+            "numero": "10.4.1",
+            "texto": "Durante la construcción de una puesta a tierra deberán adoptarse las disposiciones necesarias como para que su resistencia pueda medirse sin dificultades."
+          },
+          {
+            "numero": "10.4.2",
+            "texto": "Para cumplir lo establecido en 10.4.1 se dejará por lo menos un punto de la disposición como la mostrada en la hoja de norma Nº 16."
+          },
+          {
+            "numero": "10.4.3",
+            "texto": "La resistencia de la puesta a tierra podrá medirse utilizándose un instrumento adecuado para tal efecto, o bien mediante un voltímetro y un amperímetro. En caso de utilizar este último método, deberán cumplirse las condiciones y adoptar la disposición mostrada en la hoja de norma Nº 17.",
+            "nota_aclaratoria": "Se reconoce como instrumentos adecuados para las mediciones de resistencia de puesta a tierra a los geóhmetros de tres o cuatro electrodos, presentando los últimos la ventaja de permitir además la medición de la resistividad específica del terreno"
+          },
+          {
+            "numero": "10.4.4",
+            "texto": "La responsabilidad por el correcto diseño y construcción de una puesta a tierra corresponderá al proyectista y/o instalador a cargo del montaje de la instalación. El mantenimiento de las características de operación de la puesta a tierra será de responsabilidad del usuario de la instalación, así como también serán de su exclusiva responsabilidad los daños a personas, y daños o fallas de funcionamiento de la instalación o equipos, que sean atribuibles a un deterioro o ausencia de la puesta a tierra."
+          }
+        ]
+      }
+    }
+  },
+  "seccion_11_instalaciones_de_alumbrado": {
+    "numero": "11",
+    "titulo": "INSTALACIONES DE ALUMBRADO",
+    "subsecciones": {
+      "11.0_conceptos_generales": {
+        "numero": "11.0",
+        "titulo": "CONCEPTOS GENERALES",
+        "articulos": [
+          {
+            "numero": "11.0.1.1",
+            "texto": "Se considerará instalación de alumbrado a toda aquella en que la energía eléctrica se utilice preferentemente para iluminar el o los recintos considerados, sin perjuicio que a la vez se le utilice para accionar artefactos electrodomésticos o máquinas pequeñas similares conectados a través de enchufes."
+          },
+          {
+            "numero": "11.0.1.2",
+            "texto": "Por razones de operación, facilidad de mantenimiento y de seguridad, las instalaciones de alumbrado se dividirán en circuitos, los cuales, en lo posible, deberán servir áreas de radio limitado."
+          },
+          {
+            "numero": "11.0.1.3",
+            "texto": "Cada circuito de alumbrado estará formado por centros de consumo, entendiéndose por tales a los artefactos de iluminación que se instalen en puntos físicos determinados o a los enchufes hembra que permitan la conexión de artefactos susceptibles de conectarse a este tipo de circuitos."
+          }
+        ]
+      },
+      "11.0.2_canalizaciones": {
+        "numero": "11.0.2",
+        "titulo": "Canalizaciones",
+        "articulos": [
+          {
+            "numero": "11.0.2.1",
+            "texto": "Para instalaciones de alumbrado se empleará como sistema de canalización alguno de los indicados en la sección Nº 8, seleccionando el sistema a emplear en concordancia a las características y condiciones de cada instalación en particular."
+          },
+          {
+            "numero": "11.0.2.2",
+            "texto": "Las uniones y derivaciones que sea necesario hacer en los conductores de un circuito de alumbrado se ejecutarán siempre dentro de cajas. No se permite hacer la alimentación denominada \"de centro a centro\" sin cajas de derivación."
+          },
+          {
+            "numero": "11.0.2.3",
+            "texto": "No se permitirá hacer uniones o derivaciones dentro de las cajas de aparatos o accesorios salvo donde se empleen cajas de derivación para el montaje de enchufes hembra, siempre que no se exceda de tres derivaciones."
+          },
+          {
+            "numero": "11.0.2.4",
+            "texto": "Los interruptores de comando de los centros se instalarán de modo tal que se pueda apreciar a simple vista su efecto. Se exceptuarán las luces de vigilancia, de alumbrado de jardines o similares. Los interruptores deberán instalarse en puntos fácilmente accesibles y su altura de montaje estará comprendida entre 0,80 m y 1,40 m, medida desde su punto más bajo sobre el nivel del piso terminado."
+          },
+          {
+            "numero": "11.0.2.5",
+            "texto": "Los enchufes se instalarán en puntos fácilmente accesibles y su altura de montaje estará comprendida entre 0,20 y 0,80 m, medidos como se indica en 11.0.2.4. Se aceptarán alturas superiores a la prescrita en recintos o montajes especiales."
+          },
+          {
+            "numero": "11.0.2.6",
+            "texto": "El uso de unidades interruptor - enchufe sólo será permitido en situaciones especiales, en instalaciones económicas de uso doméstico o similar, tales como en casetas sanitarias, respetando la zona de seguridad establecida en 11.1.3.1 o porterías de un ambiente y de dimensiones reducidas. En tales casos las condiciones de montaje serán las indicadas para interruptores."
+          }
+        ]
+      },
+      "11.0.3_tableros": {
+        "numero": "11.0.3",
+        "titulo": "Tableros",
+        "articulos": [
+          {
+            "numero": "11.0.3.1",
+            "texto": "Los tableros de una instalación de alumbrado se construirán e instalarán de acuerdo a lo establecido en la sección Nº 6."
+          },
+          {
+            "numero": "11.0.3.2",
+            "texto": "No se permitirá la instalación de tableros en dormitorios, baños, cocinas o lavaderos."
+          }
+        ]
+      },
+      "11.0.4_circuitos": {
+        "numero": "11.0.4",
+        "titulo": "Circuitos",
+        "articulos": [
+          {
+            "numero": "11.0.4.1",
+            "texto": "La capacidad de los circuitos en que está dividida una instalación de alumbrado se fijará en función de la capacidad nominal de los aparatos de protección de ellos. De acuerdo a lo indicado, serán circuitos normales de alumbrado los de 10, 15,16, 20, 25, 30,32 ó 40 Amperes."
+          },
+          {
+            "numero": "11.0.4.2",
+            "texto": "Los conductores de los circuitos deberán dimensionarse de modo tal que queden protegidos a la sobrecarga y al cortocircuito por la respectiva protección."
+          },
+          {
+            "numero": "11.0.4.3",
+            "texto": "Se podrán instalar circuitos bifásicos o trifásicos para la iluminación de un mismo recinto, siempre que las protecciones de estos circuitos operen simultáneamente sobre todos los conductores activos"
+          },
+          {
+            "numero": "11.0.4.4",
+            "texto": "Los circuitos de 10 A podrán utilizarse normalmente en instalaciones de alumbrado de viviendas, locales comerciales pequeños, oficinas o recintos similares."
+          },
+          {
+            "numero": "11.0.4.5",
+            "texto": "Los circuitos de 15 y 16 A podrán utilizarse para la iluminación de recintos extensos que requieran de niveles de iluminación altos o bien en edificios en que, por la cantidad de centros concentrados en áreas pequeñas, el empleo de circuitos de capacidad inferior no resulte conveniente."
+          },
+          {
+            "numero": "11.0.4.6",
+            "texto": "Los circuitos de 20 A se utilizarán en instalaciones en que la potencia unitaria de los artefactos de iluminación, incluidos sus accesorios, sea igual o superior a 300 W."
+          },
+          {
+            "numero": "11.0.4.7",
+            "texto": "Los circuitos de 25 a 40 A se utilizarán en la iluminación de recintos que requieran de concentración de grandes potencias puntuales, como por ejemplo en campos deportivos, iluminaciones de efecto o similares."
+          },
+          {
+            "numero": "11.0.4.8",
+            "texto": "Se aceptarán circuitos de mayor capacidad que las indicadas, cuando se justifique mediante un estudio técnico - económico la necesidad de dicha capacidad."
+          },
+          {
+            "numero": "11.0.4.9",
+            "texto": "La cantidad de centros que es posible instalar en un circuito se determinará igualando la suma de las potencias unitarias de cada centro conectado a él con el 90% del valor nominal de la capacidad del circuito."
+          },
+          {
+            "numero": "11.0.4.10",
+            "texto": "Con el objeto de fijar la cantidad de centros que es posible conectar a un circuito de alumbrado se considerará la potencia nominal de cada artefacto de iluminación, incluidos sus accesorios. Si en algún caso particular dicha potencia no está definida se estimará una potencia por centro de 100 W."
+          },
+          {
+            "numero": "11.0.4.11",
+            "texto": "La potencia unitaria de cada enchufe hembra en un circuito de alumbrado se estimará en 150 W. Los enchufes múltiples de hasta tres salidas por unidad se considerarán como un centro de 150 W.",
+            "nota_aclaratoria": "Los valores de 100 W y 150 W asignado a cada centro de alumbrado o enchufe no corresponde a la capacidad nominal de éstos, sino que es una base para establecer la potencia total estimada para cada circuito; pueden considerarse como un valor promedio representativo de demanda diversificada de ellos."
+          }
+        ]
+      },
+      "11.1_alumbrado_de_viviendas": {
+        "numero": "11.1",
+        "titulo": "ALUMBRADO DE VIVIENDAS",
+        "articulos": [
+          {
+            "numero": "11.1.1",
+            "texto": "En una vivienda se deberán cumplir las siguientes condiciones:",
+            "condiciones": [
+              {
+                "numero": "11.1.1.1",
+                "texto": "Deberá proyectarse, a lo menos, un circuito de 10 A por cada 70 m2 o fracción de superficie construida."
+              },
+              {
+                "numero": "11.1.1.2",
+                "texto": "Todo circuito en que existan enchufes deberá estar protegido mediante un protector diferencial."
+              },
+              {
+                "numero": "11.1.1.3",
+                "texto": "Para viviendas de superficie superior a 70 m2, podrán proyectarse circuitos mixtos de 10 A, pero deberá existir a lo menos un circuito que alimentará, exclusivamente, a enchufes instalados en la cocina y lavadero, con una capacidad mínima de 16 A. Se entenderá por circuito mixto aquel en que existan mezclados enchufes y artefactos de iluminación"
+              }
+            ]
+          },
+          {
+            "numero": "11.1.2",
+            "texto": "Para determinar la cantidad de centros a instalar en una vivienda, se tomarán en cuenta los siguientes factores:",
+            "factores": [
+              {
+                "numero": "11.1.2.1",
+                "texto": "En cada habitación habrá, a lo menos, un portalámparas que no esté alimentado a través de enchufes."
+              },
+              {
+                "numero": "11.1.2.2",
+                "texto": "Se proyectará un enchufe no comandado por cada 9 m de perímetro o fracción, en cada habitación."
+              }
+            ]
+          },
+          {
+            "numero": "11.1.3",
+            "texto": "Las instalaciones en salas de baños deberán cumplir las siguientes condiciones:",
+            "condiciones": [
+              {
+                "numero": "11.1.3.1",
+                "texto": "En una sala de baño existirá un área que se denominará zona de seguridad, la cual se muestra en la hoja de norma Nº 18."
+              },
+              {
+                "numero": "11.1.3.2",
+                "texto": "No se permitirá el paso de canalizaciones eléctricas por la zona de seguridad, sean éstas a la vista, embutidas u ocultas."
+              },
+              {
+                "numero": "11.1.3.3",
+                "texto": "Los artefactos de alumbrado que se instalen en una sala de baño, deberán ser a prueba de salpicaduras."
+              },
+              {
+                "numero": "11.1.3.4",
+                "texto": "El circuito que alimenta los artefactos instalados en el baño estará protegido por un protector diferencial, de acuerdo a lo indicado en la sección 9."
+              },
+              {
+                "numero": "11.1.3.5",
+                "texto": "Deberá efectuarse una unión equipotencial de todas las tuberías metálicas que entren a la sala de baño, tal como se indica en el párrafo 9.2.6.4."
+              }
+            ]
+          }
+        ]
+      },
+      "11.2_alumbrado_en_locales_comerciales_e_industriales": {
+        "numero": "11.2",
+        "titulo": "ALUMBRADO EN LOCALES COMERCIALES E INDUSTRIALES",
+        "articulos": [
+          {
+            "numero": "11.2.1",
+            "texto": "Para determinar la potencia eléctrica necesaria a instalar para el alumbrado de locales comerciales e industriales, se deberá tener en cuenta el nivel de iluminación requerido, el tipo de fuente luminosa que se empleará y el área del recinto por iluminar."
+          },
+          {
+            "numero": "11.2.2",
+            "texto": "El nivel de iluminación mínimo, según el tipo de local y tarea que en él se desarrolle, se determinará de acuerdo a lo señalado en la tabla Nº 11.24. En función al valor indicado en esta tabla y considerando el tipo de fuente luminosa, se determinará la potencia por unidad de superficie de acuerdo a lo señalado en la tabla del Apéndice 2."
+          },
+          {
+            "numero": "11.2.3",
+            "texto": "La potencia total obtenida de la aplicación de los párrafos precedentes, se dividirá en la cantidad de centros necesarios para que, distribuidos convenientemente sobre el área considerada, se obtenga una iluminación razonablemente uniforme."
+          },
+          {
+            "numero": "11.2.4",
+            "texto": "Los niveles de iluminación indicados en la tabla Nº 11.24 son valores adoptados, considerando las tareas visuales más frecuentes y representativas. Para tareas no consideradas y que puedan asimilarse a las indicadas en esa tabla, se adoptará aquel valor correspondiente a la tarea más semejante. En caso de tareas visuales que requieran de gran concentración visual, discriminación de detalles finos, selección de colores, etc., deberán adoptarse niveles de iluminación superiores, justificando la solución dada en estos casos mediante un cálculo de iluminación."
+          },
+          {
+            "numero": "11.2.5",
+            "texto": "En el Apéndice 2 se muestran valores de potencia por unidad de superficie necesarias para obtener iluminancias dadas. La finalidad de esa tabla de valores es solo tener una referencia para una estimación primaria de potencia eléctrica de una instalación destinada a iluminación; en ningún caso esa tabla puede considerarse alternativa a un cálculo de iluminación."
+          },
+          {
+            "numero": "11.2.6",
+            "texto": "Para el alumbrado de vitrinas comerciales de locales ubicados en calles céntricas, se considerará una potencia de 400 W por metro lineal de vitrina; para locales ubicados en calles comerciales secundarias, una potencia de 200 W por metro lineal de vitrina. Para otros casos, como por ejemplo locales comerciales en barrios, se considerarán 100 W por metro lineal de vitrina. Las longitudes referidas se medirán horizontalmente a lo largo del zócalo de la vitrina."
+          },
+          {
+            "numero": "11.2.7",
+            "texto": "En los locales comerciales se instalará a lo menos un enchufe hembra por cada 20 m2 o fracción de local, con un mínimo de (3) tres enchufes."
+          },
+          {
+            "numero": "11.2.8",
+            "texto": "En oficinas de superficie inferior a 40 m2 se instalará a lo menos un enchufe por cada 8 m o fracción de perímetro de oficina."
+          }
+        ]
+      }
+    }
+  }
+}

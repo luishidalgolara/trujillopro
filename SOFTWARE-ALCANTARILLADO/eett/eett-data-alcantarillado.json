@@ -1,0 +1,346 @@
+[
+  {
+    "tipo": "titulo-principal",
+    "texto": "E S P E C I F I C A C I O N E S   T E C N I C A S"
+  },
+  {
+    "tipo": "titulo",
+    "texto": "1.0.- ANTECEDENTES"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Las presentes especificaciones técnicas se refiere a la remodelación de las instalaciones domiciliarias de Alcantarillado de Aguas Servidas del Club Deportivo Atlético Independiente, de un piso ubicado en calle Argonedo N° 220 sector de Lorenzo Arenas, comuna de Concepción."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "1.1.- NORMAS Y REGLAMENTOS"
+  },
+  {
+    "tipo": "normal",
+    "texto": "La obra en referencia, en lo relacionado con las instalaciones sanitarias domiciliarias, se ejecutarán de acuerdo con:"
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "a) Planos Adjuntos."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "b) Las presentes Especificaciones Técnicas."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "c) Reglamento de instalaciones sanitarias domiciliarias de agua potable y alcantarillado (RIDAA) en adelante el \"Reglamento\"."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "d) Manual de normas técnicas para la realización de las instalaciones domiciliarias de alcantarillado y agua potable, en adelante el \"Manual\"."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "e) Normas del Instituto Nacional de Normalización (I.N.N.), en especial lo que se refiere a:"
+  },
+  {
+    "tipo": "lista-item",
+    "texto": "    • Prescripciones de seguridad en excavaciones."
+  },
+  {
+    "tipo": "lista-item",
+    "texto": "    • Prescripciones generales acerca de la prevención de accidentes de trabajo."
+  },
+  {
+    "tipo": "lista-item",
+    "texto": "    • Protecciones de uso personal."
+  },
+  {
+    "tipo": "lista-item",
+    "texto": "    • Requisitos tubos de PVC Nch 399 of 88."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Las pruebas parciales y finales de estas instalaciones se entregarán a ESSBIO S.A., en presencia de la Inspección Técnica de la Obra (I.T.O.) que designe el propietario. No se podrá efectuar obras extraordinarias sin la autorización previa y/o VºBº del Propietario."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "1.2.- CONSTRUCCION DE LAS OBRAS"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Será de cargo del Contratista el suministro de todos los elementos para construir o instalar, obra de mano, transportes y medios necesarios para la correcta ejecución de estas obras."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Deberá responsabilizarse, además de su suministro oportuno, a fin de no interferir con otras obras de la construcción."
+  },
+  {
+    "tipo": "normal",
+    "texto": "En los casos que se deba efectuar pasadas de cimientos, losas o vigas, o elementos resistentes, que no estén proyectadas previamente, se deberá consultar con el Ingeniero Calculista y dejar constancia escrita con el VºBº de la I.T.O."
+  },
+  {
+    "tipo": "normal",
+    "texto": "En general, la ejecución de las obras deberá ceñirse la los planos, respetando diámetros, pendientes, ubicaciones y cotas de radieres."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "1.3.- PLANOS"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Los planos materia de este proyecto, tienen un carácter informativo."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "5.0. ALCANTARILLADO DE AGUAS SERVIDAS."
+  },
+  {
+    "tipo": "normal",
+    "texto": "La evacuación de aguas servidas de las nuevas instalaciones del Club Deportivo se realizan haciá el colector público existente en calle Argomedo, mediante la unión domiciliaria existente, en cañería de P.V.C. Sanitario de diámetro 110mm."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "5.1. EXCAVACIONES, RELLENOS Y RETIRO DE EXCEDENTES."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Las excavaciones para cámaras de inspección y tuberías se ejecutarán de acuerdo con el trazado y pendientes determinados por el plano."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Las excavaciones deberán hacerse en forma tal que permitan la colocación de la cañería, teniendo presente que sobre la clave de ella debe existir una altura mínima de 1 metro hasta el nivel del terreno. Las calidades de terreno que se indican en estas especificaciones tienen solo carácter informativo, lo cual deberá ser verificado por el contratista."
+  },
+  {
+    "tipo": "subtitulo-especial",
+    "texto": "Relleno de excavaciones"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Para la ejecución de los rellenos se deberá cumplir con las siguientes exigencias:"
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "a) Sello de excavaciones"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se verificará el sello de excavaciones en forma visual y se exigirá un análisis de suelo con un laboratorio de mecánica que se pueda certificar una densidad de compactación que no sea inferior a 90% Proctor Standard, salvo indicación en contrario."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "b) Cama de apoyo"
+  },
+  {
+    "tipo": "normal",
+    "texto": "La tubería irá apoyada en relleno de arena compactada del ancho de la excavación de una altura de 0.10 m. La tubería debería penetrar en el relleno un sexto de su diámetro exterior."
+  },
+  {
+    "tipo": "normal",
+    "texto": "La cama de apoyo estará formada por arena limpia, con no más de un 10% de finos (suelo que pasa por malla A.S.T.M. No 200), compactada con placa vibrante de no menos de 100 Kg. de peso estático.  Se exigirá una densidad relativa no menor de 75%."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "c) Relleno lateral"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Luego del relleno especificado en b) se colocará el segundo estrato.  Este se hará con arena limpia, con no más de un 10% de finos colados por capas de 0.10 m. y fuertemente apisonada con pisón manual.  Se colocará lateralmente a los tubos y hasta el nivel de la clave."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "d) Relleno primera capa"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Sobre la clave del tubo se dispondrá una primera capa de relleno de 30 cm. compactado con pisón manual hasta obtener una densidad máxima no inferior al 90% Proctor Standard, salvo indicación en contrario."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "e) Relleno superior medio"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se efectuará por capas de 30-50 cm. compactadas con pisón mecánico de manera que se obtenga una densidad máxima no inferior a 90% Proctor Standard."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "f) Relleno superior final"
+  },
+  {
+    "tipo": "normal",
+    "texto": "La última capa de 0.50 m. de relleno, medido desde la superficie, tendrá un grado de compactación de una densidad relativa no menos del 75% o correspondiente al 95% de la densidad máxima Proctor Modificado, según las características del material de relleno o exigencias propias para esta capa establecida por el SERVIU Regional, este Proctor se exigirá solamente en calzada. En veredas se exigirá lo dicho en e)."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "g) Variaciones"
+  },
+  {
+    "tipo": "normal",
+    "texto": "La inspección podrá aceptar variaciones en los valores Proctor antes indicados en no más de un 2%."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "h) Certificaciones"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se exigirá certificaciones de las densidades indicadas en párrafos anteriores, realizadas por laboratorio competente a juicio de esta empresa, según las siguientes pautas:"
+  },
+  {
+    "tipo": "normal",
+    "texto": "- Agua potable : 1 análisis cada 50 m. De cañería instalada."
+  },
+  {
+    "tipo": "normal",
+    "texto": "- Alcantarillado : 2 análisis por tramo entre cámaras de inspección."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Los análisis se efectuarán en diferentes capas del relleno en distintos tramos de las excavaciones, incluso en el sello."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Los números de análisis indicados anteriormente son mínimos y el inspector podrá pedir más ensayos si las circunstancias así lo exigen."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "i) Disminución del número de ensayos"
+  },
+  {
+    "tipo": "normal",
+    "texto": "El inspector de la obra determinará si puede disminuirse el número de ensayos de compactación por causas especiales (por ejemplo presencia de napa subterránea).  Además si los suelos son cohesivos."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "j) Recepción"
+  },
+  {
+    "tipo": "normal",
+    "texto": "No se procederá a la recepción de las obras si no se ha cumplido con los requisitos."
+  },
+  {
+    "tipo": "subtitulo-especial",
+    "texto": "Transporte de excedentes"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se trasladará  a botaderos naturales aceptados por la Inspección Técnica."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Deberán realizarse de manera que las tuberías se apoyen en toda su superficie sobre terreno firme y regular."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Una vez practicadas las pruebas de presión de agua de las instalaciones, se rellenará lo que reste de las excavaciones mediante capas de suelo no mayores de 25 cm. El suelo de relleno deberá humedecerse y compactará mediante procedimiento hidráulico o mecánico, tomando las precausiones necesarias para no dañar la instalación ejecutada."
+  },
+  {
+    "tipo": "normal",
+    "texto": "El material de suelo excedente se retirará de la obra y se llevará a botaderos autorizados por la I.T.O."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "5.2. CAMARAS DE INSPECCION."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Las dimensiones y profundidades de la cámaras de inspección son las indicadas en el plano. Todas se construirán sobre un emplantillado de hormigón de 170 kg.cem/m3."
+  },
+  {
+    "tipo": "normal",
+    "texto": "EL radier, pies derechos se ejecutarán con hormigón de 170 Kgs. cem/m3. de concreto. Los radieres se estucarán con mortero de 550 Kgs. cem/m3. de argamasa, hasta 0.20 metros como mínimo sobre la parte más alta de la banqueta."
+  },
+  {
+    "tipo": "normal",
+    "texto": "La parte inferior de las cámaras que no lleve estuco deberá quedar con la superficie lisa, debiéndose usar moldes metálicos o de madera revestida en metal."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Las tapas se ejecutarán y colocarán de acuerdo con el plano tipo HG e - 1 de EX-SENDOS."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se incluye en este tipo de armadura metálica con su relleno de hormigón de 425 Kgs.cem/m3. de argamasa y anillo de fierro fundido de un peso aproximado de 82 Kgs. Estuco de 595 Kg/m3/argamasa."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se podrán utilizar módulos de cámaras de inspección prefabricados si se cuenta con la autorización de la empresa ESSBIO S.A."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "5.3. TUBERIAS DE POLICLORURO DE VINILO."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Toda red de distribución y ventilaciones proyectadas se construirán en tubería de policloruro de vinilo (P.V.C.), de la marca \"Vinilit-S\" o \"Duratec\", del tipo sanitario, de conformidad con la norma Nch 1635."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se utilizarán con uniones tipo Anger. En todo caso se respetarán las instrucciones del fabricante en lo referente a técnicas de unión e instalación."
+  },
+  {
+    "tipo": "normal",
+    "texto": "El material vinílico es un termoplástico, que se ablanda con el calor  por  lo cual en las instalaciones que se efectúen \"in situ\" deberá procurarse que los trabajos de soldadura en cañerías de cobre se hagan antes de iniciar la instalación de las tuberías de P.V.C."
+  },
+  {
+    "tipo": "normal",
+    "texto": "En caso que esto no sea posible, debe evitarse que la llama del soplete llegue a la tubería de P.V.C., para lo cual se recomienda protegerla con una lámina de asbesto cemento u otro material."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Las tuberías que sean cortadas en obra deberán recibir un achaflanado de bordes efectuando con lima de grano medio, eliminando cualquier reborde e rebarba."
+  },
+  {
+    "tipo": "normal",
+    "texto": "En las instalaciones subterráneas, las tuberías deberán quedar apoyadas en toda su extensión, rodeada de una capa de arena limpia de grano grueso."
+  },
+  {
+    "tipo": "normal",
+    "texto": "El relleno posterior se hará de forma tal, que la tierra alrededor del tubo quede bien compactada sin dañar la tubería."
+  },
+  {
+    "tipo": "normal",
+    "texto": "5.3.1. RECUBRIMIENTOS."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Debido a que la adherencia del P.V.C. con yeso, mortero, cal o concreto es prácticamente nula, los espesores de recubrimiento deben ser de un mínimo de 2 cm. para evitar grieta. La nula adherencia en cambio, permite dilataciones en la tubería."
+  },
+  {
+    "tipo": "normal",
+    "texto": "5.3.2. FIJACIONES."
+  },
+  {
+    "tipo": "normal",
+    "texto": "En los tramos verticales (ventilaciones y descargas), se recomienda colocar abrazaderas cada 2,0 m. y en los  horizontales a 1,50 m."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Las abrazaderas como regla general, deben colocarse en la campana del tubo o en la unión. Se recomienda que entre el tubo y la abrazadera se ponga una cinta de polietileno con el fin de evitar la fricción directa con la abrazadera sobre la tubería."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "5.4. VENTILACIONES."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Todas las ventilaciones serán de tubería de P.V.C. de los diámetros que se indican en los planos, y su instalación se efectuará de acuerdo a lo especificado en los puntos anteriores. En general deberán sobrepasar 0.60 m. sobre el nivel de la techumbre, y en su extremo superior llevarán su respectivo sombrerete de fierro galvanizado o de P.V.C."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "6. ARTEFACTOS SANITARIOS."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se complementa la especificación de los artefactos sanitarios que se indican en el \"Cuadro de artefactos\", incluído en los planos. El tipo de calidad de los artefactos a instalar serán los especificados por el Arquitecto e indicado en las especificaciones generales de la obra."
+  },
+  {
+    "tipo": "normal",
+    "texto": "En todo caso, con la sola excepción de los inodoros, todos los artefactos llevarán sifones \"S\" o \"P\" y los lavaplatos llevarán interceptores de grasa consistentes en sifones de botella, tipo Kovan de cobre."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "7. PRUEBAS Y RECEPCION DE LAS INSTALACIONES."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Las instalaciones de agua potable y alcantarillado de aguas servidas se someterán a las pruebas contempladas en el parrafo II, artículo 104° del R.I.D.A.A., debiendo cumplir con todas las exigencias. Las obras se considerarán terminadas con el Certificado de Recepción Final o de Dación de Servicios otorgado por ESSBIO S.A."
+  }
+]

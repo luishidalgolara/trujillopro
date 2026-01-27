@@ -1,0 +1,349 @@
+/* ============================================
+   MEMORIA DE CÁLCULO - AGUA POTABLE
+   Estilos profesionales para documento técnico
+   ============================================ */
+
+/* RESET Y BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e5e7eb;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* PÁGINA PRINCIPAL */
+.page {
+    width: 21.59cm;
+    min-height: 27.94cm;
+    background: white;
+    margin: 0 auto 20px;
+    padding: 2.5cm 2cm;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* ============================================
+   PORTADA
+   ============================================ */
+
+.portada {
+    text-align: center;
+    padding-top: 3cm;
+}
+
+.portada h1 {
+    font-size: 16pt;
+    font-weight: bold;
+    margin-bottom: 4cm;
+    line-height: 1.8;
+    color: #1f2937;
+    letter-spacing: 0.5px;
+}
+
+.datos-proyecto {
+    text-align: left;
+    margin: 3cm auto 3cm;
+    max-width: 500px;
+}
+
+.datos-proyecto p,
+.datos-responsables p {
+    margin: 15px 0;
+    font-size: 12pt;
+    color: #374151;
+}
+
+.datos-responsables {
+    text-align: left;
+    margin: 3cm auto 4cm;
+    max-width: 500px;
+}
+
+.campo-editable {
+    border: none;
+    border-bottom: 1px solid #6b7280;
+    background: transparent;
+    width: 300px;
+    padding: 2px 5px;
+    font-size: 12pt;
+    font-family: 'Arial', sans-serif;
+    color: #1f2937;
+    transition: border-color 0.3s ease;
+}
+
+.campo-editable:focus {
+    outline: none;
+    border-bottom: 2px solid #3b82f6;
+}
+
+.campo-editable::placeholder {
+    color: #9ca3af;
+}
+
+.titulo-memoria {
+    font-size: 18pt;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-top: 3cm;
+    color: #1f2937;
+}
+
+/* ============================================
+   TÍTULOS Y TEXTO
+   ============================================ */
+
+h3 {
+    font-size: 13pt;
+    font-weight: bold;
+    margin: 25px 0 15px;
+    color: #1f2937;
+    border-bottom: 2px solid #3b82f6;
+    padding-bottom: 5px;
+}
+
+h4 {
+    font-size: 12pt;
+    font-weight: bold;
+    margin: 20px 0 15px;
+    text-align: center;
+    color: #374151;
+}
+
+p {
+    font-size: 11pt;
+    line-height: 1.8;
+    text-align: justify;
+    margin: 12px 0;
+    color: #374151;
+}
+
+strong {
+    color: #1f2937;
+}
+
+/* ============================================
+   TABLAS
+   ============================================ */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 10pt;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+table th,
+table td {
+    border: 1px solid #d1d5db;
+    padding: 8px 10px;
+    text-align: center;
+}
+
+table th {
+    background: linear-gradient(to bottom, #f3f4f6, #e5e7eb);
+    font-weight: bold;
+    color: #1f2937;
+}
+
+table td:first-child {
+    text-align: left;
+}
+
+table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+.total-row {
+    font-weight: bold;
+    background-color: #dbeafe !important;
+    color: #1e40af;
+}
+
+tfoot tr {
+    background-color: #f3f4f6;
+    font-weight: 600;
+}
+
+/* Tabla simple sin bordes */
+.tabla-simple {
+    border: none;
+    box-shadow: none;
+}
+
+.tabla-simple td {
+    border: none;
+    text-align: left;
+    padding: 5px 15px;
+    background: transparent !important;
+}
+
+.tabla-simple tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+/* Tabla de fórmulas */
+.tabla-formula {
+    border: none;
+    width: auto;
+    margin-left: 40px;
+    box-shadow: none;
+}
+
+.tabla-formula td {
+    border: none;
+    text-align: left;
+    padding: 3px 15px;
+}
+
+/* ============================================
+   FÓRMULAS Y RESULTADOS
+   ============================================ */
+
+.formula {
+    font-size: 14pt;
+    text-align: center;
+    margin: 25px 0;
+    font-family: 'Times New Roman', serif;
+    font-weight: 500;
+    color: #1f2937;
+    padding: 15px;
+    background: #f3f4f6;
+    border-left: 4px solid #3b82f6;
+    border-radius: 4px;
+}
+
+.resultado {
+    font-size: 12pt;
+    text-align: left;
+    margin: 20px 0;
+    padding: 12px 20px 12px 40px;
+    background: #dbeafe;
+    border-left: 4px solid #3b82f6;
+    font-weight: 600;
+    color: #1e40af;
+    border-radius: 4px;
+}
+
+.formula-manning {
+    margin: 25px 0;
+    padding: 15px;
+    background: #f9fafb;
+    border-radius: 4px;
+}
+
+.formula-titulo {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #1f2937;
+}
+
+.indentado {
+    margin-left: 40px;
+    color: #4b5563;
+}
+
+/* ============================================
+   SPANS DINÁMICOS
+   ============================================ */
+
+span[id*="total"],
+span[id*="qmp"],
+span[id*="qif"],
+span[id*="consumo"],
+span[id*="Texto"] {
+    font-weight: 600;
+    color: #1e40af;
+}
+
+/* ============================================
+   IMPRESIÓN
+   ============================================ */
+
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+    
+    .page {
+        width: 21.59cm;
+        height: 27.94cm;
+        margin: 0;
+        padding: 2.5cm 2cm;
+        box-shadow: none;
+        page-break-after: always;
+    }
+    
+    .page:last-child {
+        page-break-after: auto;
+    }
+    
+    .campo-editable {
+        border-bottom: 1px solid #000;
+        color: #000;
+    }
+    
+    h3 {
+        border-bottom: 2px solid #000;
+    }
+    
+    table th {
+        background: #f0f0f0 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    .total-row {
+        background-color: #e5e7eb !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+@page {
+    size: letter;
+    margin: 0;
+}
+
+/* ============================================
+   ANIMACIONES Y TRANSICIONES
+   ============================================ */
+
+table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.campo-editable {
+    transition: all 0.3s ease;
+}
+
+/* ============================================
+   RESPONSIVE (SOLO PARA VISTA PREVIA)
+   ============================================ */
+
+@media screen and (max-width: 800px) {
+    body {
+        padding: 10px;
+    }
+    
+    .page {
+        width: 100%;
+        padding: 1.5cm 1cm;
+    }
+    
+    table {
+        font-size: 9pt;
+    }
+    
+    .campo-editable {
+        width: 100%;
+        max-width: 300px;
+    }
+}

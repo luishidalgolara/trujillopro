@@ -1,0 +1,342 @@
+[
+  {
+    "tipo": "titulo-principal",
+    "texto": "E S P E C I F I C A C I O N E S   T E C N I C A S"
+  },
+  {
+    "tipo": "titulo",
+    "texto": "1.0.- ANTECEDENTES"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Las presentes especificaciones técnicas se refiere a la remodelación de las instalaciones domiciliarias de Agua Potable del Club Deportivo Atlético Independiente, de un piso ubicado en calle Argonedo N° 220 sector de Lorenzo Arenas, comuna de Concepción."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "1.1.- NORMAS Y REGLAMENTOS"
+  },
+  {
+    "tipo": "normal",
+    "texto": "La obra en referencia, en lo relacionado con las instalaciones sanitarias domiciliarias, se ejecutarán de acuerdo con:"
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "a) Planos Adjuntos."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "b) Las presentes Especificaciones Técnicas."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "c) Reglamento de instalaciones sanitarias domiciliarias de agua potable y alcantarillado (RIDAA) en adelante el \"Reglamento\"."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "d) Manual de normas técnicas para la realización de las instalaciones domiciliarias de alcantarillado y agua potable, en adelante el \"Manual\"."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "e) Normas del Instituto Nacional de Normalización (I.N.N.), en especial lo que se refiere a:"
+  },
+  {
+    "tipo": "lista-item",
+    "texto": "    • Prescripciones de seguridad en excavaciones."
+  },
+  {
+    "tipo": "lista-item",
+    "texto": "    • Prescripciones generales acerca de la prevención de accidentes de trabajo."
+  },
+  {
+    "tipo": "lista-item",
+    "texto": "    • Protecciones de uso personal."
+  },
+  {
+    "tipo": "lista-item",
+    "texto": "    • Requisitos tubos de PVC Nch 399 of 88."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Las pruebas parciales y finales de estas instalaciones se entregarán a ESSBIO S.A., en presencia de la Inspección Técnica de la Obra (I.T.O.) que designe el propietario. No se podrá efectuar obras extraordinarias sin la autorización previa y/o VºBº del Propietario."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "1.2.- CONSTRUCCION DE LAS OBRAS"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Será de cargo del Contratista el suministro de todos los elementos para construir o instalar, obra de mano, transportes y medios necesarios para la correcta ejecución de estas obras."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Deberá responsabilizarse, además de su suministro oportuno, a fin de no interferir con otras obras de la construcción."
+  },
+  {
+    "tipo": "normal",
+    "texto": "En los casos que se deba efectuar pasadas de cimientos, losas o vigas, o elementos resistentes, que no estén proyectadas previamente, se deberá consultar con el Ingeniero Calculista y dejar constancia escrita con el VºBº de la I.T.O."
+  },
+  {
+    "tipo": "normal",
+    "texto": "En general, la ejecución de las obras deberá ceñirse la los planos, respetando diámetros, pendientes, ubicaciones y cotas de radieres."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "1.3.- PLANOS"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Los planos materia de este proyecto, tienen un carácter informativo."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "2.0.- AGUA POTABLE"
+  },
+  {
+    "tipo": "normal",
+    "texto": "El abastecimiento de agua potable del centro deportivo se realiza desde el arranque y medidor de aguas potable de diámetro 13mm existente actualmente, con número de servicio 1176613-7."
+  },
+  {
+    "tipo": "normal",
+    "texto": "La instalación interior del Clud Deportivo se realizará en cañerías de Polipropileno PN20."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "2.1.- MOVIMIENTO DE TIERRAS"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Las excavaciones deberán hacerse en forma tal que permitan la colocación de la cañería, teniendo presente que sobre la clave de ella debe existir una altura mínima de 1 metro hasta el nivel del terreno. Las calidades de terreno que se indican en estas especificaciones tienen solo carácter informativo, lo cual deberá ser verificado por el contratista."
+  },
+  {
+    "tipo": "subtitulo-especial",
+    "texto": "Relleno de excavaciones"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Para la ejecución de los rellenos se deberá cumplir con las siguientes exigencias:"
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "a) Sello de excavaciones"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se verificará el sello de excavaciones en forma visual y se exigirá un análisis de suelo con un laboratorio de mecánica que se pueda certificar una densidad de compactación que no sea inferior a 90% Proctor Standard, salvo indicación en contrario."
+  },
+  {
+    "tipo": "normal",
+    "texto": "b)Cama de apoyo"
+  },
+  {
+    "tipo": "normal",
+    "texto": "La tubería irá apoyada en relleno de arena compactada del ancho de la excavación de una altura de 0.10 m. La tubería debería penetrar en el relleno un sexto de su diámetro exterior."
+  },
+  {
+    "tipo": "normal",
+    "texto": "La cama de apoyo estará formada por arena limpia, con no más de un 10% de finos (suelo que pasa por malla A.S.T.M. No 200), compactada con placa vibrante de no menos de 100 Kg. de peso estático.  Se exigirá una densidad relativa no menor de 75%."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "c) Relleno lateral"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Luego del relleno especificado en b) se colocará el segundo estrato.  Este se hará con arena limpia, con no más de un 10% de finos colados por capas de 0.10 m. y fuertemente apisonada con pisón manual.  Se colocará lateralmente a los tubos y hasta el nivel de la clave."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "d) Relleno primera capa"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Sobre la clave del tubo se dispondrá una primera capa de relleno de 30 cm. compactado con pisón manual hasta obtener una densidad máxima no inferior al 90% Proctor Standard, salvo indicación en contrario."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "e) Relleno superior medio"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se efectuará por capas de 30-50 cm. compactadas con pisón mecánico de manera que se obtenga una densidad máxima no inferior a 90% Proctor Standard."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "f) Relleno superior final"
+  },
+  {
+    "tipo": "normal",
+    "texto": "La última capa de 0.50 m. de relleno, medido desde la superficie, tendrá un grado de compactación de una densidad relativa no menos del 75% o correspondiente al 95% de la densidad máxima Proctor Modificado, según las características del material de relleno o exigencias propias para esta capa establecida por el SERVIU Regional, este Proctor se exigirá solamente en calzada. En veredas se exigirá lo dicho en e)."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "g) Variaciones"
+  },
+  {
+    "tipo": "normal",
+    "texto": "La inspección podrá aceptar variaciones en los valores Proctor antes indicados en no más de un 2%."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "h) Certificaciones"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se exigirá certificaciones de las densidades indicadas en párrafos anteriores, realizadas por laboratorio competente a juicio de esta empresa, según las siguientes pautas:"
+  },
+  {
+    "tipo": "normal",
+    "texto": "- Agua potable : 1 análisis cada 50 m. De cañería instalada."
+  },
+  {
+    "tipo": "normal",
+    "texto": "- Alcantarillado : 2 análisis por tramo entre cámaras de inspección."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Los análisis se efectuarán en diferentes capas del relleno en distintos tramos de las excavaciones, incluso en el sello."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Los números de análisis indicados anteriormente son mínimos y el inspector podrá pedir más ensayos si las circunstancias así lo exigen."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "i) Disminución del número de ensayos"
+  },
+  {
+    "tipo": "normal",
+    "texto": "El inspector de la obra determinará si puede disminuirse el número de ensayos de compactación por causas especiales (por ejemplo presencia de napa subterránea).  Además si los suelos son cohesivos."
+  },
+  {
+    "tipo": "subtitulo",
+    "texto": "j) Recepción"
+  },
+  {
+    "tipo": "normal",
+    "texto": "No se procederá a la recepción de las obras si no se ha cumplido con los requisitos."
+  },
+  {
+    "tipo": "subtitulo-especial",
+    "texto": "Transporte de excedentes"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se trasladará  a botaderos naturales aceptados por la Inspección Técnica."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "2.2.- RED DE AGUA FRIA"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se consultan las instalaciones necesarias para surtir todos los artefactos y llaves de salida que se indican en el plano."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "2.3.- CAÑERIAS DE POPROPILENO."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Todas las cañerías del distribucuón aguas debajo de los remarcadores de agua potable, serán de Polipropileno PN20 y deberán estar respaldadas por control de calidad certificada."
+  },
+  {
+    "tipo": "normal",
+    "texto": "La colocación de cañerías se ceñirá a las técnicas de construcción empleadas en obras civiles, sus diámetros y trazados serán los indicados en el plano."
+  },
+  {
+    "tipo": "normal",
+    "texto": "2.3.1.- FITTINGS"
+  },
+  {
+    "tipo": "normal",
+    "texto": "En las distribuciones interiores se utilizarán fittings de cobre, de preferencia, sobre todo en uniones de cañerias bajo el piso o en partes que vayan embutidas. Se evitará el uso de fittings de bronce por su distinto coeficiente de dilatación."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Las uniones de cañerías y fittings se harán con lubricante para este tipo de cañerías."
+  },
+  {
+    "tipo": "normal",
+    "texto": "2.3.2.- LLAVES DE PASO"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Todas las salas de baño y dependencias con instalaciones de agua fría llevarán llave de paso general. Estas serán de preferencia con vástago y roseta cromada."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Las llaves de paso de diámetro igual o superior a 25 mm. serán del tipo \"Peet\", válvula de compuerta, de doble espejo."
+  },
+  {
+    "tipo": "normal",
+    "texto": "2.3.3.- PROTECCION"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se tendrá especial cuidado que las cañerias de Polifusión no tengan contacto alguno con abrazaderas de fierro pletina, con fierro de armaduras, con estructuras metálicas o con artefactos de fierro."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Si existiera peligro de contacto, la cañería deberá aislarse con goma de neopreno."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se recomienda que las abrazadoras de las cañerias que vayan a la vista (por shaft.), sean de P.V.C y se coloque entreabrazadora y cañería cinta impermeable."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "2.4.- PRUEBA DE PRESION"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se efectuará dicha prueba en cada sector que permita formar tramos de 20 m. o más, colocando la bomba de prueba y el manómetro testigo en el extremo más bajo."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se usará una presión de 10 Kg/cm2 (1 Atm.), la que deberá mantenerse sin variación durante  un tiempo no inferior a 10 minutos."
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se deberán revisar las uniones y soldaduras que quedarán ocultas bajo estuco cielos falsos."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "2.5.- REDES DE AGUA CALIENTE"
+  },
+  {
+    "tipo": "normal",
+    "texto": "El agua caliente será suministrada desde un calefont. Las redes de distribución serán de Polipropileno PN20, según los diametros indicados en los planos de proyecto."
+  },
+  {
+    "tipo": "normal",
+    "texto": "2.5.1.- CAÑERIAS Y FITTINGS"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se usará cañería de polipropielno siguiendo las instrucciones del fabricante. Los fittings serán similares a los indicados por el fabricante. Las cañerías deberán estar respaldadas por Control de Calidad Certificada, al igual que sus accesorios."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "2.6.- VARIOS"
+  },
+  {
+    "tipo": "normal",
+    "texto": "En general se cumplirá con lo especificado para el agua fría en cuanto a llaves de paso, protecciones y pruebas."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "3.- RED HÚMEDA"
+  },
+  {
+    "tipo": "normal",
+    "texto": "Se consulta la instalación de un gabinete de red húmeda (R.H.). El gabinete llevará manguera de 25 metros de largo, un pitón de alto impacto de diámetro 25mm., una válvula de corta que se ubicará fuera del gabinete y un vidriorompible."
+  },
+  {
+    "tipo": "titulo",
+    "texto": "4.- RED SECA"
+  },
+  {
+    "tipo": "normal",
+    "texto": "No se consulta red seca."
+  }
+]

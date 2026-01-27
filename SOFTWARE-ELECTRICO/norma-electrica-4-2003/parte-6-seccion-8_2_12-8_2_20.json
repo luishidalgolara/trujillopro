@@ -1,0 +1,688 @@
+{
+  "seccion_8.2_sistemas_de_canalizacion_continuacion": {
+    "tablas_complementarias": {
+      "tabla_8.16": {
+        "numero": "Tabla Nº 8.16",
+        "titulo": "Porcentaje de Sección Transversal de la Tubería ocupada por los Conductores",
+        "encabezados": [
+          "Número de conductores",
+          "Porcentaje ocupado"
+        ],
+        "datos": [
+          {"numero_conductores": "1", "porcentaje": "50"},
+          {"numero_conductores": "2", "porcentaje": "31"},
+          {"numero_conductores": "3 ó más", "porcentaje": "35"}
+        ],
+        "condiciones_aplicacion": [
+          "Cuando se trata de tuberías de unión de gabinetes de tableros o similares, de una longitud no superior a 1 m se podrá considerar un porcentaje de área de hasta el 60 %.",
+          "Cuando en el cálculo de la cantidad de conductores de un determinado tipo de tubería se obtengan valores decimales, sólo se aproximará al entero superior si el decimal es de 0,8 o mayor.",
+          "Para combinación de conductores de diferentes secciones nominales se respetarán los valores indicados en la tabla Nº 8.16, usando las dimensiones de conductores y tuberías indicadas en las tablas Nº 8.10 y Nº 8.18, respectivamente.",
+          "Cuando el conductor de tierra forme parte del haz de conductores deberá incluirse en el cálculo."
+        ]
+      },
+      "tabla_8.17": {
+        "numero": "Tabla Nº 8.17",
+        "titulo": "Cantidad Máxima de Conductores en Tubos de Acero Barnizado, Tubos Galvanizados Livianos y Tubos Plásticos Flexibles",
+        "nota": "Tipo de ducto: t.p.r. (tubo plástico rígido), t.a. (tubo acero), t.a.g. (tubo acero galvanizado), t.p.f. (tubo plástico flexible)",
+        "conductor_tipo": "NYA - THHN",
+        "encabezados": [
+          "Sección nominal [mm2]",
+          "1/2\"",
+          "5/8\"",
+          "3/4\"",
+          "1\"",
+          "1 1/4\"",
+          "1 1/2\"",
+          "2\""
+        ],
+        "datos": [
+          {"seccion": "1", "d_1_2": "7", "d_5_8": "10", "d_3_4": "16", "d_1": "30", "d_1_1_4": "-", "d_1_1_2": "-", "d_2": "-"},
+          {"seccion": "1,5", "d_1_2": "6", "d_5_8": "7", "d_3_4": "13", "d_1": "25", "d_1_1_4": "-", "d_1_1_2": "-", "d_2": "-"},
+          {"seccion": "2,5", "d_1_2": "3", "d_5_8": "6", "d_3_4": "7", "d_1": "16", "d_1_1_4": "26", "d_1_1_2": "-", "d_2": "-"},
+          {"seccion": "4", "d_1_2": "3", "d_5_8": "4", "d_3_4": "6", "d_1": "10", "d_1_1_4": "18", "d_1_1_2": "26", "d_2": ""},
+          {"seccion": "6", "d_1_2": "1", "d_5_8": "3", "d_3_4": "5", "d_1": "7", "d_1_1_4": "14", "d_1_1_2": "22", "d_2": "40"},
+          {"seccion": "10", "d_1_2": "1", "d_5_8": "1", "d_3_4": "3", "d_1": "5", "d_1_1_4": "9", "d_1_1_2": "13", "d_2": "25"}
+        ]
+      },
+      "tabla_8.20": {
+        "numero": "Tabla Nº 8.20",
+        "titulo": "Volumen Requerido por un Conductor",
+        "encabezados": [
+          "Sección nominal [mm2]",
+          "Tipo de conductor NYA - Volumen [cm3]",
+          "Tipo de conductor NSYA - Volumen [cm3]",
+          "Tipo de conductor THW - Volumen [cm3]"
+        ],
+        "datos": [
+          {"seccion": "1", "nya": "12,6", "nsya": "-", "thw": "-"},
+          {"seccion": "1,5", "nya": "12,6", "nsya": "12,7", "thw": "-"},
+          {"seccion": "2,08", "nya": "-", "nsya": "-", "thw": "16,4"},
+          {"seccion": "2,5", "nya": "14,9", "nsya": "15,0", "thw": "-"},
+          {"seccion": "3,31", "nya": "-", "nsya": "-", "thw": "19,4"},
+          {"seccion": "4", "nya": "17,5", "nsya": "17,6", "thw": "-"},
+          {"seccion": "5,26", "nya": "-", "nsya": "-", "thw": "22,8"},
+          {"seccion": "6", "nya": "22,2", "nsya": "22,4", "thw": "-"},
+          {"seccion": "8,37", "nya": "-", "nsya": "-", "thw": "28,9"}
+        ]
+      }
+    },
+    "subsecciones": {
+      "8.2.12_cajas_de_derivacion_de_aparatos_y_de_accesorios": {
+        "numero": "8.2.12",
+        "titulo": "Cajas de derivación, de aparatos y de accesorios",
+        "articulos": [
+          {
+            "numero": "8.2.12.1",
+            "texto": "Las cajas se emplearán en las canalizaciones en tuberías como puntos de unión o derivación, en lugares donde se colocarán aparatos o accesorios y como puntos desde donde se pueden tirar los conductores para alambrar las tuberías. Se podrán utilizar también, para proteger derivaciones en tendido de cables sobre soportes o cables planos."
+          },
+          {
+            "numero": "8.2.12.2",
+            "texto": "Las cajas podrán fabricarse en materiales metálicos o no metálicos. Las cajas metálicas podrán utilizarse con los distintos tipos de canalización considerados en esta norma; si se usan con tuberías no metálicas cada caja deberá conectarse a un conductor de protección; esta conexión se deberá hacer con un perno colocado en la caja con este único propósito. No se acepta que se usen para este efecto los pernos de sujeción de la tapa. Las cajas no metálicas no podrán utilizarse en canalizaciones con tuberías metálicas."
+          },
+          {
+            "numero": "8.2.12.3",
+            "texto": "Toda unión, derivación o alimentación de artefacto se debe hacer en una caja. No se permite hacer derivaciones en cajas en que vayan colocados accesorios, excepto lo indicado en 11.0.2.3, pero a través de una caja de accesorios podrá pasar la alimentación de un máximo de dos artefactos."
+          },
+          {
+            "numero": "8.2.12.4",
+            "texto": "Las cajas podrán ser de forma rectangular, cuadrada, poligonales o redondas."
+          },
+          {
+            "numero": "8.2.12.5",
+            "texto": "Las cajas redondas deberán tener sus entradas diseñadas de modo tal que permitan la fijación de la tubería o el cable sin necesidad de usar tuercas, contratuercas o boquillas roscadas."
+          },
+          {
+            "numero": "8.2.12.6",
+            "texto": "En las cajas de las otras formas, la entrada de las tuberías o cables a la caja se hará a través de perforaciones que se dejarán en la caja durante su proceso de fabricación y la fijación de ellas se hará con boquillas y una contratuerca. En el caso de tuberías de diámetro nominal inferior a 25 mm, la unión se podrá hacer mediante tuerca y contratuerca."
+          },
+          {
+            "numero": "8.2.12.7",
+            "texto": "No se podrá efectuar la fijación de las tuberías metálicas de pared delgada a las cajas roscando el tubo; se recomienda el uso de uniones emballetadas."
+          },
+          {
+            "numero": "8.2.12.8",
+            "texto": "La entrada de un cable a una caja se fijará y protegerá mediante una prensaestopas o dispositivo similar, adecuado a la forma del cable."
+          },
+          {
+            "numero": "8.2.12.9",
+            "texto": "Las entradas de una caja que no se usen deberán dejarse cerradas. Para posibilitar el cumplimiento de esta disposición, las perforaciones de entrada que se hagan durante el proceso de fabricación serán semicizalladas, de modo que puedan ser retiradas con facilidad con la ayuda de herramientas, pero deberán resistir sin desprenderse los esfuerzos propios de su manipulación e Instalación."
+          },
+          {
+            "numero": "8.2.12.10",
+            "texto": "Toda caja deberá tener su respectiva tapa, la que deberá quedar firmemente asegurada en su posición mediante pernos u otro sistema de cierre que exija de una herramienta para removerlo."
+          },
+          {
+            "numero": "8.2.12.11",
+            "texto": "Las cajas usadas en lugares húmedos o mojados deberán ser de construcción adecuada para resistir las condiciones ambientes e impedir la entrada de humedad o fluido en su interior.",
+            "nota_aclaratoria": "Se deberá considerar un grado de protección IP adecuado al lugar de instalación. Ver Apéndice I."
+          },
+          {
+            "numero": "8.2.12.12",
+            "texto": "Las cajas que se usen en lugares en que haya gran cantidad de polvo en suspensión deberán ser de construcción estanca al polvo.",
+            "nota_aclaratoria": "Corresponde a un grado de protección IP 5X. Ver Apéndice 1."
+          },
+          {
+            "numero": "8.2.12.13",
+            "texto": "Las uniones de las tuberías con cajas a prueba de humedad, goteo, chorro, de agua, salpicaduras o polvo deben efectuarse de modo que el conjunto conserve sus características de estanqueidad."
+          },
+          {
+            "numero": "8.2.12.14",
+            "texto": "Las cajas deben estar rígidamente fijas a la superficie sobre la cual van montadas. En general, para canalizaciones ocultas o a la vista, las cajas deberán estar fijadas a alguna parte estructural de la construcción."
+          },
+          {
+            "numero": "8.2.12.15",
+            "texto": "Los conductores deberán quedar libremente accesibles dentro de la caja sólo retirando la tapa, y ésta deberá poder retirarse sin necesidad de romper el enlucido de los muros, ni retirar ningún otro tipo de cubierta."
+          },
+          {
+            "numero": "8.2.12.16",
+            "texto": "La cantidad de conductores que pueden ir dentro de una caja se fijará en función del volumen requerido para su fácil manipulación y correcto funcionamiento. Dicho volumen se establece en la tabla Nº 8.20."
+          },
+          {
+            "numero": "8.2.12.17",
+            "texto": "Las tuercas, contratuercas y boquillas utilizadas para fijar las tuberías o cables a las entradas de las cajas, deberán ser resistentes a la corrosión o estar protegidas contra ella, y tener la resistencia mecánica adecuada al uso que se les esté dando."
+          },
+          {
+            "numero": "8.2.12.18",
+            "texto": "En alimentación de centro a centro, cuando se necesite pasar conductores a través de una tapa deberán protegerse las pasadas con una boquilla o pasacables aprobado para dicho uso."
+          },
+          {
+            "numero": "8.2.12.19",
+            "texto": "Las cajas metálicas deberán ser construidas y terminadas de modo que sean resistentes a la corrosión. Si son de material ferroso se protegerán mediante un proceso de galvanizado en caliente o un proceso de pintado, con un tratamiento con pinturas antioxidantes que garanticen un resultado similar."
+          },
+          {
+            "numero": "8.2.12.20",
+            "texto": "Las cajas metálicas tendrán un espesor mínimo de paredes de 1,2 mm."
+          },
+          {
+            "numero": "8.2.12.21",
+            "texto": "Las cajas metálicas cuyo volumen sea superior a los 20.000 cm3 deberán cumplir las prescripciones de los gabinetes para tableros o cajas de barras."
+          },
+          {
+            "numero": "8.2.12.22",
+            "texto": "Las tapas de las cajas metálicas deberán tener un espesor igual al de las cajas y deberán ser también resistentes a la corrosión o estar protegidas contra ella."
+          },
+          {
+            "numero": "8.2.12.23",
+            "texto": "Las cajas metálicas o no metálicas para instalar en pisos, ya sean como cajas de derivación o cajas de enchufe, deben ser a prueba de polvo y humedad",
+            "nota_aclaratoria": "Corresponde a un grado de protección IP 51 o superior. Ver apéndice 1."
+          },
+          {
+            "numero": "8.2.12.24",
+            "texto": "En casos especiales, como por ejemplo, en el piso de altillos o vitrinas, se aceptará el uso de cajas corrientes en el piso, siempre que estos recintos se puedan considerar libres de los efectos del polvo y de la humedad."
+          },
+          {
+            "numero": "8.2.12.25",
+            "texto": "En canalizaciones de alimentadores se podrá pasar o derivar los conductores o cables que forman los distintos alimentadores a través de una caja común."
+          },
+          {
+            "numero": "8.2.12.26",
+            "texto": "En este tipo de cajas deberán cumplirse las siguientes condiciones:",
+            "condiciones": [
+              "En cajas de paso para tramos rectos, el largo de la caja no podrá ser inferior a 6 veces el diámetro nominal de la tubería de mayor diámetro que entra en la caja.",
+              "En cajas utilizadas en cambios de dirección de las tuberías o en derivaciones, el largo de la caja no podrá ser inferior a 4 veces el diámetro nominal de la tubería mayor más la suma de los diámetros nominales de las tuberías restantes; y la distancia entre la tubería de entrada y la salida del mismo alimentador no podrá ser inferior a 4 veces el mismo diámetro nominal de la tubería mayor."
+            ]
+          },
+          {
+            "numero": "8.2.12.27",
+            "texto": "En el interior de las cajas de paso o derivación señaladas en 8.2.12.26, los conductores de cada alimentador deberán quedar ordenados y separados del resto de los conductores."
+          },
+          {
+            "numero": "8.2.12.28",
+            "texto": "Las cajas no metálicas deberán ser de un material autoextinguente, en caso de combustión deberá arder sin llama, no emitir gases tóxicos, estar libres de materiales halógenos y emitir humos de muy baja opacidad; deberán además, ser adecuadas para soportar la acción de la humedad y agentes químicos, resistentes a las compresiones y deformaciones por efecto del calor, en condiciones similares a las que encontrará en su manipulación y uso.",
+            "nota_aclaratoria": "Esta condición es equivalente al cumplimiento de la Clasificación M1, VOF4, de las normas NF F16 101 y NF F 16 102."
+          },
+          {
+            "numero": "8.2.12.29",
+            "texto": "Las cajas no metálicas tendrán paredes de un espesor mínimo de 1,6 mm."
+          }
+        ]
+      },
+      "8.2.13_canalizaciones_en_molduras_y_bandejas_portaconductores_no_metalicas_livianas": {
+        "numero": "8.2.13",
+        "titulo": "Canalizaciones en molduras y bandejas portaconductores no metálicas livianas para usos habitacionales o similares",
+        "articulos": [
+          {
+            "numero": "8.2.13.1",
+            "texto": "Las molduras y bandejas no metálicas portaconductores livianas, para usos habitacionales o similares, son perfiles de material no metálico, de sección cuadrada, rectangular u otra, de tapa removible, que en conjunto con sus aparatos y accesorios forman un sistema completo de canalización. Su sistema de ajuste y cierre será tal que ninguno de sus componentes podrá ser removido sin ayuda de una herramienta",
+            "nota_aclaratoria": "Al proyectar una instalación con este tipo de canalización, se deberá considerar que debe mantenerse un grado de protección uniforme a lo largo de todo su recorrido, en conjunto con sus aparatos complementarios; un grado IP mínimo recomendable es IP 51."
+          },
+          {
+            "numero": "8.2.13.2",
+            "texto": "Dentro de este campo de aplicación, vale decir en usos habitacionales o similares, se denominará moldura a aquellos perfiles que por la dimensión reducida de su sección transversal, requieren que sus aparatos complementarios sean montados en forma anexa, y se denominará bandeja a aquellos perfiles en que la dimensión de su sección transversal permite el montaje de los aparatos en su interior.",
+            "nota_aclaratoria": "Se entenderá por aparato complementario, en el sentido de este Artículo, a los interruptores y enchufes."
+          },
+          {
+            "numero": "8.2.13.3",
+            "texto": "Tanto las molduras como las bandejas portaconductores, en el alcance de esta sección, podrán usarse solo a la vista, sobrepuestas en paredes y muros de habitaciones oficinas y recintos similares de ambiente seco y limpio. Deberán ser accesibles en todo su recorrido; solo se exceptuará esta exigencia de accesibilidad en cruces de muro de una habitación a otra."
+          },
+          {
+            "numero": "8.2.13.4",
+            "texto": "No podrán usarse molduras o bandejas en recintos húmedos, con polvo en suspensión en ambientes que presenten riesgo de incendio o explosión; tampoco podrán ser instaladas ocultas."
+          },
+          {
+            "numero": "8.2.13.5",
+            "texto": "Tanto en uniones como en derivaciones o cambios de dirección de la canalización, sólo podrán usarse los accesorios aprobados como componentes del sistema para estas funciones. Queda prohibido solucionar alguna de estas condiciones mediante cortes del perfil principal y adaptaciones de forma para evitar el uso de los citados accesorios."
+          },
+          {
+            "numero": "8.2.13.6",
+            "texto": "Las molduras y bandejas podrán ser simples o compuestas; en las compuestas un tabique fijo o removible permitirá dividir la sección transversal en dos o más sectores."
+          },
+          {
+            "numero": "8.2.13.7",
+            "texto": "En molduras o bandejas compuestas, se permitirá llevar por separado, en cada una de las secciones en que éstas estén divididas, conductores de distintos servicios.",
+            "nota_aclaratoria": "Se entenderá como conductores de distintos servicios a los correspondientes a potencia, comunicaciones, datos o control."
+          },
+          {
+            "numero": "8.2.13.8",
+            "texto": "La cantidad máxima de conductores a instalar en una moldura se fijará de acuerdo a la tabla 8.18, haciendo la equivalencia entre la sección interna de la moldura y la cañería correspondiente"
+          },
+          {
+            "numero": "8.2.13.9",
+            "texto": "La cantidad máxima de conductores a instalar en una bandeja no metálica liviana se fijará de acuerdo a 8.2.19.20"
+          },
+          {
+            "numero": "8.2.13.10",
+            "texto": "La capacidad de transporte de los conductores instalados en molduras o bandejas portaconductores no metálicas livianas deberá ser afectada por los factores de corrección de las tablas 8.8, 8.9 y 8.9a, según corresponda."
+          }
+        ]
+      },
+      "8.2.14_canalizaciones_en_pilares_de_servicio": {
+        "numero": "8.2.14",
+        "titulo": "Canalizaciones en pilares de servicio",
+        "articulos": [
+          {
+            "numero": "8.2.14.1",
+            "texto": "Un pilar de servicio es un perfil metálico o no metálico, cerrado, de sección rectangular, destinado a ser usado en ambientes secos y limpios, generalmente en oficinas, o situaciones similares, construidas en la modalidad conocida como de piso libre; su finalidad es proporcionar conexión a los enchufes necesarios para energizar los equipos de escritorio ubicados en posiciones que quedan fuera de alcance de los circuitos de enchufes murales. Ver hoja de norma Nº 3."
+          },
+          {
+            "numero": "8.2.14.2",
+            "texto": "Se aceptará canalizar a través de un pilar de servicio los conductores correspondientes a no más de dos circuitos de enchufes."
+          },
+          {
+            "numero": "8.2.14.3",
+            "texto": "Los pilares de servicio se conectarán a las canalizaciones fijas del edificio mediante tuberías metálicas flexibles y sus correspondientes accesorios."
+          },
+          {
+            "numero": "8.2.14.4",
+            "texto": "Se aceptará que los pilares de servicio se usen como medio de canalización de bajada para circuitos de comunicación o de señales de sistemas de procesamiento de datos por medio de computadoras. Los eventuales efectos de interferencia que puedan producirse al compartir este método de canalización, deberán ser previstos y solucionados por los especialistas de aquellas disciplinas."
+          },
+          {
+            "numero": "8.2.14.5",
+            "texto": "Los enchufes utilizados para instalar en pilares de servicio serán del tipo que permita su montaje sin necesidad de caja de derivación."
+          },
+          {
+            "numero": "8.2.14.6",
+            "texto": "Los pilares de servicio metálicos deberán ser aterrizados mediante un conductor de protección y los circuitos canalizados a través de ellos deberán estar protegidos mediante diferenciales."
+          }
+        ]
+      },
+      "8.2.15_canalizaciones_subterraneas": {
+        "numero": "8.2.15",
+        "titulo": "Canalizaciones subterráneas",
+        "articulos": [
+          {
+            "numero": "8.2.15.1",
+            "texto": "Se entenderá por canalización subterránea a aquella en que los ductos o los conductores van enterrados directamente en el suelo. No se considerará canalización subterránea a aquella que se instale en el radier de una construcción."
+          },
+          {
+            "numero": "8.2.15.2",
+            "texto": "Al realizar un proyecto de canalizaciones subterráneas, deberá efectuarse un estudio cuidadoso de las condiciones del terreno y las instalaciones; en función de estas condiciones se determinará el tipo de canalización a emplear y sus características de construcción. Entre las condiciones de terreno que afectan a las características de las canalizaciones subterráneas está la presencia de napas freáticas superficiales, nivel de precipitaciones pluviales en la zona, estabilidad, composición química del terreno, etc."
+          },
+          {
+            "numero": "8.2.15.3",
+            "texto": "Se podrán usar como sistema de canalización subterránea conductores aislados tendidos directamente en tierra, tuberías metálicas y tuberías no metálicas rígidas o semirígidas."
+          },
+          {
+            "numero": "8.2.15.4",
+            "texto": "Conductores tendidos directamente en tierra, se utilizarán sólo los conductores aprobados para este uso, según lo prescrito en las tablas Nº 8.6 y Nº 8.6a."
+          },
+          {
+            "numero": "8.2.15.5",
+            "texto": "No se permite el tendido de conductores directamente en tierra en jardines, bajo calzadas, bajo aceras, recintos pavimentados o sitios sobre los cuales se levanten construcciones definitivas."
+          },
+          {
+            "numero": "8.2.15.6",
+            "texto": "En caso de que los conductores tendidos directamente en tierra deban cruzar bajo una calzada o vereda, este cruce deberá hacerse a través de un ducto apropiado que cubra todo el tramo."
+          },
+          {
+            "numero": "8.2.15.7",
+            "texto": "Tuberías metálicas. Se utilizarán tuberías de acero galvanizado rígidas para uso pesado o tuberías metálicas flexibles aprobadas para este uso, de acuerdo a lo prescrito en las secciones 8.2.6 y 8.2.7."
+          },
+          {
+            "numero": "8.2.15.8",
+            "texto": "Tuberías no metálicas. Se usarán tuberías no metálicas rígidas y semirígidas de acuerdo a lo prescrito en las secciones 8.2.8 y 8.2.9."
+          },
+          {
+            "numero": "8.2.15.9",
+            "texto": "En las canalizaciones subterráneas se considerará el uso de cámaras tipos A, B o C, especificadas en 8.2.17."
+          },
+          {
+            "numero": "8.2.15.10",
+            "texto": "En canalizaciones subterráneas está prohibido el uso de conductores tipo TW, THW, THHN, THWN, NSYA."
+          }
+        ]
+      },
+      "8.2.16_condiciones_de_instalacion": {
+        "numero": "8.2.16",
+        "titulo": "Condiciones de instalación",
+        "articulos": [
+          {
+            "numero": "8.2.16.1",
+            "texto": "Los conductores tendidos directamente en tierra se dispondrán en una zanja de ancho suficiente y de una profundidad mínima de 0,45 m, debiendo colocarse entre dos capas de arena o protegiéndose con una capa de mortero pobre de cemento coloreado de 0,10 m de espesor o por ladrillos o pastelones de hormigón colocados a lo largo de todo su recorrido. En zonas de tránsito de vehículos la profundidad de la zanja será de 0,80 m como mínimo."
+          },
+          {
+            "numero": "8.2.16.2",
+            "texto": "Las uniones y derivaciones de los conductores tendidos directamente en tierra se harán en cámaras, mediante mufas o cajas de conexiones aprobadas, usando para ello los sistemas de uniones aprobados."
+          },
+          {
+            "numero": "8.2.16.3",
+            "texto": "Los ductos se colocarán en una zanja de ancho y profundidad suficiente, considerando que deberán ir cubiertos por un mínimo de 0,45 m de tierra de relleno, exigiéndose una profundidad mínima de 0,80 m en zonas de tránsito de vehículos. El fondo de la excavación deberá emparejarse con una capa de arena y los ductos deberán tener una pendiente mínima de 0,25% hacia las cámaras próximas."
+          },
+          {
+            "numero": "8.2.16.4",
+            "texto": "Las uniones entre los ductos se harán de modo de asegurar la máxima hermeticidad posible y no deberán alterar la sección transversal interior de ellos."
+          },
+          {
+            "numero": "8.2.16.5",
+            "texto": "En donde se presenten condiciones desfavorables de resistencia mecánica del terreno se deberán tomar las medidas necesarias para asegurar un adecuado soporte y protección de los ductos."
+          },
+          {
+            "numero": "8.2.16.6",
+            "texto": "En canalizaciones formadas por varios ductos se usarán separadores ubicados a distancias convenientes para facilitar la colocación de los ductos y mantener su paralelismo. Ver hoja de norma Nº 4."
+          },
+          {
+            "numero": "8.2.16.7",
+            "texto": "Para las distintas disposiciones de ductos múltiples, la capacidad de radiación de calor de cada elemento se reducirá según su posición en el conjunto, de acuerdo a los porcentajes que se indican en la hoja de norma Nº 5. Estos valores deberán considerarse al determinar las secciones de los conductores que se colocarán en las tuberías que conforman el ducto múltiple."
+          },
+          {
+            "numero": "8.2.16.8",
+            "texto": "Se aceptará una distancia máxima de recorrido entre cámaras de 90 m, con un máximo de dos curvas y una desviación por cada curva no superior a 60º con respecto a la línea recta y radios de curvatura de 10 veces el diámetro del ducto respectivo como mínimo. Si existen más de dos curvas o una desviación superior a la señalada se deberá colocar cámaras intermedias."
+          },
+          {
+            "numero": "8.2.16.9",
+            "texto": "En tramos rectos se aceptará, colocar cámaras hasta, una distancia máxima de 120 m entre ellas. El ducto que se utilice en estos casos será de un diámetro mínimo de 50 mm."
+          },
+          {
+            "numero": "8.2.16.10",
+            "texto": "En tramos cuyo recorrido no sea superior a 20 m se aceptará que los ductos metálicos y las tuberías de PVC o Polietileno formen una U, sin colocar cámaras."
+          },
+          {
+            "numero": "8.2.16.11",
+            "texto": "Para facilitar la colocación de los conductores en los ductos se recomienda utilizar lubricantes adecuados, que no dañen los distintos elementos del sistema de canalización."
+          }
+        ]
+      },
+      "8.2.17_camaras": {
+        "numero": "8.2.17",
+        "titulo": "Cámaras",
+        "articulos": [
+          {
+            "numero": "8.2.17.1",
+            "texto": "Las cámaras se usarán para facilitar la colocación, mantenimiento, reparaciones, uniones y derivaciones de los conductores y permitir los empalmes de distintos tipos de ductos. Deberán tener un drenaje que facilite la evacuación rápida de las aguas que eventualmente lleguen a ellas por filtración o condensación."
+          },
+          {
+            "numero": "8.2.17.2",
+            "texto": "En zonas muy lluviosas o en que existan napas freáticas que puedan inundar las cámaras y los ductos, el sistema deberá construirse impermeabilizado. Si esta medida es insuficiente deberá instalarse un sistema mecanizado de evacuación de las aguas o utilizar conductores apropiados para trabajar sumergidos."
+          },
+          {
+            "numero": "8.2.17.3",
+            "texto": "Se utilizarán los siguientes tipos de cámaras:",
+            "tipos_camaras": [
+              {
+                "literal": "a)",
+                "tipo": "Cámara tipo A",
+                "descripcion": "Serán de dimensiones suficientes como para permitir el fácil acceso a su interior a una persona para efectuar trabajos. Este tipo de cámara se usará preferentemente en sistemas industriales y cuando el tamaño y el número de conductores así lo aconsejen."
+              },
+              {
+                "literal": "b)",
+                "tipo": "Cámaras tipo B",
+                "descripcion": "Serán de dimensiones tales que permitan la fácil manipulación de los conductores, la inspección desde el exterior y, eventualmente penetrar a su interior para trabajos de guía del alambrado, ejecución de mufas de protección de derivaciones o similares. Este tipo de cámara se usará en instalaciones de menor envergadura que las especificadas en 8.2.17.3 a."
+              },
+              {
+                "literal": "c)",
+                "tipo": "Cámaras tipo C",
+                "descripcion": "Sus dimensiones deberán permitir la manipulación de los conductores y la inspección desde el exterior. Se utilizarán como cámaras de paso, cámaras de unión o derivación, en instalaciones residenciales y en instalaciones de semáforos."
+              }
+            ],
+            "nota": "Las dimensiones mínimas y detalles constructivos recomendados de cada tipo de cámara se indican en la hoja de norma Nº 6."
+          },
+          {
+            "numero": "8.2.17.4",
+            "texto": "Los conductores deberán quedar ordenados siguiendo en lo posible las paredes de las cámaras y se tratará de evitar los cruces entre ellos. En las cámaras tipo \"A\", se deberá utilizar separadores y soportes de conductores para permitir este ordenamiento. Se recomienda adoptar la misma disposición en las cámaras tipo B, para la fácil identificación de los distintos circuitos y servicios."
+          },
+          {
+            "numero": "8.2.17.5",
+            "texto": "Las uniones y derivaciones de conductores dentro de cámaras se harán utilizando métodos aprobados."
+          },
+          {
+            "numero": "8.2.17.6",
+            "texto": "Las uniones de los ductos con las cámaras se deberán hacer de tal modo que no se produzcan cantos agudos que puedan dañar la aislación o la cubierta de los conductores, para lo cual se emplearán boquillas u otro sistema similar."
+          }
+        ]
+      },
+      "8.2.18_cruces_y_paralelismos": {
+        "numero": "8.2.18",
+        "titulo": "Cruces y paralelismos de canalizaciones eléctricas subterráneas con redes de gas, agua potable y alcantarillado",
+        "articulos": [
+          {
+            "numero": "8.2.18.1",
+            "texto": "En los cruces se cuidará que los ductos o conductores eléctricos queden separados de las tuberías de los otros servicios en 0,50 m, como mínimo, en cualquier sentido. Si el cruce se protege con una capa de hormigón de 0,20 m de espesor, la separación mínima podrá reducirse a este valor."
+          },
+          {
+            "numero": "8.2.18.2",
+            "texto": "En los cruces deberá protegerse los ductos o conductores eléctricos mediante una capa de mortero de cemento afinado y coloreado, de un espesor mínimo de 0,10 m y que se extienda 0,50 m hacia ambos lados. Se recomienda identificar adecuadamente la existencia de los ductos o conductores eléctricos en el punto del cruce."
+          },
+          {
+            "numero": "8.2.18.3",
+            "texto": "Se entenderá que existe paralelismo cuando los ductos o conductores eléctricos queden dentro del volumen normal de excavación de las tuberías de otros servicios."
+          },
+          {
+            "numero": "8.2.18.4",
+            "texto": "Los ductos o conductores eléctricos deberán protegerse en toda la extensión del paralelismo con una capa hormigón afinado y coloreado de 0,10 m de espesor y de ancho equivalente a la suma de los diámetros de los ductos o conductores más 0,20 m a ambos lados de ellos. No se aceptará la existencia o la colocación de tuberías de otros servicios sobre o bajo este volumen."
+          }
+        ]
+      },
+      "8.2.19_bandejas_portaconductores": {
+        "numero": "8.2.19",
+        "titulo": "Bandejas portaconductores",
+        "articulos": [
+          {
+            "numero": "8.2.19.1",
+            "texto": "Las bandejas portaconductores son ductos de sección rectangular, cerrados con tapas removibles, que junto a sus accesorios forma un sistema completo de canalización en el cual se permite colocar conductores correspondientes a uno o varios circuitos y alimentar distintos servicios. En el ámbito de aplicación de esta norma no es aceptable el uso de bandejas sin tapa."
+          },
+          {
+            "numero": "8.2.19.2",
+            "texto": "Las bandejas portaconductores podrán ser metálicas o no metálicas. Las dimensiones y características constructivas recomendadas se indican en la hoja de norma Nº 7."
+          },
+          {
+            "numero": "8.2.19.3",
+            "texto": "Las bandejas metálicas se construirán en lámina de acero de un espesor mínimo de 2 mm. Dependiendo de las condiciones ambientales en donde se instalen se usarán:",
+            "tipos": [
+              "Bandejas metálicas pintadas, en ambientes secos y sin presencia de agentes químicos activos",
+              "Bandejas electrogalvanizadas, en ambientes húmedos sin presencia de agentes químicos activos",
+              "Bandejas galvanizadas, en ambientes húmedos o mojados, con presencia de agentes químicos activos"
+            ]
+          },
+          {
+            "numero": "8.2.19.4",
+            "texto": "Las bandejas no metálicas se podrán utilizar construidas en PVC o resinas epóxicas sobre una base de fibra de vidrio."
+          },
+          {
+            "numero": "8.2.19.5",
+            "texto": "El material empleado en la construcción de las bandejas no metálicas deberá ser autoextinguente, en caso de combustión deberá arder sin llama, no emitir gases tóxicos, estar libres de materiales halógenos y emitir humos de muy baja opacidad; deberá además ser adecuado para soportar la acción de la humedad y agentes químicos, resistente a las compresiones y deformaciones por efecto del calor, en condiciones similares a las que encontrará en su manipulación y uso.",
+            "nota_aclaratoria": "Esta condición es equivalente al cumplimiento de la Clasificación M1, VOF4, de las normas NF F16 101 y NF F16 102."
+          },
+          {
+            "numero": "8.2.19.6",
+            "texto": "Las bandejas portaconductores, sin distingo de su calidad constructiva, pueden usarse en instalaciones a la vista u ocultas en lugares accesibles, en el interior de edificios o a la intemperie."
+          },
+          {
+            "numero": "8.2.19.7",
+            "texto": "No se permite el empleo de bandejas portaconductores en lugares en donde se manipulen o almacenen gases inflamables y en donde existan polvos o fibras combustibles en suspensión, en proporción tal como para producir mezclas inflamables o explosivas."
+          },
+          {
+            "numero": "8.2.19.8",
+            "texto": "En canalizaciones a la intemperie o recintos de ambiente húmedo, los sistemas de bandejas deberán cumplir las siguientes condiciones:",
+            "condiciones": [
+              "Asegurar la impermeabilidad adecuada, según el recinto en que se instalen.",
+              "Tener una pendiente de 0,25% hacia puntos intermedios de tramos del sistema, en donde se harán perforaciones pequeñas para facilitar el escurrimiento de condensaciones."
+            ]
+          },
+          {
+            "numero": "8.2.19.9",
+            "texto": "Pueden utilizarse además, en zonas expuestas a daños físicos, protegiendo el sistema en forma adecuada contra éstos, y en ambientes corrosivos si son bandejas de material adecuado y tienen el recubrimiento apropiado para este ambiente."
+          },
+          {
+            "numero": "8.2.19.10",
+            "texto": "Los conductores que se utilicen deberán ser adecuados para el medio ambiente, y el tipo de instalación de los conductores de los diferentes servicios será el adecuado para la mayor tensión del conjunto."
+          },
+          {
+            "numero": "8.2.19.11",
+            "texto": "La sección mínima de estos conductores será de 1,5 mm2. Se autorizará el uso de secciones menores en caso de usar cables multiconductores."
+          },
+          {
+            "numero": "8.2.19.12",
+            "texto": "El sistema de bandejas portaconductores debe instalarse de tal modo que sea accesible en todo su recorrido y que todos sus elementos estén unidos mecánicamente entre si o a cualquier otro elemento de la instalación, tales como ductos, tableros, etc."
+          },
+          {
+            "numero": "8.2.19.13",
+            "texto": "La sujeción o fijación de las bandejas portaconductores podrá hacerse mediante tensores, escuadras, consolas o partes estructurales de la construcción. Estos puntos de sujeción deberán estar a una distancia máxima de 1,50 m entre si, pudiendo aumentarse esta distancia en casos calificados hasta 3 m. Estos accesorios, en caso de utilizarse sistemas de bandejas metálicas, serán metálicos con una protección adecuada al ambiente en que se instalen, de una calidad igual a la de las bandejas; en caso de bandejas no metálicas, podrán usarse accesorios del mismo material de las bandejas, en caso que sus dimensiones y características aseguren una resistencia mecánica adecuada a las condiciones de uso; si esta condición no se logra, podrán utilizarse accesorios metálicos con un recubrimiento que asegure que su comportamiento frente al ambiente sea equivalente al del sistema de bandejas. La cantidad y disposición de los tensores u otros soportes serán tales que el retiro de uno de ellos no produzca deformaciones de la bandeja."
+          },
+          {
+            "numero": "8.2.19.14",
+            "texto": "Los tensores podrán ser barras o cables metálicos de una sección tal que garantice la resistencia mecánica suficiente y permita, cuando sea necesario, la colocación de un sistema de nivelación de las bandejas. En todo caso la sección mínima será tal que tenga una resistencia mecánica equivalente a la de una barra de acero de 6 mm de diámetro."
+          },
+          {
+            "numero": "8.2.19.15",
+            "texto": "No se permite soldar los tensores directamente a las estructuras de los edificios o a las bandejas."
+          },
+          {
+            "numero": "8.2.19.16",
+            "texto": "Las uniones de tramos de bandejas podrán ser apernadas o soldadas; se aceptará que vayan soldadas en un tramo y apernadas en el otro."
+          },
+          {
+            "numero": "8.2.19.17",
+            "texto": "Cuando las bandejas se sujetan por medio de consolas o escuadras apernadas o soldadas a la estructura de la construcción, en los puntos en que existan juntas de dilatación, se colocarán uniones flexibles."
+          },
+          {
+            "numero": "8.2.19.18",
+            "texto": "Los sistemas de bandejas deberán llevar juntas de dilatación cuando su longitud recta exceda los 50 m."
+          },
+          {
+            "numero": "8.2.19.19",
+            "texto": "Deberá mantenerse una distancia útil mínima de 0,30 m entre el borde superior de la bandeja y el cielo del recinto o cualquier otro obstáculo de la construcción."
+          },
+          {
+            "numero": "8.2.19.20",
+            "texto": "Podrán llevarse como máximo 30 conductores o cables multiconductores activos, siempre que éstos, incluyendo su aislación, no ocupen más del 20 % de la sección transversal de la bandeja. Se deberá aplicar los factores de corrección contenidos en las tablas 8.9 y 8.9a, según corresponda."
+          },
+          {
+            "numero": "8.2.19.21",
+            "texto": "Se podrá instalar cualquier cantidad de conductores pertenecientes a circuitos de control y señalización, siempre que sumando su sección, incluida su aislación y la de los conductores activos, no ocupe más del 20% de la sección transversal de la bandeja. No deberán mezclarse estos conductores para lo cual se recomienda utilizar separadores internos o, en su defecto, los circuitos de corrientes débiles se alambrarán mediante cables multiconductores."
+          },
+          {
+            "numero": "8.2.19.22",
+            "texto": "La disposición de los conductores dentro de las bandejas se deberá hacer de tal forma que conserven su posición y ordenamiento a lo largo de todo su recorrido, y los conductores de cada circuito deberán amarrarse en haces o paquetes separados, excepto si se usan cables multiconductores."
+          },
+          {
+            "numero": "8.2.19.23",
+            "texto": "Las alimentaciones o derivaciones desde bandejas pueden hacerse en ductos metálicos, rígidos o flexibles, cables blindados, cables para servicio pesado o tuberías plásticas rígidas."
+          },
+          {
+            "numero": "8.2.19.24",
+            "texto": "El acoplamiento de estas tuberías o cables con la bandeja deberá hacerse mecánicamente rígido, utilizando, según sea el caso, boquilla y contratuerca, prensaestopas o cualquier otro dispositivo aprobado para este fin. No obstante lo indicado, el paso desde una bandeja a una tubería rígida deberá hacerse siempre a través de una tubería metálica flexible."
+          },
+          {
+            "numero": "8.2.19.25",
+            "texto": "Las uniones y derivaciones de los conductores se harán dentro de las bandejas, utilizando métodos aprobados, cuidando que siempre queden accesibles y fuera del haz de conductores o cables. No será necesario utilizar cajas de derivación adosadas a la bandeja para hacer estas derivaciones."
+          },
+          {
+            "numero": "8.2.19.26",
+            "texto": "Se aceptarán circuitos de comunicaciones sólo en bandejas de material magnético y deberán aislarse del resto de los servicios mediante una separación del mismo material a lo largo de todo el recorrido de la bandeja y de la misma altura que ésta. En este caso, para fijar el número de conductores se tratará cada sector como una bandeja independiente. Se exceptúan de esta exigencia los cables de comunicaciones provistos de blindaje con puesta a tierra, en tal caso se tratarán como conductores de señalización y control. La identificación debe ser clara en todo su recorrido."
+          },
+          {
+            "numero": "8.2.19.27",
+            "texto": "Las bandejas podrán atravesar muros, losas o partes no accesibles de no más de 1,00 m de espesor."
+          },
+          {
+            "numero": "8.2.19.28",
+            "texto": "Todas las partes metálicas del sistema de canalización en bandejas deberán estar conectadas a un conductor de protección, asegurando la continuidad eléctrica en toda su extensión."
+          },
+          {
+            "numero": "8.2.19.29",
+            "texto": "Dentro de las bandejas podrá colocarse un conductor de protección desnudo, común a todos los servicios y circuitos, excepto los que operen a tensiones extra bajas, de acuerdo a 9.2.6.2; su sección mínima será de 8,37 mm2 y se unirá a la bandeja con pernos o prensas de bronce en cada tramo de bandeja, pudiendo hacerse derivaciones a los circuitos o consumos desde estos puntos. No podrá usarse como conductor de protección el cuerpo de las bandejas."
+          },
+          {
+            "numero": "8.2.19.30",
+            "texto": "Se podrán montar paralelas, vertical u horizontalmente dos o más bandejas, siempre que la disposición permita retirar fácilmente las tapas y manipular los conductores con facilidad. Cuando las bandejas se dispongan verticalmente deberán estar separadas como mínimo 0,30 m."
+          },
+          {
+            "numero": "8.2.19.31",
+            "texto": "En cruces de bandejas la separación mínima útil en sentido vertical será de 0,15 m. En caso de que la trayectoria de las bandejas no permita la separación antes indicada, se deberá emplear piezas de acoplamiento que permitan el cambio de nivel para lograr esta distancia."
+          },
+          {
+            "numero": "8.2.19.32",
+            "texto": "Las bandejas pueden ser utilizadas como soporte de aparatos y accesorios, tales como enchufes hembra, equipos fluorescentes, portalámparas, placas portafusibles y similares, cumpliéndose en cada caso con las normas pertinentes al montaje de tales aparatos y accesorios."
+          },
+          {
+            "numero": "8.2.19.33",
+            "texto": "Además, podrán utilizarse como soporte de sistemas mecánicos livianos usados para sostener cables instalados con tensión mecánica reducida destinados a alimentar máquinas portátiles de potencia no superior a 1 KW."
+          }
+        ]
+      },
+      "8.2.20_escalerillas_portaconductores": {
+        "numero": "8.2.20",
+        "titulo": "Escalerillas portaconductores",
+        "articulos": [
+          {
+            "numero": "8.2.20.1",
+            "texto": "Las escalerillas portaconductores son sistemas de soporte de conductores eléctricos formado por perfiles longitudinales y travesaños que con sus accesorios forman una unidad rígida y completa de canalización."
+          },
+          {
+            "numero": "8.2.20.2",
+            "texto": "Las escalerillas pueden usarse abiertas o con tapa. Las tapas serán exigibles en ambientes muy sucios en que el material que pueda depositarse sobre los conductores limite su capacidad de radiación de calor, en tramos verticales accesibles fácilmente y en donde queden al alcance de personal no calificado."
+          },
+          {
+            "numero": "8.2.20.3",
+            "texto": "Las escalerillas portaconductores podrán ser metálicas o no metálicas. Las dimensiones y características constructivas recomendadas para las escalerillas y sus accesorios se indican en la hoja de norma Nº 8."
+          },
+          {
+            "numero": "8.2.20.4",
+            "texto": "Las escalerillas portaconductores metálicas se construirán en lámina de acero de un espesor mínimo de 2 mm. Dependiendo de las condiciones ambientales en donde se instalen se usarán:",
+            "tipos": [
+              "Escalerillas metálicas pintadas en ambientes secos y sin presencia de agentes químicos activos",
+              "Escalerillas electrogalvanizadas en ambientes húmedos sin presencia de agentes químicos activos",
+              "Escalerillas galvanizadas en ambientes húmedos o mojados, con presencia de agentes químicos activos"
+            ]
+          },
+          {
+            "numero": "8.2.20.5",
+            "texto": "Las escalerillas no metálicas. Se podrán utilizar bandejas construidas en PVC o resinas epóxicas sobre una base de fibra de vidrio."
+          },
+          {
+            "numero": "8.2.20.6",
+            "texto": "El material empleado en la construcción de las escalerillas portaconductores no metálicas deberá ser autoextinguente, en caso de combustión deberá arder sin llama, no emitir gases tóxicos, estar libres de materiales halógeno y emitir humos de muy baja opacidad; deberá además ser adecuado para soportar la acción de la humedad y agentes químicos, resistente a las compresiones y deformaciones por efecto del calor, en condiciones similares a las que encontrará en su manipulación y uso.",
+            "nota_aclaratoria": "Esta condición es equivalente al cumplimiento de la Clasificación M1, VOF4, de las normas NF F16 101 y NF F 16 102"
+          },
+          {
+            "numero": "8.2.20.7",
+            "texto": "Las escalerillas portaconductores se usarán en condiciones similares a las establecidas para las bandejas en 8.2.19.6 a 8.2.19.19, excepto lo indicado en 8.2.19.8, pudiendo además utilizarse como soporte de otros ductos eléctricos."
+          },
+          {
+            "numero": "8.2.20.8",
+            "texto": "Las escalerillas portaconductores no deberán usarse:",
+            "prohibiciones": [
+              "en pozos de ascensores,",
+              "en lugares de uso público en donde queden expuestas a manipulación de personas no calificadas,",
+              "como soporte común de conductores de circuitos de potencia y de comunicaciones, salvo que estos últimos tengan un blindaje puesto a tierra. No obstante lo indicado, podrán canalizarse conductores de comunicaciones en escalerillas que cuenten con un separador en toda su longitud que permita un tendido independiente de ambos sistemas y que se adopten las medidas que sean pertinentes para evitar las posibles interferencias que los circuitos de potencias puedan hacer sobre las señales de comunicación."
+            ]
+          },
+          {
+            "numero": "8.2.20.9",
+            "texto": "Todos los conductores que se coloquen en las escalerillas deberán cumplir lo indicado en 8.2.19.10."
+          },
+          {
+            "numero": "8.2.20.10",
+            "texto": "La sección mínima de estos conductores será de 4 mm2. Se autorizará el uso de secciones menores en caso de utilizar cables multiconductores o liados en haces que aseguren la rigidez mecánica del conjunto."
+          },
+          {
+            "numero": "8.2.20.11",
+            "texto": "Deben instalarse como sistema completo sin interrupciones y estar unidos mecánicamente a tableros u otros sistemas de canalización de los cuales provengan o en los cuales continúen."
+          },
+          {
+            "numero": "8.2.20.12",
+            "texto": "Las uniones de tramos de escalerillas podrán soldarse o apernarse. También se aceptará que vayan soldadas en un tramo y apernadas en el otro."
+          },
+          {
+            "numero": "8.2.20.13",
+            "texto": "Las alimentaciones o derivaciones deberán cumplir lo establecido en 8.2.19.23 y 8.2.19.24."
+          },
+          {
+            "numero": "8.2.20.14",
+            "texto": "Podrán llevar como máximo dos capas de conductores o cables multiconductores; éstos deberán tenderse ordenadamente en todo su recorrido. En donde corresponda se aplicarán los factores de corrección de capacidad de transporte indicados en las tablas 8.9 y 8.9a. Excepción: Se exceptúan de esta disposición los alimentadores a oficinas o departamentos en edificios de altura considerados en 5.1.14 los cuales siempre deberán cumplir lo indicado en 7.1.1.4.a 7.1.1.6."
+          },
+          {
+            "numero": "8.2.20.15",
+            "texto": "Las uniones y derivaciones de conductores en escalerillas deberán cumplir lo establecido en 8.2.19.25."
+          },
+          {
+            "numero": "8.2.20.16",
+            "texto": "Las escalerillas podrán atravesar muros u otras zonas no accesibles y sin ventilación, de espesor máximo de 1,00 m, colocándose cubiertas de protección total que se prolonguen un mínimo de 0,10 m a cada lado del muro."
+          },
+          {
+            "numero": "8.2.20.17",
+            "texto": "Pueden instalarse verticalmente atravesando pisos en los cuales no exista la posibilidad que los conductores se mojen con agua u otros líquidos; en estos tramos verticales deberán colocarse cubiertas protectoras removibles de resistencia mecánica adecuada, desde el piso hasta una altura de 1,80 m. En los tramos verticales los conductores deberán amarrarse convenientemente a los travesaños."
+          },
+          {
+            "numero": "8.2.20.18",
+            "texto": "Todas las partes metálicas del sistema deberán estar conectadas a un conductor de protección y deberá cumplirse lo prescrito en 8.2.19.29."
+          },
+          {
+            "numero": "8.2.20.19",
+            "texto": "La distancia útil entre escalerillas deberá ser de 0,30 m como mínimo, cuando estén colocadas unas sobre otras, en los cruces con otras escalerillas u otros sistemas de ductos eléctricos deberá existir una distancia mínima de 0,15 m entre ellos."
+          }
+        ]
+      }
+    }
+  }
+}

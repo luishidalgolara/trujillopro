@@ -1,0 +1,137 @@
+/* ============================================
+   PANEL DE SUGERENCIAS INTELIGENTES
+   ============================================ */
+
+.sugerencias-panel {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    color: white;
+    animation: slideIn 0.3s ease-out;
+}
+
+.sugerencias-panel h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.diagnostico-info {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.diagnostico-info strong {
+    color: #ffd700;
+}
+
+/* ============================================
+   SOLUCIONES
+   ============================================ */
+
+.solucion {
+    background: white;
+    color: #2c3e50;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    border-left: 4px solid #95a5a6;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.solucion:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.solucion.recomendada {
+    border-left-color: #27ae60;
+    background: linear-gradient(to right, #f0fff4 0%, white 100%);
+}
+
+.solucion.alternativa {
+    border-left-color: #f39c12;
+    background: linear-gradient(to right, #fffbf0 0%, white 100%);
+}
+
+.solucion strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.solucion p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.solucion p strong {
+    display: inline;
+    color: #e74c3c;
+    font-size: inherit;
+}
+
+/* ============================================
+   BADGE RECOMENDADO
+   ============================================ */
+
+.badge-recomendado {
+    display: inline-block;
+    background: linear-gradient(135deg, #27ae60, #229954);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 2px 6px rgba(39, 174, 96, 0.3);
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    .sugerencias-panel {
+        padding: 1rem;
+    }
+    
+    .solucion {
+        padding: 0.75rem;
+    }
+    
+    .solucion strong {
+        font-size: 0.9rem;
+    }
+    
+    .solucion p {
+        font-size: 0.85rem;
+    }
+}

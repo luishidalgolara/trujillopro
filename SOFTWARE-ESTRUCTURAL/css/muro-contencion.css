@@ -1,0 +1,146 @@
+/* Estilos específicos para Muro de Contención */
+.input-section { 
+animation: slideInFromLeft 0.6s ease; 
+}
+.output-section { 
+animation: slideInFromRight 0.6s ease; 
+}
+@keyframes slideInFromLeft { 
+    from { 
+opacity: 0; 
+transform: translateX(-40px); 
+    } 
+    to { 
+opacity: 1; 
+transform: translateX(0); 
+    } 
+}
+@keyframes slideInFromRight { 
+    from { 
+opacity: 0; 
+transform: translateX(40px); 
+    } 
+    to { 
+opacity: 1; 
+transform: translateX(0); 
+    } 
+}
+#canvas3d { 
+cursor: grab; 
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+width: 100%;
+height: 500px;
+min-height: 500px;
+display: block;
+}
+#canvas3d:active { 
+cursor: grabbing; 
+}
+#canvas3d.active {
+display: block !important;
+}
+.alert-danger { 
+border-left-width: 6px; 
+font-weight: bold; 
+}
+
+/* ========================================
+   ESTILOS PARA CORTES A-A Y B-B
+   ======================================== */
+#canvasCorteA,
+#canvasCorteB {
+display: none;
+width: 100%;
+height: 600px;
+border: 2px solid #ddd;
+border-radius: 8px;
+background: white;
+box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+cursor: default;
+}
+
+#canvasCorteA.active,
+#canvasCorteB.active {
+display: block !important;
+}
+
+#canvasCorteA:hover,
+#canvasCorteB:hover {
+box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Estilos para canvas de Solo Acero */
+#canvasAcero {
+cursor: grab;
+box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+transition: box-shadow 0.3s ease;
+display: none;
+width: 100%;
+height: 500px;
+min-height: 500px;
+background-color: #1a1a1a;
+border-radius: 8px;
+}
+#canvasAcero.active {
+display: block !important;
+}
+#canvasAcero:hover {
+box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+#canvasAcero:active {
+cursor: grabbing;
+}
+
+/* Controles de vista */
+.vista-controles {
+display: flex;
+gap: 10px;
+margin-bottom: 15px;
+justify-content: center;
+flex-wrap: wrap;
+}
+.btn-vista {
+padding: 10px 20px;
+border: 2px solid #3498db;
+background: white;
+color: #3498db;
+border-radius: 6px;
+cursor: pointer;
+font-weight: 600;
+transition: all 0.3s ease;
+}
+.btn-vista:hover {
+background: #e8f4fd;
+transform: translateY(-2px);
+box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
+}
+.btn-vista.active {
+background: #3498db;
+color: white;
+}
+.vista-container {
+position: relative;
+width: 100%;
+min-height: 500px;
+margin-bottom: 20px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    #canvas3d {
+        height: 350px;
+    }
+    #canvasAcero {
+        height: 350px;
+    }
+    #canvasCorteA,
+    #canvasCorteB {
+        height: 450px;
+    }
+    .vista-controles {
+        flex-direction: column;
+    }
+    .btn-vista {
+        width: 100%;
+    }
+}

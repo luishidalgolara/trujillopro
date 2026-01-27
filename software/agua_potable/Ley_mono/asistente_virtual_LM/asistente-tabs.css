@@ -1,0 +1,42 @@
+/* asistente-tabs.css - ESTILOS DE TABS Y TAB CONTENT */
+
+.asistente-tabs {
+    display: flex;
+    background: #1a1a1a;
+    border-bottom: 2px solid #333;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 15px;
+    background: #2a2a2a;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-btn:hover {
+    background: #3a3a3a;
+    color: #00d9ff;
+}
+
+.tab-btn.active {
+    background: #0f0f0f;
+    color: #00d9ff;
+    border-bottom-color: #00d9ff;
+}
+
+.tab-content {
+    display: none;
+    flex: 1;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.tab-content.active {
+    display: flex;
+}

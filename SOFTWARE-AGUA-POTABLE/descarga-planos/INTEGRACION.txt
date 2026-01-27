@@ -1,0 +1,100 @@
+/**
+ * INSTRUCCIONES DE INTEGRACIÓN
+ * Cómo enlazar el sistema de exportación en index.html
+ */
+
+/*
+═══════════════════════════════════════════════════════════════
+PASO 1: AGREGAR CSS EN EL <head>
+═══════════════════════════════════════════════════════════════
+
+Agrega esta línea DESPUÉS de las otras hojas de estilo:
+
+<link rel="stylesheet" href="descarga-planos/export-styles.css">
+
+
+═══════════════════════════════════════════════════════════════
+PASO 2: AGREGAR SCRIPTS ANTES DE </body>
+═══════════════════════════════════════════════════════════════
+
+Agrega estas líneas ANTES del cierre de </body> y ANTES de otros scripts:
+
+<!-- LIBRERÍAS EXTERNAS PARA PDF (CDN) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- SISTEMA DE EXPORTACIÓN -->
+<script src="descarga-planos/export-utils.js"></script>
+<script src="descarga-planos/export-svg.js"></script>
+<script src="descarga-planos/export-pdf.js"></script>
+<script src="descarga-planos/export-core.js"></script>
+
+
+═══════════════════════════════════════════════════════════════
+RESULTADO FINAL EN index.html
+═══════════════════════════════════════════════════════════════
+
+Tu <head> debe tener:
+
+<head>
+    <meta charset="UTF-8">
+    ... otros meta tags ...
+    
+    <!-- Otros estilos -->
+    <link rel="stylesheet" href="css/main.css">
+    ... otros CSS ...
+    
+    <!-- ✅ SISTEMA DE EXPORTACIÓN -->
+    <link rel="stylesheet" href="descarga-planos/export-styles.css">
+</head>
+
+
+Tu <body> antes de </body> debe tener:
+
+    <!-- LIBRERÍAS EXTERNAS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <!-- ✅ SISTEMA DE EXPORTACIÓN -->
+    <script src="descarga-planos/export-utils.js"></script>
+    <script src="descarga-planos/export-svg.js"></script>
+    <script src="descarga-planos/export-pdf.js"></script>
+    <script src="descarga-planos/export-core.js"></script>
+    
+    <!-- Otros scripts del sistema -->
+    <script src="drawing-system/drawing-state.js"></script>
+    ... resto de scripts ...
+</body>
+
+
+═══════════════════════════════════════════════════════════════
+FUNCIONAMIENTO
+═══════════════════════════════════════════════════════════════
+
+1. El usuario hace clic en "📋 EXPORTAR RESULTADOS"
+2. Se abre un diálogo con opciones de formato
+3. El usuario selecciona SVG, PDF, PNG o TODOS
+4. El sistema captura TODO el contenido del plano
+5. Genera el archivo con dimensiones reales
+6. Descarga automáticamente al dispositivo
+
+═══════════════════════════════════════════════════════════════
+FORMATOS SOPORTADOS
+═══════════════════════════════════════════════════════════════
+
+📊 SVG: Vectorial, calidad infinita, editable
+📄 PDF: Profesional, listo para ploteo
+🖼️ PNG: 300 DPI, alta resolución
+📦 TODOS: Descarga los 3 formatos
+
+═══════════════════════════════════════════════════════════════
+COMPATIBILIDAD
+═══════════════════════════════════════════════════════════════
+
+✅ Formatos A0 y A1
+✅ Todas las escalas (1:50 a 1:200)
+✅ Incluye TODO el contenido visible
+✅ Mantiene viñetas, cuadros, símbolos, trazados
+✅ Dimensiones reales para ploteo
+✅ Funciona en todos los navegadores modernos
+
+*/

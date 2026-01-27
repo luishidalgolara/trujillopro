@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario 12.6 - Solicitud Microempresa/Equipamiento (Título II)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
+        .container { max-width: 1100px; margin: 0 auto; background-color: white; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .header { text-align: center; border: 2px solid #000; padding: 15px; margin-bottom: 20px; background-color: #e8e8e8; }
+        .header h1 { font-size: 18px; margin-bottom: 5px; }
+        .header p { font-size: 11px; margin: 3px 0; }
+        .tipo-select { text-align: center; padding: 15px; margin-bottom: 20px; background-color: #fff3cd; border: 2px solid #ffc107; }
+        .section { margin-bottom: 25px; border: 1px solid #333; padding: 15px; }
+        .section-title { background-color: #d0d0d0; padding: 8px; font-weight: bold; margin: -15px -15px 15px -15px; font-size: 14px; }
+        .form-row { display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
+        .form-col { flex: 1; min-width: 200px; }
+        label { display: block; font-size: 11px; font-weight: bold; margin-bottom: 5px; color: #333; }
+        input[type="text"], input[type="number"], input[type="date"], input[type="email"], textarea, select {
+            width: 100%; padding: 8px; border: 1px solid #666; font-size: 12px; background-color: white;
+        }
+        textarea { resize: vertical; min-height: 60px; }
+        .checkbox-group { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .checkbox-group label { margin-bottom: 0; font-weight: normal; }
+        input[type="checkbox"], input[type="radio"] { width: 18px; height: 18px; cursor: pointer; }
+        .radio-group { display: flex; gap: 20px; align-items: center; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 11px; }
+        table th, table td { border: 1px solid #333; padding: 8px; text-align: left; }
+        table th { background-color: #d0d0d0; font-weight: bold; }
+        table input, table select { width: 100%; padding: 4px; border: 1px solid #999; }
+        .note { background-color: #fff9e6; border: 1px solid #e6d700; padding: 10px; margin: 15px 0; font-size: 10px; font-style: italic; }
+        .declaration-box { border: 2px solid #000; padding: 15px; background-color: #f9f9f9; margin: 20px 0; }
+        .button-group { display: flex; gap: 10px; justify-content: center; margin-top: 30px; }
+        button { padding: 12px 30px; font-size: 14px; cursor: pointer; border: none; border-radius: 4px; }
+        .btn-primary { background-color: #0066cc; color: white; }
+        .btn-primary:hover { background-color: #0052a3; }
+        .btn-secondary { background-color: #6c757d; color: white; }
+        .btn-secondary:hover { background-color: #545b62; }
+        @media print {
+            body { padding: 0; background-color: white; }
+            .container { box-shadow: none; max-width: 100%; }
+            .button-group { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>FORMULARIO 12.6 Ley 20.898 Título II</h1>
+            <p><strong>SOLICITUD DE REGULARIZACIÓN</strong></p>
+            <p>(Permiso y Recepción definitiva simultánea)</p>
+            <p><strong>EDIFICACIÓN DESTINADA A MICROEMPRESA INOFENSIVA O EQUIPAMIENTO SOCIAL</strong></p>
+            <p>ACOGIDA AL TÍTULO II DE LA LEY N° 20.898</p>
+            <p>(VIGENCIA PRORROGADA POR LA LEY 21.725 D.O. 01.03.2025)</p>
+        </div>
+
+        <div class="tipo-select">
+            <label style="font-size: 14px; font-weight: bold; margin-bottom: 10px; display: block;">TIPO DE REGULARIZACIÓN:</label>
+            <div class="radio-group" style="justify-content: center;">
+                <input type="radio" name="tipo_regularizacion" value="microempresa" id="tipo_micro" onchange="actualizarTipo()">
+                <label for="tipo_micro">REGULARIZACIÓN EDIFICACIÓN MICROEMPRESA</label>
+                <input type="radio" name="tipo_regularizacion" value="equipamiento" id="tipo_equip" onchange="actualizarTipo()">
+                <label for="tipo_equip">REGULARIZACIÓN EQUIPAMIENTO SOCIAL</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="form-row">
+                <div class="form-col"><label>DIRECCIÓN DE OBRAS MUNICIPALES DE:</label><input type="text" id="dom_municipalidad"></div>
+                <div class="form-col"><label>REGIÓN:</label><input type="text" id="region"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-col"><label>NÚMERO SOLICITUD</label><input type="text" id="numero_solicitud"></div>
+                <div class="form-col"><label>FECHA DE INGRESO</label><input type="date" id="fecha_ingreso"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">1. DATOS DE LA PROPIEDAD</div>
+            <div class="form-row">
+                <div class="form-col"><label>CALLE o CAMINO</label><input type="text" id="calle"></div>
+                <div class="form-col" style="flex: 0.5;"><label>NÚMERO</label><input type="text" id="numero"></div>
+                <div class="form-col"><label>ROL SII</label><input type="text" id="rol_sii"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-col"><label>MANZANA</label><input type="text" id="manzana"></div>
+                <div class="form-col"><label>LOTE</label><input type="text" id="lote"></div>
+                <div class="form-col"><label>LOTEO O LOCALIDAD</label><input type="text" id="loteo"></div>
+                <div class="form-col"><label>PLANO DE LOTEO Nº</label><input type="text" id="plano_loteo"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">2. DECLARACIÓN JURADA</div>
+            <div class="declaration-box">
+                <p style="font-size: 12px; margin-bottom: 15px;">
+                    <strong>DECLARA BAJO SU RESPONSABILIDAD SER PROPIETARIO (O REPRESENTANTE LEGAL DEL PROPIETARIO) DEL BIEN RAÍZ UBICADO EN</strong>
+                </p>
+                <div class="form-row">
+                    <div class="form-col"><label>CALLE/AVENIDA/CAMINO</label><input type="text" id="decl_calle"></div>
+                    <div class="form-col" style="flex: 0.5;"><label>N°</label><input type="text" id="decl_numero"></div>
+                    <div class="form-col"><label>COMUNA</label><input type="text" id="decl_comuna"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-col"><label>ROL DE AVALÚO Nº</label><input type="text" id="rol_avaluo"></div>
+                    <div class="form-col"><label>INSCRITO A FOJAS</label><input type="text" id="fojas"></div>
+                    <div class="form-col"><label>Nº</label><input type="text" id="fojas_numero"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-col"><label>DEL AÑO</label><input type="text" id="ano_registro"></div>
+                    <div class="form-col"><label>DEL REGISTRO DE PROPIEDAD DEL CONSERVADOR DE BIENES RAÍCES DE</label><input type="text" id="conservador"></div>
+                </div>
+                <p style="font-size: 11px; margin: 15px 0;">
+                    EN EL CUAL SE EMPLAZA LA EDIFICACIÓN EXISTENTE A REGULARIZAR, QUE SE ACOGE AL TÍTULO I DE LA LEY N° 20.898.
+                </p>
+                <p style="font-size: 11px; margin: 15px 0; font-weight: bold;">
+                    ASIMISMO DECLARA NO TENER A LA FECHA DE HOY RECLAMACIONES ESCRITAS PENDIENTES POR INCUMPLIMIENTO DE NORMAS URBANÍSTICAS INGRESADAS ANTE LA DOM O EL JUZGADO DE POLICÍA LOCAL RESPECTIVO.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">3. DATOS DEL PROPIETARIO</div>
+            <div class="form-row">
+                <div class="form-col"><label>NOMBRE O RAZÓN SOCIAL</label><input type="text" id="prop_nombre"></div>
+                <div class="form-col"><label>R.U.T.</label><input type="text" id="prop_rut"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-col"><label>DIRECCIÓN / CALLE / PASAJE</label><input type="text" id="prop_direccion"></div>
+                <div class="form-col" style="flex: 0.5;"><label>Nº</label><input type="text" id="prop_direccion_num"></div>
+                <div class="form-col"><label>COMUNA</label><input type="text" id="prop_comuna"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-col"><label>E-MAIL</label><input type="email" id="prop_email"></div>
+                <div class="form-col"><label>TELÉFONO</label><input type="text" id="prop_telefono"></div>
+                <div class="form-col"><label>CELULAR</label><input type="text" id="prop_celular"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">4. DATOS ARQUITECTO O PROFESIONAL COMPETENTE</div>
+            <div class="form-row">
+                <div class="form-col"><label>NOMBRE PROFESIONAL</label><input type="text" id="prof_nombre"></div>
+                <div class="form-col"><label>R.U.T.</label><input type="text" id="prof_rut"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-col"><label>PROFESIÓN</label><input type="text" id="prof_profesion"></div>
+            </div>
+            <div class="note"><strong>NOTA:</strong> según letra c) artículo 6° de la Ley N° 20.898 y según artículo 17° de la LGUC.</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">5. ANTECEDENTES DE LA EDIFICACIÓN A REGULARIZAR</div>
+            
+            <div class="form-group">
+                <label style="font-weight: bold; font-size: 12px;">5.1 LOCALIZACIÓN</label>
+                <div class="checkbox-group">
+                    <label>LA VIVIENDA A REGULARIZAR SE LOCALIZA AL INTERIOR DE UNA COPROPIEDAD INMOBILIARIA</label>
+                    <input type="radio" name="copropiedad" value="si"><label>SÍ</label>
+                    <input type="radio" name="copropiedad" value="no"><label>NO</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: bold; font-size: 12px;">5.3 SUPERFICIES (m²)</label>
+                <table>
+                    <thead>
+                        <tr><th>SUPERFICIE EDIFICADA</th><th>CON PERMISO Y RECEPCIÓN</th><th>A REGULARIZAR (**)</th><th>TOTAL EDIFICADO (*)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1er. Piso</td>
+                            <td><input type="number" id="sup_1piso_permiso" step="0.01" oninput="calcularSuperficies()"></td>
+                            <td><input type="number" id="sup_1piso_regularizar" step="0.01" oninput="calcularSuperficies()"></td>
+                            <td><input type="number" id="sup_1piso_total" step="0.01" readonly></td>
+                        </tr>
+                        <tr><td>2° Piso</td>
+                            <td><input type="number" id="sup_2piso_permiso" step="0.01" oninput="calcularSuperficies()"></td>
+                            <td><input type="number" id="sup_2piso_regularizar" step="0.01" oninput="calcularSuperficies()"></td>
+                            <td><input type="number" id="sup_2piso_total" step="0.01" readonly></td>
+                        </tr>
+                        <tr><td>3° y pisos superiores</td>
+                            <td><input type="number" id="sup_3piso_permiso" step="0.01" oninput="calcularSuperficies()"></td>
+                            <td><input type="number" id="sup_3piso_regularizar" step="0.01" oninput="calcularSuperficies()"></td>
+                            <td><input type="number" id="sup_3piso_total" step="0.01" readonly></td>
+                        </tr>
+                        <tr style="font-weight: bold;"><td>TOTAL</td>
+                            <td><input type="number" id="sup_total_permiso" step="0.01" readonly></td>
+                            <td><input type="number" id="sup_total_regularizar" step="0.01" readonly></td>
+                            <td><input type="number" id="sup_total_edificado" step="0.01" readonly></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="form-row">
+                    <div class="form-col"><label>SUPERFICIE TOTAL TERRENO (m²)</label><input type="number" id="sup_terreno" step="0.01"></div>
+                </div>
+                <div class="note">
+                    (*) Incluir superficies con permiso y superficies sin permiso a regularizar. Esta es la superficie que no puede superar los 250 m² en caso de Microempresa Inofensiva O de 400 m² en caso de Equipamiento Social.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: bold; font-size: 12px;">5.4 TIPO DE AGRUPAMIENTO</label>
+                <div class="radio-group">
+                    <input type="radio" name="agrupamiento" value="aislado"><label>AISLADO</label>
+                    <input type="radio" name="agrupamiento" value="pareado"><label>PAREADO</label>
+                    <input type="radio" name="agrupamiento" value="continuo"><label>CONTINUO</label>
+                </div>
+                <div class="form-row" style="margin-top: 10px;">
+                    <div class="form-col"><label>NORMA COMPLEMENTARIA</label><input type="text" id="norma_complementaria"></div>
+                    <div class="form-col"><label>ADOSAMIENTO</label><input type="text" id="adosamiento"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: bold; font-size: 12px;">5.6 DESTINO</label>
+                <div class="form-row">
+                    <div class="form-col">
+                        <label>DESTINO DE LA EDIFICACIÓN (*)</label>
+                        <select id="destino">
+                            <option value="">Seleccionar</option>
+                            <option value="microempresa">Microempresa Inofensiva</option>
+                            <option value="equipamiento_salud">Equipamiento de Salud</option>
+                            <option value="equipamiento_educacion">Equipamiento de Educación</option>
+                            <option value="equipamiento_social">Equipamiento Social</option>
+                            <option value="equipamiento_deporte">Equipamiento Deportivo</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="note">(*) Los destinos de la edificación deben ajustarse a los dispuestos en el artículo 7° de la Ley 20.898.</div>
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: bold; font-size: 12px;">SEGÚN ARTÍCULO 5° DE LA LEY N° 20.898, LA EDIFICACIÓN A REGULARIZAR NO PUEDE ESTAR EMPLAZADA EN:</label>
+                <table>
+                    <tbody>
+                        <tr><td>ÁREA DE RIESGO</td><td style="width: 100px;">
+                            <select id="area_riesgo"><option value="no">NO</option><option value="si">SÍ</option></select>
+                        </td></tr>
+                        <tr><td>ÁREA DE PROTECCIÓN</td><td>
+                            <select id="area_proteccion"><option value="no">NO</option><option value="si">SÍ</option></select>
+                        </td></tr>
+                        <tr><td>TERRENOS DECLARADOS DE UTILIDAD PÚBLICA</td><td>
+                            <select id="utilidad_publica"><option value="no">NO</option><option value="si">SÍ</option></select>
+                        </td></tr>
+                        <tr><td>BIENES NACIONALES DE USO PÚBLICO</td><td>
+                            <select id="bienes_nacionales"><option value="no">NO</option><option value="si">SÍ</option></select>
+                        </td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">6. ANTECEDENTES QUE SE ADJUNTAN</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <label style="font-weight: bold; margin-bottom: 10px; display: block;">Antecedentes administrativos</label>
+                    <div style="font-size: 11px;">
+                        <div class="checkbox-group"><input type="checkbox" id="adj_listado"><label for="adj_listado">Listado de documentos y planos numerados</label></div>
+                        <div class="checkbox-group"><input type="checkbox" id="adj_avaluo"><label for="adj_avaluo">Certificado de avalúo fiscal (S.I.I.)</label></div>
+                        <div class="checkbox-group"><input type="checkbox" id="adj_patente"><label for="adj_patente">Fotocopia Patente del profesional</label></div>
+                        <div class="checkbox-group"><input type="checkbox" id="adj_calificacion"><label for="adj_calificacion">Certificado de calificación de actividad inofensiva (para microempresa)</label></div>
+                        <div class="checkbox-group"><input type="checkbox" id="adj_asamblea"><label for="adj_asamblea">Acuerdo asamblea copropietarios (Ley 21.442)</label></div>
+                    </div>
+                </div>
+                <div>
+                    <label style="font-weight: bold; margin-bottom: 10px; display: block;">Antecedentes técnicos</label>
+                    <div style="font-size: 11px;">
+                        <div class="checkbox-group"><input type="checkbox" id="adj_especif"><label for="adj_especif">Especificaciones técnicas resumidas</label></div>
+                        <div class="checkbox-group"><input type="checkbox" id="adj_plano_emp"><label for="adj_plano_emp">Plano de emplazamiento 1:500</label></div>
+                        <div class="checkbox-group"><input type="checkbox" id="adj_planos"><label for="adj_planos">Planos escala 1:50</label></div>
+                        <div class="checkbox-group"><input type="checkbox" id="adj_informe"><label for="adj_informe">Informe del profesional competente</label></div>
+                        <div class="checkbox-group"><input type="checkbox" id="adj_calculo"><label for="adj_calculo">Proyecto de cálculo estructural (si procede)</label></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn-secondary" onclick="limpiarFormulario()">Limpiar Formulario</button>
+            <button class="btn-primary" onclick="guardarFormulario()">Guardar Datos</button>
+            <button class="btn-primary" onclick="window.print()">Imprimir / PDF</button>
+        </div>
+    </div>
+
+    <script>
+        function actualizarTipo() {
+            const tipo = document.querySelector('input[name="tipo_regularizacion"]:checked');
+            if (tipo) {
+                console.log('Tipo seleccionado:', tipo.value);
+            }
+        }
+
+        function calcularSuperficies() {
+            const sup1PisoPermiso = parseFloat(document.getElementById('sup_1piso_permiso').value) || 0;
+            const sup1PisoRegularizar = parseFloat(document.getElementById('sup_1piso_regularizar').value) || 0;
+            document.getElementById('sup_1piso_total').value = (sup1PisoPermiso + sup1PisoRegularizar).toFixed(2);
+            
+            const sup2PisoPermiso = parseFloat(document.getElementById('sup_2piso_permiso').value) || 0;
+            const sup2PisoRegularizar = parseFloat(document.getElementById('sup_2piso_regularizar').value) || 0;
+            document.getElementById('sup_2piso_total').value = (sup2PisoPermiso + sup2PisoRegularizar).toFixed(2);
+            
+            const sup3PisoPermiso = parseFloat(document.getElementById('sup_3piso_permiso').value) || 0;
+            const sup3PisoRegularizar = parseFloat(document.getElementById('sup_3piso_regularizar').value) || 0;
+            document.getElementById('sup_3piso_total').value = (sup3PisoPermiso + sup3PisoRegularizar).toFixed(2);
+            
+            const totalPermiso = sup1PisoPermiso + sup2PisoPermiso + sup3PisoPermiso;
+            const totalRegularizar = sup1PisoRegularizar + sup2PisoRegularizar + sup3PisoRegularizar;
+            
+            document.getElementById('sup_total_permiso').value = totalPermiso.toFixed(2);
+            document.getElementById('sup_total_regularizar').value = totalRegularizar.toFixed(2);
+            document.getElementById('sup_total_edificado').value = (totalPermiso + totalRegularizar).toFixed(2);
+        }
+
+        function guardarFormulario() {
+            const formData = {};
+            document.querySelectorAll('input, select, textarea').forEach(input => {
+                if (input.type === 'checkbox') {
+                    formData[input.id] = input.checked;
+                } else if (input.type === 'radio') {
+                    if (input.checked) formData[input.name] = input.value;
+                } else {
+                    formData[input.id] = input.value;
+                }
+            });
+            localStorage.setItem('formulario_12_6', JSON.stringify(formData));
+            alert('Formulario guardado exitosamente');
+        }
+
+        function cargarFormulario() {
+            const savedData = localStorage.getItem('formulario_12_6');
+            if (savedData) {
+                const formData = JSON.parse(savedData);
+                Object.keys(formData).forEach(key => {
+                    const element = document.getElementById(key) || document.querySelector(`[name="${key}"]`);
+                    if (element) {
+                        if (element.type === 'checkbox') {
+                            element.checked = formData[key];
+                        } else if (element.type === 'radio') {
+                            if (element.value === formData[key]) element.checked = true;
+                        } else {
+                            element.value = formData[key];
+                        }
+                    }
+                });
+                calcularSuperficies();
+            }
+        }
+
+        function limpiarFormulario() {
+            if (confirm('¿Está seguro que desea limpiar todos los datos del formulario?')) {
+                document.querySelectorAll('input, select, textarea').forEach(element => {
+                    if (element.type === 'checkbox' || element.type === 'radio') {
+                        element.checked = false;
+                    } else {
+                        element.value = '';
+                    }
+                });
+                localStorage.removeItem('formulario_12_6');
+                alert('Formulario limpiado');
+            }
+        }
+
+        window.addEventListener('load', cargarFormulario);
+    </script>
+</body>
+</html>

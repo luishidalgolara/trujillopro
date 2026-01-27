@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Planos Eléctricos Domiciliarios - ELEKTRA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="workspace.css">
+    <link rel="stylesheet" href="layout-fix.css">
+    
+    <!-- ESTILOS DE VIÑETA ELÉCTRICA -->
+    <link rel="stylesheet" href="viñeta-electrica/vineta-styles.css">
+</head>
+<body>
+    <!-- HEADER PRINCIPAL -->
+    <div class="main-header">
+        <div class="header-left">
+            <div class="logo">
+                <div>⚡ ⚡ ⚡</div>
+                <div>TRUKILLO</div>
+                <div>DISEÑO ELÉCTRICO</div>                
+            </div>
+            <button class="btn-header btn-primary" onclick="cargarPlano()">
+                📁 CARGAR PDF/IMAGEN
+            </button>
+            <button class="btn-header btn-secondary" id="modeToggle" onclick="toggleMode()">
+                🖱️ Modo: Edición
+            </button>
+        </div>
+        
+        <div class="header-center">
+            <div class="format-selector">
+                <span class="format-label">Formato:</span>
+                <button class="format-btn active" onclick="changeFormat('A1')" id="btnA1">A1</button>
+                <button class="format-btn" onclick="changeFormat('A0')" id="btnA0">A0</button>
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <button class="btn-header" style="background: #e74c3c;" onclick="abrirTablero()">
+                ⚡ TABLERO ELÉCTRICO
+            </button>
+
+            <button class="btn-header" style="background: #3498db;" onclick="abrirUnifilar()">
+                📊 ESQUEMA UNIFILAR
+            </button>
+            
+            <button class="btn-header" style="background: #f39c12;" onclick="abrirCuadroCargas()">
+                📋 CUADRO DE CARGAS
+            </button>
+            
+            <button class="btn-header" style="background: #9b59b6;" onclick="abrirSimbologia()">
+                📊 SIMBOLOGÍA ELÉCTRICA
+            </button>
+            
+            <button class="btn-header" style="background: #16a085;" onclick="abrirMemoriaCalculo()">
+                📄 MEMORIA DE CÁLCULO
+            </button>
+
+            <!-- BOTÓN VIÑETA ELÉCTRICA -->
+            <button class="btn-header" style="background: #27ae60;" onclick="abrirVineta()">
+                📝 VIÑETA ELÉCTRICA
+            </button>
+            
+            <button class="btn-header btn-success" onclick="exportarResultados()">
+                💾 EXPORTAR PLANO
+            </button>
+            
+            <button class="btn-header" style="background: #d35400;" onclick="abrirEspecificaciones()">
+                📋 ESPECIFICACIONES TÉCNICAS
+            </button>
+        </div>
+    </div>
+    
+    <!-- BARRA DE HERRAMIENTAS -->
+    <div class="toolbar">
+        <div class="toolbar-section">
+            <span class="toolbar-label">ESCALA:</span>
+            <button class="btn-tool btn-scale active" onclick="selectScale('1:50')" data-scale="50">1:50</button>
+            <button class="btn-tool btn-scale" onclick="selectScale('1:75')" data-scale="75">1:75</button>
+            <button class="btn-tool btn-scale" onclick="selectScale('1:100')" data-scale="100">1:100</button>
+            <button class="btn-tool btn-scale" onclick="selectScale('1:125')" data-scale="125">1:125</button>
+            <button class="btn-tool btn-scale" onclick="selectScale('1:150')" data-scale="150">1:150</button>
+        </div>
+        
+        <div class="toolbar-section section-alimentacion">
+            <span class="toolbar-label">ALIMENTACIÓN:</span>            
+            <button class="btn-tool" onclick="selectTool('empalme')" title="Punto de empalme">🔌 Empalme</button>
+            <button class="btn-tool" onclick="selectTool('medidor')" title="Medidor eléctrico">📊 Medidor</button>
+            <button class="btn-tool" onclick="selectTool('tablero')" title="Tablero eléctrico">⚡ Tablero</button>
+        </div>
+        
+        <div class="toolbar-section section-iluminacion">
+            <span class="toolbar-label">ILUMINACIÓN:</span>
+            <button class="btn-tool" onclick="selectTool('luminaria-cielo')" title="Luminaria de techo">💡 Luminaria Cielo</button>
+            <button class="btn-tool" onclick="selectTool('aplique')" title="Aplique mural">🔆 Aplique Mural</button>
+            <button class="btn-tool" onclick="selectTool('luminaria-exterior')" title="Luminaria exterior">🌟 Exterior</button>
+            <button class="btn-tool" onclick="selectTool('luz-simple')" title="Punto luz + interruptor simple">💡 Luz Simple</button>
+            <button class="btn-tool" onclick="selectTool('luz-doble')" title="Punto luz + interruptor doble">💡 Luz Doble</button>
+            <button class="btn-tool" onclick="selectTool('conmutado')" title="Sistema conmutado escalera">🔀 Conmutado</button>
+        </div>
+        
+        <div class="toolbar-section section-enchufes">
+            <span class="toolbar-label">ENCHUFES:</span>
+            <button class="btn-tool" onclick="selectTool('enchufe-simple')" title="Enchufe simple 10A">🔌 Simple 10A</button>
+            <button class="btn-tool" onclick="selectTool('enchufe-doble')" title="Enchufe doble">🔌 Doble</button>
+            <button class="btn-tool" onclick="selectTool('enchufe-especial')" title="Enchufe especial (refrigerador)">🔌 Especial</button>
+            <button class="btn-tool" onclick="selectTool('enchufe-exterior')" title="Enchufe exterior IP">🔌 Exterior IP</button>
+        </div>
+        
+        <div class="toolbar-section section-interruptores">
+            <span class="toolbar-label">INTERRUPTORES:</span>
+            <button class="btn-tool" onclick="selectTool('int-simple')" title="Interruptor simple">🔘 Simple</button>
+            <button class="btn-tool" onclick="selectTool('int-doble')" title="Interruptor doble">🔘 Doble</button>
+            <button class="btn-tool" onclick="selectTool('conmutador')" title="Conmutador">🔀 Conmutador</button>
+            <button class="btn-tool" onclick="selectTool('pulsador')" title="Pulsador">⏺️ Pulsador</button>
+        </div>
+        
+        <div class="toolbar-section section-canalizacion">
+            <span class="toolbar-label">CANALIZACIÓN:</span>
+            <button class="btn-tool" onclick="selectTool('ducto-pvc')" title="Ducto PVC">📏 Ducto PVC</button>
+            <button class="btn-tool" onclick="selectTool('ducto-emt')" title="Ducto EMT metálico">📏 Ducto EMT</button>
+            <button class="btn-tool" onclick="selectTool('conductor')" title="Línea de conductor">➖ Conductor</button>
+            <button class="btn-tool" onclick="selectTool('caja-derivacion')" title="Caja de derivación">📦 Caja Deriv.</button>
+        </div>
+        
+        <div class="toolbar-section section-tierra">
+            <span class="toolbar-label">PUESTA A TIERRA:</span>
+            <button class="btn-tool" onclick="selectTool('jabalina')" title="Jabalina de tierra">🔩 Jabalina</button>
+            <button class="btn-tool" onclick="selectTool('conductor-tierra')" title="Conductor protección">⚡ Conductor PE</button>
+            <button class="btn-tool" onclick="selectTool('tierra-enchufe')" title="Símbolo tierra">🌍 Tierra</button>
+        </div>
+        
+        <div class="toolbar-section section-acciones">
+            <span class="toolbar-label">ACCIONES:</span>
+            <button class="btn-tool" onclick="toggleDibujo()" style="background: #e91e63;">
+                🎨 DIBUJO LIBRE
+            </button>
+            <button class="btn-tool" id="btnEtiquetas" onclick="toggleEtiquetas()" style="background: #f59e0b;">
+                🏷️ ETIQUETAS
+            </button>
+            <button class="btn-tool" onclick="generarTrazadoAutomatico()" style="background: #e74c3c;" title="Generar trazado automático de conductores">
+                ⚡ GENERAR TRAZADO
+            </button>
+            <button class="btn-tool" onclick="limpiarTrazado()" style="background: #95a5a6;" title="Limpiar trazado generado">
+                🧹 LIMPIAR TRAZADO
+            </button>
+            <button class="btn-tool" onclick="generarCircuitos()" style="background: #10b981;" title="Generar circuitos automáticos">⚡ Circuitos Auto</button>
+            <button class="btn-tool" onclick="calcularCargas()" style="background: #3b82f6;" title="Calcular cargas eléctricas">🔢 Calcular Cargas</button>
+            <button class="btn-tool btn-danger" onclick="limpiarTodo()">🗑️ Limpiar</button>
+        </div>
+    </div>    
+    
+    <!-- ÁREA DE TRABAJO -->
+    <div class="main-container">
+        <div class="work-area">
+            <div class="canvas-title">ALGORITMO INTELIGENTE DE DISEÑO ELÉCTRICO DOMICILIARIO</div>
+            <div class="canvas-wrapper">
+                <div id="pdfLoading" class="pdf-loading" style="display: none;">
+                    <div class="spinner"></div>
+                    Cargando PDF...
+                </div>
+                <div class="drawing-board format-a1" id="drawingBoard">
+                    <svg id="plano" viewBox="0 0 841 594">
+                        <defs>
+                            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e5e5e5" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect width="100%" height="100%" fill="#ffffff" />
+                        <rect width="100%" height="100%" fill="url(#grid)" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        
+        <div class="right-panel">
+            <div class="panel-header">
+                <h3>📋 NORMATIVA ELÉCTRICA</h3>
+                <p>NCH Elec. 4/2003</p>
+            </div>
+            <div class="panel-content">
+                <div class="info-card">
+                    <h4>⚡ Requisitos Básicos</h4>
+                    <ul>
+                        <li>Tensión: 220V / 50Hz</li>
+                        <li>Diferencial: ≤ 30mA</li>
+                        <li>Tierra: ≤ 5Ω</li>
+                        <li>Sección mínima: 2.5mm²</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h4>🔌 Circuitos Típicos</h4>
+                    <ul>
+                        <li>C1: Iluminación - 10A</li>
+                        <li>C2: Enchufes - 16A</li>
+                        <li>C3: Cocina - 25A</li>
+                        <li>C4: Lavadora - 16A</li>
+                        <li>C5: Refrigerador - 10A</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h4>📏 Diámetros Ducto</h4>
+                    <ul>
+                        <li>Ø16mm: 2-3 conductores</li>
+                        <li>Ø20mm: 4-5 conductores</li>
+                        <li>Ø25mm: 6-8 conductores</li>
+                    </ul>
+                </div>
+                
+                <!-- ATAJOS ZOOM (solo info, sin botones) -->
+                <div class="info-card" style="margin-top: 20px; background: #ecf0f1;">
+                    <h4>⌨️ Zoom & Pan</h4>
+                    <ul style="font-size: 11px;">
+                        <li><strong>Rueda</strong>: Zoom in/out</li>
+                        <li><strong>Botón medio</strong>: Pan</li>
+                        <li><strong>+</strong> / <strong>-</strong>: Zoom</li>
+                        <li><strong>R</strong>: Reset vista</li>
+                        <li><strong>F</strong>: Ajustar</li>
+                    </ul>
+                </div>
+                
+                <!-- TRAZADO AUTOMÁTICO -->
+                <div class="info-card" style="margin-top: 20px; background: #ffe6e6;">
+                    <h4>⚡ Trazado Automático</h4>
+                    <ul style="font-size: 11px;">
+                        <li>1. Coloca <strong>Empalme</strong></li>
+                        <li>2. Coloca <strong>Medidor</strong></li>
+                        <li>3. Coloca <strong>Tablero</strong></li>
+                        <li>4. Coloca luminarias y enchufes</li>
+                        <li>5. Click <strong>GENERAR TRAZADO</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <input type="file" id="fileInput" accept=".pdf,.svg,.jpg,.png" style="display: none;">
+    
+    <div class="status" id="status">Listo para diseñar</div>
+
+    <!-- MODAL TABLERO ELÉCTRICO -->
+    <div class="modal" id="modalTablero">
+        <div class="modal-window">
+            <div class="modal-header">
+                <div class="modal-title">⚡ TABLERO ELÉCTRICO DOMICILIARIO</div>
+                <button class="btn-close" onclick="cerrarModal('modalTablero')">✕</button>
+            </div>
+            <div class="modal-content">
+                <div class="tablero-info">
+                    <h3>Configuración de Tablero</h3>
+                    <div class="tablero-grid">
+                        <div class="tablero-item">
+                            <strong>Interruptor General:</strong>
+                            <select id="intGeneral">
+                                <option>40A - 2P</option>
+                                <option>50A - 2P</option>
+                                <option>63A - 2P</option>
+                            </select>
+                        </div>
+                        <div class="tablero-item">
+                            <strong>Diferencial:</strong>
+                            <select id="diferencial">
+                                <option>30mA - 40A - 2P</option>
+                                <option>30mA - 63A - 2P</option>
+                            </select>
+                        </div>
+                        <div class="tablero-item">
+                            <strong>Automático C1 (Iluminación):</strong>
+                            <select id="autoC1">
+                                <option>10A - 1P</option>
+                                <option>16A - 1P</option>
+                            </select>
+                        </div>
+                        <div class="tablero-item">
+                            <strong>Automático C2 (Enchufes):</strong>
+                            <select id="autoC2">
+                                <option>16A - 1P</option>
+                                <option>20A - 1P</option>
+                            </select>
+                        </div>
+                        <div class="tablero-item">
+                            <strong>Automático C3 (Cocina):</strong>
+                            <select id="autoC3">
+                                <option>25A - 2P</option>
+                                <option>32A - 2P</option>
+                            </select>
+                        </div>
+                        <div class="tablero-item">
+                            <strong>Automático C4 (Lavadora):</strong>
+                            <select id="autoC4">
+                                <option>16A - 1P</option>
+                                <option>20A - 1P</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn-primary" onclick="generarTablero()">Generar Tablero</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CUADRO DE CARGAS -->
+    <div class="modal" id="modalCuadroCargas">
+        <div class="modal-window modal-large">
+            <div class="modal-header">
+                <div class="modal-title">📋 CUADRO DE CARGAS</div>
+                <button class="btn-close" onclick="cerrarModal('modalCuadroCargas')">✕</button>
+            </div>
+            <div class="modal-content">
+                <div class="cuadro-cargas-container">
+                    <table class="tabla-cargas">
+                        <thead>
+                            <tr>
+                                <th>Circuito</th>
+                                <th>Tipo de Uso</th>
+                                <th>Potencia (W)</th>
+                                <th>Corriente (A)</th>
+                                <th>Sección (mm²)</th>
+                                <th>Automático</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaCargasBody">
+                            <tr>
+                                <td>C1</td>
+                                <td>Iluminación</td>
+                                <td>1200</td>
+                                <td>5.5</td>
+                                <td>2.5</td>
+                                <td>10A - 1P</td>
+                            </tr>
+                            <tr>
+                                <td>C2</td>
+                                <td>Enchufes Generales</td>
+                                <td>2000</td>
+                                <td>9.1</td>
+                                <td>2.5</td>
+                                <td>16A - 1P</td>
+                            </tr>
+                            <tr>
+                                <td>C3</td>
+                                <td>Cocina</td>
+                                <td>4500</td>
+                                <td>20.5</td>
+                                <td>4.0</td>
+                                <td>25A - 2P</td>
+                            </tr>
+                            <tr>
+                                <td>C4</td>
+                                <td>Lavadora</td>
+                                <td>2200</td>
+                                <td>10.0</td>
+                                <td>2.5</td>
+                                <td>16A - 1P</td>
+                            </tr>
+                            <tr>
+                                <td>C5</td>
+                                <td>Refrigerador</td>
+                                <td>800</td>
+                                <td>3.6</td>
+                                <td>2.5</td>
+                                <td>10A - 1P</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2"><strong>TOTAL</strong></td>
+                                <td><strong id="totalPotencia">10700 W</strong></td>
+                                <td><strong id="totalCorriente">48.7 A</strong></td>
+                                <td colspan="2"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <button class="btn-primary" onclick="exportarCuadroCargas()">📥 Exportar Cuadro</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL SIMBOLOGÍA -->
+    <div class="modal" id="modalSimbologia">
+        <div class="modal-window modal-large">
+            <div class="modal-header">
+                <div class="modal-title">📊 SIMBOLOGÍA ELÉCTRICA NORMALIZADA</div>
+                <button class="btn-close" onclick="cerrarModal('modalSimbologia')">✕</button>
+            </div>
+            <div class="modal-content">
+                <div class="simbologia-grid">
+                    <div class="simbolo-card">
+                        <div class="simbolo-icon">💡</div>
+                        <div class="simbolo-name">Luminaria Cielo</div>
+                        <div class="simbolo-desc">Punto de luz en techo</div>
+                    </div>
+                    <div class="simbolo-card">
+                        <div class="simbolo-icon">🔌</div>
+                        <div class="simbolo-name">Enchufe Simple</div>
+                        <div class="simbolo-desc">10A - 220V</div>
+                    </div>
+                    <div class="simbolo-card">
+                        <div class="simbolo-icon">🔘</div>
+                        <div class="simbolo-name">Interruptor</div>
+                        <div class="simbolo-desc">Simple / Doble</div>
+                    </div>
+                    <div class="simbolo-card">
+                        <div class="simbolo-icon">⚡</div>
+                        <div class="simbolo-name">Tablero</div>
+                        <div class="simbolo-desc">Tablero Eléctrico</div>
+                    </div>
+                    <div class="simbolo-card">
+                        <div class="simbolo-icon">🌍</div>
+                        <div class="simbolo-name">Tierra</div>
+                        <div class="simbolo-desc">Puesta a tierra</div>
+                    </div>
+                    <div class="simbolo-card">
+                        <div class="simbolo-icon">📦</div>
+                        <div class="simbolo-name">Caja Derivación</div>
+                        <div class="simbolo-desc">Punto de conexión</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- MÓDULOS DE JAVASCRIPT EXISTENTES -->
+    <script src="javascript/app-state.js"></script>
+    <script src="javascript/electric-symbols.js"></script>
+    <script src="javascript/utilities.js"></script>
+    <script src="javascript/image-controller.js"></script>
+    <script src="javascript/zoom-pan.js"></script>
+    
+    <!-- SISTEMA DE TRAZADO AUTOMÁTICO -->
+    <script src="trazado-automatico/config-tracer.js"></script>
+    <script src="trazado-automatico/hierarchy-detector.js"></script>
+    <script src="trazado-automatico/path-optimizer.js"></script>
+    <script src="trazado-automatico/line-renderer.js"></script>
+    <script src="trazado-automatico/main-tracer.js"></script>
+    
+    <script src="javascript/tools-manager.js"></script>
+    <script src="javascript/canvas-handler.js"></script>
+    <script src="javascript/mode-manager.js"></script>
+    <script src="javascript/file-manager.js"></script>
+    <script src="javascript/circuit-generator.js"></script>
+    <script src="javascript/modals-manager.js"></script>
+    <script src="javascript/export-manager.js"></script>
+    <script src="javascript/cleanup-manager.js"></script>
+    <script src="javascript/keyboard-handler.js"></script>
+    <script src="javascript/initialization.js"></script>
+    <script src="javascript/main.js"></script>
+
+    <!-- GESTOR DE VIÑETA ELÉCTRICA -->
+    <script src="viñeta-electrica/vineta-handler.js"></script>
+</body>
+</html>

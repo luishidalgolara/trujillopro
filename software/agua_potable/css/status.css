@@ -1,0 +1,46 @@
+/* css/status.css - ACTUALIZADO */
+.status {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    padding: 12px 20px;
+    background: rgba(0, 0, 0, 0.95);
+    color: white;
+    border-radius: 8px;
+    border: 1px solid #00d9ff;
+    font-weight: 600;
+    font-size: 12px;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    max-width: 350px;
+    box-shadow: 0 4px 12px rgba(0, 217, 255, 0.3);
+}
+
+.status.show {
+    transform: translateX(0);
+}
+
+.pdf-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.95);
+    color: #00d9ff;
+    padding: 20px 40px;
+    border-radius: 10px;
+    font-weight: 600;
+    z-index: 100;
+    border: 2px solid #00d9ff;
+}
+
+.spinner {
+    border: 3px solid #333;
+    border-top: 3px solid #00d9ff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
+}

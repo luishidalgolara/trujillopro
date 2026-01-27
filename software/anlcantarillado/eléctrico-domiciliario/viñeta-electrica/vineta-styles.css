@@ -1,0 +1,482 @@
+/* ============================================
+   ESTILOS PARA VIÑETA ELÉCTRICA INTEGRADA AL PLANO
+   Archivo: vineta-styles.css (146mm x 220mm)
+   ============================================ */
+
+/* VENTANA FLOTANTE DE LA VIÑETA */
+.vineta-window {
+    position: absolute;
+    background: white;
+    border: 2px solid black;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border-radius: 0;
+    overflow: hidden;
+    z-index: 1000;
+    cursor: grab;
+}
+
+.vineta-window.minimized {
+    height: 30px !important;
+    overflow: hidden;
+}
+
+.vineta-window.minimized .vineta-content {
+    display: none;
+}
+
+.vineta-window.minimized .vineta-resize-handle {
+    display: none;
+}
+
+/* HEADER DE LA VIÑETA */
+.vineta-header {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 4px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px 4px 0 0;
+    user-select: none;
+}
+
+.vineta-title {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.vineta-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.zoom-btn {
+    background: transparent;
+    border: none;
+    padding: 2px 6px;
+    font-size: 16px;
+    color: rgba(0, 212, 255, 0.9);
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.zoom-btn:hover {
+    color: rgba(0, 255, 255, 1);
+}
+
+.zoom-label {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.8);
+    min-width: 35px;
+    text-align: center;
+}
+
+.vineta-btn-header {
+    background: transparent;
+    border: none;
+    padding: 2px 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.vineta-btn-header:hover {
+    opacity: 0.8;
+}
+
+.vineta-btn-header.minimize {
+    color: rgba(255, 170, 0, 0.9);
+}
+
+.vineta-btn-header.close {
+    color: rgba(255, 68, 68, 0.9);
+}
+
+/* CONTENIDO DE LA VIÑETA */
+.vineta-content {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    background: white;
+}
+
+.vineta-content::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.vineta-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.vineta-content::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.vineta-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* HANDLE DE REDIMENSIONAMIENTO */
+.vineta-resize-handle {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    cursor: nwse-resize;
+    background: linear-gradient(135deg, transparent 50%, rgba(0, 0, 0, 0.3) 50%);
+    border-bottom-right-radius: 6px;
+}
+
+.vineta-resize-handle:hover {
+    background: linear-gradient(135deg, transparent 50%, rgba(0, 0, 0, 0.5) 50%);
+}
+
+/* ============================================
+   ESTILOS DEL CONTENIDO DE LA VIÑETA
+   ============================================ */
+
+/* CONTENEDOR PRINCIPAL */
+.vineta-container {
+    width: 552px;
+    margin: 0;
+    background: white;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    border: none;
+    box-sizing: border-box;
+}
+
+/* FILA 1 - PROYECTO */
+.fila-proyecto {
+    border: 2px solid black;
+    padding: 15px;
+    text-align: center;
+}
+
+.fila-proyecto .label {
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    color: black;
+}
+
+.fila-proyecto .contenido {
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: black;
+}
+
+/* FILA 2 - PROYECTISTA */
+.fila-proyectista {
+    border: 2px solid black;
+    border-top: none;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+}
+
+.fila-proyectista .label {
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin-right: 10px;
+    color: black;
+}
+
+.fila-proyectista .contenido {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    flex: 1;
+    color: black;
+}
+
+/* FILA 3 - UBICACIÓN */
+.fila-ubicacion {
+    border: 2px solid black;
+    border-top: none;
+    padding: 12px 15px;
+}
+
+.fila-ubicacion .label {
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-right: 10px;
+    color: black;
+}
+
+.fila-ubicacion .contenido {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    color: black;
+}
+
+.fila-ubicacion .contenido-linea2 {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: block;
+    text-align: center;
+    margin-top: 5px;
+    color: black;
+}
+
+/* FILA 4 - CONTENIDO */
+.fila-contenido {
+    border: 2px solid black;
+    border-top: none;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.fila-contenido .texto {
+    flex: 1;
+}
+
+.fila-contenido .label {
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-right: 10px;
+    color: black;
+}
+
+.fila-contenido .lista {
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+    color: black;
+}
+
+/* ROSA DE LOS VIENTOS */
+.rosa-vientos {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    margin-left: 20px;
+}
+
+.rosa-vientos svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* FILA 5 - ACOTACIONES Y FECHA */
+.fila-acotaciones {
+    border: 2px solid black;
+    border-top: none;
+    display: flex;
+}
+
+.acotaciones-left {
+    flex: 1;
+    padding: 12px 15px;
+    border-right: 2px solid black;
+}
+
+.acotaciones-right {
+    padding: 12px 15px;
+    min-width: 250px;
+}
+
+.acotaciones-left .label,
+.acotaciones-right .label {
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-right: 10px;
+    color: black;
+}
+
+.acotaciones-left .contenido,
+.acotaciones-right .contenido {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: inline-block;
+    color: black;
+}
+
+/* FILA 6 - ARQUITECTO */
+.fila-arquitecto {
+    border: 2px solid black;
+    border-top: none;
+    padding: 12px 15px;
+}
+
+.fila-arquitecto .label {
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    color: black;
+}
+
+/* FILA 7 - FIRMAS Y NÚMERO DE PLANO */
+.fila-firmas {
+    border: 2px solid black;
+    border-top: none;
+    display: flex;
+    height: 150px;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.firma-box {
+    flex: 1;
+    border-right: 2px solid black;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.firma-box:last-child {
+    border-right: none;
+}
+
+.firma-box .titulo {
+    font-size: 10px;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    margin-bottom: auto;
+    color: black;
+}
+
+.firma-box .nombre {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-align: left;
+    margin-top: auto;
+    color: black;
+}
+
+.numero-plano-box {
+    min-width: 220px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.numero-plano-box .label {
+    font-size: 12px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin-bottom: auto;
+    color: black;
+}
+
+.numero-plano-box .numero {
+    font-size: 64px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 1;
+    margin-bottom: 5px;
+    color: black;
+}
+
+.numero-plano-box .total {
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    color: black;
+}
+
+/* CAMPOS EDITABLES */
+.editable-vineta {
+    background: #fffacd;
+    border: 1px dashed #ffa500;
+    padding: 2px 5px;
+    cursor: text;
+    min-width: 50px;
+    display: inline-block;
+    color: black;
+}
+
+.editable-vineta:hover {
+    background: #fff8b0;
+}
+
+.editable-vineta:focus {
+    outline: 2px solid #ffa500;
+    background: white;
+}
+
+/* BOTONES DE ACCIÓN */
+.vineta-acciones {
+    margin-top: 20px;
+    text-align: center;
+    padding: 15px;
+    border-top: 2px solid #ddd;
+}
+
+.vineta-btn {
+    padding: 12px 24px;
+    margin: 0 5px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.vineta-btn-primary {
+    background: #2ecc71;
+    color: white;
+}
+
+.vineta-btn-primary:hover {
+    background: #27ae60;
+}
+
+.vineta-btn-secondary {
+    background: #3498db;
+    color: white;
+}
+
+.vineta-btn-secondary:hover {
+    background: #2980b9;
+}
+
+.vineta-btn-warning {
+    background: #f39c12;
+    color: white;
+}
+
+.vineta-btn-warning:hover {
+    background: #e67e22;
+}
+
+@media print {
+    .vineta-acciones {
+        display: none;
+    }
+    .editable-vineta {
+        background: transparent;
+        border: none;
+    }
+}

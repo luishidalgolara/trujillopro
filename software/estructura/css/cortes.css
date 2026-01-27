@@ -1,0 +1,307 @@
+/* Estilos para Sistema de Cortes Técnicos */
+
+.vista-controles {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+}
+
+.btn-vista {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #3498db;
+    background: white;
+    color: #3498db;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.btn-vista:hover {
+    background: #3498db;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+}
+
+.btn-vista.active {
+    background: #3498db;
+    color: white;
+}
+
+.btn-vista:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Canvas para cortes 2D */
+#canvasCorte {
+    width: 100%;
+    height: 500px;
+    border: 2px solid #bdc3c7;
+    border-radius: 10px;
+    background: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Contenedor de vistas */
+.vista-container {
+    position: relative;
+    min-height: 500px;
+}
+
+#canvas3d,
+#canvasCorte {
+    display: none;
+}
+
+#canvas3d.active,
+#canvasCorte.active {
+    display: block;
+}
+
+/* Reporte de cuantificación de acero */
+.reporte-acero {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    border-left: 4px solid #e74c3c;
+}
+
+.reporte-acero h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.reporte-acero h4 {
+    color: #34495e;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.item-acero {
+    background: white;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    border-left: 3px solid #e74c3c;
+    font-size: 0.95rem;
+}
+
+.item-acero strong {
+    color: #2c3e50;
+}
+
+.total-acero {
+    background: #d4edda;
+    border: 2px solid #28a745;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+.total-acero strong {
+    color: #155724;
+}
+
+/* Lista de compra */
+.lista-compra {
+    background: #fff3cd;
+    border: 2px solid #ffc107;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.lista-compra h4 {
+    color: #856404;
+    margin-bottom: 1rem;
+}
+
+.lista-compra table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.lista-compra th {
+    background: #ffc107;
+    color: #856404;
+    padding: 0.75rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.lista-compra td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.lista-compra tr:hover {
+    background: #fffbf0;
+}
+
+/* Tabla de detalles técnicos */
+.detalles-tecnicos {
+    background: #e3f2fd;
+    border: 2px solid #2196f3;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.detalles-tecnicos h4 {
+    color: #1565c0;
+    margin-bottom: 1rem;
+}
+
+.detalle-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.detalle-label {
+    font-weight: 600;
+    color: #1565c0;
+}
+
+.detalle-value {
+    color: #424242;
+}
+
+/* Leyenda de corte */
+.leyenda-corte {
+    background: white;
+    border: 1px solid #bdc3c7;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+.leyenda-corte h5 {
+    color: #2c3e50;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.leyenda-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.leyenda-simbolo {
+    width: 30px;
+    height: 20px;
+    border: 1px solid #000;
+    display: inline-block;
+}
+
+.leyenda-simbolo.hormigon {
+    background: white;
+}
+
+.leyenda-simbolo.acero {
+    background: black;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+}
+
+.leyenda-simbolo.estribo {
+    background: white;
+    border: 1px solid black;
+}
+
+/* Información adicional */
+.info-constructiva {
+    background: #f1f8e9;
+    border-left: 4px solid #8bc34a;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+}
+
+.info-constructiva h5 {
+    color: #558b2f;
+    margin-bottom: 0.5rem;
+}
+
+.info-constructiva ul {
+    margin: 0;
+    padding-left: 1.5rem;
+    color: #33691e;
+}
+
+.info-constructiva li {
+    margin-bottom: 0.25rem;
+}
+
+/* Botón de descarga */
+.btn-descargar {
+    display: inline-block;
+    background: #27ae60;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-descargar:hover {
+    background: #229954;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .vista-controles {
+        flex-direction: column;
+    }
+    
+    .btn-vista {
+        width: 100%;
+    }
+    
+    #canvasCorte {
+        height: 350px;
+    }
+    
+    .detalle-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reporte-acero,
+.lista-compra,
+.detalles-tecnicos {
+    animation: fadeIn 0.5s ease;
+}

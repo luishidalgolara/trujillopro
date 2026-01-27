@@ -1,0 +1,65 @@
+/* ========================================
+   BASE - Variables y Estilos Fundamentales
+======================================== */
+
+:root {
+    /* Colors */
+    --primary: #0066FF;
+    --primary-dark: #0052CC;
+    --accent: #00D9FF;
+    --success: #00D084;
+    --danger: #FF3366;
+    --dark: #0A0E27;
+    --dark-light: #1A1F3A;
+    --text: #E8EAED;
+    --text-muted: #C8CEDB;
+    --border: #2A2F4A;
+    
+    /* Typography */
+    --font-display: 'Syne', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    
+    /* Spacing - REDUCIDO */
+    --container-width: 1200px;
+    --section-padding: 60px;
+    
+    /* Animation */
+    --ease: cubic-bezier(0.4, 0.0, 0.2, 1);
+    --ease-out: cubic-bezier(0.0, 0, 0.2, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-mono);
+    background: var(--dark);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Selection */
+::selection {
+    background: var(--primary);
+    color: white;
+}

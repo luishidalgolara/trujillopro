@@ -1,0 +1,342 @@
+.drawing-toolbar {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    background: #2c3e50;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 9999;
+    min-width: 280px;
+    max-height: 85vh;
+    overflow-y: auto;
+    display: none;
+}
+
+.drawing-toolbar-title {
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #34495e;
+}
+
+.drawing-tools-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.drawing-tool-btn {
+    background: #34495e;
+    color: white;
+    border: 2px solid #34495e;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.3s;
+    text-align: left;
+}
+
+.drawing-tool-btn:hover {
+    background: #4a5f7f;
+    transform: translateX(5px);
+}
+
+.drawing-tool-btn.active {
+    background: #3498db;
+    border-color: #3498db;
+    font-weight: bold;
+}
+
+.drawing-text-controls {
+    background: #34495e;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.drawing-text-label {
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.drawing-font-family-control {
+    position: relative;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.drawing-font-size-control {
+    position: relative;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.drawing-font-label {
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.drawing-font-family-btn,
+.drawing-font-size-btn {
+    background: #2c3e50;
+    color: white;
+    border: 2px solid #2c3e50;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    transition: all 0.3s;
+    width: 100%;
+    text-align: left;
+}
+
+.drawing-font-family-btn:hover,
+.drawing-font-size-btn:hover {
+    background: #4a5f7f;
+}
+
+.drawing-font-dropdown {
+    position: relative;
+    background: #2c3e50;
+    border: 2px solid #34495e;
+    border-radius: 4px;
+    margin-top: 5px;
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10000;
+}
+
+.drawing-font-option {
+    background: #2c3e50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s;
+}
+
+.drawing-font-option:hover {
+    background: #3498db;
+}
+
+.drawing-style-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.drawing-style-btn {
+    flex: 1;
+    background: #2c3e50;
+    color: white;
+    border: 2px solid #2c3e50;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.drawing-style-btn:hover {
+    background: #4a5f7f;
+}
+
+.drawing-style-btn.active {
+    background: #e67e22;
+    border-color: #e67e22;
+}
+
+.drawing-ortho-section {
+    margin-bottom: 15px;
+}
+
+.drawing-ortho-btn {
+    width: 100%;
+    background: #34495e;
+    color: white;
+    border: 2px solid #34495e;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.drawing-ortho-btn:hover {
+    background: #4a5f7f;
+}
+
+.drawing-ortho-btn.active {
+    background: #27ae60;
+    border-color: #27ae60;
+    box-shadow: 0 0 15px rgba(39, 174, 96, 0.5);
+}
+
+.drawing-color-picker {
+    background: #34495e;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.drawing-colors {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.drawing-color-btn {
+    width: 30px;
+    height: 30px;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.drawing-color-btn:hover {
+    transform: scale(1.1);
+}
+
+.drawing-color-btn.active {
+    border-color: white;
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.drawing-widths {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.drawing-width-label {
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.drawing-width-btn {
+    width: 30px;
+    height: 30px;
+    background: #2c3e50;
+    color: white;
+    border: 2px solid #2c3e50;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.drawing-width-btn:hover {
+    background: #4a5f7f;
+}
+
+.drawing-width-btn.active {
+    background: #3498db;
+    border-color: #3498db;
+}
+
+.drawing-actions-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.drawing-action-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.drawing-clear-btn {
+    background: #e74c3c;
+    color: white;
+}
+
+.drawing-clear-btn:hover {
+    background: #c0392b;
+}
+
+.drawing-close-btn {
+    background: #95a5a6;
+    color: white;
+}
+
+.drawing-close-btn:hover {
+    background: #7f8c8d;
+}
+
+.drawing-temp {
+    stroke-dasharray: 5, 5;
+    opacity: 0.6;
+}
+
+.drawing-element {
+    cursor: pointer;
+}
+
+.drawing-element:hover {
+    filter: brightness(1.2);
+}
+
+.drawing-text-container {
+    pointer-events: auto !important;
+    display: block !important;
+}
+
+.drawing-text-input-field {
+    background: white !important;
+    border: 3px solid #3498db !important;
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+    outline: none !important;
+    font-family: inherit !important;
+    min-width: 250px !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4) !important;
+    pointer-events: auto !important;
+    display: block !important;
+}
+
+.drawing-text-input-field:focus {
+    border-color: #2980b9 !important;
+    box-shadow: 0 0 20px rgba(52, 152, 219, 0.6) !important;
+}
+
+.drawing-element[class*="text"] {
+    cursor: move !important;
+}
+
+text.drawing-element {
+    cursor: move !important;
+    user-select: none;
+}
+
+text.drawing-element:hover {
+    opacity: 0.8;
+}

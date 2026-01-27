@@ -1,0 +1,390 @@
+/* ===================================
+   ESTILOS DEL SISTEMA MULTI-PLANO
+   =================================== */
+
+.plane-thumbnails-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 170px; /* ✅ AUMENTADO de 140px a 170px */
+    background: linear-gradient(to top, rgba(15, 15, 25, 0.98), rgba(20, 20, 35, 0.95));
+    backdrop-filter: blur(15px);
+    border-top: 3px solid rgba(0, 212, 255, 0.4); /* ✅ Borde más grueso */
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3); /* ✅ NUEVO: Sombra superior */
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.plane-thumbnails-container.collapsed {
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.plane-thumbnails-header {
+    padding: 10px 20px; /* ✅ Más padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2); /* ✅ NUEVO */
+}
+
+.plane-thumbnails-title {
+    font-size: 13px; /* ✅ Aumentado */
+    font-weight: bold;
+    color: rgba(0, 212, 255, 0.95); /* ✅ Color cyan */
+    text-transform: uppercase;
+    letter-spacing: 1.5px; /* ✅ Más espaciado */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* ✅ NUEVO */
+}
+
+.plane-thumbnails-actions {
+    display: flex;
+    gap: 10px; /* ✅ Más espacio */
+}
+
+.btn-add-plane {
+    background: linear-gradient(135deg, #00d4ff, #0099cc);
+    color: white;
+    border: none;
+    padding: 8px 20px; /* ✅ Más padding */
+    border-radius: 8px; /* ✅ Más redondeado */
+    font-size: 12px; /* ✅ Texto más grande */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 212, 255, 0.4);
+}
+
+.btn-add-plane:hover {
+    background: linear-gradient(135deg, #00ffff, #00d4ff);
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-add-plane:active {
+    transform: translateY(0);
+}
+
+.btn-collapse-planes {
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 14px; /* ✅ Más padding */
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-collapse-planes:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: white;
+}
+
+.plane-thumbnails-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px; /* ✅ Más padding */
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 16px; /* ✅ Más espacio entre thumbnails */
+}
+
+.plane-thumbnails-content::-webkit-scrollbar {
+    height: 8px; /* ✅ Scrollbar más grueso */
+}
+
+.plane-thumbnails-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.plane-thumbnails-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 212, 255, 0.4);
+    border-radius: 4px;
+}
+
+.plane-thumbnails-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 212, 255, 0.6);
+}
+
+.plane-thumbnail {
+    position: relative;
+    min-width: 200px; /* ✅ AUMENTADO de 160px a 200px */
+    width: 200px; /* ✅ AUMENTADO de 160px a 200px */
+    height: 120px; /* ✅ AUMENTADO de 95px a 120px */
+    background: rgba(255, 255, 255, 0.08);
+    border: 3px solid rgba(255, 255, 255, 0.15); /* ✅ Borde más grueso */
+    border-radius: 10px; /* ✅ Más redondeado */
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* ✅ NUEVO */
+}
+
+.plane-thumbnail:hover {
+    border-color: rgba(0, 212, 255, 0.6);
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-6px) scale(1.02); /* ✅ Mini-zoom + elevación */
+    box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+    z-index: 10; /* ✅ NUEVO: Adelante en hover */
+}
+
+.plane-thumbnail.active {
+    border-color: rgba(0, 212, 255, 1);
+    background: rgba(0, 212, 255, 0.15);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.5),
+                0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.plane-thumbnail-preview {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(0, 212, 255, 0.2);
+    border-bottom: none;
+    /* ✅ NUEVO: Patrón de transparencia estilo Photoshop */
+    background-image: 
+        linear-gradient(45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%);
+    background-size: 10px 10px;
+    background-position: 0 0, 0 5px, 5px -5px, -5px 0px;
+}
+
+.plane-thumbnail-preview svg {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1)); /* ✅ NUEVO: Sombra al SVG */
+}
+
+.plane-thumbnail-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1)); /* ✅ NUEVO */
+}
+
+.plane-thumbnail-preview .empty-plane {
+    color: #999;
+    font-size: 11px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.plane-thumbnail-name {
+    padding: 8px 10px; /* ✅ Más padding */
+    font-size: 12px; /* ✅ AUMENTADO de 11px a 12px */
+    font-weight: 700; /* ✅ Más bold */
+    color: rgba(255, 255, 255, 1); /* ✅ Blanco puro */
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)); /* ✅ Gradiente */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-top: 2px solid rgba(0, 212, 255, 0.3); /* ✅ Borde más visible */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8); /* ✅ NUEVO */
+    letter-spacing: 0.5px; /* ✅ NUEVO */
+}
+
+.plane-thumbnail-actions {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    display: none;
+    gap: 5px;
+    z-index: 10;
+}
+
+.plane-thumbnail:hover .plane-thumbnail-actions {
+    display: flex;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.plane-thumbnail-btn {
+    width: 26px; /* ✅ AUMENTADO de 22px a 26px */
+    height: 26px; /* ✅ AUMENTADO de 22px a 26px */
+    border: none;
+    border-radius: 6px; /* ✅ Más redondeado */
+    cursor: pointer;
+    font-size: 12px; /* ✅ AUMENTADO de 11px a 12px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+}
+
+.plane-thumbnail-btn:hover {
+    transform: scale(1.2); /* ✅ Más zoom */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.plane-thumbnail-btn.duplicate {
+    background: rgba(0, 212, 255, 0.95);
+}
+
+.plane-thumbnail-btn.duplicate:hover {
+    background: rgba(0, 255, 255, 1);
+}
+
+.plane-thumbnail-btn.rename {
+    background: rgba(255, 170, 0, 0.95);
+}
+
+.plane-thumbnail-btn.rename:hover {
+    background: rgba(255, 200, 0, 1);
+}
+
+.plane-thumbnail-btn.delete {
+    background: rgba(255, 68, 68, 0.95);
+}
+
+.plane-thumbnail-btn.delete:hover {
+    background: rgba(255, 100, 100, 1);
+}
+
+.plane-thumbnail-btn:active {
+    transform: scale(0.95);
+}
+
+.btn-show-planes {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: linear-gradient(135deg, #00d4ff, #0099cc);
+    color: white;
+    border: none;
+    padding: 16px 28px;
+    border-radius: 12px;
+    font-size: 14px; /* ✅ Aumentado */
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0, 212, 255, 0.6);
+    z-index: 9998;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-show-planes.visible {
+    display: flex;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { 
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to { 
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.btn-show-planes:hover {
+    background: linear-gradient(135deg, #00ffff, #00d4ff);
+    box-shadow: 0 7px 25px rgba(0, 212, 255, 0.8);
+    transform: translateY(-4px);
+}
+
+.btn-show-planes:active {
+    transform: translateY(0);
+}
+
+/* ✅ Indicador de plano activo más visible */
+.plane-thumbnail.active::before {
+    content: '▶';
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    color: rgba(0, 255, 255, 1);
+    font-size: 14px; /* ✅ Más grande */
+    z-index: 11;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8),
+                 0 2px 4px rgba(0, 0, 0, 0.5); /* ✅ Efecto glow */
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        opacity: 1; 
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.6;
+        transform: scale(0.95);
+    }
+}
+
+/* ✅ NUEVO: Badge con número de plano */
+.plane-thumbnail::after {
+    content: attr(data-index);
+    position: absolute;
+    bottom: 32px; /* ✅ Ajustado */
+    left: 8px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 3px 7px;
+    border-radius: 4px;
+    backdrop-filter: blur(5px);
+}
+
+@media (max-width: 768px) {
+    .plane-thumbnails-container {
+        height: 130px;
+    }
+    
+    .plane-thumbnail {
+        min-width: 140px;
+        width: 140px;
+        height: 85px;
+    }
+    
+    .plane-thumbnails-title {
+        font-size: 11px;
+    }
+    
+    .btn-add-plane {
+        padding: 6px 14px;
+        font-size: 11px;
+    }
+}

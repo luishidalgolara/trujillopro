@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario 12.7 - Certificado Microempresa/Equipamiento (Título II)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
+        .container { max-width: 1000px; margin: 0 auto; background-color: white; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .header { text-align: center; border: 2px solid #000; padding: 15px; margin-bottom: 20px; background-color: #e8e8e8; }
+        .header h1 { font-size: 18px; margin-bottom: 5px; }
+        .header p { font-size: 11px; margin: 3px 0; }
+        .tipo-select { text-align: center; padding: 15px; margin-bottom: 20px; background-color: #fff3cd; border: 2px solid #ffc107; }
+        .section { margin-bottom: 25px; border: 1px solid #333; padding: 15px; }
+        .section-title { background-color: #d0d0d0; padding: 8px; font-weight: bold; margin: -15px -15px 15px -15px; font-size: 14px; }
+        .form-row { display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
+        .form-col { flex: 1; min-width: 200px; }
+        label { display: block; font-size: 11px; font-weight: bold; margin-bottom: 5px; color: #333; }
+        input[type="text"], input[type="number"], input[type="date"], textarea, select {
+            width: 100%; padding: 8px; border: 1px solid #666; font-size: 12px; background-color: white;
+        }
+        textarea { resize: vertical; min-height: 60px; }
+        .radio-group { display: flex; gap: 20px; align-items: center; }
+        input[type="radio"] { width: 18px; height: 18px; cursor: pointer; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 11px; }
+        table th, table td { border: 1px solid #333; padding: 8px; text-align: left; }
+        table th { background-color: #d0d0d0; font-weight: bold; }
+        table input { width: 100%; padding: 4px; border: 1px solid #999; }
+        .note { background-color: #fff9e6; border: 1px solid #e6d700; padding: 10px; margin: 15px 0; font-size: 10px; font-style: italic; }
+        .vistos-section { background-color: #f9f9f9; border: 2px solid #000; padding: 15px; margin: 20px 0; font-size: 12px; }
+        .resuelvo-section { background-color: #e6f2ff; border: 2px solid #0066cc; padding: 15px; margin: 20px 0; font-size: 12px; }
+        .button-group { display: flex; gap: 10px; justify-content: center; margin-top: 30px; }
+        button { padding: 12px 30px; font-size: 14px; cursor: pointer; border: none; border-radius: 4px; }
+        .btn-primary { background-color: #0066cc; color: white; }
+        .btn-primary:hover { background-color: #0052a3; }
+        .btn-secondary { background-color: #6c757d; color: white; }
+        .btn-secondary:hover { background-color: #545b62; }
+        .signature-area { margin-top: 40px; text-align: center; }
+        .signature-line { border-top: 2px solid #000; margin: 60px auto 10px; width: 400px; padding-top: 5px; font-size: 11px; }
+        @media print {
+            body { padding: 0; background-color: white; }
+            .container { box-shadow: none; max-width: 100%; }
+            .button-group { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>FORMULARIO 12.7 Ley 20.898 Título II</h1>
+            <p><strong>CERTIFICADO DE REGULARIZACIÓN</strong></p>
+            <p>(Permiso y Recepción definitiva simultánea)</p>
+            <p><strong>EDIFICACIÓN DESTINADA A MICROEMPRESA INOFENSIVA O EQUIPAMIENTO SOCIAL</strong></p>
+            <p>ACOGIDA AL TÍTULO II DE LA LEY N° 20.898</p>
+            <p>(VIGENCIA PRORROGADA POR LA LEY 21.725 D.O. 01.03.2025)</p>
+        </div>
+
+        <div class="tipo-select">
+            <label style="font-size: 14px; font-weight: bold; margin-bottom: 10px; display: block;">TIPO DE REGULARIZACIÓN:</label>
+            <div class="radio-group" style="justify-content: center;">
+                <input type="radio" name="tipo_regularizacion" value="microempresa" id="tipo_micro">
+                <label for="tipo_micro">REGULARIZACIÓN EDIFICACIÓN MICROEMPRESA</label>
+                <input type="radio" name="tipo_regularizacion" value="equipamiento" id="tipo_equip">
+                <label for="tipo_equip">REGULARIZACIÓN EQUIPAMIENTO SOCIAL</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="form-row">
+                <div class="form-col"><label>DIRECCIÓN DE OBRAS MUNICIPALES DE:</label><input type="text" id="dom_municipalidad"></div>
+                <div class="form-col"><label>REGIÓN:</label><input type="text" id="region"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-col"><label>Nº DE CERTIFICADO</label><input type="text" id="numero_certificado"></div>
+                <div class="form-col"><label>Fecha de Aprobación</label><input type="date" id="fecha_aprobacion"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-col"><label>ROL SII</label><input type="text" id="rol_sii"></div>
+                <div class="form-col">
+                    <label>URBANO / RURAL</label>
+                    <div class="radio-group">
+                        <input type="radio" name="ubicacion" value="urbano" id="urbano"><label for="urbano">URBANO</label>
+                        <input type="radio" name="ubicacion" value="rural" id="rural"><label for="rural">RURAL</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vistos-section">
+            <h3 style="margin-bottom: 15px;">VISTOS:</h3>
+            <p style="margin-bottom: 10px;">A) Las atribuciones emanadas del Art. 8° de la Ley N° 20.898.</p>
+            <p style="margin-bottom: 5px;">B) La solicitud de Regularización (Permiso y Recepción definitiva) de edificación existente, suscrita por el propietario y el arquitecto o profesional competente, correspondiente al expediente Nº</p>
+            <div class="form-row">
+                <div class="form-col"><label>EXPEDIENTE Nº</label><input type="text" id="expediente_numero"></div>
+                <div class="form-col"><label>DE FECHA</label><input type="date" id="expediente_fecha"></div>
+            </div>
+            <p style="margin: 15px 0 5px;">C) Los antecedentes exigidos en el Título II artículo 6° de la Ley N° 20.898.</p>
+            <p style="margin: 15px 0 5px;">D) El giro de ingreso municipal N°</p>
+            <div class="form-row">
+                <div class="form-col"><label>GIRO INGRESO MUNICIPAL N°</label><input type="text" id="giro_numero"></div>
+                <div class="form-col"><label>DE FECHA</label><input type="date" id="giro_fecha"></div>
+            </div>
+            <p style="margin-top: 10px;">de pago de derechos municipales.</p>
+        </div>
+
+        <div class="resuelvo-section">
+            <h3 style="margin-bottom: 15px;">RESUELVO:</h3>
+            <p style="margin-bottom: 10px;">1. Otorgar Certificado de Regularización que entrega simultáneamente el Permiso y la Recepción definitiva de la edificación existente, que corresponde a</p>
+            <div class="form-row">
+                <div class="form-col">
+                    <label>TIPO (MICROEMPRESA INOFENSIVA / EQUIPAMIENTO SOCIAL)</label>
+                    <select id="tipo_edificacion">
+                        <option value="">Seleccionar</option>
+                        <option value="microempresa">MICROEMPRESA INOFENSIVA</option>
+                        <option value="equipamiento">EQUIPAMIENTO SOCIAL</option>
+                    </select>
+                </div>
+            </div>
+            <p style="margin: 10px 0;">con una superficie de</p>
+            <div class="form-row">
+                <div class="form-col"><label>SUPERFICIE (m²)</label><input type="number" id="superficie" step="0.01"></div>
+            </div>
+            <p style="margin: 10px 0;">destinado a</p>
+            <div class="form-row">
+                <div class="form-col"><label>DESTINO</label><input type="text" id="destino"></div>
+            </div>
+            <p style="margin: 10px 0;">ubicada en</p>
+            <div class="form-row">
+                <div class="form-col"><label>CONDOMINIO / CALLE / AVENIDA / PASAJE</label><input type="text" id="calle"></div>
+                <div class="form-col" style="flex: 0.5;"><label>N°</label><input type="text" id="numero"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-col"><label>MANZANA</label><input type="text" id="manzana"></div>
+                <div class="form-col"><label>LOTE Nº</label><input type="text" id="lote"></div>
+                <div class="form-col"><label>LOCALIDAD O LOTEO</label><input type="text" id="localidad"></div>
+                <div class="form-col"><label>SECTOR</label><input type="text" id="sector"></div>
+            </div>
+            <p style="margin-top: 10px; font-size: 11px;">de conformidad a plano y antecedentes timbrados por esta DOM, que forman parte del presente certificado de regularización.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">2. INDIVIDUALIZACIÓN DEL INTERESADO</div>
+            <div class="form-row">
+                <div class="form-col"><label>NOMBRE O RAZÓN SOCIAL del PROPIETARIO</label><input type="text" id="prop_nombre"></div>
+                <div class="form-col"><label>R.U.T.</label><input type="text" id="prop_rut"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-col"><label>REPRESENTANTE LEGAL del PROPIETARIO</label><input type="text" id="rep_legal"></div>
+                <div class="form-col"><label>R.U.T.</label><input type="text" id="rep_legal_rut"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">3. INDIVIDUALIZACIÓN DEL ARQUITECTO O PROFESIONAL COMPETENTE</div>
+            <div class="form-row">
+                <div class="form-col"><label>NOMBRE DEL PROFESIONAL COMPETENTE</label><input type="text" id="prof_nombre"></div>
+                <div class="form-col"><label>R.U.T.</label><input type="text" id="prof_rut"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-col"><label>PROFESIÓN</label><input type="text" id="prof_profesion"></div>
+            </div>
+            <div class="note"><strong>NOTA:</strong> según letra c) artículo 6° de la Ley N° 20.898 y según artículo 17° de la LGUC.</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">4. DERECHOS MUNICIPALES (A llenar por la DOM)</div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td style="width: 70%;">(a) PRESUPUESTO (Calculado con Tabla Costos Unitarios MINVU)</td>
+                        <td><input type="number" id="presupuesto" step="0.01" oninput="calcularDerechos()"></td>
+                    </tr>
+                    <tr style="background-color: #e6f2ff; font-weight: bold;">
+                        <td>TOTAL DERECHOS A PAGAR [(a) x (1,5% Art. 130 LGUC)]</td>
+                        <td><input type="number" id="total_pagar" step="0.01" readonly></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="note">Se pagan los derechos considerando toda la superficie que se regulariza.</div>
+            <div class="form-row">
+                <div class="form-col"><label>GIRO INGRESO MUNICIPAL NÚMERO</label><input type="text" id="giro_pago_numero"></div>
+                <div class="form-col"><label>FECHA:</label><input type="date" id="giro_pago_fecha"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <label style="font-weight: bold; margin-bottom: 10px; display: block;">NOTA (PARA SITUACIONES ESPECIALES)</label>
+            <textarea id="nota_especial" rows="4"></textarea>
+        </div>
+
+        <div class="signature-area">
+            <div class="signature-line">DIRECTOR DE OBRAS MUNICIPALES<br>NOMBRE Y FIRMA</div>
+            <div style="margin-top: 30px; border: 2px solid #000; padding: 20px; height: 100px; width: 300px; margin: 30px auto;">TIMBRE</div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn-secondary" onclick="limpiarFormulario()">Limpiar Formulario</button>
+            <button class="btn-primary" onclick="guardarFormulario()">Guardar Datos</button>
+            <button class="btn-primary" onclick="window.print()">Imprimir / PDF</button>
+        </div>
+    </div>
+
+    <script>
+        function calcularDerechos() {
+            const presupuesto = parseFloat(document.getElementById('presupuesto').value) || 0;
+            const totalPagar = presupuesto * 0.015;
+            document.getElementById('total_pagar').value = totalPagar.toFixed(2);
+        }
+
+        function guardarFormulario() {
+            const formData = {};
+            document.querySelectorAll('input, select, textarea').forEach(input => {
+                if (input.type === 'radio') {
+                    if (input.checked) formData[input.name] = input.value;
+                } else {
+                    formData[input.id] = input.value;
+                }
+            });
+            localStorage.setItem('formulario_12_7', JSON.stringify(formData));
+            alert('Formulario guardado exitosamente');
+        }
+
+        function cargarFormulario() {
+            const savedData = localStorage.getItem('formulario_12_7');
+            if (savedData) {
+                const formData = JSON.parse(savedData);
+                Object.keys(formData).forEach(key => {
+                    const element = document.getElementById(key) || document.querySelector(`[name="${key}"]`);
+                    if (element) {
+                        if (element.type === 'radio') {
+                            if (element.value === formData[key]) element.checked = true;
+                        } else {
+                            element.value = formData[key];
+                        }
+                    }
+                });
+                calcularDerechos();
+            }
+        }
+
+        function limpiarFormulario() {
+            if (confirm('¿Está seguro que desea limpiar todos los datos del formulario?')) {
+                document.querySelectorAll('input, select, textarea').forEach(element => {
+                    if (element.type === 'radio') {
+                        element.checked = false;
+                    } else {
+                        element.value = '';
+                    }
+                });
+                localStorage.removeItem('formulario_12_7');
+                alert('Formulario limpiado');
+            }
+        }
+
+        window.addEventListener('load', cargarFormulario);
+    </script>
+</body>
+</html>

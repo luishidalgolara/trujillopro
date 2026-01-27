@@ -1,0 +1,495 @@
+{
+  "seccion": "APENDICES",
+  "titulo": "APÉNDICES DE LA NORMA NCh ELEC 4/2003",
+  "apendices": [
+    {
+      "numero": "APENDICE_1",
+      "titulo": "GRADOS DE PROTECCIÓN DE CARCAZAS Y CAJAS DE EQUIPOS Y APARATOS",
+      "contenido": [
+        {
+          "numero": "1.1",
+          "contenido": "La norma internacional CEI 529, de la Comisión Electrotécnica Internacional establece una codificación numérica a través de la cual se definen las características de los grados de protección que la envolvente, carcaza o caja, de un equipo proporciona tanto desde el punto de vista de protección a las personas frente a la posibilidad de alcanzar partes energizadas en el interior del equipo o aparato, como desde el punto de vista de penetración de elementos extraños al equipo como cuerpos, polvos o agua que interfieran con su funcionamiento y/o le provoquen daños."
+        },
+        {
+          "numero": "1.2",
+          "contenido": "La caracterización de los grados de protección se establece mediante un código formado por las letras IP (índice de protección) seguidas de una combinación de dos cifras, cuyo significado se establece en las tablas 1.I a 1.V siguientes. Debe tenerse en cuenta que la primera cifra tiene dos significados que se indican en las tablas 1.I y 1.II, estos significados son complementarios y de aplicación simultánea."
+        },
+        {
+          "numero": "1.3",
+          "contenido": "Los equipos o aparatos calificados según esta norma llevarán marcado sobre su carcaza o caja el número de código correspondiente, siguiendo la disposición mostrada a continuación",
+          "estructura_codigo": {
+            "formato": "IP 2 3 C H",
+            "componentes": [
+              "Letras de código",
+              "Primera cifra característica (números del 0 a 6 o letra X)",
+              "Segunda cifra característica (números del 0 a 8 o letra X)",
+              "Letra adicional (opcional) (letras A, B, C o D)",
+              "Letra complementaria (opcional) (letras H, M, S o W)"
+            ],
+            "nota": "Las letras X se utilizarán cuando alguna característica definida por la cifra correspondiente no requiera ser especificada. Las letras adicionales y complementarias si no son necesarias simplemente se omiten."
+          }
+        }
+      ],
+      "tablas": [
+        {
+          "numero": "1.I",
+          "titulo": "Protección Contra Contactos con Partes Energizadas. Primera Cifra",
+          "columnas": ["Primer Número Característico", "Grado de Protección - Descripción", "Definición"],
+          "datos": [
+            {
+              "numero": "0",
+              "descripcion": "Sin protección",
+              "definicion": "-"
+            },
+            {
+              "numero": "1",
+              "descripcion": "Partes energizadas inaccesibles al dorso de la mano",
+              "definicion": "El calibre, una esfera de Ø=50mm, debe quedar a una distancia adecuada de las partes energizadas"
+            },
+            {
+              "numero": "2",
+              "descripcion": "Partes energizadas no accesibles con los dedos",
+              "definicion": "El calibre, consistente en una esfera de Ø=12mm, 80 mm de largo, debe quedar a suficiente distancia de las partes energizadas"
+            },
+            {
+              "numero": "3",
+              "descripcion": "Partes energizadas no accesibles con herramientas",
+              "definicion": "No debe penetrar el calibre consistente en una esfera de Ø=2,5 mm"
+            },
+            {
+              "numero": "4",
+              "descripcion": "Partes energizadas no accesibles con un alambre",
+              "definicion": "El calibre, de Ø=1,0mm, no debe penetrar"
+            },
+            {
+              "numero": "5",
+              "descripcion": "Partes energizadas no accesibles con un alambre",
+              "definicion": "El calibre, de Ø=1,0mm, no debe penetrar"
+            },
+            {
+              "numero": "6",
+              "descripcion": "Partes energizadas no accesibles con un alambre",
+              "definicion": "El calibre, de Ø=1,0mm, no debe penetrar"
+            }
+          ],
+          "nota": "En el caso de la primera cifra característica 3,4,5 ó 6 la protección contra acceso a partes energizadas se satisface si se mantiene la distancia adecuada. Los requerimientos de esta tabla se aplicarán simultáneamente con los de la Tabla 1.II; por esta razón las cifras 4,5 y 6 que en esta tabla no presentan diferencias frente al ingreso de cuerpos sólidos, se hacen diferentes en la Tabla II al exigir distintos grados de protección frente al ingreso de polvo"
+        },
+        {
+          "numero": "1.II",
+          "titulo": "Protección Contra Acceso de Cuerpos Extraños. Primera Cifra",
+          "columnas": ["Primer Número Característico", "Grado de Protección - Descripción", "Definición"],
+          "datos": [
+            {
+              "numero": "0",
+              "descripcion": "Sin protección",
+              "definicion": "-"
+            },
+            {
+              "numero": "1",
+              "descripcion": "Protegido contra la penetración de objetos extraños de Ø ≥ 50mm",
+              "definicion": "El calibre, una esfera de Ø=50mm, no debe penetrar completamente (1)"
+            },
+            {
+              "numero": "2",
+              "descripcion": "Protegido contra la penetración de objetos extraños de Ø ≥ 12,5mm",
+              "definicion": "El calibre, una esfera de Ø=12,5mm, no debe penetrar completamente (1)"
+            },
+            {
+              "numero": "3",
+              "descripcion": "Protegido contra la penetración de objetos extraños de Ø ≥ 2,50mm",
+              "definicion": "El calibre, una esfera de Ø=2,5mm, no debe penetrar completamente (1)"
+            },
+            {
+              "numero": "4",
+              "descripcion": "Protegido contra la penetración de objetos extraños de Ø ≥ 1,0mm",
+              "definicion": "El calibre, una esfera de Ø=1,0mm, no debe penetrar completamente (1)"
+            },
+            {
+              "numero": "5",
+              "descripcion": "Protegido contra la entrada de polvo",
+              "definicion": "La entrada de polvo no se evita totalmente, pero la cantidad que entra no es suficiente para interferir con el funcionamiento del equipo o afectar su seguridad"
+            },
+            {
+              "numero": "6",
+              "descripcion": "Estanco al polvo",
+              "definicion": "No debe penetrar polvo"
+            }
+          ],
+          "notas": [
+            "(1) El máximo diámetro de la probeta de ensayo no deberá pasar a través de cualquier abertura de la cubierta (Ver figura 1.I)",
+            "En la figura 1.1 Se muestran las dimensiones y formas típicas de los calibres de ensayo para las pruebas de protección contra la accesibilidad."
+          ]
+        },
+        {
+          "numero": "1.III",
+          "titulo": "Protección Contra la Penetración de Agua. Segunda Cifra",
+          "columnas": ["Primer Número Característico", "Grado de Protección - Descripción", "Definición"],
+          "datos": [
+            {
+              "numero": "0",
+              "descripcion": "Sin protección",
+              "definicion": "-"
+            },
+            {
+              "numero": "1",
+              "descripcion": "Protegido contra la caída vertical de gotas de agua",
+              "definicion": "Las gotas que caen verticalmente no deben provocar efectos dañinos"
+            },
+            {
+              "numero": "2",
+              "descripcion": "Protegido contra la caída de gotas de agua con una inclinación de hasta 15º",
+              "definicion": "Las gotas que caen verticalmente no deben provocar efectos dañinos al inclinar la cubierta hasta 15º en uno y otro sentido respecto de la vertical"
+            },
+            {
+              "numero": "3",
+              "descripcion": "Protegido contra la caída de lluvia",
+              "definicion": "La lluvia cayendo en un ángulo igual o menor a 60º no deberá provocar daños"
+            },
+            {
+              "numero": "4",
+              "descripcion": "Protegido contra salpicaduras de agua",
+              "definicion": "Las salpicaduras en cualquier dirección no deben provocar daños"
+            },
+            {
+              "numero": "5",
+              "descripcion": "Protegido contra chorros de agua",
+              "definicion": "Un chorro de agua proyectado en cualquier dirección no debe provocar daños (1)"
+            },
+            {
+              "numero": "6",
+              "descripcion": "Protegido contra chorros fuertes de agua",
+              "definicion": "Un chorro fuerte de agua proyectado en cualquier dirección no debe provocar daños (2)"
+            },
+            {
+              "numero": "7",
+              "descripcion": "Protegido contra inmersión temporal en agua",
+              "definicion": "No debe penetrar una cantidad de agua que pueda provocar daños al estar la caja sumergida temporalmente en condiciones normales de presión y duración (3)"
+            },
+            {
+              "numero": "8",
+              "descripcion": "Protegido contra inmersión prolongada en agua",
+              "definicion": "No debe penetrar una cantidad de agua que pueda provocar daños al estar la caja sumergida en forma prolongada en condiciones que se acordaran entre usuario y fabricante pero que serán más drásticas que las indicadas en 7"
+            }
+          ],
+          "notas": [
+            "(1) El chorro de agua se obtendrá de una boquilla de Ø = 6,3 mm que entregará un caudal de 12,5 l/min ± 5%; el diámetro del chorro será 40 mm a 2,5 m del objeto.",
+            "(2) Idem 1 pero caudal será 100 l/min ± 5% y diámetro del chorro 120 mm a 2,5 m. En ambos casos, 1 y 2, el chorro se aplicará durante 3 minutos a una distancia 2,5 m ≤ d ≤ 3 m.",
+            "(3) La muestra se sumergirá en agua con una altura de 150 mm sobre su cubierta si h = (alto de la muestra) ≤ 850 mm y (1000 – h) si h ≥ 850 mm. Tiempo de la prueba 1 minuto, temperatura muestra = temperatura del agua ± 5%.",
+            "Algunas normas consideran la aplicación de letras adicionales que refuerzan o aclaran la calidad del grado de protección de un equipo, o bien restringen su aplicación a cierto tipos de equipos o condiciones particulares de aplicación. Estos índices adicionales se detallan en las tablas 1.IV y 1.V siguientes:"
+          ]
+        },
+        {
+          "numero": "1.IV",
+          "titulo": "Protección Contra Acceso de Cuerpos Extraños. Letra Adicional",
+          "columnas": ["Letra Adicional", "Grado de Protección - Descripción", "Definición"],
+          "datos": [
+            {
+              "letra": "A",
+              "descripcion": "Partes energizadas inaccesibles al dorso de la mano",
+              "definicion": "El calibre, una esfera de Ø=50mm, debe quedar a una distancia adecuada de las partes energizadas"
+            },
+            {
+              "letra": "B",
+              "descripcion": "Partes energizadas no accesibles con los dedos",
+              "definicion": "El calibre, una esfera de Ø=12 mm, debe quedar a una distancia adecuada de las partes energizadas"
+            },
+            {
+              "letra": "C",
+              "descripcion": "Partes energizadas no accesibles con una herramienta",
+              "definicion": "El calibre, una esfera de Ø=2,5mm, debe quedar a una distancia adecuada de las partes energizadas"
+            },
+            {
+              "letra": "D",
+              "descripcion": "Partes energizadas no accesibles con un alambre",
+              "definicion": "El calibre, una esfera de Ø=1,0mm, debe quedar a una distancia adecuada de las partes energizadas"
+            }
+          ]
+        },
+        {
+          "numero": "1.V",
+          "titulo": "Letras Suplementarias",
+          "columnas": ["Letra", "Significado"],
+          "datos": [
+            {
+              "letra": "H",
+              "significado": "Se aplica a aparatos de Alta Tensión"
+            },
+            {
+              "letra": "M",
+              "significado": "Se ha verificado la protección contra los efectos dañinos producidos por la penetración de agua en partes móviles de un equipo en movimiento (p.e. rotor de un motor)"
+            },
+            {
+              "letra": "S",
+              "significado": "Se ha verificado la protección contra los efectos dañinos producidos por la penetración de agua en partes móviles de un equipo detenidas (p.e. rotor de un motor)"
+            },
+            {
+              "letra": "W",
+              "significado": "Se aplica a materiales aplicables sin condiciones atmosféricas especificadas ni se han adoptado medidas de protección complementarias."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "APENDICE_2",
+      "titulo": "POTENCIA MEDIA POR UNIDAD DE SUPERFICIE ESTIMADA NECESARIA PARA OBTENER UNA ILUMINANCIA DADA",
+      "tabla": {
+        "columnas": [
+          "Iluminancia requerida [lux]",
+          "Fluorescente o Mercurio Directo [W/m2]",
+          "Fluorescente con Difusor [W/m2]",
+          "Fluorescente en cielos modulares [W/m2]",
+          "Sodio Alta Presión [W/m2]",
+          "Haluro Metálico [W/m2]",
+          "Incandescente Directa [W/m2]",
+          "Incandescente Indirecta [W/m2]"
+        ],
+        "datos": [
+          {"lux": "50", "fluorescente_directo": "2,5", "fluorescente_difusor": "3", "fluorescente_cielos": "5", "sodio": "", "haluro": "", "incandescente_directa": "7", "incandescente_indirecta": "15"},
+          {"lux": "100", "fluorescente_directo": "5", "fluorescente_difusor": "7", "fluorescente_cielos": "9", "sodio": "", "haluro": "", "incandescente_directa": "12", "incandescente_indirecta": "30"},
+          {"lux": "150", "fluorescente_directo": "10", "fluorescente_difusor": "12", "fluorescente_cielos": "13", "sodio": "", "haluro": "", "incandescente_directa": "18", "incandescente_indirecta": "45"},
+          {"lux": "200", "fluorescente_directo": "12", "fluorescente_difusor": "15", "fluorescente_cielos": "17", "sodio": "", "haluro": "", "incandescente_directa": "25", "incandescente_indirecta": "60"},
+          {"lux": "250", "fluorescente_directo": "15", "fluorescente_difusor": "18", "fluorescente_cielos": "21", "sodio": "", "haluro": "", "incandescente_directa": "30", "incandescente_indirecta": "75"},
+          {"lux": "300", "fluorescente_directo": "18", "fluorescente_difusor": "22", "fluorescente_cielos": "26", "sodio": "", "haluro": "", "incandescente_directa": "35", "incandescente_indirecta": "90"},
+          {"lux": "350", "fluorescente_directo": "22", "fluorescente_difusor": "27", "fluorescente_cielos": "30", "sodio": "", "haluro": "", "incandescente_directa": "42", "incandescente_indirecta": "110"},
+          {"lux": "400", "fluorescente_directo": "25", "fluorescente_difusor": "30", "fluorescente_cielos": "34", "sodio": "", "haluro": "", "incandescente_directa": "48", "incandescente_indirecta": "125"},
+          {"lux": "450", "fluorescente_directo": "28", "fluorescente_difusor": "33", "fluorescente_cielos": "38", "sodio": "", "haluro": "", "incandescente_directa": "55", "incandescente_indirecta": "-"},
+          {"lux": "500", "fluorescente_directo": "30", "fluorescente_difusor": "37", "fluorescente_cielos": "43", "sodio": "", "haluro": "", "incandescente_directa": "60", "incandescente_indirecta": "-"},
+          {"lux": "550", "fluorescente_directo": "35", "fluorescente_difusor": "40", "fluorescente_cielos": "47", "sodio": "", "haluro": "", "incandescente_directa": "66", "incandescente_indirecta": "-"},
+          {"lux": "600", "fluorescente_directo": "37", "fluorescente_difusor": "44", "fluorescente_cielos": "51", "sodio": "", "haluro": "", "incandescente_directa": "71", "incandescente_indirecta": "-"},
+          {"lux": "650", "fluorescente_directo": "40", "fluorescente_difusor": "48", "fluorescente_cielos": "55", "sodio": "", "haluro": "", "incandescente_directa": "71", "incandescente_indirecta": "-"},
+          {"lux": "700", "fluorescente_directo": "43", "fluorescente_difusor": "52", "fluorescente_cielos": "60", "sodio": "", "haluro": "", "incandescente_directa": "85", "incandescente_indirecta": "-"},
+          {"lux": "750", "fluorescente_directo": "47", "fluorescente_difusor": "55", "fluorescente_cielos": "64", "sodio": "", "haluro": "", "incandescente_directa": "90", "incandescente_indirecta": "-"},
+          {"lux": "800", "fluorescente_directo": "50", "fluorescente_difusor": "58", "fluorescente_cielos": "68", "sodio": "", "haluro": "", "incandescente_directa": "95", "incandescente_indirecta": "-"}
+        ],
+        "nota_importante": "Esta tabla solo debe ser usada como una referencia para obtener una estimación primaria de potencia para la iluminación de un recinto, su aplicación en ningún caso constituye una alternativa a los procedimientos de cálculo de iluminación. En las potencias estimadas se incluyen los accesorios y se ha considerado un factor de potencia de 0,9. Las características fotométricas adoptadas para el cálculo corresponden a las de luminarias de fabricación nacional típicas."
+      }
+    },
+    {
+      "numero": "APENDICE_3",
+      "titulo": "MEDIDAS DE LUMINANCIA",
+      "contenido": [
+        {
+          "numero": "3.1",
+          "titulo": "Medidas de Luminancia",
+          "contenido": "La luminancia se medirá sobre puntos de diámetros mayores a 10 mm sobre cada superficie de color diferente en el panel de la señal y se medirán las luminancias máxima y mínima de cada color. Para el color de fondo se excluirá de la medición una banda perimetral de 10 mm de ancho. Para determinar la razón de luminancias entre dos colores adyacentes la medición se efectuará a una distancia de 15 mm a cada lado de la unión de las zonas de color distinto; si la zona de color es una banda de menos de 30 mm el diámetro del punto de medición se reducirá. Para señales en que la dimensión más pequeña es menor a 100 mm el diámetros del punto de medida y el ancho de la bandea periférica se reducirán de modo de no sobrepasar el 10% de la dimensión mas pequeña. Para facilitar la comprensión de estas recomendaciones ver figura"
+        },
+        {
+          "numero": "3.2",
+          "titulo": "Instrumentos necesarios para la medición",
+          "contenido": "Las medidas de iluminancia se podrán efectuar mediante un luxómetro corregido en sensibilidad espectral (λ) V(λ) y en coseno; las medidas de luminancia deberán efectuarse con luminanciómetro corregido en sensibilidad (λ) V(λ). La tolerancia de los aparatos de medida no debe sobrepasar el 10%. Las medidas pueden ser realizadas hasta 20 mm sobre el nivel del suelo."
+        }
+      ]
+    },
+    {
+      "numero": "APENDICE_4",
+      "titulo": "CARACTERÍSTICAS DE MOTORES ELÉCTRICOS",
+      "tabla": {
+        "columnas": [
+          "Potencia [KW]",
+          "Potencia [CV]",
+          "Rendimiento η en % (1)",
+          "Rendimiento η en % (2)",
+          "Rendimiento η en % (3)",
+          "Corriente Nominal In [A] (1)",
+          "Corriente Nominal In [A] (2)",
+          "Corriente Nominal In [A] (3)",
+          "Corriente Partida Ip [A] (1)",
+          "Corriente Partida Ip [A] (2)",
+          "Corriente Partida Ip [A] (3)"
+        ],
+        "datos": [
+          {"kw": "0,75", "cv": "1", "rendimiento_1": "74", "rendimiento_2": "74", "rendimiento_3": "71", "corriente_1": "1,83", "corriente_2": "1,95", "corriente_3": "2,15", "partida_1": "6", "partida_2": "5", "partida_3": "3,6"},
+          {"kw": "1,10", "cv": "1,5", "rendimiento_1": "77", "rendimiento_2": "74", "rendimiento_3": "74", "corriente_1": "2,55", "corriente_2": "2,8", "corriente_3": "3", "partida_1": "6,1", "partida_2": "4,9", "partida_3": "3,8"},
+          {"kw": "1,5", "cv": "2", "rendimiento_1": "78", "rendimiento_2": "76", "rendimiento_3": "76", "corriente_1": "3,4", "corriente_2": "3,7", "corriente_3": "4", "partida_1": "6,2", "partida_2": "5,3", "partida_3": "4,5"},
+          {"kw": "2,2", "cv": "3", "rendimiento_1": "82", "rendimiento_2": "78", "rendimiento_3": "78", "corriente_1": "4,8", "corriente_2": "5,2", "corriente_3": "5,8", "partida_1": "6,8", "partida_2": "5,9", "partida_3": "5,1"},
+          {"kw": "3,0", "cv": "4", "rendimiento_1": "83", "rendimiento_2": "79", "rendimiento_3": "80", "corriente_1": "6,4", "corriente_2": "7", "corriente_3": "7,6", "partida_1": "7,2", "partida_2": "6", "partida_3": "5,5"},
+          {"kw": "4,0", "cv": "5,5", "rendimiento_1": "85", "rendimiento_2": "83", "rendimiento_3": "83", "corriente_1": "8,1", "corriente_2": "8,8", "corriente_3": "9,5", "partida_1": "7,6", "partida_2": "7", "partida_3": "6,2"},
+          {"kw": "5,5", "cv": "7,5", "rendimiento_1": "85", "rendimiento_2": "84", "rendimiento_3": "84", "corriente_1": "11,2", "corriente_2": "11,7", "corriente_3": "13,1", "partida_1": "7,6", "partida_2": "7", "partida_3": "6,4"},
+          {"kw": "7,5", "cv": "10", "rendimiento_1": "87", "rendimiento_2": "86", "rendimiento_3": "84", "corriente_1": "14,9", "corriente_2": "15,6", "corriente_3": "18,1", "partida_1": "7,7", "partida_2": "7,9", "partida_3": "6,4"},
+          {"kw": "11", "cv": "15", "rendimiento_1": "87", "rendimiento_2": "88", "rendimiento_3": "88", "corriente_1": "22,5", "corriente_2": "22", "corriente_3": "24,3", "partida_1": "7,7", "partida_2": "8", "partida_3": "7,2"},
+          {"kw": "15", "cv": "20", "rendimiento_1": "88", "rendimiento_2": "89", "rendimiento_3": "88,5", "corriente_1": "30", "corriente_2": "29", "corriente_3": "31,5", "partida_1": "7,7", "partida_2": "8", "partida_3": "5,7"},
+          {"kw": "18,5", "cv": "25", "rendimiento_1": "89", "rendimiento_2": "89,5", "rendimiento_3": "90", "corriente_1": "36", "corriente_2": "38", "corriente_3": "37,5", "partida_1": "8,6", "partida_2": "6,5", "partida_3": "5,7"},
+          {"kw": "22", "cv": "30", "rendimiento_1": "90", "rendimiento_2": "90,5", "rendimiento_3": "90", "corriente_1": "42,5", "corriente_2": "45", "corriente_3": "44,5", "partida_1": "8,6", "partida_2": "6,4", "partida_3": "5,7"},
+          {"kw": "30", "cv": "40", "rendimiento_1": "91", "rendimiento_2": "91,5", "rendimiento_3": "91,5", "corriente_1": "57", "corriente_2": "60", "corriente_3": "56", "partida_1": "6", "partida_2": "6,4", "partida_3": "5,7"},
+          {"kw": "37", "cv": "50", "rendimiento_1": "92", "rendimiento_2": "92", "rendimiento_3": "91,5", "corriente_1": "69", "corriente_2": "72", "corriente_3": "72", "partida_1": "6", "partida_2": "6,4", "partida_3": "5,7"},
+          {"kw": "45", "cv": "60", "rendimiento_1": "92,5", "rendimiento_2": "93", "rendimiento_3": "92,5", "corriente_1": "83", "corriente_2": "87", "corriente_3": "87", "partida_1": "6,3", "partida_2": "6,4", "partida_3": "6"},
+          {"kw": "55", "cv": "75", "rendimiento_1": "91", "rendimiento_2": "93", "rendimiento_3": "93", "corriente_1": "104", "corriente_2": "104", "corriente_3": "106", "partida_1": "6,3", "partida_2": "6", "partida_3": "6"},
+          {"kw": "75", "cv": "100", "rendimiento_1": "91,5", "rendimiento_2": "94", "rendimiento_3": "93,5", "corriente_1": "140", "corriente_2": "142", "corriente_3": "144", "partida_1": "6,3", "partida_2": "6,3", "partida_3": "6"},
+          {"kw": "90", "cv": "125", "rendimiento_1": "92", "rendimiento_2": "94", "rendimiento_3": "94", "corriente_1": "166", "corriente_2": "168", "corriente_3": "172", "partida_1": "6,3", "partida_2": "6,3", "partida_3": "6"},
+          {"kw": "110", "cv": "150", "rendimiento_1": "92,5", "rendimiento_2": "94,5", "rendimiento_3": "94,5", "corriente_1": "200", "corriente_2": "205", "corriente_3": "210", "partida_1": "6,3", "partida_2": "6,5", "partida_3": "6,2"},
+          {"kw": "132", "cv": "180", "rendimiento_1": "93", "rendimiento_2": "95", "rendimiento_3": "94,5", "corriente_1": "240", "corriente_2": "240", "corriente_3": "255", "partida_1": "6,3", "partida_2": "6,5", "partida_3": "6,2"}
+        ],
+        "notas": [
+          "(1) Corresponde a motores de 3.000 rpm",
+          "(2) Corresponde a motores de 1.500 rpm",
+          "(3) Corresponde a motores de 1.000 rpm"
+        ]
+      }
+    },
+    {
+      "numero": "APENDICE_5",
+      "titulo": "MEDICIÓN DE RESISTENCIA DE PISOS",
+      "contenido": [
+        {
+          "numero": "5.1",
+          "contenido": "Donde no sea posible efectuar la medición de resistencia de pisos de acuerdo a lo prescrito en 9.0.6.4 de esta Norma podrá utilizarse como alternativa el método que se describe a continuación."
+        },
+        {
+          "numero": "5.1.1",
+          "contenido": "La resistencia se medirá con un medidor de aislación de 500 V, corriente continua, con una corriente de cortocircuito que oscile entre 1,5 y 10 mA, y la medición se hará a través de una resistencia de 1 megohm en serie."
+        },
+        {
+          "numero": "5.1.2",
+          "contenido": "La medición se hará entre dos electrodos de cobre de un peso de 2,3 Kg (5 Lb.) cada uno, que tendrán una base de contacto circular plana de 6,3 cm (2,5 pl.) de diámetro. Cada electrodo se colocará sobre una pieza de goma de forma circular del mismo diámetro de la base del electrodo, de un espesor de 6,3 mm (1/4 pl.), de una dureza de 40 a 60 grados Shore, tipo A ó equivalente, y que deberá ir envuelta totalmente en papel de aluminio de un espesor de 0,0126 a 0,0254 mm (0,5 a 1 mil.)."
+        },
+        {
+          "numero": "5.1.3",
+          "contenido": "Los electrodos se ubicarán en distintas posiciones sobre el piso a una distancia de 91,4 cm (3 pies) entre si. Se efectuarán también medidas entre un electrodo y una conexión a tierra o un elemento puesto a tierra; la distancia entre el electrodo y la conexión a tierra deberá ser también de 91,4 cm."
+        },
+        {
+          "numero": "5.1.4",
+          "contenido": "El medidor de aislación se conectará a los electrodos a través de un conmutador que permita cambiar la polaridad en cada medición. La medición en cada punto deberá hacerse con ambas polaridades."
+        },
+        {
+          "numero": "5.1.5",
+          "contenido": "La cantidad de medidas y los valores obtenidos deberán cumplir lo establecido en 6.3 de esta Norma."
+        },
+        {
+          "numero": "5.2",
+          "contenido": "La medición se efectuará de acuerdo al diagrama mostrado en la fig. 1"
+        }
+      ]
+    },
+    {
+      "numero": "APENDICE_6",
+      "titulo": "EQUIVALENCIA DE SECCIONES AWG - mm2",
+      "tabla": {
+        "columnas": ["Calibre AWG/MCM", "Sección nominal [mm2]"],
+        "datos": [
+          {"calibre": "14", "seccion": "2,08"},
+          {"calibre": "12", "seccion": "3,31"},
+          {"calibre": "10", "seccion": "5,26"},
+          {"calibre": "8", "seccion": "8,37"},
+          {"calibre": "6", "seccion": "13,3"},
+          {"calibre": "4", "seccion": "21,2"},
+          {"calibre": "3", "seccion": "26,7"},
+          {"calibre": "2", "seccion": "33,6"},
+          {"calibre": "1", "seccion": "42,4"},
+          {"calibre": "1/0", "seccion": "53,5"},
+          {"calibre": "2/0", "seccion": "67,4"},
+          {"calibre": "3/0", "seccion": "85"},
+          {"calibre": "4/0", "seccion": "107,2"},
+          {"calibre": "250", "seccion": "126,7"},
+          {"calibre": "300", "seccion": "152"},
+          {"calibre": "350", "seccion": "177,3"},
+          {"calibre": "400", "seccion": "202,7"},
+          {"calibre": "500", "seccion": "253"},
+          {"calibre": "600", "seccion": "304"},
+          {"calibre": "700", "seccion": ""},
+          {"calibre": "750", "seccion": "380"},
+          {"calibre": "800", "seccion": ""},
+          {"calibre": "900", "seccion": ""},
+          {"calibre": "1.000", "seccion": "506,7"}
+        ]
+      }
+    },
+    {
+      "numero": "APENDICE_7",
+      "titulo": "PROTOCOLOS DE MEDICIÓN DE PARÁMETROS VARIOS DE INSTALACIONES DE CONSUMO",
+      "subsecciones": [
+        {
+          "numero": "7.1",
+          "titulo": "Procedimiento de Medición de Aislación",
+          "apartados": [
+            {
+              "titulo": "Finalidad",
+              "contenido": "A través de esta medición se busca determinar la calidad de la aislación de los conductores empleados en la construcción de una instalación eléctrica y la corrección en los métodos de montaje y en la manipulación que de éstos conductores se ha hecho durante ese proceso. La norma NCh 4 Elec/2003 fija los valores mínimos límite que puede tener una aislación para ser aceptable. Debe tenerse en cuenta que aquellos valores serán aceptables sólo en instalaciones con un prolongado período de servicio y no serán aplicables a instalaciones nuevas, pues de hacerlo es natural esperar que el uso y el envejecimiento natural de los materiales harán que estos valores rápidamente excedan estos mínimos."
+            },
+            {
+              "titulo": "Metodología",
+              "contenido": "El procedimiento usual es someter la aislación por medir a una corriente continua de valor de cresta por encima de la tensión efectiva nominal. Es aceptada la aplicación de una tensión de 500V, sin embargo, en atención a la calidad de los aislantes actuales y por estar disponibles con facilidad en el mercado instrumentos con esta característica, se ha hecho común la medición de aislaciones con tensiones continuas de 1000V. El procedimiento a seguir es el siguiente:",
+              "pasos": [
+                "a) Se verificará que todos los artefactos o equipos eléctricos que estén presentes se hayan desconectado de su punto de alimentación.",
+                "b) Los interruptores de los equipos o circuitos de iluminación estarán en su posición desenergizado.",
+                "c) Se aplicará la tensión de medida durante un minuto entre los siguientes puntos:",
+                "  - entre el conductor de protección conectado a tierra y sucesivamente, cada uno de los conductores de fases y el conductor de neutro",
+                "  - entre los conductores de fases, tomados de dos en dos y entre cada fase y neutro, para circuitos o alimentadores trifásicos; para circuitos monofásicos se hará una medición entre los conductores de fase y neutro."
+              ]
+            },
+            {
+              "titulo": "Instrumentos empleados",
+              "contenido": "Se emplearán medidores de aislación conocidos como megóhmetros, tal como se dijo, preferentemente con una tensión de medición de 1000V, si bien se considerará aceptable el empleo de la tensión de 500V establecida por la Norma NCh 4."
+            },
+            {
+              "titulo": "Calificación de resultados",
+              "contenido": "Uno de los aspectos técnicos en que en nuestro país es difícil encontrar unidad de criterio es el referente a la fijación de un mínimo aceptable de resistencia de aislación y ello es debido a una ausencia de una normativa clara al respecto. La norma NCh Elec 4/84, establece un valor de 1 mA como máxima corriente de fuga permisible en cualquier tipo de instalación o equipo eléctrico; este valor a su vez fue fijado sobre la base de lo establecido por una recomendación IEC. Traducido en términos de resistencia este valor exige un mínimo de 1000 ohm por volt de tensión de servicio; sin embargo, ambos cuerpos normativos citados fijan este valor para condiciones de régimen permanente del sistema sin pronunciarse sobre el efecto de fenómenos transitorios sobre la aislación.",
+              "criterio_propuesto": [
+                "Como tensión de servicio se adoptará un valor de 1,1 Vn, siendo Vn la tensión nominal de la parte del sistema considerada; ello atendiendo a que la normalización acepta una variación de ± 10% sobre dicha tensión nominal.",
+                "Para evaluar el efecto de sobretensiones transitorias se supondrá que éstas pueden alcanzar un valor de 10 veces la tensión de servicio y finalmente se aplicará un factor de seguridad de valor 2, obteniéndose de este modo una resistencia de aislación mínima aceptable para un alimentador o equipo trabajando a una tensión nominal Vn, de: Ra = 1000* 2* 10* 1,1*Vn* 10-6 Megohm(MΩ)",
+                "y esto aplicado a la tensión normal de operación de las instalaciones en BT nos entrega el siguiente valor mínimo aceptable: R389 = 1000*2*10*1,1*380/10-6 = 8,36 MΩ ≈ 10 MΩ",
+                "Se encuentran también instalaciones que operan a 550 V o 660V, en estos casos los mínimos aceptables de resistencia de aislación serán: R550 = 1000*2*10*1,1*550/10-6 = 12,1 MΩ ≈ 15 MΩ; R660 = 1000*2*10*1,1*660/10-6 = 21,7 MΩ ≈ 25 MΩ",
+                "Se ha propuesto redondear el valor en Megohm al entero múltiplo de 5 o 10 inmediatamente superior sólo por facilidad de memorizar el valor resultante.",
+                "Pero, finalmente, al aceptar estos mínimos debe tenerse además en cuenta que la tecnología en aislantes en los últimos treinta años ha producido materiales, como los termoplásticos o las resinas epóxicas, cuyo valor de resistencia de aislación para el material nuevo supera con facilidad los 1000 MΩ, de modo que al encontrar un equipo o conductor con valores de resistencia de aislación como los mínimos sugeridos, aun siendo aceptable y no esperándose de él problemas inmediatos, se debe pensar que en ese aislante existe ya un proceso de envejecimiento más o menos avanzado.",
+                "Es por esta razón que se sugiere recomendar el efectuar mediciones anuales de aislación sobre todo equipo o conductor de una instalación, sugerencia que en nuestro medio se ha entendido como dirigida exclusivamente a los transformadores."
+              ]
+            }
+          ]
+        },
+        {
+          "numero": "7.2",
+          "titulo": "Procedimiento de Medición de Resistividad de Terreno",
+          "apartados": [
+            {
+              "titulo": "Finalidad",
+              "contenido": "Conocer los parámetros geoléctricos representativos de la calidad del terreno, que permitirán un adecuado diseño de la puesta a tierra."
+            },
+            {
+              "titulo": "Metodología",
+              "contenido": "La medición se deberá efectuar en la zona del terreno en que se construirá la puesta a tierra, de no ser ello posible por falta de espacio, por la presencia de obstáculos u otras razones atendibles la medición se efectuará en otra área lo más próxima posible a dicha zona. Serán aceptadas como métodos normales de medición las configuraciones tetraelectródicas conocidas como Schlumberger o Wenner, las cuales podrán aplicarse indistintamente, pero una sola de ellas en cada oportunidad. Los electrodos de medida de medida se dispondrán sobre una línea recta, con alas de medición de hasta 100m. De no ser posible la disposición en recta, se sugiere que se dispongan sobre una misma línea de nivel, si la medición se está efectuando en un cerro o lomaje, o bien, si algún obstáculo sobre un terreno llano impide cumplir esta condición la medición puede hacerse sobre dos rectas que formen un ángulo no mayor de 15º, con vértice en el centro de medición; si estas condiciones no pueden ser cumplidas, la medición se efectuará en otra zona próxima que permita cumplirlas. Si no se dispone de terreno como para obtener un ala de 100m serán aceptables mediciones con alas de 50m. Excepcionalmente, por condiciones extremas, se aceptarán alas de hasta 30m."
+            },
+            {
+              "titulo": "Instrumentos empleados",
+              "contenido": "Se utilizarán geóhmetros de cuatro terminales con una escala mínima de 1Ω, con una resolución no mayor de 0,01Ω y una escala máxima no inferior a 100Ω."
+            },
+            {
+              "titulo": "Calificación de resultados",
+              "contenido": "No procede en este caso la calificación de resultados, dado que la medición es la representación objetiva de las características naturales del terreno medido."
+            }
+          ]
+        },
+        {
+          "numero": "7.3",
+          "titulo": "Procedimiento de Medición de Resistencia de Puesta a Tierra",
+          "apartados": [
+            {
+              "titulo": "Finalidad",
+              "contenido": "Conocer el valor de resistencia obtenido al construir una puesta a tierra de acuerdo a un diseño específico. Este valor será comparado con el de diseño y será utilizado para calificar la efectividad esperada de la puesta a tierra. A diferencia de la medición de resistividad, atendiendo a que la medición de resistencia de la puesta a tierra es uno de los parámetros que define la conformidad con norma, esta medición sólo podrá ser efectuada por una OIIE autorizada con la finalidad de incluir su resultado en el Certificado de Conformidad con Normas de la instalación."
+            },
+            {
+              "titulo": "Metodología",
+              "contenido": "Si bien el empleo de una fuente de corriente independiente y medición de corriente y voltaje con instrumentos individuales ofrece un mayor grado de precisión y seguridad, el conseguir los elementos necesarios con las características adecuadas al proceso de medición puede presentar un grado de dificultad considerable y por ello lo usual es efectuar estas mediciones con alguno de los modelos de geóhmetro disponible en el mercado; en cualquiera de ambos casos la metodología es la misma y basicamente deberá seguir los pasos siguientes:",
+              "pasos": [
+                "a) La tierra de referencia se ubicará en un punto que garantice estar fuera de la zona de influencia de la puesta a tierra por medir; como regla general se acepta que esto se logra ubicando la tierra de referencia a una distancia comprendida entre tres y seis veces el alcance vertical de la puesta a tierra y para una puesta a tierra enmallada este alcance vertical está representado por la longitud de su diagonal mayor.",
+                "b) La corriente se inyectará al suelo a través de la puesta a tierra por medir y la tierra de referencia, puntos C1 y C2 de la fig A2.3 y el potencial se medirá entre la puesta a tierra por medir y una sonda de posición variable, puntos P1 y P2 de la fig A2.3; ello significa que el circuito de corriente y de medición de potencial tienen un punto común en la puesta a tierra por medir, representado por la unión C1-P1.",
+                "c) El desplazamiento de la sonda de medición de potencial se hará sobre tramos uniformes, recomendándose un espaciamiento de aproximadamente un 20avo de la distancia entre la puesta a tierra y la tierra de referencia. Para el caso de mediciones de tierras en instalaciones de consumo o sistemas de distribución un espaciamiento de cinco metros es recomendable.",
+                "d) La serie de valores obtenidas se llevará a un gráfico con las distancias de enterramiento de la sonda de medición de potencial respecto de la puesta a tierra en abscisas y los valores de resistencia obtenidos en cada medición en ordenadas.",
+                "e) Si por no disponer de terreno suficiente para lograr el alejamiento adecuado entre ambas tierras no es posible obtener la parte plana de la curva, una aproximación confiable es adoptar el valor de resistencia obtenido a una distancia equivalente al 65% de la distancia entre la puesta a tierra y la tierra de referencia.",
+                "f) Los resultados de la medición efectuada de este modo son independientes de los valores de resistencia propios de la tierra de referencia y de la sonda de medición de potencial, razón por la cual la profundidad de enterramiento de estos elementos no es un factor incidente en estos resultados."
+              ],
+              "nota": "Esta condición a llevado a la confusión bastante extendida de aceptar como valor representativo de la resistencia de la puesta a tierra, al obtenido a una distancia de 20m, lo cual es válido sólo para el caso que el electrodo de puesta a tierra sea una barra de 3m de largo y diámetro no superior a 20mm, enterrada en forma vertical."
+            },
+            {
+              "titulo": "Instrumentos empleados",
+              "contenido": "Puede emplearse en este caso el mismo instrumento de cuatro electrodos empleado para la medición de resistividad de terreno, creando el punto común uniendo los terminales C1 y P1, tal como se indicó en la metodología; en los últimos modelos de algunas marcas este puente viene preparado internamente y el instrumento dispone de dos posiciones de medición las cuales se seleccionan mediante un botón. Existen también geóhmetros de tres electrodos, que presentan como ventaja un costo considerablemente menor que los de cuatro, sin embargo su capacidad está limitada exclusivamente a la medición de resistencias, en tanto los de cuatro electrodos sirven indistintamente para medir resistividades y resistencias."
+            },
+            {
+              "titulo": "Calificación de resultados",
+              "contenido": "El valor de resistencia obtenido de la medición se comparará con el valor calculado en el proyecto y con los valores límites establecidos por la norma; en caso de que este valor sea igual o menor al calculado y cumpla con los límites de norma, el valor será certificado, en caso contrario se deberá rediseñar la puesta a tierra y adoptar las disposiciones necesarias para cumplir con aquellas condiciones."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+/* ========================================
+   TRUJILLO - Main Stylesheet
+   Presentación Profesional Modular
+======================================== */
+
+/* Importar todos los módulos en orden */
+@import url('base.css');
+@import url('navigation.css');
+@import url('hero.css');
+@import url('components.css');
+@import url('sections.css');
+@import url('animations.css');
+@import url('responsive.css');
+
+/* 
+ESTRUCTURA DE ARCHIVOS:
+- base.css: Variables, reset, estilos fundamentales
+- navigation.css: Navbar y navegación
+- hero.css: Sección hero principal
+- components.css: Botones, tarjetas, elementos reutilizables
+- sections.css: Todas las secciones (problem, modules, ai, gallery, etc.)
+- animations.css: Keyframes y clases de animación
+- responsive.css: Media queries para móviles
+
+NOTAS DE USO:
+- Todos los estilos están organizados por módulo
+- Las variables CSS están en base.css
+- Modificar un módulo no afecta a los demás
+- Orden de importación es importante para cascada CSS
+*/

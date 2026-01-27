@@ -1,0 +1,244 @@
+/**
+ * EXPORT STYLES - Estilos para el sistema de exportación
+ */
+
+/* Overlay del diálogo */
+.export-dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.export-dialog-overlay.visible {
+    opacity: 1;
+}
+
+/* Diálogo principal */
+.export-dialog {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow: hidden;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.export-dialog-overlay.visible .export-dialog {
+    transform: scale(1);
+}
+
+/* Header del diálogo */
+.export-dialog-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.export-dialog-header h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.export-close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.export-close-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+/* Body del diálogo */
+.export-dialog-body {
+    padding: 25px;
+    max-height: calc(90vh - 100px);
+    overflow-y: auto;
+}
+
+/* Información del plano */
+.export-info {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 25px;
+    border-left: 4px solid #667eea;
+}
+
+.export-info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.export-info-item:last-child {
+    border-bottom: none;
+}
+
+.export-label {
+    font-weight: 600;
+    color: #555;
+}
+
+.export-value {
+    color: #667eea;
+    font-weight: 500;
+}
+
+/* Opciones de exportación */
+.export-options h4 {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.export-option-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    margin-bottom: 12px;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.export-option-btn:hover {
+    border-color: #667eea;
+    background: #f8f9ff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.export-option-btn:active {
+    transform: translateY(0);
+}
+
+.export-option-icon {
+    font-size: 32px;
+    min-width: 50px;
+    text-align: center;
+}
+
+.export-option-content {
+    flex: 1;
+}
+
+.export-option-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.export-option-desc {
+    font-size: 13px;
+    color: #666;
+}
+
+/* Botón de exportar todo */
+.export-option-btn.export-all {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #667eea;
+    color: white;
+}
+
+.export-option-btn.export-all .export-option-title,
+.export-option-btn.export-all .export-option-desc {
+    color: white;
+}
+
+.export-option-btn.export-all:hover {
+    background: linear-gradient(135deg, #5568d3 0%, #653a8b 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Scrollbar personalizado */
+.export-dialog-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.export-dialog-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.export-dialog-body::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 10px;
+}
+
+.export-dialog-body::-webkit-scrollbar-thumb:hover {
+    background: #5568d3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .export-dialog {
+        width: 95%;
+        max-width: none;
+    }
+
+    .export-dialog-header {
+        padding: 15px 20px;
+    }
+
+    .export-dialog-header h3 {
+        font-size: 18px;
+    }
+
+    .export-dialog-body {
+        padding: 20px;
+    }
+
+    .export-option-btn {
+        padding: 12px;
+    }
+
+    .export-option-icon {
+        font-size: 28px;
+        min-width: 45px;
+    }
+
+    .export-option-title {
+        font-size: 14px;
+    }
+
+    .export-option-desc {
+        font-size: 12px;
+    }
+}

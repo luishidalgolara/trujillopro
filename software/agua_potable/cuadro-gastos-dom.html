@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuadro de Gastos Domiciliario - Agua Fría</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 0;
+            background: white;
+        }
+
+        #cuadroContainer {
+            max-width: 100%;
+            margin: 0;
+            background: white;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 24px;
+            text-transform: uppercase;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .subtitulo {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: 700;
+            border: 2px solid #2c3e50;
+            font-size: 13px;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #bdc3c7;
+            font-size: 13px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        td:first-child {
+            text-align: left;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        tr:hover {
+            background: #ecf0f1;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            padding: 5px;
+            text-align: center;
+            border: 2px solid #3498db;
+            border-radius: 4px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .total-row {
+            background: #2c3e50;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .total-row td {
+            border: 2px solid #2c3e50;
+            color: white;
+            font-weight: 700;
+        }
+
+        .resultado {
+            background: #ecf0f1;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #3498db;
+        }
+
+        .resultado-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .resultado-item span:last-child {
+            color: #3498db;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .qmp-resultado {
+            background: #27ae60;
+            color: white;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="cuadroContainer">
+        <h1>CUADRO DE GASTOS DOMICILIARIO</h1>
+        <div class="subtitulo">AGUA FRÍA</div>
+        
+        <table id="tablaCuadro">
+            <thead>
+                <tr>
+                    <th>ARTEFACTO</th>
+                    <th>SIGLA</th>
+                    <th>CANTIDAD</th>
+                    <th>AF<br>Lts/min</th>
+                    <th>SUB<br>TOTAL</th>
+                </tr>
+            </thead>
+            <tbody id="tablaBody">
+                <!-- Generado dinámicamente -->
+            </tbody>
+            <tfoot>
+                <tr class="total-row">
+                    <td colspan="4">TOTAL</td>
+                    <td id="totalGeneral">0</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="resultado">
+            <div class="resultado-item">
+                <span>CAUDAL INSTALADO</span>
+                <span>QI :</span>
+                <span id="qiValor">0</span>
+                <span>Lts/min</span>
+            </div>
+            <div class="qmp-resultado">
+                <div class="resultado-item" style="color: white; margin: 0;">
+                    <span>CAUDAL MÁXIMO PROBABLE</span>
+                    <span>QMP :</span>
+                    <span id="qmpValor">0</span>
+                    <span>Lts/min</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ARTEFACTOS = [
+            { nombre: 'WC', sigla: 'Wc', af: 10, id: 'wc' },
+            { nombre: 'BAÑOS LLUVIA', sigla: 'BLL', af: 10, id: 'ducha' },
+            { nombre: 'BAÑO TINA', sigla: 'BT', af: 15, id: 'bano-tina' },
+            { nombre: 'LAVATORIO', sigla: 'LV', af: 8, id: 'lavatorio' },
+            { nombre: 'BIDET', sigla: 'Bd', af: 6, id: 'bidet' },
+            { nombre: 'URINARIO', sigla: 'UR', af: 6, id: 'urinario' },
+            { nombre: 'LAVAPLATOS', sigla: 'LP', af: 12, id: 'lavaplatos' },
+            { nombre: 'LAVADERO', sigla: 'Lv', af: 15, id: 'lavadero' },
+            { nombre: 'LAVADORA', sigla: 'LVA', af: 15, id: 'lavadora' },
+            { nombre: 'LAVACOPAS', sigla: 'LC', af: 12, id: 'lavacopas' },
+            { nombre: 'LLAVE RIEGO 13mm', sigla: 'LLJ13', af: 20, id: 'llave-jardin' },
+            { nombre: 'LLAVE RIEGO 19mm', sigla: 'LLJ19', af: 50, id: 'llave-jardin-19' }
+        ];
+
+        function inicializarTabla() {
+            const tbody = document.getElementById('tablaBody');
+            tbody.innerHTML = '';
+
+            ARTEFACTOS.forEach((art, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${art.nombre}</td>
+                    <td>${art.sigla}</td>
+                    <td><input type="number" min="0" value="0" id="cant_${art.id}" data-artefacto="${art.id}" onchange="calcularTotales()"></td>
+                    <td>${art.af}</td>
+                    <td id="sub_${art.id}">0</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function calcularTotales() {
+            let totalQI = 0;
+
+            ARTEFACTOS.forEach(art => {
+                const cantidad = parseInt(document.getElementById(`cant_${art.id}`).value) || 0;
+                const subtotal = cantidad * art.af;
+                document.getElementById(`sub_${art.id}`).textContent = subtotal;
+                totalQI += subtotal;
+            });
+
+            document.getElementById('totalGeneral').textContent = totalQI;
+            document.getElementById('qiValor').textContent = totalQI;
+
+            const qmp = Math.round(0.42 * Math.sqrt(totalQI));
+            document.getElementById('qmpValor').textContent = qmp;
+        }
+
+        function actualizarCantidad(artefactoId, cantidad) {
+            const input = document.getElementById(`cant_${artefactoId}`);
+            if (input) {
+                input.value = cantidad;
+                calcularTotales();
+            }
+        }
+
+        function incrementarArtefacto(artefactoId) {
+            const input = document.getElementById(`cant_${artefactoId}`);
+            if (input) {
+                input.value = parseInt(input.value || 0) + 1;
+                calcularTotales();
+            }
+        }
+
+        function decrementarArtefacto(artefactoId) {
+            const input = document.getElementById(`cant_${artefactoId}`);
+            if (input) {
+                const valorActual = parseInt(input.value || 0);
+                if (valorActual > 0) {
+                    input.value = valorActual - 1;
+                    calcularTotales();
+                }
+            }
+        }
+
+        window.actualizarCantidad = actualizarCantidad;
+        window.incrementarArtefacto = incrementarArtefacto;
+        window.decrementarArtefacto = decrementarArtefacto;
+        window.calcularTotales = calcularTotales;
+
+        inicializarTabla();
+        calcularTotales();
+    </script>
+</body>
+</html> 

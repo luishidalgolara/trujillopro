@@ -1,0 +1,41 @@
+/* buscador-ridda-final_v2/css/ridaa-faqs-styles.css */
+
+/* Badge especial para FAQs */
+.ridaa-result-badge.badge-faq {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+}
+
+/* Destacar FAQs en resultados */
+.ridaa-result-item:has(.badge-faq) {
+    border-left: 3px solid #667eea;
+    background: linear-gradient(to right, rgba(102, 126, 234, 0.03), transparent);
+}
+
+.ridaa-result-item:has(.badge-faq):hover {
+    border-left-color: #764ba2;
+    background: linear-gradient(to right, rgba(102, 126, 234, 0.06), transparent);
+}
+
+/* Botón filtro FAQs */
+.ridaa-filter-btn[data-filter="faq"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.ridaa-filter-btn[data-filter="faq"]:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: translateY(-1px);
+}
+
+.ridaa-filter-btn[data-filter="faq"].active {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.4);
+}

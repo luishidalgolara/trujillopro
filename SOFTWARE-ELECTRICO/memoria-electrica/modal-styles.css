@@ -1,0 +1,291 @@
+/* ============================================
+   MODAL MEMORIA ELÉCTRICA - ESTILOS
+   Integración con ELEKTRA
+   ============================================ */
+
+/* Overlay del modal */
+.modal-memoria-electrica {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-memoria-electrica.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenedor principal del modal */
+.modal-memoria-container {
+    width: 95%;
+    height: 95%;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideIn 0.4s ease-out;
+}
+
+/* Header del modal */
+.modal-memoria-header {
+    background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+    color: white;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #ff6f00;
+}
+
+.modal-memoria-title {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.modal-memoria-title::before {
+    content: "📄";
+    font-size: 28px;
+}
+
+/* Botones del header */
+.modal-memoria-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-modal-memoria {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-modal-memoria.print {
+    background: #4caf50;
+    color: white;
+}
+
+.btn-modal-memoria.print:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+.btn-modal-memoria.download {
+    background: #2196f3;
+    color: white;
+}
+
+.btn-modal-memoria.download:hover {
+    background: #1976d2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+}
+
+.btn-modal-memoria.close {
+    background: #f44336;
+    color: white;
+}
+
+.btn-modal-memoria.close:hover {
+    background: #d32f2f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.4);
+}
+
+/* Contenido del modal */
+.modal-memoria-content {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.modal-memoria-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white;
+}
+
+/* Loading spinner */
+.modal-memoria-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.modal-memoria-loading.active {
+    display: flex;
+}
+
+.modal-memoria-spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #1a237e;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.modal-memoria-loading-text {
+    font-size: 16px;
+    color: #666;
+    font-weight: 600;
+}
+
+/* Footer informativo */
+.modal-memoria-footer {
+    background: #f5f5f5;
+    padding: 15px 30px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #666;
+}
+
+.modal-memoria-info {
+    display: flex;
+    gap: 20px;
+}
+
+.modal-memoria-info-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.modal-memoria-info-icon {
+    font-size: 16px;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: scale(0.9) translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .modal-memoria-container {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+    
+    .modal-memoria-header {
+        padding: 15px 20px;
+    }
+    
+    .modal-memoria-title {
+        font-size: 18px;
+    }
+    
+    .btn-modal-memoria {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+    
+    .modal-memoria-footer {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .modal-memoria-info {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* Efecto de cierre */
+.modal-memoria-electrica.closing {
+    animation: fadeOut 0.3s ease-out;
+}
+
+.modal-memoria-electrica.closing .modal-memoria-container {
+    animation: slideOut 0.3s ease-out;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0.9) translateY(-20px);
+        opacity: 0;
+    }
+}
+
+/* Scroll personalizado para el iframe */
+.modal-memoria-iframe::-webkit-scrollbar {
+    width: 12px;
+}
+
+.modal-memoria-iframe::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.modal-memoria-iframe::-webkit-scrollbar-thumb {
+    background: #1a237e;
+    border-radius: 6px;
+}
+
+.modal-memoria-iframe::-webkit-scrollbar-thumb:hover {
+    background: #0d47a1;
+}

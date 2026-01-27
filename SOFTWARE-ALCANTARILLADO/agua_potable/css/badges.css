@@ -1,0 +1,47 @@
+/* css/badges.css */
+.btn[onclick*="ducha"],
+.btn[onclick*="bano-tina"],
+.btn[onclick*="lavadora"],
+.btn[onclick*="calefon"],
+.btn[onclick*="termo-electrico"],
+.btn[onclick*="caldera"] {
+    position: relative;
+}
+
+.btn[onclick*="ducha"]::after,
+.btn[onclick*="bano-tina"]::after,
+.btn[onclick*="lavadora"]::after {
+    content: '🎛️';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #10b981;
+    color: white;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse-alta-demanda-badge-arrastrables 2s ease-in-out infinite;
+}
+
+.btn[onclick*="calefon"]::after,
+.btn[onclick*="termo-electrico"]::after,
+.btn[onclick*="caldera"]::after {
+    content: '🎛️';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #f59e0b;
+    color: white;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse-calor-badge-arrastrables 2s ease-in-out infinite;
+}

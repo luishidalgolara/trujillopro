@@ -1,0 +1,133 @@
+/* ========================================
+   ESTILOS - SISTEMA DE VANOS
+   ======================================== */
+
+.tabs-vanos {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab-vano {
+    flex: 1;
+    padding: 12px 20px;
+    border: 2px solid #ddd;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.tab-vano:hover {
+    background: #f8f9fa;
+    border-color: #3498db;
+}
+
+.tab-vano.active {
+    background: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+.form-vano {
+    display: none;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.form-vano.active {
+    display: block;
+}
+
+.form-vano h4 {
+    margin: 0 0 15px 0;
+    color: #2c3e50;
+    font-size: 16px;
+}
+
+.nota-vano {
+    margin: 15px 0 0 0;
+    padding: 10px;
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    font-size: 13px;
+    color: #856404;
+    border-radius: 4px;
+}
+
+.lista-vanos {
+    margin: 20px 0;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+    min-height: 100px;
+}
+
+.lista-vanos h4 {
+    margin: 0 0 15px 0;
+    color: #2c3e50;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.vanos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.vano-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+}
+
+.vano-item span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.btn-eliminar-vano {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.btn-eliminar-vano:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+}
+
+/* Cursor personalizado en modo colocación */
+#mainCanvas.modo-vanos {
+    cursor: crosshair;
+}
+
+/* Animación de icono de vano */
+@keyframes pulsoVano {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.vano-temporal {
+    animation: pulsoVano 1s infinite;
+}

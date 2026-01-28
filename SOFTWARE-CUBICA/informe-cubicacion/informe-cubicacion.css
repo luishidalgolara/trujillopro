@@ -1,0 +1,278 @@
+/* ========================================
+   MODAL INFORME DE CUBICACIÓN
+   ======================================== */
+
+#modalInformeCubicacion {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+#modalInformeCubicacion.active {
+    display: flex;
+}
+
+.modal-informe-window {
+    background: white;
+    border-radius: 12px;
+    width: 95%;
+    max-width: 900px;
+    height: 90vh;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-informe-header {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px 12px 0 0;
+    flex-shrink: 0;
+}
+
+.modal-informe-title {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-informe-actions {
+    display: flex;
+    gap: 10px;
+    padding: 15px 30px;
+    background: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    flex-shrink: 0;
+}
+
+.btn-informe {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-informe-excel {
+    background: #27ae60;
+    color: white;
+}
+
+.btn-informe-excel:hover {
+    background: #229954;
+    transform: translateY(-2px);
+}
+
+.btn-informe-pdf {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-informe-pdf:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+.btn-informe-cerrar {
+    background: #95a5a6;
+    color: white;
+    margin-left: auto;
+}
+
+.btn-informe-cerrar:hover {
+    background: #7f8c8d;
+}
+
+/* ========================================
+   CONTENEDOR DEL INFORME - TAMAÑO CARTA
+   ======================================== */
+
+.informe-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 30px;
+    background: #ecf0f1;
+}
+
+.informe-hoja {
+    width: 21.6cm;
+    min-height: 27.9cm;
+    background: white;
+    margin: 0 auto;
+    padding: 2cm;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    font-family: Arial, sans-serif;
+    font-size: 11pt;
+}
+
+/* ========================================
+   ENCABEZADO DEL INFORME
+   ======================================== */
+
+.informe-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #2c3e50;
+}
+
+.informe-header h1 {
+    font-size: 20pt;
+    color: #2c3e50;
+    margin: 0 0 10px 0;
+}
+
+.informe-header .proyecto-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 15px;
+    font-size: 10pt;
+}
+
+.informe-header .proyecto-info div {
+    text-align: left;
+}
+
+.informe-header .proyecto-info strong {
+    color: #2c3e50;
+}
+
+/* ========================================
+   SECCIÓN DE CATEGORÍA
+   ======================================== */
+
+.categoria-section {
+    margin-bottom: 25px;
+}
+
+.categoria-titulo {
+    background: #34495e;
+    color: white;
+    padding: 8px 12px;
+    font-size: 12pt;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.tabla-cubicacion {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    font-size: 9pt;
+}
+
+.tabla-cubicacion thead {
+    background: #ecf0f1;
+}
+
+.tabla-cubicacion th {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #bdc3c7;
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 9pt;
+}
+
+.tabla-cubicacion td {
+    padding: 6px 8px;
+    border: 1px solid #bdc3c7;
+    font-size: 9pt;
+}
+
+.tabla-cubicacion tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+.tabla-cubicacion .subtotal-row {
+    background: #d5dbdb;
+    font-weight: bold;
+}
+
+.tabla-cubicacion .subtotal-row td {
+    padding: 8px;
+    color: #2c3e50;
+}
+
+/* ========================================
+   RESUMEN GENERAL
+   ======================================== */
+
+.resumen-general {
+    background: #e8f5e9;
+    border: 2px solid #27ae60;
+    padding: 15px;
+    margin-top: 25px;
+}
+
+.resumen-general h3 {
+    color: #27ae60;
+    margin: 0 0 15px 0;
+    font-size: 13pt;
+}
+
+.resumen-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    font-size: 10pt;
+}
+
+.resumen-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.resumen-item strong {
+    color: #2c3e50;
+}
+
+/* ========================================
+   PIE DE PÁGINA
+   ======================================== */
+
+.informe-footer {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 2px solid #bdc3c7;
+    font-size: 8pt;
+    color: #7f8c8d;
+    text-align: center;
+}
+
+/* ========================================
+   MENSAJE VACÍO
+   ======================================== */
+
+.informe-vacio {
+    text-align: center;
+    padding: 50px;
+    color: #7f8c8d;
+}
+
+.informe-vacio-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.informe-vacio h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,184 @@
+/* Tablets y pantallas medianas */
+@media (max-width: 1200px) {
+    .main-content {
+        grid-template-columns: 350px 1fr;
+    }
+    
+    header h1 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 992px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .panel-izquierdo {
+        order: 2;
+    }
+    
+    .panel-derecho {
+        order: 1;
+    }
+    
+    #canvas3d,
+    #canvasCorteAA,
+    #canvasCorteBB,
+    #canvasCorteCC,
+    #canvasCorteDD,
+    #canvasPlanta {
+        height: 400px;
+    }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    header {
+        padding: 20px;
+    }
+    
+    header h1 {
+        font-size: 1.5em;
+    }
+    
+    .subtitle {
+        font-size: 0.9em;
+    }
+    
+    .card {
+        padding: 15px;
+    }
+    
+    .card h2 {
+        font-size: 1.2em;
+    }
+    
+    #canvas3d,
+    #canvasCorteAA,
+    #canvasCorteBB,
+    #canvasCorteCC,
+    #canvasCorteDD,
+    #canvasPlanta {
+        height: 300px;
+    }
+    
+    .tabs {
+        flex-direction: column;
+    }
+    
+    .tab-btn {
+        width: 100%;
+    }
+    
+    .resultado-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .controles-3d {
+        flex-direction: column;
+    }
+    
+    .controles-3d button {
+        width: 100%;
+    }
+    
+    .form-group-inline {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.3em;
+    }
+    
+    .card {
+        padding: 12px;
+    }
+    
+    .btn-calcular,
+    .btn-exportar {
+        padding: 12px;
+        font-size: 1em;
+    }
+    
+    #canvas3d,
+    #canvasCorteAA,
+    #canvasCorteBB,
+    #canvasCorteCC,
+    #canvasCorteDD,
+    #canvasPlanta {
+        height: 250px;
+    }
+}
+
+/* Orientación horizontal en móviles */
+@media (max-width: 768px) and (orientation: landscape) {
+    #canvas3d,
+    #canvasCorteAA,
+    #canvasCorteBB,
+    #canvasCorteCC,
+    #canvasCorteDD,
+    #canvasPlanta {
+        height: 350px;
+    }
+}
+
+/* Impresión */
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+    
+    .panel-izquierdo {
+        display: none;
+    }
+    
+    .btn-calcular,
+    .btn-exportar,
+    .controles-3d {
+        display: none;
+    }
+    
+    .card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+
+/* Dark mode (opcional) */
+@media (prefers-color-scheme: dark) {
+    /* Descomenta si quieres modo oscuro automático
+    :root {
+        --card-bg: #2d2d2d;
+        --text-primary: #e0e0e0;
+        --text-secondary: #b0b0b0;
+        --border-color: #444;
+    }
+    
+    body {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+    
+    .form-group input[type="number"],
+    .form-group select {
+        background: #3d3d3d;
+        color: white;
+        border-color: #555;
+    }
+    
+    #canvas3d {
+        background: linear-gradient(to bottom, #1a3a52 0%, #0f2537 100%);
+    }
+    */
+}

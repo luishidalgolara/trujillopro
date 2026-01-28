@@ -1,0 +1,281 @@
+/**
+ * SISTEMA ORTHO - ESTILOS CSS
+ * Estilos para botón, indicadores y animaciones
+ */
+
+/* ===================================
+   BOTÓN ORTHO
+   =================================== */
+.btn-ortho {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.btn-ortho:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-ortho.active {
+    animation: pulse-ortho 2s infinite;
+}
+
+/* Animación de pulsación para botón activo */
+@keyframes pulse-ortho {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(39, 174, 96, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(39, 174, 96, 0.9);
+    }
+}
+
+/* Animación de click */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ===================================
+   TOOLTIP ORTHO
+   =================================== */
+.ortho-tooltip {
+    animation: fadeInOut 2s;
+    pointer-events: none;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    10% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    90% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+}
+
+/* ===================================
+   INDICADOR EN CANVAS
+   =================================== */
+.ortho-canvas-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 255, 0, 0.9);
+    color: #000;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    border: 2px solid #00aa00;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* ===================================
+   LÍNEAS GUÍA ORTOGONALES
+   =================================== */
+.ortho-guide-line {
+    stroke: #00ff00;
+    stroke-width: 1;
+    stroke-dasharray: 5, 5;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* ===================================
+   CRUZ DE REFERENCIA
+   =================================== */
+.ortho-crosshair {
+    stroke: #00ff00;
+    stroke-width: 1;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+/* ===================================
+   LABEL DE MEDICIÓN
+   =================================== */
+.ortho-measurement-label {
+    position: absolute;
+    background: rgba(0, 255, 0, 0.9);
+    color: #000;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    border: 2px solid #00aa00;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 999;
+}
+
+/* ===================================
+   ESTADOS DEL CURSOR
+   =================================== */
+body.ortho-active {
+    cursor: crosshair;
+}
+
+canvas.ortho-drawing {
+    cursor: crosshair !important;
+}
+
+/* ===================================
+   BADGE DE ESTADO
+   =================================== */
+.ortho-status-badge {
+    display: inline-block;
+    background: #27ae60;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+/* ===================================
+   ICONO ORTHO
+   =================================== */
+.ortho-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M3 3h8v8H3V3m10 0h8v8h-8V3M3 13h8v8H3v-8m10 0h8v8h-8v-8z"/></svg>');
+    background-size: contain;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* ===================================
+   OVERLAY DE GRID (OPCIONAL)
+   =================================== */
+.ortho-grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: 
+        linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.ortho-grid-overlay.active {
+    opacity: 1;
+}
+
+/* ===================================
+   RESPONSIVE
+   =================================== */
+@media (max-width: 768px) {
+    .btn-ortho {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+    
+    .ortho-measurement-label {
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+    
+    .ortho-canvas-indicator {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+/* ===================================
+   ACCESIBILIDAD
+   =================================== */
+.btn-ortho:focus {
+    outline: 3px solid #27ae60;
+    outline-offset: 2px;
+}
+
+.btn-ortho:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+    .btn-ortho.active {
+        border: 3px solid #000;
+    }
+    
+    .ortho-measurement-label {
+        border-width: 3px;
+    }
+}
+
+/* Modo oscuro */
+@media (prefers-color-scheme: dark) {
+    .ortho-measurement-label {
+        background: rgba(0, 200, 0, 0.95);
+        border-color: #00ff00;
+    }
+    
+    .ortho-canvas-indicator {
+        background: rgba(0, 200, 0, 0.95);
+        border-color: #00ff00;
+    }
+}
+
+/* ===================================
+   ANIMACIONES ADICIONALES
+   =================================== */
+@keyframes snap-feedback {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.ortho-snap-point {
+    animation: snap-feedback 0.3s;
+}
+
+/* Efecto de brillo al activar */
+@keyframes ortho-activate {
+    0% {
+        box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(39, 174, 96, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(39, 174, 96, 0);
+    }
+}
+
+.btn-ortho.activating {
+    animation: ortho-activate 0.6s;
+}

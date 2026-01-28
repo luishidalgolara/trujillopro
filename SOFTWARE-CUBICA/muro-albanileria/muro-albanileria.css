@@ -1,0 +1,206 @@
+/* ========================================
+   MODAL MURO DE ALBAÑILERÍA
+   ======================================== */
+
+#modalMuroAlbanileria {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+#modalMuroAlbanileria.active {
+    display: flex;
+}
+
+.modal-muro-window {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    animation: modalSlideIn 0.3s ease;
+}
+
+.modal-muro-header {
+    background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+    color: white;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px 12px 0 0;
+}
+
+.modal-muro-title {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-muro-content {
+    padding: 30px;
+}
+
+/* ========================================
+   FORMULARIO MURO
+   ======================================== */
+
+.form-group-muro {
+    margin-bottom: 20px;
+}
+
+.form-group-muro label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.form-group-muro input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.3s;
+    outline: none;
+}
+
+.form-group-muro select {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.3s;
+    outline: none;
+    background: white;
+    cursor: pointer;
+}
+
+.form-group-muro input:focus,
+.form-group-muro select:focus {
+    border-color: #e67e22;
+    box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1);
+}
+
+.form-group-muro input[readonly] {
+    background: #ecf0f1;
+    cursor: not-allowed;
+}
+
+/* ========================================
+   RESULTADO CUBICACIÓN
+   ======================================== */
+
+.resultado-cubicacion {
+    background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.resultado-cubicacion h4 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.resultado-cubicacion .volumen {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* ========================================
+   BOTONES MODAL MURO
+   ======================================== */
+
+.modal-muro-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.btn-muro {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-muro-guardar {
+    background: #27ae60;
+    color: white;
+}
+
+.btn-muro-guardar:hover {
+    background: #229954;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+}
+
+.btn-muro-eliminar {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-muro-eliminar:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+.btn-muro-cancelar {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn-muro-cancelar:hover {
+    background: #7f8c8d;
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   GRID DE CAMPOS
+   ======================================== */
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* ========================================
+   AYUDA Y NOTAS
+   ======================================== */
+
+.nota-ayuda {
+    background: #fff3e0;
+    border-left: 4px solid #e67e22;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #2c3e50;
+    margin-top: 20px;
+}
+
+.nota-ayuda strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #e67e22;
+}

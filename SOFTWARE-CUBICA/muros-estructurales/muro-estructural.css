@@ -1,0 +1,291 @@
+/* ========================================
+   MODAL MURO ESTRUCTURAL
+   ======================================== */
+
+#modalMuroEstructural {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+#modalMuroEstructural.active {
+    display: flex;
+}
+
+.modal-estructural-window {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 1100px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    animation: modalSlideIn 0.3s ease;
+}
+
+.modal-estructural-header {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px 12px 0 0;
+}
+
+.modal-estructural-title {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-estructural-content {
+    padding: 30px;
+}
+
+/* ========================================
+   FORMULARIO MURO ESTRUCTURAL
+   ======================================== */
+
+.form-group-estructural {
+    margin-bottom: 20px;
+}
+
+.form-group-estructural label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.form-group-estructural input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.3s;
+    outline: none;
+}
+
+.form-group-estructural select {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.3s;
+    outline: none;
+    background: white;
+    cursor: pointer;
+}
+
+.form-group-estructural input:focus,
+.form-group-estructural select:focus {
+    border-color: #2c3e50;
+    box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+}
+
+.form-group-estructural input[readonly] {
+    background: #ecf0f1;
+    cursor: not-allowed;
+}
+
+/* ========================================
+   SELECTOR DE ESPESOR
+   ======================================== */
+
+.espesor-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.espesor-option {
+    padding: 15px;
+    border: 2px solid #bdc3c7;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: white;
+}
+
+.espesor-option:hover {
+    border-color: #2c3e50;
+    background: #ecf0f1;
+}
+
+.espesor-option.selected {
+    border-color: #2c3e50;
+    background: #2c3e50;
+    color: white;
+}
+
+.espesor-option .numero {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.espesor-option .texto {
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+/* ========================================
+   RESULTADO CUBICACIÓN
+   ======================================== */
+
+.resultado-cubicacion-estructural {
+    background: linear-gradient(135deg, #16a085 0%, #138d75 100%);
+    color: white;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.resultado-cubicacion-estructural h4 {
+    font-size: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.materiales-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.material-categoria {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.material-categoria h5 {
+    font-size: 12px;
+    margin-bottom: 12px;
+    opacity: 0.9;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 8px;
+}
+
+.material-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 13px;
+}
+
+.material-item .label {
+    opacity: 0.9;
+}
+
+.material-item .valor {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* ========================================
+   BOTONES MODAL
+   ======================================== */
+
+.modal-estructural-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.btn-estructural {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-estructural-guardar {
+    background: #27ae60;
+    color: white;
+}
+
+.btn-estructural-guardar:hover {
+    background: #229954;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+}
+
+.btn-estructural-eliminar {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-estructural-eliminar:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+.btn-estructural-cancelar {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn-estructural-cancelar:hover {
+    background: #7f8c8d;
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   GRID DE CAMPOS
+   ======================================== */
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* ========================================
+   AYUDA Y NOTAS
+   ======================================== */
+
+.nota-ayuda {
+    background: #e8f5e9;
+    border-left: 4px solid #27ae60;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #2c3e50;
+    margin-top: 20px;
+}
+
+.nota-ayuda strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #27ae60;
+}
+
+.nota-normativa {
+    background: #fff3cd;
+    border-left: 4px solid #f39c12;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 11px;
+    color: #856404;
+    margin-top: 10px;
+}

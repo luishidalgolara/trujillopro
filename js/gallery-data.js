@@ -1,7 +1,6 @@
 // ========================================
 // TRUJILLO - Gallery Content Data
 // ========================================
-
 // Gallery content for each module - TODAS las imágenes
 const galleryContent = {
     electric: [
@@ -43,6 +42,25 @@ const galleryContent = {
         { title: 'Vista Adicional 1', image: 'ESTRUCTURAL/EST7.png' },
         { title: 'Vista Adicional 2', image: 'ESTRUCTURAL/EST8.png' },
         { title: 'Vista Adicional 3', image: 'ESTRUCTURAL/EST9.png' }
+    ],
+    tank: [
+        { title: 'Estanque - Vista 1', image: 'ESTANQUE-AP/ESTANQUE-1.png' },
+        { title: 'Estanque - Vista 2', image: 'ESTANQUE-AP/ESTANQUE-2.png' },
+        { title: 'Estanque - Vista 3', image: 'ESTANQUE-AP/ESTANQUE-3.png' },
+        { title: 'Estanque - Vista 4', image: 'ESTANQUE-AP/ESTANQUE-4.png' },
+        { title: 'Estanque - Vista 5', image: 'ESTANQUE-AP/ESTANQUE-5.png' },
+        { title: 'Estanque - Vista 6', image: 'ESTANQUE-AP/ESTANQUE-6.png' },
+        { title: 'Estanque - Vista 7', image: 'ESTANQUE-AP/ESTANQUE-7.png' },
+        { title: 'Estanque - Vista 8', image: 'ESTANQUE-AP/ESTANQUE-8.png' }
+    ],
+    cubicacion: [
+        { title: 'Cubicación - Vista 1', image: 'CUBICACION-TR/CUBICA-1.png' },
+        { title: 'Cubicación - Vista 2', image: 'CUBICACION-TR/CUBICA-2.png' },
+        { title: 'Cubicación - Vista 3', image: 'CUBICACION-TR/CUBICA-3.png' },
+        { title: 'Cubicación - Vista 4', image: 'CUBICACION-TR/CUBICA-4.png' },
+        { title: 'Cubicación - Vista 5', image: 'CUBICACION-TR/CUBICA-5.png' },
+        { title: 'Cubicación - Vista 6', image: 'CUBICACION-TR/CUBICA-6.png' },
+        { title: 'Cubicación - Vista 7', image: 'CUBICACION-TR/CUBICA-7.png' }
     ],
     videos: [
         { 

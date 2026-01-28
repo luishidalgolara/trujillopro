@@ -1,0 +1,104 @@
+/**
+ * ESTILOS PARA SECCIÓN DE TUBERÍAS
+ * Agregar a tu archivo CSS principal
+ */
+
+.tuberias-resultados {
+    margin-top: 20px;
+}
+
+.tuberias-resultados h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.3em;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+}
+
+.tuberia-item {
+    background: white;
+    border-left: 5px solid #3498db;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.tuberia-item:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+.tuberia-item.valida {
+    border-left-color: #27ae60;
+}
+
+.tuberia-item.advertencia {
+    border-left-color: #e67e22;
+    background: #fff9f5;
+}
+
+.tuberia-item h4 {
+    margin: 0 0 15px 0;
+    color: #2c3e50;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+}
+
+.tuberia-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.spec-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.spec-row .label {
+    font-weight: 600;
+    color: #666;
+    font-size: 0.95em;
+}
+
+.spec-row .value {
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.spec-row .value.destacado {
+    color: #2980b9;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.spec-row.observacion {
+    background: #e8f4f8;
+    border: 1px solid #3498db;
+    margin-top: 5px;
+}
+
+.spec-row.observacion .value {
+    font-style: italic;
+    color: #2c3e50;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .spec-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .spec-row .label {
+        font-size: 0.85em;
+    }
+}

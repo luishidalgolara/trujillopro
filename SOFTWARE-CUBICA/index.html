@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cubicador de Construcción - CONSTRUCTORA PRO</title>
+    <!-- CSS MODULAR -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/toolbar.css">
+    <link rel="stylesheet" href="css/workspace.css">
+    <link rel="stylesheet" href="css/panel.css">
+    <link rel="stylesheet" href="css/modals.css">
+    <!-- MÓDULOS -->
+    <link rel="stylesheet" href="muro-hormigon/muro-hormigon.css">
+    <link rel="stylesheet" href="muro-albanileria/muro-albanileria.css">
+    <link rel="stylesheet" href="radier/radier.css">
+    <link rel="stylesheet" href="hormigon/hormigon-styles.css">
+    <link rel="stylesheet" href="muros-tabiqueria/tabique.css">
+    <link rel="stylesheet" href="muros-estructurales/muro-estructural.css">
+    <link rel="stylesheet" href="informe-cubicacion/informe-cubicacion.css">
+    <link rel="stylesheet" href="cubicacion-cubierta/cubierta.css">
+    <link rel="stylesheet" href="planos-system/plano-styles.css">
+    <!-- VISTA 3D -->
+    <link rel="stylesheet" href="vista-3d/vista-3d.css">
+    <link rel="stylesheet" href="layer-manager/layer-manager.css">
+    <!-- SISTEMA ORTHO -->
+    <link rel="stylesheet" href="ortho-system/ortho-system.css">
+    <!-- SIMULADOR TERREMOTO -->
+    <link rel="stylesheet" href="simulador-temblor/earthquake.css">
+    <!-- SISTEMA DE VANOS -->
+    <link rel="stylesheet" href="vanos-system/vanos_styles.css">
+</head>
+<body>
+    <!-- HEADER PRINCIPAL -->
+    <div class="main-header">
+        <div class="header-left">
+            <div class="logo">
+                <div class="logo-icon">🏗️</div>
+                <div class="logo-text">
+                    <div class="logo-title">TRUKILLO</div>
+                    <div class="logo-subtitle">SISTEMA DE CUBICACIÓN</div>
+                </div>
+            </div>
+            <button class="btn-header btn-primary" onclick="cargarPlano()">
+                📁 CARGAR PLANO
+            </button>
+            <button class="btn-header btn-secondary" onclick="toggleVista3D()">
+                👁️ Vista 3D
+            </button>
+        </div>
+        
+        <div class="header-center">
+            <div class="project-info">
+                <input type="text" id="projectName" placeholder="Nombre del Proyecto" class="input-project">
+                <input type="text" id="projectCode" placeholder="Código" class="input-code">
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <button class="btn-header" style="background: #e74c3c;" onclick="abrirCubicacion()">
+                📊 CUADRO CUBICACIÓN
+            </button>
+            
+            <button class="btn-header" style="background: #3498db;" onclick="abrirPresupuesto()">
+                💰 PRESUPUESTO
+            </button>
+            
+            <button class="btn-header" style="background: #f39c12;" onclick="abrirEspecificaciones()">
+                📋 ESPECIFICACIONES
+            </button>
+            
+            <button class="btn-header btn-success" onclick="exportarResultados()">
+                💾 EXPORTAR
+            </button>
+        </div>
+    </div>
+    
+    <!-- BARRA DE HERRAMIENTAS -->
+    <div class="toolbar">
+        <!-- PRIMERA FILA -->
+        <div class="toolbar-row">
+            <div class="toolbar-section">
+                <span class="toolbar-label">🧱 MUROS:</span>
+                <button class="btn-tool" onclick="selectTool('muro-hormigon')" title="Muro de hormigón">
+                    🧱 Hormigón
+                </button>
+                <button class="btn-tool" onclick="selectTool('muro-albanileria')" title="Muro de albañilería">
+                    🧱 Albañilería
+                </button>
+                <button class="btn-tool" onclick="selectTool('tabique')" title="Tabique">
+                    📏 Tabique
+                </button>
+                <button class="btn-tool" onclick="selectTool('muro-estructural')" title="Muro Estructural">
+                    🏗️ Estructural
+                </button>
+            </div>
+            
+            <div class="toolbar-section">
+                <span class="toolbar-label">🔲 RADIER:</span>
+                <button class="btn-tool" onclick="selectTool('radier')" title="Radier">
+                    ⬛ Radier
+                </button>
+                <button class="btn-tool" onclick="selectTool('fundacion')" title="Fundación">
+                    🏗️ Fundación
+                </button>
+                <button class="btn-tool" onclick="selectTool('sobrecimiento')" title="Sobrecimiento">
+                    📐 Sobrecimiento
+                </button>
+            </div>
+            
+            <div class="toolbar-section">
+                <span class="toolbar-label">🏠 TECHO:</span>
+                <button class="btn-tool" onclick="selectTool('estructura-techo')" title="Estructura de techo">
+                    🔺 Estructura
+                </button>
+                <button class="btn-tool" onclick="selectTool('cubierta')" title="Cubierta">
+                    📄 Cubierta
+                </button>
+                <button class="btn-tool" onclick="selectTool('aislacion')" title="Aislación">
+                    🧊 Aislación
+                </button>
+            </div>
+            
+            <div class="toolbar-section">
+                <span class="toolbar-label">🪵 MADERA:</span>
+                <button class="btn-tool" onclick="selectTool('viga')" title="Viga">
+                    ➖ Viga
+                </button>
+                <button class="btn-tool" onclick="selectTool('pilar')" title="Pilar">
+                    ⬜ Pilar
+                </button>
+                <button class="btn-tool" onclick="selectTool('marcos')" title="Marcos">
+                    🚪 Marcos
+                </button>
+            </div>
+            
+            <div class="toolbar-section">
+                <span class="toolbar-label">🏗️ HORMIGÓN:</span>
+                <button class="btn-tool" onclick="selectTool('volumen-hormigon')" title="Volumen de hormigón">
+                    📦 Volumen
+                </button>
+                <button class="btn-tool" onclick="selectTool('enfierradura')" title="Enfierradura">
+                    🔩 Enfierradura
+                </button>
+                <button class="btn-tool" onclick="selectTool('moldaje')" title="Moldaje">
+                    📋 Moldaje
+                </button>
+            </div>
+        </div>
+        
+        <!-- SEGUNDA FILA - ACCIONES (CON BOTÓN ORTHO) -->
+        <div class="toolbar-row">
+            <div class="toolbar-section section-acciones">
+                <span class="toolbar-label">⚙️ ACCIONES:</span>
+                <button class="btn-tool" onclick="medirDistancia()" style="background: #9b59b6;">
+                    📏 MEDIR
+                </button>
+                <button class="btn-tool" onclick="calcularArea()" style="background: #16a085;">
+                    📐 ÁREA
+                </button>
+                <button class="btn-tool" onclick="calcularVolumen()" style="background: #27ae60;">
+                    📦 VOLUMEN
+                </button>
+                <!-- EL BOTÓN ORTHO SE INSERTARÁ AQUÍ AUTOMÁTICAMENTE -->
+                <button class="btn-tool btn-danger" onclick="limpiarTodo()">
+                    🗑️ LIMPIAR
+                </button>
+            </div>
+        </div>
+    </div>    
+    
+    <!-- ÁREA DE TRABAJO -->
+    <div class="main-container">
+        <div class="work-area">
+            <div class="canvas-title">SISTEMA INTELIGENTE DE CUBICACIÓN DE OBRA</div>
+            <div class="canvas-wrapper">
+                <div class="canvas-placeholder">
+                    <div class="placeholder-content">
+                        <div class="placeholder-icon">📐</div>
+                        <h2>Carga un plano para comenzar</h2>
+                        <p>Formatos soportados: PDF, JPG, PNG, SVG</p>
+                        <button class="btn-upload" onclick="cargarPlano()">
+                            📁 CARGAR PLANO
+                        </button>
+                    </div>
+                </div>
+                <canvas id="mainCanvas" style="display: none;"></canvas>
+            </div>
+        </div>
+        
+        <div class="right-panel">
+            <div class="panel-header">
+                <h3>📋 PARÁMETROS DE CUBICACIÓN</h3>
+                <p>Configuración estándar</p>
+            </div>
+            <div class="panel-content">
+                <div class="info-card">
+                    <h4>🧱 MUROS</h4>
+                    <ul>
+                        <li>Hormigón H20: 0.15m - 0.20m</li>
+                        <li>Albañilería: 0.14m - 0.29m</li>
+                        <li>Tabique: 0.10m - 0.15m</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h4>🔲 RADIER Y LOSAS</h4>
+                    <ul>
+                        <li>Radier std: 0.10m - 0.15m</li>
+                        <li>Losa: 0.15m - 0.20m</li>
+                        <li>Fundación: 0.40m - 0.60m</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h4>🏠 TECHUMBRE</h4>
+                    <ul>
+                        <li>Cerchas: 2x4" - 2x6"</li>
+                        <li>Cubierta: Teja/Zinc</li>
+                        <li>Pendiente: 25% - 40%</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h4>🪵 MADERA</h4>
+                    <ul>
+                        <li>Pino: Estructural</li>
+                        <li>Roble: Terminaciones</li>
+                        <li>Medidas: 2x3" a 4x8"</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h4>🏗️ HORMIGÓN</h4>
+                    <ul>
+                        <li>H20: Muros/Losas</li>
+                        <li>H25: Pilares</li>
+                        <li>H30: Fundaciones</li>
+                        <li>Enfierradura A63-42H</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card" style="margin-top: 20px; background: #e8f5e9;">
+                    <h4>⌨️ ATAJOS</h4>
+                    <ul style="font-size: 11px;">
+                        <li><strong>M</strong>: Medir</li>
+                        <li><strong>A</strong>: Área</li>
+                        <li><strong>V</strong>: Volumen</li>
+                        <li><strong>F8</strong>: ORTHO 🔲</li>
+                        <li><strong>Ctrl+Z</strong>: Deshacer</li>
+                        <li><strong>Del</strong>: Eliminar</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png,.svg" style="display: none;">
+    
+    <div class="status-bar">
+        <span id="status">✓ Listo para cubicar</span>
+        <span id="coordenadas"></span>
+        <span id="escala">Escala: 1:100</span>
+    </div>
+
+    <!-- MODAL CUADRO DE CUBICACIÓN -->
+    <div class="modal" id="modalCubicacion">
+        <div class="modal-window modal-large">
+            <div class="modal-header">
+                <div class="modal-title">📊 CUADRO DE CUBICACIÓN</div>
+                <button class="btn-close" onclick="cerrarModal('modalCubicacion')">✕</button>
+            </div>
+            <div class="modal-content">
+                <div class="cubicacion-container">
+                    <table class="tabla-cubicacion">
+                        <thead>
+                            <tr>
+                                <th>PARTIDA</th>
+                                <th>DESCRIPCIÓN</th>
+                                <th>UNIDAD</th>
+                                <th>CANTIDAD</th>
+                                <th>OBSERVACIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaCubicacionBody">
+                            <tr>
+                                <td>1.0</td>
+                                <td>OBRA GRUESA</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>1.1</td>
+                                <td>Excavación</td>
+                                <td>m³</td>
+                                <td>0.00</td>
+                                <td>Pendiente medición</td>
+                            </tr>
+                            <tr>
+                                <td>1.2</td>
+                                <td>Hormigón H20</td>
+                                <td>m³</td>
+                                <td>0.00</td>
+                                <td>Pendiente medición</td>
+                            </tr>
+                            <tr>
+                                <td>1.3</td>
+                                <td>Enfierradura A63-42H</td>
+                                <td>kg</td>
+                                <td>0.00</td>
+                                <td>Pendiente medición</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn-primary" onclick="exportarCubicacion()">📥 Exportar Excel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SISTEMA ORTHO - CARGA PRIORITARIA
+         ============================================ -->
+    <script src="ortho-system/ortho-state.js"></script>
+    <script src="ortho-system/ortho-calculator.js"></script>
+    <script src="ortho-system/ortho-visual.js"></script>
+    <script src="ortho-system/ortho-ui.js"></script>
+    <script src="ortho-system/ortho-integration.js"></script>
+    <script src="ortho-system/ortho-init.js"></script>
+    <!-- INTERCEPTOR AUTOMÁTICO - NO REQUIERE MODIFICAR HERRAMIENTAS -->
+    <script src="ortho-system/ortho-integration-fix.js"></script>
+
+    <!-- MÓDULO CANVAS GLOBAL -->
+    <script src="js/canvas-global.js"></script>
+    
+    <!-- ============================================
+         SISTEMA DE VANOS - CARGA ANTES DE MUROS
+         ============================================ -->
+    <script src="vanos-system/vanos_state.js"></script>
+    <script src="vanos-system/vanos_placement.js"></script>
+    <script src="vanos-system/vanos_draw_2d.js"></script>
+    <script src="vanos-system/vanos_draw_3d.js"></script>
+    <script src="vanos-system/vanos_events.js"></script>
+    
+    <!-- ============================================
+         MÓDULO MURO HORMIGÓN - VERSIÓN ACTUALIZADA
+         ============================================ -->
+    <script src="muro-hormigon/muro-hormigon-state.js"></script>
+    <script src="muro-hormigon/muro-hormigon-utils.js"></script>
+    <script src="muro-hormigon/muro-hormigon-draw.js"></script>
+    <script src="muro-hormigon/muro-hormigon-events.js"></script>
+    <script src="muro-hormigon/muro-hormigon-modal.js"></script>
+    <script src="muro-hormigon/muro-hormigon-init.js"></script>
+    
+    <!-- INTEGRACIÓN VANOS CON HORMIGÓN -->
+    <script src="vanos-system/vanos_integration.js"></script>
+    <script src="vanos-system/vanos_init.js"></script>
+    
+    <!-- MÓDULO MURO ALBAÑILERÍA -->
+    <script src="muro-albanileria/muro-albanileria-state.js"></script>
+    <script src="muro-albanileria/muro-albanileria-utils.js"></script>
+    <script src="muro-albanileria/muro-albanileria-draw.js"></script>
+    <script src="muro-albanileria/muro-albanileria-events.js"></script>
+    <script src="muro-albanileria/muro-albanileria-modal.js"></script>
+    <script src="muro-albanileria/muro-albanileria-init.js"></script>
+
+    <!-- MÓDULO TABIQUERÍA -->
+    <script src="muros-tabiqueria/tabique-state.js"></script>
+    <script src="muros-tabiqueria/tabique-utils.js"></script>
+    <script src="muros-tabiqueria/tabique-draw.js"></script>
+    <script src="muros-tabiqueria/tabique-events.js"></script>
+    <script src="muros-tabiqueria/tabique-modal.js"></script>
+    <script src="muros-tabiqueria/tabique-init.js"></script>
+    
+    <!-- MÓDULO RADIER -->
+    <script src="radier/radier-state.js"></script>
+    <script src="radier/radier-utils.js"></script>
+    <script src="radier/radier-draw.js"></script>
+    <script src="radier/radier-events.js"></script>
+    <script src="radier/radier-modal.js"></script>
+    <script src="radier/radier-init.js"></script>
+
+    <!-- MÓDULO MUROS ESTRUCTURALES -->
+    <script src="muros-estructurales/muro-estructural-state.js"></script>
+    <script src="muros-estructurales/muro-estructural-utils.js"></script>
+    <script src="muros-estructurales/muro-estructural-draw.js"></script>
+    <script src="muros-estructurales/muro-estructural-events.js"></script>
+    <script src="muros-estructurales/muro-estructural-modal.js"></script>
+    <script src="muros-estructurales/muro-estructural-init.js"></script>
+
+    <!-- MÓDULO INFORME DE CUBICACIÓN -->
+    <script src="informe-cubicacion/informe-cubicacion-state.js"></script>
+    <script src="informe-cubicacion/informe-cubicacion-generator.js"></script>
+    <script src="informe-cubicacion/informe-cubicacion-modal.js"></script>
+    <script src="informe-cubicacion/informe-cubicacion-export.js"></script>
+    <script src="informe-cubicacion/informe-cubicacion-init.js"></script>
+       
+    <!-- MÓDULO HORMIGÓN -->
+    <script src="hormigon/hormigon-calculator.js"></script>
+    <script src="hormigon/hormigon-handler.js"></script>
+    
+    <!-- SCRIPT PRINCIPAL -->    
+    <script src="js/canvas-global.js"></script>    
+    <script src="js/main.js"></script>
+    <script src="js/zoom-pan.js"></script>
+
+    <!-- MÓDULO CUBIERTAS -->
+    <script src="cubicacion-cubierta/cubierta-state.js"></script>
+    <script src="cubicacion-cubierta/cubierta-utils.js"></script>
+    <script src="cubicacion-cubierta/cubierta-draw.js"></script>
+    <script src="cubicacion-cubierta/cubierta-events.js"></script>
+    <script src="cubicacion-cubierta/cubierta-modal.js"></script>
+    <script src="cubicacion-cubierta/cubierta-init.js"></script>
+
+    <!-- SISTEMA DE GESTIÓN DE CAPAS -->    
+    <script src="layer-manager/layer-manager-state.js"></script>
+    <script src="layer-manager/layer-manager-ui.js"></script>
+    <script src="layer-manager/layer-manager-controller.js"></script>
+    <script src="layer-manager/layer-manager-integration.js"></script>
+    <script src="layer-manager/layer-manager-init.js"></script>
+
+    <!-- SISTEMA MULTI-PLANO -->    
+    <script src="planos-system/plano-instance.js"></script>
+    <script src="planos-system/plano-state.js"></script>
+    <script src="planos-system/plano-manager-cleanup.js"></script>
+    <script src="planos-system/plano-manager-state.js"></script>
+    <script src="planos-system/plano-manager-export.js"></script>
+    <script src="planos-system/plano-manager-helpers.js"></script>
+    <script src="planos-system/plano-manager-core.js"></script>
+    <script src="planos-system/plano-thumbnails-ui.js"></script>
+    <script src="planos-system/plano-integration.js"></script>
+
+    <!-- VISTA 3D - THREE.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="vista-3d/vista-3d-state.js"></script>
+    <script src="vista-3d/vista-3d-scene.js"></script>
+    <script src="vista-3d/vista-3d-builder.js"></script>
+    <script src="vista-3d/vista-3d-controls.js"></script>
+    <script src="vista-3d/vista-3d-modal.js"></script>
+    <script src="vista-3d/vista-3d-init.js"></script>
+
+    <!-- SIMULADOR TERREMOTO -->
+    <script src="simulador-temblor/earthquake-config.js"></script>
+    <script src="simulador-temblor/earthquake-physics.js"></script>
+    <script src="simulador-temblor/earthquake-waves-advanced.js"></script>
+    <script src="simulador-temblor/earthquake-effects.js"></script>
+    <script src="simulador-temblor/earthquake-visual-effects.js"></script>
+    <script src="simulador-temblor/earthquake-structural-fx.js"></script>
+    <!-- SISTEMAS DE COLAPSO -->
+    <script src="simulador-temblor/earthquake-physics-engine.js"></script>
+    <script src="simulador-temblor/earthquake-fracture.js"></script>
+    <script src="simulador-temblor/earthquake-deformation.js"></script>
+    <script src="simulador-temblor/earthquake-collapse.js"></script>
+    <!-- CONTROLADOR Y UI -->
+    <script src="simulador-temblor/earthquake-controller.js"></script>
+    <script src="simulador-temblor/earthquake-ui.js"></script>
+    <script src="simulador-temblor/earthquake-init.js"></script>
+
+</body>
+</html>

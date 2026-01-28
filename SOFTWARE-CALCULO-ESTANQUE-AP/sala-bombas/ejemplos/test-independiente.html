@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Sala de Bombas 3D</title>
+    <style>
+        body { margin: 0; padding: 0; font-family: Arial, sans-serif; background: #f0f0f0; }
+        #container { width: 100vw; height: 100vh; position: relative; }
+        #canvas3d { width: 100%; height: 100%; }
+        .controls { position: absolute; top: 20px; left: 20px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .controls h3 { margin-top: 0; }
+        .controls label { display: block; margin: 10px 0 5px 0; }
+        .controls input, .controls button { width: 100%; padding: 8px; margin-bottom: 10px; }
+        .controls button { background: #2196F3; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        .controls button:hover { background: #1976D2; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="canvas3d"></div>
+        <div class="controls">
+            <h3>🔧 Test Sala de Bombas</h3>
+            <label>Número de Bombas:</label>
+            <input type="number" id="numBombas" value="2" min="1" max="4">
+            <label>Potencia (HP):</label>
+            <input type="number" id="potencia" value="5" min="1" max="20">
+            <label>Caudal (L/min):</label>
+            <input type="number" id="caudal" value="50" min="10" max="200">
+            <label>Presión (m.c.a):</label>
+            <input type="number" id="presion" value="30" min="10" max="100">
+            <button onclick="crearSala()">🚀 Crear Sala</button>
+            <button onclick="eliminarSala()">🗑️ Eliminar Sala</button>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="../utils/materiales.js"></script>
+    <script src="../utils/posicionamiento.js"></script>
+    <script src="../utils/etiquetas.js"></script>
+    <script src="../config/dimensiones-bombas.js"></script>
+    <script src="../modelos/sala-estructura.js"></script>
+    <script src="../modelos/bomba-centrifuga.js"></script>
+    <script src="../modelos/tuberias.js"></script>
+    <script src="../modelos/valvulas.js"></script>
+    <script src="../modelos/accesorios.js"></script>
+    <script src="../sala-bombas.js"></script>
+    <script src="test-independiente.js"></script>
+</body>
+</html>

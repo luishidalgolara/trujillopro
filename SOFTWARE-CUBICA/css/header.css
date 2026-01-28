@@ -1,0 +1,131 @@
+/* ========================================
+   HEADER PRINCIPAL
+   ======================================== */
+.main-header {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+    flex-wrap: nowrap;
+    min-width: 100%;
+}
+
+.header-left,
+.header-center,
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* ========================================
+   LOGO
+   ======================================== */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 12px;
+    padding-right: 12px;
+    border-right: 2px solid rgba(255,255,255,0.2);
+}
+
+.logo-icon {
+    font-size: 26px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-title {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.8px;
+}
+
+.logo-subtitle {
+    font-size: 9px;
+    opacity: 0.8;
+    letter-spacing: 0.3px;
+}
+
+/* ========================================
+   INPUTS DE PROYECTO
+   ======================================== */
+.project-info {
+    display: flex;
+    gap: 8px;
+}
+
+.input-project,
+.input-code {
+    padding: 6px 12px;
+    border: 2px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border-radius: 5px;
+    font-size: 12px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.input-project {
+    width: 180px;
+}
+
+.input-code {
+    width: 90px;
+}
+
+.input-project::placeholder,
+.input-code::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.input-project:focus,
+.input-code:focus {
+    background: rgba(255,255,255,0.2);
+    border-color: #3498db;
+}
+
+/* ========================================
+   BOTONES HEADER
+   ======================================== */
+.btn-header {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    white-space: nowrap;
+}
+
+.btn-header:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.btn-primary {
+    background: #3498db;
+    color: white;
+}
+
+.btn-secondary {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn-success {
+    background: #27ae60;
+    color: white;
+}

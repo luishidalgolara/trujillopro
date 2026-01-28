@@ -1,0 +1,338 @@
+/* ===================================
+   ESTILOS SISTEMA MULTI-PLANO
+   =================================== */
+
+.plano-thumbnails-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 170px;
+    background: linear-gradient(to top, rgba(15, 15, 25, 0.98), rgba(20, 20, 35, 0.95));
+    backdrop-filter: blur(15px);
+    border-top: 3px solid rgba(52, 152, 219, 0.4);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.plano-thumbnails-container.collapsed {
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.plano-thumbnails-header {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(52, 152, 219, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.plano-thumbnails-title {
+    font-size: 13px;
+    font-weight: bold;
+    color: rgba(52, 152, 219, 0.95);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.plano-thumbnails-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-add-plano {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(52, 152, 219, 0.4);
+}
+
+.btn-add-plano:hover {
+    background: linear-gradient(135deg, #5dade2, #3498db);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-collapse-planos {
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-collapse-planos:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.plano-thumbnails-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 16px;
+}
+
+.plano-thumbnails-content::-webkit-scrollbar {
+    height: 8px;
+}
+
+.plano-thumbnails-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.plano-thumbnails-content::-webkit-scrollbar-thumb {
+    background: rgba(52, 152, 219, 0.4);
+    border-radius: 4px;
+}
+
+.plano-thumbnail {
+    position: relative;
+    min-width: 200px;
+    width: 200px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.plano-thumbnail:hover {
+    border-color: rgba(52, 152, 219, 0.6);
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+    z-index: 10;
+}
+
+.plano-thumbnail.active {
+    border-color: rgba(52, 152, 219, 1);
+    background: rgba(52, 152, 219, 0.15);
+    box-shadow: 0 0 25px rgba(52, 152, 219, 0.5), 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.plano-thumbnail-preview {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(52, 152, 219, 0.2);
+    border-bottom: none;
+    background-image: 
+        linear-gradient(45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%);
+    background-size: 10px 10px;
+    background-position: 0 0, 0 5px, 5px -5px, -5px 0px;
+}
+
+.plano-thumbnail-preview .empty-plano {
+    color: #999;
+    font-size: 11px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.plano-thumbnail-name {
+    padding: 8px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-top: 2px solid rgba(52, 152, 219, 0.3);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    letter-spacing: 0.5px;
+}
+
+.plano-thumbnail-actions {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    display: none;
+    gap: 5px;
+    z-index: 10;
+}
+
+.plano-thumbnail:hover .plano-thumbnail-actions {
+    display: flex;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.plano-thumbnail-btn {
+    width: 26px;
+    height: 26px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.plano-thumbnail-btn:hover {
+    transform: scale(1.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.plano-thumbnail-btn.duplicate {
+    background: rgba(52, 152, 219, 0.95);
+}
+
+.plano-thumbnail-btn.duplicate:hover {
+    background: rgba(52, 152, 219, 1);
+}
+
+.plano-thumbnail-btn.rename {
+    background: rgba(243, 156, 18, 0.95);
+}
+
+.plano-thumbnail-btn.rename:hover {
+    background: rgba(243, 156, 18, 1);
+}
+
+.plano-thumbnail-btn.delete {
+    background: rgba(231, 76, 60, 0.95);
+}
+
+.plano-thumbnail-btn.delete:hover {
+    background: rgba(231, 76, 60, 1);
+}
+
+.btn-show-planos {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    padding: 16px 28px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(52, 152, 219, 0.6);
+    z-index: 9998;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-show-planos.visible {
+    display: flex;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { 
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to { 
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.btn-show-planos:hover {
+    background: linear-gradient(135deg, #5dade2, #3498db);
+    box-shadow: 0 7px 25px rgba(52, 152, 219, 0.8);
+    transform: translateY(-4px);
+}
+
+.plano-thumbnail.active::before {
+    content: '▶';
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    color: rgba(52, 152, 219, 1);
+    font-size: 14px;
+    z-index: 11;
+    text-shadow: 0 0 10px rgba(52, 152, 219, 0.8), 0 2px 4px rgba(0, 0, 0, 0.5);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        opacity: 1; 
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.6;
+        transform: scale(0.95);
+    }
+}
+
+.plano-thumbnail::after {
+    content: attr(data-index);
+    position: absolute;
+    bottom: 32px;
+    left: 8px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 3px 7px;
+    border-radius: 4px;
+    backdrop-filter: blur(5px);
+}
+
+@media (max-width: 768px) {
+    .plano-thumbnails-container {
+        height: 130px;
+    }
+    
+    .plano-thumbnail {
+        min-width: 140px;
+        width: 140px;
+        height: 85px;
+    }
+}

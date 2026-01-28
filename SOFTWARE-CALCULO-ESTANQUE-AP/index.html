@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño de Estanques de Agua Potable - Normas Chile</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/formulario.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏢 Diseño de Estanques de Agua Potable</h1>
+            <p class="subtitle">Calculadora según Normas Chilenas NCh691</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Panel Izquierdo: Datos de Entrada -->
+            <div class="panel-izquierdo">
+                <div class="card">
+                    <h2>📝 Datos del Edificio</h2>
+                    
+                    <div class="form-group">
+                        <label for="numPisos">Número de Pisos:</label>
+                        <input type="number" id="numPisos" min="1" max="50" value="5">
+                        <span class="unidad">pisos</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="deptosPorPiso">Departamentos por Piso:</label>
+                        <input type="number" id="deptosPorPiso" min="1" max="20" value="4">
+                        <span class="unidad">deptos/piso</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="habitantesPorDepto">Habitantes por Departamento:</label>
+                        <input type="number" id="habitantesPorDepto" min="1" max="10" value="4">
+                        <span class="unidad">personas</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipoEdificio">Tipo de Edificio:</label>
+                        <select id="tipoEdificio">
+                            <option value="residencial">Residencial</option>
+                            <option value="oficinas">Oficinas</option>
+                            <option value="mixto">Mixto</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>💧 Dimensiones del Estanque</h2>
+                    
+                    <div class="form-group">
+                        <label for="largo">Largo (L):</label>
+                        <input type="number" id="largo" min="1" max="20" step="0.1" value="4.0">
+                        <span class="unidad">m</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ancho">Ancho (A):</label>
+                        <input type="number" id="ancho" min="1" max="20" step="0.1" value="3.0">
+                        <span class="unidad">m</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="altura">Altura (H):</label>
+                        <input type="number" id="altura" min="0.5" max="10" step="0.1" value="2.5">
+                        <span class="unidad">m</span>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="ajusteAutomatico" checked>
+                            Ajustar dimensiones automáticamente
+                        </label>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🔧 Parámetros Técnicos</h2>
+                    
+                    <div class="form-group">
+                        <label for="espesorMuros">Espesor de Muros:</label>
+                        <input type="number" id="espesorMuros" min="0.15" max="0.5" step="0.05" value="0.20">
+                        <span class="unidad">m</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="espesorFondo">Espesor de Fondo:</label>
+                        <input type="number" id="espesorFondo" min="0.15" max="0.5" step="0.05" value="0.25">
+                        <span class="unidad">m</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hormigon">Resistencia del Hormigón:</label>
+                        <select id="hormigon">
+                            <option value="H20">H20 (20 MPa)</option>
+                            <option value="H25" selected>H25 (25 MPa)</option>
+                            <option value="H30">H30 (30 MPa)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="acero">Acero de Refuerzo:</label>
+                        <select id="acero">
+                            <option value="A63-42H">A63-42H (420 MPa)</option>
+                            <option value="A44-28H">A44-28H (280 MPa)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🏗️ Dimensiones Sala de Bombas</h2>
+                    
+                    <div class="form-group">
+                        <label for="salaAncho">Ancho Sala:</label>
+                        <input type="number" id="salaAncho" min="3" max="15" step="0.1" value="4.0">
+                        <span class="unidad">m</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="salaProfundidad">Profundidad Sala:</label>
+                        <input type="number" id="salaProfundidad" min="3" max="15" step="0.1" value="6.0">
+                        <span class="unidad">m</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="salaAltura">Altura Sala:</label>
+                        <input type="number" id="salaAltura" min="2.5" max="8" step="0.1" value="3.5">
+                        <span class="unidad">m</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📏 Parámetros de Tuberías</h2>
+                    
+                    <div class="form-group">
+                        <label for="diametroAlimentacion">Diámetro Alimentación (Red Pública):</label>
+                        <select id="diametroAlimentacion">
+                            <option value="50">50 mm (1 1/2")</option>
+                            <option value="63">63 mm (2")</option>
+                            <option value="75">75 mm (2 1/2")</option>
+                            <option value="90">90 mm (3")</option>
+                            <option value="110" selected>110 mm (4")</option>
+                            <option value="125">125 mm (5")</option>
+                            <option value="140">140 mm (5 1/2")</option>
+                            <option value="160">160 mm (6")</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="diametroImpulsion">Diámetro Impulsión (Bomba → Edificio):</label>
+                        <select id="diametroImpulsion">
+                            <option value="32">32 mm (1")</option>
+                            <option value="40">40 mm (1 1/4")</option>
+                            <option value="50">50 mm (1 1/2")</option>
+                            <option value="63" selected>63 mm (2")</option>
+                            <option value="75">75 mm (2 1/2")</option>
+                            <option value="90">90 mm (3")</option>
+                            <option value="110">110 mm (4")</option>
+                            <option value="125">125 mm (5")</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tiempoLlenado">Tiempo de Llenado Deseado:</label>
+                        <input type="number" id="tiempoLlenado" min="1" max="12" step="0.5" value="4">
+                        <span class="unidad">horas</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tiempoVaciado">Tiempo de Vaciado Deseado:</label>
+                        <input type="number" id="tiempoVaciado" min="1" max="8" step="0.5" value="3">
+                        <span class="unidad">horas</span>
+                    </div>
+                </div>
+
+                <button id="calcularBtn" class="btn-calcular">🔍 Calcular Estanque</button>
+            </div>
+
+            <!-- Panel Derecho: Resultados y Vista 3D -->
+            <div class="panel-derecho">
+                <div class="card">
+                    <h2>📊 Resultados del Diseño</h2>
+                    
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="vista3d">Vista 3D</button>
+                        <button class="tab-btn" data-tab="corteAA">Corte A-A</button>
+                        <button class="tab-btn" data-tab="corteBB">Corte B-B</button>
+                        <button class="tab-btn" data-tab="corteCC">Corte C-C</button>
+                        <button class="tab-btn" data-tab="corteDD">Corte D-D</button>
+                        <button class="tab-btn" data-tab="planta">Planta</button>
+                    </div>
+
+                    <div id="vista3d" class="tab-content active">
+                        <div id="canvas3d"></div>
+                        <div class="controles-3d">
+                            <button id="resetView">↺ Resetear Vista</button>
+                            <button id="toggleGrid">⊞ Grid</button>
+                            <button id="toggleBombas">🔧 Mostrar Sala de Bombas</button>
+                        </div>
+                    </div>
+
+                    <div id="corteAA" class="tab-content">
+                        <div id="canvasCorteAA"></div>
+                    </div>
+
+                    <div id="corteBB" class="tab-content">
+                        <div id="canvasCorteBB"></div>
+                    </div>
+
+                    <div id="corteCC" class="tab-content">
+                        <div id="canvasCorteCC"></div>
+                    </div>
+
+                    <div id="corteDD" class="tab-content">
+                        <div id="canvasCorteDD"></div>
+                    </div>
+
+                    <div id="planta" class="tab-content">
+                        <div id="canvasPlanta"></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📐 Dimensiones Finales</h2>
+                    <div id="dimensionesResult" class="resultados">
+                        <div class="resultado-item">
+                            <span class="label">Dimensiones:</span>
+                            <span class="value" id="dimResult">-- x -- x -- m</span>
+                        </div>
+                        <div class="resultado-item">
+                            <span class="label">Volumen de Agua:</span>
+                            <span class="value" id="volumenResult">-- m³</span>
+                        </div>
+                        <div class="resultado-item">
+                            <span class="label">Capacidad:</span>
+                            <span class="value" id="capacidadResult">-- litros</span>
+                        </div>
+                        <div class="resultado-item">
+                            <span class="label">Peso del Agua:</span>
+                            <span class="value" id="pesoResult">-- kN</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🏗️ Cálculos Estructurales</h2>
+                    <div id="calculosResult" class="resultados">
+                        <div class="resultado-item">
+                            <span class="label">Total Habitantes:</span>
+                            <span class="value" id="habitantesResult">--</span>
+                        </div>
+                        <div class="resultado-item">
+                            <span class="label">Dotación Diaria (NCh691):</span>
+                            <span class="value" id="dotacionResult">-- L/día</span>
+                        </div>
+                        <div class="resultado-item">
+                            <span class="label">Volumen Requerido:</span>
+                            <span class="value" id="volRequeridoResult">-- m³</span>
+                        </div>
+                        <div class="resultado-item">
+                            <span class="label">Estado del Diseño:</span>
+                            <span class="value" id="estadoResult">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>⚙️ Sistema de Bombeo</h2>
+                    <div id="bombeoResult" class="resultados">
+                        <div class="resultado-item">
+                            <span class="label">Cantidad de Bombas:</span>
+                            <span class="value" id="numBombasResult">--</span>
+                        </div>
+                        <div class="resultado-item">
+                            <span class="label">Presión Requerida:</span>
+                            <span class="value" id="presionResult">-- m.c.a</span>
+                        </div>
+                        <div class="resultado-item">
+                            <span class="label">Caudal Estimado:</span>
+                            <span class="value" id="caudalResult">-- L/min</span>
+                        </div>
+                        <div class="resultado-item">
+                            <span class="label">Potencia Bomba:</span>
+                            <span class="value" id="potenciaResult">-- HP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🔧 Opciones de Bombas Disponibles</h2>
+                    <div id="opcionesBombas" class="resultados">
+                        <p class="info-text">Presione "Calcular Estanque" para ver las opciones de bombas del mercado chileno.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📏 Dimensionamiento de Tuberías</h2>
+                    <div id="resultadosTuberias" class="resultados">
+                        <p class="info-text">Presione "Calcular Estanque" para ver el dimensionamiento de tuberías según NCh691.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📋 Recomendaciones</h2>
+                    <div id="recomendaciones" class="recomendaciones-lista">
+                        <p class="info-text">Presione "Calcular Estanque" para ver las recomendaciones técnicas.</p>
+                    </div>
+                </div>
+
+                <button id="exportarBtn" class="btn-exportar">📄 Exportar Reporte PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts Originales -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="data/normas-chile.js"></script>
+    <script src="data/tablas-presion.js"></script>
+    <script src="js/validaciones.js"></script>
+    <script src="js/calculos.js"></script>
+    <script src="js/catalogo-bombas.js"></script>
+    <script src="js/calculo-tuberias.js"></script>
+    <script src="js/render3d.js"></script>
+    
+    <!-- ⭐ MÓDULOS DE CORTES (ORDEN IMPORTANTE) ⭐ -->
+    <script src="js/cortes/utilidades-svg.js"></script>
+    <script src="js/cortes/cortes-estanque.js"></script>
+    <script src="js/cortes/cortes-sala.js"></script>
+    <script src="js/cortes/vista-planta.js"></script>
+    <script src="js/cortes/cortes-integrador.js"></script>
+    
+    <!-- ⭐ NUEVOS SCRIPTS - SALA DE BOMBAS ⭐ -->
+    <script src="sala-bombas/utils/materiales.js"></script>
+    <script src="sala-bombas/utils/posicionamiento.js"></script>
+    <script src="sala-bombas/utils/etiquetas.js"></script>
+    <script src="sala-bombas/config/dimensiones-bombas.js"></script>
+    <script src="sala-bombas/modelos/sala-estructura.js"></script>
+    <script src="sala-bombas/modelos/bomba-centrifuga.js"></script>
+    <script src="sala-bombas/modelos/tuberias.js"></script>
+    <script src="sala-bombas/modelos/valvulas.js"></script>
+    <script src="sala-bombas/modelos/accesorios.js"></script>
+    <script src="sala-bombas/sala-bombas.js"></script>
+    
+    <!-- Scripts Finales Originales -->
+    <script src="js/formulario.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

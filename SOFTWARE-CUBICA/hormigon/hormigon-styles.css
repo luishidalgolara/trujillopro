@@ -1,0 +1,266 @@
+/* ========================================
+   ESTILOS MÓDULO HORMIGÓN
+   ======================================== */
+
+/* Canvas en modo hormigón */
+#mainCanvas.hormigon-mode {
+    cursor: crosshair !important;
+}
+
+/* Overlay canvas */
+#overlayCanvas {
+    pointer-events: none;
+    position: absolute;
+    z-index: 10;
+}
+
+/* Botón hormigón activo */
+.btn-tool.hormigon-active {
+    background: #e74c3c !important;
+    color: white !important;
+    border-color: #c0392b !important;
+    box-shadow: 0 0 15px rgba(231, 76, 60, 0.5);
+}
+
+/* Tooltip de coordenadas */
+.hormigon-tooltip {
+    position: fixed;
+    background: rgba(44, 62, 80, 0.95);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    pointer-events: none;
+    z-index: 10000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* Panel de información hormigón */
+.hormigon-info-panel {
+    position: fixed;
+    top: 150px;
+    right: 340px;
+    background: white;
+    border: 3px solid #e74c3c;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    min-width: 250px;
+}
+
+.hormigon-info-panel.hidden {
+    display: none;
+}
+
+.hormigon-info-header {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    padding: 10px;
+    margin: -15px -15px 15px -15px;
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+    text-align: center;
+    font-size: 13px;
+}
+
+.hormigon-info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #ecf0f1;
+    font-size: 12px;
+}
+
+.hormigon-info-item:last-child {
+    border-bottom: none;
+}
+
+.hormigon-info-label {
+    color: #7f8c8d;
+    font-weight: 600;
+}
+
+.hormigon-info-value {
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+/* Botones de acción hormigón */
+.hormigon-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.btn-hormigon {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-hormigon-finish {
+    background: #27ae60;
+    color: white;
+}
+
+.btn-hormigon-finish:hover {
+    background: #229954;
+}
+
+.btn-hormigon-cancel {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn-hormigon-cancel:hover {
+    background: #7f8c8d;
+}
+
+/* Modal resultado hormigón */
+.modal-hormigon-resultado {
+    padding: 20px;
+}
+
+.resultado-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #e74c3c;
+}
+
+.resultado-section h4 {
+    color: #2c3e50;
+    font-size: 14px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.resultado-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #ecf0f1;
+    font-size: 13px;
+}
+
+.resultado-row:last-child {
+    border-bottom: none;
+}
+
+.resultado-label {
+    color: #7f8c8d;
+}
+
+.resultado-value {
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+/* Tabla de polígonos */
+.tabla-poligonos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+.tabla-poligonos th {
+    background: #34495e;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.tabla-poligonos td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.tabla-poligonos tbody tr:hover {
+    background: #f8f9fa;
+}
+
+/* Indicador de punto activo */
+.punto-activo {
+    animation: pulsePoint 1s infinite;
+}
+
+@keyframes pulsePoint {
+    0%, 100% {
+        r: 6;
+        opacity: 1;
+    }
+    50% {
+        r: 8;
+        opacity: 0.7;
+    }
+}
+
+/* Ayuda visual */
+.hormigon-help {
+    position: fixed;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(231, 76, 60, 0.95);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 1000;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.hormigon-help.hidden {
+    display: none;
+}
+
+/* Resaltar área seleccionada */
+.area-hormigon {
+    fill: rgba(231, 76, 60, 0.2);
+    stroke: #e74c3c;
+    stroke-width: 3;
+    pointer-events: none;
+}
+
+/* Badge contador de polígonos */
+.hormigon-counter {
+    position: fixed;
+    top: 120px;
+    right: 20px;
+    background: #e74c3c;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgba(231, 76, 60, 0.4);
+    z-index: 1000;
+}
+
+.hormigon-counter.hidden {
+    display: none;
+}

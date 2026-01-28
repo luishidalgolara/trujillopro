@@ -1,0 +1,107 @@
+/* ========================================
+   CONTENEDOR PRINCIPAL
+   ======================================== */
+.main-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    height: calc(100vh - 140px);
+}
+
+/* ========================================
+   ÁREA DE TRABAJO
+   ======================================== */
+.work-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #bdc3c7;
+    overflow: hidden;
+}
+
+.canvas-title {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    padding: 12px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.canvas-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: auto;
+    position: relative;
+    background: #bdc3c7;
+}
+
+/* ========================================
+   PLACEHOLDER DE CANVAS
+   ======================================== */
+.canvas-placeholder {
+    background: white;
+    border: 3px dashed #bdc3c7;
+    border-radius: 12px;
+    width: 90%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.placeholder-content {
+    text-align: center;
+}
+
+.placeholder-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+    opacity: 0.6;
+}
+
+.placeholder-content h2 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.placeholder-content p {
+    color: #7f8c8d;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.btn-upload {
+    padding: 15px 40px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.btn-upload:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(52, 152, 219, 0.4);
+}
+
+/* ========================================
+   CANVAS PRINCIPAL
+   ======================================== */
+#mainCanvas {
+    max-width: 100%;
+    max-height: 100%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    background: white;
+}

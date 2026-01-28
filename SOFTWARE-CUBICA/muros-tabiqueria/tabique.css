@@ -1,0 +1,363 @@
+/* ========================================
+   MODAL TABIQUERÍA
+   ======================================== */
+
+#modalTabique {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+#modalTabique.active {
+    display: flex;
+}
+
+.modal-tabique-window {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    animation: modalSlideIn 0.3s ease;
+}
+
+.modal-tabique-header {
+    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+    color: white;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px 12px 0 0;
+}
+
+.modal-tabique-title {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-tabique-content {
+    padding: 30px;
+}
+
+/* ========================================
+   FORMULARIO TABIQUE
+   ======================================== */
+
+.form-group-tabique {
+    margin-bottom: 20px;
+}
+
+.form-group-tabique label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.form-group-tabique input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.3s;
+    outline: none;
+}
+
+.form-group-tabique select {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.3s;
+    outline: none;
+    background: white;
+    cursor: pointer;
+}
+
+.form-group-tabique input:focus,
+.form-group-tabique select:focus {
+    border-color: #f39c12;
+    box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.1);
+}
+
+.form-group-tabique input[readonly] {
+    background: #ecf0f1;
+    cursor: not-allowed;
+}
+
+/* ========================================
+   SELECTOR TIPO DE TABIQUERÍA
+   ======================================== */
+
+.tipo-tabique-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.tipo-tabique-option {
+    padding: 20px 15px;
+    border: 3px solid #bdc3c7;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: white;
+}
+
+.tipo-tabique-option:hover {
+    border-color: #f39c12;
+    background: #fef5e7;
+    transform: translateY(-2px);
+}
+
+.tipo-tabique-option.selected {
+    border-color: #f39c12;
+    background: #f39c12;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(243, 156, 18, 0.4);
+}
+
+.tipo-tabique-option .icono {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.tipo-tabique-option .titulo {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.tipo-tabique-option .descripcion {
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+/* ========================================
+   SELECTOR DE ESPESOR
+   ======================================== */
+
+.espesor-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.espesor-option {
+    padding: 18px 12px;
+    border: 2px solid #bdc3c7;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: white;
+}
+
+.espesor-option:hover {
+    border-color: #3498db;
+    background: #ebf5fb;
+}
+
+.espesor-option.selected {
+    border-color: #3498db;
+    background: #3498db;
+    color: white;
+}
+
+.espesor-option .numero {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.espesor-option .texto {
+    font-size: 11px;
+    opacity: 0.9;
+}
+
+/* ========================================
+   RESULTADO CUBICACIÓN
+   ======================================== */
+
+.resultado-cubicacion-tabique {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.resultado-cubicacion-tabique h4 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    opacity: 0.9;
+    text-align: center;
+}
+
+.resultado-cubicacion-tabique .desglose {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.resultado-item {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.resultado-item .label {
+    font-size: 11px;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+.resultado-item .valor {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* ========================================
+   BOTONES MODAL TABIQUE
+   ======================================== */
+
+.modal-tabique-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.btn-tabique {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-tabique-guardar {
+    background: #27ae60;
+    color: white;
+}
+
+.btn-tabique-guardar:hover {
+    background: #229954;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+}
+
+.btn-tabique-eliminar {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-tabique-eliminar:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+.btn-tabique-cancelar {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn-tabique-cancelar:hover {
+    background: #7f8c8d;
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   GRID DE CAMPOS
+   ======================================== */
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* ========================================
+   AYUDA Y NOTAS
+   ======================================== */
+
+.nota-ayuda {
+    background: #e8f5e9;
+    border-left: 4px solid #27ae60;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #2c3e50;
+    margin-top: 20px;
+}
+
+.nota-ayuda strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #27ae60;
+}
+
+/* ========================================
+   SELECTOR DE SEPARACIÓN
+   ======================================== */
+
+.separacion-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.separacion-option {
+    padding: 15px;
+    border: 2px solid #bdc3c7;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: white;
+}
+
+.separacion-option:hover {
+    border-color: #f39c12;
+    background: #fef5e7;
+}
+
+.separacion-option.selected {
+    border-color: #f39c12;
+    background: #f39c12;
+    color: white;
+}
+
+.separacion-option .numero {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.separacion-option .texto {
+    font-size: 11px;
+    opacity: 0.8;
+}

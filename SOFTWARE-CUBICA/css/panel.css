@@ -1,0 +1,72 @@
+/* ========================================
+   PANEL LATERAL DERECHO
+   ======================================== */
+.right-panel {
+    width: 300px;
+    background: white;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.panel-header {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    padding: 16px;
+    text-align: center;
+}
+
+.panel-header h3 {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.panel-header p {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.panel-content {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    max-height: calc(100vh - 220px);
+}
+
+/* ========================================
+   TARJETAS DE INFORMACIÓN
+   ======================================== */
+.info-card {
+    background: #f8f9fa;
+    border-left: 4px solid #e74c3c;
+    padding: 14px;
+    margin-bottom: 14px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.info-card h4 {
+    color: #2c3e50;
+    font-size: 14px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info-card ul {
+    list-style: none;
+}
+
+.info-card li {
+    color: #34495e;
+    font-size: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.info-card li:last-child {
+    border-bottom: none;
+}

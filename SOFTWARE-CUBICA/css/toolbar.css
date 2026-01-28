@@ -1,0 +1,90 @@
+/* ========================================
+   BARRA DE HERRAMIENTAS - 2 FILAS
+   ======================================== */
+.toolbar {
+    background: white;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-bottom: 3px solid #e74c3c;
+    min-width: 100%;
+}
+
+.toolbar-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.toolbar-section {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 8px;
+    border-right: 2px solid #ecf0f1;
+    flex-shrink: 0;
+}
+
+.toolbar-section:last-child {
+    border-right: none;
+}
+
+.toolbar-label {
+    font-size: 12px;
+    font-weight: bold;
+    color: #2c3e50;
+    white-space: nowrap;
+}
+
+/* ========================================
+   BOTONES DE HERRAMIENTAS
+   ======================================== */
+.btn-tool {
+    padding: 7px 11px;
+    border: 2px solid #bdc3c7;
+    background: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.btn-tool:hover {
+    background: #ecf0f1;
+    border-color: #3498db;
+    transform: translateY(-1px);
+}
+
+.btn-tool.active {
+    background: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+.btn-danger {
+    background: #e74c3c;
+    color: white;
+    border-color: #e74c3c;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+}
+
+/* ========================================
+   SECCIÓN ACCIONES
+   ======================================== */
+.section-acciones {
+    border-right: none;
+}
+
+.section-acciones .btn-tool {
+    font-weight: bold;
+    padding: 8px 16px;
+    font-size: 12px;
+}

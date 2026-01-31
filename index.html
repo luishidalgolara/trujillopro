@@ -28,6 +28,17 @@
             filter: drop-shadow(0 6px 20px rgba(220, 38, 38, 0.4));
         }
 
+        .patent-seal-2 {
+            position: absolute;
+            top: 400px;
+            right: 200px;
+            width: 280px;
+            height: 280px;
+            z-index: 10;
+            animation: fadeInSeal 1.2s ease-out;
+            filter: drop-shadow(0 6px 20px rgba(220, 38, 38, 0.4));
+        }
+
         @keyframes fadeInSeal {
             from {
                 opacity: 0;
@@ -44,12 +55,24 @@
             transition: transform 0.3s ease;
         }
 
+        .patent-seal-2:hover {
+            transform: scale(1.05) rotate(2deg);
+            transition: transform 0.3s ease;
+        }
+
         @media (max-width: 768px) {
             .patent-seal {
                 width: 160px;
                 height: 160px;
                 top: 80px;
                 left: 20px;
+            }
+            
+            .patent-seal-2 {
+                width: 160px;
+                height: 160px;
+                top: 80px;
+                right: 20px;
             }
         }
     </style>
@@ -127,6 +150,66 @@
             <!-- Número de certificado -->
             <text x="100" y="162" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#dc2626" text-anchor="middle">
                 Nº 2026-A-425
+            </text>
+            
+            <!-- Detalles de textura adicionales -->
+            <circle cx="100" cy="100" r="92" fill="none" stroke="#dc2626" stroke-width="0.8" opacity="0.4"/>
+        </svg>
+        
+        <!-- SEGUNDO TIMBRE OFICIAL DE PATENTE -->
+        <svg class="patent-seal-2" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <radialGradient id="stampGradient2">
+                    <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1"/>
+                    <stop offset="100%" style="stop-color:#991b1b;stop-opacity:1"/>
+                </radialGradient>
+            </defs>
+            
+            <!-- Círculo exterior -->
+            <circle cx="100" cy="100" r="95" fill="none" stroke="#dc2626" stroke-width="4" opacity="0.95"/>
+            <circle cx="100" cy="100" r="88" fill="none" stroke="#dc2626" stroke-width="2.5" opacity="0.9"/>
+            
+            <!-- Texto curvo superior: PRODUCTO PATENTADO -->
+            <path id="curveTop2" d="M 35,70 A 65,50 0 0,1 165,70" fill="none"/>
+            <text font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#dc2626" letter-spacing="3">
+                <textPath href="#curveTop2" startOffset="50%" text-anchor="middle">
+                    PRODUCTO PATENTADO
+                </textPath>
+            </text>
+            
+            <!-- Texto curvo inferior: DEPARTAMENTO DE DERECHOS INTELECTUALES -->
+            <path id="curveBottom2" d="M 20,100 A 80,80 0 0,0 180,100" fill="none"/>
+            <text font-family="Arial, sans-serif" font-size="7" font-weight="600" fill="#dc2626" letter-spacing="1">
+                <textPath href="#curveBottom2" startOffset="50%" text-anchor="middle">
+                    DEPARTAMENTO DE DERECHOS INTELECTUALES
+                </textPath>
+            </text>
+            
+            <!-- Texto central: SERVICIO NACIONAL -->
+            <text x="100" y="80" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#dc2626" text-anchor="middle">
+                SERVICIO NACIONAL
+            </text>
+            <text x="100" y="96" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#dc2626" text-anchor="middle">
+                DEL PATRIMONIO
+            </text>
+            <text x="100" y="112" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#dc2626" text-anchor="middle">
+                CULTURAL
+            </text>
+            
+            <!-- Línea divisoria -->
+            <line x1="50" y1="122" x2="150" y2="122" stroke="#dc2626" stroke-width="1.5" opacity="0.7"/>
+            
+            <!-- Texto inferior: Ministerio -->
+            <text x="100" y="134" font-family="Arial, sans-serif" font-size="6.5" font-weight="600" fill="#dc2626" text-anchor="middle">
+                (MINISTERIO DE LAS CULTURAS,
+            </text>
+            <text x="100" y="144" font-family="Arial, sans-serif" font-size="6.5" font-weight="600" fill="#dc2626" text-anchor="middle">
+                LAS ARTES Y EL PATRIMONIO)
+            </text>
+            
+            <!-- Número de certificado -->
+            <text x="100" y="162" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#dc2626" text-anchor="middle">
+                Nº 2026-A-256
             </text>
             
             <!-- Detalles de textura adicionales -->

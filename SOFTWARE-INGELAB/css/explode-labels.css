@@ -1,0 +1,226 @@
+/* ============================================================================
+   ESTILOS DE ETIQUETAS EXPLOSIVAS - MEJORADO PARA MAYOR VISIBILIDAD
+   ============================================================================
+   Archivo: css/explode-labels.css
+   Descripción: Etiquetas con líneas conectoras para vista explosiva
+   ============================================================================ */
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.explode-labels-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    overflow: hidden;
+}
+
+.explode-labels-container.visible {
+    opacity: 1;
+}
+
+/* --- CAPA SVG PARA LÍNEAS --- */
+.explode-labels-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* --- CAPA HTML PARA ETIQUETAS --- */
+.explode-labels-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* ============================================================================
+   LÍNEAS CONECTORAS SVG - MEJORADAS PARA MAYOR VISIBILIDAD
+   ============================================================================ */
+
+.explode-connector-line {
+    opacity: 0;
+    animation: explodeLine 0.5s ease-out forwards;
+}
+
+@keyframes explodeLine {
+    0% {
+        opacity: 0;
+        stroke-dashoffset: 100;
+    }
+    100% {
+        opacity: 1;
+        stroke-dashoffset: 0;
+    }
+}
+
+/* ============================================================================
+   PUNTOS DE ANCLAJE - MEJORADOS
+   ============================================================================ */
+
+.explode-anchor-dot {
+    opacity: 0;
+    animation: explodeDot 0.4s ease-out forwards;
+}
+
+.explode-anchor-halo {
+    opacity: 0;
+    animation: explodeHalo 0.6s ease-out forwards;
+}
+
+@keyframes explodeDot {
+    0% {
+        opacity: 0;
+        r: 0;
+    }
+    60% {
+        r: 6;
+    }
+    100% {
+        opacity: 1;
+        r: 4;
+    }
+}
+
+@keyframes explodeHalo {
+    0% {
+        opacity: 0;
+        r: 0;
+    }
+    100% {
+        opacity: 0.8;
+        r: 7;
+    }
+}
+
+/* ============================================================================
+   ETIQUETAS DE TEXTO - MEJORADAS PARA MÁXIMA VISIBILIDAD
+   ============================================================================ */
+
+.explode-label {
+    position: absolute;
+    width: 260px;
+    background: rgba(20, 30, 48, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 10px;
+    padding: 12px 16px;
+    border-left: 4px solid #3498db;
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.5),
+        0 0 2px rgba(255, 255, 255, 0.2) inset,
+        0 0 20px rgba(52, 152, 219, 0.3);
+    
+    /* Animación de entrada */
+    opacity: 0;
+    transform: translateY(8px);
+    animation: explodeLabelIn 0.5s ease-out forwards;
+}
+
+.explode-label.label-left {
+    text-align: right;
+    border-left: none;
+    border-right: 4px solid #3498db;
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.5),
+        0 0 2px rgba(255, 255, 255, 0.2) inset,
+        0 0 20px rgba(52, 152, 219, 0.3);
+}
+
+.explode-label.label-right {
+    text-align: left;
+}
+
+@keyframes explodeLabelIn {
+    0% {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- HEADER DE ETIQUETA --- */
+.explode-label-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.label-left .explode-label-header {
+    flex-direction: row-reverse;
+}
+
+.explode-label-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.5));
+}
+
+.explode-label-name {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* --- DESCRIPCIÓN --- */
+.explode-label-desc {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(230, 240, 255, 0.95);
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 1200px) {
+    .explode-label {
+        width: 220px;
+        padding: 10px 14px;
+    }
+    
+    .explode-label-name {
+        font-size: 13px;
+    }
+    
+    .explode-label-desc {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 768px) {
+    .explode-label {
+        width: 180px;
+        padding: 8px 12px;
+    }
+    
+    .explode-label-name {
+        font-size: 12px;
+    }
+    
+    .explode-label-desc {
+        font-size: 10px;
+    }
+}

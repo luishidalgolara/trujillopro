@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Educativo 3D - Estructuras de Construcción</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ui.css">
+    
+    <!-- ✨ Sistema Educativo CSS -->
+    <link rel="stylesheet" href="css/educational.css">
+    
+    <!-- ✨ Sistema de Instalaciones CSS -->
+    <link rel="stylesheet" href="css/installations.css">
+    
+    <!-- ✨ Etiquetas Explosivas CSS -->
+    <link rel="stylesheet" href="css/explode-labels.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="logo">
+            <h1>🏗️ IngeLab 3D</h1>
+            <p>Sistema Educativo Interactivo</p>
+        </div>
+        <div class="header-info">
+            <span class="version">v1.0</span>
+        </div>
+    </header>
+
+    <!-- Contenedor Principal -->
+    <div class="container">
+        <!-- Panel Lateral -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>🏢 Tipo de Edificio</h3>
+                <div class="building-selector">
+                    <button class="building-btn active" data-levels="1">
+                        <span class="icon">🏠</span>
+                        <span>1 Nivel</span>
+                    </button>
+                    <button class="building-btn" data-levels="2">
+                        <span class="icon">🏘️</span>
+                        <span>2 Niveles</span>
+                    </button>
+                    <button class="building-btn" data-levels="3">
+                        <span class="icon">🏢</span>
+                        <span>3 Niveles</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>📦 Componentes Estructurales</h3>
+                <div class="components-list" id="componentsList">
+                    <!-- Se llenará dinámicamente -->
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>🎮 Controles</h3>
+                <div class="controls-info">
+                    <div class="control-item">
+                        <span class="control-icon">🖱️</span>
+                        <span>Arrastrar: Rotar</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="control-icon">🔍</span>
+                        <span>Scroll: Zoom</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="control-icon">👆</span>
+                        <span>Click derecho: Pan</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>⚙️ Opciones de Vista</h3>
+                <div class="view-options">
+                    <!-- ✨ NUEVO: Botón Sistema Educativo -->
+                    <button class="option-btn educational-active" id="educationalBtn">
+                        <span>📚</span> Modo Educativo
+                    </button>
+                    
+                    <button class="option-btn" id="explodeBtn">
+                        <span>📤</span> Vista Explosiva
+                    </button>
+                    <button class="option-btn" id="resetViewBtn">
+                        <span>🔄</span> Reiniciar Vista
+                    </button>
+                    <button class="option-btn" id="labelsBtn">
+                        <span>🏷️</span> Etiquetas
+                    </button>
+                    <button class="option-btn" id="transparencyBtn">
+                        <span>👁️</span> Ver Fierros
+                    </button>
+                    <button class="option-btn" id="plumbingBtn">
+                        <span>🚰</span> Ver Tuberías
+                    </button>
+                    <button class="option-btn" id="installationsBtn">
+                        <span>📋</span> Instalaciones
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Área de Visualización 3D -->
+        <main class="viewer-container">
+            <div id="canvas-container"></div>
+            
+            <!-- Panel de Información -->
+            <div class="info-panel" id="infoPanel">
+                <div class="info-header">
+                    <h4 id="componentName">Selecciona un componente</h4>
+                    <button class="close-btn" id="closePanelBtn">✕</button>
+                </div>
+                <div class="info-content" id="infoContent">
+                    <p>Haz clic en cualquier componente del edificio para ver información detallada.</p>
+                </div>
+            </div>
+
+            <!-- Indicador de carga -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Cargando modelo 3D...</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>Sistema Educativo de Construcción 3D | Desarrollado con Three.js</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/data/estructuras.js"></script>
+    <script src="js/scene.js"></script>
+    <script src="js/materials.js"></script>
+    
+    <!-- ✨ Scripts de Ventanas y Puertas (ANTES de models.js) -->
+    <script src="js/openings/config.js"></script>
+    <script src="js/openings/materials.js"></script>
+    <script src="js/openings/geometry.js"></script>
+    <script src="js/openings/manager.js"></script>
+    
+    <script src="js/models.js"></script>
+    
+    <!-- Scripts de Enfierradura -->
+    <script src="js/reinforcement/config.js"></script>
+    <script src="js/reinforcement/geometry.js"></script>
+    <script src="js/reinforcement/foundation.js"></script>
+    <script src="js/reinforcement/columns.js"></script>
+    <script src="js/reinforcement/beams.js"></script>
+    <script src="js/reinforcement/slabs.js"></script>
+    <script src="js/reinforcement/manager.js"></script>
+    
+    <!-- Scripts de Tuberías de Alcantarillado -->
+    <script src="js/plumbing/config.js"></script>
+    <script src="js/plumbing/geometry.js"></script>
+    <script src="js/plumbing/boxes.js"></script>
+    <script src="js/plumbing/pipes.js"></script>
+    <script src="js/plumbing/manager.js"></script>
+    
+    <!-- ✨ Scripts de Instalaciones -->
+    <script src="js/installations/config.js"></script>
+    <script src="js/installations/manager.js"></script>
+    <script src="js/installations/panel.js"></script>
+    
+    <!-- ✨ Scripts del Sistema Educativo -->
+    <script src="js/educational/config.js"></script>
+    <script src="js/educational/markers.js"></script>
+    <script src="js/educational/infoPanel.js"></script>
+    <script src="js/educational/interaction.js"></script>
+    <script src="js/educational/manager.js"></script>
+    
+    <!-- ✨ Scripts de Etiquetas Explosivas -->
+    <script src="js/explode-labels/config.js"></script>
+    <script src="js/explode-labels/renderer.js"></script>
+    <script src="js/explode-labels/manager.js"></script>
+    
+    <script src="js/controls.js"></script>
+    <script src="js/ui.js"></script>
+    
+    <!-- Script principal DEBE IR AL FINAL -->
+    <script src="js/main.js"></script>
+</body>
+</html>

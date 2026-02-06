@@ -1,0 +1,174 @@
+/* Modal de Certificados */
+.certificate-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    animation: fadeIn 0.3s ease;
+}
+
+.certificate-modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.certificate-modal-content {
+    position: relative;
+    background-color: #1a1a1a;
+    width: 90%;
+    max-width: 900px;
+    height: 90vh;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.4s ease;
+}
+
+.certificate-modal-header {
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #dc2626;
+}
+
+.certificate-modal-header h3 {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.certificate-modal-header h3::before {
+    content: "📜";
+    font-size: 1.6rem;
+}
+
+.certificate-modal-close {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.certificate-modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+    border-color: white;
+}
+
+.certificate-modal-body {
+    width: 100%;
+    height: calc(100% - 140px);
+    padding: 0;
+    background: #0a0a0a;
+}
+
+.certificate-modal-body iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white;
+}
+
+.certificate-modal-footer {
+    background: #1a1a1a;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid #333;
+}
+
+.certificate-info {
+    color: #999;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.certificate-info strong {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+/* Hacer los timbres clickeables */
+.patent-seal,
+.patent-seal-2 {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    pointer-events: all;
+}
+
+.patent-seal *,
+.patent-seal-2 * {
+    pointer-events: none;
+}
+
+.patent-seal:hover,
+.patent-seal-2:hover {
+    transform: scale(1.08) rotate(3deg) !important;
+    filter: drop-shadow(0 8px 25px rgba(220, 38, 38, 0.6)) !important;
+}
+
+.patent-seal:active,
+.patent-seal-2:active {
+    transform: scale(0.95) rotate(-2deg) !important;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .certificate-modal-content {
+        width: 95%;
+        height: 95vh;
+    }
+    
+    .certificate-modal-header h3 {
+        font-size: 1.1rem;
+    }
+    
+    .certificate-modal-close {
+        width: 35px;
+        height: 35px;
+        font-size: 28px;
+    }
+}

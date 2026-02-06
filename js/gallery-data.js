@@ -43,6 +43,17 @@ const galleryContent = {
         { title: 'Vista Adicional 2', image: 'ESTRUCTURAL/EST8.png' },
         { title: 'Vista Adicional 3', image: 'ESTRUCTURAL/EST9.png' }
     ],
+    ingelab: [
+        { title: 'ingeLAB - Vista 1', image: 'INGELAB/1LAB.png' },
+        { title: 'ingeLAB - Vista 2', image: 'INGELAB/2LAB.png' },
+        { title: 'ingeLAB - Vista 3', image: 'INGELAB/3LAB.png' },
+        { title: 'ingeLAB - Vista 4', image: 'INGELAB/4LAB.png' },
+        { title: 'ingeLAB - Vista 5', image: 'INGELAB/5LAB.png' },
+        { title: 'ingeLAB - Vista 6', image: 'INGELAB/6LAB.png' },
+        { title: 'ingeLAB - Vista 7', image: 'INGELAB/7LAB.png' },
+        { title: 'ingeLAB - Vista 8', image: 'INGELAB/8LAB.png' },
+        { title: 'ingeLAB - Vista 9', image: 'INGELAB/9LAB.png' }
+    ],
     tank: [
         { title: 'Estanque - Vista 1', image: 'ESTANQUE-AP/ESTANQUE-1.png' },
         { title: 'Estanque - Vista 2', image: 'ESTANQUE-AP/ESTANQUE-2.png' },
@@ -79,6 +90,12 @@ const galleryContent = {
             title: 'Elétrico - Cálculo y Automatización eléctrico', 
             video: 'VIDEOS/3-ELECTRICO.mp4',
             description: 'Demostración completa del módulo eléctrico en acción',
+            duration: 'Video demostrativo'
+        },
+        { 
+            title: 'ingeLAB - Sistema Educativo 3D', 
+            video: 'VIDEOS/4-INGELAB.mp4',
+            description: 'Sistema educativo interactivo de estructuras 3D en acción',
             duration: 'Video demostrativo'
         }
     ]

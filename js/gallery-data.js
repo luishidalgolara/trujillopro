@@ -73,6 +73,18 @@ const galleryContent = {
         { title: 'Cubicación - Vista 6', image: 'CUBICACION-TR/CUBICA-6.png' },
         { title: 'Cubicación - Vista 7', image: 'CUBICACION-TR/CUBICA-7.png' }
     ],
+    medical3d: [
+        { title: 'Medical 3D - Vista 1', image: 'MEDICAL-3D/MED1.png' },
+        { title: 'Medical 3D - Vista 2', image: 'MEDICAL-3D/MED2.png' },
+        { title: 'Medical 3D - Vista 3', image: 'MEDICAL-3D/MED3.png' },
+        { title: 'Medical 3D - Vista 4', image: 'MEDICAL-3D/MED4.png' },
+        { title: 'Medical 3D - Vista 5', image: 'MEDICAL-3D/MED5.png' },
+        { title: 'Medical 3D - Vista 6', image: 'MEDICAL-3D/MED6.png' },
+        { title: 'Medical 3D - Vista 7', image: 'MEDICAL-3D/MED7.png' },
+        { title: 'Medical 3D - Vista 8', image: 'MEDICAL-3D/MED8.png' },
+        { title: 'Medical 3D - Vista 9', image: 'MEDICAL-3D/MED9.png' },
+        { title: 'Medical 3D - Vista 10', image: 'MEDICAL-3D/MED10.png' }
+    ],
     
     videos: [        
         { 

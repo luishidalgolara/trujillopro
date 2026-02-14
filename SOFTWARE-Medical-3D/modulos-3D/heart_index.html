@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corazón Humano 3D — Plataforma Médica In Silico</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#0a0810;--panel:rgba(14,12,24,0.88);--card:rgba(22,18,38,0.75);--accent:#e05050;--accent-glow:rgba(224,80,80,0.25);--cyan:#5cc8d4;--cyan-glow:rgba(92,200,212,0.2);--text:#e8ecf4;--text2:#8a94a8;--dim:#555f73;--border:rgba(255,255,255,0.06);--glass:rgba(255,255,255,0.03)}
+        body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow:hidden;height:100vh}
+
+        .header{position:fixed;top:0;left:0;right:0;height:52px;background:var(--panel);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px;z-index:100}
+        .header h1{font-size:.9rem;font-weight:600;letter-spacing:-.02em}
+        .header span{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);text-transform:uppercase;letter-spacing:.1em}
+        .header-r{display:flex;align-items:center;gap:14px}
+        .sdot{width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px rgba(74,222,128,.5);animation:pd 2s infinite}
+        @keyframes pd{0%,100%{opacity:1}50%{opacity:.5}}
+        .fps{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim)}
+
+        #mainCanvas{position:fixed;top:52px;left:0;width:100%;height:calc(100vh - 52px)}
+
+        .loading-screen{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;transition:opacity .8s,visibility .8s}
+        .loading-screen.hidden{opacity:0;visibility:hidden;pointer-events:none}
+        .lb-icon{font-size:3.5rem}
+        @keyframes hb{0%,100%{transform:scale(1)}14%{transform:scale(1.18)}28%{transform:scale(1)}42%{transform:scale(1.12)}70%{transform:scale(1)}}
+        .hb{animation:hb 1.2s ease-in-out infinite;display:inline-block}
+        .lb-bar{width:180px;height:2px;background:var(--border);border-radius:2px;margin-top:20px;overflow:hidden}
+        .lb-fill{height:100%;background:linear-gradient(90deg,#cc3333,var(--accent));width:0%;transition:width .3s;border-radius:2px}
+        .lb-txt{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim);margin-top:10px}
+
+        .info-panel{position:fixed;top:66px;right:14px;width:290px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:14px;padding:18px;z-index:50;transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .4s}
+        .info-panel.hide{transform:translateX(310px);opacity:0}
+        .ip-tag{font-size:.6rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:10px}
+        .ip-name{font-size:1.3rem;font-weight:700;letter-spacing:-.03em;margin-bottom:3px}
+        .ip-sys{font-size:.78rem;color:var(--cyan);margin-bottom:10px}
+        .ip-desc{font-size:.78rem;line-height:1.5;color:var(--text2);margin-bottom:14px}
+        .ip-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+        .st-card{background:var(--glass);border:1px solid var(--border);border-radius:9px;padding:9px 10px}
+        .st-label{font-size:.6rem;color:var(--dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.05em}
+        .st-val{font-size:.85rem;font-weight:600;margin-top:1px}
+
+        .hl-panel{position:fixed;top:66px;left:14px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:12px;z-index:50;max-height:calc(100vh - 160px);overflow-y:auto}
+        .hl-panel::-webkit-scrollbar{width:4px}
+        .hl-panel::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+        .hl-title{font-size:.6rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:8px}
+        .hl-sep{font-size:.55rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:8px 0 4px 10px;opacity:.6}
+        .hl-btn{display:flex;align-items:center;gap:8px;width:100%;padding:7px 10px;border:1px solid transparent;border-radius:7px;background:0 0;color:var(--text2);font-size:.78rem;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;margin-bottom:2px}
+        .hl-btn:hover{background:var(--glass);color:var(--text)}
+        .hl-btn.active{background:var(--cyan-glow);border-color:rgba(92,200,212,.3);color:var(--cyan)}
+        .hl-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+        .ctrl-bar{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:5px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:7px;z-index:50}
+        .cb{width:40px;height:40px;border-radius:9px;border:1px solid transparent;background:0 0;color:var(--text2);font-size:1.05rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+        .cb:hover{background:var(--glass);border-color:var(--border);color:var(--text)}
+        .cb.active{background:var(--accent-glow);border-color:var(--accent);color:var(--accent)}
+        .cd{width:1px;background:var(--border);margin:4px 1px}
+
+        .pp-panel{position:fixed;bottom:75px;left:50%;transform:translateX(-50%);background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:14px;z-index:50;min-width:220px;display:none}
+        .pp-panel.vis{display:block}
+        .pp-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+        .pp-row label{font-size:.72rem;color:var(--text2)}
+        .pp-row input[type=range]{width:100px;height:3px;-webkit-appearance:none;background:var(--border);border-radius:2px;outline:0}
+        .pp-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;background:var(--accent);cursor:pointer}
+
+        .credit{position:fixed;bottom:70px;right:14px;font-size:.55rem;color:var(--dim);font-family:'Space Mono',monospace;z-index:50;text-align:right;line-height:1.4}
+        .credit a{color:var(--dim);text-decoration:underline;text-decoration-color:rgba(255,255,255,.1)}
+
+        /* Heartbeat BPM indicator */
+        .bpm-indicator{position:fixed;top:66px;left:50%;transform:translateX(-50%);background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:10px;padding:6px 16px;z-index:50;display:flex;align-items:center;gap:10px}
+        .bpm-pulse{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px rgba(224,80,80,.6)}
+        @keyframes bpmPulse{0%,70%,100%{transform:scale(1);opacity:.7}10%{transform:scale(1.5);opacity:1}25%{transform:scale(1);opacity:.7}35%{transform:scale(1.3);opacity:1}}
+        .bpm-pulse{animation:bpmPulse 1s ease-in-out infinite}
+        .bpm-line{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--accent)}
+        .bpm-val{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim)}
+
+        /* ═══ ADDED: Back button ═══ */
+        .back-btn{display:flex;align-items:center;gap:7px;padding:0 12px;height:32px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:8px;color:var(--text2);font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:500;cursor:pointer;transition:all .25s ease;text-decoration:none;flex-shrink:0}
+        .back-btn:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.12);color:var(--text)}
+        .back-btn svg{width:14px;height:14px;opacity:.6;transition:all .25s ease}
+        .back-btn:hover svg{opacity:1;transform:translateX(-2px)}
+        .cb.lbl-active{background:var(--accent-glow) !important;border-color:var(--accent) !important;color:var(--accent) !important}
+    </style>
+</head>
+<body>
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon"><span class="hb">🫀</span></div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <a href="../index.html" class="back-btn" title="Volver a módulos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg></a>
+            <span style="font-size:1.3rem" class="hb">🫀</span>
+            <div><h1>Plataforma Médica In Silico</h1><span>Modelo Anatómico 3D — Corazón Humano</span></div>
+        </div>
+        <div class="header-r"><div class="fps" id="fps">-- FPS</div><div class="sdot"></div></div>
+    </div>
+
+    <canvas id="mainCanvas"></canvas>
+
+    <div class="bpm-indicator">
+        <div class="bpm-pulse"></div>
+        <div class="bpm-line">♥ BPM</div>
+        <div class="bpm-val" id="bpmVal">72</div>
+    </div>
+
+    <div class="hl-panel">
+        <div class="hl-title">Estructuras</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#cc5555"></span>Corazón completo</button>
+        <div class="hl-sep">— Cámaras —</div>
+        <button class="hl-btn" data-part="ra"><span class="hl-dot" style="background:#6688bb"></span>Aurícula derecha</button>
+        <button class="hl-btn" data-part="rv"><span class="hl-dot" style="background:#5577aa"></span>Ventrículo derecho</button>
+        <button class="hl-btn" data-part="la"><span class="hl-dot" style="background:#cc4444"></span>Aurícula izquierda</button>
+        <button class="hl-btn" data-part="lv"><span class="hl-dot" style="background:#bb3333"></span>Ventrículo izquierdo</button>
+        <div class="hl-sep">— Vasos principales —</div>
+        <button class="hl-btn" data-part="aorta"><span class="hl-dot" style="background:#ee5555"></span>Aorta</button>
+        <button class="hl-btn" data-part="pulmonary"><span class="hl-dot" style="background:#5577cc"></span>Arteria pulmonar</button>
+        <button class="hl-btn" data-part="vena_cava"><span class="hl-dot" style="background:#4466aa"></span>Venas cavas</button>
+        <div class="hl-sep">— Válvulas —</div>
+        <button class="hl-btn" data-part="valves"><span class="hl-dot" style="background:#ddaa88"></span>Válvulas cardíacas</button>
+        <div class="hl-sep">— Sistema —</div>
+        <button class="hl-btn" data-part="conduction"><span class="hl-dot" style="background:#eedd55"></span>Sist. de conducción</button>
+        <button class="hl-btn" data-part="coronary"><span class="hl-dot" style="background:#ee7755"></span>Arterias coronarias</button>
+    </div>
+
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Corazón Humano</div>
+        <div class="ip-sys" id="ipS">Sistema Cardiovascular</div>
+        <div class="ip-desc" id="ipD">Órgano muscular hueco que funciona como bomba doble. El lado derecho recibe sangre desoxigenada y la envía a los pulmones; el izquierdo recibe sangre oxigenada y la impulsa al resto del cuerpo a través de la aorta.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Peso</div><div class="st-val">~300 g</div></div>
+            <div class="st-card"><div class="st-label">Frecuencia</div><div class="st-val">60-100 bpm</div></div>
+            <div class="st-card"><div class="st-label">Gasto cardíaco</div><div class="st-val">~5 L/min</div></div>
+            <div class="st-card"><div class="st-label">Cámaras</div><div class="st-val">4</div></div>
+        </div>
+    </div>
+
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Anterior">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Posterior">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+        <div class="cd"></div>
+        <button class="cb lbl-active" id="bLbl" title="Etiquetas numéricas">🏷️</button>
+    </div>
+
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="15"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="120"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="35"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="30"></div>
+    </div>
+
+    <div class="credit">Modelo: <a href="https://sketchfab.com/3d-models/heart-764e3bbc71664221bb123eef5c47fee8" target="_blank">"Heart"</a> por rbproduction160<br>CC-BY-NC-4.0</div>
+
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+    <script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
+import {ShaderPass} from 'three/addons/postprocessing/ShaderPass.js';
+import {SMAAPass} from 'three/addons/postprocessing/SMAAPass.js';
+
+const $=id=>document.getElementById(id);
+const lbFill=$('lbFill'), lbTxt=$('lbTxt'), ls=$('ls');
+const setLoad=(p,t)=>{lbFill.style.width=p+'%';lbTxt.textContent=t};
+
+setLoad(10,'Configurando escena...');
+const canvas=$('mainCanvas');
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x0a0810);
+scene.fog=new THREE.FogExp2(0x0a0810, 0.045);
+
+const camera=new THREE.PerspectiveCamera(45, innerWidth/(innerHeight-52), 0.01, 100);
+camera.position.set(3, 1.5, 4);
+
+const renderer=new THREE.WebGLRenderer({canvas, antialias:true, powerPreference:'high-performance'});
+renderer.setSize(innerWidth, innerHeight-52);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.shadowMap.enabled=true;
+renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure=1.2;
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.useLegacyLights=false;
+
+const ctrl=new OrbitControls(camera, canvas);
+ctrl.enableDamping=true; ctrl.dampingFactor=0.06;
+ctrl.rotateSpeed=0.7; ctrl.zoomSpeed=0.8;
+ctrl.minDistance=1.5; ctrl.maxDistance=10;
+ctrl.target.set(0, 0, 0);
+ctrl.autoRotate=true; ctrl.autoRotateSpeed=0.5;
+
+setLoad(20,'Generando environment...');
+const pmrem=new THREE.PMREMGenerator(renderer);
+pmrem.compileEquirectangularShader();
+const envSc=new THREE.Scene();
+envSc.add(new THREE.Mesh(
+    new THREE.SphereGeometry(10, 32, 32),
+    new THREE.ShaderMaterial({
+        side: THREE.BackSide,
+        vertexShader:`varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+        fragmentShader:`varying vec3 vP;void main(){
+            vec3 d=normalize(vP);float y=d.y*.5+.5;
+            vec3 c=mix(vec3(.05,.03,.06),mix(vec3(.08,.05,.1),vec3(.12,.08,.15),smoothstep(.4,1.,y)),smoothstep(0.,.4,y));
+            c+=vec3(.35,.12,.1)*pow(max(0.,dot(d,normalize(vec3(1.,.4,.5)))),7.)*.3;
+            c+=vec3(.15,.08,.15)*pow(max(0.,dot(d,normalize(vec3(-.7,.3,-.6)))),5.)*.2;
+            gl_FragColor=vec4(c,1.);}`
+    })
+));
+scene.environment=pmrem.fromScene(envSc, 0.04).texture;
+pmrem.dispose();
+
+setLoad(30,'Iluminación...');
+scene.add(new THREE.HemisphereLight(0x886677, 0x221111, 0.5));
+const keyLight=new THREE.DirectionalLight(0xffeedd, 3.0);
+keyLight.position.set(4, 5, 5);
+keyLight.castShadow=true;
+keyLight.shadow.mapSize.set(2048, 2048);
+keyLight.shadow.camera.near=0.1; keyLight.shadow.camera.far=15;
+keyLight.shadow.camera.left=-3; keyLight.shadow.camera.right=3;
+keyLight.shadow.camera.top=3; keyLight.shadow.camera.bottom=-3;
+keyLight.shadow.bias=-0.0005; keyLight.shadow.normalBias=0.02;
+scene.add(keyLight);
+const fillLight=new THREE.DirectionalLight(0x7788aa, 1.0);
+fillLight.position.set(-4, 2, -2); scene.add(fillLight);
+const rimLight=new THREE.DirectionalLight(0xffaa88, 1.8);
+rimLight.position.set(-2, -1, -5); scene.add(rimLight);
+const topLight=new THREE.DirectionalLight(0xddeeff, 0.5);
+topLight.position.set(0, 7, 0); scene.add(topLight);
+const sssLight1=new THREE.PointLight(0xff5544, 0.6, 10);
+sssLight1.position.set(0, -2, 2); scene.add(sssLight1);
+const sssLight2=new THREE.PointLight(0xff6644, 0.3, 8);
+sssLight2.position.set(2, 0, -2); scene.add(sssLight2);
+
+setLoad(40,'Post-processing...');
+const composer=new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const bloom=new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 0.15, 0.5, 0.85);
+composer.addPass(bloom);
+const cgShader={
+    uniforms:{tDiffuse:{value:null}, sss:{value:0.35}, vign:{value:0.3}},
+    vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+    fragmentShader:`uniform sampler2D tDiffuse;uniform float sss;uniform float vign;varying vec2 vUv;
+    void main(){
+        vec4 tx=texture2D(tDiffuse,vUv);vec3 c=tx.rgb;
+        float lum=dot(c,vec3(.299,.587,.114));
+        float sm=smoothstep(.08,.45,lum)*(1.-smoothstep(.45,.85,lum));
+        c+=vec3(.9,.3,.25)*sss*sm*.18;
+        c.r+=.03;c.b-=.01;
+        float g=dot(c,vec3(.2126,.7152,.0722));c=mix(vec3(g),c,1.15);
+        c=(c-.5)*1.05+.5;
+        vec2 u=vUv*2.-1.;c*=1.-dot(u,u)*vign*.4;
+        gl_FragColor=vec4(clamp(c,0.,1.),tx.a);}`
+};
+const cgPass=new ShaderPass(cgShader);
+composer.addPass(cgPass);
+composer.addPass(new SMAAPass(innerWidth, innerHeight));
+
+setLoad(50,'Cargando corazón...');
+let heartModel=null;
+let heartScale=1.0;
+
+new GLTFLoader().load('heart.glb',
+    (gltf) => {
+        setLoad(80,'Mejorando materiales...');
+        heartModel = gltf.scene;
+        const box = new THREE.Box3().setFromObject(heartModel);
+        const center = box.getCenter(new THREE.Vector3());
+        const size = box.getSize(new THREE.Vector3());
+        const sc = 3.2 / Math.max(size.x, size.y, size.z);
+        heartModel.scale.setScalar(sc);
+        heartScale = sc;
+        const scaledBox = new THREE.Box3().setFromObject(heartModel);
+        const scaledCenter = scaledBox.getCenter(new THREE.Vector3());
+        heartModel.position.x -= scaledCenter.x;
+        heartModel.position.y -= scaledCenter.y;
+        heartModel.position.z -= scaledCenter.z;
+        heartModel.traverse((child) => {
+            if (!child.isMesh) return;
+            child.castShadow = true; child.receiveShadow = true;
+            const mat = child.material;
+            if (mat) {
+                const pm = new THREE.MeshPhysicalMaterial();
+                if (mat.map) pm.map = mat.map;
+                if (mat.normalMap) { pm.normalMap = mat.normalMap; pm.normalScale = new THREE.Vector2(2.0, 2.0); }
+                if (mat.roughnessMap) pm.roughnessMap = mat.roughnessMap;
+                if (mat.metalnessMap) pm.metalnessMap = mat.metalnessMap;
+                pm.roughness = 0.6; pm.metalness = 0.0;
+                pm.clearcoat = 0.12; pm.clearcoatRoughness = 0.45;
+                pm.thickness = 1.0;
+                pm.attenuationColor = new THREE.Color(0.85, 0.25, 0.2);
+                pm.attenuationDistance = 1.5;
+                pm.sheen = 0.3; pm.sheenRoughness = 0.5;
+                pm.sheenColor = new THREE.Color(0.85, 0.4, 0.35);
+                pm.emissive = new THREE.Color(0.2, 0.05, 0.04);
+                pm.emissiveIntensity = 0.1; pm.envMapIntensity = 0.5;
+                child.material = pm;
+            }
+        });
+        scene.add(heartModel);
+        const gnd = new THREE.Mesh(
+            new THREE.PlaneGeometry(15, 15),
+            new THREE.MeshStandardMaterial({color:0x0a0810, roughness:0.95, transparent:true, opacity:0.4})
+        );
+        gnd.rotation.x = -Math.PI / 2;
+        gnd.position.y = scaledBox.min.y - 0.1;
+        gnd.receiveShadow = true;
+        scene.add(gnd);
+        setLoad(100, '¡Listo!');
+        setTimeout(() => ls.classList.add('hidden'), 500);
+    },
+    (p) => { if(p.total) setLoad(50 + (p.loaded / p.total) * 30, 'Descargando... ' + (p.loaded / 1024 | 0) + 'KB') },
+    (e) => { console.error(e); setLoad(0, 'Error al cargar. Verifica que heart.glb esté en la misma carpeta.') }
+);
+
+// ===== EXPOSE FOR EXTERNAL MODULES =====
+window.__HEART3D = { scene, camera, renderer, ctrl };
+
+// ===== HEARTBEAT ANIMATION =====
+function heartbeatPulse(t) {
+    if (!heartModel) return;
+    const cycle = (t * 0.001 * 1.2) % (Math.PI * 2);
+    const beat1 = Math.max(0, Math.sin(cycle * 2) * 0.5) * Math.exp(-((cycle % Math.PI) - 0.5) * 2);
+    const beat2 = Math.max(0, Math.sin((cycle - 0.3) * 2) * 0.3) * Math.exp(-(((cycle - 0.3) % Math.PI) - 0.5) * 2);
+    const pulse = 1.0 + (beat1 + beat2) * 0.018;
+    heartModel.scale.setScalar(heartScale * pulse);
+    const bpm = 72 + Math.round(Math.sin(t * 0.0003) * 4);
+    $('bpmVal').textContent = bpm;
+}
+
+let lt = performance.now(), fc = 0;
+(function anim(t) {
+    requestAnimationFrame(anim); fc++;
+    if (t - lt >= 1000) { $('fps').textContent = fc + ' FPS'; fc = 0; lt = t; }
+    ctrl.update();
+    heartbeatPulse(t);
+    sssLight1.intensity = 0.6 + Math.sin(t * 0.0008) * 0.1;
+    sssLight2.intensity = 0.3 + Math.sin(t * 0.001 * 0.7) * 0.06;
+    composer.render();
+})(0);
+
+addEventListener('resize', () => {
+    const w = innerWidth, h = innerHeight - 52;
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+    renderer.setSize(w, h); composer.setSize(w, h); bloom.setSize(w, h);
+});
+
+let ar = true;
+$('bRot').onclick = e => { ar = !ar; ctrl.autoRotate = ar; e.currentTarget.classList.toggle('active', ar); };
+$('bRst').onclick = () => { ctrl.target.set(0, 0, 0); camera.position.set(3, 1.5, 4); };
+$('bZi').onclick = () => camera.position.lerp(ctrl.target, 0.15);
+$('bZo').onclick = () => { const d = camera.position.clone().sub(ctrl.target).normalize(); camera.position.add(d.multiplyScalar(0.5)); };
+$('bFr').onclick = () => { camera.position.set(0, 0, 5); ctrl.target.set(0, 0, 0); };
+$('bTo').onclick = () => { camera.position.set(0, 5, 0.01); ctrl.target.set(0, 0, 0); };
+$('bSi').onclick = () => { camera.position.set(5, 0, 0); ctrl.target.set(0, 0, 0); };
+$('bBk').onclick = () => { camera.position.set(0, 0, -5); ctrl.target.set(0, 0, 0); };
+let ipVis = true;
+$('bIn').onclick = () => { ipVis = !ipVis; $('ip').classList.toggle('hide', !ipVis); };
+$('bPP').onclick = e => { $('ppP').classList.toggle('vis'); e.currentTarget.classList.toggle('active'); };
+$('ppB').oninput = e => bloom.strength = e.target.value / 100 * 0.5;
+$('ppE').oninput = e => renderer.toneMappingExposure = e.target.value / 100;
+$('ppS').oninput = e => cgPass.uniforms.sss.value = e.target.value / 100;
+$('ppV').oninput = e => cgPass.uniforms.vign.value = e.target.value / 100;
+
+const partInfo = {
+    all:{n:'Corazón Humano',s:'Sistema Cardiovascular',d:'Órgano muscular hueco que funciona como bomba doble. El lado derecho recibe sangre desoxigenada y la envía a los pulmones; el izquierdo recibe sangre oxigenada y la impulsa al resto del cuerpo a través de la aorta.',st:[{l:'Peso',v:'~300 g'},{l:'Frecuencia',v:'60-100 bpm'},{l:'Gasto cardíaco',v:'~5 L/min'},{l:'Cámaras',v:'4'}]},
+    ra:{n:'Aurícula Derecha',s:'Cámara de Recepción Venosa',d:'Recibe sangre desoxigenada del cuerpo a través de las venas cavas superior e inferior, y del seno coronario. La contracción auricular completa el llenado del ventrículo derecho.',st:[{l:'Volumen',v:'~50 mL'},{l:'Presión',v:'2-6 mmHg'},{l:'Recibe de',v:'Venas cavas'},{l:'Envía a',v:'Ventrículo D'}]},
+    rv:{n:'Ventrículo Derecho',s:'Bomba Pulmonar',d:'Recibe sangre de la aurícula derecha y la impulsa hacia los pulmones a través de la arteria pulmonar para su oxigenación. Su pared es más delgada que la del ventrículo izquierdo.',st:[{l:'Espesor pared',v:'~3-5 mm'},{l:'Presión sist.',v:'~25 mmHg'},{l:'Vol. eyección',v:'~70 mL'},{l:'Envía a',v:'A. pulmonar'}]},
+    la:{n:'Aurícula Izquierda',s:'Cámara de Recepción Pulmonar',d:'Recibe sangre oxigenada de los pulmones a través de las cuatro venas pulmonares. Es la cámara posterior del corazón y su disfunción se asocia a fibrilación auricular.',st:[{l:'Volumen',v:'~50 mL'},{l:'Presión',v:'4-12 mmHg'},{l:'Recibe de',v:'4 V. pulmonares'},{l:'Envía a',v:'Ventrículo I'}]},
+    lv:{n:'Ventrículo Izquierdo',s:'Bomba Sistémica',d:'Cámara más muscular del corazón. Impulsa sangre oxigenada a todo el cuerpo a través de la aorta. Su pared gruesa genera la presión arterial sistémica. La fracción de eyección normal es 55-70%.',st:[{l:'Espesor pared',v:'~13-15 mm'},{l:'Presión sist.',v:'~120 mmHg'},{l:'Fr. eyección',v:'55-70%'},{l:'Envía a',v:'Aorta'}]},
+    aorta:{n:'Aorta',s:'Arteria Principal',d:'La arteria más grande del cuerpo. Nace del ventrículo izquierdo y distribuye sangre oxigenada a todo el organismo. Se divide en aorta ascendente, arco aórtico y aorta descendente.',st:[{l:'Diámetro',v:'~2.5-3.5 cm'},{l:'Longitud',v:'~30-40 cm'},{l:'Presión',v:'120/80 mmHg'},{l:'Ramas',v:'Múltiples'}]},
+    pulmonary:{n:'Arteria Pulmonar',s:'Tronco Pulmonar',d:'Transporta sangre desoxigenada del ventrículo derecho a los pulmones. Es la única arteria que lleva sangre pobre en oxígeno. Se bifurca en arterias pulmonares derecha e izquierda.',st:[{l:'Diámetro',v:'~2.5 cm'},{l:'Presión sist.',v:'~25 mmHg'},{l:'Bifurcación',v:'D e I'},{l:'Circuito',v:'Menor'}]},
+    vena_cava:{n:'Venas Cavas',s:'Drenaje Venoso Sistémico',d:'La vena cava superior drena la cabeza, brazos y tórax superior; la inferior drena el abdomen y extremidades inferiores. Ambas desembocan en la aurícula derecha.',st:[{l:'VCS diámetro',v:'~20 mm'},{l:'VCI diámetro',v:'~30 mm'},{l:'Presión',v:'2-6 mmHg'},{l:'Desemboca',v:'Aurícula D'}]},
+    valves:{n:'Válvulas Cardíacas',s:'Sistema Valvular',d:'Cuatro válvulas garantizan flujo unidireccional: tricúspide (AD→VD), pulmonar (VD→AP), mitral (AI→VI) y aórtica (VI→Ao). Los ruidos cardíacos S1 y S2 corresponden a su cierre.',st:[{l:'Tricúspide',v:'3 valvas'},{l:'Mitral',v:'2 valvas'},{l:'Pulmonar',v:'3 semilunares'},{l:'Aórtica',v:'3 semilunares'}]},
+    conduction:{n:'Sistema de Conducción',s:'Automatismo Cardíaco',d:'Red de células especializadas que genera y conduce impulsos eléctricos: nodo sinusal (marcapasos natural), nodo AV, haz de His y fibras de Purkinje. Controla el ritmo cardíaco.',st:[{l:'Nodo SA',v:'60-100 bpm'},{l:'Nodo AV',v:'40-60 bpm'},{l:'Haz de His',v:'20-40 bpm'},{l:'Velocidad',v:'~2 m/s'}]},
+    coronary:{n:'Arterias Coronarias',s:'Irrigación Cardíaca',d:'Dos arterias principales (izquierda y derecha) nacen de la raíz aórtica y nutren el miocardio. Su obstrucción causa isquemia e infarto. El corazón recibe el 5% del gasto cardíaco.',st:[{l:'A. coronaria I',v:'DA + Cx'},{l:'A. coronaria D',v:'Dominante 85%'},{l:'Flujo',v:'~250 mL/min'},{l:'Obstrucción',v:'→ Infarto'}]}
+};
+
+document.querySelectorAll('.hl-btn').forEach(btn => {
+    btn.onclick = () => {
+        document.querySelectorAll('.hl-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const p = btn.dataset.part;
+        const info = partInfo[p];
+        if (info) {
+            $('ipN').textContent = info.n;
+            $('ipS').textContent = info.s;
+            $('ipD').textContent = info.d;
+            $('ipSt').innerHTML = info.st.map(s =>
+                `<div class="st-card"><div class="st-label">${s.l}</div><div class="st-val">${s.v}</div></div>`
+            ).join('');
+        }
+    };
+});
+    </script>
+    <!-- ═══ MÓDULO: Etiquetas Anatómicas Numeradas ═══ -->
+    <script type="module" src="../js/labels/heart/heart_labels.js"></script>
+    <script type="module" src="../js/labels/heart/heart_patologias.js"></script>
+    <script type="module" src="../js/labels/heart/heart_nutricion.js"></script>
+    <script type="module" src="../js/labels/heart/heart_habitos.js"></script>
+    <script type="module" src="../js/labels/heart/heart_anatomia.js"></script>
+    <script type="module" src="../js/labels/heart/heart_fisiologia.js"></script>
+    <script type="module" src="../js/labels/heart/heart_clinicos.js"></script>
+    <script type="module" src="../js/labels/heart/heart_medical_info.js"></script>
+</body>
+</html>

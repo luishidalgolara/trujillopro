@@ -1,0 +1,1 @@
+const moduleData = { moduleName: 'Contexto Climático', loaded: true };

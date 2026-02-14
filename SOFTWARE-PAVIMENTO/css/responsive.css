@@ -1,0 +1,485 @@
+/* Estilos Responsivos para diferentes dispositivos */
+
+/* Tablets en orientación horizontal (hasta 1200px) */
+@media (max-width: 1200px) {
+    .main-container {
+        grid-template-columns: 280px 1fr 320px;
+        gap: 1rem;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .header .subtitle {
+        font-size: 1rem;
+    }
+    
+    .info-content h2 {
+        font-size: 1.4rem;
+    }
+}
+
+/* Tablets en orientación vertical (hasta 992px) */
+@media (max-width: 992px) {
+    .main-container {
+        grid-template-columns: 250px 1fr;
+        grid-template-rows: auto auto;
+    }
+    
+    .info-panel {
+        grid-column: 1 / -1;
+        position: relative;
+        top: 0;
+        max-height: none;
+    }
+    
+    .sidebar {
+        position: relative;
+        top: 0;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    #viewer3d {
+        min-height: 500px;
+    }
+}
+
+/* Móviles en orientación horizontal y tablets pequeñas (hasta 768px) */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .header {
+        padding: 1.5rem 0;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .header .subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .main-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin: 1rem auto;
+        padding: 0 1rem;
+    }
+    
+    .sidebar {
+        position: relative;
+        top: 0;
+        padding: 1rem;
+    }
+    
+    .info-panel {
+        padding: 1rem;
+    }
+    
+    /* Hacer los botones de tipo más compactos */
+    .tipo-btn {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    .tipo-btn .icon {
+        font-size: 1.3rem;
+    }
+    
+    /* Visor 3D */
+    #viewer3d {
+        min-height: 400px;
+    }
+    
+    /* Controles */
+    .control-btn {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.85rem;
+    }
+    
+    /* Panel de información */
+    .info-content h2 {
+        font-size: 1.2rem;
+    }
+    
+    .info-section h3 {
+        font-size: 1rem;
+    }
+    
+    .info-section p,
+    .info-section li {
+        font-size: 0.9rem;
+    }
+    
+    /* Capas */
+    .capa-item {
+        padding: 0.6rem;
+    }
+    
+    .capa-color {
+        width: 25px;
+        height: 25px;
+    }
+    
+    /* Info box */
+    .info-box {
+        padding: 0.75rem;
+    }
+    
+    .info-box li {
+        font-size: 0.8rem;
+    }
+    
+    /* Tooltip */
+    .capa-tooltip {
+        max-width: 90vw;
+        left: 5vw;
+        right: 5vw;
+        transform: translate(0, -50%);
+    }
+    
+    /* Footer */
+    .footer {
+        padding: 1rem 0;
+    }
+    
+    .footer p {
+        font-size: 0.8rem;
+        padding: 0 1rem;
+    }
+}
+
+/* Móviles pequeños (hasta 576px) */
+@media (max-width: 576px) {
+    .header h1 {
+        font-size: 1.3rem;
+    }
+    
+    .header .subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .main-container {
+        padding: 0 0.5rem;
+        margin: 0.5rem auto;
+    }
+    
+    /* Sidebar más compacto */
+    .sidebar {
+        padding: 0.75rem;
+    }
+    
+    .control-panel h2 {
+        font-size: 1.2rem;
+    }
+    
+    .control-panel h3 {
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+    
+    /* Botones de tipo más pequeños */
+    .tipo-btn {
+        padding: 0.6rem;
+        font-size: 0.85rem;
+    }
+    
+    .tipo-btn .icon {
+        font-size: 1.2rem;
+    }
+    
+    /* Controles */
+    .control-btn {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.8rem;
+    }
+    
+    .control-btn span {
+        font-size: 1rem;
+    }
+    
+    /* Checkboxes de capas más pequeños */
+    .capa-checkbox {
+        padding: 0.4rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .capa-checkbox input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .capa-checkbox label {
+        font-size: 0.85rem;
+    }
+    
+    .checkbox-color {
+        width: 18px;
+        height: 18px;
+    }
+    
+    /* Visor 3D */
+    #viewer3d {
+        min-height: 350px;
+    }
+    
+    .viewer-container {
+        min-height: 350px;
+    }
+    
+    /* Panel de información */
+    .info-panel {
+        padding: 0.75rem;
+    }
+    
+    .info-content h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .info-section {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+    }
+    
+    .info-section h3 {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .info-section p,
+    .info-section li {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+    
+    /* Capas info */
+    .capa-item {
+        padding: 0.5rem;
+        gap: 0.75rem;
+    }
+    
+    .capa-color {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .capa-info strong {
+        font-size: 0.9rem;
+    }
+    
+    .capa-espesor {
+        font-size: 0.8rem;
+    }
+    
+    /* Datos de Chile */
+    .chile-data {
+        padding: 1rem;
+    }
+    
+    .chile-info .info-item {
+        margin-bottom: 1rem;
+    }
+    
+    .chile-info strong {
+        font-size: 0.9rem;
+    }
+    
+    .chile-info p,
+    .chile-info li {
+        font-size: 0.85rem;
+    }
+    
+    /* Info box */
+    .info-box {
+        padding: 0.6rem;
+        margin-top: 1rem;
+    }
+    
+    .info-box h3 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .info-box li {
+        font-size: 0.75rem;
+    }
+    
+    /* Loading */
+    .spinner {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .loading p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Móviles muy pequeños (hasta 375px) */
+@media (max-width: 375px) {
+    .header h1 {
+        font-size: 1.2rem;
+    }
+    
+    .header .subtitle {
+        font-size: 0.8rem;
+    }
+    
+    .tipo-btn .text {
+        font-size: 0.8rem;
+    }
+    
+    #viewer3d {
+        min-height: 300px;
+    }
+    
+    .viewer-container {
+        min-height: 300px;
+    }
+    
+    .info-content h2 {
+        font-size: 1rem;
+    }
+    
+    .control-panel h2 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Orientación horizontal en móviles */
+@media (max-height: 600px) and (orientation: landscape) {
+    .header {
+        padding: 1rem 0;
+    }
+    
+    .header h1 {
+        font-size: 1.3rem;
+    }
+    
+    .header .subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .main-container {
+        margin: 0.5rem auto;
+    }
+    
+    #viewer3d {
+        min-height: 300px;
+    }
+    
+    .sidebar,
+    .info-panel {
+        position: relative;
+        top: 0;
+        max-height: none;
+    }
+    
+    .footer {
+        margin-top: 1rem;
+    }
+}
+
+/* Impresión */
+@media print {
+    .sidebar,
+    .viewer-container,
+    .footer {
+        display: none;
+    }
+    
+    .main-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-panel {
+        position: relative;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    .info-content {
+        page-break-inside: avoid;
+    }
+}
+
+/* Preferencias de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .spinner {
+        animation: none;
+        border-top-color: var(--primary-color);
+    }
+}
+
+/* Modo alto contraste */
+@media (prefers-contrast: high) {
+    .tipo-btn,
+    .control-btn {
+        border-width: 3px;
+    }
+    
+    .info-section {
+        border-bottom-width: 2px;
+    }
+    
+    .capa-color,
+    .checkbox-color {
+        border-width: 3px;
+    }
+}
+
+/* Tema oscuro (si el sistema lo prefiere) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --white: #1f2937;
+        --light-gray: #374151;
+        --dark: #f9fafb;
+        --gray: #d1d5db;
+    }
+    
+    body {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    }
+    
+    .scene {
+        background: #0f172a !important;
+    }
+    
+    /* Ajustar otros elementos para modo oscuro */
+    .sidebar,
+    .viewer-container,
+    .info-panel {
+        background: #1f2937;
+        color: #f9fafb;
+    }
+    
+    .tipo-btn {
+        background: #374151;
+        color: #f9fafb;
+    }
+    
+    .control-btn {
+        background: #1f2937;
+        border-color: #374151;
+        color: #f9fafb;
+    }
+    
+    .info-section p,
+    .info-section li {
+        color: #d1d5db;
+    }
+}

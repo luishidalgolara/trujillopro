@@ -74,3 +74,202 @@
 .nav-menu:hover span {
     background: var(--accent);
 }
+/* ========================================
+   NAVIGATION
+======================================== */
+.navbar {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+height: 80px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0 40px;
+background: rgba(10, 14, 39, 0.8);
+backdrop-filter: blur(20px);
+border-bottom: 1px solid var(--border);
+z-index: 1000;
+transition: all 0.3s var(--ease);
+}
+.navbar.scrolled {
+height: 60px;
+background: rgba(10, 14, 39, 0.95);
+}
+.nav-logo {
+font-family: var(--font-display);
+font-size: 24px;
+font-weight: 800;
+letter-spacing: -0.02em;
+background: linear-gradient(135deg, var(--primary), var(--accent));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+cursor: pointer;
+}
+.nav-progress {
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+height: 2px;
+background: rgba(255, 255, 255, 0.05);
+}
+.progress-bar {
+height: 100%;
+background: linear-gradient(90deg, var(--primary), var(--accent));
+width: 0%;
+transition: width 0.1s linear;
+}
+.nav-menu {
+width: 40px;
+height: 40px;
+background: transparent;
+border: none;
+cursor: pointer;
+display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 6px;
+}
+.nav-menu span {
+width: 100%;
+height: 2px;
+background: var(--text);
+transition: all 0.3s var(--ease);
+}
+.nav-menu:hover span {
+background: var(--accent);
+}
+
+/* ========================================
+   BOTÓN IR A MEDICAL 3D
+======================================== */
+.btn-medical3d-new {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    margin-right: 15px;
+    margin-left: auto;  /* ESTO LO EMPUJA A LA DERECHA */
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+    border: 2px solid rgba(239, 68, 68, 0.6);
+    border-radius: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.5);
+    z-index: 100;
+}
+
+.btn-medical3d-new:hover {
+    transform: translateY(-3px);
+    border-color: #ef4444;
+    box-shadow: 0 8px 30px rgba(239, 68, 68, 0.7);
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+}
+
+.btn-medical3d-new::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -150%;
+    width: 80%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+}
+
+.btn-medical3d-new:hover::before {
+    left: 150%;
+}
+
+.med-icon {
+    font-size: 22px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    animation: medIconFloat 3s ease-in-out infinite;
+}
+
+@keyframes medIconFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+.med-text {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.med-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    padding: 3px 8px;
+    background: #00D9FF;
+    color: #0A0E27;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    border-radius: 4px;
+    animation: medBadgePulse 2s infinite;
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.8);
+}
+
+@keyframes medBadgePulse {
+    0%, 100% { 
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .btn-medical3d-new {
+        padding: 10px 16px;
+        gap: 8px;
+        margin-right: 15px;
+    }
+    
+    .med-icon {
+        font-size: 20px;
+    }
+    
+    .med-text {
+        font-size: 12px;
+    }
+    
+    .med-badge {
+        font-size: 8px;
+        padding: 2px 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-medical3d-new {
+        padding: 8px 12px;
+        gap: 6px;
+        margin-right: 10px;
+    }
+    
+    .med-icon {
+        font-size: 18px;
+    }
+    
+    .med-text {
+        font-size: 11px;
+    }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medical 3D — Plataforma Médica In Silico</title>
+<meta name="description" content="Plataforma de visualización anatómica 3D interactiva para educación médica.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<!-- ═══ LOADING ═══ -->
+<div class="loading-overlay" id="loadingOverlay">
+<div class="loader-icon">🧬</div>
+<div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+<div class="loader-text" id="loaderText">Inicializando...</div>
+</div>
+
+<!-- ═══ BACKGROUND ═══ -->
+<div class="bg-atmosphere"></div>
+<div class="bg-grid"></div>
+
+<!-- ═══ HEADER ═══ -->
+<header class="header">
+<div class="header-brand">
+<div class="header-logo">🧬</div>
+<div>
+<div class="header-title">Medical 3D</div>
+<div class="header-subtitle">Plataforma Médica In Silico</div>
+</div>
+</div>
+<div class="header-right">
+<!-- NUEVO BOTÓN FUNDAMENTOS -->
+<a href="fundamentos/fundamentos.html" class="btn-fundamentos">
+<span class="btn-fundamentos-icon">📚</span>
+<span class="btn-fundamentos-text">Fundamentos</span>
+<span class="btn-fundamentos-arrow">→</span>
+</a>
+
+<div class="header-status">
+<div class="status-dot"></div>
+<span class="status-text">Plataforma activa</span>
+</div>
+<span class="header-version">v1.0</span>
+</div>
+</header>
+
+<!-- ═══ MAIN ═══ -->
+<main class="main">
+<!-- HERO -->
+<section class="hero">
+<div class="hero-badge">
+<span class="hero-badge-dot"></span>
+                Visualización Anatómica Interactiva
+</div>
+<h2>Explora el cuerpo humano<br><span class="text-gradient">en tres dimensiones</span></h2>
+<p class="hero-desc">Modelos anatómicos 3D de alta fidelidad para educación médica, investigación y simulación clínica in silico.</p>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+<div class="stat-item">
+<div class="stat-value"><span class="stat-accent" id="statModules">15</span></div>
+<div class="stat-label">Módulos 3D</div>
+</div>
+<div class="stat-item">
+<div class="stat-value">7</div>
+<div class="stat-label">Sistemas</div>
+</div>
+<div class="stat-item">
+<div class="stat-value">PBR</div>
+<div class="stat-label">Materiales</div>
+</div>
+<div class="stat-item">
+<div class="stat-value">360°</div>
+<div class="stat-label">Interactivo</div>
+</div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-container">
+<div class="search-bar">
+<span class="search-icon">🔍</span>
+<input type="text" id="searchInput" placeholder="Buscar órgano, sistema o estructura...">
+</div>
+</div>
+
+<!-- FILTERS -->
+<div class="filters" id="filters"></div>
+
+<!-- MODULES GRID -->
+<div class="modules-grid" id="modulesGrid"></div>
+
+<!-- NO RESULTS -->
+<div class="no-results" id="noResults">
+<div class="no-results-icon">🔬</div>
+<div class="no-results-text">No se encontraron módulos con ese criterio.</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+            Medical 3D — Plataforma Médica In Silico<br>
+            Modelos 3D bajo licencia <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC-BY-4.0</a> · 
+            Desarrollado para educación médica
+</footer>
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>

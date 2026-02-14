@@ -19,7 +19,7 @@ function initGalleryTabs() {
             // Remove active class from all tabs
             tabs.forEach(t => t.classList.remove('active'));
             
-            // Add active class to clicked tab
+            // Add active class to clicked tabPROCEDE
             tab.classList.add('active');
             
             // Get module type

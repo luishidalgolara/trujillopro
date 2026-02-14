@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hígado Humano 3D — Plataforma Médica In Silico</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#0a0908;--panel:rgba(14,12,10,0.88);--card:rgba(22,18,14,0.75);--accent:#b8704a;--accent-glow:rgba(184,112,74,0.25);--cyan:#5cc8d4;--cyan-glow:rgba(92,200,212,0.2);--text:#e8ecf4;--text2:#8a94a8;--dim:#555f73;--border:rgba(255,255,255,0.06);--glass:rgba(255,255,255,0.03)}
+        body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow:hidden;height:100vh}
+
+        .header{position:fixed;top:0;left:0;right:0;height:52px;background:var(--panel);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px;z-index:100}
+        .header h1{font-size:.9rem;font-weight:600;letter-spacing:-.02em}
+        .header span{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);text-transform:uppercase;letter-spacing:.1em}
+        .header-r{display:flex;align-items:center;gap:14px}
+        .sdot{width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px rgba(74,222,128,.5);animation:pd 2s infinite}
+        @keyframes pd{0%,100%{opacity:1}50%{opacity:.5}}
+        .fps{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim)}
+
+        #mainCanvas{position:fixed;top:52px;left:0;width:100%;height:calc(100vh - 52px)}
+
+        .loading-screen{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;transition:opacity .8s,visibility .8s}
+        .loading-screen.hidden{opacity:0;visibility:hidden;pointer-events:none}
+        .lb-icon{font-size:3.5rem;animation:fl 2s ease-in-out infinite}
+        @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        .lb-bar{width:180px;height:2px;background:var(--border);border-radius:2px;margin-top:20px;overflow:hidden}
+        .lb-fill{height:100%;background:linear-gradient(90deg,#8B4513,var(--accent));width:0%;transition:width .3s;border-radius:2px}
+        .lb-txt{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim);margin-top:10px}
+
+        .info-panel{position:fixed;top:66px;right:14px;width:290px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:14px;padding:18px;z-index:50;transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .4s}
+        .info-panel.hide{transform:translateX(310px);opacity:0}
+        .ip-tag{font-size:.6rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:10px}
+        .ip-name{font-size:1.3rem;font-weight:700;letter-spacing:-.03em;margin-bottom:3px}
+        .ip-sys{font-size:.78rem;color:var(--cyan);margin-bottom:10px}
+        .ip-desc{font-size:.78rem;line-height:1.5;color:var(--text2);margin-bottom:14px}
+        .ip-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+        .st-card{background:var(--glass);border:1px solid var(--border);border-radius:9px;padding:9px 10px}
+        .st-label{font-size:.6rem;color:var(--dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.05em}
+        .st-val{font-size:.85rem;font-weight:600;margin-top:1px}
+
+        .hl-panel{position:fixed;top:66px;left:14px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:12px;z-index:50;max-height:calc(100vh - 160px);overflow-y:auto}
+        .hl-panel::-webkit-scrollbar{width:4px}
+        .hl-panel::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+        .hl-title{font-size:.6rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:8px}
+        .hl-sep{font-size:.55rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:8px 0 4px 10px;opacity:.6}
+        .hl-btn{display:flex;align-items:center;gap:8px;width:100%;padding:7px 10px;border:1px solid transparent;border-radius:7px;background:0 0;color:var(--text2);font-size:.78rem;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;margin-bottom:2px}
+        .hl-btn:hover{background:var(--glass);color:var(--text)}
+        .hl-btn.active{background:var(--cyan-glow);border-color:rgba(92,200,212,.3);color:var(--cyan)}
+        .hl-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+        .ctrl-bar{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:5px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:7px;z-index:50}
+        .cb{width:40px;height:40px;border-radius:9px;border:1px solid transparent;background:0 0;color:var(--text2);font-size:1.05rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+        .cb:hover{background:var(--glass);border-color:var(--border);color:var(--text)}
+        .cb.active{background:var(--accent-glow);border-color:var(--accent);color:var(--accent)}
+        .cd{width:1px;background:var(--border);margin:4px 1px}
+
+        .pp-panel{position:fixed;bottom:75px;left:50%;transform:translateX(-50%);background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:14px;z-index:50;min-width:220px;display:none}
+        .pp-panel.vis{display:block}
+        .pp-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+        .pp-row label{font-size:.72rem;color:var(--text2)}
+        .pp-row input[type=range]{width:100px;height:3px;-webkit-appearance:none;background:var(--border);border-radius:2px;outline:0}
+        .pp-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;background:var(--accent);cursor:pointer}
+
+        .credit{position:fixed;bottom:70px;right:14px;font-size:.55rem;color:var(--dim);font-family:'Space Mono',monospace;z-index:50;text-align:right;line-height:1.4}
+        .credit a{color:var(--dim);text-decoration:underline;text-decoration-color:rgba(255,255,255,.1)}
+
+        /* ═══ AGREGADO: Labels toggle style ═══ */
+        .cb.lbl-active{
+            background:var(--accent-glow) !important;
+            border-color:var(--accent) !important;
+            color:var(--accent) !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🫁</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:1.3rem">🧬</span>
+            <div><h1>Plataforma Médica In Silico</h1><span>Modelo Anatómico 3D — Hígado Humano</span></div>
+        </div>
+        <div class="header-r"><div class="fps" id="fps">-- FPS</div><div class="sdot"></div></div>
+    </div>
+
+    <canvas id="mainCanvas"></canvas>
+
+    <div class="hl-panel">
+        <div class="hl-title">Estructuras</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#a06050"></span>Hígado completo</button>
+        <div class="hl-sep">— Lóbulos —</div>
+        <button class="hl-btn" data-part="right_lobe"><span class="hl-dot" style="background:#b06848"></span>Lóbulo derecho</button>
+        <button class="hl-btn" data-part="left_lobe"><span class="hl-dot" style="background:#c07858"></span>Lóbulo izquierdo</button>
+        <button class="hl-btn" data-part="caudate"><span class="hl-dot" style="background:#986048"></span>Lóbulo caudado</button>
+        <button class="hl-btn" data-part="quadrate"><span class="hl-dot" style="background:#a06850"></span>Lóbulo cuadrado</button>
+        <div class="hl-sep">— Vascularización —</div>
+        <button class="hl-btn" data-part="portal"><span class="hl-dot" style="background:#5577aa"></span>Vena porta</button>
+        <button class="hl-btn" data-part="hepatic_a"><span class="hl-dot" style="background:#cc4444"></span>Arteria hepática</button>
+        <button class="hl-btn" data-part="hepatic_v"><span class="hl-dot" style="background:#4466aa"></span>Venas hepáticas</button>
+        <div class="hl-sep">— Vía biliar —</div>
+        <button class="hl-btn" data-part="biliary"><span class="hl-dot" style="background:#88aa44"></span>Vías biliares</button>
+        <button class="hl-btn" data-part="gallbladder"><span class="hl-dot" style="background:#66aa55"></span>Vesícula biliar</button>
+    </div>
+
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Hígado Humano</div>
+        <div class="ip-sys" id="ipS">Sistema Digestivo — Glándula Anexa</div>
+        <div class="ip-desc" id="ipD">Órgano sólido más grande del cuerpo (excluyendo la piel). Realiza más de 500 funciones metabólicas: produce bilis, metaboliza nutrientes, desintoxica la sangre, sintetiza proteínas plasmáticas y almacena glucógeno. Tiene capacidad de regeneración única.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Peso</div><div class="st-val">~1.5 kg</div></div>
+            <div class="st-card"><div class="st-label">Flujo sang.</div><div class="st-val">~1.5 L/min</div></div>
+            <div class="st-card"><div class="st-label">Funciones</div><div class="st-val">&gt;500</div></div>
+            <div class="st-card"><div class="st-label">Bilis/día</div><div class="st-val">~1 L</div></div>
+        </div>
+    </div>
+
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Anterior">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Visceral">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+        <div class="cd"></div>
+        <!-- ═══ AGREGADO: Botón toggle etiquetas ═══ -->
+        <button class="cb lbl-active" id="bLbl" title="Etiquetas numéricas">🏷️</button>
+    </div>
+
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="12"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="118"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="30"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="28"></div>
+    </div>
+
+    <div class="credit">Modelo: <a href="https://sketchfab.com/3d-models/liver-d0bce1a8e16a4b69b5b235e4248b2d19" target="_blank">"Liver"</a> por Errin Roy<br>CC-BY-4.0</div>
+
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+    <script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
+import {ShaderPass} from 'three/addons/postprocessing/ShaderPass.js';
+import {SMAAPass} from 'three/addons/postprocessing/SMAAPass.js';
+
+const $=id=>document.getElementById(id);
+const lbFill=$('lbFill'), lbTxt=$('lbTxt'), ls=$('ls');
+const setLoad=(p,t)=>{lbFill.style.width=p+'%';lbTxt.textContent=t};
+
+// ===== SCENE =====
+setLoad(10,'Configurando escena...');
+const canvas=$('mainCanvas');
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x0a0908);
+scene.fog=new THREE.FogExp2(0x0a0908, 0.04);
+
+const camera=new THREE.PerspectiveCamera(45, innerWidth/(innerHeight-52), 0.01, 100);
+camera.position.set(3, 2, 4.5);
+
+const renderer=new THREE.WebGLRenderer({canvas, antialias:true, powerPreference:'high-performance'});
+renderer.setSize(innerWidth, innerHeight-52);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.shadowMap.enabled=true;
+renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure=1.18;
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.useLegacyLights=false;
+
+// ===== ORBIT =====
+const ctrl=new OrbitControls(camera, canvas);
+ctrl.enableDamping=true; ctrl.dampingFactor=0.06;
+ctrl.rotateSpeed=0.7; ctrl.zoomSpeed=0.8;
+ctrl.minDistance=1.5; ctrl.maxDistance=10;
+ctrl.target.set(0, 0, 0);
+ctrl.autoRotate=true; ctrl.autoRotateSpeed=0.5;
+
+// ===== ENVIRONMENT =====
+setLoad(20,'Generando environment...');
+const pmrem=new THREE.PMREMGenerator(renderer);
+pmrem.compileEquirectangularShader();
+const envSc=new THREE.Scene();
+envSc.add(new THREE.Mesh(
+    new THREE.SphereGeometry(10, 32, 32),
+    new THREE.ShaderMaterial({
+        side: THREE.BackSide,
+        vertexShader:`varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+        fragmentShader:`varying vec3 vP;void main(){
+            vec3 d=normalize(vP);float y=d.y*.5+.5;
+            vec3 c=mix(vec3(.04,.035,.03),mix(vec3(.07,.055,.045),vec3(.1,.08,.06),smoothstep(.4,1.,y)),smoothstep(0.,.4,y));
+            c+=vec3(.3,.18,.1)*pow(max(0.,dot(d,normalize(vec3(1.,.4,.5)))),7.)*.25;
+            c+=vec3(.1,.08,.12)*pow(max(0.,dot(d,normalize(vec3(-.7,.2,-.6)))),5.)*.15;
+            gl_FragColor=vec4(c,1.);}`
+    })
+));
+scene.environment=pmrem.fromScene(envSc, 0.04).texture;
+pmrem.dispose();
+
+// ===== LIGHTS =====
+setLoad(30,'Iluminación...');
+scene.add(new THREE.HemisphereLight(0x887766, 0x221108, 0.5));
+
+const keyLight=new THREE.DirectionalLight(0xffeedd, 2.8);
+keyLight.position.set(4, 6, 5);
+keyLight.castShadow=true;
+keyLight.shadow.mapSize.set(2048, 2048);
+keyLight.shadow.camera.near=0.1; keyLight.shadow.camera.far=18;
+keyLight.shadow.camera.left=-3; keyLight.shadow.camera.right=3;
+keyLight.shadow.camera.top=3; keyLight.shadow.camera.bottom=-3;
+keyLight.shadow.bias=-0.0005; keyLight.shadow.normalBias=0.02;
+scene.add(keyLight);
+
+const fillLight=new THREE.DirectionalLight(0x7788aa, 0.9);
+fillLight.position.set(-5, 3, -2);
+scene.add(fillLight);
+
+const rimLight=new THREE.DirectionalLight(0xdd9966, 1.6);
+rimLight.position.set(-2, -1, -5);
+scene.add(rimLight);
+
+const topLight=new THREE.DirectionalLight(0xddeeff, 0.4);
+topLight.position.set(0, 8, 0);
+scene.add(topLight);
+
+const sssLight=new THREE.PointLight(0xcc6633, 0.5, 10);
+sssLight.position.set(0, -3, 2);
+scene.add(sssLight);
+
+const specLight=new THREE.PointLight(0xffffff, 0.6, 12);
+specLight.position.set(2, 3, 4);
+scene.add(specLight);
+
+// ===== POST-PROCESSING =====
+setLoad(40,'Post-processing...');
+const composer=new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+
+const bloom=new UnrealBloomPass(
+    new THREE.Vector2(innerWidth, innerHeight), 0.12, 0.5, 0.88
+);
+composer.addPass(bloom);
+
+const cgShader={
+    uniforms:{tDiffuse:{value:null}, sss:{value:0.3}, vign:{value:0.28}},
+    vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+    fragmentShader:`uniform sampler2D tDiffuse;uniform float sss;uniform float vign;varying vec2 vUv;
+    void main(){
+        vec4 tx=texture2D(tDiffuse,vUv);vec3 c=tx.rgb;
+        float lum=dot(c,vec3(.299,.587,.114));
+        float sm=smoothstep(.08,.45,lum)*(1.-smoothstep(.45,.85,lum));
+        c+=vec3(.8,.45,.25)*sss*sm*.16;
+        c.r+=.02;
+        float g=dot(c,vec3(.2126,.7152,.0722));c=mix(vec3(g),c,1.1);
+        c=(c-.5)*1.04+.5;
+        vec2 u=vUv*2.-1.;c*=1.-dot(u,u)*vign*.4;
+        gl_FragColor=vec4(clamp(c,0.,1.),tx.a);}`
+};
+const cgPass=new ShaderPass(cgShader);
+composer.addPass(cgPass);
+composer.addPass(new SMAAPass(innerWidth, innerHeight));
+
+// ===== LOAD LIVER =====
+setLoad(50,'Cargando hígado...');
+let liverModel=null;
+const partMeshes = { mesh0: null, mesh1: null };
+
+new GLTFLoader().load('liver.glb',
+    (gltf) => {
+        setLoad(80,'Mejorando materiales...');
+        liverModel = gltf.scene;
+
+        // Center and scale
+        const box = new THREE.Box3().setFromObject(liverModel);
+        const center = box.getCenter(new THREE.Vector3());
+        const size = box.getSize(new THREE.Vector3());
+        const sc = 3.5 / Math.max(size.x, size.y, size.z);
+        liverModel.scale.setScalar(sc);
+
+        const scaledBox = new THREE.Box3().setFromObject(liverModel);
+        const scaledCenter = scaledBox.getCenter(new THREE.Vector3());
+        liverModel.position.x -= scaledCenter.x;
+        liverModel.position.y -= scaledCenter.y;
+        liverModel.position.z -= scaledCenter.z;
+
+        let meshIdx = 0;
+        liverModel.traverse((child) => {
+            if (!child.isMesh) return;
+            child.castShadow = true;
+            child.receiveShadow = true;
+
+            if (meshIdx === 0) partMeshes.mesh0 = child;
+            if (meshIdx === 1) partMeshes.mesh1 = child;
+            meshIdx++;
+
+            const mat = child.material;
+            const pm = new THREE.MeshPhysicalMaterial();
+            if (mat.map) pm.map = mat.map;
+            if (mat.normalMap) { pm.normalMap = mat.normalMap; pm.normalScale = new THREE.Vector2(1.5, 1.5); }
+            if (mat.roughnessMap) pm.roughnessMap = mat.roughnessMap;
+            if (mat.metalnessMap) pm.metalnessMap = mat.metalnessMap;
+
+            // Liver-specific organic PBR
+            pm.roughness = 0.55;
+            pm.metalness = 0.0;
+            pm.clearcoat = 0.15;
+            pm.clearcoatRoughness = 0.4;
+            pm.thickness = 1.2;
+            pm.attenuationColor = new THREE.Color(0.7, 0.3, 0.15);
+            pm.attenuationDistance = 1.5;
+            pm.sheen = 0.3;
+            pm.sheenRoughness = 0.5;
+            pm.sheenColor = new THREE.Color(0.75, 0.45, 0.3);
+            pm.emissive = new THREE.Color(0.15, 0.06, 0.03);
+            pm.emissiveIntensity = 0.1;
+            pm.envMapIntensity = 0.5;
+            pm.side = THREE.DoubleSide;
+
+            child.material = pm;
+        });
+
+        scene.add(liverModel);
+
+        // Ground
+        const gnd = new THREE.Mesh(
+            new THREE.PlaneGeometry(18, 18),
+            new THREE.MeshStandardMaterial({color:0x0a0908, roughness:0.95, transparent:true, opacity:0.4})
+        );
+        gnd.rotation.x = -Math.PI / 2;
+        gnd.position.y = scaledBox.min.y - 0.1;
+        gnd.receiveShadow = true;
+        scene.add(gnd);
+
+        setLoad(100, '¡Listo!');
+        setTimeout(() => ls.classList.add('hidden'), 500);
+    },
+    (p) => { if(p.total) setLoad(50 + (p.loaded / p.total) * 30, 'Descargando... ' + (p.loaded / 1024 | 0) + 'KB') },
+    (e) => { console.error(e); setLoad(0, 'Error al cargar. Verifica que liver.glb esté en la misma carpeta.') }
+);
+
+// ═══ AGREGADO: Exponer engine para módulo de etiquetas ═══
+window.__LIVER3D = { scene, camera, renderer, ctrl };
+
+// ===== ANIMATION =====
+let lt = performance.now(), fc = 0;
+(function anim(t) {
+    requestAnimationFrame(anim);
+    fc++;
+    if (t - lt >= 1000) { $('fps').textContent = fc + ' FPS'; fc = 0; lt = t; }
+    ctrl.update();
+    sssLight.intensity = 0.5 + Math.sin(t * 0.0008) * 0.08;
+    composer.render();
+})(0);
+
+// ===== RESIZE =====
+addEventListener('resize', () => {
+    const w = innerWidth, h = innerHeight - 52;
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+    renderer.setSize(w, h); composer.setSize(w, h); bloom.setSize(w, h);
+});
+
+// ===== UI =====
+let ar = true;
+$('bRot').onclick = e => { ar = !ar; ctrl.autoRotate = ar; e.currentTarget.classList.toggle('active', ar); };
+$('bRst').onclick = () => { ctrl.target.set(0, 0, 0); camera.position.set(3, 2, 4.5); };
+$('bZi').onclick = () => camera.position.lerp(ctrl.target, 0.15);
+$('bZo').onclick = () => { const d = camera.position.clone().sub(ctrl.target).normalize(); camera.position.add(d.multiplyScalar(0.5)); };
+$('bFr').onclick = () => { camera.position.set(0, 0, 5); ctrl.target.set(0, 0, 0); };
+$('bTo').onclick = () => { camera.position.set(0, 5, 0.01); ctrl.target.set(0, 0, 0); };
+$('bSi').onclick = () => { camera.position.set(5, 0, 0); ctrl.target.set(0, 0, 0); };
+$('bBk').onclick = () => { camera.position.set(0, -0.5, -5); ctrl.target.set(0, 0, 0); };
+
+let ipVis = true;
+$('bIn').onclick = () => { ipVis = !ipVis; $('ip').classList.toggle('hide', !ipVis); };
+
+$('bPP').onclick = e => { $('ppP').classList.toggle('vis'); e.currentTarget.classList.toggle('active'); };
+$('ppB').oninput = e => bloom.strength = e.target.value / 100 * 0.5;
+$('ppE').oninput = e => renderer.toneMappingExposure = e.target.value / 100;
+$('ppS').oninput = e => cgPass.uniforms.sss.value = e.target.value / 100;
+$('ppV').oninput = e => cgPass.uniforms.vign.value = e.target.value / 100;
+
+// ===== HIGHLIGHT (2 meshes) =====
+function setHighlight(selected) {
+    const meshes = [partMeshes.mesh0, partMeshes.mesh1].filter(Boolean);
+    meshes.forEach(mesh => {
+        const mat = mesh.material;
+        if (!mat) return;
+        if (selected === 'all' || selected === 'portal' || selected === 'hepatic_a' ||
+            selected === 'hepatic_v' || selected === 'biliary' || selected === 'gallbladder' ||
+            selected === 'caudate' || selected === 'quadrate') {
+            // Educational views — show full model
+            mat.transparent = false;
+            mat.opacity = 1;
+            mat.depthWrite = true;
+            mat.emissiveIntensity = 0.1;
+        } else if (selected === 'right_lobe') {
+            // mesh0 = right lobe (larger), mesh1 = left lobe
+            const isRight = (mesh === partMeshes.mesh0);
+            mat.transparent = !isRight;
+            mat.opacity = isRight ? 1 : 0.12;
+            mat.depthWrite = isRight;
+            mat.emissiveIntensity = isRight ? 0.2 : 0.02;
+        } else if (selected === 'left_lobe') {
+            const isLeft = (mesh === partMeshes.mesh1);
+            mat.transparent = !isLeft;
+            mat.opacity = isLeft ? 1 : 0.12;
+            mat.depthWrite = isLeft;
+            mat.emissiveIntensity = isLeft ? 0.2 : 0.02;
+        }
+    });
+}
+
+// ===== PART INFO =====
+const partInfo = {
+    all: {
+        n:'Hígado Humano', s:'Sistema Digestivo — Glándula Anexa',
+        d:'Órgano sólido más grande del cuerpo (excluyendo la piel). Realiza más de 500 funciones metabólicas: produce bilis, metaboliza nutrientes, desintoxica la sangre, sintetiza proteínas plasmáticas y almacena glucógeno. Tiene capacidad de regeneración única.',
+        st:[{l:'Peso',v:'~1.5 kg'},{l:'Flujo sang.',v:'~1.5 L/min'},{l:'Funciones',v:'>500'},{l:'Bilis/día',v:'~1 L'}]
+    },
+    right_lobe: {
+        n:'Lóbulo Derecho', s:'Lóbulo Principal',
+        d:'El lóbulo más grande del hígado, ocupa el hipocondrio derecho. Separado del izquierdo por el ligamento falciforme. Contiene los segmentos V, VI, VII y VIII según la clasificación de Couinaud.',
+        st:[{l:'Tamaño',v:'~60-65%'},{l:'Segmentos',v:'V, VI, VII, VIII'},{l:'Ubicación',v:'Hipocondrio D'},{l:'Límite',v:'Lig. falciforme'}]
+    },
+    left_lobe: {
+        n:'Lóbulo Izquierdo', s:'Lóbulo Menor',
+        d:'Más pequeño y delgado que el derecho. Se extiende al epigastrio cruzando la línea media. Contiene los segmentos II y III de Couinaud. Es más accesible quirúrgicamente.',
+        st:[{l:'Tamaño',v:'~30-35%'},{l:'Segmentos',v:'II, III'},{l:'Ubicación',v:'Epigastrio'},{l:'Grosor',v:'Menor'}]
+    },
+    caudate: {
+        n:'Lóbulo Caudado', s:'Segmento I de Couinaud',
+        d:'Pequeño lóbulo en la cara posterior, entre la vena cava inferior y el ligamento venoso. Tiene drenaje venoso propio directamente a la VCI, lo que le confiere autonomía vascular.',
+        st:[{l:'Segmento',v:'I'},{l:'Drenaje',v:'Directo a VCI'},{l:'Posición',v:'Posterior'},{l:'Autonomía',v:'Vascular propia'}]
+    },
+    quadrate: {
+        n:'Lóbulo Cuadrado', s:'Segmento IV de Couinaud',
+        d:'Situado en la cara visceral, entre la vesícula biliar y el ligamento redondo. Funcionalmente pertenece al lóbulo izquierdo. Limita superiormente con el hilio hepático.',
+        st:[{l:'Segmento',v:'IV (IVa, IVb)'},{l:'Posición',v:'Cara visceral'},{l:'Función',v:'Lóbulo izq.'},{l:'Límites',v:'Vesíc./Lig. red.'}]
+    },
+    portal: {
+        n:'Vena Porta', s:'Circulación Portal Hepática',
+        d:'Formada por la confluencia de las venas mesentérica superior y esplénica. Transporta sangre rica en nutrientes del intestino al hígado (~75% del flujo hepático). Se divide en ramas derecha e izquierda en el hilio.',
+        st:[{l:'Diámetro',v:'~12 mm'},{l:'Flujo',v:'~1 L/min'},{l:'Aporte',v:'75% flujo hep.'},{l:'Origen',v:'VMS + V. esplén.'}]
+    },
+    hepatic_a: {
+        n:'Arteria Hepática', s:'Irrigación Arterial',
+        d:'Rama del tronco celíaco que aporta sangre oxigenada al hígado (~25% del flujo). Se divide en la arteria hepática propia y luego en ramas derecha e izquierda. Vital para la oxigenación del parénquima.',
+        st:[{l:'Origen',v:'Tronco celíaco'},{l:'Aporte',v:'25% flujo hep.'},{l:'Aporte O₂',v:'~50%'},{l:'Ramas',v:'D e I'}]
+    },
+    hepatic_v: {
+        n:'Venas Hepáticas', s:'Drenaje Venoso',
+        d:'Tres venas principales (derecha, media e izquierda) que drenan la sangre del hígado directamente a la vena cava inferior. No poseen válvulas. Son referencia para la segmentación hepática.',
+        st:[{l:'Número',v:'3 principales'},{l:'Drenaje',v:'→ VCI'},{l:'Válvulas',v:'Ausentes'},{l:'Función',v:'Retorno venoso'}]
+    },
+    biliary: {
+        n:'Vías Biliares', s:'Sistema Biliar Intrahepático',
+        d:'Red de conductos que recogen la bilis producida por los hepatocitos. Desde los canalículos biliares se forman conductillos que convergen en los conductos hepáticos derecho e izquierdo, uniéndose en el conducto hepático común.',
+        st:[{l:'Bilis/día',v:'~600-1000 mL'},{l:'Conductos',v:'Hep. D + I'},{l:'Común',v:'Hep. común'},{l:'Unión',v:'→ Colédoco'}]
+    },
+    gallbladder: {
+        n:'Vesícula Biliar', s:'Reservorio Biliar',
+        d:'Órgano piriforme adosado a la cara visceral del hígado (fosa vesicular). Almacena y concentra la bilis entre comidas. Ante estímulos grasos, la colecistoquinina provoca su contracción y vaciamiento al duodeno.',
+        st:[{l:'Capacidad',v:'~50 mL'},{l:'Longitud',v:'~8-10 cm'},{l:'Partes',v:'Fondo, cuerpo, cuello'},{l:'Estimulante',v:'CCK'}]
+    }
+};
+
+document.querySelectorAll('.hl-btn').forEach(btn => {
+    btn.onclick = () => {
+        document.querySelectorAll('.hl-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const p = btn.dataset.part;
+        const info = partInfo[p];
+        if (info) {
+            $('ipN').textContent = info.n;
+            $('ipS').textContent = info.s;
+            $('ipD').textContent = info.d;
+            $('ipSt').innerHTML = info.st.map(s =>
+                `<div class="st-card"><div class="st-label">${s.l}</div><div class="st-val">${s.v}</div></div>`
+            ).join('');
+        }
+        setHighlight(p);
+    };
+});
+    </script>    
+    <!-- Labels (ruta actualizada) -->
+    <script type="module" src="../js/labels/liver/liver_labels.js"></script>
+
+    <!-- Datos médicos -->
+    <script src="../js/labels/liver/liver_anatomia.js"></script>
+    <script src="../js/labels/liver/liver_fisiologia.js"></script>
+    <script src="../js/labels/liver/liver_patologias.js"></script>
+    <script src="../js/labels/liver/liver_nutricion.js"></script>
+    <script src="../js/labels/liver/liver_habitos.js"></script>
+    <script src="../js/labels/liver/liver_clinicos.js"></script>
+    <script type="module" src="../js/labels/liver/liver_medical_info.js"></script>
+</body>
+</html>

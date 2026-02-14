@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bazo Humano 3D — Plataforma Médica In Silico</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#0a0809;--panel:rgba(12,10,11,0.90);--card:rgba(20,16,18,0.75);--accent:#a85568;--accent-glow:rgba(168,85,104,0.22);--cyan:#68b0b8;--cyan-glow:rgba(104,176,184,0.18);--art:#cc5544;--vein:#4477bb;--text:#e8e2e4;--text2:#9a8e92;--dim:#685c60;--border:rgba(255,255,255,0.06);--glass:rgba(255,255,255,0.03)}
+        body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow:hidden;height:100vh}
+
+        .header{position:fixed;top:0;left:0;right:0;height:52px;background:var(--panel);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px;z-index:100}
+        .header h1{font-size:.9rem;font-weight:600;letter-spacing:-.02em}
+        .header span{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);text-transform:uppercase;letter-spacing:.1em}
+        .header-r{display:flex;align-items:center;gap:14px}
+        .sdot{width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px rgba(74,222,128,.5);animation:pd 2s infinite}
+        @keyframes pd{0%,100%{opacity:1}50%{opacity:.5}}
+        .fps{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim)}
+
+        #mainCanvas{position:fixed;top:52px;left:0;width:100%;height:calc(100vh - 52px)}
+
+        .loading-screen{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;transition:opacity .8s,visibility .8s}
+        .loading-screen.hidden{opacity:0;visibility:hidden;pointer-events:none}
+        .lb-icon{font-size:3.5rem;animation:fl 2s ease-in-out infinite}
+        @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        .lb-bar{width:180px;height:2px;background:var(--border);border-radius:2px;margin-top:20px;overflow:hidden}
+        .lb-fill{height:100%;background:linear-gradient(90deg,#773344,var(--accent));width:0%;transition:width .3s;border-radius:2px}
+        .lb-txt{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim);margin-top:10px}
+
+        .info-panel{position:fixed;top:66px;right:14px;width:300px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:14px;padding:18px;z-index:50;transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .4s}
+        .info-panel.hide{transform:translateX(320px);opacity:0}
+        .ip-tag{font-size:.6rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:10px}
+        .ip-name{font-size:1.3rem;font-weight:700;letter-spacing:-.03em;margin-bottom:3px}
+        .ip-sys{font-size:.78rem;color:var(--cyan);margin-bottom:10px}
+        .ip-desc{font-size:.78rem;line-height:1.5;color:var(--text2);margin-bottom:14px}
+        .ip-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+        .st-card{background:var(--glass);border:1px solid var(--border);border-radius:9px;padding:9px 10px}
+        .st-label{font-size:.6rem;color:var(--dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.05em}
+        .st-val{font-size:.85rem;font-weight:600;margin-top:1px}
+
+        .hl-panel{position:fixed;top:66px;left:14px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:12px;z-index:50;max-height:calc(100vh - 160px);overflow-y:auto}
+        .hl-panel::-webkit-scrollbar{width:4px}
+        .hl-panel::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+        .hl-title{font-size:.6rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:8px}
+        .hl-sep{font-size:.55rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:8px 0 4px 10px;opacity:.6}
+        .hl-btn{display:flex;align-items:center;gap:8px;width:100%;padding:7px 10px;border:1px solid transparent;border-radius:7px;background:0 0;color:var(--text2);font-size:.78rem;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;margin-bottom:2px}
+        .hl-btn:hover{background:var(--glass);color:var(--text)}
+        .hl-btn.active{background:var(--accent-glow);border-color:rgba(168,85,104,.3);color:var(--accent)}
+        .hl-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+        .ctrl-bar{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:5px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:7px;z-index:50}
+        .cb{width:40px;height:40px;border-radius:9px;border:1px solid transparent;background:0 0;color:var(--text2);font-size:1.05rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+        .cb:hover{background:var(--glass);border-color:var(--border);color:var(--text)}
+        .cb.active{background:var(--accent-glow);border-color:var(--accent);color:var(--accent)}
+        .cd{width:1px;background:var(--border);margin:4px 1px}
+
+        .pp-panel{position:fixed;bottom:75px;left:50%;transform:translateX(-50%);background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:14px;z-index:50;min-width:220px;display:none}
+        .pp-panel.vis{display:block}
+        .pp-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+        .pp-row label{font-size:.72rem;color:var(--text2)}
+        .pp-row input[type=range]{width:100px;height:3px;-webkit-appearance:none;background:var(--border);border-radius:2px;outline:0}
+        .pp-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;background:var(--accent);cursor:pointer}
+
+        .credit{position:fixed;bottom:70px;right:14px;font-size:.55rem;color:var(--dim);font-family:'Space Mono',monospace;z-index:50;text-align:right;line-height:1.4}
+        .credit a{color:var(--dim);text-decoration:underline;text-decoration-color:rgba(255,255,255,.1)}
+    </style>
+</head>
+<body>
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🩸</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:1.3rem">🩸</span>
+            <div><h1>Plataforma Médica In Silico</h1><span>Modelo Anatómico 3D — Bazo Humano con Vascularización</span></div>
+        </div>
+        <div class="header-r"><div class="fps" id="fps">-- FPS</div><div class="sdot"></div></div>
+    </div>
+
+    <canvas id="mainCanvas"></canvas>
+
+    <div class="hl-panel">
+        <div class="hl-title">Estructuras</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#a85568"></span>Bazo completo</button>
+        <div class="hl-sep">— Componentes —</div>
+        <button class="hl-btn" data-part="parenchyma"><span class="hl-dot" style="background:#8b4050"></span>Parénquima esplénico</button>
+        <button class="hl-btn" data-part="arteries"><span class="hl-dot" style="background:#cc5544"></span>Arterias esplénicas</button>
+        <button class="hl-btn" data-part="veins"><span class="hl-dot" style="background:#4477bb"></span>Venas esplénicas</button>
+        <button class="hl-btn" data-part="vasculature"><span class="hl-dot" style="background:#9966aa"></span>Vascularización completa</button>
+        <div class="hl-sep">— Anatomía —</div>
+        <button class="hl-btn" data-part="hilum"><span class="hl-dot" style="background:#cc7788"></span>Hilio esplénico</button>
+        <button class="hl-btn" data-part="capsule"><span class="hl-dot" style="background:#bb6677"></span>Cápsula y trabéculas</button>
+        <button class="hl-btn" data-part="surfaces"><span class="hl-dot" style="background:#aa5566"></span>Caras y bordes</button>
+        <div class="hl-sep">— Histología —</div>
+        <button class="hl-btn" data-part="whitepulp"><span class="hl-dot" style="background:#d4c8b0"></span>Pulpa blanca</button>
+        <button class="hl-btn" data-part="redpulp"><span class="hl-dot" style="background:#993344"></span>Pulpa roja</button>
+        <button class="hl-btn" data-part="marginal"><span class="hl-dot" style="background:#bb8866"></span>Zona marginal</button>
+        <div class="hl-sep">— Función —</div>
+        <button class="hl-btn" data-part="immune"><span class="hl-dot" style="background:#68b0b8"></span>Función inmunitaria</button>
+        <button class="hl-btn" data-part="filter"><span class="hl-dot" style="background:#cc8855"></span>Filtración sanguínea</button>
+        <button class="hl-btn" data-part="reservoir"><span class="hl-dot" style="background:#bb5544"></span>Reservorio sanguíneo</button>
+    </div>
+
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Bazo Humano</div>
+        <div class="ip-sys" id="ipS">Sistema Linfático e Inmunitario</div>
+        <div class="ip-desc" id="ipD">Órgano linfoide secundario más grande del cuerpo, situado en el hipocondrio izquierdo. Filtra la sangre eliminando eritrocitos envejecidos y patógenos, alberga linfocitos para la respuesta inmune adaptativa y actúa como reservorio de sangre y plaquetas. Es un órgano no vital pero importante.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Peso</div><div class="st-val">~150-200 g</div></div>
+            <div class="st-card"><div class="st-label">Tamaño</div><div class="st-val">~12×7×4 cm</div></div>
+            <div class="st-card"><div class="st-label">Flujo sangre</div><div class="st-val">~350 mL/min</div></div>
+            <div class="st-card"><div class="st-label">Pulpa roja</div><div class="st-val">~75-80%</div></div>
+        </div>
+    </div>
+
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Anterior">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Posterior">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="14"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="118"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="35"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="28"></div>
+    </div>
+
+    <div class="credit">Modelo: <a href="https://sketchfab.com/3d-models/spleen-64d785a1d1b9440c8ca65f083200f35d" target="_blank">"Spleen"</a> por Anita<br>CC-BY-4.0</div>
+
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+    <script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
+import {ShaderPass} from 'three/addons/postprocessing/ShaderPass.js';
+import {SMAAPass} from 'three/addons/postprocessing/SMAAPass.js';
+
+const $=id=>document.getElementById(id);
+const lbFill=$('lbFill'), lbTxt=$('lbTxt'), ls=$('ls');
+const setLoad=(p,t)=>{lbFill.style.width=p+'%';lbTxt.textContent=t};
+
+setLoad(10,'Configurando escena...');
+const canvas=$('mainCanvas');
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x0a0809);
+scene.fog=new THREE.FogExp2(0x0a0809, 0.035);
+
+const camera=new THREE.PerspectiveCamera(45, innerWidth/(innerHeight-52), 0.01, 100);
+camera.position.set(3, 2, 4.5);
+
+const renderer=new THREE.WebGLRenderer({canvas, antialias:true, powerPreference:'high-performance'});
+renderer.setSize(innerWidth, innerHeight-52);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.shadowMap.enabled=true;
+renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure=1.18;
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.useLegacyLights=false;
+
+const ctrl=new OrbitControls(camera, canvas);
+ctrl.enableDamping=true; ctrl.dampingFactor=0.06;
+ctrl.rotateSpeed=0.7; ctrl.zoomSpeed=0.8;
+ctrl.minDistance=1.5; ctrl.maxDistance=10;
+ctrl.target.set(0, 0, 0);
+ctrl.autoRotate=true; ctrl.autoRotateSpeed=0.45;
+
+setLoad(20,'Generando environment...');
+const pmrem=new THREE.PMREMGenerator(renderer);
+pmrem.compileEquirectangularShader();
+const envSc=new THREE.Scene();
+envSc.add(new THREE.Mesh(
+    new THREE.SphereGeometry(10, 32, 32),
+    new THREE.ShaderMaterial({
+        side: THREE.BackSide,
+        vertexShader:`varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+        fragmentShader:`varying vec3 vP;void main(){
+            vec3 d=normalize(vP);float y=d.y*.5+.5;
+            vec3 c=mix(vec3(.04,.03,.035),mix(vec3(.06,.04,.05),vec3(.08,.06,.07),smoothstep(.4,1.,y)),smoothstep(0.,.4,y));
+            c+=vec3(.28,.12,.14)*pow(max(0.,dot(d,normalize(vec3(1.,.4,.5)))),7.)*.20;
+            c+=vec3(.08,.06,.10)*pow(max(0.,dot(d,normalize(vec3(-.7,.2,-.6)))),5.)*.14;
+            gl_FragColor=vec4(c,1.);}`
+    })
+));
+scene.environment=pmrem.fromScene(envSc, 0.04).texture;
+pmrem.dispose();
+
+setLoad(30,'Iluminación...');
+scene.add(new THREE.HemisphereLight(0x998088, 0x221118, 0.55));
+const keyLight=new THREE.DirectionalLight(0xffeedf, 2.8);
+keyLight.position.set(4, 7, 5); keyLight.castShadow=true;
+keyLight.shadow.mapSize.set(2048,2048);
+keyLight.shadow.camera.near=0.1; keyLight.shadow.camera.far=20;
+keyLight.shadow.camera.left=-4; keyLight.shadow.camera.right=4;
+keyLight.shadow.camera.top=4; keyLight.shadow.camera.bottom=-4;
+keyLight.shadow.bias=-0.0005; keyLight.shadow.normalBias=0.02;
+scene.add(keyLight);
+scene.add(new THREE.DirectionalLight(0x7788aa, 0.85).translateX(-5).translateY(3).translateZ(-2));
+const rimLight=new THREE.DirectionalLight(0xdd9988, 1.4);
+rimLight.position.set(-2,-1,-5); scene.add(rimLight);
+const sssLight=new THREE.PointLight(0xcc4455, 0.45, 10);
+sssLight.position.set(0,-3,2); scene.add(sssLight);
+scene.add(new THREE.PointLight(0xffffff, 0.55, 12).translateX(2).translateY(3).translateZ(4));
+
+setLoad(40,'Post-processing...');
+const composer=new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const bloom=new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight), 0.14, 0.45, 0.86);
+composer.addPass(bloom);
+const cgShader={
+    uniforms:{tDiffuse:{value:null},sss:{value:0.35},vign:{value:0.28}},
+    vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+    fragmentShader:`uniform sampler2D tDiffuse;uniform float sss;uniform float vign;varying vec2 vUv;
+    void main(){vec4 tx=texture2D(tDiffuse,vUv);vec3 c=tx.rgb;
+    float lum=dot(c,vec3(.299,.587,.114));float sm=smoothstep(.06,.40,lum)*(1.-smoothstep(.40,.80,lum));
+    c+=vec3(.75,.30,.35)*sss*sm*.18;c.r+=.015;
+    float g=dot(c,vec3(.2126,.7152,.0722));c=mix(vec3(g),c,1.12);c=(c-.5)*1.04+.5;
+    vec2 u=vUv*2.-1.;c*=1.-dot(u,u)*vign*.4;gl_FragColor=vec4(clamp(c,0.,1.),tx.a);}`
+};
+const cgPass=new ShaderPass(cgShader);
+composer.addPass(cgPass);
+composer.addPass(new SMAAPass(innerWidth,innerHeight));
+
+// ===== MESH MAPPING =====
+// Mesh 0-3: Spleen parenchyma (Default_Material - with normal+occlusion textures)
+// Mesh 4-7: Arteries (Loft006__0 material - red vessels)
+//   4=Loft006, 5=Loft005, 6=Loft003, 7=Loft002(larger trunk)
+// Mesh 8-12: Veins (Blue material - blue vessels)
+//   8=Loft008, 9=Loft009, 10=Loft010, 11=Loft001(larger trunk), 12=Loft007
+
+const meshGroups = { parenchyma: [], arteries: [], veins: [] };
+
+// ===== LOAD MODEL =====
+setLoad(50,'Cargando bazo...');
+let model=null;
+const allMeshes=[];
+
+new GLTFLoader().load('spleen.glb',
+    (gltf) => {
+        setLoad(80,'Mejorando materiales...');
+        model = gltf.scene;
+        const box=new THREE.Box3().setFromObject(model);
+        const center=box.getCenter(new THREE.Vector3());
+        const size=box.getSize(new THREE.Vector3());
+        const sc=3.5/Math.max(size.x,size.y,size.z);
+        model.scale.setScalar(sc);
+        const sb=new THREE.Box3().setFromObject(model);
+        const sc2=sb.getCenter(new THREE.Vector3());
+        model.position.sub(sc2);
+
+        let meshIdx=0;
+        model.traverse(child=>{
+            if(!child.isMesh) return;
+            child.castShadow=true; child.receiveShadow=true;
+            const idx=meshIdx++;
+            child._partIdx=idx;
+            allMeshes.push(child);
+
+            // Classify
+            if(idx<=3) meshGroups.parenchyma.push(child);
+            else if(idx<=7) meshGroups.arteries.push(child);
+            else meshGroups.veins.push(child);
+
+            const mat=child.material;
+            const pm=new THREE.MeshPhysicalMaterial();
+            pm.side=THREE.DoubleSide;
+
+            if(idx<=3){
+                // Parenchyma - deep reddish-purple organ
+                if(mat.map) pm.map=mat.map;
+                if(mat.normalMap){pm.normalMap=mat.normalMap;pm.normalScale=new THREE.Vector2(2.0,2.0);}
+                if(mat.aoMap) pm.aoMap=mat.aoMap;
+                pm.color=new THREE.Color(0.55, 0.22, 0.25);
+                pm.roughness=0.48; pm.metalness=0;
+                pm.clearcoat=0.15; pm.clearcoatRoughness=0.35;
+                pm.thickness=1.5; pm.attenuationColor=new THREE.Color(0.6,0.15,0.2);
+                pm.attenuationDistance=1.2;
+                pm.sheen=0.35; pm.sheenRoughness=0.4;
+                pm.sheenColor=new THREE.Color(0.65,0.30,0.35);
+                pm.emissive=new THREE.Color(0.12,0.04,0.05); pm.emissiveIntensity=0.10;
+                pm.envMapIntensity=0.45;
+            } else if(idx<=7){
+                // Arteries - bright red
+                pm.color=new THREE.Color(0.82, 0.22, 0.18);
+                pm.roughness=0.38; pm.metalness=0.02;
+                pm.clearcoat=0.20; pm.clearcoatRoughness=0.30;
+                pm.sheen=0.3; pm.sheenRoughness=0.35;
+                pm.sheenColor=new THREE.Color(0.9,0.35,0.3);
+                pm.emissive=new THREE.Color(0.25,0.06,0.04); pm.emissiveIntensity=0.15;
+                pm.envMapIntensity=0.5;
+            } else {
+                // Veins - deep blue
+                pm.color=new THREE.Color(0.18, 0.30, 0.65);
+                pm.roughness=0.40; pm.metalness=0.02;
+                pm.clearcoat=0.18; pm.clearcoatRoughness=0.32;
+                pm.sheen=0.3; pm.sheenRoughness=0.35;
+                pm.sheenColor=new THREE.Color(0.3,0.4,0.8);
+                pm.emissive=new THREE.Color(0.04,0.06,0.18); pm.emissiveIntensity=0.12;
+                pm.envMapIntensity=0.5;
+            }
+            child.material=pm;
+        });
+
+        scene.add(model);
+        const gnd=new THREE.Mesh(new THREE.PlaneGeometry(18,18),
+            new THREE.MeshStandardMaterial({color:0x0a0809,roughness:0.95,transparent:true,opacity:0.4}));
+        gnd.rotation.x=-Math.PI/2; gnd.position.y=sb.min.y-0.1; gnd.receiveShadow=true;
+        scene.add(gnd);
+
+        setLoad(100,'¡Listo!');
+        setTimeout(()=>ls.classList.add('hidden'),500);
+    },
+    p=>{if(p.total) setLoad(50+(p.loaded/p.total)*30,'Descargando... '+(p.loaded/1024|0)+'KB')},
+    e=>{console.error(e);setLoad(0,'Error al cargar. Verifica que spleen.glb esté en la misma carpeta.')}
+);
+
+let lt=performance.now(),fc=0;
+(function anim(t){
+    requestAnimationFrame(anim); fc++;
+    if(t-lt>=1000){$('fps').textContent=fc+' FPS';fc=0;lt=t;}
+    ctrl.update(); sssLight.intensity=0.45+Math.sin(t*0.0008)*0.08;
+    composer.render();
+})(0);
+
+addEventListener('resize',()=>{
+    const w=innerWidth,h=innerHeight-52;
+    camera.aspect=w/h;camera.updateProjectionMatrix();
+    renderer.setSize(w,h);composer.setSize(w,h);bloom.setSize(w,h);
+});
+
+let ar=true;
+$('bRot').onclick=e=>{ar=!ar;ctrl.autoRotate=ar;e.currentTarget.classList.toggle('active',ar)};
+$('bRst').onclick=()=>{ctrl.target.set(0,0,0);camera.position.set(3,2,4.5)};
+$('bZi').onclick=()=>camera.position.lerp(ctrl.target,0.15);
+$('bZo').onclick=()=>{const d=camera.position.clone().sub(ctrl.target).normalize();camera.position.add(d.multiplyScalar(0.5))};
+$('bFr').onclick=()=>{camera.position.set(0,0,5);ctrl.target.set(0,0,0)};
+$('bTo').onclick=()=>{camera.position.set(0,5,0.01);ctrl.target.set(0,0,0)};
+$('bSi').onclick=()=>{camera.position.set(5,0,0);ctrl.target.set(0,0,0)};
+$('bBk').onclick=()=>{camera.position.set(0,0,-5);ctrl.target.set(0,0,0)};
+let ipVis=true;
+$('bIn').onclick=()=>{ipVis=!ipVis;$('ip').classList.toggle('hide',!ipVis)};
+$('bPP').onclick=e=>{$('ppP').classList.toggle('vis');e.currentTarget.classList.toggle('active')};
+$('ppB').oninput=e=>bloom.strength=e.target.value/100*0.5;
+$('ppE').oninput=e=>renderer.toneMappingExposure=e.target.value/100;
+$('ppS').oninput=e=>cgPass.uniforms.sss.value=e.target.value/100;
+$('ppV').oninput=e=>cgPass.uniforms.vign.value=e.target.value/100;
+
+// ===== HIGHLIGHT =====
+const groupMap={
+    parenchyma: ['parenchyma'],
+    arteries:   ['arteries'],
+    veins:      ['veins'],
+    vasculature:['arteries','veins'],
+    // Conceptual highlights
+    hilum:      ['arteries','veins'],
+    capsule:    ['parenchyma'],
+    surfaces:   ['parenchyma'],
+    whitepulp:  ['parenchyma'],
+    redpulp:    ['parenchyma'],
+    marginal:   ['parenchyma'],
+    immune:     ['parenchyma'],
+    filter:     ['parenchyma','arteries','veins'],
+    reservoir:  ['parenchyma','arteries','veins']
+};
+
+function setHighlight(sel){
+    const targets=groupMap[sel];
+    allMeshes.forEach(mesh=>{
+        const mat=mesh.material; if(!mat) return;
+        const grp=mesh._partIdx<=3?'parenchyma':mesh._partIdx<=7?'arteries':'veins';
+        if(sel==='all'){
+            mat.transparent=false;mat.opacity=1;mat.depthWrite=true;
+            mat.emissiveIntensity=(grp==='parenchyma')?0.10:(grp==='arteries')?0.15:0.12;
+        } else if(targets){
+            const isTarget=targets.includes(grp);
+            mat.transparent=!isTarget;mat.opacity=isTarget?1:0.06;
+            mat.depthWrite=isTarget;
+            if(isTarget){
+                mat.emissiveIntensity=(grp==='parenchyma')?0.18:(grp==='arteries')?0.25:0.20;
+            } else {
+                mat.emissiveIntensity=0.02;
+            }
+        }
+    });
+}
+
+const partInfo={
+    all:{n:'Bazo Humano',s:'Sistema Linfático e Inmunitario',
+        d:'Órgano linfoide secundario más grande del cuerpo, situado en el hipocondrio izquierdo. Filtra la sangre eliminando eritrocitos envejecidos y patógenos, alberga linfocitos para la respuesta inmune adaptativa y actúa como reservorio de sangre y plaquetas. Es un órgano no vital pero importante.',
+        st:[{l:'Peso',v:'~150-200 g'},{l:'Tamaño',v:'~12×7×4 cm'},{l:'Flujo sangre',v:'~350 mL/min'},{l:'Pulpa roja',v:'~75-80%'}]},
+    parenchyma:{n:'Parénquima Esplénico',s:'Tejido Funcional',
+        d:'Tejido funcional del bazo encapsulado por una cápsula fibrosa que emite trabéculas al interior. Se divide en pulpa roja (~75-80%, filtración sanguínea) y pulpa blanca (~20-25%, función inmune), separadas por la zona marginal. El parénquima es blando, friable y muy vascularizado, lo que lo hace vulnerable a traumatismos.',
+        st:[{l:'Cápsula',v:'Fibrosa con músculo liso'},{l:'Trabéculas',v:'Soporte + vasos'},{l:'Consistencia',v:'Blanda, friable'},{l:'Vulnerabilidad',v:'Alta (trauma)'}]},
+    arteries:{n:'Arterias Esplénicas',s:'Irrigación Arterial',
+        d:'La arteria esplénica (rama del tronco celíaco) es la arteria más tortuosa del cuerpo. Entra por el hilio y se ramifica en arterias trabeculares → arterias centrales (rodeadas por PALS en pulpa blanca) → arteriolas peniciladas → capilares con vaina. Irriga ~5% del gasto cardíaco.',
+        st:[{l:'Origen',v:'Tronco celíaco'},{l:'Tipo',v:'Más tortuosa del cuerpo'},{l:'Flujo',v:'~350 mL/min'},{l:'Ramas',v:'Trabeculares → centrales'}]},
+    veins:{n:'Venas Esplénicas',s:'Drenaje Venoso',
+        d:'Los sinusoides esplénicos drenan a las venas de la pulpa → venas trabeculares → vena esplénica que emerge por el hilio. La vena esplénica se une a la vena mesentérica inferior y luego a la mesentérica superior para formar la vena porta hepática. Es vía clave de la circulación portal.',
+        st:[{l:'Drenaje',v:'→ Vena esplénica'},{l:'Destino',v:'→ Vena porta'},{l:'Sinusoides',v:'Paredes fenestradas'},{l:'Clínica',v:'Hipertensión portal'}]},
+    vasculature:{n:'Vascularización Completa',s:'Circulación Esplénica',
+        d:'El bazo recibe ~350 mL/min de sangre (~5% del gasto cardíaco). La circulación es peculiar: puede ser "abierta" (sangre sale de capilares al parénquima y es recogida por sinusoides) o "cerrada" (paso directo a sinusoides). Este sistema permite filtrar la sangre forzándola a través de los cordones de Billroth.',
+        st:[{l:'Circulación',v:'Abierta y cerrada'},{l:'Gasto cardíaco',v:'~5%'},{l:'Cordones',v:'Billroth (filtración)'},{l:'Sinusoides',v:'Células littorales'}]},
+    hilum:{n:'Hilio Esplénico',s:'Puerta de Entrada Vascular',
+        d:'Hendidura en la cara medial (gastroesplénica) por donde entran la arteria esplénica y sus ramas, y salen la vena esplénica y vasos linfáticos. También ingresan nervios del plexo celíaco. El ligamento esplenorrenal contiene los vasos esplénicos; el gastroesplénico contiene los vasos cortos gástricos.',
+        st:[{l:'Arteria',v:'Esplénica (tronco celíaco)'},{l:'Vena',v:'Esplénica (→ porta)'},{l:'Ligamentos',v:'Esplenorrenal, gastroespl.'},{l:'Nervios',v:'Plexo celíaco'}]},
+    capsule:{n:'Cápsula y Trabéculas',s:'Armazón de Sostén',
+        d:'Cápsula fibrosa de tejido conectivo denso con fibras elásticas y algunas células musculares lisas (permiten contracción para movilizar sangre almacenada). Las trabéculas se extienden al interior como tabiques, portando vasos trabeculares. Recubierta por peritoneo visceral excepto en el hilio.',
+        st:[{l:'Composición',v:'TC denso + elástico'},{l:'Músculo liso',v:'Contracción esplénica'},{l:'Trabéculas',v:'Vasos + soporte'},{l:'Peritoneo',v:'Intraperitoneal'}]},
+    surfaces:{n:'Caras y Bordes',s:'Morfología Externa',
+        d:'Forma ovoide con: cara diafragmática (convexa, contacta diafragma y costillas 9ª-11ª), cara visceral (cóncava, con impresiones gástrica, renal y cólica, y el hilio). Polo superior más redondeado, polo inferior más agudo. Borde anterior con escotaduras características. La regla nemotécnica "1-3-5-7-9-11" resume sus medidas.',
+        st:[{l:'Cara diafragmática',v:'Convexa (costillas 9-11)'},{l:'Cara visceral',v:'Gástrica, renal, cólica'},{l:'Regla',v:'1×3×5×7×9×11'},{l:'Borde anterior',v:'Escotaduras'}]},
+    whitepulp:{n:'Pulpa Blanca',s:'Tejido Linfoide — ~20-25%',
+        d:'Agregados de tejido linfoide que rodean las arterias centrales (PALS = vainas linfoides periarteriolares, ricas en linfocitos T) y forman folículos esplénicos (ricos en linfocitos B, pueden tener centros germinales activos). Es el compartimento inmunológico del bazo donde se inician respuestas contra antígenos sanguíneos.',
+        st:[{l:'PALS',v:'Linfocitos T (periarteriolar)'},{l:'Folículos',v:'Linfocitos B'},{l:'Centros germinales',v:'Respuesta activa'},{l:'Función',v:'Inmunidad adaptativa'}]},
+    redpulp:{n:'Pulpa Roja',s:'Filtración — ~75-80%',
+        d:'Constituye la mayor parte del parénquima. Formada por cordones esplénicos (de Billroth) —tejido reticular con macrófagos, eritrocitos, plaquetas y células plasmáticas— y sinusoides esplénicos (capilares con paredes fenestradas). Los macrófagos fagocitan eritrocitos envejecidos (>120 días) y reciclan el hierro de la hemoglobina.',
+        st:[{l:'Cordones',v:'Billroth (reticulares)'},{l:'Sinusoides',v:'Fenestrados'},{l:'Macrófagos',v:'Fagocitosis eritrocitos'},{l:'Reciclaje',v:'Fe de hemoglobina'}]},
+    marginal:{n:'Zona Marginal',s:'Interfaz Pulpa Blanca/Roja',
+        d:'Región de transición entre pulpa blanca y roja, rica en linfocitos B de zona marginal (especializados en respuesta T-independiente contra polisacáridos bacterianos), macrófagos y células dendríticas. Es el primer sitio donde los antígenos sanguíneos contactan con células inmunes. Crucial para defensa contra bacterias encapsuladas.',
+        st:[{l:'Linfocitos B',v:'Zona marginal (T-indep.)'},{l:'Macrófagos',v:'SIGN-R1+, MARCO+'},{l:'Bacterias',v:'Anti-encapsuladas'},{l:'Clínica',v:'Asplenia → riesgo sepsis'}]},
+    immune:{n:'Función Inmunitaria',s:'Defensa Inmune Sanguínea',
+        d:'El bazo es el principal filtro inmunológico de la sangre. La pulpa blanca genera respuestas de linfocitos T y B contra antígenos circulantes; la zona marginal captura patógenos encapsulados (Streptococcus pneumoniae, Haemophilus, Neisseria). Produce anticuerpos IgM y opsoninas (tuftsina, properdina). La esplenectomía aumenta el riesgo de sepsis fulminante (OPSI).',
+        st:[{l:'Anticuerpos',v:'IgM + opsoninas'},{l:'Patógenos clave',v:'S. pneumoniae, Haemophilus'},{l:'Opsoninas',v:'Tuftsina, properdina'},{l:'Esplenectomía',v:'Riesgo OPSI'}]},
+    filter:{n:'Filtración Sanguínea',s:'Control de Calidad Eritrocitario',
+        d:'Los eritrocitos deben atravesar las fenestras de los sinusoides esplénicos (~1-3 μm). Los glóbulos rojos rígidos, envejecidos (>120 días), con cuerpos de Howell-Jolly, o parasitados (malaria) quedan atrapados y son fagocitados por macrófagos. También elimina plaquetas viejas. Proceso llamado "culling" (eliminación) y "pitting" (extracción de inclusiones).',
+        st:[{l:'Eritrocitos',v:'Vida media ~120 días'},{l:'Culling',v:'Eliminación completa'},{l:'Pitting',v:'Extrae inclusiones'},{l:'Howell-Jolly',v:'Restos nucleares'}]},
+    reservoir:{n:'Reservorio Sanguíneo',s:'Almacén de Sangre y Plaquetas',
+        d:'El bazo almacena ~30% de las plaquetas circulantes y una reserva significativa de monocitos. En situaciones de estrés o hemorragia, la contracción de la cápsula (fibras musculares lisas) moviliza esta reserva al torrente sanguíneo. En algunas patologías (esplenomegalia), puede secuestrar hasta el 90% de las plaquetas causando trombocitopenia.',
+        st:[{l:'Plaquetas',v:'~30% del pool total'},{l:'Monocitos',v:'Reserva significativa'},{l:'Contracción',v:'Moviliza en estrés'},{l:'Esplenomegalia',v:'→ trombocitopenia'}]}
+};
+
+document.querySelectorAll('.hl-btn').forEach(btn=>{
+    btn.onclick=()=>{
+        document.querySelectorAll('.hl-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const p=btn.dataset.part,info=partInfo[p];
+        if(info){
+            $('ipN').textContent=info.n;$('ipS').textContent=info.s;$('ipD').textContent=info.d;
+            $('ipSt').innerHTML=info.st.map(s=>`<div class="st-card"><div class="st-label">${s.l}</div><div class="st-val">${s.v}</div></div>`).join('');
+        }
+        setHighlight(p);
+    };
+});
+    </script>
+</body>
+</html>

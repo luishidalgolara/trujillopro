@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fundamentos Médicos — Medical 3D</title>
+<meta name="description" content="Guía completa de ciencias biológicas básicas y ciencias médicas clínicas para estudiantes de medicina.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
+<link rel="stylesheet" href="css/fundamentos.css">
+</head>
+<body>
+<!-- ═══ LOADING ═══ -->
+<div class="loading-overlay" id="loadingOverlay">
+<div class="loader-icon">📚</div>
+<div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+<div class="loader-text" id="loaderText">Cargando fundamentos...</div>
+</div>
+
+<!-- ═══ BACKGROUND ═══ -->
+<div class="bg-atmosphere"></div>
+<div class="bg-grid"></div>
+
+<!-- ═══ HEADER ═══ -->
+<header class="header">
+<div class="header-brand">
+<div class="header-logo">📚</div>
+<div>
+<div class="header-title">Fundamentos Médicos</div>
+<div class="header-subtitle">Ciencias Básicas y Clínicas</div>
+</div>
+</div>
+<div class="header-right">
+<div class="header-status">
+<div class="status-dot"></div>
+<span class="status-text">Plataforma activa</span>
+</div>
+<span class="header-version">v1.0</span>
+</div>
+</header>
+
+<!-- ═══ MAIN ═══ -->
+<main class="main">
+<!-- HERO -->
+<section class="hero">
+<div class="hero-badge">
+<span class="hero-badge-dot"></span>
+Conocimiento Médico Fundamental
+</div>
+<h2>Domina las bases de la<br><span class="text-gradient">medicina moderna</span></h2>
+<p class="hero-desc">Explora las ciencias biológicas básicas y ciencias médicas clínicas esenciales para tu formación profesional.</p>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+<div class="stat-item">
+<div class="stat-value"><span class="stat-accent">14</span></div>
+<div class="stat-label">Materias</div>
+</div>
+<div class="stat-item">
+<div class="stat-value">2</div>
+<div class="stat-label">Categorías</div>
+</div>
+<div class="stat-item">
+<div class="stat-value">100%</div>
+<div class="stat-label">Interactivo</div>
+</div>
+<div class="stat-item">
+<div class="stat-value">∞</div>
+<div class="stat-label">Conocimiento</div>
+</div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-container">
+<div class="search-bar">
+<span class="search-icon">🔍</span>
+<input type="text" id="searchInput" placeholder="Buscar materia o concepto...">
+</div>
+</div>
+
+<!-- NAVIGATION BUTTON -->
+<div class="nav-section">
+<a href="../index.html" class="btn-back">
+<span class="btn-back-icon">←</span>
+Volver a Módulos 3D
+</a>
+</div>
+
+<!-- ═══ SECCIÓN 1: CIENCIAS BIOLÓGICAS BÁSICAS ═══ -->
+<section class="section">
+<div class="section-header">
+<div class="section-icon">🧬</div>
+<div>
+<h3 class="section-title">Ciencias Biológicas Básicas</h3>
+<p class="section-subtitle">Fundamentos celulares y moleculares de la vida</p>
+</div>
+</div>
+
+<div class="subjects-grid" id="basicSciences">
+<!-- Biología Celular -->
+<div class="subject-card" data-subject="biologia-celular">
+<div class="subject-header">
+<div class="subject-icon">🧬</div>
+<div class="subject-title-wrapper">
+<h4 class="subject-title">Biología Celular</h4>
+<p class="subject-subtitle">La unidad básica de la vida</p>
+</div>
+<button class="subject-toggle">+</button>
+</div>
+<div class="subject-content">
+<p class="subject-intro">Estudian la célula humana en profundidad, la unidad fundamental de todos los organismos vivos.</p>
+<div class="subject-topics">
+<div class="topic-item">
+<span class="topic-icon">🔬</span>
+<div>
+<strong>Estructura y función de organelos</strong>
+<p>Mitocondrias, retículo endoplásmico, aparato de Golgi, lisosomas, núcleo y sus funciones específicas.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">🧱</span>
+<div>
+<strong>Membranas celulares</strong>
+<p>Composición lipídica, proteínas de membrana y modelo de mosaico fluido.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">⚡</span>
+<div>
+<strong>Transporte celular</strong>
+<p>Difusión simple y facilitada, transporte activo, endocitosis y exocitosis.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">📡</span>
+<div>
+<strong>Señalización celular</strong>
+<p>Receptores, segundos mensajeros y vías de transducción de señales.</p>
+</div>
+</div>
+</div>
+<div class="subject-footer">
+<span class="footer-tag">Base para entender tejidos y órganos</span>
+</div>
+</div>
+</div>
+
+<!-- Bioquímica -->
+<div class="subject-card" data-subject="bioquimica">
+<div class="subject-header">
+<div class="subject-icon">🧪</div>
+<div class="subject-title-wrapper">
+<h4 class="subject-title">Bioquímica</h4>
+<p class="subject-subtitle">Química de la vida</p>
+</div>
+<button class="subject-toggle">+</button>
+</div>
+<div class="subject-content">
+<p class="subject-intro">Analizan los procesos químicos del cuerpo que mantienen la vida.</p>
+<div class="subject-topics">
+<div class="topic-item">
+<span class="topic-icon">⚗️</span>
+<div>
+<strong>Metabolismo</strong>
+<p>Glucólisis, ciclo de Krebs, fosforilación oxidativa y vías metabólicas principales.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">🔑</span>
+<div>
+<strong>Enzimas</strong>
+<p>Catalizadores biológicos, cinética enzimática y regulación metabólica.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">💉</span>
+<div>
+<strong>Hormonas</strong>
+<p>Mensajeros químicos, sistemas endocrinos y regulación hormonal.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">🧬</span>
+<div>
+<strong>Proteínas</strong>
+<p>Estructura, función, síntesis y degradación de proteínas.</p>
+</div>
+</div>
+</div>
+<div class="subject-footer">
+<span class="footer-tag">Comprende diabetes y trastornos metabólicos</span>
+</div>
+</div>
+</div>
+
+<!-- Genética Médica -->
+<div class="subject-card" data-subject="genetica">
+<div class="subject-header">
+<div class="subject-icon">🧬</div>
+<div class="subject-title-wrapper">
+<h4 class="subject-title">Genética Médica</h4>
+<p class="subject-subtitle">Herencia y expresión génica</p>
+</div>
+<button class="subject-toggle">+</button>
+</div>
+<div class="subject-content">
+<p class="subject-intro">Estudian la base molecular de la herencia y las enfermedades genéticas.</p>
+<div class="subject-topics">
+<div class="topic-item">
+<span class="topic-icon">🧬</span>
+<div>
+<strong>ADN y ARN</strong>
+<p>Estructura de ácidos nucleicos, replicación, transcripción y traducción.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">⚠️</span>
+<div>
+<strong>Mutaciones</strong>
+<p>Tipos de mutaciones, consecuencias funcionales y reparación del ADN.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">👨‍👩‍👧‍👦</span>
+<div>
+<strong>Enfermedades hereditarias</strong>
+<p>Patrones de herencia mendeliana y compleja, consejo genético.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">🔬</span>
+<div>
+<strong>Epigenética</strong>
+<p>Modificaciones del ADN, metilación y regulación de la expresión génica.</p>
+</div>
+</div>
+</div>
+<div class="subject-footer">
+<span class="footer-tag">Fundamental en diagnóstico moderno</span>
+</div>
+</div>
+</div>
+
+<!-- Histología -->
+<div class="subject-card" data-subject="histologia">
+<div class="subject-header">
+<div class="subject-icon">🧫</div>
+<div class="subject-title-wrapper">
+<h4 class="subject-title">Histología</h4>
+<p class="subject-subtitle">Biología de los tejidos</p>
+</div>
+<button class="subject-toggle">+</button>
+</div>
+<div class="subject-content">
+<p class="subject-intro">Es la biología de los tejidos al microscopio, estudiando su estructura y función.</p>
+<div class="subject-topics">
+<div class="topic-item">
+<span class="topic-icon">📋</span>
+<div>
+<strong>Tejido epitelial</strong>
+<p>Tipos de epitelios, funciones de revestimiento, absorción y secreción.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">💪</span>
+<div>
+<strong>Tejido muscular</strong>
+<p>Músculo esquelético, liso y cardíaco. Mecanismos de contracción.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">🧠</span>
+<div>
+<strong>Tejido nervioso</strong>
+<p>Neuronas, células gliales, sinapsis y transmisión del impulso nervioso.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">🦴</span>
+<div>
+<strong>Tejido conectivo</strong>
+<p>Tejido conectivo laxo, denso, adiposo, cartílago, hueso y sangre.</p>
+</div>
+</div>
+</div>
+<div class="subject-footer">
+<span class="footer-tag">Puente entre células y órganos</span>
+</div>
+</div>
+</div>
+
+<!-- Microbiología -->
+<div class="subject-card" data-subject="microbiologia">
+<div class="subject-header">
+<div class="subject-icon">🦠</div>
+<div class="subject-title-wrapper">
+<h4 class="subject-title">Microbiología</h4>
+<p class="subject-subtitle">Organismos patógenos</p>
+</div>
+<button class="subject-toggle">+</button>
+</div>
+<div class="subject-content">
+<p class="subject-intro">Estudian organismos microscópicos que causan enfermedades infecciosas.</p>
+<div class="subject-topics">
+<div class="topic-item">
+<span class="topic-icon">🦠</span>
+<div>
+<strong>Bacterias</strong>
+<p>Estructura bacteriana, clasificación, mecanismos de patogenicidad y resistencia.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">🧬</span>
+<div>
+<strong>Virus</strong>
+<p>Estructura viral, replicación, tropismo y enfermedades virales importantes.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">🍄</span>
+<div>
+<strong>Hongos</strong>
+<p>Micología médica, infecciones superficiales, subcutáneas y sistémicas.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">🪱</span>
+<div>
+<strong>Parásitos</strong>
+<p>Protozoarios y helmintos. Ciclos de vida y manifestaciones clínicas.</p>
+</div>
+</div>
+</div>
+<div class="subject-footer">
+<span class="footer-tag">Base de enfermedades infecciosas</span>
+</div>
+</div>
+</div>
+
+<!-- Fisiología Básica -->
+<div class="subject-card" data-subject="fisiologia-basica">
+<div class="subject-header">
+<div class="subject-icon">🧠</div>
+<div class="subject-title-wrapper">
+<h4 class="subject-title">Fisiología</h4>
+<p class="subject-subtitle">Funcionamiento del organismo</p>
+</div>
+<button class="subject-toggle">+</button>
+</div>
+<div class="subject-content">
+<p class="subject-intro">Aunque ya es más médica que biológica, estudian cómo funciona el cuerpo humano.</p>
+<div class="subject-topics">
+<div class="topic-item">
+<span class="topic-icon">🧠</span>
+<div>
+<strong>Sistema nervioso</strong>
+<p>Sistema nervioso central y periférico, neurotransmisión y funciones superiores.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">❤️</span>
+<div>
+<strong>Sistema cardiovascular</strong>
+<p>Fisiología cardíaca, circulación, regulación de la presión arterial.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">🫁</span>
+<div>
+<strong>Sistema respiratorio</strong>
+<p>Mecánica respiratoria, intercambio gaseoso y control de la ventilación.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">⚗️</span>
+<div>
+<strong>Sistema endocrino</strong>
+<p>Glándulas endocrinas, hormonas y regulación homeostática.</p>
+</div>
+</div>
+</div>
+<div class="subject-footer">
+<span class="footer-tag">Integración de sistemas corporales</span>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- ═══ SECCIÓN 2: CIENCIAS MÉDICAS CLÍNICAS ═══ -->
+<section class="section">
+<div class="section-header">
+<div class="section-icon">🔬</div>
+<div>
+<h3 class="section-title">Ciencias Médicas Clínicas</h3>
+<p class="section-subtitle">De la teoría a la práctica médica</p>
+</div>
+</div>
+
+<div class="subjects-grid" id="clinicalSciences">
+<!-- Anatomía -->
+<div class="subject-card" data-subject="anatomia">
+<div class="subject-header">
+<div class="subject-icon">🔬</div>
+<div class="subject-title-wrapper">
+<h4 class="subject-title">Anatomía</h4>
+<p class="subject-subtitle">El mapa del cuerpo humano</p>
+</div>
+<button class="subject-toggle">+</button>
+</div>
+<div class="subject-content">
+<p class="subject-intro">Fundamental para toda la medicina. Sin anatomía no hay medicina. Es el mapa del cuerpo.</p>
+<div class="subject-topics">
+<div class="topic-item">
+<span class="topic-icon">🫀</span>
+<div>
+<strong>Anatomía macroscópica</strong>
+<p>Estudio de estructuras visibles en disección. Órganos, músculos, huesos y vasos.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">🗺️</span>
+<div>
+<strong>Anatomía topográfica</strong>
+<p>Relaciones espaciales entre estructuras. Fundamental para cirugía.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">🧠</span>
+<div>
+<strong>Neuroanatomía</strong>
+<p>Sistema nervioso central y periférico. Encéfalo, médula espinal y nervios.</p>
+</div>
+</div>
+</div>
+<div class="subject-footer">
+<span class="footer-tag critical">Sin anatomía no hay medicina</span>
+</div>
+</div>
+</div>
+
+<!-- Fisiología Clínica -->
+<div class="subject-card" data-subject="fisiologia-clinica">
+<div class="subject-header">
+<div class="subject-icon">⚙️</div>
+<div class="subject-title-wrapper">
+<h4 class="subject-title">Fisiología Clínica</h4>
+<p class="subject-subtitle">El software del cuerpo</p>
+</div>
+<button class="subject-toggle">+</button>
+</div>
+<div class="subject-content">
+<p class="subject-intro">No solo saber que existe un órgano, sino entender cómo funciona y se regula.</p>
+<div class="subject-topics">
+<div class="topic-item">
+<span class="topic-icon">💉</span>
+<div>
+<strong>Regulación de presión arterial</strong>
+<p>Mecanismos de control barorreceptor, hormonal y renal de la PA.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">⚡</span>
+<div>
+<strong>Respiración celular</strong>
+<p>Producción de energía, metabolismo aeróbico y anaeróbico.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">🧠</span>
+<div>
+<strong>Potencial de acción neuronal</strong>
+<p>Propagación del impulso nervioso, sinapsis y neurotransmisión.</p>
+</div>
+</div>
+</div>
+<div class="subject-footer">
+<span class="footer-tag critical">Entender el software del cuerpo</span>
+</div>
+</div>
+</div>
+
+<!-- Fisiopatología -->
+<div class="subject-card" data-subject="fisiopatologia">
+<div class="subject-header">
+<div class="subject-icon">🧪</div>
+<div class="subject-title-wrapper">
+<h4 class="subject-title">Fisiopatología</h4>
+<p class="subject-subtitle">Puente entre biología y enfermedad</p>
+</div>
+<button class="subject-toggle">+</button>
+</div>
+<div class="subject-content">
+<p class="subject-intro">Aquí ocurre el salto crítico: entender qué pasa cuando algo falla en el organismo.</p>
+<div class="subject-topics">
+<div class="topic-item">
+<span class="topic-icon">⚠️</span>
+<div>
+<strong>Mecanismos de enfermedad</strong>
+<p>¿Qué pasa cuando algo falla? Alteraciones funcionales y estructurales.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">🌡️</span>
+<div>
+<strong>Respuesta a infección</strong>
+<p>¿Cómo una infección produce fiebre? Piretógenos y respuesta inmune.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">⚡</span>
+<div>
+<strong>Dolor y obstrucción</strong>
+<p>¿Cómo una obstrucción produce dolor? Isquemia y necrosis.</p>
+</div>
+</div>
+</div>
+<div class="subject-footer">
+<span class="footer-tag critical">Clave absoluta - Puente teoría-práctica</span>
+</div>
+</div>
+</div>
+
+<!-- Patología -->
+<div class="subject-card" data-subject="patologia">
+<div class="subject-header">
+<div class="subject-icon">🧫</div>
+<div class="subject-title-wrapper">
+<h4 class="subject-title">Patología</h4>
+<p class="subject-subtitle">Confirmación del daño</p>
+</div>
+<button class="subject-toggle">+</button>
+</div>
+<div class="subject-content">
+<p class="subject-intro">Estudio microscópico y macroscópico de enfermedades. Aquí se confirma lo que está dañado.</p>
+<div class="subject-topics">
+<div class="topic-item">
+<span class="topic-icon">🔬</span>
+<div>
+<strong>Patología microscópica</strong>
+<p>Estudio histológico de tejidos enfermos. Biopsias y citología.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">👁️</span>
+<div>
+<strong>Patología macroscópica</strong>
+<p>Cambios visibles en órganos y tejidos. Autopsias y especímenes quirúrgicos.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">🧬</span>
+<div>
+<strong>Cambios estructurales</strong>
+<p>Neoplasias, inflamación, degeneración y necrosis tisular.</p>
+</div>
+</div>
+</div>
+<div class="subject-footer">
+<span class="footer-tag">Confirma lo que está dañado</span>
+</div>
+</div>
+</div>
+
+<!-- Farmacología -->
+<div class="subject-card" data-subject="farmacologia">
+<div class="subject-header">
+<div class="subject-icon">💊</div>
+<div class="subject-title-wrapper">
+<h4 class="subject-title">Farmacología</h4>
+<p class="subject-subtitle">Ciencia de los medicamentos</p>
+</div>
+<button class="subject-toggle">+</button>
+</div>
+<div class="subject-content">
+<p class="subject-intro">Cómo actúan los medicamentos. Saber curar sin dañar.</p>
+<div class="subject-topics">
+<div class="topic-item">
+<span class="topic-icon">⚗️</span>
+<div>
+<strong>Mecanismos de acción</strong>
+<p>Farmacodinamia: cómo actúan los medicamentos a nivel molecular.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">📊</span>
+<div>
+<strong>Dosis y farmacocinética</strong>
+<p>Absorción, distribución, metabolismo y excreción de fármacos.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">⚠️</span>
+<div>
+<strong>Interacciones medicamentosas</strong>
+<p>Combinaciones de fármacos, sinergias y antagonismos.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">🚨</span>
+<div>
+<strong>Efectos adversos</strong>
+<p>Reacciones adversas, toxicidad y farmacovigilancia.</p>
+</div>
+</div>
+</div>
+<div class="subject-footer">
+<span class="footer-tag critical">Saber curar sin dañar</span>
+</div>
+</div>
+</div>
+
+<!-- Inmunología -->
+<div class="subject-card" data-subject="inmunologia">
+<div class="subject-header">
+<div class="subject-icon">🦠</div>
+<div class="subject-title-wrapper">
+<h4 class="subject-title">Inmunología</h4>
+<p class="subject-subtitle">Sistema de defensa</p>
+</div>
+<button class="subject-toggle">+</button>
+</div>
+<div class="subject-content">
+<p class="subject-intro">Vital en la medicina moderna. Comprensión del sistema inmune y sus alteraciones.</p>
+<div class="subject-topics">
+<div class="topic-item">
+<span class="topic-icon">🛡️</span>
+<div>
+<strong>Respuesta inmune</strong>
+<p>Inmunidad innata y adaptativa. Células y moléculas del sistema inmune.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">⚠️</span>
+<div>
+<strong>Autoinmunidad</strong>
+<p>Enfermedades autoinmunes, mecanismos de tolerancia y pérdida de ella.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">🔥</span>
+<div>
+<strong>Inflamación</strong>
+<p>Respuesta inflamatoria aguda y crónica. Mediadores inflamatorios.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">💉</span>
+<div>
+<strong>Vacunas</strong>
+<p>Inmunización activa y pasiva. Tipos de vacunas y eficacia.</p>
+</div>
+</div>
+</div>
+<div class="subject-footer">
+<span class="footer-tag">Vital en medicina moderna</span>
+</div>
+</div>
+</div>
+
+<!-- Semiología -->
+<div class="subject-card" data-subject="semiologia">
+<div class="subject-header">
+<div class="subject-icon">🧠</div>
+<div class="subject-title-wrapper">
+<h4 class="subject-title">Semiología</h4>
+<p class="subject-subtitle">Arte clínico</p>
+</div>
+<button class="subject-toggle">+</button>
+</div>
+<div class="subject-content">
+<p class="subject-intro">CRÍTICO. Aquí empieza el médico real. No es solo ciencia, es criterio clínico.</p>
+<div class="subject-topics">
+<div class="topic-item">
+<span class="topic-icon">👨‍⚕️</span>
+<div>
+<strong>Examen físico</strong>
+<p>Inspección, palpación, percusión y auscultación. Técnicas de exploración.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">🗣️</span>
+<div>
+<strong>Interpretación de síntomas</strong>
+<p>Análisis semiológico de signos y síntomas. Razonamiento clínico.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">❓</span>
+<div>
+<strong>Anamnesis</strong>
+<p>Cómo interrogar correctamente. Historia clínica orientada al problema.</p>
+</div>
+</div>
+</div>
+<div class="subject-footer">
+<span class="footer-tag critical">Aquí empieza el médico real</span>
+</div>
+</div>
+</div>
+
+<!-- Medicina Basada en Evidencia -->
+<div class="subject-card" data-subject="mbe">
+<div class="subject-header">
+<div class="subject-icon">🧑‍⚕️</div>
+<div class="subject-title-wrapper">
+<h4 class="subject-title">Medicina Basada en Evidencia</h4>
+<p class="subject-subtitle">Ciencia aplicada</p>
+</div>
+<button class="subject-toggle">+</button>
+</div>
+<div class="subject-content">
+<p class="subject-intro">Aplicación de la mejor evidencia científica en la toma de decisiones clínicas.</p>
+<div class="subject-topics">
+<div class="topic-item">
+<span class="topic-icon">📚</span>
+<div>
+<strong>Lectura crítica</strong>
+<p>Cómo leer estudios científicos. Interpretación de literatura médica.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">📊</span>
+<div>
+<strong>Estadística médica</strong>
+<p>Bioestadística, pruebas diagnósticas, sensibilidad y especificidad.</p>
+</div>
+</div>
+<div class="topic-item">
+<span class="topic-icon">✅</span>
+<div>
+<strong>Evaluación de tratamientos</strong>
+<p>Saber cuándo un tratamiento realmente funciona. Ensayos clínicos y metaanálisis.</p>
+</div>
+</div>
+</div>
+<div class="subject-footer">
+<span class="footer-tag">Decisiones basadas en ciencia</span>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- NO RESULTS -->
+<div class="no-results" id="noResults">
+<div class="no-results-icon">📚</div>
+<div class="no-results-text">No se encontraron materias con ese criterio.</div>
+</div>
+
+<!-- NAVIGATION BUTTON BOTTOM -->
+<div class="nav-section">
+<a href="../index.html" class="btn-back">
+<span class="btn-back-icon">←</span>
+Volver a Módulos 3D
+</a>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+Medical 3D — Fundamentos Médicos<br>
+Contenido educativo para estudiantes de medicina · 
+Desarrollado con <span style="color: #ff6b9d;">♥</span> para la educación
+</footer>
+</main>
+
+<script src="js/fundamentos.js"></script>
+</body>
+</html>

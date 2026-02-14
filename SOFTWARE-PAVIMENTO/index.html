@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pavimentos de Chile - Software Educativo Interactivo</title>
+    
+    <!-- Estilos divididos de styles.css -->
+    <link rel="stylesheet" href="css/styles/base.css">
+    <link rel="stylesheet" href="css/styles/layout.css">
+    <link rel="stylesheet" href="css/styles/header.css">
+    <link rel="stylesheet" href="css/styles/sidebar.css">
+    <link rel="stylesheet" href="css/styles/viewer.css">
+    <link rel="stylesheet" href="css/styles/info-panel.css">
+    <link rel="stylesheet" href="css/styles/modules.css">
+    <link rel="stylesheet" href="css/styles/footer.css">
+    <link rel="stylesheet" href="css/styles/utilities.css">
+    
+    <!-- CSS ya existentes (no se modifican) -->
+    <link rel="stylesheet" href="css/viewer3d.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/global-modules.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>🛣️ Pavimentos de Chile</h1>
+            <p class="subtitle">Software Educativo Tipos de Pavimentos</p>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar con controles -->
+        <aside class="sidebar">
+            <div class="control-panel">
+                <h2>Tipos de Pavimento</h2>
+                
+                <div class="tipo-selector">
+                    <button class="tipo-btn active" data-tipo="flexible">
+                        <span class="icon">🛣️</span>
+                        <span class="text">Flexible (Asfáltico)</span>
+                    </button>
+                    <button class="tipo-btn" data-tipo="rigido">
+                        <span class="icon">🧱</span>
+                        <span class="text">Rígido (Hormigón)</span>
+                    </button>
+                    <button class="tipo-btn" data-tipo="semirigido">
+                        <span class="icon">⚙️</span>
+                        <span class="text">Semirrígido</span>
+                    </button>
+                </div>
+
+                <div class="control-section">
+                    <h3>Controles del Visor 3D</h3>
+                    <button id="btn-explotar" class="control-btn">
+                        <span>📦</span> Explotar Capas
+                    </button>
+                    <button id="btn-rotar" class="control-btn">
+                        <span>🔄</span> Rotar Automático
+                    </button>
+                    <button id="btn-reset" class="control-btn">
+                        <span>🔄</span> Resetear Vista
+                    </button>
+                </div>
+
+                <div class="capas-list">
+                    <h3>Capas Visibles</h3>
+                    <div id="capas-checkboxes"></div>
+                </div>
+
+                <div class="info-box">
+                    <h3>💡 Instrucciones</h3>
+                    <ul>
+                        <li>Click izquierdo + arrastrar: Rotar</li>
+                        <li>Scroll: Zoom</li>
+                        <li>Click derecho + arrastrar: Mover</li>
+                        <li>Click en capas para más info</li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Visor 3D -->
+        <main class="viewer-container">
+            <div id="viewer3d"></div>
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Cargando visualizador 3D...</p>
+            </div>
+        </main>
+
+        <!-- Panel de información -->
+        <aside class="info-panel">
+            <div class="info-content">
+                <h2 id="info-title">Pavimento Flexible (Asfáltico)</h2>
+                
+                <div class="info-section">
+                    <h3>📋 Descripción</h3>
+                    <p id="info-descripcion"></p>
+                </div>
+
+                <div class="info-section">
+                    <h3>🏗️ Material Principal</h3>
+                    <p id="info-material"></p>
+                </div>
+
+                <div class="info-section">
+                    <h3>⚡ Cómo Trabaja Estructuralmente</h3>
+                    <p id="info-estructura"></p>
+                </div>
+
+                <div class="info-section">
+                    <h3>📐 Capas Típicas</h3>
+                    <div id="info-capas"></div>
+                </div>
+
+                <div class="info-section ventajas">
+                    <h3>✅ Ventajas</h3>
+                    <ul id="info-ventajas"></ul>
+                </div>
+
+                <div class="info-section desventajas">
+                    <h3>❌ Desventajas</h3>
+                    <ul id="info-desventajas"></ul>
+                </div>
+
+                <div class="info-section chile-data">
+                    <h3>🇨🇱 Datos de Chile</h3>
+                    <div id="info-chile"></div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- ========================================
+         NUEVA SECCIÓN: MÓDULOS EDUCATIVOS
+         (No afecta nada del código anterior)
+         ======================================== -->
+    <section class="modulos-educativos" id="modulos">
+        <div class="container">
+            <div class="modulos-header">
+                <h2>📚 Explora Más Módulos Educativos</h2>
+                <p>Amplía tus conocimientos con contenido interactivo sobre pavimentación en Chile</p>
+            </div>
+            
+            <div class="modulos-grid">
+                <!-- Módulo 1: Proyectos Emblemáticos -->
+                <a href="modulos/01-proyectos-emblematicos/index.html" class="modulo-card">
+                    <div class="modulo-icon">🏗️</div>
+                    <h3>Proyectos Emblemáticos</h3>
+                    <p>Conoce las obras viales más importantes de Chile</p>
+                    <span class="modulo-badge">Casos Reales</span>
+                </a>
+                
+                <!-- Módulo 2: Contexto Climático -->
+                <a href="modulos/02-contexto-climatico/index.html" class="modulo-card">
+                    <div class="modulo-icon">🌦️</div>
+                    <h3>Contexto Climático</h3>
+                    <p>Cómo afecta el clima a cada tipo de pavimento</p>
+                    <span class="modulo-badge">4 Zonas</span>
+                </a>
+                
+                <!-- Módulo 3: Normativa Chilena -->
+                <a href="modulos/03-normativa-chilena/index.html" class="modulo-card">
+                    <div class="modulo-icon">📋</div>
+                    <h3>Normativa Chilena</h3>
+                    <p>Manual de Carreteras y normas MOP</p>
+                    <span class="modulo-badge">MC-V3 & V8</span>
+                </a>
+                
+                <!-- Módulo 4: Ciclo de Vida -->
+                <a href="modulos/04-ciclo-vida/index.html" class="modulo-card">
+                    <div class="modulo-icon">♻️</div>
+                    <h3>Ciclo de Vida</h3>
+                    <p>Desde el diseño hasta la rehabilitación</p>
+                    <span class="modulo-badge">Completo</span>
+                </a>
+                
+                <!-- Módulo 5: Deterioros -->
+                <a href="modulos/05-deterioros/index.html" class="modulo-card">
+                    <div class="modulo-icon">⚠️</div>
+                    <h3>Deterioros</h3>
+                    <p>Fallas típicas y sus soluciones</p>
+                    <span class="modulo-badge">PCI</span>
+                </a>
+                
+                <!-- Módulo 6: Tráfico y Cargas -->
+                <a href="modulos/06-trafico-cargas/index.html" class="modulo-card">
+                    <div class="modulo-icon">🚛</div>
+                    <h3>Tráfico y Cargas</h3>
+                    <p>ESAL y diseño por cargas</p>
+                    <span class="modulo-badge">Cálculos</span>
+                </a>
+                
+                <!-- Módulo 7: Análisis de Costos -->
+                <a href="modulos/07-costos/index.html" class="modulo-card">
+                    <div class="modulo-icon">💰</div>
+                    <h3>Análisis de Costos</h3>
+                    <p>Inversión y mantenimiento</p>
+                    <span class="modulo-badge">2025</span>
+                </a>
+                
+                <!-- Módulo 8: Sustentabilidad -->
+                <a href="modulos/08-sustentabilidad/index.html" class="modulo-card">
+                    <div class="modulo-icon">🌱</div>
+                    <h3>Sustentabilidad</h3>
+                    <p>Tecnologías verdes RAP y WMA</p>
+                    <span class="modulo-badge">Eco</span>
+                </a>
+                
+                <!-- Módulo 9: Proceso Constructivo -->
+                <a href="modulos/09-proceso-constructivo/index.html" class="modulo-card">
+                    <div class="modulo-icon">👷</div>
+                    <h3>Proceso Constructivo</h3>
+                    <p>Etapas paso a paso</p>
+                    <span class="modulo-badge">Práctico</span>
+                </a>
+                
+                <!-- Módulo 10: Quiz Práctico -->
+                <a href="modulos/10-quiz-practico/index.html" class="modulo-card">
+                    <div class="modulo-icon">🎯</div>
+                    <h3>Quiz Práctico</h3>
+                    <p>Evalúa tus conocimientos</p>
+                    <span class="modulo-badge">10 Preguntas</span>
+                </a>
+                
+                <!-- Módulo 11: Glosario Técnico -->
+                <a href="modulos/11-glosario/index.html" class="modulo-card">
+                    <div class="modulo-icon">📖</div>
+                    <h3>Glosario Técnico</h3>
+                    <p>Términos y definiciones</p>
+                    <span class="modulo-badge">30+ Términos</span>
+                </a>
+                
+                <!-- Módulo 12: Comparador -->
+                <a href="modulos/12-comparador/index.html" class="modulo-card">
+                    <div class="modulo-icon">⚖️</div>
+                    <h3>Comparador</h3>
+                    <p>Flexible vs Rígido vs Semirrígido</p>
+                    <span class="modulo-badge">Comparación</span>
+                </a>
+            </div>
+            
+            <div class="modulos-footer">
+                <p>✨ Todos los módulos incluyen datos reales de Chile ✨</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Software Educativo sobre Pavimentación en Chile | Desarrollado con fines educativos | 2026</p>
+    </footer>
+
+    <!-- Scripts originales (NO SE MODIFICAN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <script src="js/data-pavimentos.js"></script>
+    <!-- 3. Módulos del Viewer3D (en orden de dependencias) -->
+    <script src="js/viewer3d/SceneManager.js"></script>
+    <script src="js/viewer3d/CameraControls.js"></script>
+    <script src="js/viewer3d/PavementBuilder.js"></script>
+    <script src="js/viewer3d/InteractionHandler.js"></script>
+    <script src="js/viewer3d/AnimationController.js"></script>
+    <script src="js/viewer3d/Viewer3D.js"></script>
+    <!-- 4. Controlador de UI y main -->
+    <script src="js/viewer3d.js"></script>
+    <script src="js/ui-controls.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

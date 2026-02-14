@@ -1,0 +1,192 @@
+/* ============================================
+   ESTILOS PARA MÓDULOS EDUCATIVOS
+   ============================================ */
+
+.modulos-educativos {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 4rem 2rem;
+    margin-top: 2rem;
+}
+
+.modulos-educativos .container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.modulos-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.modulos-header h2 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.modulos-header p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+}
+
+.modulos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 0 auto 3rem;
+}
+
+.modulo-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 3px solid transparent;
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+
+.modulo-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.modulo-card:hover::before {
+    transform: scaleX(1);
+}
+
+.modulo-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+    border-color: #667eea;
+}
+
+.modulo-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.modulo-card:hover .modulo-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.modulo-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.modulo-card p {
+    color: #7f8c8d;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.modulo-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.modulos-footer {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.modulos-footer p {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modulo-card {
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.modulo-card:nth-child(1) { animation-delay: 0.05s; }
+.modulo-card:nth-child(2) { animation-delay: 0.1s; }
+.modulo-card:nth-child(3) { animation-delay: 0.15s; }
+.modulo-card:nth-child(4) { animation-delay: 0.2s; }
+.modulo-card:nth-child(5) { animation-delay: 0.25s; }
+.modulo-card:nth-child(6) { animation-delay: 0.3s; }
+.modulo-card:nth-child(7) { animation-delay: 0.35s; }
+.modulo-card:nth-child(8) { animation-delay: 0.4s; }
+.modulo-card:nth-child(9) { animation-delay: 0.45s; }
+.modulo-card:nth-child(10) { animation-delay: 0.5s; }
+.modulo-card:nth-child(11) { animation-delay: 0.55s; }
+.modulo-card:nth-child(12) { animation-delay: 0.6s; }
+
+/* Responsive para módulos */
+@media (max-width: 768px) {
+    .modulos-educativos {
+        padding: 2rem 1rem;
+    }
+
+    .modulos-header h2 {
+        font-size: 2rem;
+    }
+    
+    .modulos-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .modulo-card {
+        padding: 1.5rem;
+    }
+    
+    .modulo-icon {
+        font-size: 3rem;
+    }
+    
+    .modulo-card h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .modulos-header h2 {
+        font-size: 1.6rem;
+    }
+    
+    .modulos-header p {
+        font-size: 1rem;
+    }
+    
+    .modulo-icon {
+        font-size: 2.5rem;
+    }
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normativa Chilena - Pavimentos de Chile</title>
+    <link rel="stylesheet" href="../../css/global-modules.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="module-header">
+        <div class="container">
+            <h1>📋 Normativa Chilena</h1>
+            <p class="subtitle">Normas y reglamentos MOP y SERVIU</p>
+            <div class="breadcrumb">
+                <a href="../../index.html">🏠 Inicio</a>
+                <span>→</span>
+                <span>Normativa Chilena</span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="back-nav">
+        <div class="container">
+            <a href="../../index.html" class="btn-back">← Volver al Inicio</a>
+        </div>
+    </nav>
+
+    <!-- PESTAÑAS MOP Y SERVIU -->
+    <div class="tabs-container">
+        <div class="container">
+            <div class="tabs-buttons">
+                <button class="tab-btn active" data-tab="mop">
+                    🏛️ Manual de Carreteras MOP
+                </button>
+                <button class="tab-btn" data-tab="serviu">
+                    🏘️ Manual de Pavimentación SERVIU
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="module-container">
+        
+        <!-- TAB CONTENIDO MOP (Tu contenido existente) -->
+        <div id="tab-mop" class="tab-content active">
+            <section class="content-wrapper fade-in">
+                <div id="module-content"></div>
+            </section>
+        </div>
+
+        <!-- TAB CONTENIDO SERVIU (NUEVO) -->
+        <div id="tab-serviu" class="tab-content">
+            <section class="content-wrapper fade-in">
+                <div id="serviu-content"></div>
+            </section>
+        </div>
+
+    </div>
+
+    <footer class="module-footer">
+        <p>Normativa Chilena | Software Educativo Pavimentos de Chile | 2026</p>
+    </footer>
+
+    <script src="../../js/navigation.js"></script>
+    <script src="data/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

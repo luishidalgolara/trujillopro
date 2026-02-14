@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ojo Humano 3D — Plataforma Médica In Silico</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#080b12;--panel:rgba(12,16,28,0.88);--card:rgba(18,24,42,0.75);--accent:#4a9eed;--accent-glow:rgba(74,158,237,0.25);--cyan:#5cc8d4;--cyan-glow:rgba(92,200,212,0.2);--text:#e8ecf4;--text2:#8a94a8;--dim:#555f73;--border:rgba(255,255,255,0.06);--glass:rgba(255,255,255,0.03)}
+        body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow:hidden;height:100vh}
+
+        .header{position:fixed;top:0;left:0;right:0;height:52px;background:var(--panel);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px;z-index:100}
+        .header h1{font-size:.9rem;font-weight:600;letter-spacing:-.02em}
+        .header span{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);text-transform:uppercase;letter-spacing:.1em}
+        .header-r{display:flex;align-items:center;gap:14px}
+        .sdot{width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px rgba(74,222,128,.5);animation:pd 2s infinite}
+        @keyframes pd{0%,100%{opacity:1}50%{opacity:.5}}
+        .fps{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim)}
+
+        #mainCanvas{position:fixed;top:52px;left:0;width:100%;height:calc(100vh - 52px)}
+
+        .loading-screen{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;transition:opacity .8s,visibility .8s}
+        .loading-screen.hidden{opacity:0;visibility:hidden;pointer-events:none}
+        .lb-icon{font-size:3.5rem;animation:fl 2s ease-in-out infinite}
+        @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        .lb-bar{width:180px;height:2px;background:var(--border);border-radius:2px;margin-top:20px;overflow:hidden}
+        .lb-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--cyan));width:0%;transition:width .3s;border-radius:2px}
+        .lb-txt{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim);margin-top:10px}
+
+        .info-panel{position:fixed;top:66px;right:14px;width:290px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:14px;padding:18px;z-index:50;transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .4s}
+        .info-panel.hide{transform:translateX(310px);opacity:0}
+        .ip-tag{font-size:.6rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:10px}
+        .ip-name{font-size:1.3rem;font-weight:700;letter-spacing:-.03em;margin-bottom:3px}
+        .ip-sys{font-size:.78rem;color:var(--cyan);margin-bottom:10px}
+        .ip-desc{font-size:.78rem;line-height:1.5;color:var(--text2);margin-bottom:14px}
+        .ip-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+        .st-card{background:var(--glass);border:1px solid var(--border);border-radius:9px;padding:9px 10px}
+        .st-label{font-size:.6rem;color:var(--dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.05em}
+        .st-val{font-size:.85rem;font-weight:600;margin-top:1px}
+
+        .hl-panel{position:fixed;top:66px;left:14px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:12px;z-index:50}
+        .hl-title{font-size:.6rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:8px}
+        .hl-sep{font-size:.55rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:8px 0 4px 10px;opacity:.6}
+        .hl-btn{display:flex;align-items:center;gap:8px;width:100%;padding:7px 10px;border:1px solid transparent;border-radius:7px;background:0 0;color:var(--text2);font-size:.78rem;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;margin-bottom:2px}
+        .hl-btn:hover{background:var(--glass);color:var(--text)}
+        .hl-btn.active{background:var(--cyan-glow);border-color:rgba(92,200,212,.3);color:var(--cyan)}
+        .hl-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+        .ctrl-bar{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:5px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:7px;z-index:50}
+        .cb{width:40px;height:40px;border-radius:9px;border:1px solid transparent;background:0 0;color:var(--text2);font-size:1.05rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+        .cb:hover{background:var(--glass);border-color:var(--border);color:var(--text)}
+        .cb.active{background:var(--accent-glow);border-color:var(--accent);color:var(--accent)}
+        .cd{width:1px;background:var(--border);margin:4px 1px}
+
+        .pp-panel{position:fixed;bottom:75px;left:50%;transform:translateX(-50%);background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:14px;z-index:50;min-width:220px;display:none}
+        .pp-panel.vis{display:block}
+        .pp-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+        .pp-row label{font-size:.72rem;color:var(--text2)}
+        .pp-row input[type=range]{width:100px;height:3px;-webkit-appearance:none;background:var(--border);border-radius:2px;outline:0}
+        .pp-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;background:var(--accent);cursor:pointer}
+
+        .credit{position:fixed;bottom:70px;right:14px;font-size:.55rem;color:var(--dim);font-family:'Space Mono',monospace;z-index:50;text-align:right;line-height:1.4}
+        .credit a{color:var(--dim);text-decoration:underline;text-decoration-color:rgba(255,255,255,.1)}
+
+        .back-btn{
+            display:flex;align-items:center;gap:7px;
+            padding:0 12px;height:32px;
+            background:rgba(255,255,255,0.04);
+            border:1px solid rgba(255,255,255,0.06);
+            border-radius:8px;
+            color:var(--text2);
+            font-family:'DM Sans',sans-serif;
+            font-size:.75rem;font-weight:500;
+            cursor:pointer;
+            transition:all .25s ease;
+            text-decoration:none;
+            flex-shrink:0;
+        }
+        .back-btn:hover{
+            background:rgba(255,255,255,0.08);
+            border-color:rgba(255,255,255,0.12);
+            color:var(--text);
+        }
+        .back-btn svg{
+            width:14px;height:14px;
+            opacity:.6;transition:all .25s ease;
+        }
+        .back-btn:hover svg{opacity:1;transform:translateX(-2px)}
+        .cb.lbl-active{
+            background:var(--accent-glow) !important;
+            border-color:var(--accent) !important;
+            color:var(--accent) !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">👁️</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <a href="../index.html" class="back-btn" title="Volver a módulos">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+            </a>
+            <span style="font-size:1.3rem">👁️</span>
+            <div><h1>Plataforma Médica In Silico</h1><span>Modelo Anatómico 3D — Ojo Humano</span></div>
+        </div>
+        <div class="header-r"><div class="fps" id="fps">-- FPS</div><div class="sdot"></div></div>
+    </div>
+
+    <canvas id="mainCanvas"></canvas>
+
+    <div class="hl-panel">
+        <div class="hl-title">Estructuras</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#6ab0e8"></span>Ojo completo</button>
+        <div class="hl-sep">— Capa externa —</div>
+        <button class="hl-btn" data-part="cornea"><span class="hl-dot" style="background:rgba(200,230,255,0.8)"></span>Córnea</button>
+        <button class="hl-btn" data-part="sclera"><span class="hl-dot" style="background:#e8e0d8"></span>Esclerótica</button>
+        <div class="hl-sep">— Capa media —</div>
+        <button class="hl-btn" data-part="iris"><span class="hl-dot" style="background:#4a88cc"></span>Iris y Pupila</button>
+        <button class="hl-btn" data-part="uvea"><span class="hl-dot" style="background:#8B4513"></span>Úvea (Coroides)</button>
+        <div class="hl-sep">— Capa interna —</div>
+        <button class="hl-btn" data-part="retina"><span class="hl-dot" style="background:#cc6655"></span>Retina</button>
+        <button class="hl-btn" data-part="lens"><span class="hl-dot" style="background:rgba(220,235,255,0.7)"></span>Cristalino</button>
+        <div class="hl-sep">— Posterior —</div>
+        <button class="hl-btn" data-part="nerve"><span class="hl-dot" style="background:#ddcc88"></span>Nervio óptico</button>
+    </div>
+
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Ojo Humano</div>
+        <div class="ip-sys" id="ipS">Sistema Visual — Órgano Sensorial</div>
+        <div class="ip-desc" id="ipD">Órgano par responsable de la visión. Capta la luz a través de la córnea y el cristalino, la enfoca sobre la retina donde los fotorreceptores (conos y bastones) convierten la señal luminosa en impulsos nerviosos transmitidos al cerebro por el nervio óptico.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Diámetro</div><div class="st-val">~24 mm</div></div>
+            <div class="st-card"><div class="st-label">Peso</div><div class="st-val">~7.5 g</div></div>
+            <div class="st-card"><div class="st-label">Fotorreceptores</div><div class="st-val">~130×10⁶</div></div>
+            <div class="st-card"><div class="st-label">Campo visual</div><div class="st-val">~200°</div></div>
+        </div>
+    </div>
+
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Frontal">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Posterior">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+        <div class="cd"></div>
+        <button class="cb lbl-active" id="bLbl" title="Etiquetas numéricas">🏷️</button>
+    </div>
+
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="18"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="115"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="20"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="25"></div>
+    </div>
+
+    <div class="credit">Modelo: <a href="https://sketchfab.com/3d-models/blue-eyeball-free-18915d2f17a2431fbefeb3eaf4411f16" target="_blank">"Blue Eyeball (Free)"</a> por Tom Hodes<br>CC-BY-4.0</div>
+
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+    <script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
+import {ShaderPass} from 'three/addons/postprocessing/ShaderPass.js';
+import {SMAAPass} from 'three/addons/postprocessing/SMAAPass.js';
+
+const $=id=>document.getElementById(id);
+const lbFill=$('lbFill'), lbTxt=$('lbTxt'), ls=$('ls');
+const setLoad=(p,t)=>{lbFill.style.width=p+'%';lbTxt.textContent=t};
+
+// ===== SCENE =====
+setLoad(10,'Configurando escena...');
+const canvas=$('mainCanvas');
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x080b12);
+scene.fog=new THREE.FogExp2(0x080b12, 0.04);
+
+const camera=new THREE.PerspectiveCamera(45, innerWidth/(innerHeight-52), 0.01, 100);
+camera.position.set(0, 0, 4);
+
+const renderer=new THREE.WebGLRenderer({canvas, antialias:true, powerPreference:'high-performance'});
+renderer.setSize(innerWidth, innerHeight-52);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.shadowMap.enabled=true;
+renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure=1.15;
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.useLegacyLights=false;
+
+// ===== ORBIT =====
+const ctrl=new OrbitControls(camera, canvas);
+ctrl.enableDamping=true; ctrl.dampingFactor=0.06;
+ctrl.rotateSpeed=0.7; ctrl.zoomSpeed=0.8;
+ctrl.minDistance=1.5; ctrl.maxDistance=10;
+ctrl.target.set(0, 0, 0);
+ctrl.autoRotate=true; ctrl.autoRotateSpeed=0.6;
+
+// ===== ENVIRONMENT =====
+setLoad(20,'Generando environment...');
+const pmrem=new THREE.PMREMGenerator(renderer);
+pmrem.compileEquirectangularShader();
+const envSc=new THREE.Scene();
+envSc.add(new THREE.Mesh(
+    new THREE.SphereGeometry(10, 32, 32),
+    new THREE.ShaderMaterial({
+        side: THREE.BackSide,
+        vertexShader:`varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+        fragmentShader:`varying vec3 vP;void main(){
+            vec3 d=normalize(vP);float y=d.y*.5+.5;
+            vec3 c=mix(vec3(.04,.05,.08),mix(vec3(.06,.08,.14),vec3(.1,.13,.22),smoothstep(.4,1.,y)),smoothstep(0.,.4,y));
+            c+=vec3(.15,.2,.35)*pow(max(0.,dot(d,normalize(vec3(1.,.5,.3)))),6.)*.3;
+            c+=vec3(.1,.12,.2)*pow(max(0.,dot(d,normalize(vec3(-.6,.3,-.8)))),5.)*.15;
+            gl_FragColor=vec4(c,1.);}`
+    })
+));
+scene.environment=pmrem.fromScene(envSc, 0.04).texture;
+pmrem.dispose();
+
+// ===== LIGHTS =====
+setLoad(30,'Iluminación...');
+scene.add(new THREE.HemisphereLight(0x8899bb, 0x112233, 0.5));
+
+const keyLight=new THREE.DirectionalLight(0xffeedd, 2.5);
+keyLight.position.set(3, 4, 5);
+keyLight.castShadow=true;
+keyLight.shadow.mapSize.set(2048, 2048);
+keyLight.shadow.camera.near=0.1; keyLight.shadow.camera.far=15;
+keyLight.shadow.camera.left=-2; keyLight.shadow.camera.right=2;
+keyLight.shadow.camera.top=2; keyLight.shadow.camera.bottom=-2;
+keyLight.shadow.bias=-0.0005; keyLight.shadow.normalBias=0.02;
+scene.add(keyLight);
+
+const fillLight=new THREE.DirectionalLight(0x88aadd, 1.0);
+fillLight.position.set(-4, 2, -1);
+scene.add(fillLight);
+
+const rimLight=new THREE.DirectionalLight(0xaabbee, 1.2);
+rimLight.position.set(-1, -1, -4);
+scene.add(rimLight);
+
+// Front specular light for iris reflection
+const specLight=new THREE.PointLight(0xffffff, 1.2, 12);
+specLight.position.set(1, 2, 4);
+scene.add(specLight);
+
+// Subtle warm backlight for SSS effect
+const sssLight=new THREE.PointLight(0xff8866, 0.3, 8);
+sssLight.position.set(0, -2, -3);
+scene.add(sssLight);
+
+// ===== POST-PROCESSING =====
+setLoad(40,'Post-processing...');
+const composer=new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+
+const bloom=new UnrealBloomPass(
+    new THREE.Vector2(innerWidth, innerHeight), 0.18, 0.5, 0.88
+);
+composer.addPass(bloom);
+
+const cgShader={
+    uniforms:{tDiffuse:{value:null}, sss:{value:0.2}, vign:{value:0.25}},
+    vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+    fragmentShader:`uniform sampler2D tDiffuse;uniform float sss;uniform float vign;varying vec2 vUv;
+    void main(){
+        vec4 tx=texture2D(tDiffuse,vUv);vec3 c=tx.rgb;
+        float lum=dot(c,vec3(.299,.587,.114));
+        float sm=smoothstep(.1,.5,lum)*(1.-smoothstep(.5,.9,lum));
+        c+=vec3(.5,.35,.3)*sss*sm*.12;
+        c.b+=.01;
+        float g=dot(c,vec3(.2126,.7152,.0722));c=mix(vec3(g),c,1.08);
+        c=(c-.5)*1.03+.5;
+        vec2 u=vUv*2.-1.;c*=1.-dot(u,u)*vign*.4;
+        gl_FragColor=vec4(clamp(c,0.,1.),tx.a);}`
+};
+const cgPass=new ShaderPass(cgShader);
+composer.addPass(cgPass);
+composer.addPass(new SMAAPass(innerWidth, innerHeight));
+
+// ===== LOAD EYEBALL =====
+setLoad(50,'Cargando modelo del ojo...');
+let eyeModel=null;
+
+new GLTFLoader().load('eyeball.glb',
+    (gltf) => {
+        setLoad(80,'Mejorando materiales...');
+        eyeModel = gltf.scene;
+
+        // Center and scale
+        const box = new THREE.Box3().setFromObject(eyeModel);
+        const center = box.getCenter(new THREE.Vector3());
+        const size = box.getSize(new THREE.Vector3());
+        const sc = 3.0 / Math.max(size.x, size.y, size.z);
+        eyeModel.scale.setScalar(sc);
+
+        const scaledBox = new THREE.Box3().setFromObject(eyeModel);
+        const scaledCenter = scaledBox.getCenter(new THREE.Vector3());
+        eyeModel.position.x -= scaledCenter.x;
+        eyeModel.position.y -= scaledCenter.y;
+        eyeModel.position.z -= scaledCenter.z;
+
+        // Enhance materials
+        eyeModel.traverse((child) => {
+            if (!child.isMesh) return;
+            child.castShadow = true;
+            child.receiveShadow = true;
+
+            const mat = child.material;
+            if (mat) {
+                const pm = new THREE.MeshPhysicalMaterial();
+                if (mat.map) pm.map = mat.map;
+                if (mat.normalMap) { pm.normalMap = mat.normalMap; pm.normalScale = new THREE.Vector2(1.2, 1.2); }
+                if (mat.roughnessMap) pm.roughnessMap = mat.roughnessMap;
+                if (mat.metalnessMap) pm.metalnessMap = mat.metalnessMap;
+
+                // Eye-specific PBR
+                pm.roughness = 0.25;
+                pm.metalness = 0.0;
+                pm.clearcoat = 0.8;
+                pm.clearcoatRoughness = 0.05;
+                pm.thickness = 1.5;
+                pm.transmission = 0.0;
+                pm.ior = 1.376; // Real cornea IOR
+                pm.attenuationColor = new THREE.Color(0.9, 0.85, 0.8);
+                pm.attenuationDistance = 3.0;
+                pm.sheen = 0.15;
+                pm.sheenRoughness = 0.3;
+                pm.sheenColor = new THREE.Color(0.6, 0.65, 0.75);
+                pm.envMapIntensity = 1.0;
+                pm.emissive = new THREE.Color(0.02, 0.02, 0.04);
+                pm.emissiveIntensity = 0.05;
+
+                child.material = pm;
+            }
+        });
+
+        scene.add(eyeModel);
+
+        // Subtle ground reflection
+        const gnd = new THREE.Mesh(
+            new THREE.PlaneGeometry(15, 15),
+            new THREE.MeshStandardMaterial({color:0x080b12, roughness:0.92, transparent:true, opacity:0.4})
+        );
+        gnd.rotation.x = -Math.PI / 2;
+        gnd.position.y = -2;
+        gnd.receiveShadow = true;
+        scene.add(gnd);
+
+        setLoad(100, '¡Listo!');
+        setTimeout(() => ls.classList.add('hidden'), 500);
+    },
+    (p) => { if(p.total) setLoad(50 + (p.loaded / p.total) * 30, 'Descargando... ' + (p.loaded / 1024 | 0) + 'KB') },
+    (e) => { console.error(e); setLoad(0, 'Error al cargar. Verifica que eyeball.glb esté en la misma carpeta.') }
+);
+
+// ===== EXPOSE FOR EXTERNAL MODULES =====
+window.__EYE3D = { scene, camera, renderer, ctrl };
+
+// ===== ANIMATION =====
+let lt = performance.now(), fc = 0;
+(function anim(t) {
+    requestAnimationFrame(anim);
+    fc++;
+    if (t - lt >= 1000) { $('fps').textContent = fc + ' FPS'; fc = 0; lt = t; }
+    ctrl.update();
+    // Subtle light breathing
+    specLight.intensity = 1.2 + Math.sin(t * 0.0008) * 0.15;
+    sssLight.intensity = 0.3 + Math.sin(t * 0.001 * 0.6) * 0.06;
+    composer.render();
+})(0);
+
+// ===== RESIZE =====
+addEventListener('resize', () => {
+    const w = innerWidth, h = innerHeight - 52;
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+    renderer.setSize(w, h); composer.setSize(w, h); bloom.setSize(w, h);
+});
+
+// ===== UI =====
+let ar = true;
+$('bRot').onclick = e => { ar = !ar; ctrl.autoRotate = ar; e.currentTarget.classList.toggle('active', ar); };
+$('bRst').onclick = () => { ctrl.target.set(0, 0, 0); camera.position.set(0, 0, 4); };
+$('bZi').onclick = () => camera.position.lerp(ctrl.target, 0.15);
+$('bZo').onclick = () => { const d = camera.position.clone().sub(ctrl.target).normalize(); camera.position.add(d.multiplyScalar(0.5)); };
+$('bFr').onclick = () => { camera.position.set(0, 0, 4); ctrl.target.set(0, 0, 0); };
+$('bTo').onclick = () => { camera.position.set(0, 4, 0.01); ctrl.target.set(0, 0, 0); };
+$('bSi').onclick = () => { camera.position.set(4, 0, 0); ctrl.target.set(0, 0, 0); };
+$('bBk').onclick = () => { camera.position.set(0, 0, -4); ctrl.target.set(0, 0, 0); };
+
+let ipVis = true;
+$('bIn').onclick = () => { ipVis = !ipVis; $('ip').classList.toggle('hide', !ipVis); };
+
+$('bPP').onclick = e => { $('ppP').classList.toggle('vis'); e.currentTarget.classList.toggle('active'); };
+$('ppB').oninput = e => bloom.strength = e.target.value / 100 * 0.5;
+$('ppE').oninput = e => renderer.toneMappingExposure = e.target.value / 100;
+$('ppS').oninput = e => cgPass.uniforms.sss.value = e.target.value / 100;
+$('ppV').oninput = e => cgPass.uniforms.vign.value = e.target.value / 100;
+
+// ===== PART INFO (educational, model is single mesh) =====
+const partInfo = {
+    all: {
+        n: 'Ojo Humano', s: 'Sistema Visual — Órgano Sensorial',
+        d: 'Órgano par responsable de la visión. Capta la luz a través de la córnea y el cristalino, la enfoca sobre la retina donde los fotorreceptores (conos y bastones) convierten la señal luminosa en impulsos nerviosos transmitidos al cerebro por el nervio óptico.',
+        st: [{l:'Diámetro',v:'~24 mm'},{l:'Peso',v:'~7.5 g'},{l:'Fotorreceptores',v:'~130×10⁶'},{l:'Campo visual',v:'~200°'}]
+    },
+    cornea: {
+        n: 'Córnea', s: 'Capa Externa Anterior — Túnica Fibrosa',
+        d: 'Tejido transparente y avascular que cubre la parte anterior del ojo. Proporciona aproximadamente dos tercios del poder refractivo total. Su curvatura regular es esencial para una visión nítida.',
+        st: [{l:'Espesor central',v:'~0.54 mm'},{l:'Diámetro',v:'~11.5 mm'},{l:'Poder refract.',v:'~43 D'},{l:'Capas',v:'5'}]
+    },
+    sclera: {
+        n: 'Esclerótica', s: 'Capa Externa — Túnica Fibrosa',
+        d: 'Capa blanca, opaca y resistente que forma la "parte blanca" del ojo. Protege las estructuras internas y mantiene la forma del globo ocular. En ella se insertan los músculos extraoculares.',
+        st: [{l:'Espesor',v:'0.3-1.0 mm'},{l:'Cobertura',v:'~83% globo'},{l:'Músculos',v:'6 extrínsecos'},{l:'Color',v:'Blanco opaco'}]
+    },
+    iris: {
+        n: 'Iris y Pupila', s: 'Capa Media — Túnica Vascular (Úvea)',
+        d: 'El iris es el diafragma pigmentado que controla el tamaño de la pupila y por tanto la cantidad de luz que entra al ojo. La pupila es la abertura central. El color del iris depende de la concentración de melanina.',
+        st: [{l:'Diámetro pupila',v:'2-8 mm'},{l:'Músculos',v:'Esfínter/Dilatador'},{l:'Regulación',v:'Autónoma'},{l:'Resp. luz',v:'~0.2 s'}]
+    },
+    uvea: {
+        n: 'Úvea (Coroides)', s: 'Capa Media — Túnica Vascular',
+        d: 'La coroides es la capa vascular entre la esclerótica y la retina. Proporciona nutrientes y oxígeno a las capas externas de la retina. Junto con el iris y el cuerpo ciliar, forman la úvea completa.',
+        st: [{l:'Espesor',v:'~0.25 mm'},{l:'Flujo sanguíneo',v:'~65-85%'},{l:'Función',v:'Nutrición'},{l:'Pigmento',v:'Melanina'}]
+    },
+    retina: {
+        n: 'Retina', s: 'Capa Interna — Túnica Nerviosa',
+        d: 'Membrana neurosensorial que recubre el interior del ojo. Contiene los fotorreceptores: bastones (visión nocturna) y conos (color y detalle). La mácula y fóvea son las zonas de mayor agudeza visual.',
+        st: [{l:'Bastones',v:'~120×10⁶'},{l:'Conos',v:'~6×10⁶'},{l:'Capas',v:'10'},{l:'Espesor',v:'0.1-0.5 mm'}]
+    },
+    lens: {
+        n: 'Cristalino', s: 'Medios Transparentes',
+        d: 'Lente biconvexa transparente situada detrás del iris. Cambia de forma para enfocar objetos a distintas distancias (acomodación). Con la edad pierde elasticidad, causando presbicia.',
+        st: [{l:'Diámetro',v:'~9 mm'},{l:'Espesor',v:'~4 mm'},{l:'Poder refract.',v:'~15-20 D'},{l:'Índice refr.',v:'1.386-1.406'}]
+    },
+    nerve: {
+        n: 'Nervio Óptico', s: 'II Par Craneal',
+        d: 'Fascículo de aproximadamente 1.2 millones de axones de células ganglionares de la retina. Transmite la información visual al quiasma óptico y de allí a la corteza visual occipital del cerebro.',
+        st: [{l:'Fibras',v:'~1.2×10⁶'},{l:'Longitud',v:'~50 mm'},{l:'Diámetro',v:'~3-4 mm'},{l:'Punto ciego',v:'Disco óptico'}]
+    }
+};
+
+document.querySelectorAll('.hl-btn').forEach(btn => {
+    btn.onclick = () => {
+        document.querySelectorAll('.hl-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const p = btn.dataset.part;
+        const info = partInfo[p];
+        if (info) {
+            $('ipN').textContent = info.n;
+            $('ipS').textContent = info.s;
+            $('ipD').textContent = info.d;
+            $('ipSt').innerHTML = info.st.map(s =>
+                `<div class="st-card"><div class="st-label">${s.l}</div><div class="st-val">${s.v}</div></div>`
+            ).join('');
+        }
+    };
+});
+    </script>
+    <!-- ═══ MÓDULO: Etiquetas Anatómicas Numeradas ═══ -->
+    <script type="module" src="../js/labels/eye/eye_labels.js"></script>
+    <script type="module" src="../js/labels/eye/eye_patologias.js"></script>
+    <script type="module" src="../js/labels/eye/eye_nutricion.js"></script>
+    <script type="module" src="../js/labels/eye/eye_habitos.js"></script>
+    <script type="module" src="../js/labels/eye/eye_anatomia.js"></script>
+    <script type="module" src="../js/labels/eye/eye_fisiologia.js"></script>
+    <script type="module" src="../js/labels/eye/eye_clinicos.js"></script>
+    <script type="module" src="../js/labels/eye/eye_medical_info.js"></script>
+</body>
+</html>

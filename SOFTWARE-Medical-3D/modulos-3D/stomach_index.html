@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estómago Humano 3D — Plataforma Médica In Silico</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#0a0908;--panel:rgba(12,11,10,0.90);--card:rgba(20,18,16,0.75);--accent:#c48855;--accent-glow:rgba(196,136,85,0.22);--cyan:#58b8a8;--cyan-glow:rgba(88,184,168,0.18);--rose:#c46878;--text:#e8e4dc;--text2:#9a9488;--dim:#6a6458;--border:rgba(255,255,255,0.06);--glass:rgba(255,255,255,0.03)}
+        body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow:hidden;height:100vh}
+
+        .header{position:fixed;top:0;left:0;right:0;height:52px;background:var(--panel);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px;z-index:100}
+        .header h1{font-size:.9rem;font-weight:600;letter-spacing:-.02em}
+        .header span{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);text-transform:uppercase;letter-spacing:.1em}
+        .header-r{display:flex;align-items:center;gap:14px}
+        .sdot{width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px rgba(74,222,128,.5);animation:pd 2s infinite}
+        @keyframes pd{0%,100%{opacity:1}50%{opacity:.5}}
+        .fps{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim)}
+
+        #mainCanvas{position:fixed;top:52px;left:0;width:100%;height:calc(100vh - 52px)}
+
+        .loading-screen{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;transition:opacity .8s,visibility .8s}
+        .loading-screen.hidden{opacity:0;visibility:hidden;pointer-events:none}
+        .lb-icon{font-size:3.5rem;animation:fl 2s ease-in-out infinite}
+        @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        .lb-bar{width:180px;height:2px;background:var(--border);border-radius:2px;margin-top:20px;overflow:hidden}
+        .lb-fill{height:100%;background:linear-gradient(90deg,#886644,var(--accent));width:0%;transition:width .3s;border-radius:2px}
+        .lb-txt{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim);margin-top:10px}
+
+        .info-panel{position:fixed;top:66px;right:14px;width:300px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:14px;padding:18px;z-index:50;transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .4s}
+        .info-panel.hide{transform:translateX(320px);opacity:0}
+        .ip-tag{font-size:.6rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:10px}
+        .ip-name{font-size:1.3rem;font-weight:700;letter-spacing:-.03em;margin-bottom:3px}
+        .ip-sys{font-size:.78rem;color:var(--cyan);margin-bottom:10px}
+        .ip-desc{font-size:.78rem;line-height:1.5;color:var(--text2);margin-bottom:14px}
+        .ip-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+        .st-card{background:var(--glass);border:1px solid var(--border);border-radius:9px;padding:9px 10px}
+        .st-label{font-size:.6rem;color:var(--dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.05em}
+        .st-val{font-size:.85rem;font-weight:600;margin-top:1px}
+
+        .hl-panel{position:fixed;top:66px;left:14px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:12px;z-index:50;max-height:calc(100vh - 160px);overflow-y:auto}
+        .hl-panel::-webkit-scrollbar{width:4px}
+        .hl-panel::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+        .hl-title{font-size:.6rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:8px}
+        .hl-sep{font-size:.55rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:8px 0 4px 10px;opacity:.6}
+        .hl-btn{display:flex;align-items:center;gap:8px;width:100%;padding:7px 10px;border:1px solid transparent;border-radius:7px;background:0 0;color:var(--text2);font-size:.78rem;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;margin-bottom:2px}
+        .hl-btn:hover{background:var(--glass);color:var(--text)}
+        .hl-btn.active{background:var(--accent-glow);border-color:rgba(196,136,85,.3);color:var(--accent)}
+        .hl-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+        .ctrl-bar{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:5px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:7px;z-index:50}
+        .cb{width:40px;height:40px;border-radius:9px;border:1px solid transparent;background:0 0;color:var(--text2);font-size:1.05rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+        .cb:hover{background:var(--glass);border-color:var(--border);color:var(--text)}
+        .cb.active{background:var(--accent-glow);border-color:var(--accent);color:var(--accent)}
+        .cd{width:1px;background:var(--border);margin:4px 1px}
+
+        .pp-panel{position:fixed;bottom:75px;left:50%;transform:translateX(-50%);background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:14px;z-index:50;min-width:220px;display:none}
+        .pp-panel.vis{display:block}
+        .pp-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+        .pp-row label{font-size:.72rem;color:var(--text2)}
+        .pp-row input[type=range]{width:100px;height:3px;-webkit-appearance:none;background:var(--border);border-radius:2px;outline:0}
+        .pp-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;background:var(--accent);cursor:pointer}
+
+        .credit{position:fixed;bottom:70px;right:14px;font-size:.55rem;color:var(--dim);font-family:'Space Mono',monospace;z-index:50;text-align:right;line-height:1.4}
+        .credit a{color:var(--dim);text-decoration:underline;text-decoration-color:rgba(255,255,255,.1)}
+    </style>
+</head>
+<body>
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🫃</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:1.3rem">🧬</span>
+            <div><h1>Plataforma Médica In Silico</h1><span>Modelo Anatómico 3D — Estómago Humano</span></div>
+        </div>
+        <div class="header-r"><div class="fps" id="fps">-- FPS</div><div class="sdot"></div></div>
+    </div>
+
+    <canvas id="mainCanvas"></canvas>
+
+    <div class="hl-panel">
+        <div class="hl-title">Estructuras</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#c48855"></span>Estómago completo</button>
+        <div class="hl-sep">— Regiones Anatómicas —</div>
+        <button class="hl-btn" data-part="cardia"><span class="hl-dot" style="background:#cc9966"></span>Cardias</button>
+        <button class="hl-btn" data-part="fundus"><span class="hl-dot" style="background:#c48855"></span>Fundus (fondo)</button>
+        <button class="hl-btn" data-part="body"><span class="hl-dot" style="background:#bb7744"></span>Cuerpo gástrico</button>
+        <button class="hl-btn" data-part="antrum"><span class="hl-dot" style="background:#aa6633"></span>Antro pilórico</button>
+        <button class="hl-btn" data-part="pylorus"><span class="hl-dot" style="background:#995522"></span>Píloro</button>
+        <div class="hl-sep">— Curvaturas —</div>
+        <button class="hl-btn" data-part="lesser"><span class="hl-dot" style="background:#d4a870"></span>Curvatura menor</button>
+        <button class="hl-btn" data-part="greater"><span class="hl-dot" style="background:#b08050"></span>Curvatura mayor</button>
+        <div class="hl-sep">— Capas de la Pared —</div>
+        <button class="hl-btn" data-part="mucosa"><span class="hl-dot" style="background:#dd9988"></span>Mucosa</button>
+        <button class="hl-btn" data-part="submucosa"><span class="hl-dot" style="background:#cc8877"></span>Submucosa</button>
+        <button class="hl-btn" data-part="muscular"><span class="hl-dot" style="background:#bb7766"></span>Muscular (3 capas)</button>
+        <button class="hl-btn" data-part="serosa"><span class="hl-dot" style="background:#aa6655"></span>Serosa</button>
+        <div class="hl-sep">— Función —</div>
+        <button class="hl-btn" data-part="secretion"><span class="hl-dot" style="background:#58b8a8"></span>Secreción gástrica</button>
+        <button class="hl-btn" data-part="motility"><span class="hl-dot" style="background:#c4a855"></span>Motilidad</button>
+        <button class="hl-btn" data-part="vascular"><span class="hl-dot" style="background:#cc5555"></span>Vascularización</button>
+        <button class="hl-btn" data-part="innervation"><span class="hl-dot" style="background:#88aa55"></span>Inervación</button>
+    </div>
+
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Estómago Humano</div>
+        <div class="ip-sys" id="ipS">Sistema Digestivo</div>
+        <div class="ip-desc" id="ipD">Órgano muscular hueco en forma de J situado en el epigastrio e hipocondrio izquierdo. Almacena, mezcla y digiere parcialmente los alimentos mediante secreción de ácido clorhídrico (pH 1.5-3.5) y pepsina. Capacidad de ~1.5 L (hasta 4 L en distensión máxima). Conecta esófago con duodeno.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Capacidad</div><div class="st-val">~1.5 L</div></div>
+            <div class="st-card"><div class="st-label">pH</div><div class="st-val">1.5-3.5</div></div>
+            <div class="st-card"><div class="st-label">Jugo/día</div><div class="st-val">~2-3 L</div></div>
+            <div class="st-card"><div class="st-label">Vaciamiento</div><div class="st-val">~2-6 horas</div></div>
+        </div>
+    </div>
+
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Anterior">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Posterior">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="14"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="118"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="30"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="28"></div>
+    </div>
+
+    <div class="credit">Modelo: <a href="https://sketchfab.com/3d-models/stomach-organ-56ffcd2330ae4b7ea6c7b8a08c82b4b7" target="_blank">"Stomach - Organ"</a> por Trident.AI<br>Sketchfab Standard License</div>
+
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+    <script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
+import {ShaderPass} from 'three/addons/postprocessing/ShaderPass.js';
+import {SMAAPass} from 'three/addons/postprocessing/SMAAPass.js';
+
+const $=id=>document.getElementById(id);
+const lbFill=$('lbFill'), lbTxt=$('lbTxt'), ls=$('ls');
+const setLoad=(p,t)=>{lbFill.style.width=p+'%';lbTxt.textContent=t};
+
+setLoad(10,'Configurando escena...');
+const canvas=$('mainCanvas');
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x0a0908);
+scene.fog=new THREE.FogExp2(0x0a0908, 0.04);
+
+const camera=new THREE.PerspectiveCamera(45, innerWidth/(innerHeight-52), 0.01, 100);
+camera.position.set(2.5, 1.8, 3.5);
+
+const renderer=new THREE.WebGLRenderer({canvas, antialias:true, powerPreference:'high-performance'});
+renderer.setSize(innerWidth, innerHeight-52);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.shadowMap.enabled=true;
+renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure=1.18;
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.useLegacyLights=false;
+
+const ctrl=new OrbitControls(camera, canvas);
+ctrl.enableDamping=true; ctrl.dampingFactor=0.06;
+ctrl.rotateSpeed=0.7; ctrl.zoomSpeed=0.8;
+ctrl.minDistance=1.2; ctrl.maxDistance=8;
+ctrl.target.set(0, 0, 0);
+ctrl.autoRotate=true; ctrl.autoRotateSpeed=0.5;
+
+setLoad(20,'Generando environment...');
+const pmrem=new THREE.PMREMGenerator(renderer);
+pmrem.compileEquirectangularShader();
+const envSc=new THREE.Scene();
+envSc.add(new THREE.Mesh(
+    new THREE.SphereGeometry(10, 32, 32),
+    new THREE.ShaderMaterial({
+        side: THREE.BackSide,
+        vertexShader:`varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+        fragmentShader:`varying vec3 vP;void main(){
+            vec3 d=normalize(vP);float y=d.y*.5+.5;
+            vec3 c=mix(vec3(.04,.035,.03),mix(vec3(.07,.06,.045),vec3(.1,.08,.06),smoothstep(.4,1.,y)),smoothstep(0.,.4,y));
+            c+=vec3(.28,.20,.12)*pow(max(0.,dot(d,normalize(vec3(1.,.4,.5)))),7.)*.22;
+            c+=vec3(.08,.07,.10)*pow(max(0.,dot(d,normalize(vec3(-.7,.2,-.6)))),5.)*.14;
+            gl_FragColor=vec4(c,1.);}`
+    })
+));
+scene.environment=pmrem.fromScene(envSc, 0.04).texture;
+pmrem.dispose();
+
+setLoad(30,'Iluminación...');
+scene.add(new THREE.HemisphereLight(0xaa9080, 0x221511, 0.55));
+const keyLight=new THREE.DirectionalLight(0xffeedd, 2.8);
+keyLight.position.set(4, 6, 5); keyLight.castShadow=true;
+keyLight.shadow.mapSize.set(2048,2048);
+keyLight.shadow.camera.near=0.1; keyLight.shadow.camera.far=18;
+keyLight.shadow.camera.left=-3; keyLight.shadow.camera.right=3;
+keyLight.shadow.camera.top=3; keyLight.shadow.camera.bottom=-3;
+keyLight.shadow.bias=-0.0005; keyLight.shadow.normalBias=0.02;
+scene.add(keyLight);
+scene.add(new THREE.DirectionalLight(0x7788aa, 0.9).translateX(-5).translateY(3).translateZ(-2));
+const rimLight=new THREE.DirectionalLight(0xddbb88, 1.4);
+rimLight.position.set(-2,-1,-5); scene.add(rimLight);
+const sssLight=new THREE.PointLight(0xcc8855, 0.45, 10);
+sssLight.position.set(0,-3,2); scene.add(sssLight);
+scene.add(new THREE.PointLight(0xffffff, 0.55, 12).translateX(2).translateY(3).translateZ(4));
+
+setLoad(40,'Post-processing...');
+const composer=new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const bloom=new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight), 0.14, 0.45, 0.86);
+composer.addPass(bloom);
+const cgShader={
+    uniforms:{tDiffuse:{value:null},sss:{value:0.30},vign:{value:0.28}},
+    vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+    fragmentShader:`uniform sampler2D tDiffuse;uniform float sss;uniform float vign;varying vec2 vUv;
+    void main(){vec4 tx=texture2D(tDiffuse,vUv);vec3 c=tx.rgb;
+    float lum=dot(c,vec3(.299,.587,.114));float sm=smoothstep(.06,.42,lum)*(1.-smoothstep(.42,.82,lum));
+    c+=vec3(.78,.50,.30)*sss*sm*.16;c.r+=.010;
+    float g=dot(c,vec3(.2126,.7152,.0722));c=mix(vec3(g),c,1.10);c=(c-.5)*1.04+.5;
+    vec2 u=vUv*2.-1.;c*=1.-dot(u,u)*vign*.4;gl_FragColor=vec4(clamp(c,0.,1.),tx.a);}`
+};
+const cgPass=new ShaderPass(cgShader);
+composer.addPass(cgPass);
+composer.addPass(new SMAAPass(innerWidth,innerHeight));
+
+// ===== LOAD MODEL =====
+setLoad(50,'Cargando estómago...');
+let model=null;
+let stomachMesh=null;
+
+new GLTFLoader().load('stomach.glb',
+    (gltf) => {
+        setLoad(80,'Mejorando materiales...');
+        model = gltf.scene;
+        const box=new THREE.Box3().setFromObject(model);
+        const center=box.getCenter(new THREE.Vector3());
+        const size=box.getSize(new THREE.Vector3());
+        const sc=3.2/Math.max(size.x,size.y,size.z);
+        model.scale.setScalar(sc);
+        const sb=new THREE.Box3().setFromObject(model);
+        const sc2=sb.getCenter(new THREE.Vector3());
+        model.position.sub(sc2);
+
+        model.traverse(child=>{
+            if(!child.isMesh) return;
+            child.castShadow=true; child.receiveShadow=true;
+            stomachMesh=child;
+
+            const mat=child.material;
+            const pm=new THREE.MeshPhysicalMaterial();
+            if(mat.map) pm.map=mat.map;
+            if(mat.normalMap){pm.normalMap=mat.normalMap;pm.normalScale=new THREE.Vector2(1.8,1.8);}
+            pm.roughness=0.45; pm.metalness=0;
+            pm.clearcoat=0.14; pm.clearcoatRoughness=0.38;
+            pm.thickness=1.0; pm.attenuationColor=new THREE.Color(0.80,0.50,0.35);
+            pm.attenuationDistance=1.5;
+            pm.sheen=0.30; pm.sheenRoughness=0.42;
+            pm.sheenColor=new THREE.Color(0.80,0.58,0.40);
+            pm.emissive=new THREE.Color(0.10,0.06,0.03); pm.emissiveIntensity=0.09;
+            pm.envMapIntensity=0.48; pm.side=THREE.DoubleSide;
+            child.material=pm;
+        });
+
+        scene.add(model);
+        const gnd=new THREE.Mesh(new THREE.PlaneGeometry(18,18),
+            new THREE.MeshStandardMaterial({color:0x0a0908,roughness:0.95,transparent:true,opacity:0.4}));
+        gnd.rotation.x=-Math.PI/2; gnd.position.y=sb.min.y-0.08; gnd.receiveShadow=true;
+        scene.add(gnd);
+
+        setLoad(100,'¡Listo!');
+        setTimeout(()=>ls.classList.add('hidden'),500);
+    },
+    p=>{if(p.total) setLoad(50+(p.loaded/p.total)*30,'Descargando... '+(p.loaded/1024|0)+'KB')},
+    e=>{console.error(e);setLoad(0,'Error al cargar. Verifica que stomach.glb esté en la misma carpeta.')}
+);
+
+let lt=performance.now(),fc=0;
+(function anim(t){
+    requestAnimationFrame(anim); fc++;
+    if(t-lt>=1000){$('fps').textContent=fc+' FPS';fc=0;lt=t;}
+    ctrl.update(); sssLight.intensity=0.45+Math.sin(t*0.0008)*0.08;
+    composer.render();
+})(0);
+
+addEventListener('resize',()=>{
+    const w=innerWidth,h=innerHeight-52;
+    camera.aspect=w/h;camera.updateProjectionMatrix();
+    renderer.setSize(w,h);composer.setSize(w,h);bloom.setSize(w,h);
+});
+
+let ar=true;
+$('bRot').onclick=e=>{ar=!ar;ctrl.autoRotate=ar;e.currentTarget.classList.toggle('active',ar)};
+$('bRst').onclick=()=>{ctrl.target.set(0,0,0);camera.position.set(2.5,1.8,3.5)};
+$('bZi').onclick=()=>camera.position.lerp(ctrl.target,0.15);
+$('bZo').onclick=()=>{const d=camera.position.clone().sub(ctrl.target).normalize();camera.position.add(d.multiplyScalar(0.5))};
+$('bFr').onclick=()=>{camera.position.set(0,0,4);ctrl.target.set(0,0,0)};
+$('bTo').onclick=()=>{camera.position.set(0,4,0.01);ctrl.target.set(0,0,0)};
+$('bSi').onclick=()=>{camera.position.set(4,0,0);ctrl.target.set(0,0,0)};
+$('bBk').onclick=()=>{camera.position.set(0,0,-4);ctrl.target.set(0,0,0)};
+let ipVis=true;
+$('bIn').onclick=()=>{ipVis=!ipVis;$('ip').classList.toggle('hide',!ipVis)};
+$('bPP').onclick=e=>{$('ppP').classList.toggle('vis');e.currentTarget.classList.toggle('active')};
+$('ppB').oninput=e=>bloom.strength=e.target.value/100*0.5;
+$('ppE').oninput=e=>renderer.toneMappingExposure=e.target.value/100;
+$('ppS').oninput=e=>cgPass.uniforms.sss.value=e.target.value/100;
+$('ppV').oninput=e=>cgPass.uniforms.vign.value=e.target.value/100;
+
+// ===== HIGHLIGHT (single mesh — info-only mode) =====
+// Since the model has only 1 mesh, highlight changes emissive color/intensity
+// to give a visual cue when switching sections
+function setHighlight(sel){
+    if(!stomachMesh) return;
+    const mat=stomachMesh.material;
+    mat.transparent=false; mat.opacity=1; mat.depthWrite=true;
+    if(sel==='all'){
+        mat.emissive.setRGB(0.10,0.06,0.03); mat.emissiveIntensity=0.09;
+    } else if(sel==='secretion'){
+        mat.emissive.setRGB(0.05,0.12,0.10); mat.emissiveIntensity=0.14;
+    } else if(sel==='motility'){
+        mat.emissive.setRGB(0.12,0.10,0.04); mat.emissiveIntensity=0.14;
+    } else if(sel==='vascular'){
+        mat.emissive.setRGB(0.15,0.04,0.04); mat.emissiveIntensity=0.16;
+    } else if(sel==='innervation'){
+        mat.emissive.setRGB(0.06,0.10,0.04); mat.emissiveIntensity=0.14;
+    } else if(sel==='mucosa'||sel==='submucosa'||sel==='muscular'||sel==='serosa'){
+        mat.emissive.setRGB(0.14,0.07,0.06); mat.emissiveIntensity=0.13;
+    } else {
+        mat.emissive.setRGB(0.12,0.08,0.04); mat.emissiveIntensity=0.12;
+    }
+}
+
+const partInfo={
+    all:{n:'Estómago Humano',s:'Sistema Digestivo',
+        d:'Órgano muscular hueco en forma de J situado en el epigastrio e hipocondrio izquierdo. Almacena, mezcla y digiere parcialmente los alimentos mediante secreción de ácido clorhídrico (pH 1.5-3.5) y pepsina. Capacidad de ~1.5 L (hasta 4 L en distensión máxima). Conecta esófago con duodeno.',
+        st:[{l:'Capacidad',v:'~1.5 L'},{l:'pH',v:'1.5-3.5'},{l:'Jugo/día',v:'~2-3 L'},{l:'Vaciamiento',v:'~2-6 horas'}]},
+    cardia:{n:'Cardias',s:'Orificio de Entrada',
+        d:'Región de unión esofagogástrica, a nivel de T11. No es un esfínter anatómico verdadero sino una zona de alta presión funcional que impide el reflujo gastroesofágico (ERGE). Contiene glándulas cardiales que secretan moco alcalino protector. Su incompetencia causa enfermedad por reflujo, esófago de Barrett y eventualmente adenocarcinoma.',
+        st:[{l:'Nivel',v:'T11 (línea Z)'},{l:'Esfínter',v:'Funcional (no anatómico)'},{l:'Secreción',v:'Moco alcalino'},{l:'Patología',v:'ERGE, Barrett'}]},
+    fundus:{n:'Fundus Gástrico',s:'Fondo — Cúpula Superior',
+        d:'Porción más superior en forma de cúpula, por encima del cardias, que contacta con el hemidiafragma izquierdo. Acumula gas deglutido (burbuja gástrica visible en Rx). Contiene abundantes células parietales (HCl) y principales (pepsinógeno). Es zona de relajación receptiva que permite la expansión gástrica postprandial.',
+        st:[{l:'Posición',v:'Sobre el cardias'},{l:'Burbuja',v:'Gas (visible en Rx)'},{l:'Células',v:'Parietales + principales'},{l:'Función',v:'Relajación receptiva'}]},
+    body:{n:'Cuerpo Gástrico',s:'Porción Central — Mayor Superficie',
+        d:'Segmento más extenso entre el fundus y el antro. Contiene la mayor densidad de glándulas gástricas oxínticas: células parietales (HCl + factor intrínseco), principales (pepsinógeno), mucosas del cuello (moco), enterocromafines (histamina) y células D (somatostatina). Es el principal motor de la digestión química.',
+        st:[{l:'Cél. parietales',v:'HCl + factor intrínseco'},{l:'Cél. principales',v:'Pepsinógeno'},{l:'ECL',v:'Histamina'},{l:'Células D',v:'Somatostatina'}]},
+    antrum:{n:'Antro Pilórico',s:'Porción Distal',
+        d:'Región inferior ensanchada antes del píloro. Sus glándulas pilóricas contienen abundantes células G (gastrina) y células D (somatostatina). La gastrina estimula la secreción ácida y la motilidad. El antro genera potentes contracciones peristálticas que trituran los alimentos sólidos y controlan el vaciamiento gástrico.',
+        st:[{l:'Células G',v:'Gastrina'},{l:'Células D',v:'Somatostatina'},{l:'Motilidad',v:'Contracciones fuertes'},{l:'Función',v:'Trituración + vaciamiento'}]},
+    pylorus:{n:'Píloro',s:'Esfínter de Salida',
+        d:'Esfínter muscular verdadero (músculo circular engrosado) que controla el paso del quimo gástrico al duodeno. Se abre intermitentemente dejando pasar ~1-3 mL de quimo por onda peristáltica. Regulado por retroalimentación duodenal: grasa, ácido y osmolaridad alta lo cierran via CCK, secretina y reflejos enterogástricos.',
+        st:[{l:'Tipo',v:'Esfínter verdadero'},{l:'Paso',v:'~1-3 mL/onda'},{l:'Control',v:'CCK, secretina, reflejo'},{l:'Patología',v:'Estenosis pilórica'}]},
+    lesser:{n:'Curvatura Menor',s:'Borde Cóncavo Derecho',
+        d:'Borde corto cóncavo del estómago que mira hacia la derecha y arriba. Inserta el epiplón menor (ligamento hepatogástrico) que la conecta al hígado. Irrigada por la arteria gástrica izquierda (rama del tronco celíaco) y la gástrica derecha (rama de la hepática). Es sitio frecuente de úlceras gástricas.',
+        st:[{l:'Epiplón',v:'Menor (hepatogástrico)'},{l:'A. gástrica izq.',v:'Tronco celíaco'},{l:'A. gástrica der.',v:'Hepática común'},{l:'Patología',v:'Úlceras frecuentes'}]},
+    greater:{n:'Curvatura Mayor',s:'Borde Convexo Izquierdo',
+        d:'Borde largo convexo que mira hacia la izquierda e inferior. Inserta el epiplón mayor (ligamento gastrocólico) que la conecta al colon transverso, y el ligamento gastroesplénico (hacia el bazo). Irrigada por las arterias gastroepiploica derecha e izquierda. Las arterias gástricas cortas irrigan el fundus.',
+        st:[{l:'Epiplón',v:'Mayor (gastrocólico)'},{l:'A. gastroepiploica',v:'Derecha + izquierda'},{l:'Aa. gástricas cortas',v:'→ Fundus'},{l:'Ligamento',v:'Gastroesplénico'}]},
+    mucosa:{n:'Mucosa Gástrica',s:'Capa Interna — Secreción',
+        d:'Revestimiento interno con pliegues (rugae) que se aplanan con la distensión. Contiene ~35 millones de glándulas en ~15,000 fositas gástricas. Epitelio columnar simple que secreta moco-bicarbonato (barrera protectora, pH ~7 en superficie vs pH 1.5 en lumen). Renovación celular cada 3-5 días.',
+        st:[{l:'Glándulas',v:'~35 millones'},{l:'Fositas',v:'~15,000'},{l:'Barrera',v:'Moco-bicarbonato'},{l:'Recambio',v:'3-5 días'}]},
+    submucosa:{n:'Submucosa',s:'Tejido Conectivo de Soporte',
+        d:'Capa de tejido conectivo laxo rico en vasos sanguíneos, linfáticos y el plexo nervioso submucoso (de Meissner), que regula la secreción glandular. Contiene fibras elásticas y colágenas que dan distensibilidad al estómago. Los vasos submucosos irrigan la mucosa y forman un plexo capilar denso.',
+        st:[{l:'Plexo',v:'Meissner (submucoso)'},{l:'Función nerviosa',v:'Regula secreción'},{l:'Vasos',v:'Plexo capilar denso'},{l:'Tejido',v:'Conectivo laxo + elástico'}]},
+    muscular:{n:'Capa Muscular',s:'Tres Capas de Músculo Liso',
+        d:'Única en el tracto GI por tener 3 capas: oblicua interna (exclusiva del estómago, facilita la trituración), circular media (forma el esfínter pilórico) y longitudinal externa. El plexo de Auerbach (mientérico) entre las capas circular y longitudinal coordina las ondas peristálticas (~3 por minuto).',
+        st:[{l:'Oblicua interna',v:'Exclusiva del estómago'},{l:'Circular media',v:'Esfínter pilórico'},{l:'Longitudinal ext.',v:'Peristaltismo'},{l:'Plexo',v:'Auerbach (mientérico)'}]},
+    serosa:{n:'Serosa',s:'Peritoneo Visceral',
+        d:'Capa más externa formada por mesotelio (epitelio escamoso simple) sobre una fina capa de tejido conectivo. Es continuación del peritoneo visceral. Se continúa como epiplón menor (curvatura menor → hígado) y epiplón mayor (curvatura mayor → colon transverso). El estómago es un órgano completamente intraperitoneal.',
+        st:[{l:'Tipo',v:'Peritoneo visceral'},{l:'Posición',v:'Intraperitoneal'},{l:'Epiplón menor',v:'→ Hígado'},{l:'Epiplón mayor',v:'→ Colon transverso'}]},
+    secretion:{n:'Secreción Gástrica',s:'Producción de Jugo Gástrico',
+        d:'El estómago produce ~2-3 L/día de jugo gástrico. Las células parietales secretan HCl (pH 1.5-3.5, mediante bomba H⁺/K⁺-ATPasa) y factor intrínseco (absorción de B12). Las células principales secretan pepsinógeno (activado a pepsina por ácido). Regulado en 3 fases: cefálica (vagal), gástrica (gastrina) y intestinal (inhibitoria: CCK, secretina).',
+        st:[{l:'HCl',v:'Bomba H⁺/K⁺-ATPasa'},{l:'Factor intrínseco',v:'Absorción de B12'},{l:'Pepsina',v:'Digestión proteica'},{l:'Fases',v:'Cefálica, gástrica, intestinal'}]},
+    motility:{n:'Motilidad Gástrica',s:'Mezcla y Propulsión',
+        d:'Ondas peristálticas (~3/min) generadas por las células de Cajal (marcapasos) en el cuerpo se intensifican hacia el antro, triturando alimentos hasta partículas <2 mm. El vaciamiento es regulado por volumen, composición del quimo y retroalimentación duodenal. En ayuno, el complejo motor migratorio (CMM) barre restos cada ~90-120 min.',
+        st:[{l:'Frecuencia',v:'~3 ondas/min'},{l:'Marcapasos',v:'Células de Cajal'},{l:'Partículas',v:'<2 mm para pasar'},{l:'CMM (ayuno)',v:'Cada ~90-120 min'}]},
+    vascular:{n:'Vascularización',s:'Irrigación Arterial y Drenaje',
+        d:'Irrigado exclusivamente por ramas del tronco celíaco: arterias gástricas izquierda y derecha (curvatura menor), gastroepiploicas derecha e izquierda (curvatura mayor) y gástricas cortas (fundus). El drenaje venoso va al sistema porta (venas gástricas → vena porta hepática). Rico plexo submucoso vulnerable en hipertensión portal.',
+        st:[{l:'Arterias',v:'Tronco celíaco (todas)'},{l:'Drenaje venoso',v:'→ Vena porta'},{l:'Gástrica izq.',v:'Más importante'},{l:'Hipertensión portal',v:'Várices gástricas'}]},
+    innervation:{n:'Inervación',s:'Vagal y Simpática',
+        d:'Inervación parasimpática: nervios vagos (troncos anterior y posterior) que estimulan secreción ácida (acetilcolina → células parietales), motilidad y relajación del píloro. Inervación simpática: plexo celíaco (T6-T9) que inhibe motilidad y secreción, y contrae el píloro. Plexos intramurales (Auerbach y Meissner) coordinan actividad local.',
+        st:[{l:'Parasimpático',v:'Nervios vagos (X)'},{l:'Simpático',v:'Plexo celíaco (T6-T9)'},{l:'Auerbach',v:'Motilidad'},{l:'Meissner',v:'Secreción'}]}
+};
+
+document.querySelectorAll('.hl-btn').forEach(btn=>{
+    btn.onclick=()=>{
+        document.querySelectorAll('.hl-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const p=btn.dataset.part,info=partInfo[p];
+        if(info){
+            $('ipN').textContent=info.n;$('ipS').textContent=info.s;$('ipD').textContent=info.d;
+            $('ipSt').innerHTML=info.st.map(s=>`<div class="st-card"><div class="st-label">${s.l}</div><div class="st-val">${s.v}</div></div>`).join('');
+        }
+        setHighlight(p);
+    };
+});
+    </script>
+</body>
+</html>

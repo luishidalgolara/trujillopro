@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esqueleto Humano 3D — Plataforma Médica In Silico</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#08090c;--panel:rgba(10,12,18,0.90);--card:rgba(18,20,28,0.75);--accent:#7b9acc;--accent-glow:rgba(123,154,204,0.22);--cyan:#56c8c4;--cyan-glow:rgba(86,200,196,0.18);--warm:#c4a870;--warm-glow:rgba(196,168,112,0.18);--text:#e2e6f0;--text2:#8892a8;--dim:#505a6e;--border:rgba(255,255,255,0.06);--glass:rgba(255,255,255,0.03)}
+        body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow:hidden;height:100vh}
+
+        .header{position:fixed;top:0;left:0;right:0;height:52px;background:var(--panel);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px;z-index:100}
+        .header h1{font-size:.9rem;font-weight:600;letter-spacing:-.02em}
+        .header span{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);text-transform:uppercase;letter-spacing:.1em}
+        .header-r{display:flex;align-items:center;gap:14px}
+        .sdot{width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px rgba(74,222,128,.5);animation:pd 2s infinite}
+        @keyframes pd{0%,100%{opacity:1}50%{opacity:.5}}
+        .fps{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim)}
+
+        #mainCanvas{position:fixed;top:52px;left:0;width:100%;height:calc(100vh - 52px)}
+
+        .loading-screen{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;transition:opacity .8s,visibility .8s}
+        .loading-screen.hidden{opacity:0;visibility:hidden;pointer-events:none}
+        .lb-icon{font-size:3.5rem;animation:fl 2s ease-in-out infinite}
+        @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        .lb-bar{width:180px;height:2px;background:var(--border);border-radius:2px;margin-top:20px;overflow:hidden}
+        .lb-fill{height:100%;background:linear-gradient(90deg,#5577aa,var(--accent));width:0%;transition:width .3s;border-radius:2px}
+        .lb-txt{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim);margin-top:10px}
+
+        .info-panel{position:fixed;top:66px;right:14px;width:300px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:14px;padding:18px;z-index:50;transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .4s}
+        .info-panel.hide{transform:translateX(320px);opacity:0}
+        .ip-tag{font-size:.6rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:10px}
+        .ip-name{font-size:1.3rem;font-weight:700;letter-spacing:-.03em;margin-bottom:3px}
+        .ip-sys{font-size:.78rem;color:var(--cyan);margin-bottom:10px}
+        .ip-desc{font-size:.78rem;line-height:1.5;color:var(--text2);margin-bottom:14px}
+        .ip-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+        .st-card{background:var(--glass);border:1px solid var(--border);border-radius:9px;padding:9px 10px}
+        .st-label{font-size:.6rem;color:var(--dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.05em}
+        .st-val{font-size:.85rem;font-weight:600;margin-top:1px}
+
+        .hl-panel{position:fixed;top:66px;left:14px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:12px;z-index:50;max-height:calc(100vh - 160px);overflow-y:auto}
+        .hl-panel::-webkit-scrollbar{width:4px}
+        .hl-panel::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+        .hl-title{font-size:.6rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:8px}
+        .hl-sep{font-size:.55rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:8px 0 4px 10px;opacity:.6}
+        .hl-btn{display:flex;align-items:center;gap:8px;width:100%;padding:7px 10px;border:1px solid transparent;border-radius:7px;background:0 0;color:var(--text2);font-size:.78rem;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;margin-bottom:2px}
+        .hl-btn:hover{background:var(--glass);color:var(--text)}
+        .hl-btn.active{background:var(--accent-glow);border-color:rgba(123,154,204,.3);color:var(--accent)}
+        .hl-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+        .ctrl-bar{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:5px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:7px;z-index:50}
+        .cb{width:40px;height:40px;border-radius:9px;border:1px solid transparent;background:0 0;color:var(--text2);font-size:1.05rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+        .cb:hover{background:var(--glass);border-color:var(--border);color:var(--text)}
+        .cb.active{background:var(--accent-glow);border-color:var(--accent);color:var(--accent)}
+        .cd{width:1px;background:var(--border);margin:4px 1px}
+
+        .pp-panel{position:fixed;bottom:75px;left:50%;transform:translateX(-50%);background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:14px;z-index:50;min-width:220px;display:none}
+        .pp-panel.vis{display:block}
+        .pp-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+        .pp-row label{font-size:.72rem;color:var(--text2)}
+        .pp-row input[type=range]{width:100px;height:3px;-webkit-appearance:none;background:var(--border);border-radius:2px;outline:0}
+        .pp-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;background:var(--accent);cursor:pointer}
+
+        .credit{position:fixed;bottom:70px;right:14px;font-size:.55rem;color:var(--dim);font-family:'Space Mono',monospace;z-index:50;text-align:right;line-height:1.4}
+        .credit a{color:var(--dim);text-decoration:underline;text-decoration-color:rgba(255,255,255,.1)}
+    </style>
+</head>
+<body>
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🦴</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <!-- BOTÓN VOLVER -->
+            <button onclick="history.back()" style="background:none;border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:4px 8px;color:#8a94a8;cursor:pointer;font-size:1.1rem;transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)';this.style.color='#e8ecf4'" onmouseout="this.style.background='none';this.style.color='#8a94a8'" title="Volver atrás">←</button>
+            
+            <span style="font-size:1.3rem">🦴</span>
+            <div><h1>Plataforma Médica In Silico</h1><span>Modelo Anatómico 3D — Esqueleto Humano Completo</span></div>
+        </div>
+        <div class="header-r"><div class="fps" id="fps">-- FPS</div><div class="sdot"></div></div>
+    </div>
+
+    <canvas id="mainCanvas"></canvas>
+
+    <div class="hl-panel">
+        <div class="hl-title">Estructuras</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#7b9acc"></span>Esqueleto completo</button>
+        <div class="hl-sep">— Esqueleto Axial —</div>
+        <button class="hl-btn" data-part="skull"><span class="hl-dot" style="background:#e8d5b0"></span>Cráneo</button>
+        <button class="hl-btn" data-part="teeth"><span class="hl-dot" style="background:#f0ece4"></span>Dientes y mandíbula</button>
+        <button class="hl-btn" data-part="spine"><span class="hl-dot" style="background:#c8b898"></span>Columna vertebral</button>
+        <button class="hl-btn" data-part="ribs"><span class="hl-dot" style="background:#d4c4a0"></span>Caja torácica</button>
+        <button class="hl-btn" data-part="sternum"><span class="hl-dot" style="background:#bfb08a"></span>Esternón</button>
+        <div class="hl-sep">— Esqueleto Apendicular —</div>
+        <button class="hl-btn" data-part="shoulders"><span class="hl-dot" style="background:#a8c4d8"></span>Cintura escapular</button>
+        <button class="hl-btn" data-part="arms"><span class="hl-dot" style="background:#90b0c8"></span>Brazos (húmeros)</button>
+        <button class="hl-btn" data-part="forearms"><span class="hl-dot" style="background:#7898b0"></span>Antebrazos</button>
+        <button class="hl-btn" data-part="hands"><span class="hl-dot" style="background:#6088a0"></span>Manos</button>
+        <button class="hl-btn" data-part="pelvis"><span class="hl-dot" style="background:#c8a888"></span>Pelvis</button>
+        <button class="hl-btn" data-part="femurs"><span class="hl-dot" style="background:#d0a878"></span>Fémures</button>
+        <button class="hl-btn" data-part="patellae"><span class="hl-dot" style="background:#c89868"></span>Rótulas</button>
+        <button class="hl-btn" data-part="legs"><span class="hl-dot" style="background:#b88858"></span>Piernas (tibia/peroné)</button>
+        <button class="hl-btn" data-part="feet"><span class="hl-dot" style="background:#a87848"></span>Pies</button>
+        <div class="hl-sep">— Regiones —</div>
+        <button class="hl-btn" data-part="axial"><span class="hl-dot" style="background:#d4c4a0"></span>Esq. Axial</button>
+        <button class="hl-btn" data-part="appendicular"><span class="hl-dot" style="background:#90b0c8"></span>Esq. Apendicular</button>
+        <button class="hl-btn" data-part="upper"><span class="hl-dot" style="background:#a0c0d4"></span>Miembro superior</button>
+        <button class="hl-btn" data-part="lower"><span class="hl-dot" style="background:#c89868"></span>Miembro inferior</button>
+    </div>
+
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Esqueleto Humano</div>
+        <div class="ip-sys" id="ipS">Sistema Esquelético</div>
+        <div class="ip-desc" id="ipD">Estructura interna de soporte del cuerpo humano compuesta por 206 huesos en el adulto. Proporciona sostén mecánico, protección de órganos vitales, anclaje muscular, producción de células sanguíneas (hematopoyesis) y almacenamiento de minerales como calcio y fósforo.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Huesos</div><div class="st-val">206</div></div>
+            <div class="st-card"><div class="st-label">Peso</div><div class="st-val">~12-15% corporal</div></div>
+            <div class="st-card"><div class="st-label">Axial</div><div class="st-val">80 huesos</div></div>
+            <div class="st-card"><div class="st-label">Apendicular</div><div class="st-val">126 huesos</div></div>
+        </div>
+    </div>
+
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Anterior">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Posterior">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb lbl-active" id="bLbl" title="Etiquetas">🏷️</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="10"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="110"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="20"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="30"></div>
+    </div>
+
+    <div class="credit">Modelo: <a href="https://sketchfab.com/3d-models/skeleton-4de7b96a351a4a35b1b6e5415277ff07" target="_blank">"Skeleton"</a> por Diego Luján García<br>CC-BY-4.0</div>
+
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+    <script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
+import {ShaderPass} from 'three/addons/postprocessing/ShaderPass.js';
+import {SMAAPass} from 'three/addons/postprocessing/SMAAPass.js';
+
+const $=id=>document.getElementById(id);
+const lbFill=$('lbFill'), lbTxt=$('lbTxt'), ls=$('ls');
+const setLoad=(p,t)=>{lbFill.style.width=p+'%';lbTxt.textContent=t};
+
+setLoad(10,'Configurando escena...');
+const canvas=$('mainCanvas');
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x08090c);
+scene.fog=new THREE.FogExp2(0x08090c, 0.025);
+
+const camera=new THREE.PerspectiveCamera(45, innerWidth/(innerHeight-52), 0.01, 100);
+camera.position.set(4, 2, 6);
+
+// Exponer camera globalmente para el sistema de labels
+window.camera = camera;
+
+const renderer=new THREE.WebGLRenderer({canvas, antialias:true, powerPreference:'high-performance'});
+renderer.setSize(innerWidth, innerHeight-52);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.shadowMap.enabled=true;
+renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure=1.1;
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.useLegacyLights=false;
+
+const ctrl=new OrbitControls(camera, canvas);
+ctrl.enableDamping=true; ctrl.dampingFactor=0.06;
+ctrl.rotateSpeed=0.7; ctrl.zoomSpeed=0.8;
+ctrl.minDistance=2; ctrl.maxDistance=14;
+ctrl.target.set(0, 0, 0);
+ctrl.autoRotate=true; ctrl.autoRotateSpeed=0.4;
+
+setLoad(20,'Generando environment...');
+const pmrem=new THREE.PMREMGenerator(renderer);
+pmrem.compileEquirectangularShader();
+const envSc=new THREE.Scene();
+envSc.add(new THREE.Mesh(
+    new THREE.SphereGeometry(10, 32, 32),
+    new THREE.ShaderMaterial({
+        side: THREE.BackSide,
+        vertexShader:`varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+        fragmentShader:`varying vec3 vP;void main(){
+            vec3 d=normalize(vP);float y=d.y*.5+.5;
+            vec3 c=mix(vec3(.03,.03,.05),mix(vec3(.05,.05,.07),vec3(.08,.08,.1),smoothstep(.4,1.,y)),smoothstep(0.,.4,y));
+            c+=vec3(.15,.18,.25)*pow(max(0.,dot(d,normalize(vec3(1.,.5,.5)))),7.)*.18;
+            c+=vec3(.08,.06,.1)*pow(max(0.,dot(d,normalize(vec3(-.7,.3,-.6)))),5.)*.12;
+            gl_FragColor=vec4(c,1.);}`
+    })
+));
+scene.environment=pmrem.fromScene(envSc, 0.04).texture;
+pmrem.dispose();
+
+setLoad(30,'Iluminación...');
+scene.add(new THREE.HemisphereLight(0x8899aa, 0x222233, 0.6));
+const keyLight=new THREE.DirectionalLight(0xfff0dd, 3.0);
+keyLight.position.set(5, 8, 6); keyLight.castShadow=true;
+keyLight.shadow.mapSize.set(2048,2048);
+keyLight.shadow.camera.near=0.1; keyLight.shadow.camera.far=25;
+keyLight.shadow.camera.left=-5; keyLight.shadow.camera.right=5;
+keyLight.shadow.camera.top=8; keyLight.shadow.camera.bottom=-5;
+keyLight.shadow.bias=-0.0004; keyLight.shadow.normalBias=0.02;
+scene.add(keyLight);
+scene.add(new THREE.DirectionalLight(0x8899bb, 1.0).translateX(-6).translateY(4).translateZ(-3));
+const rimLight=new THREE.DirectionalLight(0xccbbaa, 1.2);
+rimLight.position.set(-3,-2,-6); scene.add(rimLight);
+const sssLight=new THREE.PointLight(0xaa9977, 0.35, 14);
+sssLight.position.set(0,-4,3); scene.add(sssLight);
+scene.add(new THREE.PointLight(0xffffff, 0.5, 16).translateX(3).translateY(5).translateZ(5));
+
+setLoad(40,'Post-processing...');
+const composer=new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const bloom=new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight), 0.10, 0.4, 0.90);
+composer.addPass(bloom);
+const cgShader={
+    uniforms:{tDiffuse:{value:null},sss:{value:0.20},vign:{value:0.30}},
+    vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+    fragmentShader:`uniform sampler2D tDiffuse;uniform float sss;uniform float vign;varying vec2 vUv;
+    void main(){vec4 tx=texture2D(tDiffuse,vUv);vec3 c=tx.rgb;
+    float lum=dot(c,vec3(.299,.587,.114));float sm=smoothstep(.08,.45,lum)*(1.-smoothstep(.45,.85,lum));
+    c+=vec3(.55,.50,.38)*sss*sm*.12;c.r+=.008;
+    float g=dot(c,vec3(.2126,.7152,.0722));c=mix(vec3(g),c,1.08);c=(c-.5)*1.03+.5;
+    vec2 u=vUv*2.-1.;c*=1.-dot(u,u)*vign*.4;gl_FragColor=vec4(clamp(c,0.,1.),tx.a);}`
+};
+const cgPass=new ShaderPass(cgShader);
+composer.addPass(cgPass);
+composer.addPass(new SMAAPass(innerWidth,innerHeight));
+
+// ===== MESH-TO-BONE MAPPING =====
+const meshMap = {
+    0:  'face_detail_1',
+    1:  'ribcage',
+    2:  'spine',
+    3:  'shoulders',
+    4:  'legs_lower_1',
+    5:  'feet',
+    6:  'arms',
+    7:  'forearms',
+    8:  'skull',
+    9:  'pelvis_inner',
+    10: 'femurs',
+    11: 'teeth',
+    12: 'face_detail_2',
+    13: 'sternum',
+    14: 'pelvis_wide',
+    15: 'hands',
+    16: 'ribs_upper',
+    17: 'patellae',
+    18: 'legs_lower_2'
+};
+
+const groups = {
+    skull:    [8, 0, 12],
+    teeth:    [11],
+    spine:    [2],
+    ribs:     [1, 16],
+    sternum:  [13],
+    shoulders:[3],
+    arms:     [6],
+    forearms: [7],
+    hands:    [15],
+    pelvis:   [9, 14],
+    femurs:   [10],
+    patellae: [17],
+    legs:     [4, 18],
+    feet:     [5],
+    axial:       [8, 0, 12, 11, 2, 1, 16, 13],
+    appendicular:[3, 6, 7, 15, 9, 14, 10, 17, 4, 18, 5],
+    upper:       [3, 6, 7, 15],
+    lower:       [9, 14, 10, 17, 4, 18, 5]
+};
+
+// ===== LOAD MODEL =====
+setLoad(50,'Cargando esqueleto...');
+let model=null;
+const allMeshes = [];
+
+new GLTFLoader().load('skeleton.glb',
+    (gltf) => {
+        setLoad(80,'Mejorando materiales...');
+        model = gltf.scene;
+        const box=new THREE.Box3().setFromObject(model);
+        const center=box.getCenter(new THREE.Vector3());
+        const size=box.getSize(new THREE.Vector3());
+        const sc=5.5/Math.max(size.x,size.y,size.z);
+        model.scale.setScalar(sc);
+        const sb=new THREE.Box3().setFromObject(model);
+        const sc2=sb.getCenter(new THREE.Vector3());
+        model.position.sub(sc2);
+
+        let meshIdx=0;
+        model.traverse(child=>{
+            if(!child.isMesh) return;
+            child.castShadow=true; child.receiveShadow=true;
+            child._boneIdx = meshIdx;
+            allMeshes.push(child);
+            meshIdx++;
+
+            const mat=child.material;
+            const pm=new THREE.MeshPhysicalMaterial();
+            if(mat.map) pm.map=mat.map;
+            if(mat.normalMap){pm.normalMap=mat.normalMap;pm.normalScale=new THREE.Vector2(1.2,1.2);}
+            pm.color=new THREE.Color(0.72, 0.68, 0.58);
+            pm.roughness=0.60; pm.metalness=0.02;
+            pm.clearcoat=0.08; pm.clearcoatRoughness=0.55;
+            pm.thickness=0.5; pm.attenuationColor=new THREE.Color(0.75,0.70,0.55);
+            pm.attenuationDistance=3.0;
+            pm.sheen=0.15; pm.sheenRoughness=0.6;
+            pm.sheenColor=new THREE.Color(0.7,0.65,0.50);
+            pm.emissive=new THREE.Color(0.06,0.05,0.03); pm.emissiveIntensity=0.06;
+            pm.envMapIntensity=0.4; pm.side=THREE.DoubleSide;
+            child.material=pm;
+        });
+
+        scene.add(model);
+        const gnd=new THREE.Mesh(new THREE.PlaneGeometry(24,24),
+            new THREE.MeshStandardMaterial({color:0x08090c,roughness:0.95,transparent:true,opacity:0.4}));
+        gnd.rotation.x=-Math.PI/2; gnd.position.y=sb.min.y-0.15; gnd.receiveShadow=true;
+        scene.add(gnd);
+
+        setLoad(100,'¡Listo!');
+        setTimeout(()=>ls.classList.add('hidden'),500);
+    },
+    p=>{if(p.total) setLoad(50+(p.loaded/p.total)*30,'Descargando... '+(p.loaded/1024|0)+'KB')},
+    e=>{console.error(e);setLoad(0,'Error al cargar. Verifica que skeleton.glb esté en la misma carpeta.')}
+);
+
+let lt=performance.now(),fc=0;
+(function anim(t){
+    requestAnimationFrame(anim); fc++;
+    if(t-lt>=1000){$('fps').textContent=fc+' FPS';fc=0;lt=t;}
+    ctrl.update(); sssLight.intensity=0.35+Math.sin(t*0.0007)*0.06;
+    composer.render();
+})(0);
+
+addEventListener('resize',()=>{
+    const w=innerWidth,h=innerHeight-52;
+    camera.aspect=w/h;camera.updateProjectionMatrix();
+    renderer.setSize(w,h);composer.setSize(w,h);bloom.setSize(w,h);
+});
+
+let ar=true;
+$('bRot').onclick=e=>{ar=!ar;ctrl.autoRotate=ar;e.currentTarget.classList.toggle('active',ar)};
+$('bRst').onclick=()=>{ctrl.target.set(0,0,0);camera.position.set(4,2,6)};
+$('bZi').onclick=()=>camera.position.lerp(ctrl.target,0.15);
+$('bZo').onclick=()=>{const d=camera.position.clone().sub(ctrl.target).normalize();camera.position.add(d.multiplyScalar(0.6))};
+$('bFr').onclick=()=>{camera.position.set(0,0,7);ctrl.target.set(0,0,0)};
+$('bTo').onclick=()=>{camera.position.set(0,7,0.01);ctrl.target.set(0,0,0)};
+$('bSi').onclick=()=>{camera.position.set(7,0,0);ctrl.target.set(0,0,0)};
+$('bBk').onclick=()=>{camera.position.set(0,0,-7);ctrl.target.set(0,0,0)};
+let ipVis=true;
+$('bIn').onclick=()=>{ipVis=!ipVis;$('ip').classList.toggle('hide',!ipVis)};
+$('bPP').onclick=e=>{$('ppP').classList.toggle('vis');e.currentTarget.classList.toggle('active')};
+$('ppB').oninput=e=>bloom.strength=e.target.value/100*0.5;
+$('ppE').oninput=e=>renderer.toneMappingExposure=e.target.value/100;
+$('ppS').oninput=e=>cgPass.uniforms.sss.value=e.target.value/100;
+$('ppV').oninput=e=>cgPass.uniforms.vign.value=e.target.value/100;
+
+// ===== HIGHLIGHT =====
+function setHighlight(sel){
+    const targetIndices = groups[sel] || null;
+    allMeshes.forEach(mesh=>{
+        const mat=mesh.material; if(!mat) return;
+        const idx=mesh._boneIdx;
+        if(sel==='all'){
+            mat.transparent=false;mat.opacity=1;mat.depthWrite=true;
+            mat.emissiveIntensity=0.06;
+            mat.color.setRGB(0.72, 0.68, 0.58);
+        } else if(targetIndices){
+            const isTarget=targetIndices.includes(idx);
+            mat.transparent=!isTarget;
+            mat.opacity=isTarget?1:0.06;
+            mat.depthWrite=isTarget;
+            mat.emissiveIntensity=isTarget?0.18:0.01;
+            if(isTarget){
+                mat.color.setRGB(0.80, 0.76, 0.62);
+            } else {
+                mat.color.setRGB(0.72, 0.68, 0.58);
+            }
+        }
+    });
+}
+
+const partInfo={
+    all:{n:'Esqueleto Humano',s:'Sistema Esquelético',
+        d:'Estructura interna de soporte del cuerpo humano compuesta por 206 huesos en el adulto. Proporciona sostén mecánico, protección de órganos vitales, anclaje muscular, producción de células sanguíneas (hematopoyesis) y almacenamiento de minerales como calcio y fósforo.',
+        st:[{l:'Huesos',v:'206'},{l:'Peso',v:'~12-15% corporal'},{l:'Axial',v:'80 huesos'},{l:'Apendicular',v:'126 huesos'}]},
+    skull:{n:'Cráneo',s:'Neurocráneo y Viscerocráneo',
+        d:'Compuesto por 22 huesos: 8 del neurocráneo (frontal, parietales, temporales, occipital, esfenoides, etmoides) que protegen el encéfalo, y 14 del viscerocráneo (maxilares, cigomáticos, nasales, lagrimales, palatinos, cornetes inferiores, vómer y mandíbula) que forman la cara.',
+        st:[{l:'Neurocráneo',v:'8 huesos'},{l:'Viscerocráneo',v:'14 huesos'},{l:'Capacidad',v:'~1400 cm³'},{l:'Fontanelas',v:'6 (neonato)'}]},
+    teeth:{n:'Dientes y Mandíbula',s:'Aparato Masticador',
+        d:'La mandíbula es el único hueso móvil del cráneo, articulada con los temporales por la ATM. Aloja 16 dientes inferiores. La dentición adulta completa tiene 32 piezas: 8 incisivos, 4 caninos, 8 premolares y 12 molares (incluyendo las muelas del juicio).',
+        st:[{l:'Dientes adulto',v:'32'},{l:'Mandíbula',v:'Hueso más fuerte'},{l:'ATM',v:'Articulación doble'},{l:'Fuerza mordida',v:'~70 kg'}]},
+    spine:{n:'Columna Vertebral',s:'Raquis — Eje Axial',
+        d:'Estructura central del esqueleto formada por 33-34 vértebras: 7 cervicales (C1-C7), 12 torácicas (T1-T12), 5 lumbares (L1-L5), 5 sacras fusionadas y 3-5 coccígeas fusionadas. Presenta 4 curvaturas fisiológicas que distribuyen cargas y absorben impactos.',
+        st:[{l:'Cervicales',v:'7 (C1-C7)'},{l:'Torácicas',v:'12 (T1-T12)'},{l:'Lumbares',v:'5 (L1-L5)'},{l:'Sacro + Cóccix',v:'5 + 3-5'}]},
+    ribs:{n:'Caja Torácica',s:'Costillas y Cartílagos',
+        d:'Formada por 12 pares de costillas articuladas con las vértebras torácicas: 7 pares verdaderas (unidas al esternón), 3 pares falsas (unidas indirectamente) y 2 pares flotantes. Protege corazón, pulmones y grandes vasos, y participa en la mecánica respiratoria.',
+        st:[{l:'Verdaderas',v:'7 pares (1ª-7ª)'},{l:'Falsas',v:'3 pares (8ª-10ª)'},{l:'Flotantes',v:'2 pares (11ª-12ª)'},{l:'Función',v:'Protección + respiración'}]},
+    sternum:{n:'Esternón',s:'Hueso Plano Central',
+        d:'Hueso plano e impar ubicado en la línea media anterior del tórax. Consta de tres partes: manubrio (superior), cuerpo (medio) y apófisis xifoides (inferior). Sirve de inserción para costillas y músculos pectorales. Es sitio frecuente de punción para biopsia de médula ósea.',
+        st:[{l:'Partes',v:'Manubrio, cuerpo, xifoides'},{l:'Longitud',v:'~15-17 cm'},{l:'Articulaciones',v:'Clavículas + costillas'},{l:'Clínica',v:'Punción medular'}]},
+    shoulders:{n:'Cintura Escapular',s:'Clavículas y Escápulas',
+        d:'Formada por 2 clavículas y 2 escápulas. Las clavículas conectan el esternón con los acromiones escapulares, transmitiendo fuerzas del miembro superior al tronco. Las escápulas, huesos planos triangulares, sirven de inserción para 17 músculos y forman la cavidad glenoidea para el húmero.',
+        st:[{l:'Clavícula',v:'Primer hueso en osificar'},{l:'Escápula',v:'17 inserciones musc.'},{l:'Glenoides',v:'Cavidad articular'},{l:'Fractura',v:'Clavícula: más frecuente'}]},
+    arms:{n:'Brazos (Húmeros)',s:'Hueso del Brazo',
+        d:'El húmero es el hueso más largo y fuerte del miembro superior. Se articula proximalmente con la cavidad glenoidea de la escápula (articulación glenohumeral, la de mayor movilidad del cuerpo) y distalmente con cúbito y radio en el codo.',
+        st:[{l:'Longitud',v:'~36 cm'},{l:'Proximal',v:'Art. glenohumeral'},{l:'Distal',v:'Tróclea + cóndilo'},{l:'Nervio',v:'Radial (surco)'}]},
+    forearms:{n:'Antebrazos',s:'Radio y Cúbito',
+        d:'Dos huesos paralelos: el radio (lateral/externo, permite la pronación-supinación) y el cúbito (medial/interno, forma el olécranon del codo). Se articulan entre sí proximalmente y distalmente, conectados por la membrana interósea.',
+        st:[{l:'Radio',v:'Lateral (pulgar)'},{l:'Cúbito',v:'Medial (meñique)'},{l:'Olécranon',v:'Punta del codo'},{l:'Movimiento',v:'Pronación/supinación'}]},
+    hands:{n:'Manos',s:'Carpo, Metacarpo y Falanges',
+        d:'Cada mano tiene 27 huesos: 8 del carpo (escafoides, semilunar, piramidal, pisiforme, trapecio, trapezoide, grande y ganchoso), 5 metacarpianos y 14 falanges (2 en el pulgar, 3 en los demás dedos). El arco de la mano permite prensión fina y potente.',
+        st:[{l:'Carpo',v:'8 huesos'},{l:'Metacarpo',v:'5 huesos'},{l:'Falanges',v:'14 por mano'},{l:'Total',v:'27 por mano'}]},
+    pelvis:{n:'Pelvis',s:'Cintura Pélvica',
+        d:'Estructura anular formada por 2 huesos coxales (cada uno fusión de ilion, isquion y pubis), el sacro y el cóccix. Transmite el peso del tronco a los miembros inferiores, aloja y protege órganos pélvicos. Presenta dimorfismo sexual marcado (pelvis femenina más ancha para el parto).',
+        st:[{l:'Huesos coxales',v:'2 (ilion+isquion+pubis)'},{l:'Sacro',v:'5 vértebras fusionadas'},{l:'Dimorfismo',v:'♀ más ancha'},{l:'Acetábulo',v:'Cavidad para fémur'}]},
+    femurs:{n:'Fémures',s:'Hueso del Muslo',
+        d:'El fémur es el hueso más largo, más pesado y más fuerte del cuerpo humano. Se articula con el acetábulo de la pelvis (cadera) y con la tibia y rótula (rodilla). El cuello femoral tiene angulación de ~125° y es zona frecuente de fracturas en ancianos por osteoporosis.',
+        st:[{l:'Longitud',v:'~48 cm (~25% talla)'},{l:'Ángulo cuello',v:'~125°'},{l:'Resistencia',v:'Soporta ~30x peso'},{l:'Fractura',v:'Cuello: freq. en ancianos'}]},
+    patellae:{n:'Rótulas',s:'Hueso Sesamoideo Mayor',
+        d:'Las rótulas (patelas) son los huesos sesamoideos más grandes del cuerpo, incluidos en el tendón del cuádriceps. Protegen la articulación de la rodilla y actúan como polea, aumentando el brazo de palanca del cuádriceps en ~30%, mejorando la eficiencia de la extensión de rodilla.',
+        st:[{l:'Tipo',v:'Sesamoideo mayor'},{l:'Función',v:'Polea del cuádriceps'},{l:'Ventaja mecánica',v:'+30% eficiencia'},{l:'Osificación',v:'3-5 años'}]},
+    legs:{n:'Piernas (Tibia y Peroné)',s:'Huesos de la Pierna',
+        d:'La tibia (medial) soporta el peso corporal y se articula con fémur, peroné y astrágalo. El peroné (lateral) es delgado, no soporta peso directo pero sirve de inserción muscular y forma el maléolo lateral del tobillo. Ambos están conectados por membrana interósea.',
+        st:[{l:'Tibia',v:'Soporta peso'},{l:'Peroné',v:'Inserción muscular'},{l:'Maléolos',v:'Lateral (peroné) + medial (tibia)'},{l:'Cresta tibial',v:'Subcutánea palpable'}]},
+    feet:{n:'Pies',s:'Tarso, Metatarso y Falanges',
+        d:'Cada pie tiene 26 huesos: 7 del tarso (calcáneo, astrágalo, navicular, cuboides y 3 cuneiformes), 5 metatarsianos y 14 falanges. Forman 3 arcos (longitudinal medial, lateral y transverso) que absorben impactos y permiten la bipedestación y marcha eficiente.',
+        st:[{l:'Tarso',v:'7 huesos'},{l:'Metatarso',v:'5 huesos'},{l:'Falanges',v:'14 por pie'},{l:'Total',v:'26 por pie'}]},
+    axial:{n:'Esqueleto Axial',s:'Eje Central del Cuerpo',
+        d:'Comprende 80 huesos que forman el eje longitudinal del cuerpo: cráneo (22), huesos del oído (6), hioides (1), columna vertebral (26), esternón (1) y costillas (24). Protege el sistema nervioso central, corazón y pulmones.',
+        st:[{l:'Cráneo',v:'22 huesos'},{l:'Columna',v:'26 huesos'},{l:'Costillas',v:'24 (12 pares)'},{l:'Total',v:'80 huesos'}]},
+    appendicular:{n:'Esqueleto Apendicular',s:'Miembros y Cinturas',
+        d:'Comprende 126 huesos: cinturas escapular (4) y pélvica (2), miembros superiores (60) e inferiores (60). Permite la locomoción, manipulación de objetos e interacción con el entorno. Mayor movilidad que el esqueleto axial.',
+        st:[{l:'Cintura escapular',v:'4 huesos'},{l:'Miembro sup.',v:'60 huesos'},{l:'Cintura pélvica',v:'2 huesos'},{l:'Miembro inf.',v:'60 huesos'}]},
+    upper:{n:'Miembro Superior',s:'Hombro, Brazo, Antebrazo y Mano',
+        d:'Cada miembro superior consta de: húmero (1), radio (1), cúbito (1), carpos (8), metacarpos (5) y falanges (14) = 30 huesos por lado. Adaptado para movilidad máxima, manipulación fina y prensión. La articulación del hombro sacrifica estabilidad por rango de movimiento.',
+        st:[{l:'Húmero',v:'1 por lado'},{l:'Antebrazo',v:'Radio + Cúbito'},{l:'Mano',v:'27 huesos'},{l:'Total',v:'30 por lado'}]},
+    lower:{n:'Miembro Inferior',s:'Cadera, Muslo, Pierna y Pie',
+        d:'Cada miembro inferior consta de: coxal (1), fémur (1), rótula (1), tibia (1), peroné (1), tarsos (7), metatarsos (5) y falanges (14) = 31 huesos por lado. Adaptado para soporte de peso, bipedestación y locomoción. Mayor estabilidad que el miembro superior.',
+        st:[{l:'Fémur',v:'Hueso más largo'},{l:'Pierna',v:'Tibia + Peroné'},{l:'Pie',v:'26 huesos'},{l:'Total',v:'31 por lado'}]}
+};
+
+document.querySelectorAll('.hl-btn').forEach(btn=>{
+    btn.onclick=()=>{
+        document.querySelectorAll('.hl-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const p=btn.dataset.part,info=partInfo[p];
+        if(info){
+            $('ipN').textContent=info.n;$('ipS').textContent=info.s;$('ipD').textContent=info.d;
+            $('ipSt').innerHTML=info.st.map(s=>`<div class="st-card"><div class="st-label">${s.l}</div><div class="st-val">${s.v}</div></div>`).join('');
+        }
+        setHighlight(p);
+    };
+});
+    </script>
+
+    <!-- Labels (sistema numerado) -->
+    <script type="module" src="../js/labels/skeleton/skeleton_labels.js"></script>
+
+    <!-- Datos médicos -->
+    <script src="../js/labels/skeleton/skeleton_anatomia.js"></script>
+    <script src="../js/labels/skeleton/skeleton_fisiologia.js"></script>
+    <script src="../js/labels/skeleton/skeleton_patologias.js"></script>
+    <script src="../js/labels/skeleton/skeleton_nutricion.js"></script>
+    <script src="../js/labels/skeleton/skeleton_habitos.js"></script>
+    <script src="../js/labels/skeleton/skeleton_clinicos.js"></script>
+    <script type="module" src="../js/labels/skeleton/skeleton_medical_info.js"></script>
+</body>
+</html>

@@ -73,7 +73,14 @@ const galleryContent = {
         { title: 'Cubicación - Vista 6', image: 'CUBICACION-TR/CUBICA-6.png' },
         { title: 'Cubicación - Vista 7', image: 'CUBICACION-TR/CUBICA-7.png' }
     ],
-    videos: [
+    
+    videos: [        
+        { 
+            title: 'Medical 3D - Sistema Médico Interactivo', 
+            video: 'VIDEOS/6-MEDICAL.mp4',
+            description: 'Sistema interactivo de visualización médica en 3D',
+            duration: 'Video demostrativo'
+        },
         { 
             title: 'Agua Potable - Automatización Completa', 
             video: 'VIDEOS/1-AP-AS.mp4',

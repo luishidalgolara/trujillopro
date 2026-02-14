@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intestinos Humanos 3D — Plataforma Médica In Silico</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#0a0908;--panel:rgba(12,11,9,0.90);--card:rgba(20,18,14,0.75);--accent:#c47a55;--accent-glow:rgba(196,122,85,0.22);--cyan:#5cc4a8;--cyan-glow:rgba(92,196,168,0.18);--rose:#c86478;--rose-glow:rgba(200,100,120,0.18);--text:#e8e4dc;--text2:#9a9488;--dim:#6a6458;--border:rgba(255,255,255,0.06);--glass:rgba(255,255,255,0.03)}
+        body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow:hidden;height:100vh}
+
+        .header{position:fixed;top:0;left:0;right:0;height:52px;background:var(--panel);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px;z-index:100}
+        .header h1{font-size:.9rem;font-weight:600;letter-spacing:-.02em}
+        .header span{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);text-transform:uppercase;letter-spacing:.1em}
+        .header-r{display:flex;align-items:center;gap:14px}
+        .sdot{width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px rgba(74,222,128,.5);animation:pd 2s infinite}
+        @keyframes pd{0%,100%{opacity:1}50%{opacity:.5}}
+        .fps{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim)}
+
+        #mainCanvas{position:fixed;top:52px;left:0;width:100%;height:calc(100vh - 52px)}
+
+        .loading-screen{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;transition:opacity .8s,visibility .8s}
+        .loading-screen.hidden{opacity:0;visibility:hidden;pointer-events:none}
+        .lb-icon{font-size:3.5rem;animation:fl 2s ease-in-out infinite}
+        @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        .lb-bar{width:180px;height:2px;background:var(--border);border-radius:2px;margin-top:20px;overflow:hidden}
+        .lb-fill{height:100%;background:linear-gradient(90deg,#995544,var(--accent));width:0%;transition:width .3s;border-radius:2px}
+        .lb-txt{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim);margin-top:10px}
+
+        .info-panel{position:fixed;top:66px;right:14px;width:300px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:14px;padding:18px;z-index:50;transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .4s}
+        .info-panel.hide{transform:translateX(320px);opacity:0}
+        .ip-tag{font-size:.6rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:10px}
+        .ip-name{font-size:1.3rem;font-weight:700;letter-spacing:-.03em;margin-bottom:3px}
+        .ip-sys{font-size:.78rem;color:var(--cyan);margin-bottom:10px}
+        .ip-desc{font-size:.78rem;line-height:1.5;color:var(--text2);margin-bottom:14px}
+        .ip-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+        .st-card{background:var(--glass);border:1px solid var(--border);border-radius:9px;padding:9px 10px}
+        .st-label{font-size:.6rem;color:var(--dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.05em}
+        .st-val{font-size:.85rem;font-weight:600;margin-top:1px}
+
+        .hl-panel{position:fixed;top:66px;left:14px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:12px;z-index:50;max-height:calc(100vh - 160px);overflow-y:auto}
+        .hl-panel::-webkit-scrollbar{width:4px}
+        .hl-panel::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+        .hl-title{font-size:.6rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:8px}
+        .hl-sep{font-size:.55rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:8px 0 4px 10px;opacity:.6}
+        .hl-btn{display:flex;align-items:center;gap:8px;width:100%;padding:7px 10px;border:1px solid transparent;border-radius:7px;background:0 0;color:var(--text2);font-size:.78rem;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;margin-bottom:2px}
+        .hl-btn:hover{background:var(--glass);color:var(--text)}
+        .hl-btn.active{background:var(--accent-glow);border-color:rgba(196,122,85,.3);color:var(--accent)}
+        .hl-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+        .ctrl-bar{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:5px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:7px;z-index:50}
+        .cb{width:40px;height:40px;border-radius:9px;border:1px solid transparent;background:0 0;color:var(--text2);font-size:1.05rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+        .cb:hover{background:var(--glass);border-color:var(--border);color:var(--text)}
+        .cb.active{background:var(--accent-glow);border-color:var(--accent);color:var(--accent)}
+        .cd{width:1px;background:var(--border);margin:4px 1px}
+
+        .pp-panel{position:fixed;bottom:75px;left:50%;transform:translateX(-50%);background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:14px;z-index:50;min-width:220px;display:none}
+        .pp-panel.vis{display:block}
+        .pp-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+        .pp-row label{font-size:.72rem;color:var(--text2)}
+        .pp-row input[type=range]{width:100px;height:3px;-webkit-appearance:none;background:var(--border);border-radius:2px;outline:0}
+        .pp-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;background:var(--accent);cursor:pointer}
+
+        .credit{position:fixed;bottom:70px;right:14px;font-size:.55rem;color:var(--dim);font-family:'Space Mono',monospace;z-index:50;text-align:right;line-height:1.4}
+        .credit a{color:var(--dim);text-decoration:underline;text-decoration-color:rgba(255,255,255,.1)}
+    </style>
+</head>
+<body>
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🫁</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:1.3rem">🫁</span>
+            <div><h1>Plataforma Médica In Silico</h1><span>Modelo Anatómico 3D — Intestino Delgado y Grueso</span></div>
+        </div>
+        <div class="header-r"><div class="fps" id="fps">-- FPS</div><div class="sdot"></div></div>
+    </div>
+
+    <canvas id="mainCanvas"></canvas>
+
+    <div class="hl-panel">
+        <div class="hl-title">Estructuras</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#c47a55"></span>Intestinos completos</button>
+        <div class="hl-sep">— Componentes —</div>
+        <button class="hl-btn" data-part="large"><span class="hl-dot" style="background:#c87068"></span>Intestino grueso</button>
+        <button class="hl-btn" data-part="small"><span class="hl-dot" style="background:#d4a088"></span>Intestino delgado</button>
+        <div class="hl-sep">— Int. Grueso: Segmentos —</div>
+        <button class="hl-btn" data-part="cecum"><span class="hl-dot" style="background:#cc6660"></span>Ciego y apéndice</button>
+        <button class="hl-btn" data-part="ascending"><span class="hl-dot" style="background:#c87058"></span>Colon ascendente</button>
+        <button class="hl-btn" data-part="transverse"><span class="hl-dot" style="background:#c47a50"></span>Colon transverso</button>
+        <button class="hl-btn" data-part="descending"><span class="hl-dot" style="background:#b87048"></span>Colon descendente</button>
+        <button class="hl-btn" data-part="sigmoid"><span class="hl-dot" style="background:#b06040"></span>Colon sigmoide</button>
+        <button class="hl-btn" data-part="rectum"><span class="hl-dot" style="background:#a85038"></span>Recto</button>
+        <div class="hl-sep">— Int. Delgado: Segmentos —</div>
+        <button class="hl-btn" data-part="duodenum"><span class="hl-dot" style="background:#ddb090"></span>Duodeno</button>
+        <button class="hl-btn" data-part="jejunum"><span class="hl-dot" style="background:#d4a080"></span>Yeyuno</button>
+        <button class="hl-btn" data-part="ileum"><span class="hl-dot" style="background:#cc9070"></span>Íleon</button>
+        <div class="hl-sep">— Función —</div>
+        <button class="hl-btn" data-part="absorption"><span class="hl-dot" style="background:#5cc4a8"></span>Absorción</button>
+        <button class="hl-btn" data-part="microbiome"><span class="hl-dot" style="background:#88bb77"></span>Microbiota</button>
+        <button class="hl-btn" data-part="motility"><span class="hl-dot" style="background:#c8a855"></span>Motilidad</button>
+    </div>
+
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Intestinos Humanos</div>
+        <div class="ip-sys" id="ipS">Sistema Digestivo</div>
+        <div class="ip-desc" id="ipD">El tracto intestinal comprende el intestino delgado (~6-7 m) y el intestino grueso (~1.5 m). Juntos completan la digestión, absorben nutrientes y agua, albergan la microbiota intestinal y forman/eliminan las heces. Constituyen la mayor superficie de intercambio del organismo.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">I. Delgado</div><div class="st-val">~6-7 m</div></div>
+            <div class="st-card"><div class="st-label">I. Grueso</div><div class="st-val">~1.5 m</div></div>
+            <div class="st-card"><div class="st-label">Superficie</div><div class="st-val">~32 m²</div></div>
+            <div class="st-card"><div class="st-label">Microbiota</div><div class="st-val">~3.8×10¹³</div></div>
+        </div>
+    </div>
+
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Anterior">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Posterior">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="14"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="115"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="32"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="28"></div>
+    </div>
+
+    <div class="credit">Modelo: <a href="https://sketchfab.com/3d-models/small-and-large-intestine-8a1ca8e3ca224cdeb9264674416bde38" target="_blank">"Small and large intestine"</a> por antonia.sundberg<br>CC-BY-4.0</div>
+
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+    <script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
+import {ShaderPass} from 'three/addons/postprocessing/ShaderPass.js';
+import {SMAAPass} from 'three/addons/postprocessing/SMAAPass.js';
+
+const $=id=>document.getElementById(id);
+const lbFill=$('lbFill'), lbTxt=$('lbTxt'), ls=$('ls');
+const setLoad=(p,t)=>{lbFill.style.width=p+'%';lbTxt.textContent=t};
+
+setLoad(10,'Configurando escena...');
+const canvas=$('mainCanvas');
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x0a0908);
+scene.fog=new THREE.FogExp2(0x0a0908, 0.03);
+
+const camera=new THREE.PerspectiveCamera(45, innerWidth/(innerHeight-52), 0.01, 100);
+camera.position.set(3, 2.5, 4.5);
+
+const renderer=new THREE.WebGLRenderer({canvas, antialias:true, powerPreference:'high-performance'});
+renderer.setSize(innerWidth, innerHeight-52);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.shadowMap.enabled=true;
+renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure=1.15;
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.useLegacyLights=false;
+
+const ctrl=new OrbitControls(camera, canvas);
+ctrl.enableDamping=true; ctrl.dampingFactor=0.06;
+ctrl.rotateSpeed=0.7; ctrl.zoomSpeed=0.8;
+ctrl.minDistance=1.5; ctrl.maxDistance=10;
+ctrl.target.set(0, 0, 0);
+ctrl.autoRotate=true; ctrl.autoRotateSpeed=0.45;
+
+setLoad(20,'Generando environment...');
+const pmrem=new THREE.PMREMGenerator(renderer);
+pmrem.compileEquirectangularShader();
+const envSc=new THREE.Scene();
+envSc.add(new THREE.Mesh(
+    new THREE.SphereGeometry(10, 32, 32),
+    new THREE.ShaderMaterial({
+        side: THREE.BackSide,
+        vertexShader:`varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+        fragmentShader:`varying vec3 vP;void main(){
+            vec3 d=normalize(vP);float y=d.y*.5+.5;
+            vec3 c=mix(vec3(.04,.03,.03),mix(vec3(.07,.05,.04),vec3(.1,.07,.05),smoothstep(.4,1.,y)),smoothstep(0.,.4,y));
+            c+=vec3(.30,.18,.10)*pow(max(0.,dot(d,normalize(vec3(1.,.4,.5)))),7.)*.20;
+            c+=vec3(.08,.10,.08)*pow(max(0.,dot(d,normalize(vec3(-.7,.2,-.6)))),5.)*.14;
+            gl_FragColor=vec4(c,1.);}`
+    })
+));
+scene.environment=pmrem.fromScene(envSc, 0.04).texture;
+pmrem.dispose();
+
+setLoad(30,'Iluminación...');
+scene.add(new THREE.HemisphereLight(0xaa8877, 0x221511, 0.55));
+const keyLight=new THREE.DirectionalLight(0xffeedd, 2.6);
+keyLight.position.set(4, 7, 5); keyLight.castShadow=true;
+keyLight.shadow.mapSize.set(2048,2048);
+keyLight.shadow.camera.near=0.1; keyLight.shadow.camera.far=20;
+keyLight.shadow.camera.left=-4; keyLight.shadow.camera.right=4;
+keyLight.shadow.camera.top=4; keyLight.shadow.camera.bottom=-4;
+keyLight.shadow.bias=-0.0005; keyLight.shadow.normalBias=0.02;
+scene.add(keyLight);
+scene.add(new THREE.DirectionalLight(0x7788aa, 0.85).translateX(-5).translateY(3).translateZ(-2));
+const rimLight=new THREE.DirectionalLight(0xddaa77, 1.3);
+rimLight.position.set(-2,-1,-5); scene.add(rimLight);
+const sssLight=new THREE.PointLight(0xcc7744, 0.45, 10);
+sssLight.position.set(0,-3,2); scene.add(sssLight);
+scene.add(new THREE.PointLight(0xffffff, 0.55, 12).translateX(2).translateY(3).translateZ(4));
+
+setLoad(40,'Post-processing...');
+const composer=new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const bloom=new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight), 0.14, 0.45, 0.86);
+composer.addPass(bloom);
+const cgShader={
+    uniforms:{tDiffuse:{value:null},sss:{value:0.32},vign:{value:0.28}},
+    vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+    fragmentShader:`uniform sampler2D tDiffuse;uniform float sss;uniform float vign;varying vec2 vUv;
+    void main(){vec4 tx=texture2D(tDiffuse,vUv);vec3 c=tx.rgb;
+    float lum=dot(c,vec3(.299,.587,.114));float sm=smoothstep(.06,.40,lum)*(1.-smoothstep(.40,.80,lum));
+    c+=vec3(.80,.45,.30)*sss*sm*.16;c.r+=.012;
+    float g=dot(c,vec3(.2126,.7152,.0722));c=mix(vec3(g),c,1.12);c=(c-.5)*1.05+.5;
+    vec2 u=vUv*2.-1.;c*=1.-dot(u,u)*vign*.4;gl_FragColor=vec4(clamp(c,0.,1.),tx.a);}`
+};
+const cgPass=new ShaderPass(cgShader);
+composer.addPass(cgPass);
+composer.addPass(new SMAAPass(innerWidth,innerHeight));
+
+// ===== MESH MAPPING =====
+// Model structure from GLTF:
+// Mesh 0 & 1 = "Tjocktarm" (large intestine) -> material 0
+// Mesh 2 = "Tunntarm" (small intestine) -> material 1
+const parts = { largeA: null, largeB: null, small: null };
+
+// Groups for highlight
+const groupDefs = {
+    large:      ['largeA','largeB'],
+    small:      ['small'],
+    // Conceptual regions (highlight whole organ, show info)
+    cecum:      ['largeA','largeB'],
+    ascending:  ['largeA','largeB'],
+    transverse: ['largeA','largeB'],
+    descending: ['largeA','largeB'],
+    sigmoid:    ['largeA','largeB'],
+    rectum:     ['largeA','largeB'],
+    duodenum:   ['small'],
+    jejunum:    ['small'],
+    ileum:      ['small'],
+    absorption: ['small'],
+    microbiome: ['largeA','largeB'],
+    motility:   ['largeA','largeB','small']
+};
+
+// ===== LOAD MODEL =====
+setLoad(50,'Cargando intestinos...');
+let model=null;
+
+new GLTFLoader().load('small-intestine.glb',
+    (gltf) => {
+        setLoad(80,'Mejorando materiales...');
+        model = gltf.scene;
+        const box=new THREE.Box3().setFromObject(model);
+        const center=box.getCenter(new THREE.Vector3());
+        const size=box.getSize(new THREE.Vector3());
+        const sc=3.8/Math.max(size.x,size.y,size.z);
+        model.scale.setScalar(sc);
+        const sb=new THREE.Box3().setFromObject(model);
+        const sc2=sb.getCenter(new THREE.Vector3());
+        model.position.sub(sc2);
+
+        let meshIdx=0;
+        model.traverse(child=>{
+            if(!child.isMesh) return;
+            child.castShadow=true; child.receiveShadow=true;
+            const idx=meshIdx++;
+            if(idx===0) parts.largeA=child;
+            if(idx===1) parts.largeB=child;
+            if(idx===2) parts.small=child;
+
+            const mat=child.material;
+            const pm=new THREE.MeshPhysicalMaterial();
+            if(mat.map) pm.map=mat.map;
+            if(mat.normalMap){pm.normalMap=mat.normalMap;pm.normalScale=new THREE.Vector2(1.8,1.8);}
+            if(mat.roughnessMap) pm.roughnessMap=mat.roughnessMap;
+            if(mat.metalnessMap) pm.metalnessMap=mat.metalnessMap;
+
+            // Intestine-specific organic material
+            pm.roughness=0.50; pm.metalness=0;
+            pm.clearcoat=0.12; pm.clearcoatRoughness=0.40;
+            pm.thickness=1.2;
+            pm.attenuationColor=idx<2 ? new THREE.Color(0.75,0.40,0.30) : new THREE.Color(0.80,0.55,0.40);
+            pm.attenuationDistance=1.5;
+            pm.sheen=0.30; pm.sheenRoughness=0.45;
+            pm.sheenColor=idx<2 ? new THREE.Color(0.70,0.45,0.35) : new THREE.Color(0.80,0.60,0.45);
+            pm.emissive=new THREE.Color(0.10,0.05,0.03); pm.emissiveIntensity=0.08;
+            pm.envMapIntensity=0.45; pm.side=THREE.DoubleSide;
+            child.material=pm;
+        });
+
+        scene.add(model);
+        const gnd=new THREE.Mesh(new THREE.PlaneGeometry(18,18),
+            new THREE.MeshStandardMaterial({color:0x0a0908,roughness:0.95,transparent:true,opacity:0.4}));
+        gnd.rotation.x=-Math.PI/2; gnd.position.y=sb.min.y-0.1; gnd.receiveShadow=true;
+        scene.add(gnd);
+
+        setLoad(100,'¡Listo!');
+        setTimeout(()=>ls.classList.add('hidden'),500);
+    },
+    p=>{if(p.total) setLoad(50+(p.loaded/p.total)*30,'Descargando... '+(p.loaded/1024|0)+'KB')},
+    e=>{console.error(e);setLoad(0,'Error al cargar. Verifica que small-intestine.glb esté en la misma carpeta.')}
+);
+
+let lt=performance.now(),fc=0;
+(function anim(t){
+    requestAnimationFrame(anim); fc++;
+    if(t-lt>=1000){$('fps').textContent=fc+' FPS';fc=0;lt=t;}
+    ctrl.update(); sssLight.intensity=0.45+Math.sin(t*0.0008)*0.08;
+    composer.render();
+})(0);
+
+addEventListener('resize',()=>{
+    const w=innerWidth,h=innerHeight-52;
+    camera.aspect=w/h;camera.updateProjectionMatrix();
+    renderer.setSize(w,h);composer.setSize(w,h);bloom.setSize(w,h);
+});
+
+let ar=true;
+$('bRot').onclick=e=>{ar=!ar;ctrl.autoRotate=ar;e.currentTarget.classList.toggle('active',ar)};
+$('bRst').onclick=()=>{ctrl.target.set(0,0,0);camera.position.set(3,2.5,4.5)};
+$('bZi').onclick=()=>camera.position.lerp(ctrl.target,0.15);
+$('bZo').onclick=()=>{const d=camera.position.clone().sub(ctrl.target).normalize();camera.position.add(d.multiplyScalar(0.5))};
+$('bFr').onclick=()=>{camera.position.set(0,0,5);ctrl.target.set(0,0,0)};
+$('bTo').onclick=()=>{camera.position.set(0,5,0.01);ctrl.target.set(0,0,0)};
+$('bSi').onclick=()=>{camera.position.set(5,0,0);ctrl.target.set(0,0,0)};
+$('bBk').onclick=()=>{camera.position.set(0,0,-5);ctrl.target.set(0,0,0)};
+let ipVis=true;
+$('bIn').onclick=()=>{ipVis=!ipVis;$('ip').classList.toggle('hide',!ipVis)};
+$('bPP').onclick=e=>{$('ppP').classList.toggle('vis');e.currentTarget.classList.toggle('active')};
+$('ppB').oninput=e=>bloom.strength=e.target.value/100*0.5;
+$('ppE').oninput=e=>renderer.toneMappingExposure=e.target.value/100;
+$('ppS').oninput=e=>cgPass.uniforms.sss.value=e.target.value/100;
+$('ppV').oninput=e=>cgPass.uniforms.vign.value=e.target.value/100;
+
+// ===== HIGHLIGHT =====
+function setHighlight(sel){
+    const allParts=[parts.largeA,parts.largeB,parts.small].filter(Boolean);
+    const grp=groupDefs[sel];
+    allParts.forEach(mesh=>{
+        const mat=mesh.material; if(!mat) return;
+        const key=(mesh===parts.largeA)?'largeA':(mesh===parts.largeB)?'largeB':'small';
+        if(sel==='all'){
+            mat.transparent=false;mat.opacity=1;mat.depthWrite=true;mat.emissiveIntensity=0.08;
+        } else if(grp){
+            const isTarget=grp.includes(key);
+            mat.transparent=!isTarget;mat.opacity=isTarget?1:0.07;
+            mat.depthWrite=isTarget;mat.emissiveIntensity=isTarget?0.20:0.02;
+        }
+    });
+}
+
+const partInfo={
+    all:{n:'Intestinos Humanos',s:'Sistema Digestivo',
+        d:'El tracto intestinal comprende el intestino delgado (~6-7 m) y el intestino grueso (~1.5 m). Juntos completan la digestión, absorben nutrientes y agua, albergan la microbiota intestinal y forman/eliminan las heces. Constituyen la mayor superficie de intercambio del organismo.',
+        st:[{l:'I. Delgado',v:'~6-7 m'},{l:'I. Grueso',v:'~1.5 m'},{l:'Superficie',v:'~32 m²'},{l:'Microbiota',v:'~3.8×10¹³'}]},
+    large:{n:'Intestino Grueso',s:'Colon — Absorción de Agua',
+        d:'Tubo muscular de ~1.5 m y 6-7 cm de diámetro. Se divide en ciego (con apéndice vermiforme), colon ascendente, transverso, descendente, sigmoide, recto y canal anal. Absorbe agua y electrolitos, fermenta fibra mediante la microbiota, forma y almacena heces. Presenta haustras, tenias cólicas y apéndices epiploicos.',
+        st:[{l:'Longitud',v:'~1.5 m'},{l:'Diámetro',v:'~6-7 cm'},{l:'Absorción agua',v:'~1.5 L/día'},{l:'Tránsito',v:'12-36 horas'}]},
+    small:{n:'Intestino Delgado',s:'Principal Sitio de Absorción',
+        d:'Tubo de ~6-7 m, dividido en duodeno (25 cm), yeyuno (~2.5 m) e íleon (~3.5 m). Su mucosa presenta pliegues circulares, vellosidades (~5 millones) y microvellosidades que amplían la superficie a ~32 m². Aquí se absorbe >90% de nutrientes: carbohidratos, proteínas, lípidos, vitaminas y minerales.',
+        st:[{l:'Longitud',v:'~6-7 m'},{l:'Diámetro',v:'~2.5-3 cm'},{l:'Vellosidades',v:'~5×10⁶'},{l:'Absorción',v:'>90% nutrientes'}]},
+    cecum:{n:'Ciego y Apéndice',s:'Inicio del Intestino Grueso',
+        d:'El ciego es una bolsa de ~6 cm ubicada en la fosa ilíaca derecha donde desemboca el íleon a través de la válvula ileocecal. El apéndice vermiforme (6-10 cm) se inserta en su cara posteromedial. El apéndice contiene abundante tejido linfoide (GALT) y sirve como reservorio de bacterias comensales beneficiosas.',
+        st:[{l:'Ciego',v:'~6 cm'},{l:'Apéndice',v:'~6-10 cm'},{l:'Válvula',v:'Ileocecal'},{l:'Función apéndice',v:'GALT + reservorio'}]},
+    ascending:{n:'Colon Ascendente',s:'Segmento Derecho',
+        d:'Segmento retroperitoneal de ~15 cm que asciende desde el ciego hasta la flexura hepática (ángulo cólico derecho), bajo el lóbulo hepático derecho. Absorbe agua y electrolitos del quimo. Irrigado por la arteria cólica derecha (rama de la mesentérica superior).',
+        st:[{l:'Longitud',v:'~15 cm'},{l:'Posición',v:'Retroperitoneal'},{l:'Flexura',v:'Hepática'},{l:'Irrigación',v:'A. cólica derecha'}]},
+    transverse:{n:'Colon Transverso',s:'Segmento Superior',
+        d:'Segmento intraperitoneal más largo (~45 cm) que cruza horizontalmente el abdomen desde la flexura hepática hasta la flexura esplénica (ángulo cólico izquierdo, más alto). Suspendido por el mesocolon transverso. Marca el límite entre territorios de irrigación de las arterias mesentéricas superior e inferior.',
+        st:[{l:'Longitud',v:'~45 cm'},{l:'Posición',v:'Intraperitoneal'},{l:'Meso',v:'Mesocolon transverso'},{l:'Límite vascular',v:'AMS / AMI'}]},
+    descending:{n:'Colon Descendente',s:'Segmento Izquierdo',
+        d:'Segmento retroperitoneal de ~25 cm que desciende desde la flexura esplénica hasta la fosa ilíaca izquierda. Las heces se van solidificando progresivamente. Irrigado por la arteria cólica izquierda (rama de la mesentérica inferior). Inervado por el plexo mesentérico inferior.',
+        st:[{l:'Longitud',v:'~25 cm'},{l:'Posición',v:'Retroperitoneal'},{l:'Irrigación',v:'A. cólica izquierda'},{l:'Función',v:'Concentra heces'}]},
+    sigmoid:{n:'Colon Sigmoide',s:'Segmento en S',
+        d:'Porción móvil en forma de S de ~40 cm en la fosa ilíaca izquierda, suspendida por el mesocolon sigmoide. Almacena heces antes de la defecación. Es sitio frecuente de diverticulosis (>40% en mayores de 60 años). Irrigado por las arterias sigmoideas (ramas de la mesentérica inferior).',
+        st:[{l:'Longitud',v:'~40 cm'},{l:'Forma',v:'S (sigma)'},{l:'Patología',v:'Diverticulosis freq.'},{l:'Irrigación',v:'Aa. sigmoideas'}]},
+    rectum:{n:'Recto',s:'Porción Terminal',
+        d:'Segmento final de ~12-15 cm que conecta el colon sigmoide con el canal anal. Presenta la ampolla rectal como reservorio fecal y 3 válvulas de Houston. El canal anal (~3-4 cm) contiene los esfínteres interno (liso, involuntario) y externo (estriado, voluntario) que controlan la continencia.',
+        st:[{l:'Longitud',v:'~12-15 cm'},{l:'Ampolla',v:'Reservorio fecal'},{l:'Esfínter int.',v:'Liso (involuntario)'},{l:'Esfínter ext.',v:'Estriado (voluntario)'}]},
+    duodenum:{n:'Duodeno',s:'Primera Porción — 25 cm',
+        d:'Primer segmento en forma de C que abraza la cabeza del páncreas. Recibe el quimo ácido gástrico, la bilis (por el colédoco) y el jugo pancreático (por el conducto de Wirsung) en la papila de Vater. El bicarbonato pancreático neutraliza el ácido. Contiene las glándulas de Brunner que secretan moco alcalino.',
+        st:[{l:'Longitud',v:'~25 cm'},{l:'Forma',v:'C (4 porciones)'},{l:'Papila de Vater',v:'Bilis + jugo pancreático'},{l:'Glándulas',v:'Brunner (moco)'}]},
+    jejunum:{n:'Yeyuno',s:'Porción Media — ~2.5 m',
+        d:'Segmento intermedio (~2/5 del total) ubicado principalmente en el cuadrante superior izquierdo. Tiene paredes más gruesas, mayor vascularización (aspecto rojizo), pliegues circulares más prominentes y vellosidades más largas que el íleon. Es el principal sitio de absorción de carbohidratos, aminoácidos y ácidos grasos.',
+        st:[{l:'Longitud',v:'~2.5 m'},{l:'Pliegues',v:'Prominentes'},{l:'Vellosidades',v:'Largas y densas'},{l:'Absorción',v:'CHO, AA, AG'}]},
+    ileum:{n:'Íleon',s:'Porción Distal — ~3.5 m',
+        d:'Segmento terminal (~3/5 del total) ubicado en el cuadrante inferior derecho y pelvis. Paredes más finas, menos pliegues y vellosidades más cortas. Contiene las placas de Peyer (agregados linfoides del GALT). Sitio exclusivo de absorción de vitamina B12 y sales biliares para su reciclaje enterohepático.',
+        st:[{l:'Longitud',v:'~3.5 m'},{l:'Placas de Peyer',v:'Tejido linfoide'},{l:'Absorción',v:'B12, sales biliares'},{l:'Termina en',v:'Válvula ileocecal'}]},
+    absorption:{n:'Función Absortiva',s:'Transporte de Nutrientes',
+        d:'El intestino delgado absorbe >90% de nutrientes mediante transporte activo y pasivo a través de los enterocitos: glucosa y aminoácidos (cotransporte Na⁺), ácidos grasos (difusión → quilomicrones → linfáticos), vitaminas hidrosolubles, Fe²⁺ y Ca²⁺. El intestino grueso absorbe agua (~1.5 L/día), Na⁺, K⁺ y vitaminas K y B producidas por la microbiota.',
+        st:[{l:'I. Delgado',v:'>90% nutrientes'},{l:'I. Grueso',v:'Agua + electrolitos'},{l:'Superficie',v:'~32 m²'},{l:'Enterocitos',v:'Recambio 3-5 días'}]},
+    microbiome:{n:'Microbiota Intestinal',s:'Ecosistema Bacteriano',
+        d:'El intestino grueso alberga ~3.8×10¹³ microorganismos (~1-2 kg de peso). Predominan Firmicutes y Bacteroidetes. Funciones: fermentación de fibra → ácidos grasos de cadena corta (butirato, propionato, acetato), síntesis de vitaminas K y B, maduración inmunológica, efecto barrera contra patógenos y modulación del eje intestino-cerebro.',
+        st:[{l:'Bacterias',v:'~3.8×10¹³'},{l:'Peso',v:'~1-2 kg'},{l:'Phyla principales',v:'Firmicutes, Bacteroidetes'},{l:'AGCC',v:'Butirato, propionato'}]},
+    motility:{n:'Motilidad Intestinal',s:'Peristaltismo y Segmentación',
+        d:'El intestino presenta dos tipos principales de movimiento: peristaltismo (ondas propulsivas que avanzan el contenido aboralmente, controlado por el plexo de Auerbach) y segmentación (contracciones rítmicas locales que mezclan el quimo con enzimas y facilitan la absorción). El colon presenta movimientos en masa 1-3 veces/día. El reflejo gastrocólico estimula la motilidad colónica tras la ingesta.',
+        st:[{l:'Peristaltismo',v:'Ondas propulsivas'},{l:'Segmentación',v:'Mezcla local'},{l:'Plexo',v:'Auerbach (mientérico)'},{l:'Mov. en masa',v:'1-3/día'}]}
+};
+
+document.querySelectorAll('.hl-btn').forEach(btn=>{
+    btn.onclick=()=>{
+        document.querySelectorAll('.hl-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const p=btn.dataset.part,info=partInfo[p];
+        if(info){
+            $('ipN').textContent=info.n;$('ipS').textContent=info.s;$('ipD').textContent=info.d;
+            $('ipSt').innerHTML=info.st.map(s=>`<div class="st-card"><div class="st-label">${s.l}</div><div class="st-val">${s.v}</div></div>`).join('');
+        }
+        setHighlight(p);
+    };
+});
+    </script>
+</body>
+</html>

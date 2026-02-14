@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Páncreas Humano 3D — Plataforma Médica In Silico</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#0a0a08;--panel:rgba(14,14,10,0.88);--card:rgba(22,22,16,0.75);--accent:#c4a455;--accent-glow:rgba(196,164,85,0.25);--cyan:#5cc8d4;--cyan-glow:rgba(92,200,212,0.2);--text:#e8ecf4;--text2:#8a94a8;--dim:#555f73;--border:rgba(255,255,255,0.06);--glass:rgba(255,255,255,0.03)}
+        body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow:hidden;height:100vh}
+
+        .header{position:fixed;top:0;left:0;right:0;height:52px;background:var(--panel);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px;z-index:100}
+        .header h1{font-size:.9rem;font-weight:600;letter-spacing:-.02em}
+        .header span{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);text-transform:uppercase;letter-spacing:.1em}
+        .header-r{display:flex;align-items:center;gap:14px}
+        .sdot{width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px rgba(74,222,128,.5);animation:pd 2s infinite}
+        @keyframes pd{0%,100%{opacity:1}50%{opacity:.5}}
+        .fps{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim)}
+
+        #mainCanvas{position:fixed;top:52px;left:0;width:100%;height:calc(100vh - 52px)}
+
+        .loading-screen{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;transition:opacity .8s,visibility .8s}
+        .loading-screen.hidden{opacity:0;visibility:hidden;pointer-events:none}
+        .lb-icon{font-size:3.5rem;animation:fl 2s ease-in-out infinite}
+        @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        .lb-bar{width:180px;height:2px;background:var(--border);border-radius:2px;margin-top:20px;overflow:hidden}
+        .lb-fill{height:100%;background:linear-gradient(90deg,#aa8833,var(--accent));width:0%;transition:width .3s;border-radius:2px}
+        .lb-txt{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim);margin-top:10px}
+
+        .info-panel{position:fixed;top:66px;right:14px;width:290px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:14px;padding:18px;z-index:50;transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .4s}
+        .info-panel.hide{transform:translateX(310px);opacity:0}
+        .ip-tag{font-size:.6rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:10px}
+        .ip-name{font-size:1.3rem;font-weight:700;letter-spacing:-.03em;margin-bottom:3px}
+        .ip-sys{font-size:.78rem;color:var(--cyan);margin-bottom:10px}
+        .ip-desc{font-size:.78rem;line-height:1.5;color:var(--text2);margin-bottom:14px}
+        .ip-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+        .st-card{background:var(--glass);border:1px solid var(--border);border-radius:9px;padding:9px 10px}
+        .st-label{font-size:.6rem;color:var(--dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.05em}
+        .st-val{font-size:.85rem;font-weight:600;margin-top:1px}
+
+        .hl-panel{position:fixed;top:66px;left:14px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:12px;z-index:50;max-height:calc(100vh - 160px);overflow-y:auto}
+        .hl-panel::-webkit-scrollbar{width:4px}
+        .hl-panel::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+        .hl-title{font-size:.6rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:8px}
+        .hl-sep{font-size:.55rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:8px 0 4px 10px;opacity:.6}
+        .hl-btn{display:flex;align-items:center;gap:8px;width:100%;padding:7px 10px;border:1px solid transparent;border-radius:7px;background:0 0;color:var(--text2);font-size:.78rem;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;margin-bottom:2px}
+        .hl-btn:hover{background:var(--glass);color:var(--text)}
+        .hl-btn.active{background:var(--cyan-glow);border-color:rgba(92,200,212,.3);color:var(--cyan)}
+        .hl-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+        .ctrl-bar{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:5px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:7px;z-index:50}
+        .cb{width:40px;height:40px;border-radius:9px;border:1px solid transparent;background:0 0;color:var(--text2);font-size:1.05rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+        .cb:hover{background:var(--glass);border-color:var(--border);color:var(--text)}
+        .cb.active{background:var(--accent-glow);border-color:var(--accent);color:var(--accent)}
+        .cd{width:1px;background:var(--border);margin:4px 1px}
+
+        .pp-panel{position:fixed;bottom:75px;left:50%;transform:translateX(-50%);background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:14px;z-index:50;min-width:220px;display:none}
+        .pp-panel.vis{display:block}
+        .pp-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+        .pp-row label{font-size:.72rem;color:var(--text2)}
+        .pp-row input[type=range]{width:100px;height:3px;-webkit-appearance:none;background:var(--border);border-radius:2px;outline:0}
+        .pp-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;background:var(--accent);cursor:pointer}
+
+        .credit{position:fixed;bottom:70px;right:14px;font-size:.55rem;color:var(--dim);font-family:'Space Mono',monospace;z-index:50;text-align:right;line-height:1.4}
+        .credit a{color:var(--dim);text-decoration:underline;text-decoration-color:rgba(255,255,255,.1)}
+    </style>
+</head>
+<body>
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🧬</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:1.3rem">🧬</span>
+            <div><h1>Plataforma Médica In Silico</h1><span>Modelo Anatómico 3D — Páncreas Humano (Corte Transversal)</span></div>
+        </div>
+        <div class="header-r"><div class="fps" id="fps">-- FPS</div><div class="sdot"></div></div>
+    </div>
+
+    <canvas id="mainCanvas"></canvas>
+
+    <div class="hl-panel">
+        <div class="hl-title">Estructuras</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#c4a455"></span>Páncreas completo</button>
+        <div class="hl-sep">— Componentes —</div>
+        <button class="hl-btn" data-part="parenchyma"><span class="hl-dot" style="background:#ccaa55"></span>Parénquima</button>
+        <button class="hl-btn" data-part="duct"><span class="hl-dot" style="background:#88bb66"></span>Conducto pancreático</button>
+        <button class="hl-btn" data-part="cross"><span class="hl-dot" style="background:#dd8877"></span>Corte transversal</button>
+        <div class="hl-sep">— Regiones —</div>
+        <button class="hl-btn" data-part="head"><span class="hl-dot" style="background:#ddbb66"></span>Cabeza</button>
+        <button class="hl-btn" data-part="bodyp"><span class="hl-dot" style="background:#ccaa55"></span>Cuerpo</button>
+        <button class="hl-btn" data-part="tail"><span class="hl-dot" style="background:#bb9944"></span>Cola</button>
+        <div class="hl-sep">— Función —</div>
+        <button class="hl-btn" data-part="exocrine"><span class="hl-dot" style="background:#88cc88"></span>Función exocrina</button>
+        <button class="hl-btn" data-part="endocrine"><span class="hl-dot" style="background:#dd88aa"></span>Función endocrina</button>
+        <button class="hl-btn" data-part="vascular"><span class="hl-dot" style="background:#cc5555"></span>Vascularización</button>
+    </div>
+
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Páncreas Humano</div>
+        <div class="ip-sys" id="ipS">Sistema Digestivo y Endocrino</div>
+        <div class="ip-desc" id="ipD">Glándula mixta retroperitoneal con doble función: exocrina (produce enzimas digestivas que vierte al duodeno) y endocrina (secreta insulina, glucagón y otras hormonas desde los islotes de Langerhans al torrente sanguíneo).</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Longitud</div><div class="st-val">~15-20 cm</div></div>
+            <div class="st-card"><div class="st-label">Peso</div><div class="st-val">~80-100 g</div></div>
+            <div class="st-card"><div class="st-label">Jugo/día</div><div class="st-val">~1.5 L</div></div>
+            <div class="st-card"><div class="st-label">Islotes</div><div class="st-val">~1-2×10⁶</div></div>
+        </div>
+    </div>
+
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Anterior">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Posterior">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="12"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="120"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="28"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="28"></div>
+    </div>
+
+    <div class="credit">Modelo: <a href="https://sketchfab.com/3d-models/human-pancreas-cross-section-f7b30e11b5df445fbdfe0e262e777c85" target="_blank">"Human Pancreas Cross section"</a> por arloopa<br>CC-BY-4.0</div>
+
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+    <script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
+import {ShaderPass} from 'three/addons/postprocessing/ShaderPass.js';
+import {SMAAPass} from 'three/addons/postprocessing/SMAAPass.js';
+
+const $=id=>document.getElementById(id);
+const lbFill=$('lbFill'), lbTxt=$('lbTxt'), ls=$('ls');
+const setLoad=(p,t)=>{lbFill.style.width=p+'%';lbTxt.textContent=t};
+
+setLoad(10,'Configurando escena...');
+const canvas=$('mainCanvas');
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x0a0a08);
+scene.fog=new THREE.FogExp2(0x0a0a08, 0.04);
+
+const camera=new THREE.PerspectiveCamera(45, innerWidth/(innerHeight-52), 0.01, 100);
+camera.position.set(3, 2, 4.5);
+
+const renderer=new THREE.WebGLRenderer({canvas, antialias:true, powerPreference:'high-performance'});
+renderer.setSize(innerWidth, innerHeight-52);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.shadowMap.enabled=true;
+renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure=1.2;
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.useLegacyLights=false;
+
+const ctrl=new OrbitControls(camera, canvas);
+ctrl.enableDamping=true; ctrl.dampingFactor=0.06;
+ctrl.rotateSpeed=0.7; ctrl.zoomSpeed=0.8;
+ctrl.minDistance=1.5; ctrl.maxDistance=10;
+ctrl.target.set(0, 0, 0);
+ctrl.autoRotate=true; ctrl.autoRotateSpeed=0.5;
+
+setLoad(20,'Generando environment...');
+const pmrem=new THREE.PMREMGenerator(renderer);
+pmrem.compileEquirectangularShader();
+const envSc=new THREE.Scene();
+envSc.add(new THREE.Mesh(
+    new THREE.SphereGeometry(10, 32, 32),
+    new THREE.ShaderMaterial({
+        side: THREE.BackSide,
+        vertexShader:`varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+        fragmentShader:`varying vec3 vP;void main(){
+            vec3 d=normalize(vP);float y=d.y*.5+.5;
+            vec3 c=mix(vec3(.04,.04,.03),mix(vec3(.07,.06,.04),vec3(.1,.09,.06),smoothstep(.4,1.,y)),smoothstep(0.,.4,y));
+            c+=vec3(.28,.22,.1)*pow(max(0.,dot(d,normalize(vec3(1.,.4,.5)))),7.)*.22;
+            c+=vec3(.1,.08,.1)*pow(max(0.,dot(d,normalize(vec3(-.7,.2,-.6)))),5.)*.15;
+            gl_FragColor=vec4(c,1.);}`
+    })
+));
+scene.environment=pmrem.fromScene(envSc, 0.04).texture;
+pmrem.dispose();
+
+setLoad(30,'Iluminación...');
+scene.add(new THREE.HemisphereLight(0x998877, 0x221111, 0.5));
+const keyLight=new THREE.DirectionalLight(0xffeedd, 2.8);
+keyLight.position.set(4, 6, 5); keyLight.castShadow=true;
+keyLight.shadow.mapSize.set(2048,2048);
+keyLight.shadow.camera.near=0.1; keyLight.shadow.camera.far=18;
+keyLight.shadow.camera.left=-3; keyLight.shadow.camera.right=3;
+keyLight.shadow.camera.top=3; keyLight.shadow.camera.bottom=-3;
+keyLight.shadow.bias=-0.0005; keyLight.shadow.normalBias=0.02;
+scene.add(keyLight);
+scene.add(new THREE.DirectionalLight(0x7788aa, 0.9).translateX(-5).translateY(3).translateZ(-2));
+const rimLight=new THREE.DirectionalLight(0xddbb77, 1.5);
+rimLight.position.set(-2,-1,-5); scene.add(rimLight);
+const sssLight=new THREE.PointLight(0xcc9944, 0.4, 10);
+sssLight.position.set(0,-3,2); scene.add(sssLight);
+scene.add(new THREE.PointLight(0xffffff, 0.6, 12).translateX(2).translateY(3).translateZ(4));
+
+setLoad(40,'Post-processing...');
+const composer=new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const bloom=new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight), 0.12, 0.5, 0.88);
+composer.addPass(bloom);
+const cgShader={
+    uniforms:{tDiffuse:{value:null},sss:{value:0.28},vign:{value:0.28}},
+    vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+    fragmentShader:`uniform sampler2D tDiffuse;uniform float sss;uniform float vign;varying vec2 vUv;
+    void main(){vec4 tx=texture2D(tDiffuse,vUv);vec3 c=tx.rgb;
+    float lum=dot(c,vec3(.299,.587,.114));float sm=smoothstep(.08,.45,lum)*(1.-smoothstep(.45,.85,lum));
+    c+=vec3(.75,.55,.25)*sss*sm*.15;c.r+=.015;
+    float g=dot(c,vec3(.2126,.7152,.0722));c=mix(vec3(g),c,1.1);c=(c-.5)*1.04+.5;
+    vec2 u=vUv*2.-1.;c*=1.-dot(u,u)*vign*.4;gl_FragColor=vec4(clamp(c,0.,1.),tx.a);}`
+};
+const cgPass=new ShaderPass(cgShader);
+composer.addPass(cgPass);
+composer.addPass(new SMAAPass(innerWidth,innerHeight));
+
+// ===== LOAD MODEL =====
+setLoad(50,'Cargando páncreas...');
+let model=null;
+// mesh0=pCube3(cross-section), mesh1=sweep1(duct), mesh2=polySurface1(parenchyma)
+const parts = { cross: null, duct: null, parenchyma: null };
+
+new GLTFLoader().load('pancreas.glb',
+    (gltf) => {
+        setLoad(80,'Mejorando materiales...');
+        model = gltf.scene;
+        const box=new THREE.Box3().setFromObject(model);
+        const center=box.getCenter(new THREE.Vector3());
+        const size=box.getSize(new THREE.Vector3());
+        const sc=3.5/Math.max(size.x,size.y,size.z);
+        model.scale.setScalar(sc);
+        const sb=new THREE.Box3().setFromObject(model);
+        const sc2=sb.getCenter(new THREE.Vector3());
+        model.position.sub(sc2);
+
+        let meshIdx=0;
+        model.traverse(child=>{
+            if(!child.isMesh) return;
+            child.castShadow=true; child.receiveShadow=true;
+            const idx=meshIdx++;
+            if(idx===0) parts.cross=child;
+            if(idx===1) parts.duct=child;
+            if(idx===2) parts.parenchyma=child;
+
+            const mat=child.material;
+            const pm=new THREE.MeshPhysicalMaterial();
+            if(mat.map) pm.map=mat.map;
+            if(mat.normalMap){pm.normalMap=mat.normalMap;pm.normalScale=new THREE.Vector2(1.5,1.5);}
+            if(mat.roughnessMap) pm.roughnessMap=mat.roughnessMap;
+            if(mat.metalnessMap) pm.metalnessMap=mat.metalnessMap;
+            pm.roughness=0.55; pm.metalness=0;
+            pm.clearcoat=0.1; pm.clearcoatRoughness=0.45;
+            pm.thickness=0.8; pm.attenuationColor=new THREE.Color(0.8,0.6,0.3);
+            pm.attenuationDistance=2.0; pm.sheen=0.25; pm.sheenRoughness=0.5;
+            pm.sheenColor=new THREE.Color(0.8,0.65,0.35);
+            pm.emissive=new THREE.Color(0.12,0.08,0.03); pm.emissiveIntensity=0.08;
+            pm.envMapIntensity=0.5; pm.side=THREE.DoubleSide;
+            child.material=pm;
+        });
+
+        scene.add(model);
+        const gnd=new THREE.Mesh(new THREE.PlaneGeometry(18,18),
+            new THREE.MeshStandardMaterial({color:0x0a0a08,roughness:0.95,transparent:true,opacity:0.4}));
+        gnd.rotation.x=-Math.PI/2; gnd.position.y=sb.min.y-0.1; gnd.receiveShadow=true;
+        scene.add(gnd);
+
+        setLoad(100,'¡Listo!');
+        setTimeout(()=>ls.classList.add('hidden'),500);
+    },
+    p=>{if(p.total) setLoad(50+(p.loaded/p.total)*30,'Descargando... '+(p.loaded/1024|0)+'KB')},
+    e=>{console.error(e);setLoad(0,'Error al cargar. Verifica que pancreas.glb esté en la misma carpeta.')}
+);
+
+let lt=performance.now(),fc=0;
+(function anim(t){
+    requestAnimationFrame(anim); fc++;
+    if(t-lt>=1000){$('fps').textContent=fc+' FPS';fc=0;lt=t;}
+    ctrl.update(); sssLight.intensity=0.4+Math.sin(t*0.0008)*0.08;
+    composer.render();
+})(0);
+
+addEventListener('resize',()=>{
+    const w=innerWidth,h=innerHeight-52;
+    camera.aspect=w/h;camera.updateProjectionMatrix();
+    renderer.setSize(w,h);composer.setSize(w,h);bloom.setSize(w,h);
+});
+
+let ar=true;
+$('bRot').onclick=e=>{ar=!ar;ctrl.autoRotate=ar;e.currentTarget.classList.toggle('active',ar)};
+$('bRst').onclick=()=>{ctrl.target.set(0,0,0);camera.position.set(3,2,4.5)};
+$('bZi').onclick=()=>camera.position.lerp(ctrl.target,0.15);
+$('bZo').onclick=()=>{const d=camera.position.clone().sub(ctrl.target).normalize();camera.position.add(d.multiplyScalar(0.5))};
+$('bFr').onclick=()=>{camera.position.set(0,0,5);ctrl.target.set(0,0,0)};
+$('bTo').onclick=()=>{camera.position.set(0,5,0.01);ctrl.target.set(0,0,0)};
+$('bSi').onclick=()=>{camera.position.set(5,0,0);ctrl.target.set(0,0,0)};
+$('bBk').onclick=()=>{camera.position.set(0,0,-5);ctrl.target.set(0,0,0)};
+let ipVis=true;
+$('bIn').onclick=()=>{ipVis=!ipVis;$('ip').classList.toggle('hide',!ipVis)};
+$('bPP').onclick=e=>{$('ppP').classList.toggle('vis');e.currentTarget.classList.toggle('active')};
+$('ppB').oninput=e=>bloom.strength=e.target.value/100*0.5;
+$('ppE').oninput=e=>renderer.toneMappingExposure=e.target.value/100;
+$('ppS').oninput=e=>cgPass.uniforms.sss.value=e.target.value/100;
+$('ppV').oninput=e=>cgPass.uniforms.vign.value=e.target.value/100;
+
+// ===== HIGHLIGHT =====
+function setHighlight(sel){
+    const all=[parts.cross,parts.duct,parts.parenchyma].filter(Boolean);
+    all.forEach(mesh=>{
+        const mat=mesh.material; if(!mat) return;
+        if(sel==='all'||sel==='head'||sel==='bodyp'||sel==='tail'||sel==='exocrine'||sel==='endocrine'||sel==='vascular'){
+            mat.transparent=false;mat.opacity=1;mat.depthWrite=true;mat.emissiveIntensity=0.08;
+        } else if(sel==='parenchyma'){
+            const is=(mesh===parts.parenchyma);
+            mat.transparent=!is;mat.opacity=is?1:0.1;mat.depthWrite=is;mat.emissiveIntensity=is?0.2:0.02;
+        } else if(sel==='duct'){
+            const is=(mesh===parts.duct);
+            mat.transparent=!is;mat.opacity=is?1:0.1;mat.depthWrite=is;mat.emissiveIntensity=is?0.2:0.02;
+        } else if(sel==='cross'){
+            const is=(mesh===parts.cross);
+            mat.transparent=!is;mat.opacity=is?1:0.1;mat.depthWrite=is;mat.emissiveIntensity=is?0.2:0.02;
+        }
+    });
+}
+
+const partInfo={
+    all:{n:'Páncreas Humano',s:'Sistema Digestivo y Endocrino',
+        d:'Glándula mixta retroperitoneal con doble función: exocrina (produce enzimas digestivas que vierte al duodeno) y endocrina (secreta insulina, glucagón y otras hormonas desde los islotes de Langerhans al torrente sanguíneo).',
+        st:[{l:'Longitud',v:'~15-20 cm'},{l:'Peso',v:'~80-100 g'},{l:'Jugo/día',v:'~1.5 L'},{l:'Islotes',v:'~1-2×10⁶'}]},
+    parenchyma:{n:'Parénquima Pancreático',s:'Tejido Glandular',
+        d:'Tejido funcional del páncreas compuesto por acinos (98-99% del volumen, función exocrina) e islotes de Langerhans (1-2%, función endocrina). Los acinos producen zimógenos que se activan en el duodeno.',
+        st:[{l:'Acinos',v:'98-99%'},{l:'Islotes',v:'1-2%'},{l:'Enzimas',v:'Lipasa, amilasa'},{l:'pH jugo',v:'~8.0-8.3'}]},
+    duct:{n:'Conducto Pancreático',s:'Conducto de Wirsung',
+        d:'Canal principal que recorre el páncreas de cola a cabeza, recogiendo la secreción exocrina de los acinos. Desemboca en la ampolla de Vater junto al colédoco en la papila duodenal mayor. El conducto accesorio (Santorini) drena la cabeza.',
+        st:[{l:'Longitud',v:'~20 cm'},{l:'Diámetro',v:'~3 mm'},{l:'Desemboca',v:'Papila mayor'},{l:'Accesorio',v:'Santorini'}]},
+    cross:{n:'Corte Transversal',s:'Sección Histológica',
+        d:'Vista en sección que permite observar la estructura interna: acinos serosos, islotes de Langerhans, conductos interlobulares e intralobulares, vasos sanguíneos y tejido conectivo interlobular.',
+        st:[{l:'Acinos',v:'Serosos'},{l:'Islotes',v:'Claros, redondeados'},{l:'Conductos',v:'Inter/intralobular'},{l:'Septo',v:'Tej. conectivo'}]},
+    head:{n:'Cabeza del Páncreas',s:'Porción Derecha',
+        d:'Porción más ancha, enmarcada por la curvatura del duodeno (C duodenal). Contiene el proceso unciforme. Es irrigada por las arterias pancreáticoduodenales. Zona frecuente de tumores que causan ictericia obstructiva.',
+        st:[{l:'Ubicación',v:'Marco duodenal'},{l:'Proceso',v:'Unciforme'},{l:'Irrigación',v:'Pancreaticoduod.'},{l:'Patología',v:'Tumores → ictericia'}]},
+    bodyp:{n:'Cuerpo del Páncreas',s:'Porción Central',
+        d:'Segmento alargado que cruza la columna vertebral a nivel de L1-L2, por delante de la aorta y la vena mesentérica superior. Su cara anterior forma la pared posterior del saco omental.',
+        st:[{l:'Ubicación',v:'Retroperitoneal'},{l:'Nivel',v:'L1-L2'},{l:'Relación ant.',v:'Saco omental'},{l:'Relación post.',v:'Aorta, VMS'}]},
+    tail:{n:'Cola del Páncreas',s:'Porción Izquierda',
+        d:'Extremo más delgado y móvil, se extiende hasta el hilio esplénico dentro del ligamento esplenorrenal. Es la parte más rica en islotes de Langerhans y puede lesionarse en traumas esplénicos.',
+        st:[{l:'Ubicación',v:'Hilio esplénico'},{l:'Movilidad',v:'Intraperitoneal'},{l:'Islotes',v:'Mayor densidad'},{l:'Relación',v:'Bazo'}]},
+    exocrine:{n:'Función Exocrina',s:'Secreción Digestiva',
+        d:'Los acinos producen ~1.5 L/día de jugo pancreático rico en enzimas: lipasa (grasas), amilasa (almidones), tripsina/quimotripsina (proteínas) y nucleasas. El bicarbonato neutraliza el ácido gástrico en el duodeno.',
+        st:[{l:'Volumen',v:'~1.5 L/día'},{l:'Enzimas',v:'Lipasa, tripsina...'},{l:'Bicarbonato',v:'Neutralización'},{l:'Estímulo',v:'CCK, secretina'}]},
+    endocrine:{n:'Función Endocrina',s:'Islotes de Langerhans',
+        d:'Los 1-2 millones de islotes contienen: células β (insulina, 60-70%), células α (glucagón, 20-30%), células δ (somatostatina), células PP (polipéptido pancreático) y células ε (grelina). Regulan la glucemia.',
+        st:[{l:'Células β',v:'Insulina (60-70%)'},{l:'Células α',v:'Glucagón (20-30%)'},{l:'Células δ',v:'Somatostatina'},{l:'Glucemia',v:'70-110 mg/dL'}]},
+    vascular:{n:'Vascularización',s:'Irrigación Pancreática',
+        d:'Irrigado por ramas del tronco celíaco (a. esplénica → a. pancreática dorsal, magna y caudal) y la arteria mesentérica superior (a. pancreáticoduodenales inferiores). El drenaje venoso va a la vena porta.',
+        st:[{l:'A. esplénica',v:'Cuerpo + cola'},{l:'A. pancreaticoduo.',v:'Cabeza'},{l:'Drenaje venoso',v:'→ Vena porta'},{l:'Linfáticos',v:'Múltiples cadenas'}]}
+};
+
+document.querySelectorAll('.hl-btn').forEach(btn=>{
+    btn.onclick=()=>{
+        document.querySelectorAll('.hl-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const p=btn.dataset.part,info=partInfo[p];
+        if(info){
+            $('ipN').textContent=info.n;$('ipS').textContent=info.s;$('ipD').textContent=info.d;
+            $('ipSt').innerHTML=info.st.map(s=>`<div class="st-card"><div class="st-label">${s.l}</div><div class="st-val">${s.v}</div></div>`).join('');
+        }
+        setHighlight(p);
+    };
+});
+    </script>
+</body>
+</html>

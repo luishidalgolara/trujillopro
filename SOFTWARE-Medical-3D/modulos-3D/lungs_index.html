@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulmones Humanos 3D — Plataforma Médica In Silico</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#080a10;--panel:rgba(12,14,22,0.88);--card:rgba(18,22,34,0.75);--accent:#d4708a;--accent-glow:rgba(212,112,138,0.25);--cyan:#5cc8d4;--cyan-glow:rgba(92,200,212,0.2);--text:#e8ecf4;--text2:#8a94a8;--dim:#555f73;--border:rgba(255,255,255,0.06);--glass:rgba(255,255,255,0.03)}
+        body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow:hidden;height:100vh}
+
+        .header{position:fixed;top:0;left:0;right:0;height:52px;background:var(--panel);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px;z-index:100}
+        .header h1{font-size:.9rem;font-weight:600;letter-spacing:-.02em}
+        .header span{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--dim);text-transform:uppercase;letter-spacing:.1em}
+        .header-r{display:flex;align-items:center;gap:14px}
+        .sdot{width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px rgba(74,222,128,.5);animation:pd 2s infinite}
+        @keyframes pd{0%,100%{opacity:1}50%{opacity:.5}}
+        .fps{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim)}
+
+        #mainCanvas{position:fixed;top:52px;left:0;width:100%;height:calc(100vh - 52px)}
+
+        .loading-screen{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;transition:opacity .8s,visibility .8s}
+        .loading-screen.hidden{opacity:0;visibility:hidden;pointer-events:none}
+        .lb-icon{font-size:3.5rem;animation:fl 2s ease-in-out infinite}
+        @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        .lb-bar{width:180px;height:2px;background:var(--border);border-radius:2px;margin-top:20px;overflow:hidden}
+        .lb-fill{height:100%;background:linear-gradient(90deg,#cc6680,var(--cyan));width:0%;transition:width .3s;border-radius:2px}
+        .lb-txt{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim);margin-top:10px}
+
+        .info-panel{position:fixed;top:66px;right:14px;width:290px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:14px;padding:18px;z-index:50;transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .4s}
+        .info-panel.hide{transform:translateX(310px);opacity:0}
+        .ip-tag{font-size:.6rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:10px}
+        .ip-name{font-size:1.3rem;font-weight:700;letter-spacing:-.03em;margin-bottom:3px}
+        .ip-sys{font-size:.78rem;color:var(--cyan);margin-bottom:10px}
+        .ip-desc{font-size:.78rem;line-height:1.5;color:var(--text2);margin-bottom:14px}
+        .ip-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+        .st-card{background:var(--glass);border:1px solid var(--border);border-radius:9px;padding:9px 10px}
+        .st-label{font-size:.6rem;color:var(--dim);font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.05em}
+        .st-val{font-size:.85rem;font-weight:600;margin-top:1px}
+
+        .hl-panel{position:fixed;top:66px;left:14px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:12px;z-index:50;max-height:calc(100vh - 160px);overflow-y:auto}
+        .hl-panel::-webkit-scrollbar{width:4px}
+        .hl-panel::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+        .hl-title{font-size:.6rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:8px}
+        .hl-sep{font-size:.55rem;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:8px 0 4px 10px;opacity:.6}
+        .hl-btn{display:flex;align-items:center;gap:8px;width:100%;padding:7px 10px;border:1px solid transparent;border-radius:7px;background:0 0;color:var(--text2);font-size:.78rem;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;margin-bottom:2px}
+        .hl-btn:hover{background:var(--glass);color:var(--text)}
+        .hl-btn.active{background:var(--cyan-glow);border-color:rgba(92,200,212,.3);color:var(--cyan)}
+        .hl-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+        .ctrl-bar{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:5px;background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:7px;z-index:50}
+        .cb{width:40px;height:40px;border-radius:9px;border:1px solid transparent;background:0 0;color:var(--text2);font-size:1.05rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+        .cb:hover{background:var(--glass);border-color:var(--border);color:var(--text)}
+        .cb.active{background:var(--accent-glow);border-color:var(--accent);color:var(--accent)}
+        .cd{width:1px;background:var(--border);margin:4px 1px}
+
+        .pp-panel{position:fixed;bottom:75px;left:50%;transform:translateX(-50%);background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:13px;padding:14px;z-index:50;min-width:220px;display:none}
+        .pp-panel.vis{display:block}
+        .pp-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+        .pp-row label{font-size:.72rem;color:var(--text2)}
+        .pp-row input[type=range]{width:100px;height:3px;-webkit-appearance:none;background:var(--border);border-radius:2px;outline:0}
+        .pp-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;background:var(--accent);cursor:pointer}
+
+        .credit{position:fixed;bottom:70px;right:14px;font-size:.55rem;color:var(--dim);font-family:'Space Mono',monospace;z-index:50;text-align:right;line-height:1.4}
+        .credit a{color:var(--dim);text-decoration:underline;text-decoration-color:rgba(255,255,255,.1)}
+
+        /* Breathing indicator */
+        .breath-indicator{position:fixed;top:66px;left:50%;transform:translateX(-50%);background:var(--panel);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:10px;padding:6px 16px;z-index:50;display:flex;align-items:center;gap:10px}
+        .breath-wave{width:60px;height:18px;position:relative;overflow:hidden}
+        .breath-wave svg{width:100%;height:100%}
+        .breath-wave path{stroke:var(--accent);stroke-width:1.5;fill:none}
+        .breath-lbl{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--dim)}
+        .breath-val{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--accent)}
+    </style>
+</head>
+<body>
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🫁</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <!-- BOTÓN VOLVER -->
+            <button onclick="history.back()" style="background:none;border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:4px 8px;color:#8a94a8;cursor:pointer;font-size:1.1rem;transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)';this.style.color='#e8ecf4'" onmouseout="this.style.background='none';this.style.color='#8a94a8'" title="Volver atrás">←</button>
+            <span style="font-size:1.3rem">🫁</span>
+            <div><h1>Plataforma Médica In Silico</h1><span>Modelo Anatómico 3D — Pulmones Humanos</span></div>
+        </div>
+        <div class="header-r"><div class="fps" id="fps">-- FPS</div><div class="sdot"></div></div>
+    </div>
+
+    <canvas id="mainCanvas"></canvas>
+
+    <div class="breath-indicator">
+        <div class="breath-wave"><svg viewBox="0 0 60 18"><path id="breathPath" d="M0,9 Q15,9 30,9 Q45,9 60,9"/></svg></div>
+        <div class="breath-lbl">FR</div>
+        <div class="breath-val" id="brVal">16 rpm</div>
+    </div>
+
+    <div class="hl-panel">
+        <div class="hl-title">Estructuras</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#c07080"></span>Pulmones completos</button>
+        <div class="hl-sep">— Pulmones —</div>
+        <button class="hl-btn" data-part="right_lung"><span class="hl-dot" style="background:#cc6678"></span>Pulmón derecho</button>
+        <button class="hl-btn" data-part="left_lung"><span class="hl-dot" style="background:#cc7088"></span>Pulmón izquierdo</button>
+        <div class="hl-sep">— Lóbulos derechos —</div>
+        <button class="hl-btn" data-part="r_superior"><span class="hl-dot" style="background:#dd7788"></span>Lóbulo superior D</button>
+        <button class="hl-btn" data-part="r_middle"><span class="hl-dot" style="background:#cc6677"></span>Lóbulo medio D</button>
+        <button class="hl-btn" data-part="r_inferior"><span class="hl-dot" style="background:#bb5566"></span>Lóbulo inferior D</button>
+        <div class="hl-sep">— Lóbulos izquierdos —</div>
+        <button class="hl-btn" data-part="l_superior"><span class="hl-dot" style="background:#dd8090"></span>Lóbulo superior I</button>
+        <button class="hl-btn" data-part="l_inferior"><span class="hl-dot" style="background:#bb6070"></span>Lóbulo inferior I</button>
+        <div class="hl-sep">— Vía aérea —</div>
+        <button class="hl-btn" data-part="trachea"><span class="hl-dot" style="background:#ddbb88"></span>Tráquea y Bronquios</button>
+        <button class="hl-btn" data-part="alveoli"><span class="hl-dot" style="background:#ee9999"></span>Alvéolos</button>
+        <button class="hl-btn" data-part="pleura"><span class="hl-dot" style="background:rgba(200,200,220,0.4)"></span>Pleura</button>
+    </div>
+
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Pulmones Humanos</div>
+        <div class="ip-sys" id="ipS">Sistema Respiratorio</div>
+        <div class="ip-desc" id="ipD">Órganos esponjosos responsables del intercambio gaseoso. El oxígeno del aire inspirado pasa a la sangre en los alvéolos, mientras el CO₂ se elimina al exhalar. Están protegidos por la caja torácica y recubiertos por la pleura.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Alvéolos</div><div class="st-val">~480×10⁶</div></div>
+            <div class="st-card"><div class="st-label">Superficie</div><div class="st-val">~70 m²</div></div>
+            <div class="st-card"><div class="st-label">Capacidad</div><div class="st-val">~6 L</div></div>
+            <div class="st-card"><div class="st-label">Frecuencia</div><div class="st-val">12-20 rpm</div></div>
+        </div>
+    </div>
+
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Anterior">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Posterior">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bBr" title="Respiración">💨</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="14"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="118"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="28"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="26"></div>
+    </div>
+
+    <div class="credit">Modelo: <a href="https://sketchfab.com/3d-models/realistic-human-lungs-ce09f4099a68467880f46e61eb9a3531" target="_blank">"Realistic Human Lungs"</a> por neshallads<br>CC-BY-4.0</div>
+
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+    <script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
+import {ShaderPass} from 'three/addons/postprocessing/ShaderPass.js';
+import {SMAAPass} from 'three/addons/postprocessing/SMAAPass.js';
+
+const $=id=>document.getElementById(id);
+const lbFill=$('lbFill'), lbTxt=$('lbTxt'), ls=$('ls');
+const setLoad=(p,t)=>{lbFill.style.width=p+'%';lbTxt.textContent=t};
+
+setLoad(10,'Configurando escena...');
+const canvas=$('mainCanvas');
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x080a10);
+scene.fog=new THREE.FogExp2(0x080a10, 0.04);
+
+const camera=new THREE.PerspectiveCamera(45, innerWidth/(innerHeight-52), 0.01, 100);
+camera.position.set(3, 2, 5);
+
+const renderer=new THREE.WebGLRenderer({canvas, antialias:true, powerPreference:'high-performance'});
+renderer.setSize(innerWidth, innerHeight-52);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.shadowMap.enabled=true;
+renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure=1.18;
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.useLegacyLights=false;
+
+const ctrl=new OrbitControls(camera, canvas);
+ctrl.enableDamping=true; ctrl.dampingFactor=0.06;
+ctrl.rotateSpeed=0.7; ctrl.zoomSpeed=0.8;
+ctrl.minDistance=1.5; ctrl.maxDistance=12;
+ctrl.target.set(0, 0, 0);
+ctrl.autoRotate=true; ctrl.autoRotateSpeed=0.5;
+
+// ===== ENVIRONMENT =====
+setLoad(20,'Generando environment...');
+const pmrem=new THREE.PMREMGenerator(renderer);
+pmrem.compileEquirectangularShader();
+const envSc=new THREE.Scene();
+envSc.add(new THREE.Mesh(
+    new THREE.SphereGeometry(10, 32, 32),
+    new THREE.ShaderMaterial({
+        side: THREE.BackSide,
+        vertexShader:`varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+        fragmentShader:`varying vec3 vP;void main(){
+            vec3 d=normalize(vP);float y=d.y*.5+.5;
+            vec3 c=mix(vec3(.04,.04,.06),mix(vec3(.06,.06,.1),vec3(.1,.1,.16),smoothstep(.4,1.,y)),smoothstep(0.,.4,y));
+            c+=vec3(.25,.12,.15)*pow(max(0.,dot(d,normalize(vec3(1.,.4,.5)))),7.)*.25;
+            c+=vec3(.1,.1,.18)*pow(max(0.,dot(d,normalize(vec3(-.7,.3,-.6)))),5.)*.18;
+            gl_FragColor=vec4(c,1.);}`
+    })
+));
+scene.environment=pmrem.fromScene(envSc, 0.04).texture;
+pmrem.dispose();
+
+// ===== LIGHTS =====
+setLoad(30,'Iluminación...');
+scene.add(new THREE.HemisphereLight(0x8888aa, 0x221122, 0.5));
+
+const keyLight=new THREE.DirectionalLight(0xffeedd, 2.8);
+keyLight.position.set(4, 6, 5);
+keyLight.castShadow=true;
+keyLight.shadow.mapSize.set(2048, 2048);
+keyLight.shadow.camera.near=0.1; keyLight.shadow.camera.far=18;
+keyLight.shadow.camera.left=-4; keyLight.shadow.camera.right=4;
+keyLight.shadow.camera.top=4; keyLight.shadow.camera.bottom=-4;
+keyLight.shadow.bias=-0.0005; keyLight.shadow.normalBias=0.02;
+scene.add(keyLight);
+
+const fillLight=new THREE.DirectionalLight(0x7788bb, 1.0);
+fillLight.position.set(-5, 3, -2);
+scene.add(fillLight);
+
+const rimLight=new THREE.DirectionalLight(0xddaaaa, 1.5);
+rimLight.position.set(-2, -1, -5);
+scene.add(rimLight);
+
+const sssLight=new THREE.PointLight(0xff7766, 0.4, 10);
+sssLight.position.set(0, -3, 2);
+scene.add(sssLight);
+
+const specLight=new THREE.PointLight(0xffffff, 0.6, 12);
+specLight.position.set(2, 3, 4);
+scene.add(specLight);
+
+// ===== POST-PROCESSING =====
+setLoad(40,'Post-processing...');
+const composer=new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+
+const bloom=new UnrealBloomPass(
+    new THREE.Vector2(innerWidth, innerHeight), 0.14, 0.5, 0.88
+);
+composer.addPass(bloom);
+
+const cgShader={
+    uniforms:{tDiffuse:{value:null}, sss:{value:0.28}, vign:{value:0.26}},
+    vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+    fragmentShader:`uniform sampler2D tDiffuse;uniform float sss;uniform float vign;varying vec2 vUv;
+    void main(){
+        vec4 tx=texture2D(tDiffuse,vUv);vec3 c=tx.rgb;
+        float lum=dot(c,vec3(.299,.587,.114));
+        float sm=smoothstep(.08,.45,lum)*(1.-smoothstep(.45,.85,lum));
+        c+=vec3(.8,.35,.4)*sss*sm*.15;
+        c.r+=.015;
+        float g=dot(c,vec3(.2126,.7152,.0722));c=mix(vec3(g),c,1.1);
+        c=(c-.5)*1.04+.5;
+        vec2 u=vUv*2.-1.;c*=1.-dot(u,u)*vign*.4;
+        gl_FragColor=vec4(clamp(c,0.,1.),tx.a);}`
+};
+const cgPass=new ShaderPass(cgShader);
+composer.addPass(cgPass);
+composer.addPass(new SMAAPass(innerWidth, innerHeight));
+
+// ===== LOAD LUNGS =====
+setLoad(50,'Cargando pulmones...');
+let lungModel=null;
+let baseScale=1;
+const partMeshes = { part01: null, part02: null };
+let breathEnabled = true;
+
+new GLTFLoader().load('lungs.glb',
+    (gltf) => {
+        setLoad(80,'Mejorando materiales...');
+        lungModel = gltf.scene;
+
+        const box = new THREE.Box3().setFromObject(lungModel);
+        const center = box.getCenter(new THREE.Vector3());
+        const size = box.getSize(new THREE.Vector3());
+        const sc = 3.8 / Math.max(size.x, size.y, size.z);
+        lungModel.scale.setScalar(sc);
+        baseScale = sc;
+
+        const scaledBox = new THREE.Box3().setFromObject(lungModel);
+        const scaledCenter = scaledBox.getCenter(new THREE.Vector3());
+        lungModel.position.x -= scaledCenter.x;
+        lungModel.position.y -= scaledCenter.y;
+        lungModel.position.z -= scaledCenter.z;
+
+        let meshIdx = 0;
+        lungModel.traverse((child) => {
+            if (!child.isMesh) return;
+            child.castShadow = true;
+            child.receiveShadow = true;
+
+            if (meshIdx === 0) partMeshes.part01 = child;
+            if (meshIdx === 1) partMeshes.part02 = child;
+            meshIdx++;
+
+            const mat = child.material;
+            const pm = new THREE.MeshPhysicalMaterial();
+            if (mat.map) pm.map = mat.map;
+            if (mat.normalMap) { pm.normalMap = mat.normalMap; pm.normalScale = new THREE.Vector2(1.8, 1.8); }
+            if (mat.roughnessMap) pm.roughnessMap = mat.roughnessMap;
+            if (mat.metalnessMap) pm.metalnessMap = mat.metalnessMap;
+
+            pm.roughness = 0.6;
+            pm.metalness = 0.0;
+            pm.clearcoat = 0.1;
+            pm.clearcoatRoughness = 0.45;
+            pm.thickness = 0.8;
+            pm.attenuationColor = new THREE.Color(0.8, 0.4, 0.45);
+            pm.attenuationDistance = 2.0;
+            pm.sheen = 0.25;
+            pm.sheenRoughness = 0.5;
+            pm.sheenColor = new THREE.Color(0.75, 0.5, 0.55);
+            pm.emissive = new THREE.Color(0.12, 0.04, 0.05);
+            pm.emissiveIntensity = 0.08;
+            pm.envMapIntensity = 0.5;
+
+            child.material = pm;
+        });
+
+        scene.add(lungModel);
+
+        const gnd = new THREE.Mesh(
+            new THREE.PlaneGeometry(18, 18),
+            new THREE.MeshStandardMaterial({color:0x080a10, roughness:0.95, transparent:true, opacity:0.4})
+        );
+        gnd.rotation.x = -Math.PI / 2;
+        gnd.position.y = scaledBox.min.y - 0.1;
+        gnd.receiveShadow = true;
+        scene.add(gnd);
+
+        setLoad(100, '¡Listo!');
+        setTimeout(() => ls.classList.add('hidden'), 500);
+    },
+    (p) => { if(p.total) setLoad(50 + (p.loaded / p.total) * 30, 'Descargando... ' + (p.loaded / 1024 | 0) + 'KB') },
+    (e) => { console.error(e); setLoad(0, 'Error al cargar. Verifica que lungs.glb esté en la misma carpeta.') }
+);
+
+// ===== BREATHING ANIMATION =====
+const breathPath = $('breathPath');
+function breathe(t) {
+    if (!lungModel || !breathEnabled) return;
+    // ~16 breaths per minute = 0.267 Hz
+    const cycle = t * 0.001 * 0.267 * Math.PI * 2;
+    const breathAmt = (Math.sin(cycle) + 1) * 0.5; // 0..1
+    const scale = baseScale * (1 + breathAmt * 0.025);
+    lungModel.scale.setScalar(scale);
+
+    // Update breathing wave SVG
+    const pts = [];
+    for (let i = 0; i <= 60; i++) {
+        const x = i;
+        const phase = (i / 60) * Math.PI * 3 - cycle;
+        const y = 9 + Math.sin(phase) * 6 * (1 - Math.abs(i - 30) / 40);
+        pts.push(`${i === 0 ? 'M' : 'L'}${x},${y.toFixed(1)}`);
+    }
+    breathPath.setAttribute('d', pts.join(' '));
+
+    // BPM variation
+    const rpm = 16 + Math.round(Math.sin(t * 0.0002) * 2);
+    $('brVal').textContent = rpm + ' rpm';
+}
+
+// ═══ AGREGADO: Exponer engine para módulos externos ═══
+window.__LUNGS3D = { scene, camera, renderer, ctrl };
+// ===== ANIMATION =====
+let lt = performance.now(), fc = 0;
+(function anim(t) {
+    requestAnimationFrame(anim);
+    fc++;
+    if (t - lt >= 1000) { $('fps').textContent = fc + ' FPS'; fc = 0; lt = t; }
+    ctrl.update();
+    breathe(t);
+    sssLight.intensity = 0.4 + Math.sin(t * 0.0008) * 0.08;
+    composer.render();
+})(0);
+
+addEventListener('resize', () => {
+    const w = innerWidth, h = innerHeight - 52;
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+    renderer.setSize(w, h); composer.setSize(w, h); bloom.setSize(w, h);
+});
+
+// ===== UI =====
+let ar = true;
+$('bRot').onclick = e => { ar = !ar; ctrl.autoRotate = ar; e.currentTarget.classList.toggle('active', ar); };
+$('bRst').onclick = () => { ctrl.target.set(0, 0, 0); camera.position.set(3, 2, 5); };
+$('bZi').onclick = () => camera.position.lerp(ctrl.target, 0.15);
+$('bZo').onclick = () => { const d = camera.position.clone().sub(ctrl.target).normalize(); camera.position.add(d.multiplyScalar(0.5)); };
+$('bFr').onclick = () => { camera.position.set(0, 0, 6); ctrl.target.set(0, 0, 0); };
+$('bTo').onclick = () => { camera.position.set(0, 6, 0.01); ctrl.target.set(0, 0, 0); };
+$('bSi').onclick = () => { camera.position.set(6, 0, 0); ctrl.target.set(0, 0, 0); };
+$('bBk').onclick = () => { camera.position.set(0, 0, -6); ctrl.target.set(0, 0, 0); };
+$('bBr').onclick = e => { breathEnabled = !breathEnabled; e.currentTarget.classList.toggle('active', breathEnabled);
+    if (!breathEnabled && lungModel) lungModel.scale.setScalar(baseScale); };
+$('bBr').classList.add('active');
+
+let ipVis = true;
+$('bIn').onclick = () => { ipVis = !ipVis; $('ip').classList.toggle('hide', !ipVis); };
+
+$('bPP').onclick = e => { $('ppP').classList.toggle('vis'); e.currentTarget.classList.toggle('active'); };
+$('ppB').oninput = e => bloom.strength = e.target.value / 100 * 0.5;
+$('ppE').oninput = e => renderer.toneMappingExposure = e.target.value / 100;
+$('ppS').oninput = e => cgPass.uniforms.sss.value = e.target.value / 100;
+$('ppV').oninput = e => cgPass.uniforms.vign.value = e.target.value / 100;
+
+// ===== HIGHLIGHT =====
+function setHighlight(sel) {
+    [partMeshes.part01, partMeshes.part02].forEach((mesh, idx) => {
+        if (!mesh) return;
+        const mat = mesh.material;
+        if (sel === 'all' || sel === 'trachea' || sel === 'alveoli' || sel === 'pleura' ||
+            sel === 'r_superior' || sel === 'r_middle' || sel === 'r_inferior' ||
+            sel === 'l_superior' || sel === 'l_inferior') {
+            mat.transparent = false; mat.opacity = 1; mat.depthWrite = true; mat.emissiveIntensity = 0.08;
+        } else if (sel === 'right_lung') {
+            const isR = (idx === 0);
+            mat.transparent = !isR; mat.opacity = isR ? 1 : 0.1; mat.depthWrite = isR; mat.emissiveIntensity = isR ? 0.2 : 0.02;
+        } else if (sel === 'left_lung') {
+            const isL = (idx === 1);
+            mat.transparent = !isL; mat.opacity = isL ? 1 : 0.1; mat.depthWrite = isL; mat.emissiveIntensity = isL ? 0.2 : 0.02;
+        }
+    });
+}
+
+// ===== PART INFO =====
+const partInfo = {
+    all:{n:'Pulmones Humanos',s:'Sistema Respiratorio',
+        d:'Órganos esponjosos responsables del intercambio gaseoso. El oxígeno del aire inspirado pasa a la sangre en los alvéolos, mientras el CO₂ se elimina al exhalar. Están protegidos por la caja torácica y recubiertos por la pleura.',
+        st:[{l:'Alvéolos',v:'~480×10⁶'},{l:'Superficie',v:'~70 m²'},{l:'Capacidad',v:'~6 L'},{l:'Frecuencia',v:'12-20 rpm'}]},
+    right_lung:{n:'Pulmón Derecho',s:'Pulmón Mayor — 3 Lóbulos',
+        d:'Más grande y pesado que el izquierdo. Posee tres lóbulos (superior, medio e inferior) separados por las fisuras oblicua y horizontal. Es más ancho y corto porque el diafragma se eleva por el hígado subyacente.',
+        st:[{l:'Lóbulos',v:'3'},{l:'Segmentos',v:'10'},{l:'Peso',v:'~625 g'},{l:'Fisuras',v:'Oblicua + Horiz.'}]},
+    left_lung:{n:'Pulmón Izquierdo',s:'Pulmón Menor — 2 Lóbulos',
+        d:'Más pequeño por la incisura cardíaca que aloja al corazón. Posee dos lóbulos (superior e inferior) separados por la fisura oblicua. La língula es una proyección del lóbulo superior homóloga al lóbulo medio derecho.',
+        st:[{l:'Lóbulos',v:'2'},{l:'Segmentos',v:'8-9'},{l:'Peso',v:'~567 g'},{l:'Língula',v:'Presente'}]},
+    r_superior:{n:'Lóbulo Superior Derecho',s:'Segmentos Apical, Posterior y Anterior',
+        d:'Lóbulo más craneal del pulmón derecho. Contiene los segmentos apical (S1), posterior (S2) y anterior (S3). Ventilado por el bronquio lobular superior derecho.',
+        st:[{l:'Segmentos',v:'S1, S2, S3'},{l:'Límite inf.',v:'Fisura horizontal'},{l:'Bronquio',v:'Lobular sup. D'},{l:'Posición',v:'Ápex torácico'}]},
+    r_middle:{n:'Lóbulo Medio Derecho',s:'Segmentos Lateral y Medial',
+        d:'Lóbulo exclusivo del pulmón derecho, ubicado entre las fisuras horizontal y oblicua. Contiene los segmentos lateral (S4) y medial (S5). Es el lóbulo más pequeño.',
+        st:[{l:'Segmentos',v:'S4, S5'},{l:'Límites',v:'Fisuras H + O'},{l:'Tamaño',v:'Más pequeño'},{l:'Bronquio',v:'Lobular medio'}]},
+    r_inferior:{n:'Lóbulo Inferior Derecho',s:'5 Segmentos Basales',
+        d:'Lóbulo más grande del pulmón derecho. Contiene el segmento superior (S6) y cuatro segmentos basales: medial (S7), anterior (S8), lateral (S9) y posterior (S10).',
+        st:[{l:'Segmentos',v:'S6-S10'},{l:'Tamaño',v:'Mayor'},{l:'Límite sup.',v:'Fisura oblicua'},{l:'Base',v:'Diafragmática'}]},
+    l_superior:{n:'Lóbulo Superior Izquierdo',s:'Incluye División Lingular',
+        d:'Incluye la división superior (segmentos apicoposterior S1+2 y anterior S3) y la división lingular (segmentos lingular superior S4 y lingular inferior S5). La língula es homóloga al lóbulo medio derecho.',
+        st:[{l:'Segmentos',v:'S1+2, S3, S4, S5'},{l:'Língula',v:'2 segmentos'},{l:'Incisura',v:'Cardíaca'},{l:'Bronquio',v:'Lobular sup. I'}]},
+    l_inferior:{n:'Lóbulo Inferior Izquierdo',s:'Segmentos Basales',
+        d:'Similar al inferior derecho pero con un segmento basal menos frecuentemente. Contiene el segmento superior (S6) y los segmentos basales anteromedial (S7+8), lateral (S9) y posterior (S10).',
+        st:[{l:'Segmentos',v:'S6, S7+8, S9, S10'},{l:'Límite sup.',v:'Fisura oblicua'},{l:'Base',v:'Diafragmática'},{l:'Bronquio',v:'Lobular inf. I'}]},
+    trachea:{n:'Tráquea y Bronquios',s:'Vía Aérea de Conducción',
+        d:'La tráquea se bifurca a nivel de la carina (T4-T5) en bronquios principales derecho e izquierdo. Estos se dividen en bronquios lobulares, segmentarios y hasta 23 generaciones de ramificación hasta los bronquiolos terminales.',
+        st:[{l:'Long. tráquea',v:'~10-12 cm'},{l:'Anillos',v:'15-20 (cartílago)'},{l:'Carina',v:'T4-T5'},{l:'Generaciones',v:'~23'}]},
+    alveoli:{n:'Alvéolos Pulmonares',s:'Unidad de Intercambio Gaseoso',
+        d:'Sacos microscópicos donde ocurre el intercambio gaseoso. Su pared extremadamente delgada (neumocitos tipo I) permite la difusión de O₂ y CO₂. Los neumocitos tipo II producen surfactante que evita el colapso alveolar.',
+        st:[{l:'Número',v:'~480×10⁶'},{l:'Diámetro',v:'~200 μm'},{l:'Barrera',v:'~0.5 μm'},{l:'Surfactante',v:'Tipo II'}]},
+    pleura:{n:'Pleura',s:'Membrana Serosa',
+        d:'Doble membrana que recubre los pulmones (pleura visceral) y la pared torácica interna (pleura parietal). El espacio pleural contiene líquido seroso (~15 mL) que reduce la fricción durante la respiración.',
+        st:[{l:'Capas',v:'Visceral + Parietal'},{l:'Líquido',v:'~15 mL'},{l:'Presión',v:'Subatmosférica'},{l:'Función',v:'Lubricación'}]}
+};
+
+document.querySelectorAll('.hl-btn').forEach(btn => {
+    btn.onclick = () => {
+        document.querySelectorAll('.hl-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const p = btn.dataset.part, info = partInfo[p];
+        if (info) {
+            $('ipN').textContent = info.n; $('ipS').textContent = info.s; $('ipD').textContent = info.d;
+            $('ipSt').innerHTML = info.st.map(s=>`<div class="st-card"><div class="st-label">${s.l}</div><div class="st-val">${s.v}</div></div>`).join('');
+        }
+        setHighlight(p);
+    };
+});
+    </script>
+    <!-- Labels (sistema numerado) -->
+    <script type="module" src="../js/labels/lungs/lungs_labels.js"></script>
+    <!-- Datos médicos -->
+    <script src="../js/labels/lungs/lungs_anatomia.js"></script>
+    <script src="../js/labels/lungs/lungs_fisiologia.js"></script>
+    <script src="../js/labels/lungs/lungs_patologias.js"></script>
+    <script src="../js/labels/lungs/lungs_nutricion.js"></script>
+    <script src="../js/labels/lungs/lungs_habitos.js"></script>
+    <script src="../js/labels/lungs/lungs_clinicos.js"></script>
+    <script type="module" src="../js/labels/lungs/lungs_medical_info.js"></script>
+</body>
+</html>

@@ -14,7 +14,7 @@ function initPdfModal() {
     if (openPricingBtn) {
         openPricingBtn.addEventListener('click', () => {
             pdfModal.style.display = 'block';
-            pdfViewer.src = 'PDF/Modelo_Licenciamiento.pdf';
+            pdfViewer.src = 'PDF/Modelo_Licenciamiento.html';
             document.body.style.overflow = 'hidden';
         });
     }

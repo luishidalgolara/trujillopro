@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOFTWARE TRUJILLO - Modelo de Licenciamiento | 10 Software Educativos</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e8edf2 100%);
+            color: #2c3e50;
+        }
+        .container {
+            background-color: white;
+            padding: 45px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            border-radius: 12px;
+        }
+        h1 { color: #2c3e50; text-align: center; font-size: 28px; margin-bottom: 10px; }
+        h2 { color: #34495e; font-size: 18px; text-align: center; margin-top: 0; }
+        h3 { color: #2980b9; font-size: 20px; margin-top: 35px; border-bottom: 3px solid #3498db; padding-bottom: 8px; }
+        h4 { color: #16a085; font-size: 16px; margin-top: 20px; }
+
+        /* HEADER PRINCIPAL */
+        .header-box {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 40%, #1565c0 100%);
+            color: white;
+            padding: 35px 25px;
+            text-align: center;
+            margin-bottom: 35px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(26,35,126,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        .header-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+        }
+        .header-box h1, .header-box h2, .header-box h3 { color: white; margin: 6px 0; border: none; }
+        .header-box h1 { font-size: 32px; letter-spacing: 2px; }
+        .header-box .badge-10 {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: #1a237e;
+            font-weight: bold;
+            font-size: 15px;
+            padding: 6px 20px;
+            border-radius: 25px;
+            margin-top: 12px;
+            box-shadow: 0 3px 10px rgba(255,215,0,0.5);
+        }
+
+        /* BADGES DE SOFTWARE */
+        .software-ecosystem {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin: 25px 0;
+        }
+        .sw-badge {
+            text-align: center;
+            padding: 12px 6px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        }
+        .sw-badge .sw-icon { font-size: 22px; display: block; margin-bottom: 5px; }
+        .sw-trujillo { background: linear-gradient(135deg, #1565c0, #1976d2); }
+        .sw-ingelab { background: linear-gradient(135deg, #00838f, #00acc1); }
+        .sw-estanques { background: linear-gradient(135deg, #0277bd, #039be5); }
+        .sw-cubicaciones { background: linear-gradient(135deg, #2e7d32, #388e3c); }
+        .sw-medical { background: linear-gradient(135deg, #c62828, #e53935); }
+        .sw-pharma { background: linear-gradient(135deg, #6a1b9a, #8e24aa); }
+        .sw-pavilab { background: linear-gradient(135deg, #e65100, #f57c00); }
+
+        /* SECCIÓN NUEVOS SOFTWARE */
+        .nuevos-software {
+            background: linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #0277bd 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            box-shadow: 0 6px 20px rgba(13,71,161,0.3);
+        }
+        .nuevos-software h3, .nuevos-software h4 { color: white; border: none; margin-top: 0; }
+        .nuevos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .nuevo-card {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 10px;
+            padding: 18px;
+            backdrop-filter: blur(5px);
+        }
+        .nuevo-card .nc-icon { font-size: 30px; margin-bottom: 8px; }
+        .nuevo-card h4 { color: #ffd700; font-size: 15px; margin: 0 0 8px 0; }
+        .nuevo-card p { font-size: 13px; margin: 0; opacity: 0.9; }
+        .nuevo-card .nc-tags { margin-top: 10px; }
+        .nc-tag {
+            display: inline-block;
+            background: rgba(255,215,0,0.2);
+            border: 1px solid rgba(255,215,0,0.4);
+            color: #ffd700;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        /* TABLAS */
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        th, td { border: 1px solid #e0e6ed; padding: 13px 12px; text-align: left; }
+        th { background: linear-gradient(135deg, #1565c0, #1976d2); color: white; font-weight: 600; }
+        tr:nth-child(even) { background-color: #f8fafc; }
+        tr:hover { background-color: #eef4fb; transition: background 0.2s; }
+
+        /* CAJAS */
+        .highlight-box {
+            background: linear-gradient(135deg, #e3f2fd, #f0f8ff);
+            border-left: 5px solid #1976d2;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .important-box {
+            background: linear-gradient(135deg, #fff8e1, #fffde7);
+            border-left: 5px solid #ffc107;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .success-box {
+            background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+            border-left: 5px solid #43a047;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* CAJA PRINCIPAL CRÍTICA */
+        .critical-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 28px;
+            margin: 30px 0;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(102,126,234,0.4);
+        }
+        .critical-box h3, .critical-box h4 { color: white; border: none; margin-top: 0; }
+
+        .orange-box {
+            background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
+            color: white;
+            border: none;
+            padding: 28px;
+            margin: 30px 0;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(255,107,53,0.35);
+        }
+        .orange-box h3, .orange-box h4 { color: white; border: none; }
+
+        /* PRECIOS DESTACADOS */
+        .price-hero {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #4527a0 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 25px 0;
+            box-shadow: 0 8px 25px rgba(26,35,126,0.35);
+        }
+        .price-hero h4 { color: white; font-size: 20px; margin-top: 0; border: none; }
+        .price-big { font-size: 52px; font-weight: 900; color: #ffd700; margin: 15px 0; text-shadow: 2px 2px 8px rgba(0,0,0,0.3); }
+        .price-sub { font-size: 16px; opacity: 0.85; }
+
+        /* TABLA DESGLOSE PRECIO */
+        .price-breakdown {
+            background: rgba(255,255,255,0.12);
+            border-radius: 10px;
+            padding: 18px;
+            margin-top: 20px;
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            font-size: 15px;
+        }
+        .price-row:last-child { border-bottom: none; }
+        .price-row .label { opacity: 0.85; }
+        .price-row .value { font-weight: bold; color: #ffd700; }
+        .price-row.total .label, .price-row.total .value { font-size: 18px; color: white; }
+
+        /* CHECKMARKS */
+        .checkmark { color: #4caf50; font-weight: bold; }
+        .crossmark { color: #f44336; font-weight: bold; }
+
+        .note { font-style: italic; color: #7f8c8d; margin-top: 10px; font-size: 13px; }
+
+        ul { list-style-type: none; padding-left: 0; }
+        ul li::before { content: "✓ "; color: #43a047; font-weight: bold; margin-right: 8px; }
+        .bullet-list li::before { content: "• "; color: #34495e; }
+
+        .price-highlight { background: linear-gradient(135deg, #43a047, #66bb6a); color: white; padding: 3px 10px; border-radius: 5px; font-weight: bold; }
+        .best-value {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white; padding: 3px 12px; border-radius: 20px;
+            font-weight: bold; font-size: 13px; box-shadow: 0 2px 6px rgba(245,87,108,0.4);
+        }
+        .new-badge {
+            background: linear-gradient(135deg, #00c853, #69f0ae);
+            color: #1a237e; padding: 2px 10px; border-radius: 20px;
+            font-weight: bold; font-size: 12px; margin-left: 6px;
+        }
+
+        /* SEPARADOR */
+        .section-divider {
+            border: none;
+            height: 3px;
+            background: linear-gradient(90deg, #1565c0, #9c27b0, #e91e63, #ff9800);
+            margin: 40px 0;
+            border-radius: 2px;
+        }
+
+        /* RESUMEN EJECUTIVO FINAL */
+        .resumen-final {
+            background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #388e3c 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 12px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(27,94,32,0.35);
+        }
+        .resumen-final h3, .resumen-final h4 { color: white; border: none; }
+        .resumen-final table th { background: rgba(255,255,255,0.2); }
+
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- ════════════════════════════════════════
+         HEADER PRINCIPAL
+    ════════════════════════════════════════ -->
+    <div class="header-box">
+        <h1>🏆 SOFTWARE TRUJILLO</h1>
+        <h2>Ecosistema Educativo Digital — 10 Software Especializados</h2>
+        <h3>MODELO DE LICENCIAMIENTO INSTITUCIONAL</h3>
+        <h3>Suscripción Anual · Hasta 40 Computadores · Precio por Institución</h3>
+        <div class="badge-10">⭐ NUEVO: AHORA CON 10 SOFTWARE EDUCATIVOS ⭐</div>
+    </div>
+
+    <!-- ECOSISTEMA DE 10 SOFTWARE -->
+    <div style="text-align:center; margin-bottom: 10px;">
+        <h3 style="margin-top:0;">🖥️ Los 10 Software de Tu Institución</h3>
+    </div>
+    <div class="software-ecosystem">
+        <div class="sw-badge sw-trujillo"><span class="sw-icon">⚡</span>TRUJILLO ELÉCTRICO</div>
+        <div class="sw-badge sw-trujillo"><span class="sw-icon">💧</span>TRUJILLO AGUA POTABLE</div>
+        <div class="sw-badge sw-trujillo"><span class="sw-icon">🚰</span>TRUJILLO ALCANTARILLADO</div>
+        <div class="sw-badge sw-trujillo"><span class="sw-icon">🏗️</span>TRUJILLO ESTRUCTURAL</div>
+        <div class="sw-badge sw-ingelab"><span class="sw-icon">🔬</span>ingeLAB 3D</div>
+        <div class="sw-badge sw-estanques"><span class="sw-icon">🛢️</span>TRUJILLO ESTANQUES</div>
+        <div class="sw-badge sw-cubicaciones"><span class="sw-icon">📐</span>TRUJILLO CUBICACIONES</div>
+        <div class="sw-badge sw-medical"><span class="sw-icon">🧬</span>MEDICAL 3D</div>
+        <div class="sw-badge sw-pharma"><span class="sw-icon">🧪</span>PHARMALAB</div>
+        <div class="sw-badge sw-pavilab"><span class="sw-icon">🛣️</span>PAVILAB 3D</div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         NUEVOS 3 SOFTWARE EDUCATIVOS
+    ════════════════════════════════════════ -->
+    <div class="nuevos-software">
+        <h3>🚀 NUEVOS: 3 Software Educativos Interactivos</h3>
+        <p style="opacity:0.9; margin-bottom:5px;">Incorporamos tres plataformas educativas de vanguardia que amplían el ecosistema a nuevas áreas del conocimiento, llevando la formación interactiva a carreras de salud, ciencias e ingeniería.</p>
+        <div class="nuevos-grid">
+            <div class="nuevo-card">
+                <div class="nc-icon">🧬</div>
+                <h4>Medical 3D</h4>
+                <p>Visualización anatómica 3D casi realista. Órganos, esqueleto, sistemas corporales y biología humana con interactividad total para el área de la salud.</p>
+                <div class="nc-tags">
+                    <span class="nc-tag">Medicina</span>
+                    <span class="nc-tag">Enfermería</span>
+                    <span class="nc-tag">Kinesiología</span>
+                    <span class="nc-tag">Odontología</span>
+                    <span class="nc-tag">Nutrición</span>
+                    <span class="nc-tag">+ Afines</span>
+                </div>
+            </div>
+            <div class="nuevo-card">
+                <div class="nc-icon">🧪</div>
+                <h4>PharmaLab</h4>
+                <p>Plataforma interactiva de biología, química molecular, células y biotecnología. Laboratorio virtual para ciencias de la vida con simulaciones de vanguardia.</p>
+                <div class="nc-tags">
+                    <span class="nc-tag">Biología</span>
+                    <span class="nc-tag">Química</span>
+                    <span class="nc-tag">Biotecnología</span>
+                    <span class="nc-tag">Farmacia</span>
+                    <span class="nc-tag">+ Afines</span>
+                </div>
+            </div>
+            <div class="nuevo-card">
+                <div class="nc-icon">🛣️</div>
+                <h4>PaviLab 3D</h4>
+                <p>Software educativo interactivo sobre tipos de pavimentos, estructuras viales y módulos especializados con datos reales de Chile para ingeniería y construcción.</p>
+                <div class="nc-tags">
+                    <span class="nc-tag">Ing. Civil</span>
+                    <span class="nc-tag">Construcción</span>
+                    <span class="nc-tag">Obras Civiles</span>
+                    <span class="nc-tag">+ Afines</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         SECCIÓN: POR QUÉ ES LA MEJOR INVERSIÓN
+    ════════════════════════════════════════ -->
+    <div class="critical-box">
+        <h3>🎓 POR QUÉ ESTE ECOSISTEMA ES LA MEJOR INVERSIÓN PARA TUS ESTUDIANTES</h3>
+
+        <h4>EL PROBLEMA CON EL SOFTWARE GENÉRICO</h4>
+        <p><strong>AutoCAD, simuladores genéricos y plataformas sin especialización: Una inversión que se pierde</strong></p>
+        <ul class="bullet-list">
+            <li><span class="crossmark">❌</span> Se enseña en 1 semestre, pero los estudiantes olvidan lo aprendido por falta de aplicación directa</li>
+            <li><span class="crossmark">❌</span> No incluye normativas chilenas ni contexto local real</li>
+            <li><span class="crossmark">❌</span> En ingeniería: proyectos básicos toman 1-2 días de trabajo manual</li>
+            <li><span class="crossmark">❌</span> En salud: visualizaciones genéricas sin profundidad clínica aplicada</li>
+            <li><span class="crossmark">❌</span> Curva de aprendizaje prolongada sin retorno profesional inmediato</li>
+            <li><span class="crossmark">❌</span> Al egresar, deben RE-APRENDER desde cero para el mundo laboral real</li>
+        </ul>
+
+        <h4 style="margin-top:25px;">LA SOLUCIÓN: 10 SOFTWARE ESPECIALIZADOS — HERRAMIENTAS PARA TODA LA VIDA PROFESIONAL</h4>
+        <ul class="bullet-list">
+            <li><span class="checkmark">✅</span> <strong>TRUJILLO:</strong> Proyectos de instalaciones domiciliarias en 40min–1.5hrs (vs. 1-2 días genérico)</li>
+            <li><span class="checkmark">✅</span> <strong>ingeLAB 3D:</strong> Aprendizaje inmersivo con visualización tridimensional de conceptos de ingeniería</li>
+            <li><span class="checkmark">✅</span> <strong>Medical 3D:</strong> Anatomía casi realista para estudiantes de salud — aprenden viendo y explorando</li>
+            <li><span class="checkmark">✅</span> <strong>PharmaLab:</strong> Laboratorio virtual de biología y química sin riesgos ni costos de insumos</li>
+            <li><span class="checkmark">✅</span> <strong>PaviLab 3D:</strong> Pavimentación interactiva con datos reales de Chile para futuros constructores</li>
+            <li><span class="checkmark">✅</span> <strong>IA integrada con chatbot:</strong> Asistente entrenado con normativas y leyes chilenas</li>
+            <li><span class="checkmark">✅</span> <strong>Listos desde el día 1 del egreso:</strong> Habilidades profesionales aplicables inmediatamente</li>
+        </ul>
+
+        <h4 style="margin-top:25px;">💰 IMPACTO EN LA EMPLEABILIDAD</h4>
+        <table style="margin-top:15px;">
+            <tr>
+                <th style="background-color: rgba(255,255,255,0.15);">Egresado con Software Genérico</th>
+                <th style="background-color: rgba(255,255,255,0.15);">Egresado con Ecosistema TRUJILLO</th>
+            </tr>
+            <tr style="background-color:rgba(255,255,255,0.95);">
+                <td style="color:#2c3e50;">
+                    <span class="crossmark">❌</span> Debe re-aprender herramientas<br>
+                    <span class="crossmark">❌</span> 6-12 meses para ser productivo<br>
+                    <span class="crossmark">❌</span> Sin conocimiento de normativa chilena<br>
+                    <span class="crossmark">❌</span> Menos proyectos = Menos ingresos
+                </td>
+                <td style="color:#2c3e50;">
+                    <span class="checkmark">✅</span> <strong>Listo desde día 1</strong><br>
+                    <span class="checkmark">✅</span> <strong>Productivo inmediatamente</strong><br>
+                    <span class="checkmark">✅</span> <strong>Normativa chilena integrada</strong><br>
+                    <span class="checkmark">✅</span> <strong>Más proyectos = Más ingresos</strong>
+                </td>
+            </tr>
+        </table>
+
+        <p style="margin-top:20px; font-size:18px; text-align:center; border-top:2px solid rgba(255,255,255,0.3); padding-top:20px;">
+            <strong>Este ecosistema no es solo software de estudio.<br>
+            Son las herramientas que tus estudiantes usarán toda su vida profesional<br>
+            para generar ingresos reales desde el día que egresen.</strong>
+        </p>
+    </div>
+
+    <!-- EMPRENDIMIENTO -->
+    <div class="orange-box">
+        <h3>🚀 TRUJILLO: TU HERRAMIENTA PARA EMPRENDER DESDE EL DÍA 1</h3>
+
+        <h4>LA REALIDAD DEL MERCADO LABORAL CHILENO</h4>
+        <p><strong>Con la falta de empleos que existe actualmente, este ecosistema se presenta como la solución perfecta para que tus egresados emprendan sin depender de empleadores.</strong></p>
+
+        <h4 style="margin-top:25px;">💼 OPORTUNIDADES DE EMPRENDIMIENTO INMEDIATO</h4>
+        <table style="margin-top:15px;">
+            <tr>
+                <th style="background-color:rgba(255,255,255,0.2); color:white;">Tipo de Proyecto</th>
+                <th style="background-color:rgba(255,255,255,0.2); color:white;">Demanda en el Mercado</th>
+                <th style="background-color:rgba(255,255,255,0.2); color:white;">Tiempo con TRUJILLO</th>
+            </tr>
+            <tr style="background-color:rgba(255,255,255,0.95);">
+                <td style="color:#2c3e50;"><strong>Regularización Domiciliaria</strong></td>
+                <td style="color:#2c3e50;">Alta — Miles de viviendas sin regularizar</td>
+                <td style="color:#2c3e50;">40 min – 1.5 hrs</td>
+            </tr>
+            <tr style="background-color:rgba(255,255,255,0.85);">
+                <td style="color:#2c3e50;"><strong>Proyectos Eléctricos</strong></td>
+                <td style="color:#2c3e50;">Alta — Nuevas instalaciones y modificaciones</td>
+                <td style="color:#2c3e50;">40 min – 1.5 hrs</td>
+            </tr>
+            <tr style="background-color:rgba(255,255,255,0.95);">
+                <td style="color:#2c3e50;"><strong>Proyectos Alcantarillado</strong></td>
+                <td style="color:#2c3e50;">Media-Alta — Ampliaciones y reparaciones</td>
+                <td style="color:#2c3e50;">40 min – 1.5 hrs</td>
+            </tr>
+            <tr style="background-color:rgba(255,255,255,0.85);">
+                <td style="color:#2c3e50;"><strong>Proyectos Agua Potable</strong></td>
+                <td style="color:#2c3e50;">Media-Alta — Nuevas conexiones y mejoras</td>
+                <td style="color:#2c3e50;">40 min – 1.5 hrs</td>
+            </tr>
+            <tr style="background-color:rgba(255,255,255,0.95);">
+                <td style="color:#2c3e50;"><strong>Cálculos Estructurales</strong></td>
+                <td style="color:#2c3e50;">Alta — Ampliaciones y segundos pisos</td>
+                <td style="color:#2c3e50;">40 min – 1.5 hrs</td>
+            </tr>
+        </table>
+
+        <h4 style="margin-top:25px;">📊 INGRESOS REALES PARA EL EGRESADO</h4>
+        <table style="margin-top:15px;">
+            <tr>
+                <th style="background-color:rgba(255,255,255,0.2); color:white;">Escenario</th>
+                <th style="background-color:rgba(255,255,255,0.2); color:white;">Proyectos/Mes</th>
+                <th style="background-color:rgba(255,255,255,0.2); color:white;">Tarifa Promedio</th>
+                <th style="background-color:rgba(255,255,255,0.2); color:white;">Ingreso Mensual Posible</th>
+            </tr>
+            <tr style="background-color:rgba(255,255,255,0.95);">
+                <td style="color:#2c3e50;"><strong>Recién Egresado</strong><br><span style="font-size:13px;">Mientras busca empleo</span></td>
+                <td style="color:#2c3e50;">4-6 proyectos</td>
+                <td style="color:#2c3e50;">$150.000 – $200.000</td>
+                <td style="color:#2c3e50;"><strong>$600.000 – $1.200.000</strong></td>
+            </tr>
+            <tr style="background-color:rgba(255,255,255,0.85);">
+                <td style="color:#2c3e50;"><strong>Emprendedor</strong><br><span style="font-size:13px;">Dedicación completa</span></td>
+                <td style="color:#2c3e50;">12-20 proyectos</td>
+                <td style="color:#2c3e50;">$150.000 – $250.000</td>
+                <td style="color:#2c3e50;"><strong>$1.800.000 – $5.000.000</strong></td>
+            </tr>
+        </table>
+
+        <p style="margin-top:20px; font-size:18px; text-align:center; border-top:2px solid rgba(255,255,255,0.3); padding-top:20px;">
+            <strong>Este ecosistema no solo forma profesionales.<br>
+            Forma emprendedores capaces de generar sus propios ingresos<br>
+            desde el día 1 de su egreso, sin depender de la escasez de empleos.</strong>
+        </p>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- ════════════════════════════════════════
+         SECCIÓN 1: ESTRUCTURA DE PRECIOS
+    ════════════════════════════════════════ -->
+    <h3>1. ESTRUCTURA DE PRECIOS — LICENCIAMIENTO POR COMPUTADOR</h3>
+
+    <div class="highlight-box" style="background: linear-gradient(135deg, #1a237e, #283593); color:white; border:none; border-radius:10px; padding:22px;">
+        <h4 style="color:white; margin-top:0;">💡 MODELO FLEXIBLE Y ESCALABLE — 10 SOFTWARE INCLUIDOS</h4>
+        <ul style="margin:0;">
+            <li style="color:white;">✅ Contratación máxima: <strong>40 computadores simultáneos</strong></li>
+            <li style="color:white;">✅ Contratos anuales con precio fijo garantizado</li>
+            <li style="color:white;">✅ Los 10 software educativos disponibles en cada computador</li>
+            <li style="color:white;">✅ Acceso rotativo ilimitado para todos tus estudiantes</li>
+        </ul>
+    </div>
+
+    <h4>1.1 Precios por Software (Precio por Computador/Mes)</h4>
+    <table>
+        <tr>
+            <th>Cantidad de Software</th>
+            <th>Software Incluidos</th>
+            <th>Precio Neto/PC/Mes</th>
+            <th>Ahorro vs. Individual</th>
+        </tr>
+        <tr>
+            <td><strong>1 Software</strong></td>
+            <td>Cualquier módulo individual a elegir</td>
+            <td>$19.999</td>
+            <td>—</td>
+        </tr>
+        <tr>
+            <td><strong>2 Software</strong></td>
+            <td>Cualquier combinación de 2 software</td>
+            <td>$23.000</td>
+            <td>42% de ahorro</td>
+        </tr>
+        <tr>
+            <td><strong>3 Software</strong></td>
+            <td>Cualquier combinación de 3 software</td>
+            <td>$26.500</td>
+            <td>56% de ahorro</td>
+        </tr>
+        <tr>
+            <td><strong>4 Software</strong></td>
+            <td>Cualquier combinación de 4 software</td>
+            <td>$30.000</td>
+            <td>62% de ahorro</td>
+        </tr>
+        <tr>
+            <td><strong>7 Software</strong></td>
+            <td>Eléctrico + Agua Potable + Alcantarillado + Estructural + ingeLAB + Estanques + Cubicaciones</td>
+            <td>$37.500</td>
+            <td>73% de ahorro</td>
+        </tr>
+        <tr style="background-color:#d4edda;">
+            <td><strong>10 Software</strong> <span class="best-value">🏆 MEJOR VALOR</span> <span class="new-badge">✨ NUEVO</span></td>
+            <td><strong>PAQUETE COMPLETO (10 SOFTWARE):</strong> Los 7 anteriores + Medical 3D + PharmaLab + PaviLab 3D</td>
+            <td><strong>$62.500</strong></td>
+            <td><strong>69% de ahorro</strong></td>
+        </tr>
+    </table>
+    <p class="note">*Los ahorros se calculan comparando contra la compra individual de cada software ($19.999 x cantidad)</p>
+
+    <!-- COSTO POR SOFTWARE EN PAQUETE -->
+    <div class="price-hero">
+        <h4>💎 ¿CUÁNTO CUESTA REALMENTE CADA SOFTWARE EN EL PAQUETE COMPLETO?</h4>
+        <p class="price-sub">Paquete Completo: <strong>$62.500/PC/mes</strong> ÷ 10 software</p>
+        <div class="price-big">= $6.250 por software</div>
+        <div class="price-breakdown">
+            <div class="price-row">
+                <span class="label">📊 Software Individual:</span>
+                <span class="value">$19.999</span>
+            </div>
+            <div class="price-row">
+                <span class="label">✅ Software en Paquete Completo:</span>
+                <span class="value">$6.250</span>
+            </div>
+            <div class="price-row total">
+                <span class="label">💰 AHORRO: $13.749 por software</span>
+                <span class="value">69% DE AHORRO</span>
+            </div>
+        </div>
+        <p style="font-size:14px; margin-top:18px; opacity:0.8; font-style:italic;">El Paquete Completo te da acceso a los 10 software profesionales por menos de la tercera parte del precio individual de cada uno</p>
+    </div>
+
+    <h4>1.2 Inversión Mensual — Paquete Completo 10 Software (40 Computadores)</h4>
+
+    <div class="success-box">
+        <h4>📊 DESGLOSE DE INVERSIÓN — 40 COMPUTADORES, PAQUETE COMPLETO</h4>
+        <table>
+            <tr>
+                <th>Concepto</th>
+                <th>Cálculo</th>
+                <th>Resultado</th>
+            </tr>
+            <tr>
+                <td>Computadores contratados</td>
+                <td>—</td>
+                <td><strong>40 PCs</strong></td>
+            </tr>
+            <tr>
+                <td>Software incluidos por PC</td>
+                <td>—</td>
+                <td><strong>10 software</strong></td>
+            </tr>
+            <tr style="background:#e8f4f8;">
+                <td><strong>Total de licencias activas</strong></td>
+                <td>40 PCs × 10 software</td>
+                <td><strong>400 licencias simultáneas</strong></td>
+            </tr>
+            <tr>
+                <td>Precio neto por PC/mes</td>
+                <td>—</td>
+                <td>$62.500</td>
+            </tr>
+            <tr>
+                <td><strong>Inversión mensual neta</strong></td>
+                <td>40 × $62.500</td>
+                <td><strong>$2.500.000</strong></td>
+            </tr>
+            <tr>
+                <td>IVA (19%)</td>
+                <td>$2.500.000 × 19%</td>
+                <td>$475.000</td>
+            </tr>
+            <tr style="background:#27ae60; color:white;">
+                <td><strong>TOTAL MENSUAL CON IVA</strong></td>
+                <td>—</td>
+                <td><strong>$2.975.000</strong></td>
+            </tr>
+            <tr style="background:#16a085; color:white;">
+                <td><strong>TOTAL ANUAL CON IVA</strong></td>
+                <td>$2.975.000 × 12</td>
+                <td><strong>$35.700.000</strong></td>
+            </tr>
+            <tr style="background:#e8f4f8;">
+                <td><strong>Costo efectivo por licencia</strong></td>
+                <td>$2.500.000 ÷ 400 licencias</td>
+                <td><strong>$6.250/mes por licencia</strong></td>
+            </tr>
+        </table>
+    </div>
+
+    <h4>1.3 Comparación: Software Individual vs. Paquete Completo (40 PCs)</h4>
+    <table>
+        <tr>
+            <th>Opción</th>
+            <th>Costo Mensual Neto</th>
+            <th>Software Incluidos</th>
+            <th>Costo por Software</th>
+        </tr>
+        <tr>
+            <td>1 Software Individual ($19.999/PC)</td>
+            <td>$799.960</td>
+            <td>1</td>
+            <td>$19.999</td>
+        </tr>
+        <tr>
+            <td>7 Software ($37.500/PC)</td>
+            <td>$1.500.000</td>
+            <td>7</td>
+            <td>$5.357</td>
+        </tr>
+        <tr style="background:#d4edda;">
+            <td><strong>Paquete Completo 10 Software ($62.500/PC)</strong></td>
+            <td><strong>$2.500.000</strong></td>
+            <td><strong>10</strong></td>
+            <td><strong>$6.250</strong></td>
+        </tr>
+    </table>
+
+    <div class="important-box">
+        <h4>💰 ANÁLISIS DE VALOR: PAQUETE COMPLETO 10 SOFTWARE</h4>
+        <p><strong>Con el Paquete Completo obtienes los 10 software especializados por solo $62.500 por computador/mes:</strong></p>
+        <ul>
+            <li><strong>TRUJILLO ELÉCTRICO:</strong> Instalaciones eléctricas según SEC</li>
+            <li><strong>TRUJILLO AGUA POTABLE:</strong> Redes de agua potable según RIDAA</li>
+            <li><strong>TRUJILLO ALCANTARILLADO:</strong> Sistemas de evacuación según RIDAA</li>
+            <li><strong>TRUJILLO ESTRUCTURAL:</strong> Cálculo estructural de viviendas</li>
+            <li><strong>ingeLAB 3D:</strong> Sistema Educativo Interactivo en 3D para visualización de conceptos de ingeniería</li>
+            <li><strong>TRUJILLO ESTANQUES:</strong> Cálculo y diseño de estanques según normativa chilena</li>
+            <li><strong>TRUJILLO CUBICACIONES:</strong> Cubicación automática y cálculo preciso de volúmenes</li>
+            <li><strong>MEDICAL 3D <span class="new-badge">NUEVO</span>:</strong> Anatomía humana 3D casi realista para carreras del área de la salud</li>
+            <li><strong>PHARMALAB <span class="new-badge">NUEVO</span>:</strong> Laboratorio virtual de biología, química, células y biotecnología</li>
+            <li><strong>PAVILAB 3D <span class="new-badge">NUEVO</span>:</strong> Pavimentación interactiva con datos reales de Chile para ingeniería y construcción</li>
+        </ul>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- ════════════════════════════════════════
+         SECCIÓN 2: ALCANCE DE LA LICENCIA
+    ════════════════════════════════════════ -->
+    <h3>2. ALCANCE DE LA LICENCIA INSTITUCIONAL</h3>
+    <p>Cada licencia por computador incluye:</p>
+    <ul>
+        <li><strong>Acceso ilimitado:</strong> Múltiples estudiantes y académicos pueden usar cada computador en diferentes horarios</li>
+        <li><strong>Actualizaciones automáticas:</strong> del software sin costo adicional durante toda la vigencia del contrato</li>
+        <li><strong>Actualización continua de normativa chilena:</strong> (RIDAA, Pliegos RIC, Decreto N°8 SEC)</li>
+        <li><strong>Soporte técnico completo:</strong> durante toda la vigencia de la licencia</li>
+        <li><strong>Capacitación inicial:</strong> para docentes y personal técnico</li>
+        <li><strong>Manuales de usuario:</strong> y material didáctico completo</li>
+        <li><strong>Sin costos ocultos:</strong> Precio fijo durante todo el contrato anual</li>
+    </ul>
+
+    <hr class="section-divider">
+
+    <!-- ════════════════════════════════════════
+         SECCIÓN 3: MODELO DE USO EDUCATIVO
+    ════════════════════════════════════════ -->
+    <h3>3. MODELO DE USO: EDUCATIVO Y PROFESIONAL</h3>
+
+    <div class="highlight-box">
+        <h4>🎯 UN ECOSISTEMA PARA MÚLTIPLES ÁREAS DEL CONOCIMIENTO</h4>
+        <p><strong>Con 10 software especializados, tu institución puede atender simultáneamente a estudiantes de distintas carreras en el mismo laboratorio:</strong></p>
+        <ul class="bullet-list">
+            <li><strong>Ingeniería Civil / Construcción:</strong> TRUJILLO + PaviLab 3D + ingeLAB</li>
+            <li><strong>Electricidad / Instalaciones:</strong> TRUJILLO Eléctrico + Estanques + Cubicaciones</li>
+            <li><strong>Medicina / Enfermería / Salud:</strong> Medical 3D + PharmaLab</li>
+            <li><strong>Biología / Química / Biotecnología:</strong> PharmaLab + Medical 3D</li>
+            <li><strong>Todas las carreras técnicas de construcción:</strong> TRUJILLO completo + PaviLab 3D</li>
+        </ul>
+    </div>
+
+    <h4>3.1 Configuración Típica de Laboratorio</h4>
+    <ul class="bullet-list">
+        <li>Cursos estándar de 30-40 estudiantes por sección</li>
+        <li>Con 40 computadores disponibles = 1 computador por estudiante garantizado</li>
+        <li>Uso rotativo en diferentes bloques horarios del día</li>
+        <li>Distintas carreras comparten el laboratorio en diferentes horarios</li>
+        <li>Máxima rentabilización del equipamiento institucional</li>
+    </ul>
+
+    <h4>3.2 Capacidad y Flexibilidad de Uso con 40 Computadores</h4>
+    <div class="highlight-box">
+        <table>
+            <tr><th>Aspecto</th><th>Capacidad</th></tr>
+            <tr><td><strong>Bloques horarios disponibles</strong></td><td>4 bloques diarios + horario extendido opcional</td></tr>
+            <tr><td><strong>Computadores disponibles</strong></td><td>40 PCs operativos simultáneamente</td></tr>
+            <tr style="background:#e8f4f8;"><td><strong>Software por PC</strong></td><td><strong>10 software educativos especializados</strong></td></tr>
+            <tr><td><strong>Licencias activas simultáneas</strong></td><td><strong>400 licencias (40 PCs × 10 software)</strong></td></tr>
+            <tr><td><strong>Práctica ilimitada</strong></td><td>Sin límite de horas — los estudiantes practican cuantas veces necesiten</td></tr>
+            <tr style="background:#d4edda;"><td><strong>Alcance institucional</strong></td><td><strong>Todos los estudiantes de todas las carreras relacionadas</strong></td></tr>
+        </table>
+    </div>
+
+    <h4>3.3 De la Teoría a la Práctica Profesional</h4>
+    <div class="success-box">
+        <table>
+            <tr>
+                <th>Formación Tradicional con Software Genérico</th>
+                <th>Formación con Ecosistema TRUJILLO (10 Software)</th>
+            </tr>
+            <tr>
+                <td>
+                    <span class="crossmark">❌</span> Aprenden comandos genéricos sin aplicación real<br>
+                    <span class="crossmark">❌</span> Ejercicios teóricos desconectados del mercado<br>
+                    <span class="crossmark">❌</span> No conocen normativas chilenas<br>
+                    <span class="crossmark">❌</span> Al egresar: deben aprender todo de nuevo
+                </td>
+                <td>
+                    <span class="checkmark">✅</span> <strong>Proyectos reales con normativa chilena</strong><br>
+                    <span class="checkmark">✅</span> <strong>Visualización 3D casi realista (salud, vialidad, ingeniería)</strong><br>
+                    <span class="checkmark">✅</span> <strong>Laboratorio virtual sin riesgos ni costos de insumos</strong><br>
+                    <span class="checkmark">✅</span> <strong>Al egresar: listos para trabajar inmediatamente</strong>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- ════════════════════════════════════════
+         SECCIÓN 4: VENTAJAS COMPETITIVAS
+    ════════════════════════════════════════ -->
+    <h3>4. VENTAJAS COMPETITIVAS DEL ECOSISTEMA</h3>
+
+    <ul>
+        <li><strong>Especialización en normativa chilena:</strong> RIDAA, Pliegos RIC, Decreto N°8 SEC integrados y actualizados automáticamente</li>
+        <li><strong>Productividad inmediata:</strong> Estudiantes productivos desde día 1 (vs. 12-24 meses en software tradicional)</li>
+        <li><strong>Medical 3D:</strong> Anatomía 3D casi realista para estudiantes de medicina, enfermería, kinesiología, odontología, nutrición y afines</li>
+        <li><strong>PharmaLab:</strong> Laboratorio virtual de biología, química y biotecnología — sin riesgos, sin costos de insumos</li>
+        <li><strong>PaviLab 3D:</strong> Pavimentación interactiva con datos reales de Chile para ingeniería civil, construcción y afines</li>
+        <li><strong>ingeLAB:</strong> Aprendizaje inmersivo con visualización 3D que complementa la formación práctica</li>
+        <li><strong>TRUJILLO completo:</strong> Sistema automatizado de instalaciones domiciliarias (eléctrico, agua, alcantarillado, estructural, estanques, cubicaciones)</li>
+        <li><strong>10 software con 1 sola suscripción:</strong> Máxima cobertura curricular para múltiples carreras</li>
+        <li><strong>Precio fijo anual:</strong> Sin sorpresas, sin aumentos durante la vigencia del contrato</li>
+    </ul>
+
+    <hr class="section-divider">
+
+    <!-- ════════════════════════════════════════
+         SECCIÓN 5: IMPACTO EN PRODUCTIVIDAD
+    ════════════════════════════════════════ -->
+    <h3>5. IMPACTO EN PRODUCTIVIDAD</h3>
+
+    <table>
+        <tr>
+            <th>Tarea</th>
+            <th>Tiempo en Software Genérico</th>
+            <th>Tiempo con Ecosistema TRUJILLO</th>
+            <th>Ahorro</th>
+        </tr>
+        <tr>
+            <td>Trazado de instalación eléctrica</td>
+            <td>4-6 horas</td>
+            <td>15-30 minutos</td>
+            <td>85-90%</td>
+        </tr>
+        <tr>
+            <td>Generación de isométricos</td>
+            <td>2-3 horas</td>
+            <td>Instantáneo</td>
+            <td>100%</td>
+        </tr>
+        <tr>
+            <td>Cuadros de cálculo</td>
+            <td>3-4 horas</td>
+            <td>Automático</td>
+            <td>100%</td>
+        </tr>
+        <tr>
+            <td>Aprendizaje de anatomía (salud)</td>
+            <td>Solo estudio con atlas 2D</td>
+            <td>Exploración 3D interactiva realista</td>
+            <td>Calidad incomparable</td>
+        </tr>
+        <tr>
+            <td>Laboratorio de química/biología</td>
+            <td>Insumos + riesgos + tiempo</td>
+            <td>Virtual, ilimitado, sin riesgos</td>
+            <td>100% costo insumos</td>
+        </tr>
+        <tr>
+            <td>Proyecto completo instalaciones</td>
+            <td>15-25 horas</td>
+            <td>1.5 horas</td>
+            <td>90-94%</td>
+        </tr>
+    </table>
+
+    <hr class="section-divider">
+
+    <!-- ════════════════════════════════════════
+         SECCIÓN 6: CONDICIONES CONTRACTUALES
+    ════════════════════════════════════════ -->
+    <h3>6. CONDICIONES CONTRACTUALES</h3>
+
+    <div class="important-box">
+        <h4>📋 TÉRMINOS Y CONDICIONES</h4>
+        <ul>
+            <li><strong>Contratación máxima:</strong> 40 computadores simultáneos</li>
+            <li><strong>Duración del contrato:</strong> 12 meses (renovación anual)</li>
+            <li><strong>Forma de pago:</strong> Mensual con facturación anticipada</li>
+            <li><strong>Precio fijo:</strong> El precio por computador se mantiene fijo durante todo el período contractual</li>
+            <li><strong>Software incluidos:</strong> Los 10 software educativos especializados</li>
+            <li><strong>Instalación:</strong> Incluida sin costo adicional</li>
+            <li><strong>Capacitación:</strong> Inicial para docentes y personal técnico incluida</li>
+            <li><strong>Soporte técnico:</strong> Incluido durante toda la vigencia del contrato</li>
+            <li><strong>Actualizaciones:</strong> Automáticas y sin costo durante la vigencia</li>
+        </ul>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- ════════════════════════════════════════
+         SECCIÓN 7: RESUMEN EJECUTIVO FINAL
+    ════════════════════════════════════════ -->
+    <h3>7. RESUMEN EJECUTIVO — PAQUETE COMPLETO (10 SOFTWARE)</h3>
+
+    <div class="resumen-final">
+        <h3>🏆 PAQUETE COMPLETO: LA MEJOR INVERSIÓN PARA TU INSTITUCIÓN</h3>
+        <p><strong>Incluye los 10 software completos:</strong> Eléctrico, Agua Potable, Alcantarillado, Estructural, ingeLAB 3D, Estanques, Cubicaciones + Medical 3D + PharmaLab + PaviLab 3D</p>
+
+        <table>
+            <tr>
+                <th>Cantidad de Computadores</th>
+                <th>Inversión Mensual Neta</th>
+                <th>IVA (19%)</th>
+                <th>Total Mensual con IVA</th>
+                <th>Total Anual con IVA</th>
+            </tr>
+            <tr>
+                <td>10 PCs</td>
+                <td>$625.000</td>
+                <td>$118.750</td>
+                <td>$743.750</td>
+                <td>$8.925.000</td>
+            </tr>
+            <tr>
+                <td>20 PCs</td>
+                <td>$1.250.000</td>
+                <td>$237.500</td>
+                <td>$1.487.500</td>
+                <td>$17.850.000</td>
+            </tr>
+            <tr>
+                <td>30 PCs</td>
+                <td>$1.875.000</td>
+                <td>$356.250</td>
+                <td>$2.231.250</td>
+                <td>$26.775.000</td>
+            </tr>
+            <tr style="background-color:#d4edda;">
+                <td><strong>40 PCs ⭐ Máximo Recomendado</strong></td>
+                <td><strong>$2.500.000</strong></td>
+                <td><strong>$475.000</strong></td>
+                <td><strong>$2.975.000</strong></td>
+                <td><strong>$35.700.000</strong></td>
+            </tr>
+        </table>
+
+        <h4 style="margin-top:25px;">📊 DESGLOSE PAQUETE COMPLETO — 40 COMPUTADORES:</h4>
+        <table>
+            <tr>
+                <td><strong>Precio por Computador/Mes (Neto)</strong></td>
+                <td>$62.500</td>
+            </tr>
+            <tr>
+                <td><strong>Total Mensual Neto (40 PCs)</strong></td>
+                <td>$2.500.000</td>
+            </tr>
+            <tr>
+                <td><strong>IVA (19%)</strong></td>
+                <td>$475.000</td>
+            </tr>
+            <tr style="background:#27ae60; color:white;">
+                <td><strong>TOTAL MENSUAL CON IVA</strong></td>
+                <td><strong>$2.975.000</strong></td>
+            </tr>
+            <tr style="background:#16a085; color:white;">
+                <td><strong>TOTAL ANUAL CON IVA</strong></td>
+                <td><strong>$35.700.000</strong></td>
+            </tr>
+            <tr style="background:#e8f4f8;">
+                <td><strong>Licencias activas simultáneas</strong></td>
+                <td><strong>400 licencias (40 PCs × 10 software)</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Costo efectivo por licencia/mes</strong></td>
+                <td><strong>$6.250</strong></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="important-box">
+        <h4>💡 APLICABILIDAD DEL MODELO — INSTITUCIONES DE TODO CHILE</h4>
+        <p><strong>Este modelo de licenciamiento está diseñado para instituciones educativas que imparten carreras en múltiples áreas:</strong></p>
+        <ul>
+            <li><strong>UNIVERSIDADES</strong> con carreras de Medicina, Enfermería, Kinesiología, Odontología, Nutrición, Ingeniería Civil, Construcción Civil, Electricidad y Arquitectura</li>
+            <li><strong>CENTROS DE FORMACIÓN TÉCNICA (CFT)</strong> con programas técnicos en construcción, electricidad, instalaciones, salud y ciencias</li>
+            <li><strong>INSTITUTOS PROFESIONALES</strong> con carreras de salud, construcción, instalaciones domiciliarias y diseño</li>
+        </ul>
+
+        <h4>Escalabilidad y Beneficios:</h4>
+        <ul>
+            <li>Hasta 40 computadores por institución con acceso rotativo ilimitado</li>
+            <li>Los 10 software educativos disponibles desde día 1</li>
+            <li>Independencia operativa total entre instituciones</li>
+            <li>Soporte técnico y actualizaciones individualizadas</li>
+            <li>Precio fijo durante todo el contrato anual</li>
+            <li>Una sola suscripción cubre múltiples carreras y facultades</li>
+        </ul>
+        <p><strong>Este enfoque permite democratizar el acceso a herramientas profesionales especializadas en todo el sistema de educación superior técnica y profesional de Chile, cubriendo desde las ciencias de la salud hasta la ingeniería y la construcción.</strong></p>
+    </div>
+
+    <p class="note" style="text-align:center; margin-top:40px; font-size:14px; padding: 20px; background: linear-gradient(135deg, #f8f9fa, #e9ecef); border-radius: 8px;">
+        <strong>Nota:</strong> Todos los valores están expresados en pesos chilenos (CLP)<br>
+        Precios netos no incluyen IVA (19%). Los valores con IVA se calculan sobre el precio neto.<br>
+        Para cotizaciones personalizadas, contacte con nuestro equipo comercial.
+    </p>
+
+</div>
+</body>
+</html>

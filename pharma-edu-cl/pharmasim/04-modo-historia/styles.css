@@ -1,0 +1,230 @@
+/* PHARMASIM — MÓDULO 04: SÉ EL QUÍMICO FARMACÉUTICO */
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+
+:root {
+    --bg-deep:#06090f;--bg-panel:#0a0f1a;--bg-card:#0e1420;--bg-card2:#131b2a;--bg-field:#0b1018;--bg-hover:#162030;
+    --border:rgba(148,163,184,0.08);--border2:rgba(148,163,184,0.14);--border3:rgba(148,163,184,0.25);
+    --accent:#22c55e;--accent2:#34d399;--accent-dim:rgba(34,197,94,0.10);--accent-glow:rgba(34,197,94,0.20);--accent-border:rgba(34,197,94,0.25);
+    --green:#34d399;--green-dim:rgba(52,211,153,0.1);--red:#f87171;--red-dim:rgba(248,113,113,0.1);
+    --amber:#fbbf24;--amber-dim:rgba(251,191,36,0.1);--blue:#60a5fa;--blue-dim:rgba(96,165,250,0.1);
+    --text:#e2e8f0;--text2:#8899b4;--text3:#445270;
+    --font:'Karla',system-ui,-apple-system,sans-serif;--font-mono:'Fira Code','Consolas',monospace;
+    --r:6px;--r2:12px;--r3:16px;--sh:0 4px 24px rgba(0,0,0,0.5);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:14px;scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg-deep);color:var(--text);min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
+
+.navbar{position:sticky;top:0;z-index:100;height:56px;background:var(--bg-panel);border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+.nav-inner{max-width:1400px;margin:0 auto;height:100%;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-back{display:flex;align-items:center;gap:8px;color:var(--text2);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s}
+.nav-back:hover{color:var(--accent)}
+.nav-back svg{width:16px;height:16px}
+.nav-center{display:flex;align-items:center;gap:10px}
+.mod-badge{padding:3px 10px;border-radius:6px;background:var(--accent-dim);border:1px solid var(--accent-border);font-family:var(--font-mono);font-size:10px;font-weight:700;color:var(--accent)}
+.nav-title{font-size:15px;font-weight:700;color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.score-badge{display:flex;align-items:center;gap:6px;padding:4px 12px;border-radius:99px;background:var(--bg-card2);border:1px solid var(--border2);font-size:12px;color:var(--text2)}
+.score-badge .pts{font-family:var(--font-mono);color:var(--accent);font-weight:700}
+
+.stepper{background:var(--bg-panel);border-bottom:1px solid var(--border);padding:16px 24px}
+.stepper-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:0}
+.step{display:flex;align-items:center;gap:8px;flex:1;position:relative}
+.step:not(:last-child)::after{content:'';flex:1;height:2px;background:var(--border2);margin:0 8px;transition:background .4s}
+.step.done:not(:last-child)::after{background:var(--accent)}
+.step-num{width:28px;height:28px;border-radius:50%;border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;font-weight:700;color:var(--text3);background:var(--bg-card);flex-shrink:0;transition:all .3s}
+.step.active .step-num{border-color:var(--accent);color:var(--accent);background:var(--accent-dim);box-shadow:0 0 12px var(--accent-glow)}
+.step.done .step-num{border-color:var(--accent);background:var(--accent);color:var(--bg-deep)}
+.step-info{display:flex;flex-direction:column}
+.step-label{font-size:11px;font-weight:700;color:var(--text3);white-space:nowrap;transition:color .3s}
+.step.active .step-label{color:var(--accent)}.step.done .step-label{color:var(--text2)}
+.step-sub{font-size:9px;color:var(--text3);white-space:nowrap}
+
+.main-content{max-width:1100px;margin:0 auto;padding:28px 24px}
+.hidden{display:none!important}
+
+.welcome-hero{text-align:center;padding:48px 20px 32px}
+.welcome-hero h1{font-size:36px;font-weight:800;color:var(--text);margin-bottom:8px;line-height:1.2}
+.welcome-hero h1 span{color:var(--accent)}
+.welcome-hero p{font-size:15px;color:var(--text2);max-width:600px;margin:0 auto;line-height:1.7}
+
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;padding:0 0 40px}
+.case-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r2);padding:20px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.case-card:hover{border-color:var(--accent-border);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.3)}
+.case-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity .2s}
+.case-card:hover::before{opacity:1}
+.cc-icon{font-size:32px;margin-bottom:12px}
+.cc-title{font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px}
+.cc-patient{font-size:12px;color:var(--text2);margin-bottom:10px}
+.cc-meta{display:flex;gap:8px;flex-wrap:wrap}
+.cc-tag{padding:2px 8px;border-radius:4px;font-size:10px;font-family:var(--font-mono);font-weight:600}
+.cc-tag.diff-basico{background:var(--green-dim);color:var(--green)}
+.cc-tag.diff-intermedio{background:var(--amber-dim);color:var(--amber)}
+.cc-tag.diff-avanzado{background:var(--red-dim);color:var(--red)}
+.cc-tag.cat{background:var(--bg-card2);border:1px solid var(--border2);color:var(--text2)}
+/* Patient card */
+.patient-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r2);margin-bottom:24px;overflow:hidden}
+.pc-header{padding:16px 20px;background:linear-gradient(135deg,rgba(34,197,94,0.05),rgba(34,197,94,0.02));border-bottom:1px solid var(--border);display:flex;align-items:center;gap:14px}
+.pc-avatar{width:48px;height:48px;border-radius:50%;background:var(--accent-dim);border:2px solid var(--accent-border);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.pc-info h3{font-size:18px;font-weight:700;color:var(--text)}
+.pc-info .pc-subtitle{font-size:12px;color:var(--text2);margin-top:2px}
+.pc-body{padding:20px;display:flex;flex-direction:column;gap:16px}
+
+.vitals-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
+.vital-item{padding:10px;border-radius:var(--r);background:var(--bg-card2);border:1px solid var(--border);text-align:center}
+.vital-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.vital-val{font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--text)}
+.vital-val.abnormal{color:var(--red)}
+.vital-unit{font-size:10px;color:var(--text3);font-weight:400}
+
+.labs-grid{display:flex;flex-direction:column;gap:6px}
+.lab-row{display:flex;align-items:center;justify-content:space-between;padding:6px 10px;border-radius:var(--r);background:var(--bg-card2);border:1px solid var(--border);font-size:12px}
+.lab-name{color:var(--text2);flex:1}
+.lab-val{font-family:var(--font-mono);font-weight:600;color:var(--text);margin:0 12px}
+.lab-val.high{color:var(--red)}.lab-val.low{color:var(--amber)}
+.lab-ref{font-size:10px;color:var(--text3);font-family:var(--font-mono)}
+
+.section-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r2);padding:20px;margin-bottom:16px}
+.sc-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+
+.drug-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.drug-option{padding:14px;border-radius:var(--r);background:var(--bg-card2);border:2px solid var(--border);cursor:pointer;transition:all .2s;text-align:center}
+.drug-option:hover{border-color:var(--border3)}
+.drug-option.selected{border-color:var(--accent);background:var(--accent-dim)}
+.drug-option .do-icon{font-size:24px;margin-bottom:6px}
+.drug-option .do-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px}
+.drug-option .do-class{font-size:10px;color:var(--text2);line-height:1.3}
+.drug-option.selected .do-name{color:var(--accent)}
+
+.form-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.form-option{padding:14px;border-radius:var(--r);background:var(--bg-card2);border:2px solid var(--border);cursor:pointer;transition:all .2s;text-align:center}
+.form-option:hover{border-color:var(--border3)}
+.form-option.selected{border-color:var(--accent);background:var(--accent-dim)}
+.form-option .fo-icon{font-size:24px;margin-bottom:6px}
+.form-option .fo-name{font-size:13px;font-weight:700;color:var(--text)}
+.form-option.selected .fo-name{color:var(--accent)}
+.form-option .fo-strengths{font-size:10px;color:var(--text2);margin-top:4px;font-family:var(--font-mono)}
+
+/* Dose form */
+.dose-form{display:flex;flex-direction:column;gap:14px}
+.df-field{display:flex;flex-direction:column;gap:5px}
+.df-field label{font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.5px}
+.df-field input,.df-field select,.df-field textarea{padding:10px 12px;background:var(--bg-field);border:1px solid var(--border2);border-radius:var(--r);color:var(--text);font-family:var(--font);font-size:13px;outline:none;transition:border-color .2s;width:100%}
+.df-field input:focus,.df-field select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(34,197,94,.08)}
+.df-field select option{background:var(--bg-card)}
+.df-field textarea{resize:vertical;min-height:60px}
+.df-hint{font-size:11px;color:var(--text3);line-height:1.4;margin-top:2px}
+
+/* Prescription preview */
+.rx-preview{background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r2);padding:24px;position:relative}
+.rx-preview::before{content:'RECETA MÉDICA';position:absolute;top:12px;right:16px;font-size:9px;color:var(--text3);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:1px}
+.rx-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;padding-bottom:12px;border-bottom:1px dashed var(--border2)}
+.rx-type-badge{padding:3px 10px;border-radius:4px;font-size:10px;font-family:var(--font-mono);font-weight:700}
+.rx-body{display:flex;flex-direction:column;gap:8px;font-size:13px}
+.rx-row{display:flex;gap:8px}
+.rx-label{color:var(--text3);min-width:120px;font-size:11px;text-transform:uppercase}
+.rx-val{color:var(--text);font-weight:500}
+.rx-footer{margin-top:16px;padding-top:12px;border-top:1px dashed var(--border2);display:flex;justify-content:space-between;font-size:11px;color:var(--text3)}
+
+/* Counseling checklist */
+.counsel-list{display:flex;flex-direction:column;gap:6px}
+.counsel-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:var(--r);background:var(--bg-card2);border:1px solid var(--border);cursor:pointer;transition:all .15s}
+.counsel-item:hover{border-color:var(--border3)}
+.counsel-item.checked{background:var(--green-dim);border-color:rgba(52,211,153,.3)}
+.counsel-check{width:18px;height:18px;border-radius:4px;border:2px solid var(--border3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .15s}
+.counsel-item.checked .counsel-check{background:var(--accent);border-color:var(--accent);color:var(--bg-deep)}
+.counsel-text{font-size:12px;color:var(--text2);line-height:1.4}
+.counsel-item.checked .counsel-text{color:var(--text)}
+/* Feedback */
+.feedback-box{padding:16px;border-radius:var(--r2);margin-top:16px;animation:fadeIn .3s ease}
+.feedback-box.correct{background:var(--green-dim);border:1px solid rgba(52,211,153,.25)}
+.feedback-box.wrong{background:var(--red-dim);border:1px solid rgba(248,113,113,.25)}
+.feedback-box.info{background:var(--blue-dim);border:1px solid rgba(96,165,250,.25)}
+.fb-text{font-size:13px;color:var(--text);line-height:1.6}
+.fb-text p{margin-bottom:6px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* Results */
+.results-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r3);padding:32px;text-align:center}
+.results-grade{font-size:72px;font-weight:800;margin-bottom:4px}
+.results-label{font-size:20px;font-weight:700;color:var(--text);margin-bottom:4px}
+.results-desc{font-size:13px;color:var(--text2);max-width:500px;margin:0 auto 24px}
+.results-score{font-family:var(--font-mono);font-size:28px;font-weight:700;color:var(--text);margin-bottom:24px}
+.results-score span{color:var(--text3);font-size:18px}
+
+.phase-results{display:flex;flex-direction:column;gap:8px;max-width:500px;margin:0 auto 24px;text-align:left}
+.pr-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-radius:var(--r);background:var(--bg-card2);border:1px solid var(--border)}
+.pr-name{font-size:12px;font-weight:600;color:var(--text2)}
+.pr-score{font-family:var(--font-mono);font-size:13px;font-weight:700}
+.pr-bar{flex:1;height:4px;background:var(--border2);border-radius:99px;margin:0 12px;overflow:hidden}
+.pr-fill{height:100%;border-radius:99px;transition:width .5s ease}
+
+/* Buttons */
+.btn-primary{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 24px;border:none;border-radius:var(--r);
+    background:linear-gradient(135deg,#16a34a,#22c55e);
+    color:white;font-family:var(--font);font-size:14px;font-weight:700;
+    cursor:pointer;transition:all .2s;
+    box-shadow:0 4px 16px var(--accent-glow);
+}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 24px var(--accent-glow)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.btn-secondary{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 24px;border-radius:var(--r);
+    background:var(--bg-card2);border:1px solid var(--border2);
+    color:var(--text2);font-family:var(--font);font-size:14px;font-weight:600;
+    cursor:pointer;transition:all .2s;
+}
+.btn-secondary:hover{color:var(--text);border-color:var(--border3)}
+.btn-group{display:flex;gap:10px;margin-top:20px;justify-content:center}
+.btn-full{width:100%}
+
+/* Phase header */
+.phase-header{margin-bottom:20px}
+.phase-badge{display:inline-block;padding:3px 10px;border-radius:var(--r);background:var(--accent-dim);border:1px solid var(--accent-border);font-family:var(--font-mono);font-size:10px;font-weight:700;color:var(--accent);margin-bottom:8px}
+.phase-title{font-size:24px;font-weight:800;color:var(--text);margin-bottom:4px}
+.phase-title span{color:var(--accent)}
+.phase-desc{font-size:14px;color:var(--text2);line-height:1.6}
+
+/* Drug info panel */
+.drug-info{background:var(--bg-card);border:1px solid var(--accent-border);border-radius:var(--r2);padding:20px;margin-top:16px}
+.di-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.di-name{font-size:16px;font-weight:700;color:var(--accent)}
+.di-class{font-size:11px;color:var(--text2)}
+.di-props{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-top:12px}
+.di-prop{padding:8px;border-radius:var(--r);background:var(--bg-card2);text-align:center}
+.di-prop-label{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
+.di-prop-val{font-family:var(--font-mono);font-size:14px;font-weight:700;color:var(--text);margin-top:2px}
+
+/* Rx type selector */
+.rx-types{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:16px}
+.rx-type-option{padding:12px;border-radius:var(--r);background:var(--bg-card2);border:2px solid var(--border);cursor:pointer;transition:all .2s}
+.rx-type-option:hover{border-color:var(--border3)}
+.rx-type-option.selected{border-color:var(--accent);background:var(--accent-dim)}
+.rto-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px}
+.rx-type-option.selected .rto-name{color:var(--accent)}
+.rto-ref{font-size:10px;color:var(--text3);font-family:var(--font-mono)}
+
+/* Toast */
+.toast-container{position:fixed;top:70px;right:16px;z-index:500;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{padding:10px 16px;border-radius:var(--r);font-size:12px;font-weight:600;backdrop-filter:blur(10px);animation:toastIn .3s ease,toastOut .3s 2.7s ease forwards;pointer-events:all}
+.toast.success{background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.25);color:var(--green)}
+.toast.error{background:rgba(248,113,113,.12);border:1px solid rgba(248,113,113,.25);color:var(--red)}
+.toast.info{background:rgba(96,165,250,.12);border:1px solid rgba(96,165,250,.25);color:var(--blue)}
+@keyframes toastIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes toastOut{to{opacity:0;transform:translateX(20px)}}
+
+/* Responsive */
+@media(max-width:768px){
+    .stepper-inner{overflow-x:auto;gap:4px}
+    .step-info{display:none}
+    .cases-grid{grid-template-columns:1fr}
+    .drug-grid{grid-template-columns:repeat(2,1fr)}
+    .vitals-grid{grid-template-columns:repeat(3,1fr)}
+    .rx-types{grid-template-columns:1fr}
+    .phase-title{font-size:20px}
+    .welcome-hero h1{font-size:28px}
+}

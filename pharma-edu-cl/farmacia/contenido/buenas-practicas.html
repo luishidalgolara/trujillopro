@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buenas Prácticas BPM / BPL / BPA — PharmaLab Chile</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../farmacia.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="module-farmacia">
+
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <div class="logo-icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/><circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/><line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/><line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/><line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/></svg></div>
+                <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../../quimica/index.html" class="nav-link" data-module="quimica">⚗️ Química</a>
+                <a href="../../farmacia/index.html" class="nav-link active" data-module="farmacia">💊 Farmacia</a>
+                <a href="../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf">🧬 Q. Farmacéutica</a>
+                <a href="../../biotecnologia/index.html" class="nav-link" data-module="biotech">🔬 Biotecnología</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="module-hero" style="min-height:42vh; padding-bottom:40px;">
+        <div class="hero-content">
+            <span class="section-tag">Farmacia — Unidad 4</span>
+            <h1 class="section-title">Buenas Prácticas <span class="text-gradient-farmacia">BPM / BPL / BPA</span></h1>
+            <p class="section-desc">Buenas Prácticas de Manufactura, Laboratorio y Almacenamiento según normativa chilena vigente, estándares OMS, ICH y lineamientos GMP internacionales.</p>
+        </div>
+    </section>
+
+    <section class="lesson-content">
+        <div class="container">
+            <div class="lesson-body">
+
+                <div class="lesson-index">
+                    <h4>📑 Contenido de esta Unidad</h4>
+                    <ol>
+                        <li><a href="#intro-bp">Introducción a las Buenas Prácticas Farmacéuticas</a></li>
+                        <li><a href="#bpm">BPM — Buenas Prácticas de Manufactura</a></li>
+                        <li><a href="#bpl">BPL — Buenas Prácticas de Laboratorio</a></li>
+                        <li><a href="#bpa">BPA — Buenas Prácticas de Almacenamiento y Distribución</a></li>
+                        <li><a href="#bpf">BPF — Buenas Prácticas de Farmacia</a></li>
+                        <li><a href="#calidad">Sistema de Gestión de Calidad Farmacéutico</a></li>
+                        <li><a href="#ich">Armonización Internacional: ICH y OMS</a></li>
+                    </ol>
+                </div>
+
+                <!-- 1. INTRO -->
+                <div class="lesson-section" id="intro-bp">
+                    <h2>1. <span>Introducción a las Buenas Prácticas Farmacéuticas</span></h2>
+                    <p>Las Buenas Prácticas Farmacéuticas son un conjunto de normas y procedimientos establecidos para garantizar que los medicamentos sean de la calidad apropiada para el uso al que están destinados. Su objetivo fundamental es asegurar que los medicamentos lleguen al paciente con la identidad, potencia, pureza y calidad especificadas.</p>
+
+                    <div class="info-block">
+                        <h3>🎯 ¿Por qué son necesarias las Buenas Prácticas?</h3>
+                        <p>Un medicamento mal fabricado, mal almacenado o mal dispensado puede causar graves daños a la salud del paciente. Las Buenas Prácticas surgieron históricamente como respuesta a tragedias sanitarias:</p>
+                        <ul>
+                            <li><strong>1937 — Elixir de sulfanilamida (EE.UU.):</strong> 107 muertes por el uso de dietilenglicol como solvente sin estudios de toxicidad. Originó la primera legislación moderna de control de medicamentos.</li>
+                            <li><strong>1961 — Talidomida:</strong> Más de 10.000 niños con malformaciones (focomelia) por el uso de talidomida en embarazadas. Dio impulso a las regulaciones de estudios clínicos obligatorios.</li>
+                            <li><strong>1982 — Envenenamiento por Tylenol (EE.UU.):</strong> Cápsulas contaminadas con cianuro causaron 7 muertes. Generó regulaciones sobre envases a prueba de manipulación.</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>📚 Marco Normativo en Chile</h3>
+                        <ul>
+                            <li><strong>D.S. Nº 97/2010 (MINSAL):</strong> Reglamento de BPM para laboratorios farmacéuticos en Chile. Armonizado con las guías OMS TRS 902/2002.</li>
+                            <li><strong>D.S. Nº 3/2010 (MINSAL):</strong> Establece requisitos de BPA y BPF para farmacias y droguerías.</li>
+                            <li><strong>Norma Técnica 148/2016 (MINSAL):</strong> BPA para establecimientos de distribución de medicamentos.</li>
+                            <li><strong>Guías OMS (TRS 957, TRS 961, TRS 992):</strong> Orientaciones internacionales sobre BPM aplicadas en Chile como referencia.</li>
+                            <li><strong>ICH Q10:</strong> Sistema de Calidad Farmacéutica, adoptado como estándar de referencia.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 2. BPM -->
+                <div class="lesson-section" id="bpm">
+                    <h2>2. <span>BPM — Buenas Prácticas de Manufactura</span></h2>
+                    <p>Las Buenas Prácticas de Manufactura (BPM), también conocidas como GMP (Good Manufacturing Practices) en inglés, son los estándares mínimos que un fabricante de medicamentos debe cumplir para garantizar que sus productos son consistentemente de alta calidad, desde la materia prima hasta el producto terminado.</p>
+
+                    <div class="pharma-highlight">
+                        <div class="ph-icon">🏭</div>
+                        <h3>Principio Fundamental de BPM</h3>
+                        <p>"La calidad no puede ser garantizada únicamente mediante el control del producto terminado. La calidad debe estar incorporada en el proceso de fabricación." — Este principio implica que el control debe aplicarse en CADA etapa del proceso, no solo al final.</p>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>🏗️ Los 10 Pilares de BPM según D.S. 97/2010</h3>
+                        <ul>
+                            <li><strong>1. Personal:</strong> Suficiente, calificado y capacitado. Incluye al QF como responsable de producción y control de calidad. Todo el personal debe recibir capacitación continua en BPM e higiene.</li>
+                            <li><strong>2. Instalaciones y Equipos:</strong> Diseñadas y mantenidas para prevenir contaminación cruzada, facilitar la limpieza y minimizar el riesgo de error. Incluye áreas de producción, almacenamiento, laboratorio y servicios.</li>
+                            <li><strong>3. Calificación y Validación:</strong> Todos los equipos deben ser calificados (IQ, OQ, PQ) y todos los procesos críticos deben ser validados antes de la producción de rutina.</li>
+                            <li><strong>4. Materias Primas y Material de Envasado:</strong> Deben aprobarse antes de su uso mediante análisis y certificados de calidad. Trazabilidad completa.</li>
+                            <li><strong>5. Documentación:</strong> "Si no está escrito, no se hizo." Todos los procedimientos, instrucciones y resultados deben documentarse. Incluye: POE (Procedimientos Operativos Estándar), registros de producción, registros de control de calidad.</li>
+                            <li><strong>6. Producción:</strong> Siguiendo procedimientos escritos y validados. Control de variables críticas del proceso (temperatura, tiempo, presión, pH). Identificación y segregación de productos en proceso.</li>
+                            <li><strong>7. Control de Calidad:</strong> Departamento independiente de producción. Realiza análisis de materias primas, producto en proceso y producto terminado antes de su liberación.</li>
+                            <li><strong>8. Contrato de Fabricación:</strong> Cuando se contrata la fabricación a terceros, deben cumplir también BPM y existir un contrato escrito que especifique responsabilidades.</li>
+                            <li><strong>9. Autoinspecciones y Auditorías:</strong> Programa regular de autoinspección interna para identificar deficiencias y áreas de mejora. Auditorías a proveedores.</li>
+                            <li><strong>10. Manejo de Reclamos y Retiro del Mercado:</strong> Procedimientos escritos para la gestión de reclamos de calidad y para el retiro eficiente de productos del mercado ante problemas de seguridad.</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>🧼 Higiene del Personal en BPM</h3>
+                        <ul>
+                            <li>Vestuario adecuado al área de producción (ropa de protección, guantes, mascarillas, cofias).</li>
+                            <li>Prohibición de joyas, maquillaje y perfumes en áreas de producción.</li>
+                            <li>Lavado de manos obligatorio al ingresar a áreas productivas.</li>
+                            <li>Exámenes médicos periódicos del personal.</li>
+                            <li>Exclusión del personal con enfermedades transmisibles o heridas expuestas de áreas de producción.</li>
+                            <li>Prohibición de comer, beber o fumar en áreas de producción.</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>📝 Documentación BPM: Tipos de Documentos</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Tipo de Documento</th>
+                                    <th>Descripción</th>
+                                    <th>Ejemplo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>POE (SOP)</strong></td>
+                                    <td>Procedimiento Operativo Estándar. Instrucción escrita paso a paso para realizar una tarea específica.</td>
+                                    <td>POE-001: Limpieza del reactor de mezcla</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Fórmula Maestra</strong></td>
+                                    <td>Documento que especifica la composición, el proceso de fabricación y los criterios de aceptación del producto.</td>
+                                    <td>Fórmula maestra Paracetamol 500 mg comp.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Registro de Lote</strong></td>
+                                    <td>Copia de la fórmula maestra completada durante la fabricación. Evidencia de cada paso realizado.</td>
+                                    <td>Lote 2024-001: Fabricación Paracetamol</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Especificación</strong></td>
+                                    <td>Define los criterios de calidad que debe cumplir un material o producto para ser aprobado.</td>
+                                    <td>Especificación MP Paracetamol USP</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Protocolo de Validación</strong></td>
+                                    <td>Plan escrito que especifica cómo se realizará la validación y los criterios de aceptación.</td>
+                                    <td>Protocolo validación proceso mezcla</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>🔬 Validación de Procesos</h3>
+                        <p>La validación es el proceso documentado que proporciona un alto grado de seguridad de que un proceso, equipo o sistema producirá consistentemente resultados que cumplan los criterios de aceptación predeterminados.</p>
+                        <ul>
+                            <li><strong>Validación Prospectiva:</strong> Realizada antes de que el producto se comercialice. Se hacen 3 lotes consecutivos de validación.</li>
+                            <li><strong>Validación Concurrente:</strong> Se realiza durante la producción de rutina de los primeros lotes comerciales.</li>
+                            <li><strong>Validación Retrospectiva:</strong> Basada en la revisión y análisis de datos históricos del proceso.</li>
+                            <li><strong>Revalidación:</strong> Necesaria cuando se producen cambios en el proceso, equipos, materias primas o especificaciones del producto.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 3. BPL -->
+                <div class="lesson-section" id="bpl">
+                    <h2>3. <span>BPL — Buenas Prácticas de Laboratorio</span></h2>
+                    <p>Las Buenas Prácticas de Laboratorio (BPL) son un sistema de calidad que cubre el proceso organizativo y las condiciones bajo las cuales se planifican, realizan, monitorean, registran, archivan y comunican los estudios de laboratorio no clínicos (análisis de materias primas, producto en proceso y producto terminado, estudios de estabilidad).</p>
+
+                    <div class="info-block">
+                        <h3>🔬 Principios Fundamentales de BPL</h3>
+                        <ul>
+                            <li><strong>Trazabilidad:</strong> Capacidad de rastrear el historial de cada análisis realizado: quién lo realizó, cuándo, con qué equipos y materiales, y cuáles fueron los resultados.</li>
+                            <li><strong>Calibración de equipos:</strong> Todo equipo de laboratorio (balanzas, pHmetros, espectrofotómetros, HPLC) debe estar calibrado con trazabilidad a estándares nacionales o internacionales.</li>
+                            <li><strong>Estándares de referencia:</strong> Los reactivos y estándares utilizados deben ser de calidad certificada (USP, BP, Sigma-Aldrich certificado).</li>
+                            <li><strong>Control de muestras:</strong> Sistema de identificación, almacenamiento y destrucción de muestras de referencia (contra-muestras) de cada lote fabricado.</li>
+                            <li><strong>Investigación de resultados fuera de especificación (OOS):</strong> Protocolo escrito obligatorio para investigar cualquier resultado que no cumpla las especificaciones establecidas.</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>📊 Estudios de Estabilidad (ICH Q1A)</h3>
+                        <p>Los estudios de estabilidad determinan cómo varían en el tiempo las propiedades de un medicamento bajo la influencia de factores ambientales como temperatura, humedad y luz. Son obligatorios para el registro y seguimiento del medicamento.</p>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Tipo de Estudio</th>
+                                    <th>Temperatura</th>
+                                    <th>Humedad Relativa</th>
+                                    <th>Duración Mínima</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tiempo real (Zona IVb - Chile)</td>
+                                    <td>30°C ± 2°C</td>
+                                    <td>65% ± 5% HR</td>
+                                    <td>12 meses</td>
+                                </tr>
+                                <tr>
+                                    <td>Acelerado (Zona IVb)</td>
+                                    <td>40°C ± 2°C</td>
+                                    <td>75% ± 5% HR</td>
+                                    <td>6 meses</td>
+                                </tr>
+                                <tr>
+                                    <td>Intermedio (cuando acelerado falla)</td>
+                                    <td>30°C ± 2°C</td>
+                                    <td>65% ± 5% HR</td>
+                                    <td>12 meses</td>
+                                </tr>
+                                <tr>
+                                    <td>Refrigeración (termolábiles)</td>
+                                    <td>5°C ± 3°C</td>
+                                    <td>No controlada</td>
+                                    <td>12 meses</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="font-size:0.82rem; color: var(--text-muted); margin-top: 10px;">Chile pertenece a la Zona Climática IVb según la clasificación ICH (clima cálido y muy húmedo).</p>
+                    </div>
+                </div>
+
+                <!-- 4. BPA -->
+                <div class="lesson-section" id="bpa">
+                    <h2>4. <span>BPA — Buenas Prácticas de Almacenamiento y Distribución</span></h2>
+                    <p>Las Buenas Prácticas de Almacenamiento (BPA) garantizan que los medicamentos se mantengan en las condiciones adecuadas durante todo el proceso de almacenamiento y distribución, desde el laboratorio fabricante hasta la farmacia.</p>
+
+                    <div class="info-block">
+                        <h3>🌡️ Condiciones de Almacenamiento por Categoría</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Categoría</th>
+                                    <th>Temperatura</th>
+                                    <th>Ejemplos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Temperatura ambiente controlada</td>
+                                    <td>15°C – 30°C</td>
+                                    <td>Mayoría de comprimidos, cápsulas</td>
+                                </tr>
+                                <tr>
+                                    <td>Lugar fresco</td>
+                                    <td>8°C – 15°C</td>
+                                    <td>Algunos supositorios</td>
+                                </tr>
+                                <tr>
+                                    <td>Refrigeración</td>
+                                    <td>2°C – 8°C</td>
+                                    <td>Insulina, vacunas, colirios, biológicos</td>
+                                </tr>
+                                <tr>
+                                    <td>Congelación</td>
+                                    <td>-20°C (o menos)</td>
+                                    <td>Vacunas especiales, plasma</td>
+                                </tr>
+                                <tr>
+                                    <td>Proteger de la luz</td>
+                                    <td>Variable</td>
+                                    <td>Nitroglicerina, furosemida IV, nitroprusiato</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>🏪 Requisitos BPA para Farmacias (D.S. 3/2010)</h3>
+                        <ul>
+                            <li><strong>Sistema FEFO (First Expired, First Out):</strong> Los medicamentos con menor fecha de vencimiento deben dispensarse primero. Obligatorio en farmacias chilenas.</li>
+                            <li><strong>Control de temperatura:</strong> Registro diario de temperatura (mínima y máxima) del área de almacenamiento y de los refrigeradores.</li>
+                            <li><strong>Humedad relativa:</strong> Control y registro de humedad para medicamentos sensibles. No debe superar el 60% HR en áreas de almacenamiento general.</li>
+                            <li><strong>Segregación:</strong> Medicamentos caducados, deteriorados o retirados del mercado deben estar claramente segregados del stock disponible en un área con rótulo "RECHAZADOS — NO DISPENSAR".</li>
+                            <li><strong>Cadena de frío:</strong> Procedimientos escritos para el mantenimiento de la cadena de frío, incluyendo qué hacer en caso de falla del refrigerador.</li>
+                            <li><strong>Iluminación y ventilación:</strong> Adecuada para las tareas realizadas. Sin exposición directa al sol en áreas de almacenamiento.</li>
+                            <li><strong>Lucha contra plagas:</strong> Programa documentado de control de plagas (roedores, insectos). No usar insecticidas que puedan contaminar medicamentos.</li>
+                        </ul>
+                    </div>
+
+                    <div class="alert-box alert-warning">
+                        <span class="alert-icon">⚠️</span>
+                        <div>
+                            <strong>Alerta de Temperatura: Medicamentos Termolábiles</strong>
+                            <p>La rotura de la cadena de frío en medicamentos termolábiles (insulina, vacunas, biológicos) puede hacer que el medicamento pierda eficacia sin que haya cambios visibles en su apariencia. El QF debe conocer el procedimiento ante excursiones de temperatura y contactar al proveedor o laboratorio para determinar si el medicamento puede seguir siendo utilizado.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. BPF -->
+                <div class="lesson-section" id="bpf">
+                    <h2>5. <span>BPF — Buenas Prácticas de Farmacia</span></h2>
+                    <p>Las Buenas Prácticas de Farmacia (BPF) son las normas que definen los estándares de calidad para el ejercicio de la farmacia comunitaria y hospitalaria. Fueron definidas por la FIP (Federación Internacional de Farmacéuticos) y la OMS en 1993 y actualizadas en 2011.</p>
+
+                    <div class="info-block">
+                        <h3>📋 Estándares BPF según FIP/OMS (2011)</h3>
+                        <ul>
+                            <li><strong>Estándar 1 — Dispensación:</strong> El farmacéutico debe garantizar que los medicamentos apropiados se dispensan de forma precisa al paciente correcto, en el momento correcto y con la información necesaria.</li>
+                            <li><strong>Estándar 2 — Atención al Paciente:</strong> El farmacéutico debe asegurar la atención farmacéutica para todos los pacientes, con especial atención a poblaciones vulnerables (pediátrica, geriátrica, embarazadas).</li>
+                            <li><strong>Estándar 3 — Promoción de la Salud:</strong> El farmacéutico debe participar activamente en la promoción de la salud y prevención de enfermedades en su comunidad.</li>
+                            <li><strong>Estándar 4 — Evaluación y Mejora Continua:</strong> El farmacéutico debe contribuir a la evaluación de la eficacia de los servicios farmacéuticos y promover su mejora continua.</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>💊 Elaboración Magistral en Farmacia</h3>
+                        <p>Las preparaciones magistrales son medicamentos elaborados por el farmacéutico de forma individualizada para un paciente específico, según prescripción médica. En Chile están reguladas por el D.S. 3/2010 y requieren:</p>
+                        <ul>
+                            <li>Receta médica con prescripción individual.</li>
+                            <li>Formulario magistral con composición cualitativa y cuantitativa.</li>
+                            <li>Procedimiento escrito de elaboración.</li>
+                            <li>Control de calidad mínimo del producto elaborado.</li>
+                            <li>Etiquetado completo: nombre del paciente, composición, vía de administración, posología, fecha de elaboración y caducidad.</li>
+                            <li>Registro de cada preparación elaborada.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 6. CALIDAD -->
+                <div class="lesson-section" id="calidad">
+                    <h2>6. <span>Sistema de Gestión de Calidad Farmacéutico</span></h2>
+
+                    <div class="info-block">
+                        <h3>🔄 Ciclo PDCA (Deming) en Farmacia</h3>
+                        <p>El ciclo PDCA (Plan-Do-Check-Act) o ciclo de Deming es la base de la mejora continua en los sistemas de gestión de calidad farmacéuticos:</p>
+                        <ul>
+                            <li><strong>Plan (Planificar):</strong> Identificar el proceso a mejorar, recopilar datos, analizar causas raíz, establecer objetivos y desarrollar un plan de acción.</li>
+                            <li><strong>Do (Hacer):</strong> Implementar el plan en pequeña escala, documentar todos los cambios realizados y recopilar datos del nuevo proceso.</li>
+                            <li><strong>Check (Verificar):</strong> Analizar los resultados obtenidos y compararlos con los objetivos establecidos. Identificar brechas.</li>
+                            <li><strong>Act (Actuar):</strong> Si el cambio fue exitoso, estandarizarlo. Si no, analizar el problema y reiniciar el ciclo.</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>🚨 Gestión de Desviaciones y No Conformidades</h3>
+                        <ul>
+                            <li><strong>Desviación:</strong> Cualquier diferencia entre lo que el procedimiento establece y lo que realmente ocurrió durante la fabricación o control.</li>
+                            <li><strong>No conformidad:</strong> Incumplimiento de un requisito especificado (especificación, POE, regulación).</li>
+                            <li><strong>Investigación de causa raíz:</strong> Herramientas: diagrama Ishikawa (espina de pescado), 5 Porqués, AMEF (Análisis de Modo y Efecto de Fallos).</li>
+                            <li><strong>CAPA (Acción Correctiva y Preventiva):</strong> Acciones implementadas para corregir la desviación actual (correctiva) y prevenir su recurrencia (preventiva).</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>📊 Indicadores de Calidad en Farmacia</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Indicador</th>
+                                    <th>Descripción</th>
+                                    <th>Meta Referencial</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tasa de error de dispensación</td>
+                                    <td>Errores de medicación / total dispensaciones</td>
+                                    <td>&lt; 0,1%</td>
+                                </tr>
+                                <tr>
+                                    <td>% medicamentos caducados</td>
+                                    <td>Unidades vencidas / stock total</td>
+                                    <td>0%</td>
+                                </tr>
+                                <tr>
+                                    <td>Tiempo de espera dispensación</td>
+                                    <td>Tiempo desde llegada hasta entrega</td>
+                                    <td>&lt; 10 min</td>
+                                </tr>
+                                <tr>
+                                    <td>Satisfacción del paciente</td>
+                                    <td>Encuestas de satisfacción</td>
+                                    <td>&gt; 90%</td>
+                                </tr>
+                                <tr>
+                                    <td>Adherencia terapéutica</td>
+                                    <td>Pacientes en seguimiento que cumplen tratamiento</td>
+                                    <td>&gt; 80%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 7. ICH -->
+                <div class="lesson-section" id="ich">
+                    <h2>7. <span>Armonización Internacional: ICH y OMS</span></h2>
+
+                    <div class="info-block">
+                        <h3>🌍 ICH — International Council for Harmonisation</h3>
+                        <p>El ICH (Consejo Internacional de Armonización de Requisitos Técnicos para el Registro de Productos Farmacéuticos para Uso Humano) es el organismo que reúne a las agencias reguladoras de EE.UU. (FDA), Europa (EMA) y Japón (PMDA), junto a la industria farmacéutica, para desarrollar directrices técnicas armonizadas.</p>
+                        <p>Las guías ICH relevantes para Chile se dividen en 4 categorías:</p>
+                        <ul>
+                            <li><strong>Q (Quality — Calidad):</strong> BPM, estudios de estabilidad, validación, control de calidad. Las más importantes para el farmacéutico. Ej: Q1A (Estabilidad), Q8 (Desarrollo Farmacéutico), Q9 (Gestión de Riesgo de Calidad), Q10 (Sistema de Calidad).</li>
+                            <li><strong>S (Safety — Seguridad):</strong> Estudios preclínicos de toxicología, carcinogenicidad, genotoxicidad.</li>
+                            <li><strong>E (Efficacy — Eficacia):</strong> Diseño de ensayos clínicos, estadística, Buenas Prácticas Clínicas.</li>
+                            <li><strong>M (Multidisciplinar):</strong> CTD (Common Technical Document), nomenclatura de medicamentos biotecnológicos.</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>🔑 ICH Q9 — Gestión del Riesgo de Calidad</h3>
+                        <p>La gestión del riesgo de calidad es un enfoque sistemático para la evaluación, control, comunicación y revisión de los riesgos para la calidad del medicamento. Herramientas más usadas en farmacia:</p>
+                        <ul>
+                            <li><strong>AMEF (FMEA):</strong> Análisis de Modo y Efecto de Fallos. Identifica posibles fallos, sus causas y consecuencias.</li>
+                            <li><strong>HACCP:</strong> Análisis de Peligros y Puntos de Control Crítico. Adaptado de la industria alimentaria, se usa en producción aséptica y estéril.</li>
+                            <li><strong>Ishikawa:</strong> Diagrama de causa-efecto (espina de pescado). Útil para investigación de deviaciones.</li>
+                            <li><strong>Análisis de árbol de fallos (FTA):</strong> Representación gráfica de las causas que podrían llevar a un evento no deseado.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pharma-highlight">
+                        <div class="ph-icon">🌐</div>
+                        <h3>Chile en el Contexto Regulatorio Internacional</h3>
+                        <p>Chile mantiene una relación activa con la OMS, la OPS (PAHO) y la Red PANDRH (Red Panamericana de Armonización de la Reglamentación Farmacéutica). El ISP participa en el Programa de Precalificación de la OMS y aspira a ser reconocido como Autoridad Regulatoria de Referencia Regional (ARRN) en América Latina, lo que elevaría aún más los estándares exigidos a la industria farmacéutica nacional.</p>
+                    </div>
+                </div>
+
+                <div class="lesson-nav">
+                    <a href="regulacion-isp.html">← Unidad 3: Regulación ISP</a>
+                    <a href="../index.html">Volver al Módulo Farmacia</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 PharmaLab Chile — Farmacia: BPM / BPL / BPA</p>
+                <p class="footer-disclaimer">Contenido educacional actualizado según normativas ISP, MINSAL y estándares OMS/ICH vigentes. No reemplaza asesoría profesional.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

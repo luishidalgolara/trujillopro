@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla Periódica Interactiva — PharmaLab Chile</title>
+    <link rel="stylesheet" href="../../../../styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="module-quimica">
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../../../../index.html" class="nav-logo">
+                <div class="logo-icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/><circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/><line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/><line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/><line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/></svg></div>
+                <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../../../index.html" class="nav-link active" data-module="quimica">⚗️ Química</a>
+                <a href="../../../../farmacia/index.html" class="nav-link" data-module="farmacia">💊 Farmacia</a>
+                <a href="../../../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf">🧬 Q. Farmacéutica</a>
+                <a href="../../../../biotecnologia/index.html" class="nav-link" data-module="biotech">🔬 Biotecnología</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="module-hero" style="padding-bottom:20px;min-height:auto">
+        <div class="hero-content">
+            <span class="section-tag">Unidad 1 — Tema 2</span>
+            <h1 class="section-title">Tabla Periódica <span style="background:linear-gradient(135deg,#00e5a0,#5b8dee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Interactiva</span></h1>
+            <p class="section-desc">Explora los 118 elementos. Haz click en cualquier elemento para ver sus propiedades, configuración electrónica y aplicaciones farmacéuticas.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="../../../../index.html">Inicio</a> <span>›</span>
+            <a href="../../../index.html">Química</a> <span>›</span>
+            <a href="../index.html">Fundamentos</a> <span>›</span>
+            <span class="current">Tabla Periódica</span>
+        </div>
+    </div>
+
+    <!-- ELEMENT DETAIL PANEL -->
+    <div class="element-detail" id="elementDetail">
+        <button class="detail-close" id="detailClose">✕</button>
+        <div class="detail-header">
+            <div class="detail-number" id="detailNumber">1</div>
+            <div class="detail-symbol" id="detailSymbol">H</div>
+            <div class="detail-name" id="detailName">Hidrógeno</div>
+            <div class="detail-mass" id="detailMass">1.008</div>
+        </div>
+        <div class="detail-body">
+            <div class="detail-row"><span>Categoría:</span> <span id="detailCategory">No metal</span></div>
+            <div class="detail-row"><span>Config. electrónica:</span> <span id="detailConfig">1s¹</span></div>
+            <div class="detail-row"><span>Electroneg. (Pauling):</span> <span id="detailEN">2.20</span></div>
+            <div class="detail-row"><span>Radio atómico:</span> <span id="detailRadius">53 pm</span></div>
+            <div class="detail-row"><span>Estado a T° ambiente:</span> <span id="detailState">Gas</span></div>
+            <div class="detail-row"><span>Punto de fusión:</span> <span id="detailMelt">-259.16 °C</span></div>
+            <div class="detail-row"><span>Punto de ebullición:</span> <span id="detailBoil">-252.87 °C</span></div>
+            <div class="detail-pharma" id="detailPharma">
+                <strong>Relevancia farmacéutica:</strong> <span id="detailPharmaText">Componente esencial de todas las moléculas orgánicas y fármacos. Los enlaces de hidrógeno determinan la estructura de proteínas y la interacción fármaco-receptor.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- PERIODIC TABLE -->
+    <section class="table-section">
+        <div class="table-container">
+            <!-- Legend -->
+            <div class="table-legend">
+                <div class="legend-item"><span class="legend-dot" style="background:#44cc88"></span>No metales</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#5b8dee"></span>Metales alcalinos</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#4488dd"></span>Alcalinotérreos</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#cc6644"></span>Metales de transición</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#e056a0"></span>Metaloides</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#f0a030"></span>Halógenos</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#8866cc"></span>Gases nobles</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#669988"></span>Otros metales</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#aa6644"></span>Lantánidos</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#776644"></span>Actínidos</div>
+            </div>
+            <div id="periodicTable" class="periodic-grid"></div>
+        </div>
+    </section>
+
+    <!-- EDUCATIONAL CONTENT -->
+    <section class="edu-content">
+        <div class="container">
+            <h2>Organización de la Tabla Periódica</h2>
+            <p>La tabla periódica organiza los 118 elementos conocidos según su número atómico creciente y sus propiedades químicas similares. Fue desarrollada por Dmitri Mendeléyev en 1869 y sigue siendo la herramienta más fundamental de la química.</p>
+
+            <div class="concepts-grid">
+                <div class="concept-card">
+                    <h4>Períodos (filas)</h4>
+                    <p>Hay 7 períodos horizontales. El número del período indica el nivel de energía más alto que ocupan los electrones de valencia. A medida que se avanza en un período, se agregan electrones al mismo nivel de energía principal.</p>
+                </div>
+                <div class="concept-card">
+                    <h4>Grupos (columnas)</h4>
+                    <p>Hay 18 grupos verticales. Los elementos del mismo grupo tienen la misma cantidad de electrones de valencia, lo que les confiere propiedades químicas similares. Por ejemplo, el grupo 17 (halógenos) todos tienen 7 electrones de valencia.</p>
+                </div>
+                <div class="concept-card">
+                    <h4>Bloques s, p, d, f</h4>
+                    <p>Los elementos se clasifican según el subnivel que se está llenando. Bloque s (grupos 1-2), bloque p (grupos 13-18), bloque d (metales de transición) y bloque f (lantánidos y actínidos).</p>
+                </div>
+                <div class="concept-card">
+                    <h4>Uso Farmacéutico</h4>
+                    <p>La tabla periódica es esencial en farmacia: C, H, O, N, S y P forman la mayoría de los fármacos. Metales como Fe, Zn, Cu y Pt se usan en suplementos y agentes antitumorales (cisplatino).</p>
+                </div>
+            </div>
+
+            <div class="lesson-nav">
+                <a href="../estructura-atomica/index.html">← Estructura Atómica</a>
+                <a href="../enlaces-quimicos/index.html">Enlaces Químicos →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container"><div class="footer-bottom">
+            <p>© 2026 PharmaLab Chile — Tabla Periódica Interactiva</p>
+        </div></div>
+    </footer>
+
+    <script src="../../../../script.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

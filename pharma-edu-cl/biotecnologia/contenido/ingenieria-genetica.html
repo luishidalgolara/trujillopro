@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingeniería Genética — PharmaLab Chile | Unidad 2</title>
+    <meta name="description" content="ADN recombinante, CRISPR-Cas9, vectores de expresión y clonación molecular. Contenido universitario verídico para estudiantes de biotecnología farmacéutica en Chile.">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../biotech.css">
+    <link rel="stylesheet" href="ingenieria-genetica.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="module-biotech">
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════ -->
+<nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+        <a href="../../index.html" class="nav-logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="../../quimica/index.html"              class="nav-link" data-module="quimica"><span class="nav-link-icon">⚗️</span> Química</a>
+            <a href="../../farmacia/index.html"             class="nav-link" data-module="farmacia"><span class="nav-link-icon">💊</span> Farmacia</a>
+            <a href="../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf"><span class="nav-link-icon">🧬</span> Q. Farmacéutica</a>
+            <a href="../../biotecnologia/index.html"        class="nav-link active" data-module="biotech"><span class="nav-link-icon">🔬</span> Biotecnología</a>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section class="ig-hero">
+    <div class="ig-hero-bg">
+        <div class="ig-hero-grid"></div>
+        <div class="ig-orb ig-orb-1"></div>
+        <div class="ig-orb ig-orb-2"></div>
+        <div class="ig-orb ig-orb-3"></div>
+    </div>
+    <div class="ig-hero-inner">
+        <div class="ig-wrap">
+            <div class="ig-hero-left">
+                <div class="ig-crumb">
+                    <a href="../../index.html"        style="color:inherit;text-decoration:none;">Inicio</a><span>/</span>
+                    <a href="../index.html"            style="color:inherit;text-decoration:none;">Biotecnología</a><span>/</span>
+                    <span style="color:#fff">Ingeniería Genética</span>
+                </div>
+                <div class="ig-hero-tag">Unidad 2 · Biotecnología</div>
+                <h1 class="ig-hero-title">Ingeniería <span class="ig-gr">Genética</span></h1>
+                <p class="ig-hero-desc">
+                    Manipulación dirigida del material genético para crear organismos productores de biofármacos, corregir genes defectuosos y desarrollar herramientas biotecnológicas de precisión. Desde el ADN recombinante de los años 70 hasta CRISPR-Cas9 y la era de la edición génica de base.
+                </p>
+                <div class="ig-hero-stats">
+                    <div class="ig-stat">
+                        <span class="ig-stat-num" data-ig-count="1973" data-ig-suf="">1973</span>
+                        <span class="ig-stat-label">Primer ADN recombinante (Boyer &amp; Cohen)</span>
+                    </div>
+                    <div class="ig-stat">
+                        <span class="ig-stat-num" data-ig-count="100" data-ig-suf="+" data-ig-dec="0">100+</span>
+                        <span class="ig-stat-label">Enfermedades en ensayos CRISPR (2024)</span>
+                    </div>
+                    <div class="ig-stat">
+                        <span class="ig-stat-num" data-ig-count="2023" data-ig-suf="">2023</span>
+                        <span class="ig-stat-label">1ª terapia CRISPR aprobada FDA (Casgevy)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ig-hero-vis">
+                <canvas id="ig-hero-canvas" title="ADN + CRISPR 3D — Rotar con mouse"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     DATOS CLAVE
+═══════════════════════════════════════════ -->
+<section class="ig-section">
+    <div class="ig-wrap">
+        <div class="ig-datos" data-ig-reveal>
+            <div class="ig-dato">
+                <span class="ig-dato-n" data-ig-count="50" data-ig-suf=" años">50 años</span>
+                <span class="ig-dato-l">De historia del ADN recombinante (1973–2024)</span>
+            </div>
+            <div class="ig-dato">
+                <span class="ig-dato-n" data-ig-count="3" data-ig-suf=" bp/s">3 bp/s</span>
+                <span class="ig-dato-l">Velocidad de síntesis de Taq Polimerasa a 72°C</span>
+            </div>
+            <div class="ig-dato">
+                <span class="ig-dato-n" data-ig-count="97" data-ig-suf="%">97%</span>
+                <span class="ig-dato-l">Eficiencia de corte on-target de CRISPR-Cas9 SpCas9</span>
+            </div>
+            <div class="ig-dato">
+                <span class="ig-dato-n" data-ig-count="4" data-ig-suf=" Nobel">4 Nobel</span>
+                <span class="ig-dato-l">Relacionados a edición y manipulación genética (1980–2020)</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TABS NAVEGACIÓN + CONTENIDO
+═══════════════════════════════════════════ -->
+<section class="ig-section" style="padding-top:0">
+    <div class="ig-wrap">
+
+        <div class="ig-section-hd" data-ig-reveal>
+            <div class="ig-sec-tag">🧬 Contenidos</div>
+            <h2 class="ig-sec-title">Cuatro Pilares de la <span class="ig-hl">Ingeniería Genética</span></h2>
+            <p class="ig-sec-sub">Explora cada herramienta fundamental: su base molecular, mecanismo de acción, aplicaciones farmacéuticas reales y modelo 3D interactivo.</p>
+        </div>
+
+        <!-- TABS NAV -->
+        <div class="ig-tabs-nav" data-ig-reveal>
+            <div class="ig-tab-btn active">
+                <div class="ig-tab-icon">🔗</div>
+                <span class="ig-tab-num">Tema 2.1</span>
+                <div class="ig-tab-name">ADN Recombinante</div>
+                <div class="ig-tab-hint">Tecnología de corte y ligación. Plásmidos, enzimas de restricción, ligasas y producción de proteínas heterólogas.</div>
+                <div class="ig-tab-arrow">→</div>
+            </div>
+            <div class="ig-tab-btn">
+                <div class="ig-tab-icon">✂️</div>
+                <span class="ig-tab-num">Tema 2.2</span>
+                <div class="ig-tab-name">CRISPR-Cas9</div>
+                <div class="ig-tab-hint">Sistema de edición génica de precisión. Mecanismo ARNg, DSB, HDR/NHEJ y aplicaciones terapéuticas aprobadas.</div>
+                <div class="ig-tab-arrow">→</div>
+            </div>
+            <div class="ig-tab-btn">
+                <div class="ig-tab-icon">🚀</div>
+                <span class="ig-tab-num">Tema 2.3</span>
+                <div class="ig-tab-name">Vectores de Expresión</div>
+                <div class="ig-tab-hint">Plásmidos, AAV, lentivirus y otros. Capacidad de carga, tropismo, inmunogenicidad y uso en terapia génica.</div>
+                <div class="ig-tab-arrow">→</div>
+            </div>
+            <div class="ig-tab-btn">
+                <div class="ig-tab-icon">🧫</div>
+                <span class="ig-tab-num">Tema 2.4</span>
+                <div class="ig-tab-name">Clonación Molecular</div>
+                <div class="ig-tab-hint">PCR, electroforesis, clonación por ligación o Gibson, transformación bacteriana y selección de colonias recombinantes.</div>
+                <div class="ig-tab-arrow">→</div>
+            </div>
+        </div>
+
+        <!-- ═══════ PANEL 1: ADN RECOMBINANTE ═══════ -->
+        <div class="ig-panel active" id="ig-p0">
+
+            <div class="ig-intro" data-ig-reveal>
+                <div class="ig-intro-text">
+                    <h2>ADN <span>Recombinante</span></h2>
+                    <p>La tecnología de ADN recombinante (rDNA) consiste en la unión in vitro de fragmentos de ADN provenientes de organismos distintos para crear moléculas de ADN híbridas o "recombinantes". El concepto fue revolucionario: por primera vez era posible "cortar" el ADN en sitios específicos, ligar fragmentos de interés en un vector y transferirlos a un organismo huésped que los expresara como proteínas funcionales.</p>
+                    <p>El experimento fundacional fue realizado en 1973 por Herbert Boyer (UCSF) y Stanley Cohen (Stanford), quienes combinaron el plásmido pSC101 de <em>E. coli</em> con un gen de rana africana (<em>Xenopus laevis</em>), y lo expresaron en bacterias. Tres años después, Boyer cofundó Genentech con Robert Swanson, y en 1982 la insulina humana recombinante (Humulin®) fue el primer producto rDNA aprobado por la FDA.</p>
+                    <div class="ig-hbox">
+                        <strong>Componentes Esenciales del Sistema rDNA</strong>
+                        <p>El gen de interés (ADNc obtenido de ARNm), el vector (plásmido o viral), las enzimas de restricción (endonucleasas tipo II), la ADN ligasa (une los extremos), el organismo huésped (E. coli, CHO, levadura) y los marcadores de selección (resistencia a antibióticos, fluorescencia).</p>
+                    </div>
+                    <div class="ig-hbox cyan">
+                        <strong>ADNc vs ADN Genómico</strong>
+                        <p>Para expresar proteínas en bacterias se usa el ADNc (copia del ARNm maduro, sin intrones), obtenido por transcriptasa reversa. Los organismos procariontes carecen del maquinaria de splicing para procesar intrones, por lo que el ADN genómico de origen eucariota no es directamente expresable en E. coli.</p>
+                    </div>
+                </div>
+                <div class="ig-3d">
+                    <div class="ig-3d-ctrls">
+                        <button class="ig-3d-btn" title="Rotar">↻</button>
+                    </div>
+                    <canvas id="ig-canvas-plasmid" title="Plásmido recombinante 3D — Arrastrar para rotar"></canvas>
+                    <div class="ig-3d-lbl">▸ Plásmido Recombinante · Inserto · Sitios EcoRI/HindIII · Ori · AmpR</div>
+                </div>
+            </div>
+
+            <!-- Enzimas de restricción -->
+            <div data-ig-reveal>
+                <div class="ig-sh">Enzimas de Restricción Tipo II — Herramientas de "Corte"</div>
+                <p style="font-size:.93rem;color:rgba(255,255,255,.56);line-height:1.8;margin-bottom:24px;">Las endonucleasas de restricción tipo II reconocen secuencias palindrómicas específicas de 4–8 pb y cortan el ADN bicatenario en esa secuencia o cerca de ella. Producen dos tipos de extremos: <strong style="color:#a855f7">cohesivos (sticky ends)</strong> — con protuberancias de cadena sencilla complementarias que facilitan la ligación — o <strong style="color:#06b6d4">romos (blunt ends)</strong> menos eficientes para clonar.</p>
+                <div class="ig-tbl-wrap">
+                    <table class="ig-tbl">
+                        <thead>
+                            <tr>
+                                <th>Enzima</th><th>Organismo de origen</th><th>Secuencia reconocida (5'→3')</th><th>Tipo de extremo</th><th>Uso frecuente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>EcoRI</td><td>E. coli RY13</td><td>5'…G↓AATTC…3'</td><td><span class="ig-tag ig-t-p">Cohesivo 5'</span></td><td>Clonación general, vectores pUC/pBR322</td></tr>
+                            <tr><td>HindIII</td><td>Haemophilus influenzae Rd</td><td>5'…A↓AGCTT…3'</td><td><span class="ig-tag ig-t-p">Cohesivo 5'</span></td><td>Compatibles con EcoRI en muchos vectores</td></tr>
+                            <tr><td>BamHI</td><td>Bacillus amyloliquefaciens H</td><td>5'…G↓GATCC…3'</td><td><span class="ig-tag ig-t-p">Cohesivo 5'</span></td><td>Expresión en E. coli, compatible BclI</td></tr>
+                            <tr><td>NotI</td><td>Nocardia otitidiscaviarum</td><td>5'…GC↓GGCCGC…3' (8 pb)</td><td><span class="ig-tag ig-t-c">Cohesivo 5'</span></td><td>Inserción de fragmentos grandes (cDNA)</td></tr>
+                            <tr><td>SmaI</td><td>Serratia marcescens</td><td>5'…CCC↓GGG…3'</td><td><span class="ig-tag ig-t-g">Romo</span></td><td>Clonación de fragmentos de PCR</td></tr>
+                            <tr><td>XhoI</td><td>Xanthomonas holcicola</td><td>5'…C↓TCGAG…3'</td><td><span class="ig-tag ig-t-p">Cohesivo 5'</span></td><td>Vectores pET para expresión en E. coli</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Vectores plásmidos comunes -->
+            <div data-ig-reveal>
+                <div class="ig-sh">Plásmidos de Clonación y Expresión más usados</div>
+                <div class="ig-cards">
+                    <div class="ig-card">
+                        <div class="ig-card-ico">🔵</div>
+                        <h4>pUC19 (Clonación E. coli)</h4>
+                        <p>2.686 pb. Ori pMB1 (alto número de copias ~500/célula). MCS flanqueado por lacZ-α (selecc. azul/blanco). AmpR. Estándar para clonación rutinaria.</p>
+                        <span class="ig-badge">2.7 kb · AmpR · lacZ</span>
+                    </div>
+                    <div class="ig-card">
+                        <div class="ig-card-ico">🟣</div>
+                        <h4>pET-28a (Expresión His-tag)</h4>
+                        <p>Promotor T7. N- y C-terminal His6-tag para purificación por IMAC (Ni-NTA). KanR. Requiere cepa BL21(DE3). El más utilizado para producción de proteínas recombinantes en E. coli.</p>
+                        <span class="ig-badge">T7 promotor · His-tag · KanR</span>
+                    </div>
+                    <div class="ig-card">
+                        <div class="ig-card-ico">🟢</div>
+                        <h4>pCDNA3.1 (Expresión mamífero)</h4>
+                        <p>CMV enhancer/promotor. SV40 ori. AmpR (bacteria) + NeoR (G418, mamífero). Para transfección transitoria o estable en células HEK293, CHO, COS-7. Ampliamente usado en producción de AcM.</p>
+                        <span class="ig-badge">CMV · HEK293 · AmpR+NeoR</span>
+                    </div>
+                    <div class="ig-card">
+                        <div class="ig-card-ico">🟡</div>
+                        <h4>pPICZα (Expresión Pichia pastoris)</h4>
+                        <p>Promotor AOX1 inducible por metanol. Secuencia señal α-mating factor para secreción. ZeoR. Producción de proteínas glicosiladas a alta densidad celular. Usado para enzimas industriales y biofármacos.</p>
+                        <span class="ig-badge">AOX1 · Pichia · ZeoR</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div data-ig-reveal>
+                <div class="ig-sh">Hitos Históricos del ADN Recombinante</div>
+                <div class="ig-tl">
+                    <div class="ig-tl-item">
+                        <div class="ig-tl-yr">1970 — Hamilton Smith: Primer enzima de restricción</div>
+                        <div class="ig-tl-tx"><strong>HindII</strong> aislada de H. influenzae. Smith comparte el Nobel 1978 con Arber y Nathans por el descubrimiento. Base para toda la biología molecular moderna.</div>
+                    </div>
+                    <div class="ig-tl-item">
+                        <div class="ig-tl-yr">1972 — Paul Berg: Primera molécula de ADN recombinante</div>
+                        <div class="ig-tl-tx">Combina ADN del fago λ con ADN del virus SV40. Premio Nobel 1980. Pionero de la bioética científica: organizó la Conferencia de Asilomar (1975) para regular la investigación en rDNA.</div>
+                    </div>
+                    <div class="ig-tl-item">
+                        <div class="ig-tl-yr">1973 — Boyer &amp; Cohen: ADN recombinante funcional en bacteria</div>
+                        <div class="ig-tl-tx">Insertan gen de rana en pSC101 y lo expresan en <em>E. coli</em>. <strong>Inicio de la era de la biotecnología moderna.</strong> Boyer funda Genentech con Swanson en 1976.</div>
+                    </div>
+                    <div class="ig-tl-item">
+                        <div class="ig-tl-yr">1977 — Somatostatina recombinante</div>
+                        <div class="ig-tl-tx">Primera proteína humana producida en E. coli por Genentech. La somatostatina (14 aa) se sintetizó a partir de un gen totalmente sintético fusionado a β-galactosidasa.</div>
+                    </div>
+                    <div class="ig-tl-item">
+                        <div class="ig-tl-yr">1982 — Insulina recombinante FDA</div>
+                        <div class="ig-tl-tx"><strong>Humulin® (Eli Lilly/Genentech)</strong>, primer biofármaco aprobado producido por rDNA. Reemplaza la insulina porcina/bovina, elimina riesgo de alergia y escasez. Marca el inicio de la industria biofarmacéutica.</div>
+                    </div>
+                    <div class="ig-tl-item">
+                        <div class="ig-tl-yr">1986 → Expansión: interferones, EPO, GH, factor VIII</div>
+                        <div class="ig-tl-tx">La plataforma rDNA en células CHO permite producción de proteínas glicosiladas complejas. En 30 años se generan >500 biofármacos aprobados globalmente.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ig-norma" data-ig-reveal>
+                <div class="ig-norma-ico">⚖️</div>
+                <div>
+                    <h4>Marco Regulatorio Chile: OGM y Bioseguridad</h4>
+                    <p>En Chile, la regulación de organismos genéticamente modificados (OGM) es competencia del SAG (Servicio Agrícola y Ganadero) para uso agrícola, del ISP para medicamentos biotecnológicos, y del MINSAL/SERNAPESCA para alimentos y acuicultura. La Ley 20.380 y el D.S. 193/2014 regulan los ensayos en contenimiento (Nivel BSL1-BSL4). Las Buenas Prácticas de Fabricación (BPF/GMP-ICH Q7) aplican obligatoriamente a toda producción de ingredientes activos por rDNA destinados a medicamentos en Chile. El ISP requiere declaración del sistema de expresión, banco de células maestro y certificados de ausencia de contaminantes adventicios según guía OMS 2013.</p>
+                </div>
+            </div>
+
+        </div><!-- /panel 0 -->
+
+        <!-- ═══════ PANEL 2: CRISPR-CAS9 ═══════ -->
+        <div class="ig-panel" id="ig-p1">
+
+            <div class="ig-intro rev" data-ig-reveal>
+                <div class="ig-intro-text">
+                    <h2>CRISPR-<span>Cas9</span></h2>
+                    <p>CRISPR (<em>Clustered Regularly Interspaced Short Palindromic Repeats</em>) es un sistema inmune adaptativo presente en el ~50% de las bacterias y ~90% de las arqueas. Lo utilizan para memorizar y destruir ADN viral que las haya infectado previamente. En 2012, Jennifer Doudna y Emmanuelle Charpentier (Premio Nobel 2020) demostraron que el complejo Cas9:ARNg puede programarse in vitro para cortar cualquier secuencia de ADN bicatenario con precisión de nucleótido.</p>
+                    <p>La maquinaria molecular consta de dos componentes: la <strong>proteína Cas9</strong> (nucleasa de ~1368 aa, ~160 kDa) que actúa como tijeras moleculares, y el <strong>ARN guía (ARNg o sgRNA)</strong>, una molécula de ~100 nt con una porción de 20 nt complementaria a la secuencia diana. La única restricción es la necesidad de una secuencia <strong>PAM</strong> (<em>Protospacer Adjacent Motif</em>) = 5'-NGG-3' (para SpCas9) adyacente al sitio de corte.</p>
+                    <div class="ig-hbox">
+                        <strong>Mecanismo Molecular Paso a Paso</strong>
+                        <p>1. El ARNg escanea el genoma buscando secuencias PAM (NGG). 2. Al encontrar la secuencia diana complementaria, Cas9 produce una burbuja de DNA:RNA. 3. El dominio RuvC corta la cadena no complementaria; el dominio HNH corta la cadena complementaria. 4. Resultado: rotura de doble cadena (DSB). 5. La célula repara la DSB por NHEJ (edición imprecisa, genera indels → knockout) o HDR (reparación dirigida por molde → knock-in preciso).</p>
+                    </div>
+                    <div class="ig-hbox green">
+                        <strong>NHEJ vs HDR: dos caminos de reparación</strong>
+                        <p><strong>NHEJ</strong> (Non-Homologous End Joining): reparación rápida pero propensa a errores. Genera inserciones/deleciones (indels) que frecuentemente producen frameshift → knockout del gen. Eficiencia alta (~60-80%). <strong>HDR</strong> (Homology-Directed Repair): usando un molde de ADN donante con secuencias homólogas flanqueantes, introduce un cambio preciso (corrección de mutación, inserción de gen). Eficiencia baja (~1-5% en células somáticas, mayor en células madre).</p>
+                    </div>
+                </div>
+                <div class="ig-3d">
+                    <canvas id="ig-canvas-crispr" title="CRISPR-Cas9 RNP 3D — Arrastrar para rotar"></canvas>
+                    <div class="ig-3d-lbl">▸ Cas9 · ARNg (20 nt) · ADN diana · DSB · PAM</div>
+                </div>
+            </div>
+
+            <!-- Variantes CRISPR -->
+            <div data-ig-reveal>
+                <div class="ig-sh">Variantes y Evolución del Sistema CRISPR</div>
+                <div class="ig-mec">
+                    <div class="ig-mec-card">
+                        <div class="ig-mec-ico">✂️</div>
+                        <h4>SpCas9 (Streptococcus pyogenes)</h4>
+                        <p>La más utilizada. PAM: 5'-NGG-3'. Produce DSB blunts. Tamaño grande (~4.2 kb del gen): desafío para empaquetamiento en AAV. Alta eficiencia on-target. On-target efficiency: 60-95%.</p>
+                    </div>
+                    <div class="ig-mec-card">
+                        <div class="ig-mec-ico">⚡</div>
+                        <h4>SaCas9 (S. aureus)</h4>
+                        <p>Más pequeña (~3.2 kb): cabe en un AAV con el ARNg. PAM: 5'-NNGRRT-3'. Eficiencia comparable a SpCas9. Usada en terapia génica hepática y músculo (menor tamaño = mejor empaquetamiento).</p>
+                    </div>
+                    <div class="ig-mec-card">
+                        <div class="ig-mec-ico">🎯</div>
+                        <h4>Base Editing (BE3, ABEmax)</h4>
+                        <p>Cas9 "nickasa" (D10A) fusionada a una desaminasa. <strong>CBE:</strong> convierte C→T. <strong>ABE:</strong> convierte A→G. Sin DSB: menor toxicidad, útil para corregir mutaciones puntuales (ej: β-talasemia, fenilcetonuria). Eficiencia hasta ~90%.</p>
+                    </div>
+                    <div class="ig-mec-card">
+                        <div class="ig-mec-ico">✏️</div>
+                        <h4>Prime Editing (PE2, PE3)</h4>
+                        <p>Cas9 nickasa + transcriptasa reversa + pegRNA (extended gRNA). "Busca y reemplaza" del genoma. Permite las 12 tipos de transiciones/transversiones sin DSB y sin necesitar molde HDR. Potencial para corregir el 89% de variantes patogénicas conocidas.</p>
+                    </div>
+                    <div class="ig-mec-card">
+                        <div class="ig-mec-ico">🔇</div>
+                        <h4>CRISPRi / CRISPRa</h4>
+                        <p>dCas9 (catalíticamente inactivo) fusionado a represores (KRAB) o activadores (VP64, VPR). Regula la expresión génica sin editar la secuencia. Herramienta de genómica funcional y diana terapéutica en epigenética.</p>
+                    </div>
+                    <div class="ig-mec-card">
+                        <div class="ig-mec-ico">🩺</div>
+                        <h4>Cas12a (Cpf1) y Cas13</h4>
+                        <p><strong>Cas12a:</strong> PAM 5'-TTTN-3', produce extremos cohesivos 5'. Más específica. <strong>Cas13:</strong> corta ARN (no ADN). Aplicada en diagnóstico (SHERLOCK) y silenciamiento de ARN viral. Potencial contra enfermedades de ARN (COVID, influenza).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aplicaciones aprobadas -->
+            <div data-ig-reveal>
+                <div class="ig-sh">Aplicaciones Clínicas y Terapias en Ensayos (2024)</div>
+                <div class="ig-tbl-wrap">
+                    <table class="ig-tbl">
+                        <thead>
+                            <tr><th>Terapia</th><th>Gen/Diana</th><th>Enfermedad</th><th>Estrategia CRISPR</th><th>Estado</th><th>Empresa</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Casgevy® (exagamglogene autotemcel)</td>
+                                <td>BCL11A (enhancer)</td>
+                                <td>Drepanocitosis / β-talasemia</td>
+                                <td>Reactivación HbF (NHEJ + HSPC)</td>
+                                <td><span class="ig-tag ig-t-g">Aprobado FDA/EMA 2023</span></td>
+                                <td>Vertex / CRISPR Therapeutics</td>
+                            </tr>
+                            <tr>
+                                <td>CTX001 (Casgevy)</td>
+                                <td>BCL11A</td>
+                                <td>β-talasemia dependiente de transfusiones</td>
+                                <td>Edición ex vivo de células CD34+</td>
+                                <td><span class="ig-tag ig-t-g">Aprobado FDA dic. 2023</span></td>
+                                <td>Vertex / CRISPR Therapeutics</td>
+                            </tr>
+                            <tr>
+                                <td>NTLA-2001</td>
+                                <td>TTR</td>
+                                <td>Amiloidosis por transtiretina (ATTRv)</td>
+                                <td>Edición in vivo hepática (LNP)</td>
+                                <td><span class="ig-tag ig-t-p">Fase I/II (2024)</span></td>
+                                <td>Intellia Therapeutics</td>
+                            </tr>
+                            <tr>
+                                <td>EDIT-301</td>
+                                <td>HBG1/2 (γ-globina)</td>
+                                <td>Drepanocitosis</td>
+                                <td>AsCas12a, edición ex vivo HSPC</td>
+                                <td><span class="ig-tag ig-t-p">Fase I/II (2024)</span></td>
+                                <td>Editas Medicine</td>
+                            </tr>
+                            <tr>
+                                <td>VCTX210</td>
+                                <td>CIITA, B2M, PD-L1</td>
+                                <td>Diabetes tipo 1</td>
+                                <td>Células β-pancreáticas "stealth"</td>
+                                <td><span class="ig-tag ig-t-c">Fase I (2024)</span></td>
+                                <td>Vertex / CRISPR Therapeutics</td>
+                            </tr>
+                            <tr>
+                                <td>CTX130</td>
+                                <td>CD70</td>
+                                <td>Carcinoma de células renales</td>
+                                <td>CAR-T alogénico CRISPR (off-the-shelf)</td>
+                                <td><span class="ig-tag ig-t-c">Fase I (2024)</span></td>
+                                <td>CRISPR Therapeutics</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="ig-norma" data-ig-reveal>
+                <div class="ig-norma-ico">🏛️</div>
+                <div>
+                    <h4>CRISPR en Chile: Marco Regulatorio y Bioética</h4>
+                    <p>Chile no cuenta aún con legislación específica sobre edición genética humana. El MINSAL aplica el marco general de Ensayos Clínicos (D.S. 709/2021) y las normas ICH E6 (GCP). El Comité Científico de Células Madre y Terapias Avanzadas (CONICYT/ANID) evalúa proyectos de investigación con herramientas de edición génica en humanos. La edición de línea germinal (embriones, células germinales) está prohibida por consenso ético internacional y la resolución WHA73.10 de la OMS (2020), que estableció el Registro Global de Edición Genética Humana. Para aplicaciones en plantas y animales, el SAG evalúa caso a caso bajo el concepto de "técnicas de mejoramiento vegetal no transgénico" según la Ley 20.291.</p>
+                </div>
+            </div>
+
+        </div><!-- /panel 1 -->
+
+        <!-- ═══════ PANEL 3: VECTORES DE EXPRESIÓN ═══════ -->
+        <div class="ig-panel" id="ig-p2">
+
+            <div class="ig-intro" data-ig-reveal>
+                <div class="ig-intro-text">
+                    <h2>Vectores de <span>Expresión</span></h2>
+                    <p>Un vector de expresión es una molécula de ADN diseñada para introducir y expresar un gen de interés en una célula huésped específica. Para ser funcional debe contener: un origen de replicación (ori) compatible con el huésped, un promotor que dirija la transcripción del gen, un sitio de clonación múltiple (MCS), señales de terminación de transcripción y, generalmente, un marcador de selección.</p>
+                    <p>En biotecnología farmacéutica los vectores cumplen dos funciones distintas: (1) <strong>Producción de proteínas recombinantes</strong> en sistemas celulares a escala industrial, y (2) <strong>Terapia génica</strong>, donde el vector entrega un gen terapéutico directamente en las células del paciente. Los requisitos difieren enormemente: un vector de producción busca máxima expresión; un vector terapéutico debe ser seguro, específico de tejido, de baja inmunogenicidad y con efecto duradero.</p>
+                    <div class="ig-hbox">
+                        <strong>Elementos Cis y Trans en un Vector de Expresión</strong>
+                        <p><strong>Elementos cis:</strong> actúan sobre la molécula de ADN que los contiene. Promotor (Pol II/T7/CMV), enhancer, Kozak sequence (contexto inicio traducción: GCCACCATG), IRES (entrada ribosómica interna), señal poli-A (AATAAA → estabilidad ARNm). <strong>Elementos trans:</strong> proteínas suministradas en trans. Factores de transcripción (T7 RNAP en bacterias, GAL4-VP16), integrasa PhiC31, transposasa PiggyBac.</p>
+                    </div>
+                </div>
+                <div class="ig-3d">
+                    <canvas id="ig-canvas-vectors" title="Plásmido, AAV, Lentivirus 3D — Rotar"></canvas>
+                    <div class="ig-3d-lbl">▸ Plásmido · AAV · Lentivirus — Comparación de 3 vectores</div>
+                </div>
+            </div>
+
+            <!-- Comparativa vectores -->
+            <div data-ig-reveal>
+                <div class="ig-sh">Comparativa de Vectores para Terapia Génica</div>
+                <div class="ig-tbl-wrap">
+                    <table class="ig-tbl">
+                        <thead>
+                            <tr><th>Vector</th><th>Tipo</th><th>Capacidad de carga</th><th>Integración</th><th>Tropismo</th><th>Inmunogenicidad</th><th>Ejemplo terapéutico</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>AAV (Adeno-Asociado)</td>
+                                <td><span class="ig-tag ig-t-c">Viral</span></td>
+                                <td>~4.7 kb</td>
+                                <td>Episomal (mayoritariamente)</td>
+                                <td>Amplio (serotipo-dependiente)</td>
+                                <td><span class="ig-tag ig-t-go">Moderada</span></td>
+                                <td>Luxturna® (RPE65), Zolgensma® (SMN1), Hemgenix® (FIX)</td>
+                            </tr>
+                            <tr>
+                                <td>Lentivirus (HIV-1 mod.)</td>
+                                <td><span class="ig-tag ig-t-c">Viral</span></td>
+                                <td>~8 kb</td>
+                                <td>Integra en cromatina activa</td>
+                                <td>Células en división + no división</td>
+                                <td><span class="ig-tag ig-t-p">Baja (SIN)</span></td>
+                                <td>Kymriah® (CAR-T CD19), Skysona® (ALD), Libmeldy® (MLD)</td>
+                            </tr>
+                            <tr>
+                                <td>γ-Retrovirus (MLV mod.)</td>
+                                <td><span class="ig-tag ig-t-c">Viral</span></td>
+                                <td>~8 kb</td>
+                                <td>Integra cerca de TSS (riesgo genotóxico)</td>
+                                <td>Solo células en división</td>
+                                <td><span class="ig-tag ig-t-r">Moderada</span></td>
+                                <td>Strimvelis® (ADA-SCID) — 1ª terapia génica aprobada UE</td>
+                            </tr>
+                            <tr>
+                                <td>Adenovirus (Ad5, Ad35)</td>
+                                <td><span class="ig-tag ig-t-c">Viral</span></td>
+                                <td>~8 kb (hasta 36 kb gutless)</td>
+                                <td>Episomal (transiente)</td>
+                                <td>Muy amplio (CAR-dependiente)</td>
+                                <td><span class="ig-tag ig-t-r">Alta</span></td>
+                                <td>Vaxzevria® (vacuna Ad-vectorizada COVID-19)</td>
+                            </tr>
+                            <tr>
+                                <td>Nanopartícula Lipídica (LNP)</td>
+                                <td><span class="ig-tag ig-t-g">No viral</span></td>
+                                <td>Sin límite práctico</td>
+                                <td>No integra (transiente)</td>
+                                <td>Hígado (IV), músculo (IM)</td>
+                                <td><span class="ig-tag ig-t-p">Muy baja</span></td>
+                                <td>Comirnaty® (ARNm COVID), Onpattro® (siRNA, pato libre)</td>
+                            </tr>
+                            <tr>
+                                <td>Plásmido desnudo + electroporación</td>
+                                <td><span class="ig-tag ig-t-g">No viral</span></td>
+                                <td>&gt;100 kb posible</td>
+                                <td>No integra</td>
+                                <td>Limitado a tejido accesible</td>
+                                <td><span class="ig-tag ig-t-p">Muy baja</span></td>
+                                <td>Inovio INO-4800 (vacuna DNA COVID, fase III)</td>
+                            </tr>
+                            <tr>
+                                <td>Transposón PiggyBac / SB100X</td>
+                                <td><span class="ig-tag ig-t-g">No viral</span></td>
+                                <td>~100 kb</td>
+                                <td>Integra (sitios TTAA)</td>
+                                <td>Amplio (electroporación)</td>
+                                <td><span class="ig-tag ig-t-p">Muy baja</span></td>
+                                <td>CAR-T alogénicos (plataforma BioNTech, Poseida)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Serotipos AAV -->
+            <div data-ig-reveal>
+                <div class="ig-sh">Serotipos AAV y Tropismo Tisular — Fundamento para Terapia Génica</div>
+                <div class="ig-cards">
+                    <div class="ig-card">
+                        <div class="ig-card-ico">👁️</div>
+                        <h4>AAV2 — Retina, SNC</h4>
+                        <p>Receptor: HSPG. Transducción eficiente de fotorreceptores y neuronas del SNC. Base de Luxturna® (Spark Therapeutics) para amaurosis congénita de Leber tipo 2 (RPE65). Aprobado FDA 2017, EMA 2018. Primer tratamiento de terapia génica para enfermedad genética hereditaria en UE.</p>
+                        <span class="ig-badge">Luxturna® · RPE65 · Retina</span>
+                    </div>
+                    <div class="ig-card">
+                        <div class="ig-card-ico">💪</div>
+                        <h4>AAV9 — SNC y Músculo</h4>
+                        <p>Cruza la BHE (barrera hematoencefálica). Receptor: LamR + N-galactosa. Zolgensma® (Novartis, AAV9-SMN1): tratamiento de AME tipo 1. Una sola dosis IV ≤2 años. El medicamento más caro del mundo en su lanzamiento (2019, ~2.1M USD). Onasemnogene abeparvovec.</p>
+                        <span class="ig-badge">Zolgensma® · SMN1 · SNC</span>
+                    </div>
+                    <div class="ig-card">
+                        <div class="ig-card-ico">🩸</div>
+                        <h4>AAV5 — Hígado</h4>
+                        <p>Alta eficiencia hepática. Hemgenix® (CSL Behring, AAV5-FIX-Padua): hemofilia B. Aprobado FDA nov. 2022, EMA 2023. Factor IX de alta actividad (FIX-Padua, R338L). Una sola infusión IV. 90% de pacientes sin necesidad de profilaxis. Disponible en Chile por acceso extraordinario.</p>
+                        <span class="ig-badge">Hemgenix® · FIX · Hígado</span>
+                    </div>
+                    <div class="ig-card">
+                        <div class="ig-card-ico">❤️</div>
+                        <h4>AAV1 — Músculo Cardíaco</h4>
+                        <p>Transducción eficiente de cardiomiocitos y músculo esquelético. Glybera® (AAV1-LPLS447X, 2012): primer terapia génica UE (retirada por precio y baja demanda). En investigación: MYDICAR (AAV1-SERCA2a, insuficiencia cardíaca, Fase IIb).</p>
+                        <span class="ig-badge">AAV1 · Cardíaco · SERCA2a</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ig-norma" data-ig-reveal>
+                <div class="ig-norma-ico">📋</div>
+                <div>
+                    <h4>Terapia Génica en Chile: ISP y Acceso Extraordinario</h4>
+                    <p>Las terapias génicas están clasificadas como Medicamentos de Uso Humano de Alta Complejidad (MUHAC) en Chile. Su aprobación por el ISP sigue el camino de evaluación de terapias avanzadas bajo el marco ICH Q2-Q8 aplicado a ATMPs (Advanced Therapy Medicinal Products). Cuando no existe un producto aprobado nacionalmente, el ISP puede autorizar importación bajo el mecanismo de Acceso Extraordinario (antes llamado "importación de urgencia"), el cual fue utilizado para Zolgensma® en pacientes con AME tipo 1 en menores de 2 años. El financiamiento es el principal desafío: la Ley Ricarte Soto (Ley 20.850) permite al MINSAL financiar tratamientos de alto costo para diagnósticos priorizados, y en 2023 se incorporó la AME tipo 1 al financiamiento estatal, incluyendo Zolgensma® para pacientes elegibles.</p>
+                </div>
+            </div>
+
+        </div><!-- /panel 2 -->
+
+        <!-- ═══════ PANEL 4: CLONACIÓN MOLECULAR ═══════ -->
+        <div class="ig-panel" id="ig-p3">
+
+            <div class="ig-intro rev" data-ig-reveal>
+                <div class="ig-intro-text">
+                    <h2>Clonación <span>Molecular</span></h2>
+                    <p>La clonación molecular (o clonación génica) es el conjunto de técnicas que permite obtener múltiples copias idénticas de un fragmento de ADN específico. Se diferencia de la clonación reproductiva (organismos completos): aquí se clonan moléculas de ADN, no células u organismos. Es la herramienta fundamental del laboratorio de biología molecular y la base de toda la industria biofarmacéutica.</p>
+                    <p>El flujo de trabajo clásico comprende: obtención del gen de interés (PCR o síntesis química), inserción en un vector de clonación, transformación en células competentes (<em>E. coli</em>), selección de colonias recombinantes y verificación por secuenciación. Hoy este proceso puede automatizarse y escalarse mediante ensamblaje de ADN de alta fidelidad (Gibson Assembly, Golden Gate), síntesis de genes completos y electroporación de alto rendimiento.</p>
+                    <div class="ig-hbox">
+                        <strong>PCR (Polymerase Chain Reaction) — Fundamento</strong>
+                        <p>Inventada por Kary Mullis en 1983 (Nobel 1993). Amplifica exponencialmente un fragmento específico de ADN usando dos primers, dNTPs, tampón y una ADN polimerasa termoestable (Taq, Phusion, Q5). Ciclos: desnaturalización (94-98°C) → hibridación primers (50-65°C) → extensión (72°C, 1 min/kb). Tras 30 ciclos: 2³⁰ ≈ 10⁹ copias del fragmento original.</p>
+                    </div>
+                    <div class="ig-hbox cyan">
+                        <strong>RT-PCR vs qPCR vs ddPCR</strong>
+                        <p><strong>RT-PCR:</strong> transcriptasa reversa convierte ARNm → ADNc, luego PCR. <strong>qPCR (tiempo real):</strong> cuantifica ADN en tiempo real con fluorescencia (SYBR Green o sondas TaqMan). Estándar diagnóstico (COVID, influenza). <strong>ddPCR (digital droplet):</strong> partición en millones de microgotas, cuantificación absoluta sin curva estándar. Máxima sensibilidad: detecta 1 copia/mL.</p>
+                    </div>
+                </div>
+                <div class="ig-3d">
+                    <canvas id="ig-canvas-cloning" title="PCR y clonación molecular 3D — Rotar"></canvas>
+                    <div class="ig-3d-lbl">▸ PCR: Desnaturalización · Hibridación · Extensión (Taq 72°C)</div>
+                </div>
+            </div>
+
+            <!-- Métodos de clonación -->
+            <div data-ig-reveal>
+                <div class="ig-sh">Métodos Modernos de Clonación — Comparativa</div>
+                <div class="ig-tbl-wrap">
+                    <table class="ig-tbl">
+                        <thead>
+                            <tr><th>Método</th><th>Principio</th><th>Ventajas</th><th>Limitaciones</th><th>Aplicación típica</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Clonación tradicional (R.E. + Ligasa)</td>
+                                <td>Restricción + ligación T4</td>
+                                <td>Simple, económico, bien documentado</td>
+                                <td>Cicatriz de sitio RE en producto; dirección definida</td>
+                                <td>Vectores de expresión estándar, plásmidos pequeños</td>
+                            </tr>
+                            <tr>
+                                <td>Gibson Assembly</td>
+                                <td>Solapamiento de 15-30 pb + exonucleasa T5 + ligasa + polimerasa</td>
+                                <td>Sin cicatriz, multi-fragmento simultáneo (hasta 6+), rápido (1h a 50°C)</td>
+                                <td>Requiere diseño de primers con solapamiento; fallos con repeats</td>
+                                <td>Construcción de pathways metabólicos, sintética, YAC</td>
+                            </tr>
+                            <tr>
+                                <td>Golden Gate Assembly</td>
+                                <td>BsaI (enz. tipo IIS) corta fuera de su sitio de reconocimiento</td>
+                                <td>Sin cicatriz, modular y reutilizable (MoClo), escalable</td>
+                                <td>Requiere eliminar sitios BsaI internos en cada fragmento</td>
+                                <td>Ensamblaje de biosensores, módulos de expresión estandarizados</td>
+                            </tr>
+                            <tr>
+                                <td>TOPO Cloning (Invitrogen)</td>
+                                <td>Topoisomerasa I actúa como ligasa en extremos específicos</td>
+                                <td>Sin ligasa ni fosfatasa; rápido (5 min, 23°C)</td>
+                                <td>Solo extremos CACC o blunts; propietario (kit)</td>
+                                <td>Clonación de productos PCR de rutina</td>
+                            </tr>
+                            <tr>
+                                <td>Síntesis de genes (GeneArt, IDT, Twist)</td>
+                                <td>Síntesis química oligo por oligo + ensamblaje enzimático</td>
+                                <td>Sin secuencias molde, optimización de codones, cualquier secuencia</td>
+                                <td>Costo (aunque bajando: ~0.05-0.10 USD/pb en 2024)</td>
+                                <td>Codones optimizados para CHO, vacunas ARNm, AcM, terapia génica</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Proceso transformación -->
+            <div data-ig-reveal>
+                <div class="ig-sh">Proceso de Clonación y Transformación Bacteriana</div>
+                <div class="ig-proc">
+                    <div class="ig-step">
+                        <div class="ig-step-n">🔬</div>
+                        <div class="ig-step-t">1. PCR del gen</div>
+                        <div class="ig-step-d">Amplificación del gen de interés con primers específicos con sitios RE incorporados.</div>
+                    </div>
+                    <div class="ig-step">
+                        <div class="ig-step-n">✂️</div>
+                        <div class="ig-step-t">2. Digestión</div>
+                        <div class="ig-step-d">PCR + vector digeridos con las mismas enzimas de restricción (EcoRI/XhoI, etc). 1-2 h a 37°C.</div>
+                    </div>
+                    <div class="ig-step">
+                        <div class="ig-step-n">🔗</div>
+                        <div class="ig-step-t">3. Ligación</div>
+                        <div class="ig-step-d">Mezcla inserto:vector (3:1 molar). T4 ADN Ligasa. 16°C O/N o 10 min a 25°C (ligasa rápida).</div>
+                    </div>
+                    <div class="ig-step">
+                        <div class="ig-step-n">🦠</div>
+                        <div class="ig-step-t">4. Transformación</div>
+                        <div class="ig-step-d">E. coli competentes (DH5α, TOP10). Choque térmico 42°C (30 s) o electroporación. Recuperación 1h SOC a 37°C.</div>
+                    </div>
+                    <div class="ig-step">
+                        <div class="ig-step-n">🧫</div>
+                        <div class="ig-step-t">5. Selección</div>
+                        <div class="ig-step-d">Plaqueo en LB+amp/kan. Colonias blancas = recombinantes (lacZ roto). Selección e inoculación en líquido.</div>
+                    </div>
+                    <div class="ig-step">
+                        <div class="ig-step-n">✅</div>
+                        <div class="ig-step-t">6. Verificación</div>
+                        <div class="ig-step-d">Colony PCR → gel electroforesis. Miniprep + digestión diagnóstica. Secuenciación Sanger (verificación definitiva).</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Técnicas avanzadas -->
+            <div data-ig-reveal>
+                <div class="ig-sh">Técnicas Avanzadas de Análisis Molecular</div>
+                <div class="ig-cards">
+                    <div class="ig-card">
+                        <div class="ig-card-ico">⚡</div>
+                        <h4>Electroforesis en gel de agarosa</h4>
+                        <p>Separa fragmentos de ADN por tamaño en campo eléctrico. Gel 0.8-2% agarosa en TAE/TBE. SYBR Safe / EtBr como intercalante. Estándar de tamaño (ladder). Visualización en UV. Resolución: 100 pb a 20 kb (gel estándar).</p>
+                        <span class="ig-badge">Separación · Verificación</span>
+                    </div>
+                    <div class="ig-card">
+                        <div class="ig-card-ico">🧬</div>
+                        <h4>Secuenciación Sanger</h4>
+                        <p>ddNTPs marcados con fluoróforos detienen la síntesis en posiciones aleatorias. Separación por electroforesis capilar. Lectura de 500-1000 pb/reacción. Estándar de oro para verificar construcciones clonadas. Disponible en Chile en múltiples servicios (AUSTRAL Biotech, PUC, U. Chile).</p>
+                        <span class="ig-badge">Verificación · 1000 pb</span>
+                    </div>
+                    <div class="ig-card">
+                        <div class="ig-card-ico">🌐</div>
+                        <h4>NGS (Secuenciación de Nueva Generación)</h4>
+                        <p>Illumina: paired-end 150 pb × millones de lecturas. PacBio/Oxford Nanopore: lecturas largas (10-100 kb). Para verificar plásmidos complejos completos, detectar mutaciones off-target de CRISPR, y secuenciar exomas completos en investigación farmacogenómica. Costo actual: ~$200-400 USD por genoma completo.</p>
+                        <span class="ig-badge">Genoma completo · Off-target</span>
+                    </div>
+                    <div class="ig-card">
+                        <div class="ig-card-ico">🔍</div>
+                        <h4>Western Blot / Dot Blot</h4>
+                        <p>Verificación de expresión proteica: SDS-PAGE → transferencia a membrana PVDF/NC → anticuerpo primario (anti-His, anti-FLAG, específico) → ECL. Confirma tamaño, cantidad y presencia del producto expresado. Imprescindible en validación de construcciones recombinantes.</p>
+                        <span class="ig-badge">Expresión · Tamaño · mAb</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ig-norma" data-ig-reveal>
+                <div class="ig-norma-ico">🔬</div>
+                <div>
+                    <h4>Laboratorios de Biología Molecular en Chile y Niveles de Bioseguridad</h4>
+                    <p>El trabajo con ADN recombinante en Chile se clasifica según el nivel de bioseguridad (BSL) del organismo huésped y del inserto. E. coli K-12 (DH5α, BL21) es BSL-1: trabajo en mesón abierto con prácticas microbiológicas estándar. Lentivirus de generación 3 (SIN): BSL-2 mínimo, con campana de flujo laminar clase II, HEPA y gestión de residuos específica. Las instalaciones son certificadas por la SEREMI de Salud regional. El ANID (antes CONICYT) requiere declaración del nivel de bioseguridad en proyectos Fondecyt que incluyan trabajo con OGM. Principales laboratorios de referencia nacional: Centro de Biotecnología Vegetal (UAI), Centro FONDAP CIBB (U. de Chile), Laboratorio de Ingeniería de Proteínas (PUC) y el Centro Tecnológico de Biotecnología del Sector Público del MINSAL (CENABAST-Biovida).</p>
+                </div>
+            </div>
+
+        </div><!-- /panel 3 -->
+
+        <!-- NAV INFERIOR -->
+        <div class="ig-page-nav">
+            <a href="biofarmacos.html"  class="ig-nbtn">← Unidad 1: Biofármacos</a>
+            <a href="../index.html"     class="ig-nbtn">Módulo Biotecnología</a>
+            <a href="produccion.html"   class="ig-nbtn pri">Siguiente: Producción Biotecnológica →</a>
+        </div>
+
+    </div><!-- /wrap -->
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>© 2026 PharmaLab Chile — Biotecnología · Unidad 2: Ingeniería Genética</p>
+            <p class="footer-disclaimer">Contenido educacional universitario. Información basada en normativa vigente ISP/MINSAL/SAG/ANID. No reemplaza asesoría profesional.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="../../script.js"></script>
+<script src="ingenieria-genetica.js"></script>
+</body>
+</html>

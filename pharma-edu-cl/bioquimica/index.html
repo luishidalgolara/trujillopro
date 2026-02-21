@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bioquímica — PharmaLab Chile</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="bioquimica.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="module-bioquimica">
+    <!-- NAVBAR -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                        <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+                        <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+                        <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../quimica/index.html" class="nav-link" data-module="quimica">
+                    <span class="nav-link-icon">⚗️</span> Química
+                </a>
+                <a href="../farmacia/index.html" class="nav-link" data-module="farmacia">
+                    <span class="nav-link-icon">💊</span> Farmacia
+                </a>
+                <a href="../quimica-farmaceutica/index.html" class="nav-link" data-module="qf">
+                    <span class="nav-link-icon">🧬</span> Q. Farmacéutica
+                </a>
+                <a href="../biotecnologia/index.html" class="nav-link" data-module="biotech">
+                    <span class="nav-link-icon">🔬</span> Biotecnología
+                </a>
+                <a href="../virologia/index.html" class="nav-link" data-module="virologia">
+                    <span class="nav-link-icon">🦠</span> Virología
+                </a>                
+                <a href="../bioquimica/index.html" class="nav-link active" data-module="bioquimica">
+                    <span class="nav-link-icon">🧪</span> Bioquímica
+                </a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MODULE HERO -->
+    <section class="module-hero">
+        <!-- Floating biochemistry symbols -->
+        <div class="hero-symbols" aria-hidden="true">
+            <span class="symbol s1">H₂O</span>
+            <span class="symbol s2">ATP</span>
+            <span class="symbol s3">⬡</span>
+            <span class="symbol s4">DNA</span>
+            <span class="symbol s5">NH₃</span>
+            <span class="symbol s6">⚛</span>
+            <span class="symbol s7">CO₂</span>
+            <span class="symbol s8">NAD⁺</span>
+            <span class="symbol s9">⬡</span>
+            <span class="symbol s10">pH</span>
+            <span class="symbol s11">Km</span>
+            <span class="symbol s12">⚛</span>
+            <span class="symbol s13">ADP</span>
+            <span class="symbol s14">RNA</span>
+            <span class="symbol s15">O₂</span>
+        </div>
+        <div class="hero-content">
+            <span class="section-tag">Módulo 05</span>
+            <h1 class="section-title">Bio<span class="text-gradient-bioquimica">química</span></h1>
+            <p class="section-desc">Fundamentos moleculares de la vida, metabolismo celular, enzimología y biología molecular aplicada a las ciencias de la salud.</p>
+        </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="module-content">
+        <div class="container">
+            <div class="content-grid">
+                <a href="fundamentos/fundamentos.html" class="content-card">
+                    <span class="card-tag tag-bioquimica">Unidad 1</span>
+                    <h3>Fundamentos de Bioquímica Molecular</h3>
+                    <p>Estructura del agua, pH biológico, enlaces químicos, termodinámica, bioenergética, buffers fisiológicos y cinética química básica.</p>
+                    <div class="card-topics">
+                        <span>Agua y pH</span>
+                        <span>Termodinámica</span>
+                        <span>Buffers</span>
+                        <span>Cinética</span>
+                    </div>
+                </a>
+                <a href="biomoleculas/biomoleculas.html" class="content-card">
+                    <span class="card-tag tag-bioquimica">Unidad 2</span>
+                    <h3>Biomoléculas Esenciales</h3>
+                    <p>Aminoácidos, proteínas y su estructura, enzimas, carbohidratos, lípidos y ácidos nucleicos. Las moléculas que definen la vida.</p>
+                    <div class="card-topics">
+                        <span>Proteínas</span>
+                        <span>Enzimas</span>
+                        <span>Carbohidratos</span>
+                        <span>Lípidos</span>
+                    </div>
+                </a>
+                <a href="enzimologia-moderna/enzimologia-moderna.html" class="content-card">
+                    <span class="card-tag tag-bioquimica">Unidad 3</span>
+                    <h3>Enzimología Moderna</h3>
+                    <p>Cinética de Michaelis-Menten, inhibición competitiva y no competitiva, regulación alostérica y enzimas como blancos farmacológicos.</p>
+                    <div class="card-topics">
+                        <span>Michaelis-Menten</span>
+                        <span>Inhibición</span>
+                        <span>Alosterismo</span>
+                        <span>Farmacología</span>
+                    </div>
+                </a>
+                <a href="metabolismo/metabolismo.html" class="content-card">
+                    <span class="card-tag tag-bioquimica">Unidad 4</span>
+                    <h3>Metabolismo y Bioenergética</h3>
+                    <p>Glucólisis, ciclo de Krebs, cadena respiratoria, fosforilación oxidativa, metabolismo de lípidos y aminoácidos. Integración metabólica y enfermedades.</p>
+                    <div class="card-topics">
+                        <span>Glucólisis</span>
+                        <span>Krebs</span>
+                        <span>ATP</span>
+                        <span>Lípidos</span>
+                    </div>
+                </a>
+                <a href="biologia-molecular/biologia-molecular.html" class="content-card">
+                    <span class="card-tag tag-bioquimica">Unidad 5</span>
+                    <h3>Biología Molecular</h3>
+                    <p>Replicación del ADN, transcripción, traducción, regulación génica, epigenética, mutaciones, CRISPR y ARNm aplicado a vacunas modernas.</p>
+                    <div class="card-topics">
+                        <span>ADN/ARN</span>
+                        <span>CRISPR</span>
+                        <span>Epigenética</span>
+                        <span>ARNm</span>
+                    </div>
+                </a>
+                <a href="Cultivo-Celular/cultivo-celular.html" class="content-card">
+                    <span class="card-tag tag-bioquimica">Unidad 6</span>
+                    <h3>Cultivo Celular</h3>
+                    <p>Técnicas de cultivo in vitro, tipos de células, medios de cultivo, asepsia, aplicaciones en investigación biomédica y producción de biológicos.</p>
+                    <div class="card-topics">
+                        <span>Cultivo in vitro</span>
+                        <span>Medios</span>
+                        <span>Asepsia</span>
+                        <span>Biológicos</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 PharmaLab Chile — Módulo de Bioquímica</p>
+                <p class="footer-disclaimer">Contenido educacional. No reemplaza asesoría profesional.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="bioquimica.js"></script>
+</body>
+</html>

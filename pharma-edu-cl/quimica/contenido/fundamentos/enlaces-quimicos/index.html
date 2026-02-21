@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enlaces Químicos — PharmaLab Chile</title>
+    <link rel="stylesheet" href="../../../../styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="module-quimica">
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../../../../index.html" class="nav-logo">
+                <div class="logo-icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/><circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/><line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/><line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/><line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/></svg></div>
+                <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../../../index.html" class="nav-link active" data-module="quimica">⚗️ Química</a>
+                <a href="../../../../farmacia/index.html" class="nav-link" data-module="farmacia">💊 Farmacia</a>
+                <a href="../../../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf">🧬 Q. Farmacéutica</a>
+                <a href="../../../../biotecnologia/index.html" class="nav-link" data-module="biotech">🔬 Biotecnología</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="module-hero" style="padding-bottom:30px;min-height:auto">
+        <div class="hero-content">
+            <span class="section-tag">Unidad 1 — Tema 3</span>
+            <h1 class="section-title">Enlaces <span style="background:linear-gradient(135deg,#00e5a0,#5b8dee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Químicos</span></h1>
+            <p class="section-desc">Comprende cómo los átomos se unen para formar moléculas y compuestos: enlaces iónicos, covalentes, metálicos y fuerzas intermoleculares.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="../../../../index.html">Inicio</a> <span>›</span>
+            <a href="../../../index.html">Química</a> <span>›</span>
+            <a href="../index.html">Fundamentos</a> <span>›</span>
+            <span class="current">Enlaces Químicos</span>
+        </div>
+    </div>
+
+    <!-- 3D MOLECULE VIEWER -->
+    <section class="viewer-section">
+        <div class="container">
+            <div class="viewer-container">
+                <div id="moleculeViewer" class="viewer-3d"></div>
+                <div class="viewer-controls">
+                    <button class="ctrl-btn active" data-mol="h2o">H₂O — Agua</button>
+                    <button class="ctrl-btn" data-mol="nacl">NaCl — Iónico</button>
+                    <button class="ctrl-btn" data-mol="ch4">CH₄ — Metano</button>
+                    <button class="ctrl-btn" data-mol="co2">CO₂ — Dióxido de C</button>
+                    <button class="ctrl-btn" data-mol="nh3">NH₃ — Amoníaco</button>
+                </div>
+                <div class="viewer-label" id="molLabel">
+                    <strong>H₂O — Agua</strong><br>
+                    <span>Enlace covalente polar · Ángulo 104.5° · Fundamental como solvente farmacéutico</span>
+                </div>
+            </div>
+            <p class="viewer-hint">🖱️ Arrastra para rotar · Scroll para zoom · Selecciona una molécula</p>
+        </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="lesson-content">
+        <div class="container">
+            <div class="content-body">
+                <!-- ENLACE IÓNICO -->
+                <article class="content-section" id="ionico">
+                    <h2>Enlace Iónico</h2>
+                    <p>Se forma por la <strong>transferencia completa de electrones</strong> de un átomo a otro, generalmente entre un metal (baja electronegatividad) y un no metal (alta electronegatividad). El resultado son iones con cargas opuestas que se atraen electrostáticamente.</p>
+                    <div class="bond-card ionic">
+                        <div class="bond-visual">
+                            <div class="atom-circle cation">Na⁺</div>
+                            <div class="bond-arrow">→ e⁻ →</div>
+                            <div class="atom-circle anion">Cl⁻</div>
+                        </div>
+                        <div class="bond-props">
+                            <div><strong>Diferencia de EN:</strong> > 1.7 (generalmente)</div>
+                            <div><strong>Ejemplo clásico:</strong> NaCl (sal de mesa)</div>
+                            <div><strong>Propiedades:</strong> Alto punto de fusión, solubles en agua, conducen electricidad en solución</div>
+                            <div><strong>En farmacia:</strong> Muchos fármacos se formulan como sales iónicas (clorhidratos, sulfatos, fumaratos) para mejorar solubilidad y estabilidad</div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ENLACE COVALENTE -->
+                <article class="content-section" id="covalente">
+                    <h2>Enlace Covalente</h2>
+                    <p>Se forma por la <strong>compartición de pares de electrones</strong> entre dos átomos no metálicos. Es el enlace más importante en química orgánica y farmacéutica, ya que forma el esqueleto de todos los fármacos orgánicos.</p>
+                    
+                    <div class="covalent-types">
+                        <div class="cov-card">
+                            <h4>Covalente Apolar</h4>
+                            <p>Los electrones se comparten equitativamente. Ocurre entre átomos iguales o con ΔEN ≈ 0.</p>
+                            <div class="cov-example">H—H · O=O · Cl—Cl</div>
+                        </div>
+                        <div class="cov-card">
+                            <h4>Covalente Polar</h4>
+                            <p>Los electrones se comparten desigualmente. El átomo más electronegativo atrae más la densidad electrónica (δ⁻).</p>
+                            <div class="cov-example">O—H · N—H · C—O · C—F</div>
+                        </div>
+                        <div class="cov-card">
+                            <h4>Covalente Coordinado (Dativo)</h4>
+                            <p>Un solo átomo aporta ambos electrones del par compartido. Importante en complejos metálicos farmacéuticos.</p>
+                            <div class="cov-example">NH₃→BF₃ · Complejos de Pt</div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <div class="info-box-title">💊 Relevancia Farmacéutica</div>
+                        <p>Los enlaces covalentes polares C—O, C—N y O—H son fundamentales en los fármacos porque permiten la formación de <strong>enlaces de hidrógeno</strong> con los targets biológicos (receptores, enzimas, ADN). La polaridad del enlace determina la solubilidad y la capacidad de interacción del medicamento.</p>
+                    </div>
+                </article>
+
+                <!-- ENLACE METÁLICO -->
+                <article class="content-section" id="metalico">
+                    <h2>Enlace Metálico</h2>
+                    <p>Los átomos metálicos liberan sus electrones de valencia formando una <strong>"nube" o "mar de electrones"</strong> compartidos que rodea a los cationes metálicos. Este modelo explica las propiedades únicas de los metales.</p>
+                    <div class="metal-props">
+                        <div class="metal-prop"><span>⚡</span> Conductividad eléctrica y térmica</div>
+                        <div class="metal-prop"><span>✨</span> Brillo metálico</div>
+                        <div class="metal-prop"><span>🔨</span> Maleabilidad y ductilidad</div>
+                        <div class="metal-prop"><span>🌡️</span> Altos puntos de fusión (generalmente)</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">🔬 En farmacia</div>
+                        <p>El enlace metálico es clave en <strong>implantes médicos</strong> (titanio, acero quirúrgico), <strong>instrumental farmacéutico</strong> y en la fabricación de equipos de producción de medicamentos. La biocompatibilidad depende de la estabilidad del enlace metálico superficial.</p>
+                    </div>
+                </article>
+
+                <!-- FUERZAS INTERMOLECULARES -->
+                <article class="content-section" id="intermoleculares">
+                    <h2>Fuerzas Intermoleculares</h2>
+                    <p>Son atracciones débiles entre moléculas (no dentro de ellas). Son fundamentales para entender la solubilidad, punto de fusión/ebullición y la interacción fármaco-receptor.</p>
+                    
+                    <div class="forces-grid">
+                        <div class="force-card">
+                            <div class="force-strength">Fuerte</div>
+                            <h4>Enlace de Hidrógeno</h4>
+                            <p>Atracción entre un H unido a F, O o N y un par libre de otro F, O o N. Energía: 10-40 kJ/mol.</p>
+                            <div class="force-pharma">Determina la interacción fármaco-receptor. El agua forma redes de enlaces H que afectan la solubilidad de medicamentos.</div>
+                        </div>
+                        <div class="force-card">
+                            <div class="force-strength">Media</div>
+                            <h4>Dipolo-Dipolo</h4>
+                            <p>Atracción entre moléculas polares permanentes. El extremo δ⁺ de una atrae al δ⁻ de otra. Energía: 5-25 kJ/mol.</p>
+                            <div class="force-pharma">Influye en la solubilidad y cristalización de principios activos farmacéuticos.</div>
+                        </div>
+                        <div class="force-card">
+                            <div class="force-strength">Débil</div>
+                            <h4>Fuerzas de London (Van der Waals)</h4>
+                            <p>Presentes en TODAS las moléculas. Se originan por dipolos instantáneos temporales. Energía: 0.05-40 kJ/mol.</p>
+                            <div class="force-pharma">Importantes en interacciones hidrofóbicas entre fármacos y bolsillos lipofílicos de receptores.</div>
+                        </div>
+                        <div class="force-card">
+                            <div class="force-strength">Variable</div>
+                            <h4>Ion-Dipolo</h4>
+                            <p>Atracción entre un ion y una molécula polar. Fundamental en la disolución de sales en agua.</p>
+                            <div class="force-pharma">Explica por qué las sales farmacéuticas (clorhidratos, sulfatos) son solubles en agua para administración oral/inyectable.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="lesson-nav">
+                    <a href="../tabla-periodica/index.html">← Tabla Periódica</a>
+                    <a href="../propiedades-periodicas/index.html">Propiedades Periódicas →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer"><div class="container"><div class="footer-bottom"><p>© 2026 PharmaLab Chile — Enlaces Químicos</p></div></div></footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="../../../../script.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

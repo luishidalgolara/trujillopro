@@ -1,0 +1,81 @@
+/* TABLA PERIÓDICA STYLES */
+.breadcrumb{display:flex;align-items:center;gap:8px;padding:16px 0;font-size:.85rem}
+.breadcrumb a{color:var(--text-muted);transition:color .3s}.breadcrumb a:hover{color:#00e5a0}
+.breadcrumb span{color:var(--text-muted)}.breadcrumb .current{color:var(--text-primary)}
+
+.table-section{padding:24px 16px 60px;overflow-x:auto}
+.table-container{min-width:1100px;max-width:1280px;margin:0 auto}
+.table-legend{display:flex;flex-wrap:wrap;gap:12px 20px;margin-bottom:20px;padding:16px;background:var(--bg-card);border-radius:12px;border:1px solid var(--border)}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--text-muted)}
+.legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+
+.periodic-grid{display:grid;grid-template-columns:repeat(18,1fr);gap:3px}
+.element-cell{
+    aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    border-radius:6px;cursor:pointer;transition:all .25s;position:relative;
+    border:1px solid transparent;font-size:.65rem;padding:2px;min-width:0;
+}
+.element-cell:hover{transform:scale(1.3);z-index:10;box-shadow:0 8px 24px rgba(0,0,0,.5);border-color:rgba(255,255,255,.2)}
+.element-cell .el-z{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:rgba(255,255,255,.5);line-height:1}
+.element-cell .el-sym{font-weight:700;font-size:.9rem;line-height:1.2}
+.element-cell .el-name{font-size:.45rem;color:rgba(255,255,255,.6);line-height:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.element-cell.empty{pointer-events:none;background:none!important}
+.element-cell.spacer{pointer-events:none;background:none!important;font-size:.6rem;color:var(--text-muted);font-weight:600}
+
+/* Categories */
+.cat-nonmetal{background:rgba(68,204,136,.15);color:#44cc88}
+.cat-alkali{background:rgba(91,141,238,.15);color:#7aa5ff}
+.cat-alkaline{background:rgba(68,136,221,.15);color:#4488dd}
+.cat-transition{background:rgba(204,102,68,.15);color:#cc8866}
+.cat-metalloid{background:rgba(224,86,160,.15);color:#e056a0}
+.cat-halogen{background:rgba(240,160,48,.15);color:#f0a030}
+.cat-noble{background:rgba(136,102,204,.15);color:#aa88ee}
+.cat-postmetal{background:rgba(102,153,136,.15);color:#88bbaa}
+.cat-lanthanide{background:rgba(170,102,68,.15);color:#cc8866}
+.cat-actinide{background:rgba(119,102,68,.15);color:#aa9966}
+
+/* Element Detail Panel */
+.element-detail{
+    position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.9);
+    width:380px;max-width:90vw;background:var(--bg-elevated);border:1px solid var(--border);
+    border-radius:20px;padding:32px;z-index:1001;opacity:0;pointer-events:none;
+    transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 30px 80px rgba(0,0,0,.5);
+}
+.element-detail.visible{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.detail-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--text-muted);font-size:1.2rem;cursor:pointer;padding:4px 8px;transition:color .3s}
+.detail-close:hover{color:var(--text-primary)}
+.detail-header{text-align:center;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.detail-number{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--text-muted)}
+.detail-symbol{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:800;color:#00e5a0;line-height:1}
+.detail-name{font-size:1.1rem;font-weight:600;margin-top:4px}
+.detail-mass{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--text-muted);margin-top:4px}
+.detail-body{}
+.detail-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.88rem}
+.detail-row span:first-child{color:var(--text-muted)}
+.detail-row span:last-child{color:var(--text-primary);font-weight:500;text-align:right}
+.detail-pharma{margin-top:16px;padding:14px;background:rgba(0,229,160,.05);border-radius:10px;font-size:.85rem;color:var(--text-secondary);line-height:1.6}
+.detail-pharma strong{display:block;color:#00e5a0;margin-bottom:4px;font-size:.8rem}
+
+/* Backdrop */
+.detail-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1000;opacity:0;pointer-events:none;transition:opacity .3s}
+.detail-backdrop.visible{opacity:1;pointer-events:auto}
+
+/* Educational content */
+.edu-content{padding:60px 0 100px}
+.edu-content h2{font-size:1.6rem;font-weight:800;margin-bottom:16px}
+.edu-content>div>p{color:var(--text-secondary);line-height:1.8;margin-bottom:28px;max-width:800px}
+.concepts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:48px}
+.concept-card{padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;transition:all .3s}
+.concept-card:hover{border-color:rgba(0,229,160,.2);transform:translateY(-2px)}
+.concept-card h4{font-size:1.05rem;font-weight:700;margin-bottom:8px;color:var(--text-primary)}
+.concept-card p{font-size:.9rem;color:var(--text-secondary);line-height:1.7;margin:0}
+
+.lesson-nav{display:flex;justify-content:space-between;padding-top:32px;border-top:1px solid var(--border)}
+.lesson-nav a{padding:12px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;font-size:.92rem;color:var(--text-secondary);transition:all .3s}
+.lesson-nav a:hover{border-color:rgba(0,229,160,.3);color:#00e5a0;transform:translateY(-2px)}
+
+@media(max-width:768px){
+    .concepts-grid{grid-template-columns:1fr}
+    .element-cell .el-name{display:none}
+    .element-cell .el-sym{font-size:.75rem}
+}

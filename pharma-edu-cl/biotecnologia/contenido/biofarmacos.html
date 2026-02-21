@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biofármacos — PharmaLab Chile | Unidad 1</title>
+    <meta name="description" content="Anticuerpos monoclonales, proteínas recombinantes, vacunas biotecnológicas y biosimilares. Contenido educativo actualizado para Chile.">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../biotech.css">
+    <link rel="stylesheet" href="biofarmacos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="module-biotech">
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+        <a href="../../index.html" class="nav-logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="../../quimica/index.html" class="nav-link" data-module="quimica"><span class="nav-link-icon">⚗️</span> Química</a>
+            <a href="../../farmacia/index.html" class="nav-link" data-module="farmacia"><span class="nav-link-icon">💊</span> Farmacia</a>
+            <a href="../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf"><span class="nav-link-icon">🧬</span> Q. Farmacéutica</a>
+            <a href="../../biotecnologia/index.html" class="nav-link active" data-module="biotech"><span class="nav-link-icon">🔬</span> Biotecnología</a>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="bf-hero">
+    <div class="bf-hero-bg">
+        <div class="bf-hero-grid"></div>
+        <div class="bf-hero-orb bf-hero-orb-1"></div>
+        <div class="bf-hero-orb bf-hero-orb-2"></div>
+    </div>
+    <div class="bf-hero-content">
+        <div class="bf-container">
+            <div class="bf-hero-left">
+                <div class="bf-breadcrumb">
+                    <a href="../../index.html" style="color:inherit;text-decoration:none;">Inicio</a>
+                    <span>/</span>
+                    <a href="../index.html" style="color:inherit;text-decoration:none;">Biotecnología</a>
+                    <span>/</span>
+                    <span style="color:#fff">Biofármacos</span>
+                </div>
+                <div class="bf-hero-tag">Unidad 1 · Biotecnología</div>
+                <h1 class="bf-hero-title">
+                    Bio<span class="bf-gradient">fármacos</span>
+                </h1>
+                <p class="bf-hero-desc">
+                    Medicamentos derivados de fuentes biológicas mediante biotecnología. Anticuerpos monoclonales, proteínas recombinantes, vacunas de nueva generación y biosimilares que están redefiniendo el tratamiento de enfermedades graves en Chile y el mundo.
+                </p>
+                <div class="bf-hero-stats">
+                    <div class="bf-stat">
+                        <span class="bf-stat-num" data-bf-count="530" data-bf-suffix="+" id="s1">530+</span>
+                        <span class="bf-stat-label">Biofármacos aprobados FDA/EMA</span>
+                    </div>
+                    <div class="bf-stat">
+                        <span class="bf-stat-num" data-bf-count="40" data-bf-suffix="%" id="s2">40%</span>
+                        <span class="bf-stat-label">Nuevas aprobaciones son biológicos</span>
+                    </div>
+                    <div class="bf-stat">
+                        <span class="bf-stat-num" data-bf-count="8" data-bf-suffix="+" id="s3">8+</span>
+                        <span class="bf-stat-label">Biosimilares aprobados en Chile</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bf-hero-visual">
+                <canvas id="bf-hero-canvas" data-bf-canvas title="ADN + Biofármacos — Rotar con mouse"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== DATOS CLAVE ========== -->
+<section class="bf-section">
+    <div class="bf-container">
+        <div class="bf-datos-grid" data-bf-reveal>
+            <div class="bf-dato">
+                <span class="bf-dato-num" data-bf-count="1982" data-bf-suffix="">1982</span>
+                <span class="bf-dato-label">Primer biofármaco aprobado: Insulina recombinante (Humulin®)</span>
+            </div>
+            <div class="bf-dato">
+                <span class="bf-dato-num" data-bf-count="50" data-bf-suffix="x">50x</span>
+                <span class="bf-dato-label">Mayor especificidad vs. fármacos químicos convencionales</span>
+            </div>
+            <div class="bf-dato">
+                <span class="bf-dato-num" data-bf-count="3" data-bf-suffix=" de 5">3 de 5</span>
+                <span class="bf-dato-label">Medicamentos más vendidos del mundo son biológicos</span>
+            </div>
+            <div class="bf-dato">
+                <span class="bf-dato-num" data-bf-count="2024" data-bf-suffix="">2024</span>
+                <span class="bf-dato-label">ISP Chile refuerza normativa para biosimilares (Ley 20.724)</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== SELECTOR DE TEMAS ========== -->
+<section class="bf-section" style="padding-top:0">
+    <div class="bf-container">
+        <div class="bf-section-header" data-bf-reveal>
+            <div class="bf-section-tag">🔬 Contenidos</div>
+            <h2 class="bf-section-title">Cuatro Pilares de los <span class="bf-hl">Biofármacos</span></h2>
+            <p class="bf-section-sub">Selecciona un tema para explorar su contenido, ejemplos clínicos reales y visualización molecular 3D interactiva.</p>
+        </div>
+
+        <!-- PILLS NAVEGACIÓN -->
+        <div class="bf-temas-grid" data-bf-reveal>
+            <div class="bf-tema-pill active" data-tab="0">
+                <div class="bf-tema-icon">🧫</div>
+                <span class="bf-tema-num">Tema 1.1</span>
+                <div class="bf-tema-name">Anticuerpos Monoclonales</div>
+                <div class="bf-tema-desc">Proteínas de alta especificidad producidas por clones idénticos de linfocitos B. Base de oncología moderna.</div>
+                <div class="bf-tema-arrow">→</div>
+            </div>
+            <div class="bf-tema-pill" data-tab="1">
+                <div class="bf-tema-icon">🧬</div>
+                <span class="bf-tema-num">Tema 1.2</span>
+                <div class="bf-tema-name">Proteínas Recombinantes</div>
+                <div class="bf-tema-desc">Proteínas producidas por organismos modificados genéticamente. Insulina, eritropoyetina, factores de coagulación.</div>
+                <div class="bf-tema-arrow">→</div>
+            </div>
+            <div class="bf-tema-pill" data-tab="2">
+                <div class="bf-tema-icon">💉</div>
+                <span class="bf-tema-num">Tema 1.3</span>
+                <div class="bf-tema-name">Vacunas Biotecnológicas</div>
+                <div class="bf-tema-desc">ARNm, vectores virales y subunidades proteicas. Revolución iniciada con COVID-19 y expansión a nuevas enfermedades.</div>
+                <div class="bf-tema-arrow">→</div>
+            </div>
+            <div class="bf-tema-pill" data-tab="3">
+                <div class="bf-tema-icon">⚖️</div>
+                <span class="bf-tema-num">Tema 1.4</span>
+                <div class="bf-tema-name">Biosimilares</div>
+                <div class="bf-tema-desc">Versiones altamente similares a biológicos de referencia. Acceso, regulación ISP y equivalencia terapéutica en Chile.</div>
+                <div class="bf-tema-arrow">→</div>
+            </div>
+        </div>
+
+        <!-- ===== PANEL 1: ANTICUERPOS MONOCLONALES ===== -->
+        <div class="bf-content-panel active" id="panel-0">
+
+            <div class="bf-panel-intro" data-bf-reveal>
+                <div class="bf-panel-text">
+                    <h2>Anticuerpos <span>Monoclonales</span></h2>
+                    <p>Los anticuerpos monoclonales (AcM o mAb, por <em>monoclonal antibody</em>) son proteínas de la familia de las inmunoglobulinas, producidas por una línea celular clonada que proviene de un único linfocito B progenitor. Esto garantiza que todos los anticuerpos del lote sean idénticos entre sí y reconozcan exactamente el mismo epítopo del antígeno diana.</p>
+                    <p>Desde la obtención del primer AcM murino mediante la técnica de hibridoma (Köhler y Milstein, 1975 — Premio Nobel 1984), la evolución tecnológica permitió pasar de anticuerpos completamente murinos (muy inmunogénicos en humanos) a formas quiméricas, humanizadas y finalmente completamente humanas, con mejor perfil de seguridad y eficacia clínica.</p>
+                    <div class="bf-highlight-box">
+                        <strong>Estructura IgG</strong>
+                        <p>Un AcM tipo IgG posee dos cadenas pesadas y dos cadenas ligeras unidas por puentes disulfuro. Las regiones variables (VH y VL) forman el sitio de unión al antígeno (Fab). La región Fc interactúa con receptores de células inmunes y media funciones efectoras.</p>
+                    </div>
+                    <div class="bf-highlight-box purple">
+                        <strong>Nomenclatura Internacional (INN-OMS)</strong>
+                        <p>Los AcM se nombran con el sufijo <strong>-mab</strong>. El infijo indica el origen: <strong>-u-</strong> humano (umab), <strong>-zu-</strong> humanizado (zumab), <strong>-xi-</strong> quimérico (ximab), <strong>-o-</strong> murino (omab). Ej: trastu<strong>zu</strong>mab = anticuerpo humanizado.</p>
+                    </div>
+                </div>
+                <div class="bf-3d-wrapper">
+                    <div class="bf-3d-controls">
+                        <button class="bf-3d-btn" title="Rotar automáticamente">↻</button>
+                    </div>
+                    <canvas id="bf-canvas-antibody" data-bf-canvas title="Anticuerpo IgG 3D — Arrastrar para rotar"></canvas>
+                    <div class="bf-3d-label">▸ IgG Completo · Arrastrar para rotar · Fab + Fc + Antígeno</div>
+                </div>
+            </div>
+
+            <!-- Generaciones -->
+            <div class="bf-examples-section" data-bf-reveal>
+                <h3>Evolución Generacional de los AcM</h3>
+                <div class="bf-timeline">
+                    <div class="bf-tl-item">
+                        <div class="bf-tl-year">1975 — 1ª Generación: Murinos (-omab)</div>
+                        <div class="bf-tl-text"><strong>100% origen murino.</strong> Alta inmunogenicidad en humanos (respuesta HAMA). Uso limitado a diagnóstico. Ej.: Muromonab-CD3 (OKT3), primer AcM terapéutico aprobado FDA (1986) para rechazo de trasplante renal.</div>
+                    </div>
+                    <div class="bf-tl-item">
+                        <div class="bf-tl-year">1984 — 2ª Generación: Quiméricos (-ximab)</div>
+                        <div class="bf-tl-text"><strong>~65% humano + ~35% murino (regiones variables).</strong> Menor inmunogenicidad. Ej.: <strong>Rituximab</strong> (MabThera®/Rituxan®) — anti-CD20, aprobado FDA 1997. Usado en linfoma no-Hodgkin, artritis reumatoide. Disponible en Chile a través de GES para linfomas.</div>
+                    </div>
+                    <div class="bf-tl-item">
+                        <div class="bf-tl-year">1988 — 3ª Generación: Humanizados (-zumab)</div>
+                        <div class="bf-tl-text"><strong>~95% humano.</strong> Solo las regiones determinantes de complementariedad (CDR) son de origen murino. Ej.: <strong>Trastuzumab</strong> (Herceptin®) — anti-HER2, aprobado FDA 1998. Estándar para cáncer de mama HER2+. Incluido en FONASA/GES Chile.</div>
+                    </div>
+                    <div class="bf-tl-item">
+                        <div class="bf-tl-year">1994 — 4ª Generación: Humanos (-umab)</div>
+                        <div class="bf-tl-text"><strong>100% secuencia humana</strong> (ratones transgénicos o tecnología phage display). Inmunogenicidad mínima. Ej.: <strong>Adalimumab</strong> (Humira®) — anti-TNFα, aprobado 2002. El fármaco más vendido del mundo durante 11 años consecutivos (2012–2022).</div>
+                    </div>
+                    <div class="bf-tl-item">
+                        <div class="bf-tl-year">2010s → Bispecíficos, ADC y Naked mAbs</div>
+                        <div class="bf-tl-text"><strong>Bispecíficos:</strong> reconocen dos antígenos simultáneamente. Ej.: <strong>Blinatumomab</strong> (Blincyto®) — une CD19 (célula tumoral) y CD3 (linfocito T) → elimina leucemia. <strong>ADC</strong> (Antibody-Drug Conjugate): anticuerpo + quimioterapéutico. Ej.: <strong>Trastuzumab emtansina</strong> (Kadcyla®), aprobado en Chile 2023.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mecanismos -->
+            <div class="bf-info-cards" data-bf-reveal>
+                <div class="bf-info-card">
+                    <div class="bf-info-card-icon">🎯</div>
+                    <h4>Neutralización Directa</h4>
+                    <p>El AcM se une al antígeno y bloquea físicamente su función. Ej.: Bevacizumab (Avastin®) neutraliza VEGF impidiendo la angiogénesis tumoral. Aprobado Chile para cáncer colorrectal, pulmón, ovario.</p>
+                    <span class="bf-badge">Anti-VEGF · mAb</span>
+                </div>
+                <div class="bf-info-card">
+                    <div class="bf-info-card-icon">🔫</div>
+                    <h4>ADCC / CDC</h4>
+                    <p>La región Fc activa células NK (citotoxicidad celular dependiente de Ac, ADCC) o el sistema del complemento (CDC), destruyendo la célula diana. Mecanismo clave del rituximab y trastuzumab.</p>
+                    <span class="bf-badge">Inmunidad innata · Fc</span>
+                </div>
+                <div class="bf-info-card">
+                    <div class="bf-info-card-icon">🚚</div>
+                    <h4>Vehículo de Carga (ADC)</h4>
+                    <p>El anticuerpo actúa como vector que lleva un payload citotóxico (toxina, radionúclido o quimioterápico) directamente a la célula tumoral, minimizando toxicidad sistémica.</p>
+                    <span class="bf-badge">Antibody-Drug Conjugate</span>
+                </div>
+                <div class="bf-info-card">
+                    <div class="bf-info-card-icon">🛡️</div>
+                    <h4>Checkpoint Inhibidores</h4>
+                    <p>Bloquean puntos de control inmune (PD-1/PD-L1, CTLA-4) que los tumores usan para evadir la respuesta inmune. Ej.: Pembrolizumab (Keytruda®), Nivolumab (Opdivo®). Revolución en oncología.</p>
+                    <span class="bf-badge">Inmunoterapia · PD-1/PD-L1</span>
+                </div>
+            </div>
+
+            <!-- Tabla ejemplos clínicos -->
+            <div class="bf-examples-section" data-bf-reveal>
+                <h3>Ejemplos Clínicos Relevantes en Chile</h3>
+                <div style="overflow-x:auto">
+                    <table class="bf-drug-table">
+                        <thead>
+                            <tr>
+                                <th>Fármaco (DCI)</th>
+                                <th>Nombre Comercial</th>
+                                <th>Diana Molecular</th>
+                                <th>Indicación Principal</th>
+                                <th>Tipo</th>
+                                <th>GES/ISP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Trastuzumab</td>
+                                <td>Herceptin®</td>
+                                <td>HER2 (ErbB2)</td>
+                                <td>Cáncer de mama y gástrico HER2+</td>
+                                <td><span class="bf-tag bf-tag-blue">Humanizado</span></td>
+                                <td><span class="bf-tag bf-tag-green">GES Chile</span></td>
+                            </tr>
+                            <tr>
+                                <td>Rituximab</td>
+                                <td>MabThera® / Mabxience®</td>
+                                <td>CD20</td>
+                                <td>Linfoma no-Hodgkin, LLC, AR</td>
+                                <td><span class="bf-tag bf-tag-blue">Quimérico</span></td>
+                                <td><span class="bf-tag bf-tag-green">GES Chile</span></td>
+                            </tr>
+                            <tr>
+                                <td>Bevacizumab</td>
+                                <td>Avastin® / Mvasi®</td>
+                                <td>VEGF-A</td>
+                                <td>Cáncer colorrectal, pulmón, ovario</td>
+                                <td><span class="bf-tag bf-tag-blue">Humanizado</span></td>
+                                <td><span class="bf-tag bf-tag-gold">FONASA</span></td>
+                            </tr>
+                            <tr>
+                                <td>Adalimumab</td>
+                                <td>Humira® / Hadlima®</td>
+                                <td>TNF-α</td>
+                                <td>AR, espondilitis, Crohn, psoriasis</td>
+                                <td><span class="bf-tag bf-tag-purple">Humano</span></td>
+                                <td><span class="bf-tag bf-tag-gold">FONASA</span></td>
+                            </tr>
+                            <tr>
+                                <td>Pembrolizumab</td>
+                                <td>Keytruda®</td>
+                                <td>PD-1</td>
+                                <td>Melanoma, pulmón, múltiples tumores</td>
+                                <td><span class="bf-tag bf-tag-purple">Humanizado</span></td>
+                                <td><span class="bf-tag bf-tag-red">Privado</span></td>
+                            </tr>
+                            <tr>
+                                <td>Denosumab</td>
+                                <td>Xgeva® / Prolia®</td>
+                                <td>RANK-L</td>
+                                <td>Osteoporosis, metástasis óseas</td>
+                                <td><span class="bf-tag bf-tag-purple">Humano</span></td>
+                                <td><span class="bf-tag bf-tag-gold">FONASA</span></td>
+                            </tr>
+                            <tr>
+                                <td>Omalizumab</td>
+                                <td>Xolair®</td>
+                                <td>IgE</td>
+                                <td>Asma alérgica severa, urticaria crónica</td>
+                                <td><span class="bf-tag bf-tag-blue">Humanizado</span></td>
+                                <td><span class="bf-tag bf-tag-gold">FONASA</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Norma Chile -->
+            <div class="bf-norma-box" data-bf-reveal>
+                <div class="bf-norma-icon">⚖️</div>
+                <div class="bf-norma-content">
+                    <h4>Regulación en Chile: ISP y Ley 20.724</h4>
+                    <p>El Instituto de Salud Pública de Chile (ISP) es la autoridad reguladora de medicamentos biológicos, incluyendo anticuerpos monoclonales, conforme al Decreto Supremo N° 03/2010 del MINSAL y modificaciones vigentes. Los AcM están sujetos al Registro Sanitario obligatorio, evaluación de calidad, eficacia y seguridad, y seguimiento de farmacovigilancia poscomercialización. La Ley 20.724 (2014) establece la prescripción por Denominación Común Internacional (DCI), lo que favorece la sustitución por biosimilares aprobados.</p>
+                </div>
+            </div>
+
+        </div><!-- /panel-0 -->
+
+        <!-- ===== PANEL 2: PROTEÍNAS RECOMBINANTES ===== -->
+        <div class="bf-content-panel" id="panel-1">
+
+            <div class="bf-panel-intro reverse" data-bf-reveal>
+                <div class="bf-panel-text">
+                    <h2>Proteínas <span>Recombinantes</span></h2>
+                    <p>Una proteína recombinante es aquella producida por un organismo (bacteria, levadura, célula de mamífero, insecto o planta) al que se ha introducido el gen que codifica dicha proteína mediante tecnología de ADN recombinante. La secuencia de ADN clonada se integra en un vector de expresión y se transfecta en el organismo huésped, que pasa a producir la proteína de interés a escala industrial.</p>
+                    <p>Este enfoque permitió superar la escasez y los riesgos de transmisión de patógenos asociados a la obtención de proteínas terapéuticas de fuentes humanas o animales, como ocurría con la insulina pancreática porcina o la hormona de crecimiento hipofisaria humana.</p>
+                    <div class="bf-highlight-box green">
+                        <strong>Sistemas de Expresión</strong>
+                        <p><strong>E. coli:</strong> rápido y barato, no realiza glicosilación. <strong>S. cerevisiae / P. pastoris:</strong> glicosilación simple. <strong>Células CHO (ovario hámster chino):</strong> glicosilación compleja similar a humana, estándar para biofármacos complejos. <strong>Células BHK, HEK293:</strong> usadas para proteínas de alta complejidad.</p>
+                    </div>
+                    <div class="bf-highlight-box">
+                        <strong>¿Por qué importa la glicosilación?</strong>
+                        <p>La adición de azúcares (glicosilación) postraduccional afecta la vida media, inmunogenicidad, plegamiento y actividad biológica de la proteína. Las células CHO producen un patrón de glicosilación cercano al humano, reduciendo el riesgo inmunogénico.</p>
+                    </div>
+                </div>
+                <div class="bf-3d-wrapper">
+                    <canvas id="bf-canvas-protein" data-bf-canvas title="Estructura proteica 3D — Arrastrar para rotar"></canvas>
+                    <div class="bf-3d-label">▸ Proteína Recombinante · α-Hélice · β-Lámina · Sitio Activo</div>
+                </div>
+            </div>
+
+            <!-- Proceso de producción -->
+            <div class="bf-examples-section" data-bf-reveal>
+                <h3>Proceso General de Producción</h3>
+                <div class="bf-process">
+                    <div class="bf-step">
+                        <div class="bf-step-num"><div class="bf-step-icon">🧬</div></div>
+                        <div class="bf-step-title">1. Clonación del Gen</div>
+                        <div class="bf-step-desc">Obtención del ADNc que codifica la proteína de interés a partir de ARNm mediante transcriptasa reversa (RT-PCR).</div>
+                    </div>
+                    <div class="bf-step">
+                        <div class="bf-step-num"><div class="bf-step-icon">🔗</div></div>
+                        <div class="bf-step-title">2. Vector de Expresión</div>
+                        <div class="bf-step-desc">Inserción del gen en un plásmido o vector viral con promotor, enhancer, señal poli-A y marcador de selección.</div>
+                    </div>
+                    <div class="bf-step">
+                        <div class="bf-step-num"><div class="bf-step-icon">🦠</div></div>
+                        <div class="bf-step-title">3. Transfección / Transformación</div>
+                        <div class="bf-step-desc">Introducción del vector en el huésped (electrotransformación en E. coli; transfección lipofectiva en CHO; vectores lentivirales).</div>
+                    </div>
+                    <div class="bf-step">
+                        <div class="bf-step-num"><div class="bf-step-icon">⚗️</div></div>
+                        <div class="bf-step-title">4. Cultivo y Producción</div>
+                        <div class="bf-step-desc">Fermentación o cultivo celular en biorreactores controlados. Escalamiento desde matraz hasta miles de litros (fed-batch, perfusión).</div>
+                    </div>
+                    <div class="bf-step">
+                        <div class="bf-step-num"><div class="bf-step-icon">🔬</div></div>
+                        <div class="bf-step-title">5. Purificación</div>
+                        <div class="bf-step-desc">Cromatografía de afinidad, intercambio iónico, filtración tangencial y ultrafiltración hasta obtener pureza ≥99%. Control de agregados.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ejemplos clínicos -->
+            <div class="bf-examples-section" data-bf-reveal>
+                <h3>Proteínas Recombinantes de Uso Clínico — Ejemplos Reales</h3>
+                <div style="overflow-x:auto">
+                    <table class="bf-drug-table">
+                        <thead>
+                            <tr>
+                                <th>Proteína</th>
+                                <th>Huésped de Expresión</th>
+                                <th>Indicación</th>
+                                <th>Ejemplo Comercial</th>
+                                <th>Año 1ª Aprobación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Insulina humana</td>
+                                <td>E. coli / S. cerevisiae</td>
+                                <td>Diabetes mellitus tipo 1 y 2</td>
+                                <td>Humulin® / Novorapid®</td>
+                                <td><span class="bf-tag bf-tag-blue">1982</span></td>
+                            </tr>
+                            <tr>
+                                <td>Hormona de crecimiento (somatropina)</td>
+                                <td>E. coli</td>
+                                <td>Déficit de GH, síndrome de Turner</td>
+                                <td>Genotropin® / Norditropin®</td>
+                                <td><span class="bf-tag bf-tag-blue">1985</span></td>
+                            </tr>
+                            <tr>
+                                <td>Eritropoyetina alfa (EPO)</td>
+                                <td>Células CHO</td>
+                                <td>Anemia por IRC, quimioterapia</td>
+                                <td>Eprex® / Aranesp®</td>
+                                <td><span class="bf-tag bf-tag-blue">1989</span></td>
+                            </tr>
+                            <tr>
+                                <td>Factor VIII recombinante</td>
+                                <td>Células CHO / BHK</td>
+                                <td>Hemofilia A</td>
+                                <td>Advate® / Kogenate®</td>
+                                <td><span class="bf-tag bf-tag-purple">1993</span></td>
+                            </tr>
+                            <tr>
+                                <td>Factor IX recombinante</td>
+                                <td>Células CHO</td>
+                                <td>Hemofilia B</td>
+                                <td>BeneFIX® / Rixubis®</td>
+                                <td><span class="bf-tag bf-tag-purple">1997</span></td>
+                            </tr>
+                            <tr>
+                                <td>Interferón beta-1a</td>
+                                <td>Células CHO</td>
+                                <td>Esclerosis múltiple remitente</td>
+                                <td>Avonex® / Rebif®</td>
+                                <td><span class="bf-tag bf-tag-purple">1996</span></td>
+                            </tr>
+                            <tr>
+                                <td>Laronidasa</td>
+                                <td>Células CHO</td>
+                                <td>Mucopolisacaridosis I (Hurler)</td>
+                                <td>Aldurazyme®</td>
+                                <td><span class="bf-tag bf-tag-gold">2003</span></td>
+                            </tr>
+                            <tr>
+                                <td>Dornasa alfa</td>
+                                <td>Células CHO</td>
+                                <td>Fibrosis quística (mucolítico)</td>
+                                <td>Pulmozyme®</td>
+                                <td><span class="bf-tag bf-tag-gold">1993</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bf-highlight-box green" data-bf-reveal>
+                <strong>Caso Especial: Insulina Recombinante en Chile</strong>
+                <p>La insulina humana recombinante y sus análogos (lispro, aspártica, glargina, detemir) están incluidos en la Guía Clínica GES de Diabetes Mellitus tipo 1 y 2 del MINSAL. El CENABAST garantiza su distribución al sector público a precios regulados. La insulina glargina biosimilar (Basaglar®/Semglee®) fue aprobada por el ISP en 2022, facilitando acceso a tratamiento basal en establecimientos de APS.</p>
+            </div>
+
+        </div><!-- /panel-1 -->
+
+        <!-- ===== PANEL 3: VACUNAS BIOTECNOLÓGICAS ===== -->
+        <div class="bf-content-panel" id="panel-2">
+
+            <div class="bf-panel-intro" data-bf-reveal>
+                <div class="bf-panel-text">
+                    <h2>Vacunas <span>Biotecnológicas</span></h2>
+                    <p>Las vacunas biotecnológicas utilizan herramientas de biología molecular e ingeniería genética para diseñar, producir y entregar antígenos inmunogénicos al organismo. A diferencia de las vacunas tradicionales (virus atenuado, inactivado), estas plataformas permiten un desarrollo más rápido, mayor precisión antigénica y mayor escalabilidad industrial.</p>
+                    <p>La pandemia de COVID-19 (2020–2021) aceleró exponencialmente el desarrollo de plataformas de ARNm y vectores virales, tecnologías que llevaban décadas en investigación y que demostraron eficacia sin precedentes en tiempos récord. Este hito abre la puerta a nuevas vacunas contra cáncer, VIH, tuberculosis y enfermedades tropicales.</p>
+                    <div class="bf-highlight-box gold">
+                        <strong>Definición OMS</strong>
+                        <p>Una vacuna biotecnológica es aquella en la que uno o más componentes activos son producidos mediante procesos biotecnológicos, incluyendo tecnología de ADN recombinante, síntesis de ácidos nucleicos, expresión en células huésped modificadas o uso de vectores biológicos.</p>
+                    </div>
+                </div>
+                <div class="bf-3d-wrapper">
+                    <canvas id="bf-canvas-vaccine" data-bf-canvas title="Nanopartícula lipídica ARNm 3D — Rotar con mouse"></canvas>
+                    <div class="bf-3d-label">▸ Nanopartícula Lipídica (LNP) + ARNm + Spike · Interactiva</div>
+                </div>
+            </div>
+
+            <!-- Tipos de vacunas -->
+            <div class="bf-examples-section" data-bf-reveal>
+                <h3>Plataformas Tecnológicas — Tipos de Vacunas Biotecnológicas</h3>
+                <div class="bf-mechanism-grid">
+                    <div class="bf-mechanism-card">
+                        <div class="bf-mechanism-icon">🧪</div>
+                        <h4>ARNm (mRNA)</h4>
+                        <p>Instrucción genética encapsulada en nanopartículas lipídicas (LNP) para que las células produzcan el antígeno. No integra ADN. Degradable. Alta eficacia. Ejemplos: Comirnaty® (Pfizer-BioNTech) y Spikevax® (Moderna) contra COVID-19. En investigación: vacunas ARNm contra melanoma, gripe, VRS, VIH.</p>
+                    </div>
+                    <div class="bf-mechanism-card">
+                        <div class="bf-mechanism-icon">🦠</div>
+                        <h4>Vector Viral</h4>
+                        <p>Adenovirus modificado que transporta el gen del antígeno al interior de las células. No se replica en el huésped. Ej.: Vaxzevria® (AstraZeneca/Oxford, adenovirus de chimpancé) y Janssen® (Ad26) para COVID-19. También: vacuna Ebola (Ervebo®, VSV recombinante).</p>
+                    </div>
+                    <div class="bf-mechanism-card">
+                        <div class="bf-mechanism-icon">🔬</div>
+                        <h4>Subunidades Proteicas Rec.</h4>
+                        <p>Proteína antigénica producida en sistema de expresión recombinante + adyuvante. Alta seguridad. Necesita refuerzo. Ej.: Nuvaxovid® (Novavax, proteína Spike en células de insecto), Recombivax HB® (Hepatitis B), Bexsero® (meningococo), Cervarix®/Gardasil® (VPH — proteínas L1 en VLP).</p>
+                    </div>
+                    <div class="bf-mechanism-card">
+                        <div class="bf-mechanism-icon">💉</div>
+                        <h4>VLP (Partículas Similares a Virus)</h4>
+                        <p>Ensamblaje de proteínas virales de cubierta sin material genético → no infecciosas pero muy inmunogénicas. Gardasil 9® (VPH 9 genotipos) está incluida en el PNI de Chile para niñas y niños de 4° año básico y menores en situación de riesgo.</p>
+                    </div>
+                    <div class="bf-mechanism-card">
+                        <div class="bf-mechanism-icon">🧬</div>
+                        <h4>ADN Plasmídico</h4>
+                        <p>Plásmido de ADN que codifica el antígeno, administrado con electroporación o nanotransportadores para su expresión intracelular. Inmunidad celular y humoral. Aprobadas en veterinaria. En humanos: vacuna ADN contra COVID-19 (ZyCoV-D, aprobada India 2021).</p>
+                    </div>
+                    <div class="bf-mechanism-card">
+                        <div class="bf-mechanism-icon">🤖</div>
+                        <h4>Vacunas Anti-tumorales</h4>
+                        <p>Neoantígenos tumorales personalizados codificados en ARNm para activar linfocitos T contra el cáncer. ModeRNA y BioNTech tienen en ensayos Fase 3 (2024) vacunas personalizadas contra melanoma y pulmón con resultados prometedores de reducción de recidiva.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PNI Chile -->
+            <div class="bf-examples-section" data-bf-reveal>
+                <h3>Vacunas Biotecnológicas en el PNI de Chile (2024)</h3>
+                <div style="overflow-x:auto">
+                    <table class="bf-drug-table">
+                        <thead>
+                            <tr>
+                                <th>Vacuna</th>
+                                <th>Patógeno</th>
+                                <th>Tecnología</th>
+                                <th>Población Objetivo</th>
+                                <th>Esquema</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Gardasil 9® / Cervarix®</td>
+                                <td>VPH (virus papiloma humano)</td>
+                                <td><span class="bf-tag bf-tag-green">VLP Recombinante</span></td>
+                                <td>Niñas y niños 4° básico (~10 años)</td>
+                                <td>2 dosis (0 y 6 m)</td>
+                            </tr>
+                            <tr>
+                                <td>Hepatitis B recombinante</td>
+                                <td>Virus hepatitis B (VHB)</td>
+                                <td><span class="bf-tag bf-tag-green">Subunidad HBsAg</span></td>
+                                <td>RN, lactantes, adultos sin inmunidad</td>
+                                <td>3–4 dosis</td>
+                            </tr>
+                            <tr>
+                                <td>Comirnaty® / Spikevax®</td>
+                                <td>SARS-CoV-2</td>
+                                <td><span class="bf-tag bf-tag-blue">ARNm + LNP</span></td>
+                                <td>Adultos ≥18, grupos de riesgo, refuerzos</td>
+                                <td>2 dosis + refuerzos</td>
+                            </tr>
+                            <tr>
+                                <td>Shingrix®</td>
+                                <td>Herpes Zóster (VVZ reactivación)</td>
+                                <td><span class="bf-tag bf-tag-purple">Subunidad gE + AS01B</span></td>
+                                <td>Adultos ≥60 años (desde 2023 Chile)</td>
+                                <td>2 dosis (0 y 2 m)</td>
+                            </tr>
+                            <tr>
+                                <td>Hiberix® (Hib)</td>
+                                <td>H. influenzae tipo b</td>
+                                <td><span class="bf-tag bf-tag-purple">Conjugada polisacárido</span></td>
+                                <td>Lactantes en pentavalente DTPa-VHB-Hib</td>
+                                <td>4 dosis</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bf-norma-box" data-bf-reveal>
+                <div class="bf-norma-icon">🏛️</div>
+                <div class="bf-norma-content">
+                    <h4>Marco Regulatorio Vacunas en Chile: MINSAL + ISP</h4>
+                    <p>El Programa Nacional de Inmunizaciones (PNI) es administrado por el MINSAL mediante la Subsecretaría de Salud Pública. El ISP realiza el control de calidad lot release de todas las vacunas que ingresan al país, conforme a las normas de la OMS y la guía Q5C de la ICH (estabilidad de productos biológicos). Las vacunas de ARNm requirieron una evaluación regulatoria expedita (Emergency Use Authorization adaptada) por la Resolución N° 884 del ISP (2021), con monitoreo activo de seguridad a través del ESAVI (Eventos Supuestamente Atribuibles a Vacunación e Inmunización).</p>
+                </div>
+            </div>
+
+        </div><!-- /panel-2 -->
+
+        <!-- ===== PANEL 4: BIOSIMILARES ===== -->
+        <div class="bf-content-panel" id="panel-3">
+
+            <div class="bf-panel-intro" data-bf-reveal>
+                <div class="bf-panel-text">
+                    <h2>Bio<span>similares</span></h2>
+                    <p>Un biosimilar es un medicamento biológico que ha demostrado ser altamente similar en calidad, seguridad y eficacia a un biológico de referencia ya aprobado (denominado biológico innovador u originador), cuya patente ha expirado. No es una copia idéntica (como ocurre con los genéricos de pequeña molécula) porque la complejidad molecular y los procesos de producción biológica no permiten reproducción exacta.</p>
+                    <p>La diferencia fundamental respecto a los medicamentos genéricos convencionales radica en la complejidad estructural: mientras que un genérico de aspirina es químicamente idéntico al original, un biosimilar de adalimumab es "altamente similar" en estructura tridimensional, actividad biológica y perfil clínico, pero puede diferir en microheterogeneidad de glicosilación u otras características de orden superior.</p>
+                    <div class="bf-highlight-box gold">
+                        <strong>Definición EMA</strong>
+                        <p>Un biosimilar es un medicamento biológico similar a un medicamento biológico ya autorizado (el medicamento de referencia). La similitud con el medicamento de referencia en términos de estructura, actividad biológica, eficacia, seguridad e inmunogenicidad debe estar establecida mediante un exhaustivo programa de comparabilidad.</p>
+                    </div>
+                </div>
+                <div class="bf-3d-wrapper">
+                    <canvas id="bf-canvas-biosimilar" data-bf-canvas title="Biosimilar vs Original 3D"></canvas>
+                    <div class="bf-3d-label">▸ Original vs Biosimilar · Comparación Estructural · ~97% Similitud</div>
+                </div>
+            </div>
+
+            <!-- Comparativo -->
+            <div class="bf-examples-section" data-bf-reveal>
+                <h3>Biológico de Referencia vs Biosimilar</h3>
+                <div class="bf-compare">
+                    <div class="bf-compare-col">
+                        <h4>🔵 Biológico Originador</h4>
+                        <ul>
+                            <li>Primer medicamento biológico aprobado con datos completos de ensayos clínicos Fase I-III.</li>
+                            <li>Protegido por patente durante ~20 años desde la solicitud.</li>
+                            <li>Alto costo de desarrollo (≥1.000 millones USD en promedio).</li>
+                            <li>Precio elevado, frecuentemente barrera de acceso.</li>
+                            <li>Proceso de fabricación exclusivo y con protección de know-how.</li>
+                            <li>Nombre de marca registrado (ej. Herceptin® para trastuzumab).</li>
+                        </ul>
+                    </div>
+                    <div class="bf-compare-col highlight">
+                        <h4>🟢 Biosimilar</h4>
+                        <ul>
+                            <li>Desarrollado tras expirar la patente del originador.</li>
+                            <li>Requiere demostrar comparabilidad exhaustiva (fisicoquímica, biológica, clínica).</li>
+                            <li>Costo de desarrollo menor (~100–300 millones USD), pero mayor que genérico químico.</li>
+                            <li>Precio 20–40% menor que el originador en promedio (puede llegar al 70% en compras institucionales).</li>
+                            <li>Aprobado por EMA/FDA/ISP con evaluación paso a paso (stepwise approach).</li>
+                            <li>Intercambiabilidad definida por la agencia reguladora de cada país.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proceso aprobación -->
+            <div class="bf-examples-section" data-bf-reveal>
+                <h3>Proceso de Aprobación de Biosimilares (ISP Chile)</h3>
+                <div class="bf-process">
+                    <div class="bf-step">
+                        <div class="bf-step-num"><div class="bf-step-icon">🔬</div></div>
+                        <div class="bf-step-title">1. Caracterización Fisicoquímica</div>
+                        <div class="bf-step-desc">Espectrometría de masas, cromatografía (SEC-HPLC, IEF), análisis de glicosilación, estructura primaria/terciaria. Demostrar similitud estructural al referente.</div>
+                    </div>
+                    <div class="bf-step">
+                        <div class="bf-step-num"><div class="bf-step-icon">🧫</div></div>
+                        <div class="bf-step-title">2. Estudios Funcionales</div>
+                        <div class="bf-step-desc">Ensayos de unión al receptor, ADCC, CDC, actividad enzimática. Comparación célula a célula con el biológico de referencia aprobado.</div>
+                    </div>
+                    <div class="bf-step">
+                        <div class="bf-step-num"><div class="bf-step-icon">🐭</div></div>
+                        <div class="bf-step-title">3. Estudios No Clínicos</div>
+                        <div class="bf-step-desc">Toxicología comparativa en modelos animales relevantes. PK/PD en primates no humanos cuando aplica según guía ICH S6(R1).</div>
+                    </div>
+                    <div class="bf-step">
+                        <div class="bf-step-num"><div class="bf-step-icon">👥</div></div>
+                        <div class="bf-step-title">4. Estudios Clínicos (PK + Eficacia)</div>
+                        <div class="bf-step-desc">Farmacocinética comparativa en voluntarios sanos o pacientes. Ensayo de eficacia comparativa en indicación más sensible. Inmunogenicidad a largo plazo.</div>
+                    </div>
+                    <div class="bf-step">
+                        <div class="bf-step-num"><div class="bf-step-icon">📋</div></div>
+                        <div class="bf-step-title">5. Registro ISP + Farmacovigilancia</div>
+                        <div class="bf-step-desc">Solicitud de Registro Sanitario al ISP con dossier completo. Plan de Gestión de Riesgos (PGR) obligatorio. Monitoreo poscomercialización.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla biosimilares Chile -->
+            <div class="bf-examples-section" data-bf-reveal>
+                <h3>Biosimilares Aprobados o Disponibles en Chile (selección)</h3>
+                <div style="overflow-x:auto">
+                    <table class="bf-drug-table">
+                        <thead>
+                            <tr>
+                                <th>DCI</th>
+                                <th>Nombre Biosimilar</th>
+                                <th>Referente Originador</th>
+                                <th>Indicación</th>
+                                <th>Laboratorio</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Rituximab</td>
+                                <td>Mabxience® / Rixathon®</td>
+                                <td>MabThera® (Roche)</td>
+                                <td>Linfoma, LLC, AR</td>
+                                <td>Mabxience / Sandoz</td>
+                                <td><span class="bf-tag bf-tag-green">Aprobado ISP</span></td>
+                            </tr>
+                            <tr>
+                                <td>Trastuzumab</td>
+                                <td>Herzuma® / Kanjinti®</td>
+                                <td>Herceptin® (Roche)</td>
+                                <td>Cáncer mama HER2+</td>
+                                <td>Celltrion / Amgen</td>
+                                <td><span class="bf-tag bf-tag-green">Aprobado ISP</span></td>
+                            </tr>
+                            <tr>
+                                <td>Bevacizumab</td>
+                                <td>Mvasi® / Zirabev®</td>
+                                <td>Avastin® (Roche)</td>
+                                <td>Cáncer colorrectal, pulmón</td>
+                                <td>Amgen / Pfizer</td>
+                                <td><span class="bf-tag bf-tag-green">Aprobado ISP</span></td>
+                            </tr>
+                            <tr>
+                                <td>Adalimumab</td>
+                                <td>Hadlima® / Hyrimoz®</td>
+                                <td>Humira® (AbbVie)</td>
+                                <td>AR, Crohn, psoriasis</td>
+                                <td>Samsung Bioepis / Sandoz</td>
+                                <td><span class="bf-tag bf-tag-gold">Disponible</span></td>
+                            </tr>
+                            <tr>
+                                <td>Insulina glargina</td>
+                                <td>Basaglar® / Semglee®</td>
+                                <td>Lantus® (Sanofi)</td>
+                                <td>Diabetes mellitus</td>
+                                <td>Lilly / Mylan-Viatris</td>
+                                <td><span class="bf-tag bf-tag-green">Aprobado ISP 2022</span></td>
+                            </tr>
+                            <tr>
+                                <td>Eritropoyetina alfa</td>
+                                <td>Binocrit® / Retacrit®</td>
+                                <td>Eprex® (Janssen)</td>
+                                <td>Anemia por IRC, quimioterapia</td>
+                                <td>Sandoz / Pfizer</td>
+                                <td><span class="bf-tag bf-tag-gold">Disponible</span></td>
+                            </tr>
+                            <tr>
+                                <td>Filgrastim</td>
+                                <td>Zarxio® / Nivestim®</td>
+                                <td>Neupogen® (Amgen)</td>
+                                <td>Neutropenia, movilización PBSC</td>
+                                <td>Sandoz / Pfizer</td>
+                                <td><span class="bf-tag bf-tag-green">Aprobado ISP</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bf-norma-box" data-bf-reveal>
+                <div class="bf-norma-icon">📜</div>
+                <div class="bf-norma-content">
+                    <h4>Normativa Biosimilares Chile: Decreto 3/2010 y Resoluciones ISP</h4>
+                    <p>En Chile, los biosimilares se regulan por el Reglamento de Productos Farmacéuticos (D.S. N°03/2010, MINSAL) y las guías técnicas del ISP alineadas con los estándares de la OMS (Guidelines on evaluation of similar biotherapeutic products, 2009, actualización 2022) y la EMA. La Ley 21.198 (2019) introdujo exigencias reforzadas de estudios clínicos comparativos para biosimilares de mayor complejidad. La intercambiabilidad (sustitución automática en farmacia) no está actualmente autorizada de forma generalizada en Chile; requiere evaluación caso a caso por el médico tratante, salvo indicación expresa del ISP. El CENABAST licita biosimilares para el sector público, logrando ahorros de hasta 40% respecto al biológico originador.</p>
+                </div>
+            </div>
+
+        </div><!-- /panel-3 -->
+
+        <!-- NAV INFERIOR -->
+        <div class="bf-panel-nav">
+            <a href="../index.html" class="bf-nav-btn">← Volver a Biotecnología</a>
+            <a href="../contenido/ingenieria-genetica.html" class="bf-nav-btn primary">Siguiente: Ingeniería Genética →</a>
+        </div>
+
+    </div><!-- /container -->
+</section><!-- /content -->
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>© 2026 PharmaLab Chile — Biotecnología · Unidad 1: Biofármacos</p>
+            <p class="footer-disclaimer">Contenido educacional basado en normativa vigente ISP/MINSAL. No reemplaza asesoría profesional médica ni farmacéutica.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="../../script.js"></script>
+<script src="biofarmacos.js"></script>
+</body>
+</html>

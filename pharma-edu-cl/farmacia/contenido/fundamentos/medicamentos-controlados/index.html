@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicamentos Controlados — PharmaLab Chile</title>
+    <link rel="stylesheet" href="../../../../styles.css">
+    <link rel="stylesheet" href="../../../farmacia.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="module-farmacia">
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../../../../index.html" class="nav-logo">
+                <div class="logo-icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/><circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/><line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/><line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/><line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/></svg></div>
+                <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../../../../quimica/index.html" class="nav-link" data-module="quimica">⚗️ Química</a>
+                <a href="../../../../farmacia/index.html" class="nav-link active" data-module="farmacia">💊 Farmacia</a>
+                <a href="../../../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf">🧬 Q. Farmacéutica</a>
+                <a href="../../../../biotecnologia/index.html" class="nav-link" data-module="biotech">🔬 Biotecnología</a>
+            </div>
+            <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="module-hero" style="min-height:38vh;padding-bottom:40px;">
+        <div class="hero-content">
+            <span class="section-tag">Farmacia — Fundamentos</span>
+            <h1 class="section-title">Medicamentos <span class="text-gradient-farmacia">Controlados</span></h1>
+            <p class="section-desc">Estupefacientes y psicotrópicos: clasificación, dispensación, libro de control, almacenamiento seguro y responsabilidades legales del QF.</p>
+        </div>
+    </section>
+
+    <section class="lesson-content">
+        <div class="container">
+            <div class="lesson-body">
+
+                <div class="lesson-index">
+                    <h4>📑 Contenido</h4>
+                    <ol>
+                        <li><a href="#definicion">¿Qué son los Medicamentos Controlados?</a></li>
+                        <li><a href="#clasificacion">Clasificación Legal en Chile</a></li>
+                        <li><a href="#estupefacientes">Estupefacientes: D.S. 404/1984</a></li>
+                        <li><a href="#psicotropicos">Psicotrópicos: D.S. 405/1984</a></li>
+                        <li><a href="#dispensacion">Proceso de Dispensación</a></li>
+                        <li><a href="#libro-control">Libro de Control</a></li>
+                        <li><a href="#almacenamiento">Almacenamiento Seguro</a></li>
+                        <li><a href="#reporte">Reportes y Fiscalización</a></li>
+                        <li><a href="#responsabilidad">Responsabilidad Legal del QF</a></li>
+                        <li><a href="#usos-clinicos">Usos Clínicos en Chile</a></li>
+                    </ol>
+                </div>
+
+                <div class="lesson-section" id="definicion">
+                    <h2>1. <span>¿Qué son los Medicamentos Controlados?</span></h2>
+                    <p>Los medicamentos controlados son aquellos que, por su potencial de abuso, dependencia física o psíquica, o por sus efectos sobre el sistema nervioso central, están sometidos a un régimen especial de control por parte del Estado, más estricto que el de los demás medicamentos.</p>
+                    <div class="info-block">
+                        <h3>🌍 Marco Internacional</h3>
+                        <ul>
+                            <li><strong>Convención Única de la ONU sobre Estupefacientes (1961):</strong> Estableció el primer marco internacional de control de opioides y otros estupefacientes.</li>
+                            <li><strong>Convenio sobre Sustancias Psicotrópicas (1971):</strong> Amplió el control a depresores del SNC, estimulantes y alucinógenos.</li>
+                            <li><strong>Convención de Viena (1988):</strong> Reforzó las medidas contra el tráfico ilícito y estableció el control de precursores.</li>
+                            <li>Chile ha ratificado los tres convenios y los ha incorporado en su legislación nacional a través de los D.S. 404 y 405.</li>
+                        </ul>
+                    </div>
+                    <div class="alert-box alert-info">
+                        <span class="alert-icon">ℹ️</span>
+                        <div>
+                            <strong>Medicamento Controlado ≠ Medicamento Prohibido</strong>
+                            <p>Los medicamentos controlados tienen usos terapéuticos legítimos e importantes: tratamiento del dolor severo (opioides), epilepsia y ansiedad (benzodiacepinas), TDAH (metilfenidato). Su control busca equilibrar el acceso terapéutico con la prevención del abuso.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-section" id="clasificacion">
+                    <h2>2. <span>Clasificación Legal en Chile</span></h2>
+                    <table class="data-table">
+                        <thead><tr><th>Categoría</th><th>Decreto</th><th>Nivel de Control</th><th>Receta</th><th>Ejemplos</th></tr></thead>
+                        <tbody>
+                            <tr><td><span class="badge badge-red">Estupefacientes</span></td><td>D.S. 404/1984</td><td>Máximo</td><td>Cheque triplicado (5 días)</td><td>Morfina, Fentanil, Metadona</td></tr>
+                            <tr><td><span class="badge badge-red">Psicotrópicos Lista I</span></td><td>D.S. 405/1984</td><td>Máximo</td><td>Cheque (30 días)</td><td>Clonazepam, Alprazolam</td></tr>
+                            <tr><td><span class="badge badge-yellow">Psicotrópicos Lista II</span></td><td>D.S. 405/1984</td><td>Alto</td><td>Retenida especial</td><td>Diazepam, Zolpidem, Metilfenidato</td></tr>
+                            <tr><td><span class="badge badge-blue">Psicotrópicos Lista III</span></td><td>D.S. 405/1984</td><td>Moderado</td><td>Retenida</td><td>Fenobarbital, Ketamina</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="lesson-section" id="estupefacientes">
+                    <h2>3. <span>Estupefacientes: D.S. 404/1984</span></h2>
+                    <div class="info-block">
+                        <h3>💊 Principales Estupefacientes en Uso Clínico en Chile</h3>
+                        <ul>
+                            <li><strong>Morfina:</strong> Analgésico opioide de referencia para dolor oncológico severo. Disponible en comprimidos de liberación sostenida, solución oral e inyectable.</li>
+                            <li><strong>Fentanil:</strong> Opioide 100x más potente que la morfina. Parches transdérmicos para dolor crónico; inyectable para anestesia.</li>
+                            <li><strong>Metadona:</strong> Opioide de larga acción. Se usa en tratamiento del dolor crónico severo y en programas de sustitución de opioides (adicción a heroína).</li>
+                            <li><strong>Oxicodona:</strong> Opioide semisintético. Disponible en formulaciones de liberación controlada para dolor moderado a severo.</li>
+                            <li><strong>Codeína (pura):</strong> Opioide débil. En combinaciones (codeína + paracetamol) el control es menor. La codeína pura en altas dosis requiere receta cheque.</li>
+                            <li><strong>Tramadol (inyectable alta concentración):</strong> Agonista opioide parcial. Formulaciones inyectables de alta concentración tienen control de estupefaciente.</li>
+                        </ul>
+                    </div>
+                    <div class="info-block">
+                        <h3>⚗️ Mecanismo de Acción de los Opioides</h3>
+                        <ul>
+                            <li>Actúan sobre receptores opioides μ (mu), κ (kappa) y δ (delta) en el SNC y tejidos periféricos.</li>
+                            <li>Receptor μ: principal mediador de analgesia, euforia, depresión respiratoria y dependencia.</li>
+                            <li>Efectos adversos principales: depresión respiratoria (efecto más peligroso), náuseas, constipación, sedación, dependencia física.</li>
+                            <li><strong>Antídoto:</strong> Naloxona (antagonista opioide puro) para sobredosis. Disponible en farmacias de guardia en Chile.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lesson-section" id="psicotropicos">
+                    <h2>4. <span>Psicotrópicos: D.S. 405/1984</span></h2>
+                    <div class="info-block">
+                        <h3>💊 Benzodiacepinas — Las más frecuentes en Chile</h3>
+                        <ul>
+                            <li><strong>Clonazepam (Lista I):</strong> Antiepiléptico y ansiolítico de amplio uso en Chile. Indicado en epilepsia, trastorno de pánico, trastorno bipolar como estabilizador. Frecuente abuso y dependencia.</li>
+                            <li><strong>Alprazolam (Lista I):</strong> Ansiolítico de acción rápida. Indicado en trastorno de ansiedad generalizada y trastorno de pánico. Alto potencial de dependencia.</li>
+                            <li><strong>Lorazepam (Lista I):</strong> Benzodiacepina de acción intermedia. Útil en estado epiléptico y sedación procedimental.</li>
+                            <li><strong>Diazepam (Lista II):</strong> Benzodiacepina de larga acción. Relajante muscular, antiepiléptico, ansiolitico. Usado también en síndrome de abstinencia alcohólica.</li>
+                            <li><strong>Bromazepam (Lista II):</strong> Ansiolítico de potencia intermedia. Uso frecuente en ansiedad situacional.</li>
+                        </ul>
+                    </div>
+                    <div class="info-block">
+                        <h3>💊 Otros Psicotrópicos Relevantes</h3>
+                        <ul>
+                            <li><strong>Zolpidem (Lista II):</strong> Hipnótico no benzodiacepínico (ciclopirrolona). Indicado para insomnio. Riesgo de conductas complejas durante el sueño (sonambulismo).</li>
+                            <li><strong>Metilfenidato (Lista II):</strong> Estimulante del SNC. Indicado en TDAH en niños y adultos. Inhibidor de la recaptación de dopamina y noradrenalina.</li>
+                            <li><strong>Midazolam (Lista I):</strong> Benzodiacepina de acción ultracorta. Uso hospitalario en sedación, inducción anestésica, estado epiléptico.</li>
+                            <li><strong>Fenobarbital (Lista III):</strong> Barbitúrico antiepiléptico. Uno de los antiepilépticos más antiguos y económicos. Aún usado en epilepsia refractaria.</li>
+                        </ul>
+                    </div>
+                    <div class="alert-box alert-warning">
+                        <span class="alert-icon">⚠️</span>
+                        <div>
+                            <strong>Síndrome de Abstinencia a Benzodiacepinas</strong>
+                            <p>La suspensión brusca de benzodiacepinas tras uso prolongado puede causar un síndrome de abstinencia potencialmente grave: ansiedad rebote intensa, insomnio, temblores, sudoración, y en casos severos, convulsiones y psicosis. El QF debe advertir a los pacientes que nunca suspendan bruscamente sin indicación médica.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-section" id="dispensacion">
+                    <h2>5. <span>Proceso de Dispensación de Controlados</span></h2>
+                    <div class="steps-process">
+                        <div class="step-item">
+                            <div class="step-number">01</div>
+                            <div class="step-line"></div>
+                            <div class="step-body">
+                                <h4>Verificación de la receta cheque</h4>
+                                <p>Confirmar que es un formulario oficial numerado, que está dentro de vigencia (5 días para estupefacientes, 30 días para psicotrópicos Lista I), que está completamente llenado y que no tiene enmendaduras.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">02</div>
+                            <div class="step-line"></div>
+                            <div class="step-body">
+                                <h4>Verificación del prescriptor</h4>
+                                <p>Confirmar que el médico que emite la receta tiene habilitación vigente para prescribir controlados. Los talonarios son nominales y numerados; se puede verificar con el Servicio de Salud.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">03</div>
+                            <div class="step-line"></div>
+                            <div class="step-body">
+                                <h4>Verificación de identidad del portador</h4>
+                                <p>Solicitar cédula de identidad al portador de la receta. Registrar el RUT del receptor en el libro de control. El portador no tiene que ser necesariamente el paciente.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">04</div>
+                            <div class="step-line"></div>
+                            <div class="step-body">
+                                <h4>Registro en el Libro de Control</h4>
+                                <p>El QF registra en el libro correlativo: fecha, número de receta, nombre del paciente, nombre del médico, medicamento, cantidad dispensada y saldo en stock. Firma obligatoria del QF.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">05</div>
+                            <div class="step-line"></div>
+                            <div class="step-body">
+                                <h4>Retención del documento</h4>
+                                <p>La receta cheque queda en poder de la farmacia. Se archiva de forma ordenada por fecha y número para su posterior verificación por fiscalizadores.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">06</div>
+                            <div class="step-line"></div>
+                            <div class="step-body">
+                                <h4>Dispensación y educación</h4>
+                                <p>Entrega del medicamento con información sobre: uso correcto, efectos adversos esperados, riesgo de dependencia, importancia de no compartir el medicamento y cómo almacenarlo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-section" id="libro-control">
+                    <h2>6. <span>Libro de Control</span></h2>
+                    <div class="info-block">
+                        <h3>📗 Características del Libro de Control</h3>
+                        <ul>
+                            <li>Libro empastado, con hojas foliadas y numeradas correlativamente.</li>
+                            <li>Debe estar timbrado por el Servicio de Salud regional antes de su uso.</li>
+                            <li>Se llevan libros separados para estupefacientes y psicotrópicos.</li>
+                            <li>Cada página registra: número correlativo, fecha, nombre del paciente, nombre del médico, número de receta, nombre del medicamento, unidades dispensadas y saldo.</li>
+                            <li>El saldo en el libro debe cuadrar con el stock físico en todo momento.</li>
+                            <li>Solo el QF puede realizar los registros y debe firmar cada entrada.</li>
+                            <li>Los libros deben conservarse por un mínimo de 5 años.</li>
+                        </ul>
+                    </div>
+                    <div class="alert-box alert-danger">
+                        <span class="alert-icon">🚨</span>
+                        <div>
+                            <strong>Discrepancia en el Libro de Control</strong>
+                            <p>Cualquier diferencia entre el stock físico y el registro del libro de control es una infracción grave. Si se detecta una pérdida o robo, el QF debe reportarlo inmediatamente al Servicio de Salud regional y a Carabineros. El ocultamiento de una discrepancia puede constituir delito.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-section" id="almacenamiento">
+                    <h2>7. <span>Almacenamiento Seguro</span></h2>
+                    <div class="info-block">
+                        <h3>🔒 Requisitos de Almacenamiento según D.S. 404 y 405</h3>
+                        <ul>
+                            <li><strong>Caja fuerte o armario de seguridad certificado:</strong> Metálico, empotrado o fijo a la estructura del edificio. Con cerradura de seguridad de alta resistencia.</li>
+                            <li><strong>Acceso exclusivo del QF director técnico:</strong> Solo el QF tiene la llave o combinación. Ningún otro personal tiene acceso.</li>
+                            <li><strong>Separación por categoría:</strong> Estupefacientes separados de psicotrópicos; ambos separados del stock general.</li>
+                            <li><strong>Etiquetado interno:</strong> Cada medicamento claramente identificado con nombre, concentración y lote.</li>
+                            <li><strong>Control de temperatura:</strong> Para medicamentos termolábiles (ej.: fentanil en solución), verificar condiciones de almacenamiento específicas del fabricante.</li>
+                            <li><strong>Inventario regular:</strong> El QF debe realizar inventarios periódicos (recomendado: mensual mínimo) para verificar cuadre entre stock físico y libro de control.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lesson-section" id="reporte">
+                    <h2>8. <span>Reportes y Fiscalización</span></h2>
+                    <div class="info-block">
+                        <h3>📊 Informes Periódicos Obligatorios</h3>
+                        <ul>
+                            <li><strong>Informe mensual de movimientos:</strong> La farmacia debe enviar mensualmente al Servicio de Salud regional un resumen del movimiento de estupefacientes: stock inicial, ingresos (compras), egresos (dispensaciones) y stock final.</li>
+                            <li><strong>Informe anual de existencias:</strong> Al 31 de diciembre de cada año, se reporta el inventario final de todos los medicamentos controlados.</li>
+                            <li><strong>Reporte de pérdidas o robos:</strong> Inmediato al detectarse. Al Servicio de Salud y Carabineros.</li>
+                        </ul>
+                    </div>
+                    <div class="info-block">
+                        <h3>🔍 Fiscalización por el ISP y Servicios de Salud</h3>
+                        <ul>
+                            <li>Los inspectores del Servicio de Salud pueden realizar visitas sin previo aviso para verificar el cumplimiento de la normativa de controlados.</li>
+                            <li>En la inspección se verifica: libro de control al día, cuadre con stock físico, condiciones de almacenamiento (caja fuerte), archivo de recetas cheque retenidas.</li>
+                            <li>Las deficiencias detectadas se registran en un acta de fiscalización y pueden derivar en sanciones.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lesson-section" id="responsabilidad">
+                    <h2>9. <span>Responsabilidad Legal del QF</span></h2>
+                    <div class="info-block">
+                        <h3>⚖️ Marco Legal de Responsabilidad</h3>
+                        <ul>
+                            <li><strong>Ley 20.000 (Tráfico de Estupefacientes):</strong> Tipifica como delito el tráfico, posesión con ánimo de traficar y la facilitación de acceso a estupefacientes fuera del marco legal.</li>
+                            <li><strong>Código Penal:</strong> El QF que desvíe medicamentos controlados, los dispense sin receta válida o adultere el libro de control puede ser procesado por delitos de malversación, apropiación indebida o facilitación de tráfico.</li>
+                            <li><strong>Código Sanitario:</strong> Sanciones administrativas que van desde multas hasta la cancelación de la autorización de la farmacia y la inhabilitación profesional del QF.</li>
+                        </ul>
+                    </div>
+                    <div class="alert-box alert-danger">
+                        <span class="alert-icon">🚨</span>
+                        <div>
+                            <strong>Penas Específicas según Ley 20.000</strong>
+                            <p>El tráfico de estupefacientes en Chile tiene penas de presidio mayor (5 años y 1 día hasta 15 años). El microtráfico tiene penas de presidio menor (541 días a 5 años). Un QF que desvíe opioides o psicotrópicos para uso ilícito puede enfrentar estas penas, además de la cancelación permanente de su habilitación profesional.</p>
+                        </div>
+                    </div>
+                    <div class="pharma-highlight">
+                        <div class="ph-icon">🛡️</div>
+                        <h3>El QF como Guardián de los Medicamentos Controlados</h3>
+                        <p>La legislación chilena deposita en el Químico Farmacéutico la responsabilidad última del control de estupefacientes y psicotrópicos en la farmacia. Esta responsabilidad no puede ser delegada a ningún auxiliar o técnico. Es un componente central del ejercicio profesional farmacéutico y del compromiso ético con la salud pública.</p>
+                    </div>
+                </div>
+
+                <div class="lesson-section" id="usos-clinicos">
+                    <h2>10. <span>Usos Clínicos en Chile</span></h2>
+                    <table class="data-table">
+                        <thead><tr><th>Medicamento</th><th>Indicación principal</th><th>Consideraciones para el QF</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>Morfina oral</strong></td><td>Dolor oncológico severo</td><td>Educación en manejo de efectos adversos (constipación, náuseas). Iniciar con dosis bajas.</td></tr>
+                            <tr><td><strong>Fentanil parches</strong></td><td>Dolor crónico severo estable</td><td>Verificar rotación correcta (cada 72h), riesgo en fiebre (mayor absorción).</td></tr>
+                            <tr><td><strong>Metadona</strong></td><td>Dolor crónico / sustitución opioides</td><td>Alto riesgo de prolongación QT. Interacciones múltiples.</td></tr>
+                            <tr><td><strong>Clonazepam</strong></td><td>Epilepsia, pánico, ansiedad</td><td>Advertir sobre sedación y no conducir. No suspender bruscamente.</td></tr>
+                            <tr><td><strong>Metilfenidato</strong></td><td>TDAH (niños y adultos)</td><td>Tomar en la mañana. Puede reducir apetito y sueño. No en cardiopatías.</td></tr>
+                            <tr><td><strong>Zolpidem</strong></td><td>Insomnio</td><td>Solo para uso a corto plazo (&lt;4 semanas). Riesgo de conductas en el sueño.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="lesson-nav">
+                    <a href="../receta-medica/index.html">← Receta Médica</a>
+                    <a href="../rol-qf/index.html">Siguiente: Rol del QF →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 PharmaLab Chile — Fundamentos: Medicamentos Controlados</p>
+                <p class="footer-disclaimer">Contenido educacional actualizado. No reemplaza asesoría profesional.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../../../../script.js"></script>
+</body>
+</html>

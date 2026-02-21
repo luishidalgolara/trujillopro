@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virus del Dengue (DENV) — Latinoamérica, ADE e Inmunología | PharmaLab Chile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dengue.css">
+</head>
+<body class="dnv-page">
+
+  <!-- NAVBAR -->
+  <nav class="dnv-navbar" id="dnv-navbar">
+    <div class="dnv-nav-inner">
+      <a href="../../index.html" class="dnv-nav-logo">
+        <svg viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        Pharma<span class="accent">Lab</span>
+      </a>
+      <div class="dnv-nav-links" id="dnvNavLinks">
+        <a href="../index.html">← Virología</a>
+        <a href="#estructura">Estructura 3D</a>
+        <a href="#latinoamerica">Latinoamérica</a>
+        <a href="#ade">ADE</a>
+        <a href="#inmunologia">Inmunología</a>
+        <a href="#" class="active">Dengue</a>
+      </div>
+      <button class="dnv-nav-toggle" id="dnvNavToggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="dnv-hero">
+    <div class="dnv-hero-bg"></div>
+    <canvas id="dnv-hero-canvas"></canvas>
+    <div class="dnv-hero-content">
+      <div class="dnv-badge">Virología · Patógeno 09/10 · BSL-2</div>
+      <h1 class="dnv-hero-title">
+        <span class="accent">Virus del Dengue</span><br>
+        DENV 1–4 — Flaviviridae
+      </h1>
+      <p class="dnv-hero-desc">
+        El <strong>arbovirus más importante del mundo</strong>: 4 serotipos, 
+        ~390 millones de infecciones anuales, endémico en más de 128 países. 
+        Su fenómeno de <strong>potenciación dependiente de anticuerpos (ADE)</strong> 
+        hace de él un modelo inmunológico único. Primera <strong>reemergencia explosiva 
+        en Chile</strong> documentada en 2024 — nueva realidad epidemiológica para Latinoamérica.
+      </p>
+      <div class="dnv-hero-meta">
+        <div class="dnv-meta-item">
+          <span class="dnv-meta-val">~10.7 kb</span>
+          <span class="dnv-meta-label">Genoma ARN (+)ssRNA lineal</span>
+        </div>
+        <div class="dnv-meta-item">
+          <span class="dnv-meta-val">390 M</span>
+          <span class="dnv-meta-label">Infecciones anuales (Bhatt et al., 2013)</span>
+        </div>
+        <div class="dnv-meta-item">
+          <span class="dnv-meta-val">4</span>
+          <span class="dnv-meta-label">Serotipos (DENV-1, 2, 3, 4)</span>
+        </div>
+        <div class="dnv-meta-item">
+          <span class="dnv-meta-val">128</span>
+          <span class="dnv-meta-label">Países endémicos (OMS 2023)</span>
+        </div>
+      </div>
+    </div>
+    <div class="dnv-scroll-hint">
+      <span>Explorar</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- STATS ROW -->
+  <div class="dnv-container">
+    <div class="dnv-stats-row">
+      <div class="dnv-stat-card">
+        <span class="dnv-stat-val" data-target="390" data-suffix=" M">0</span>
+        <span class="dnv-stat-label">Infecciones anuales estimadas (global)</span>
+      </div>
+      <div class="dnv-stat-card">
+        <span class="dnv-stat-val" data-target="96" data-suffix=" M">0</span>
+        <span class="dnv-stat-label">Casos sintomáticos anuales (OMS)</span>
+      </div>
+      <div class="dnv-stat-card">
+        <span class="dnv-stat-val" data-target="40000" data-suffix="">0</span>
+        <span class="dnv-stat-label">Muertes anuales por dengue grave</span>
+      </div>
+      <div class="dnv-stat-card">
+        <span class="dnv-stat-val" data-target="75" data-suffix="%">0</span>
+        <span class="dnv-stat-label">Infecciones asintomáticas (~75%)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 1 — ESTRUCTURA 3D -->
+  <section class="dnv-section" id="estructura">
+    <div class="dnv-container">
+      <div class="dnv-section-tag tag-amber">🔬 Estructura del Virión</div>
+      <h2 class="dnv-section-title">Anatomía del <span class="gradient">DENV</span> en 3D</h2>
+      <p class="dnv-section-sub">El DENV es un flavivirus icosaédrico envuelto (~50 nm), genéticamente relacionado con ZIKV y YFV. Sus 4 serotipos son antigénicamente distintos — diferencia que fundamenta todo el fenómeno de ADE y las complicaciones del dengue grave.</p>
+
+      <div class="dnv-viewer-wrap">
+        <div>
+          <div class="dnv-canvas-box">
+            <canvas id="dnv-model-canvas"></canvas>
+            <div class="dnv-canvas-label">DENV · Virión icosaédrico (~50 nm) · 4 serotipos</div>
+          </div>
+        </div>
+        <div class="dnv-struct-info">
+          <div class="dnv-struct-card" style="--stripe-color:#d97706">
+            <h4><span class="dot" style="background:#d97706"></span>Proteína E — 180 copias en simetría T=3</h4>
+            <p>La glicoproteína E (envelope) se organiza en 90 dímeros dispuestos en una red icosaédrica de simetría T=3. Cada dímero tiene 3 dominios: DI (central), DII (fusión — péptido de fusión en el extremo), DIII (unión al receptor heparan sulfato/CLEC5A). El DIII es la diana principal de anticuerpos neutralizantes serotipo-específicos y de reactividad cruzada (responsable del ADE).</p>
+          </div>
+          <div class="dnv-struct-card" style="--stripe-color:#f59e0b">
+            <h4><span class="dot" style="background:#f59e0b"></span>prM/M — Control de infectividad</h4>
+            <p>Los viriones inmaduros contienen prM (precursor de M) que "tapa" el péptido de fusión del dominio DII de E. La furina celular en el trans-Golgi cliva prM→M durante la maduración. Viriones parcialmente maduros (con prM residual) son más susceptibles al ADE — los anticuerpos anti-prM pueden potenciar infección en macrófagos vía FcγR.</p>
+          </div>
+          <div class="dnv-struct-card" style="--stripe-color:#fbbf24">
+            <h4><span class="dot" style="background:#fbbf24"></span>NS1 — Hexámero secretado + inmunopatología</h4>
+            <p>NS1 es secretada como hexámero lipídico (sNS1) en altas concentraciones durante infección activa — marcador diagnóstico sensible en días 1–5 (antes de la seroconversión). sNS1 activa el complemento y macrófagos, contribuye a la disfunción endotelial. Niveles séricos de NS1 se correlacionan con gravedad. Base del test rápido NS1-Ag.</p>
+          </div>
+          <div class="dnv-struct-card" style="--stripe-color:#78350f">
+            <h4><span class="dot" style="background:#78350f"></span>NS5 RdRp — Diana terapéutica</h4>
+            <p>NS5 es la ARN polimerasa ARN-dependiente (RdRp) + metiltransferasa del capping viral. La mayor proteína viral (~900 aa). Altamente conservada entre los 4 serotipos → diana atractiva para antivirales pan-DENV. Inhibidores nucleosídicos (celgosivir, NITD008, balapiravir) y no nucleosídicos en investigación. Ninguno aprobado aún para uso clínico.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2 — LATINOAMÉRICA -->
+  <section class="dnv-section" id="latinoamerica">
+    <div class="dnv-container">
+      <div class="dnv-section-tag tag-amber">🌎 Latinoamérica</div>
+      <h2 class="dnv-section-title">Dengue en <span class="gradient">Latinoamérica</span></h2>
+      <p class="dnv-section-sub">Latinoamérica concentra la mayor carga de dengue fuera del sudeste asiático. Brasil, Colombia, México y Argentina lideran el número de casos. El cambio climático, la urbanización y la resistencia insecticida han convertido al dengue en la arbovirosis más dinámica de la región.</p>
+
+      <div class="dnv-neuro-grid">
+        <div class="dnv-neuro-card" style="--neuro-color:#d97706;--neuro-dim:rgba(217,119,6,.12)">
+          <span class="dnv-neuro-icon">🇧🇷</span>
+          <h4>Brasil — Epicentro Regional</h4>
+          <p>En 2024, Brasil reportó más de 7 millones de casos — el mayor brote en su historia. São Paulo, Minas Gerais y Rio de Janeiro fueron los estados más afectados. DENV-3 reemergió tras años de ausencia, en población con baja inmunidad previa → mayor riesgo de dengue grave. Brasil representa ~80% de los casos de las Américas en años epidémicos.</p>
+          <span class="dnv-neuro-detail">2024: 7M+ casos · DENV-3 reemergente</span>
+        </div>
+        <div class="dnv-neuro-card" style="--neuro-color:#f59e0b;--neuro-dim:rgba(245,158,11,.12)">
+          <span class="dnv-neuro-icon">🇨🇴</span>
+          <h4>Colombia — Hiperendemicidad</h4>
+          <p>Colombia es hiperendémica con circulación simultánea de los 4 serotipos. Regiones tropicales (Llanos Orientales, Costa Atlántica, Valle del Cauca) con transmisión continua. El SIVIGILA reporta 60.000–200.000 casos anuales. La cocirculación de 4 serotipos aumenta el riesgo de ADE y dengue grave en reinfecciones. Programa de Wolbachia activo en Medellín.</p>
+          <span class="dnv-neuro-detail">4 serotipos simultáneos · Wolbachia Medellín</span>
+        </div>
+        <div class="dnv-neuro-card" style="--neuro-color:#fbbf24;--neuro-dim:rgba(251,191,36,.12)">
+          <span class="dnv-neuro-icon">🇦🇷</span>
+          <h4>Argentina — Expansión Hacia el Sur</h4>
+          <p>Históricamente confinado al norte (Jujuy, Salta, Misiones), el dengue avanzó hacia Buenos Aires y Córdoba en 2023–2024. El brote 2024 (>300.000 casos hasta mayo) superó todos los registros históricos argentinos. Aedes aegypti alcanzó latitud 38°S. Primer brote autóctono en la Ciudad de Buenos Aires. Alerta epidémica nacional declarada.</p>
+          <span class="dnv-neuro-detail">2024: 300k+ casos · Expansión 38°S</span>
+        </div>
+        <div class="dnv-neuro-card" style="--neuro-color:#92400e;--neuro-dim:rgba(146,64,14,.12)">
+          <span class="dnv-neuro-icon">🇲🇽</span>
+          <h4>México — Doble Carga Dengue/Chikungunya</h4>
+          <p>México enfrenta carga simultánea de dengue, chikungunya y Zika (triple amenaza arbovirosis). Yucatán, Veracruz, Guerrero y Oaxaca son los estados de mayor transmisión. DENV-2 genotipo cosmopolita dominante desde 2022. La coinfección dengue+chikungunya fue documentada por primera vez en México 2023 — cuadro clínico más severo y prolongado.</p>
+          <span class="dnv-neuro-detail">Triple arbovirosis · DENV-2 cosmopolita</span>
+        </div>
+        <div class="dnv-neuro-card" style="--neuro-color:#d97706;--neuro-dim:rgba(217,119,6,.12)">
+          <span class="dnv-neuro-icon">🇨🇱</span>
+          <h4>Chile 2024 — Nueva Realidad</h4>
+          <p>Chile vivió en 2024 su primer brote significativo de dengue importado con riesgo de transmisión local. Isla de Pascua (Rapa Nui) registró casos autóctonos confirmados — primer evento de transmisión local en territorio chileno. En Chile continental: casos importados por viajeros desde Brasil, Paraguay y Argentina. ISP activó alerta epidémica y protocolo de vigilancia intensificada.</p>
+          <span class="dnv-neuro-detail">Rapa Nui: primer caso autóctono 2024</span>
+        </div>
+        <div class="dnv-neuro-card" style="--neuro-color:#f59e0b;--neuro-dim:rgba(245,158,11,.12)">
+          <span class="dnv-neuro-icon">🌡️</span>
+          <h4>Cambio Climático y Expansión del Vector</h4>
+          <p>Los modelos climáticos (Mordecai et al., Lancet 2020) proyectan que el rango de Aedes aegypti se expandirá en 1.3 mil millones de personas adicionales para 2080 bajo escenario RCP 8.5. El calentamiento de 1°C acorta el EIP del dengue en 5–7 días. Chile central (Santiago, Valparaíso) podría ser zona de riesgo de transmisión estacional para 2050 si las temperaturas alcanzan umbrales críticos (>18°C mínima nocturna).</p>
+          <span class="dnv-neuro-detail">Expansión proyectada: +1.3B personas 2080</span>
+        </div>
+      </div>
+
+      <!-- TABLA BROTES -->
+      <div class="dnv-section-tag tag-amber" style="margin-top:48px">📊 Brotes y Epidemias Seleccionadas — Latinoamérica</div>
+      <div class="dnv-vax-table-wrap" style="margin-top:16px">
+        <table class="dnv-vax-table">
+          <thead>
+            <tr>
+              <th>Año</th>
+              <th>País/Región</th>
+              <th>Serotipo(s)</th>
+              <th>Casos</th>
+              <th>Hito / Relevancia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="vax-name">1981</td>
+              <td>Cuba</td>
+              <td class="vax-tech">DENV-2 (reinfección DENV-1 previa)</td>
+              <td>344.203 · 158 muertes</td>
+              <td>Primera epidemia masiva con dengue hemorrágico en las Américas. Primer escenario documentado de ADE en campo — reinfección DENV-2 tras inmunidad DENV-1.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">1994–2000</td>
+              <td>Venezuela / Colombia</td>
+              <td class="vax-tech">DENV-2 / DENV-3</td>
+              <td>>100.000 anuales</td>
+              <td>Reintroducción DENV-3 en las Américas tras 16 años de ausencia. Expansión rápida por susceptibilidad de la población. Establecimiento de hiperendemicidad regional.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">2019</td>
+              <td>Latinoamérica (record histórico)</td>
+              <td class="vax-tech">DENV-1 / DENV-2 / DENV-3</td>
+              <td>3,1 millones (OPS)</td>
+              <td>Record histórico pre-2024: Brasil 2.1M, Honduras 108k, México 268k. Primera vez que 3 serotipos coCircularon simultáneamente en la mayoría de los países.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">2023–2024</td>
+              <td>Brasil (Sudeste/Centro-Oeste)</td>
+              <td class="vax-tech">DENV-3 reemergente + DENV-1</td>
+              <td>>7 millones (2024)</td>
+              <td>Nuevo record mundial: DENV-3 reapareció tras ~15 años en población sin inmunidad → ADE masivo. Declaración de emergencia nacional de salud pública. OPS emite alerta regional.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">2024</td>
+              <td>Argentina</td>
+              <td class="vax-tech">DENV-1 / DENV-3</td>
+              <td>+500.000 (primer semestre)</td>
+              <td>Record histórico Argentina. Buenos Aires, Córdoba: primera transmisión autóctona sostenida. Señal de expansión geográfica permanente del vector hacia el Cono Sur.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3 — ADE -->
+  <section class="dnv-section" id="ade">
+    <div class="dnv-container">
+      <div class="dnv-section-tag tag-red">⚠️ Potenciación Dependiente de Anticuerpos</div>
+      <h2 class="dnv-section-title">El fenómeno <span class="gradient">ADE</span> — cuando los anticuerpos ayudan al virus</h2>
+      <p class="dnv-section-sub">El ADE (Antibody-Dependent Enhancement) es el mecanismo inmunológico más paradójico de la virología: los anticuerpos generados por una infección previa facilitan —en vez de neutralizar— una segunda infección por un serotipo diferente. Este fenómeno explica por qué la segunda infección con dengue puede ser mucho más grave que la primera.</p>
+
+      <!-- TIMELINE ADE -->
+      <div class="dnv-react-timeline">
+        <div class="dnv-rt-step">
+          <span class="dnv-rt-num" style="color:#d97706">01</span>
+          <h4>1ª Infección (ej. DENV-1)</h4>
+          <p>El sistema inmune genera anticuerpos IgG neutralizantes contra el DIII de la proteína E del DENV-1. Estos anticuerpos son serotipo-específicos. La infección primaria suele ser leve o asintomática. La inmunidad protectora contra DENV-1 es de por vida.</p>
+        </div>
+        <div class="dnv-rt-arrow">→</div>
+        <div class="dnv-rt-step">
+          <span class="dnv-rt-num" style="color:#f59e0b">02</span>
+          <h4>2ª Infección (ej. DENV-2)</h4>
+          <p>Los anticuerpos anti-DENV-1 tienen reactividad cruzada parcial con DENV-2 (reconocen epítopos conservados del DII, dominio de fusión). Sin embargo, su concentración y/o afinidad es insuficiente para neutralizar completamente al DENV-2 (concentración subneutralizante).</p>
+        </div>
+        <div class="dnv-rt-arrow">→</div>
+        <div class="dnv-rt-step">
+          <span class="dnv-rt-num" style="color:#fbbf24">03</span>
+          <h4>Formación de Inmunocomplejos Virales</h4>
+          <p>Los anticuerpos subneutralizantes se unen al DENV-2 formando inmunocomplejos (virus + IgG anti-DENV-1). En lugar de neutralizar al virus, los IgG "marcan" el virión con Fc.</p>
+        </div>
+        <div class="dnv-rt-arrow">→</div>
+        <div class="dnv-rt-step">
+          <span class="dnv-rt-num" style="color:#92400e">04</span>
+          <h4>Entrada Masiva vía FcγRII (CD32)</h4>
+          <p>Los inmunocomplejos son reconocidos por receptores Fc gamma (FcγRII/CD32) en macrófagos y monocitos. El virus entra de forma masiva y eficiente a estas células — que normalmente son resistentes — por un mecanismo de endocitosis mediado por FcγR, evadiendo la neutralización.</p>
+        </div>
+        <div class="dnv-rt-arrow">→</div>
+        <div class="dnv-rt-step">
+          <span class="dnv-rt-num" style="color:#ef4444">05</span>
+          <h4>Hiperreplicación + Tormenta Citocinas</h4>
+          <p>La replicación viral en macrófagos es exponencialmente mayor. Viremia hasta 100–1000x más alta que en infección primaria. Activación masiva de macrófagos → TNF-α, IL-6, IL-10 → disfunción endotelial, extravasación de plasma, trombocitopenia → dengue grave (dengue hemorrágico / shock por dengue).</p>
+        </div>
+      </div>
+
+      <div class="dnv-content-grid" style="margin-top:40px">
+        <div class="dnv-content-card" style="--card-accent:#d97706">
+          <div class="dnv-card-num">Evidencia del ADE</div>
+          <h3>Pruebas Clínicas y Epidemiológicas del ADE</h3>
+          <ul>
+            <li><span class="bullet" style="background:#d97706"></span><strong style="color:var(--dnv-text)">Epidemia Cuba 1981 — demostración en campo:</strong> La epidemia masiva de dengue hemorrágico ocurrió en una población con inmunidad previa DENV-1 (epidemia 1977) que fue reinfectada con DENV-2. El dengue grave fue casi exclusivo en personas con infección secundaria — directa validación epidemiológica del ADE descrito en laboratorio por Halstead en 1970.</li>
+            <li><span class="bullet" style="background:#d97706"></span><strong style="color:var(--dnv-text)">Anticuerpos maternos en lactantes:</strong> Los bebés nacidos de madres con inmunidad anti-dengue tienen protección las primeras semanas de vida (anticuerpos IgG maternos altos). Entre los 6–12 meses, cuando los anticuerpos decaen a concentraciones subneutralizantes, el riesgo de dengue grave por ADE aumenta significativamente — evidencia directa en seres humanos.</li>
+            <li><span class="bullet" style="background:#d97706"></span><strong style="color:var(--dnv-text)">Estudios de cohorte Nicaragua (Harris et al., NEJM):</strong> Cohorte longitudinal pediátrica de Managua durante 8+ años demostró que la infección secundaria con DENV-2 en individuos con anticuerpos anti-DENV-1 previos produce viremia 5–10x mayor que la infección primaria, correlacionando con mayor tasa de dengue grave. Uno de los estudios más robustos sobre ADE en humanos.</li>
+            <li><span class="bullet" style="background:#d97706"></span><strong style="color:var(--dnv-text)">Implicancia para Dengvaxia (Sanofi):</strong> La vacuna CYD-TDV (tetravalente, basada en quimeras YF17D) fue aprobada en 2015. En 2018, datos post-aprobación de Filipinas mostraron que vacunar a individuos DENV-seronegativos (sin infección previa) aumentaba el riesgo de dengue grave en reinfecciones — vacuna los "primaba" para ADE. Retirada del mercado en Filipinas. Hoy se indica solo en seropositivos confirmados ≥9 años. Lección crucial de ADE en diseño vacunal.</li>
+          </ul>
+        </div>
+
+        <div class="dnv-content-card" style="--card-accent:#f59e0b">
+          <div class="dnv-card-num">Mecanismo Molecular ADE</div>
+          <h3>Biología Molecular del ADE en Dengue</h3>
+          <ul>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--dnv-text)">Epítopos de reactividad cruzada (dominio DII-FL):</strong> El péptido de fusión (FL) en el dominio DII de la proteína E es altamente conservado entre los 4 serotipos. Los anticuerpos anti-FL son de baja potencia neutralizante pero alta reactividad cruzada → los responsables del ADE "clásico". El DIII es el dominio de mayor especificidad serotípica y menor participación en ADE.</li>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--dnv-text)">FcγRIIa (CD32a) — receptor clave en macrófagos:</strong> La variante H131R del polimorfismo FcγRIIa afecta la afinidad por IgG1/IgG2. El genotipo R/R131 se asocia a mayor riesgo de dengue grave en estudios de Tailandia y Brasil — variabilidad genética del hospedero modula la susceptibilidad al ADE. Implicancia para farmacogenómica preventiva.</li>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--dnv-text)">LILRB1 y señalización inhibitoria en macrófagos:</strong> Durante ADE, la entrada vía FcγRIIa coactiva LILRB1 (CD85j) → señalización inhibitoria de la respuesta innata intracelular → supresión de IFN-α/β → replicación viral sin freno. Este mecanismo de "secuestro de la señal inhibitoria" del receptor Fc es único al ADE viral y explica la paradoja inmunológica.</li>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--dnv-text)">ADE intrínseco vs extrínseco:</strong> ADE extrínseco (clásico): mayor entrada viral por FcγR → mayor número de células infectadas. ADE intrínseco: misma cantidad de virus entra, pero la señalización vía FcγR suprime la respuesta antiviral intracelular → mayor replicación por célula. Ambos mecanismos actúan en dengue. La distinción es importante para diseño de antivirales y vacunas que eviten el ADE.</li>
+          </ul>
+        </div>
+
+        <div class="dnv-content-card" style="--card-accent:#fbbf24">
+          <div class="dnv-card-num">Dengue Grave — Clínica</div>
+          <h3>De la Fiebre al Shock — Evolución Clínica</h3>
+          <ul>
+            <li><span class="bullet" style="background:#fbbf24"></span><strong style="color:var(--dnv-text)">Fase febril (días 1–3):</strong> Fiebre alta abrupta ≥39°C, cefalea retroorbitaria (signo muy característico), mialgia intensa ("huesos rotos" — apodo histórico "breakbone fever"), exantema macular. La trombocitopenia y la leucopenia ya están presentes desde el inicio. NS1-Ag positivo.</li>
+            <li><span class="bullet" style="background:#fbbf24"></span><strong style="color:var(--dnv-text)">Fase crítica (días 4–6) — la ventana de peligro:</strong> Defervescencia paradójica — el paciente se "mejora" de la fiebre pero entramos en la fase de mayor riesgo. Extravasación masiva de plasma por disfunción endotelial → hemoconcentración (↑Hto ≥20%), derrame pleural, ascitis, efusión pericárdica. Trombocitopenia severa (&lt;100.000/μL). Hemorragias en cualquier sitio. El dengue grave ocurre mayoritariamente en la 2ª infección (ADE).</li>
+            <li><span class="bullet" style="background:#fbbf24"></span><strong style="color:var(--dnv-text)">Señales de alarma (OMS 2009):</strong> Dolor abdominal intenso o a la palpación, vómitos persistentes, acumulación de fluidos (evidencia clínica), sangrado en mucosas, letargo/irritabilidad, hepatomegalia >2 cm, aumento rápido del hematocrito con caída de plaquetas. Cualquier señal de alarma = hospitalización inmediata.</li>
+            <li><span class="bullet" style="background:#fbbf24"></span><strong style="color:var(--dnv-text)">Manejo: hidratación es la clave:</strong> No existe antiviral aprobado. Tratamiento: cristaloides IV en fase crítica (SF 0.9% o Ringer Lactato), titulados según Hto y PVC. Evitar sobrecargas (riesgo edema pulmonar en fase de reabsorción). No usar corticoides (sin evidencia). No usar AAS/ibuprofeno (riesgo hemorrágico). Transfusión plaquetaria solo si &lt;10.000/μL o sangrado activo.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4 — INMUNOLOGÍA -->
+  <section class="dnv-section" id="inmunologia">
+    <div class="dnv-container">
+      <div class="dnv-section-tag tag-amber">🧬 Inmunología del Dengue</div>
+      <h2 class="dnv-section-title">La respuesta <span class="gradient">inmune</span> al DENV</h2>
+      <p class="dnv-section-sub">El dengue es un modelo privilegiado para estudiar la inmunología de los flavivirus: respuesta innata, interferón, linfocitos T de memoria, anticuerpos neutralizantes y el paradójico ADE. Entender su inmunología es clave para diseñar vacunas eficaces y seguras.</p>
+
+      <div class="dnv-neuro-grid">
+        <div class="dnv-neuro-card" style="--neuro-color:#d97706;--neuro-dim:rgba(217,119,6,.12)">
+          <span class="dnv-neuro-icon">🛡️</span>
+          <h4>Respuesta Innata — Primera Línea</h4>
+          <p>El DENV activa receptores de reconocimiento de patrones: TLR3 (dsRNA replicativo), RIG-I y MDA5 (ARN citoplásmico) → producción de IFN-α/β. La NS5 metiltransferasa bloquea la señalización STAT2 (similar al Ébola). NK cells y macrófagos producen TNF-α y IL-6 tempranamente. La magnitud de la respuesta innata en los primeros días determina el control viral y el riesgo de evolución grave.</p>
+          <span class="dnv-neuro-detail">TLR3/RIG-I → IFN-α/β · NS5 bloquea STAT2</span>
+        </div>
+        <div class="dnv-neuro-card" style="--neuro-color:#f59e0b;--neuro-dim:rgba(245,158,11,.12)">
+          <span class="dnv-neuro-icon">🔬</span>
+          <h4>Linfocitos T — Memoria Original Antigénica</h4>
+          <p>El fenómeno de "pecado antigénico original" (original antigenic sin, OAS): los LT CD4+ y CD8+ de memoria generados en la 1ª infección DENV-1 son reactivados preferentemente en la 2ª infección DENV-2, aunque tienen menor afinidad por el nuevo serotipo. Estos LT "de baja calidad" producen altos niveles de TNF-α y IFN-γ → contribuyen a la inmunopatología. El OAS es el correlato de LT del ADE de anticuerpos.</p>
+          <span class="dnv-neuro-detail">OAS · LT CD8+ memoria serotipo-cruzada</span>
+        </div>
+        <div class="dnv-neuro-card" style="--neuro-color:#fbbf24;--neuro-dim:rgba(251,191,36,.12)">
+          <span class="dnv-neuro-icon">🧪</span>
+          <h4>Trombocitopenia — 3 Mecanismos</h4>
+          <p>La trombocitopenia del dengue es multifactorial: (1) Supresión de la megacariopoiesis en médula ósea por infección viral directa de progenitores. (2) Destrucción periférica por inmunocomplejos (NS1-anticuerpos anti-plaquetas con reactividad cruzada contra NS1 y proteínas plaquetarias). (3) Activación de plaquetas por NS1 sérica → consumo. La trombocitopenia es marcador de gravedad pero raramente causa la muerte (el shock lo hace).</p>
+          <span class="dnv-neuro-detail">3 mecanismos · Supresión + destrucción + consumo</span>
+        </div>
+        <div class="dnv-neuro-card" style="--neuro-color:#92400e;--neuro-dim:rgba(146,64,14,.12)">
+          <span class="dnv-neuro-icon">💉</span>
+          <h4>Vacunas Anti-Dengue — Estado 2024</h4>
+          <p>Dengvaxia (CYD-TDV, Sanofi): aprobada en 20+ países solo para seropositivos ≥9 años. No recomendada en seronegativos (riesgo ADE). TAK-003 (Qdenga, Takeda): vacuna recombinante basada en DENV-2 atenuado quimérico, 2 dosis, sin requisito de cribado serológico — aprobada EMA 2022, varios países LatAm 2023–2024. Eficacia 84% vs dengue grave, 61% global tras 4.5 años seguimiento. Recomendada OMS para zonas hiperendémicas.</p>
+          <span class="dnv-neuro-detail">TAK-003 (Qdenga): EMA aprobada 2022</span>
+        </div>
+        <div class="dnv-neuro-card" style="--neuro-color:#d97706;--neuro-dim:rgba(217,119,6,.12)">
+          <span class="dnv-neuro-icon">🧬</span>
+          <h4>Anticuerpos Neutralizantes — El Reto Tetravalente</h4>
+          <p>Una vacuna ideal debe generar anticuerpos neutralizantes potentes contra los 4 serotipos simultáneamente y de forma balanceada. El desafío: los 4 serotipos compiten por la respuesta inmune (inmunodominancia de uno sobre los otros → respuesta subóptima contra los demás → ventana de ADE). Las vacunas de plataforma ARNm tetravalente y DNA plasmídico multivalente están en investigación como solución a la respuesta asimétrica.</p>
+          <span class="dnv-neuro-detail">Respuesta tetravalente balanceada: desafío clave</span>
+        </div>
+        <div class="dnv-neuro-card" style="--neuro-color:#f59e0b;--neuro-dim:rgba(245,158,11,.12)">
+          <span class="dnv-neuro-icon">⚗️</span>
+          <h4>Antivirales en Investigación 2024–2025</h4>
+          <p>No existe antiviral aprobado para dengue. Los más avanzados: Celgosivir (inhibidor de glucosidasa celular → bloquea plegamiento de E) — fase II negativa en 2014. JNJ-A07 (inhibidor no nucleosídico NS4B) — fase II 2023. Ivermectina (inhibidor helicase NS3) — datos contradictivos en clínica. Balapiravir (análogo nucleosídico NS5 RdRp) — fase II negativa. El fracaso de múltiples candidatos sugiere que el manejo de soporte agresivo y las vacunas seguirán siendo el pilar por años.</p>
+          <span class="dnv-neuro-detail">JNJ-A07 NS4B inhibitor · Fase II 2023</span>
+        </div>
+      </div>
+
+      <!-- CALLOUT -->
+      <div class="dnv-callout">
+        <h3>🇨🇱 Dengue en Chile 2024 — Implicancias para Estudiantes de Ciencias de la Salud</h3>
+        <p>
+          Chile vivió en 2024 una nueva realidad epidemiológica con el dengue. Aunque el territorio continental no tiene Aedes aegypti establecido, la masiva llegada de viajeros infectados desde Brasil, Paraguay y Argentina generó cientos de casos importados notificados al <strong>ISP</strong> — el más alto de la historia chilena.
+          <strong>Isla de Pascua (Rapa Nui)</strong> confirmó casos autóctonos en 2024, poniendo en alerta al sistema sanitario nacional.
+          Para el estudiante de farmacia, medicina, enfermería o bioquímica: el dengue es hoy una infección de <strong>diagnóstico diferencial obligatorio</strong> en pacientes febriles con antecedente de viaje a zona endémica. El algoritmo diagnóstico combina <strong>NS1-Ag</strong> (días 1–5) + <strong>IgM anti-DENV</strong> (días 5–14) + <strong>RT-PCR</strong> (confirmatoria). El MINSAL y el ISP han publicado guías actualizadas para el manejo clínico de casos importados. 
+          La vacuna <strong>Qdenga (TAK-003)</strong> fue aprobada en Chile en 2024 y se recomienda para viajeros a zonas hiperendémicas — el desafío para el farmacéutico clínico es <strong>la selección correcta del candidato vacunal</strong> según estatus serológico previo, dado el riesgo de ADE.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM NAV -->
+  <div class="dnv-container" style="padding-bottom:60px">
+    <div class="dnv-bottom-nav">
+      <a href="../index.html" class="dnv-nav-btn">← Volver a Virología</a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#estructura"    class="dnv-nav-btn">Estructura 3D ↑</a>
+        <a href="#latinoamerica" class="dnv-nav-btn">Latinoamérica ↑</a>
+        <a href="#ade"           class="dnv-nav-btn">ADE ↑</a>
+        <a href="#inmunologia"   class="dnv-nav-btn">Inmunología ↑</a>
+      </div>
+      <a href="../../index.html" class="dnv-nav-btn">Inicio →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="dnv-footer">
+    <div class="dnv-container">
+      <div class="dnv-footer-inner">
+        <p>© 2026 PharmaLab Chile · Basado en OMS, OPS, CDC, ISP Chile, NEJM, Lancet, Nature Immunology, Bhatt et al. 2013, Harris et al. NEJM</p>
+        <p class="disclaimer">Contenido educacional universitario. No reemplaza asesoría médica ni protocolos oficiales.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="dengue.js"></script>
+</body>
+</html>

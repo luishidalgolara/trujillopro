@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructura Atómica — Fundamentos Químicos — PharmaLab Chile</title>
+    <link rel="stylesheet" href="../../../../styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="module-quimica">
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../../../../index.html" class="nav-logo">
+                <div class="logo-icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/><circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/><line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/><line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/><line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/></svg></div>
+                <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../../../index.html" class="nav-link active" data-module="quimica"><span class="nav-link-icon">⚗️</span> Química</a>
+                <a href="../../../../farmacia/index.html" class="nav-link" data-module="farmacia"><span class="nav-link-icon">💊</span> Farmacia</a>
+                <a href="../../../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf"><span class="nav-link-icon">🧬</span> Q. Farmacéutica</a>
+                <a href="../../../../biotecnologia/index.html" class="nav-link" data-module="biotech"><span class="nav-link-icon">🔬</span> Biotecnología</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="module-hero" style="padding-bottom:30px;min-height:auto">
+        <div class="hero-content">
+            <span class="section-tag">Unidad 1 — Tema 1</span>
+            <h1 class="section-title">Estructura <span style="background:linear-gradient(135deg,#00e5a0,#33ffbb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Atómica</span></h1>
+            <p class="section-desc">Comprende la composición fundamental de la materia: partículas subatómicas, modelos atómicos, configuración electrónica y orbitales.</p>
+        </div>
+    </section>
+
+    <!-- BREADCRUMB -->
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="../../../../index.html">Inicio</a> <span>›</span>
+            <a href="../../../index.html">Química</a> <span>›</span>
+            <a href="../index.html">Fundamentos</a> <span>›</span>
+            <span class="current">Estructura Atómica</span>
+        </div>
+    </div>
+
+    <!-- 3D ATOM VIEWER -->
+    <section class="viewer-section">
+        <div class="container">
+            <div class="viewer-wrapper">
+                <div class="viewer-container">
+                    <div id="atomViewer" class="viewer-3d"></div>
+                    <div class="viewer-controls">
+                        <button class="ctrl-btn active" data-element="H" data-z="1">H — Hidrógeno</button>
+                        <button class="ctrl-btn" data-element="C" data-z="6">C — Carbono</button>
+                        <button class="ctrl-btn" data-element="N" data-z="7">N — Nitrógeno</button>
+                        <button class="ctrl-btn" data-element="O" data-z="8">O — Oxígeno</button>
+                        <button class="ctrl-btn" data-element="Na" data-z="11">Na — Sodio</button>
+                        <button class="ctrl-btn" data-element="Cl" data-z="17">Cl — Cloro</button>
+                        <button class="ctrl-btn" data-element="Fe" data-z="26">Fe — Hierro</button>
+                    </div>
+                    <div class="viewer-info" id="viewerInfo">
+                        <div class="info-symbol" id="infoSymbol">H</div>
+                        <div class="info-details">
+                            <div id="infoName" class="info-name">Hidrógeno</div>
+                            <div id="infoZ" class="info-z">Z = 1</div>
+                            <div id="infoConfig" class="info-config">Config: 1s¹</div>
+                            <div id="infoElectrons" class="info-electrons">Electrones: 1</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="viewer-hint">🖱️ Arrastra para rotar • Scroll para zoom • Click en un elemento para visualizarlo</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="lesson-content">
+        <div class="container">
+            <div class="content-layout">
+                <!-- SIDEBAR -->
+                <aside class="sidebar">
+                    <div class="sidebar-sticky">
+                        <h4 class="sidebar-title">Contenidos</h4>
+                        <nav class="sidebar-nav">
+                            <a href="#particulas" class="sidebar-link active">Partículas Subatómicas</a>
+                            <a href="#modelos" class="sidebar-link">Modelos Atómicos</a>
+                            <a href="#numeros" class="sidebar-link">Números Cuánticos</a>
+                            <a href="#config" class="sidebar-link">Configuración Electrónica</a>
+                            <a href="#orbitales" class="sidebar-link">Orbitales Atómicos</a>
+                            <a href="#farmacia" class="sidebar-link">Aplicación Farmacéutica</a>
+                        </nav>
+                    </div>
+                </aside>
+
+                <!-- MAIN CONTENT -->
+                <main class="main-content">
+                    <!-- PARTÍCULAS SUBATÓMICAS -->
+                    <article id="particulas" class="content-section">
+                        <h2>Partículas Subatómicas</h2>
+                        <p>El átomo, del griego <em>átomos</em> (indivisible), es la unidad fundamental de la materia. Aunque su nombre sugiere indivisibilidad, sabemos que está compuesto por tres partículas subatómicas principales:</p>
+                        
+                        <div class="particles-grid">
+                            <div class="particle-card proton">
+                                <div class="particle-sphere">p⁺</div>
+                                <h4>Protón</h4>
+                                <table class="particle-table">
+                                    <tr><td>Carga</td><td>+1 (1.602 × 10⁻¹⁹ C)</td></tr>
+                                    <tr><td>Masa</td><td>1.6726 × 10⁻²⁷ kg</td></tr>
+                                    <tr><td>Masa relativa</td><td>≈ 1 uma</td></tr>
+                                    <tr><td>Ubicación</td><td>Núcleo</td></tr>
+                                    <tr><td>Descubierto por</td><td>Rutherford (1919)</td></tr>
+                                </table>
+                            </div>
+                            <div class="particle-card neutron">
+                                <div class="particle-sphere">n⁰</div>
+                                <h4>Neutrón</h4>
+                                <table class="particle-table">
+                                    <tr><td>Carga</td><td>0 (neutra)</td></tr>
+                                    <tr><td>Masa</td><td>1.6749 × 10⁻²⁷ kg</td></tr>
+                                    <tr><td>Masa relativa</td><td>≈ 1 uma</td></tr>
+                                    <tr><td>Ubicación</td><td>Núcleo</td></tr>
+                                    <tr><td>Descubierto por</td><td>Chadwick (1932)</td></tr>
+                                </table>
+                            </div>
+                            <div class="particle-card electron">
+                                <div class="particle-sphere">e⁻</div>
+                                <h4>Electrón</h4>
+                                <table class="particle-table">
+                                    <tr><td>Carga</td><td>-1 (-1.602 × 10⁻¹⁹ C)</td></tr>
+                                    <tr><td>Masa</td><td>9.109 × 10⁻³¹ kg</td></tr>
+                                    <tr><td>Masa relativa</td><td>≈ 1/1836 uma</td></tr>
+                                    <tr><td>Ubicación</td><td>Nube electrónica</td></tr>
+                                    <tr><td>Descubierto por</td><td>Thomson (1897)</td></tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="info-box">
+                            <div class="info-box-title">💡 Concepto Clave</div>
+                            <p><strong>Número atómico (Z):</strong> cantidad de protones en el núcleo. Define la identidad del elemento. Por ejemplo, todo átomo con Z=6 es Carbono.</p>
+                            <p><strong>Número másico (A):</strong> suma de protones y neutrones. A = Z + N.</p>
+                            <p><strong>Isótopos:</strong> átomos del mismo elemento (mismo Z) con diferente número de neutrones. Ejemplo: ¹²C, ¹³C y ¹⁴C son isótopos del Carbono.</p>
+                        </div>
+                    </article>
+
+                    <!-- MODELOS ATÓMICOS -->
+                    <article id="modelos" class="content-section">
+                        <h2>Evolución de los Modelos Atómicos</h2>
+                        <p>La comprensión del átomo ha evolucionado significativamente a lo largo de la historia. Cada modelo mejoró al anterior incorporando nuevos descubrimientos experimentales:</p>
+                        
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-year">1803</div>
+                                <div class="timeline-content">
+                                    <h4>Modelo de Dalton</h4>
+                                    <p>El átomo es una esfera maciza e indivisible. Cada elemento tiene átomos idénticos con masa específica. Los compuestos se forman por combinación de átomos en proporciones fijas y definidas.</p>
+                                    <div class="model-tag">Esfera sólida</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1904</div>
+                                <div class="timeline-content">
+                                    <h4>Modelo de Thomson</h4>
+                                    <p>Tras descubrir el electrón mediante rayos catódicos, Thomson propuso el "pudín de pasas": una masa de carga positiva con electrones incrustados. Demostró que el átomo tiene estructura interna.</p>
+                                    <div class="model-tag">Pudín de pasas</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1911</div>
+                                <div class="timeline-content">
+                                    <h4>Modelo de Rutherford</h4>
+                                    <p>El experimento de la lámina de oro reveló que la mayor parte del átomo es espacio vacío, con un núcleo pequeño, denso y positivo. Los electrones orbitan alrededor del núcleo como planetas alrededor del Sol.</p>
+                                    <div class="model-tag">Modelo planetario</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1913</div>
+                                <div class="timeline-content">
+                                    <h4>Modelo de Bohr</h4>
+                                    <p>Los electrones ocupan órbitas circulares cuantizadas con niveles de energía definidos (n = 1, 2, 3...). Los electrones pueden saltar entre niveles emitiendo o absorbiendo fotones. Explica el espectro del hidrógeno.</p>
+                                    <div class="model-tag">Órbitas cuantizadas</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1926</div>
+                                <div class="timeline-content">
+                                    <h4>Modelo Mecánico-Cuántico</h4>
+                                    <p>Schrödinger y Heisenberg desarrollan el modelo actual. Los electrones no tienen trayectorias definidas sino probabilidades de encontrarse en regiones llamadas orbitales. Basado en la ecuación de onda de Schrödinger y el principio de incertidumbre de Heisenberg.</p>
+                                    <div class="model-tag highlight">Modelo actual — Orbitales</div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- NÚMEROS CUÁNTICOS -->
+                    <article id="numeros" class="content-section">
+                        <h2>Números Cuánticos</h2>
+                        <p>Los números cuánticos describen completamente el estado de un electrón en un átomo. Son cuatro valores que determinan la energía, forma, orientación y espín del electrón:</p>
+                        
+                        <div class="quantum-grid">
+                            <div class="quantum-card">
+                                <div class="q-symbol">n</div>
+                                <h4>N° Cuántico Principal</h4>
+                                <p>Define el nivel de energía y tamaño del orbital.</p>
+                                <div class="q-values">Valores: n = 1, 2, 3, 4, 5, 6, 7</div>
+                                <div class="q-meaning">Mayor n → mayor energía y tamaño</div>
+                            </div>
+                            <div class="quantum-card">
+                                <div class="q-symbol">ℓ</div>
+                                <h4>N° Cuántico Secundario</h4>
+                                <p>Define la forma del orbital (subnivel).</p>
+                                <div class="q-values">Valores: ℓ = 0 a (n-1)</div>
+                                <div class="q-meaning">ℓ=0 → s | ℓ=1 → p | ℓ=2 → d | ℓ=3 → f</div>
+                            </div>
+                            <div class="quantum-card">
+                                <div class="q-symbol">mℓ</div>
+                                <h4>N° Cuántico Magnético</h4>
+                                <p>Define la orientación espacial del orbital.</p>
+                                <div class="q-values">Valores: mℓ = -ℓ a +ℓ</div>
+                                <div class="q-meaning">s→1 | p→3 | d→5 | f→7 orientaciones</div>
+                            </div>
+                            <div class="quantum-card">
+                                <div class="q-symbol">ms</div>
+                                <h4>N° Cuántico de Espín</h4>
+                                <p>Define el giro intrínseco del electrón.</p>
+                                <div class="q-values">Valores: ms = +½ o -½</div>
+                                <div class="q-meaning">↑ espín arriba | ↓ espín abajo</div>
+                            </div>
+                        </div>
+
+                        <div class="info-box">
+                            <div class="info-box-title">📐 Principio de Exclusión de Pauli</div>
+                            <p>Dos electrones en un mismo átomo no pueden tener los cuatro números cuánticos iguales. Por esto, cada orbital acepta máximo 2 electrones con espines opuestos (↑↓). Esto determina la capacidad de cada subnivel: s=2e⁻, p=6e⁻, d=10e⁻, f=14e⁻.</p>
+                        </div>
+                    </article>
+
+                    <!-- CONFIGURACIÓN ELECTRÓNICA -->
+                    <article id="config" class="content-section">
+                        <h2>Configuración Electrónica</h2>
+                        <p>La configuración electrónica describe cómo se distribuyen los electrones en los diferentes niveles y subniveles de energía de un átomo. Se construye siguiendo tres reglas fundamentales:</p>
+                        
+                        <div class="rules-grid">
+                            <div class="rule-card">
+                                <div class="rule-num">1</div>
+                                <h4>Principio de Aufbau</h4>
+                                <p>Los electrones llenan primero los orbitales de menor energía antes de ocupar los de mayor energía. El orden de llenado sigue la regla de Madelung (diagonal):</p>
+                                <div class="aufbau-order">1s → 2s → 2p → 3s → 3p → 4s → 3d → 4p → 5s → 4d → 5p → 6s → 4f → 5d → 6p → 7s → 5f → 6d → 7p</div>
+                            </div>
+                            <div class="rule-card">
+                                <div class="rule-num">2</div>
+                                <h4>Principio de Exclusión de Pauli</h4>
+                                <p>Cada orbital puede contener como máximo 2 electrones, y estos deben tener espines opuestos (antiparalelos: ↑↓).</p>
+                            </div>
+                            <div class="rule-card">
+                                <div class="rule-num">3</div>
+                                <h4>Regla de Hund</h4>
+                                <p>En orbitales de igual energía (degenerados), los electrones se distribuyen uno por orbital con espines paralelos antes de emparejarse. Esto maximiza el espín total y la estabilidad.</p>
+                            </div>
+                        </div>
+
+                        <h3>Ejemplos de Configuración Electrónica</h3>
+                        <div class="config-examples">
+                            <div class="config-item">
+                                <div class="config-element">H <span>Z=1</span></div>
+                                <div class="config-notation">1s¹</div>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-element">C <span>Z=6</span></div>
+                                <div class="config-notation">1s² 2s² 2p²</div>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-element">O <span>Z=8</span></div>
+                                <div class="config-notation">1s² 2s² 2p⁴</div>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-element">Na <span>Z=11</span></div>
+                                <div class="config-notation">[Ne] 3s¹</div>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-element">Cl <span>Z=17</span></div>
+                                <div class="config-notation">[Ne] 3s² 3p⁵</div>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-element">Fe <span>Z=26</span></div>
+                                <div class="config-notation">[Ar] 3d⁶ 4s²</div>
+                            </div>
+                        </div>
+
+                        <div class="info-box warning">
+                            <div class="info-box-title">⚠️ Excepciones Importantes</div>
+                            <p>Algunos elementos como el <strong>Cromo (Z=24)</strong> y el <strong>Cobre (Z=29)</strong> presentan configuraciones anómalas debido a la estabilidad extra de los subniveles d semillenos (d⁵) o llenos (d¹⁰):</p>
+                            <p>Cr: [Ar] 3d⁵ 4s¹ (no 3d⁴ 4s²) — Cu: [Ar] 3d¹⁰ 4s¹ (no 3d⁹ 4s²)</p>
+                        </div>
+                    </article>
+
+                    <!-- ORBITALES -->
+                    <article id="orbitales" class="content-section">
+                        <h2>Orbitales Atómicos</h2>
+                        <p>Un orbital atómico es la región del espacio donde existe mayor probabilidad (>90%) de encontrar un electrón. Cada tipo de orbital tiene una forma geométrica característica:</p>
+                        
+                        <div class="orbitals-grid">
+                            <div class="orbital-card">
+                                <div class="orbital-visual orbital-s"></div>
+                                <h4>Orbital s (ℓ=0)</h4>
+                                <p><strong>Forma:</strong> Esférica</p>
+                                <p><strong>Orientaciones:</strong> 1 (mℓ=0)</p>
+                                <p><strong>Capacidad:</strong> 2 electrones</p>
+                                <p>Presente en todos los niveles de energía. Los orbitales s de mayor n son más grandes.</p>
+                            </div>
+                            <div class="orbital-card">
+                                <div class="orbital-visual orbital-p"></div>
+                                <h4>Orbital p (ℓ=1)</h4>
+                                <p><strong>Forma:</strong> Bilobular (lóbulos opuestos)</p>
+                                <p><strong>Orientaciones:</strong> 3 (px, py, pz)</p>
+                                <p><strong>Capacidad:</strong> 6 electrones</p>
+                                <p>Comienza desde n=2. Los tres orbitales p son perpendiculares entre sí.</p>
+                            </div>
+                            <div class="orbital-card">
+                                <div class="orbital-visual orbital-d"></div>
+                                <h4>Orbital d (ℓ=2)</h4>
+                                <p><strong>Forma:</strong> Tetralobular / Toroidal</p>
+                                <p><strong>Orientaciones:</strong> 5</p>
+                                <p><strong>Capacidad:</strong> 10 electrones</p>
+                                <p>Comienza desde n=3. Crucial en los metales de transición y catalizadores farmacéuticos.</p>
+                            </div>
+                            <div class="orbital-card">
+                                <div class="orbital-visual orbital-f"></div>
+                                <h4>Orbital f (ℓ=3)</h4>
+                                <p><strong>Forma:</strong> Multilobular compleja</p>
+                                <p><strong>Orientaciones:</strong> 7</p>
+                                <p><strong>Capacidad:</strong> 14 electrones</p>
+                                <p>Comienza desde n=4. Presente en lantánidos y actínidos. Uso en materiales de contraste médico.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- APLICACIÓN FARMACÉUTICA -->
+                    <article id="farmacia" class="content-section">
+                        <h2>Aplicación en Farmacia y Creación de Medicamentos</h2>
+                        <p>La estructura atómica es fundamental para comprender cómo se diseñan y funcionan los medicamentos. La configuración electrónica determina la reactividad química, la formación de enlaces y, en última instancia, la actividad biológica de los fármacos.</p>
+                        
+                        <div class="pharma-applications">
+                            <div class="pharma-card">
+                                <div class="pharma-icon">💊</div>
+                                <h4>Diseño de Principios Activos</h4>
+                                <p>La distribución electrónica define qué átomos pueden formar enlaces con targets biológicos (receptores, enzimas). Los electrones de valencia determinan la reactividad del fármaco. Por ejemplo, los átomos de nitrógeno y oxígeno en los medicamentos actúan como donadores/aceptores de enlaces de hidrógeno gracias a sus pares de electrones libres.</p>
+                            </div>
+                            <div class="pharma-card">
+                                <div class="pharma-icon">🧲</div>
+                                <h4>Isótopos en Medicina</h4>
+                                <p>Los isótopos radiactivos se usan extensamente en diagnóstico y tratamiento. El Tecnecio-99m (⁹⁹ᵐTc) es el radioisótopo más usado en medicina nuclear en Chile y el mundo. El Yodo-131 (¹³¹I) se usa en el tratamiento de cáncer de tiroides. Estos conceptos nacen directamente de la estructura nuclear.</p>
+                            </div>
+                            <div class="pharma-card">
+                                <div class="pharma-icon">🔬</div>
+                                <h4>Espectroscopía y Control de Calidad</h4>
+                                <p>Las transiciones electrónicas entre niveles de energía (modelo de Bohr) son la base de técnicas analíticas como UV-Vis, IR y fluorescencia, utilizadas por el ISP de Chile para el control de calidad de medicamentos. La absorción y emisión de fotones permite identificar y cuantificar principios activos.</p>
+                            </div>
+                            <div class="pharma-card">
+                                <div class="pharma-icon">🇨🇱</div>
+                                <h4>Normativa Chilena Relacionada</h4>
+                                <p>El ISP exige métodos espectroscópicos para el análisis de medicamentos según el D.S. 3/10. Las Buenas Prácticas de Manufactura (BPM) incluyen la verificación de identidad mediante técnicas basadas en estructura atómica (espectroscopía de absorción atómica, emisión de llama).</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- NAVIGATION -->
+                    <div class="lesson-nav">
+                        <a href="../index.html" class="nav-prev">← Volver a Fundamentos</a>
+                        <a href="../tabla-periodica/index.html" class="nav-next">Tabla Periódica →</a>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container"><div class="footer-bottom">
+            <p>© 2026 PharmaLab Chile — Química: Estructura Atómica</p>
+            <p class="footer-disclaimer">Contenido educacional verificado. No reemplaza asesoría profesional.</p>
+        </div></div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="../../../../script.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

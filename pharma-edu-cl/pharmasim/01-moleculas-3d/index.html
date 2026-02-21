@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio Molecular 3D — PharmaSim Lab</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-inner">
+            <a href="../../index.html" class="nav-back">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M5 12l7-7M5 12l7 7"/></svg>
+                PharmaLab
+            </a>
+            <div class="nav-title">
+                <span class="nav-module-num">01</span>
+                <span>Laboratorio Molecular 3D</span>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-nav" id="btnTutorial">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                    Ayuda
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO HEADER -->
+    <header class="lab-header">
+        <div class="header-bg">
+            <div class="header-grid"></div>
+        </div>
+        <div class="header-content">
+            <div class="header-badge">
+                <span class="badge-dot"></span>
+                Simulación Activa
+            </div>
+            <h1>Laboratorio <span class="hl">Molecular</span> 3D</h1>
+            <p>Explora, modifica y analiza fármacos a nivel molecular. Observa cómo cada cambio estructural afecta las propiedades farmacológicas en tiempo real.</p>
+        </div>
+    </header>
+
+    <!-- MAIN LAB INTERFACE -->
+    <main class="lab-main">
+
+        <!-- LEFT: MOLECULE SELECTOR PANEL -->
+        <aside class="panel-left" id="panelLeft">
+            <div class="panel-header">
+                <h3>Biblioteca de Fármacos</h3>
+                <span class="panel-count" id="molCount">12 moléculas</span>
+            </div>
+
+            <div class="search-box">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                <input type="text" id="searchInput" placeholder="Buscar fármaco..." autocomplete="off">
+            </div>
+
+            <div class="category-tabs">
+                <button class="cat-tab active" data-cat="all">Todos</button>
+                <button class="cat-tab" data-cat="analgesico">Analgésicos</button>
+                <button class="cat-tab" data-cat="antibiotico">Antibióticos</button>
+                <button class="cat-tab" data-cat="antihipertensivo">Antihipert.</button>
+            </div>
+
+            <div class="molecule-list" id="moleculeList">
+                <!-- Populated by JS -->
+            </div>
+        </aside>
+
+        <!-- CENTER: 3D VIEWER -->
+        <section class="viewer-center">
+            <div class="viewer-toolbar">
+                <div class="toolbar-left">
+                    <button class="tool-btn active" id="btnRotate" title="Rotar">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0115-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 01-15 6.7L3 16"/></svg>
+                    </button>
+                    <button class="tool-btn" id="btnZoomIn" title="Acercar">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+                    </button>
+                    <button class="tool-btn" id="btnZoomOut" title="Alejar">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M8 11h6"/></svg>
+                    </button>
+                    <div class="tool-separator"></div>
+                    <button class="tool-btn" id="btnWireframe" title="Estructura">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 2 17 12 22 22 17 22 7"/></svg>
+                    </button>
+                    <button class="tool-btn" id="btnBallStick" title="Bolas y Barras">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><circle cx="4" cy="6" r="2"/><circle cx="20" cy="6" r="2"/><line x1="6" y1="6.5" x2="10" y2="10"/><line x1="18" y1="6.5" x2="14" y2="10"/></svg>
+                    </button>
+                    <button class="tool-btn" id="btnSphere" title="Esferas CPK">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="7" cy="9" r="3"/><circle cx="17" cy="9" r="3"/></svg>
+                    </button>
+                </div>
+                <div class="toolbar-center">
+                    <span class="molecule-name-display" id="molNameDisplay">Aspirina (Ácido Acetilsalicílico)</span>
+                </div>
+                <div class="toolbar-right">
+                    <button class="tool-btn" id="btnAutoRotate" title="Auto-rotar">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z"/></svg>
+                    </button>
+                    <button class="tool-btn" id="btnReset" title="Reiniciar vista">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 109-9M3 3v6h6"/></svg>
+                    </button>
+                    <button class="tool-btn" id="btnFullscreen" title="Pantalla completa">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3M21 8V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3M16 21h3a2 2 0 002-2v-3"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="viewer-canvas-wrap" id="viewerWrap">
+                <canvas id="molCanvas"></canvas>
+
+                <!-- Loading overlay -->
+                <div class="viewer-loading" id="viewerLoading">
+                    <div class="loading-spinner">
+                        <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="32" stroke="currentColor" stroke-width="3" stroke-dasharray="80 120" stroke-linecap="round"/></svg>
+                    </div>
+                    <span>Renderizando molécula...</span>
+                </div>
+
+                <!-- Atom tooltip -->
+                <div class="atom-tooltip" id="atomTooltip">
+                    <span class="tooltip-element"></span>
+                    <span class="tooltip-info"></span>
+                </div>
+
+                <!-- Viewer overlay info -->
+                <div class="viewer-overlay-info">
+                    <div class="overlay-item">
+                        <span class="ov-label">Átomos</span>
+                        <span class="ov-val" id="ovAtoms">—</span>
+                    </div>
+                    <div class="overlay-item">
+                        <span class="ov-label">Peso Mol.</span>
+                        <span class="ov-val" id="ovMW">—</span>
+                    </div>
+                    <div class="overlay-item">
+                        <span class="ov-label">Fórmula</span>
+                        <span class="ov-val" id="ovFormula">—</span>
+                    </div>
+                </div>
+
+                <!-- Controls hint -->
+                <div class="controls-hint">
+                    <span>🖱️ Arrastrar = Rotar &nbsp;|&nbsp; Scroll = Zoom &nbsp;|&nbsp; Clic átomo = Info</span>
+                </div>
+            </div>
+
+            <!-- Modification Zone -->
+            <div class="modification-bar" id="modBar">
+                <div class="modbar-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                    Modificar Grupo Funcional:
+                </div>
+                <div class="mod-groups" id="modGroups">
+                    <!-- Populated by JS -->
+                </div>
+                <button class="btn-reset-mod" id="btnResetMod">↺ Restaurar Original</button>
+            </div>
+        </section>
+
+        <!-- RIGHT: PROPERTIES PANEL -->
+        <aside class="panel-right" id="panelRight">
+            <div class="panel-tabs">
+                <button class="ptab active" data-ptab="properties">Propiedades</button>
+                <button class="ptab" data-ptab="pharmacology">Farmacología</button>
+                <button class="ptab" data-ptab="compare">Comparar</button>
+            </div>
+
+            <!-- PROPERTIES TAB -->
+            <div class="ptab-content active" id="tabProperties">
+                <div class="prop-section">
+                    <h4 class="prop-section-title">Fisicoquímicas</h4>
+                    <div class="prop-grid">
+                        <div class="prop-item">
+                            <span class="prop-label">Peso Molecular</span>
+                            <span class="prop-val" id="pMW">—</span>
+                            <span class="prop-unit">g/mol</span>
+                        </div>
+                        <div class="prop-item">
+                            <span class="prop-label">LogP</span>
+                            <span class="prop-val" id="pLogP">—</span>
+                            <div class="prop-bar-wrap">
+                                <div class="prop-bar" id="barLogP"></div>
+                                <span class="prop-bar-label" id="lblLogP">—</span>
+                            </div>
+                        </div>
+                        <div class="prop-item">
+                            <span class="prop-label">pKa</span>
+                            <span class="prop-val" id="pPka">—</span>
+                        </div>
+                        <div class="prop-item">
+                            <span class="prop-label">Solubilidad</span>
+                            <span class="prop-val" id="pSol">—</span>
+                            <span class="prop-unit">mg/mL</span>
+                        </div>
+                        <div class="prop-item">
+                            <span class="prop-label">TPSA</span>
+                            <span class="prop-val" id="pTPSA">—</span>
+                            <span class="prop-unit">Ų</span>
+                        </div>
+                        <div class="prop-item">
+                            <span class="prop-label">H-Bond Donors</span>
+                            <span class="prop-val" id="pHBD">—</span>
+                        </div>
+                        <div class="prop-item">
+                            <span class="prop-label">H-Bond Acceptors</span>
+                            <span class="prop-val" id="pHBA">—</span>
+                        </div>
+                        <div class="prop-item">
+                            <span class="prop-label">Rot. Bonds</span>
+                            <span class="prop-val" id="pRB">—</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lipinski Rule of 5 -->
+                <div class="prop-section">
+                    <h4 class="prop-section-title">Regla de Lipinski (Ro5)</h4>
+                    <div class="lipinski-grid" id="lipinskiGrid">
+                        <!-- Populated by JS -->
+                    </div>
+                    <div class="lipinski-verdict" id="lipinskiVerdict"></div>
+                </div>
+
+                <!-- Radar Chart -->
+                <div class="prop-section">
+                    <h4 class="prop-section-title">Perfil Molecular</h4>
+                    <canvas id="radarChart" width="260" height="220"></canvas>
+                </div>
+            </div>
+
+            <!-- PHARMACOLOGY TAB -->
+            <div class="ptab-content" id="tabPharmacology">
+                <div class="pharma-hero" id="pharmaHero">
+                    <!-- Populated by JS -->
+                </div>
+                <div class="prop-section">
+                    <h4 class="prop-section-title">Farmacocinética (ADME)</h4>
+                    <div class="adme-bars" id="admeBars">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <div class="prop-section">
+                    <h4 class="prop-section-title">Mecanismo de Acción</h4>
+                    <div class="mechanism-box" id="mechanismBox">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <div class="prop-section">
+                    <h4 class="prop-section-title">Efectos al Modificar</h4>
+                    <div class="modification-effects" id="modEffects">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMPARE TAB -->
+            <div class="ptab-content" id="tabCompare">
+                <div class="compare-header">
+                    <p>Selecciona una segunda molécula para comparar propiedades en tiempo real.</p>
+                </div>
+                <div class="compare-selector" id="compareSelector">
+                    <!-- Populated by JS -->
+                </div>
+                <div class="compare-table" id="compareTable">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- EDUCATIONAL MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="eduModal">
+            <button class="modal-close" id="modalClose">✕</button>
+            <div class="modal-content" id="modalContent">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- TUTORIAL OVERLAY -->
+    <div class="tutorial-overlay" id="tutorialOverlay">
+        <div class="tutorial-box" id="tutorialBox">
+            <div class="tut-step-indicator" id="tutStepInd"></div>
+            <div class="tut-content" id="tutContent"></div>
+            <div class="tut-actions">
+                <button class="tut-btn tut-prev" id="tutPrev">← Anterior</button>
+                <button class="tut-btn tut-next" id="tutNext">Siguiente →</button>
+                <button class="tut-btn tut-skip" id="tutSkip">Saltar tutorial</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ATOM INFO PANEL (slide-up) -->
+    <div class="atom-info-panel" id="atomInfoPanel">
+        <div class="aip-header">
+            <div class="aip-element" id="aipElement">C</div>
+            <div class="aip-meta">
+                <h4 id="aipName">Carbono</h4>
+                <span id="aipType">Átomo de carbono sp2</span>
+            </div>
+            <button class="aip-close" id="aipClose">✕</button>
+        </div>
+        <div class="aip-body" id="aipBody"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="pharma-properties.js"></script>
+    <script src="molecule-renderer.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

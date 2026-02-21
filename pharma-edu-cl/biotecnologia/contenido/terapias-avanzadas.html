@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terapias Avanzadas — PharmaLab Chile | Unidad 4</title>
+    <meta name="description" content="Terapia génica, CAR-T, nanomedicina y medicina regenerativa. Contenido universitario verídico y actualizado 2024 para biotecnología farmacéutica en Chile.">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../biotech.css">
+    <link rel="stylesheet" href="terapias-avanzadas.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="module-biotech">
+
+<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+<nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+        <a href="../../index.html" class="nav-logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="../../quimica/index.html"              class="nav-link" data-module="quimica">⚗️ Química</a>
+            <a href="../../farmacia/index.html"             class="nav-link" data-module="farmacia">💊 Farmacia</a>
+            <a href="../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf">🧬 Q. Farmacéutica</a>
+            <a href="../../biotecnologia/index.html"        class="nav-link active" data-module="biotech">🔬 Biotecnología</a>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="ta-hero">
+    <div class="ta-hero-bg">
+        <div class="ta-hero-grid"></div>
+        <div class="ta-orb ta-orb-1"></div>
+        <div class="ta-orb ta-orb-2"></div>
+        <div class="ta-orb ta-orb-3"></div>
+    </div>
+    <div class="ta-hero-inner">
+        <div class="ta-wrap">
+            <div>
+                <div class="ta-crumb">
+                    <a href="../../index.html" style="color:inherit;text-decoration:none;">Inicio</a><span>/</span>
+                    <a href="../index.html"    style="color:inherit;text-decoration:none;">Biotecnología</a><span>/</span>
+                    <span style="color:#fff">Terapias Avanzadas</span>
+                </div>
+                <div class="ta-hero-tag">Unidad 4 · Biotecnología</div>
+                <h1 class="ta-hero-title">Terapias <span class="ta-gr">Avanzadas</span></h1>
+                <p class="ta-hero-desc">La frontera de la medicina moderna: tratamientos que operan a nivel genético, celular y molecular. Desde la primera terapia génica aprobada en 1990 hasta las CAR-T con respuestas completas en leucemia, los organoides para medicina personalizada y las LNP que revolucionaron las vacunas.</p>
+                <div class="ta-hero-stats">
+                    <div class="ta-stat">
+                        <span class="ta-stat-num" data-ta-count="30" data-ta-suf="+">30+</span>
+                        <span class="ta-stat-label">ATMPs aprobados FDA/EMA 2024</span>
+                    </div>
+                    <div class="ta-stat">
+                        <span class="ta-stat-num" data-ta-count="93" data-ta-suf="%">93%</span>
+                        <span class="ta-stat-label">Remisión completa CAR-T CD19 en B-ALL pediatrico</span>
+                    </div>
+                    <div class="ta-stat">
+                        <span class="ta-stat-num" data-ta-count="2023" data-ta-suf="">2023</span>
+                        <span class="ta-stat-label">Casgevy: 1ª terapia CRISPR aprobada (FDA/EMA)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ta-hero-vis">
+                <canvas id="ta-hero-canvas" title="CAR-T atacando célula tumoral 3D"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ DATOS CLAVE ═══════════════════════ -->
+<section class="ta-section">
+    <div class="ta-wrap">
+        <div class="ta-datos" data-ta-reveal>
+            <div class="ta-dato">
+                <span class="ta-dato-n" data-ta-count="6" data-ta-suf=" mill.">$6 Mill.</span>
+                <span class="ta-dato-l">USD precio Hemgenix® (hemofilia B, AAV5) — el más caro del mundo 2023</span>
+            </div>
+            <div class="ta-dato">
+                <span class="ta-dato-n" data-ta-count="1000" data-ta-suf="+">1.000+</span>
+                <span class="ta-dato-l">Ensayos clínicos activos de terapia génica/celular globalmente (2024)</span>
+            </div>
+            <div class="ta-dato">
+                <span class="ta-dato-n" data-ta-count="100" data-ta-suf=" nm">100 nm</span>
+                <span class="ta-dato-l">Tamaño típico de nanopartícula lipídica (LNP) para entrega de ARNm</span>
+            </div>
+            <div class="ta-dato">
+                <span class="ta-dato-n" data-ta-count="2006" data-ta-suf="">2006</span>
+                <span class="ta-dato-l">Año Nobel: Shinya Yamanaka descubre factores reprogramación iPSC</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ TABS ═══════════════════════ -->
+<section class="ta-section" style="padding-top:0">
+    <div class="ta-wrap">
+
+        <div class="ta-section-hd" data-ta-reveal>
+            <div class="ta-sec-tag">🧬 Contenidos</div>
+            <h2 class="ta-sec-title">Cuatro Pilares de las <span class="ta-hl">Terapias Avanzadas</span></h2>
+            <p class="ta-sec-sub">ATMPs (Advanced Therapy Medicinal Products): las terapias más innovadoras y disruptivas de la medicina actual, con modelos 3D interactivos y datos clínicos reales 2024.</p>
+        </div>
+
+        <div class="ta-tabs-nav" data-ta-reveal>
+            <div class="ta-tab-btn active">
+                <div class="ta-tab-icon">🧬</div>
+                <span class="ta-tab-num">Tema 4.1</span>
+                <div class="ta-tab-name">Terapia Génica</div>
+                <div class="ta-tab-hint">Vectores AAV, lentiviral y no-viral. Terapias ex vivo e in vivo. Casgevy, Zolgensma, Luxturna. Regulación ATMP Chile.</div>
+                <div class="ta-tab-arrow">→</div>
+            </div>
+            <div class="ta-tab-btn">
+                <div class="ta-tab-icon">🛡️</div>
+                <span class="ta-tab-num">Tema 4.2</span>
+                <div class="ta-tab-name">CAR-T y TCR-T</div>
+                <div class="ta-tab-hint">Diseño del receptor quimérico, generaciones 1-4, proceso de manufactura autóloga y alogénica, toxicidades CRS/ICANS y terapias aprobadas FDA/EMA 2024.</div>
+                <div class="ta-tab-arrow">→</div>
+            </div>
+            <div class="ta-tab-btn">
+                <div class="ta-tab-icon">💊</div>
+                <span class="ta-tab-num">Tema 4.3</span>
+                <div class="ta-tab-name">Nanomedicina</div>
+                <div class="ta-tab-hint">LNP (lípidos ionizables, PEG), nanopartículas poliméricas, conjugados anticuerpo-fármaco (ADC), nanopartículas inorgánicas y plataformas ARNm/siRNA.</div>
+                <div class="ta-tab-arrow">→</div>
+            </div>
+            <div class="ta-tab-btn">
+                <div class="ta-tab-icon">🌱</div>
+                <span class="ta-tab-num">Tema 4.4</span>
+                <div class="ta-tab-name">Medicina Regenerativa</div>
+                <div class="ta-tab-hint">iPSC (Yamanaka), células madre mesenquimales, organoides, bioimpresión 3D, ingeniería de tejidos y aplicaciones clínicas en Chile.</div>
+                <div class="ta-tab-arrow">→</div>
+            </div>
+        </div>
+
+        <!-- ═══ PANEL 1: TERAPIA GÉNICA ═══ -->
+        <div class="ta-panel active" id="ta-p0">
+
+            <div class="ta-intro" data-ta-reveal>
+                <div class="ta-intro-text">
+                    <h2>Terapia <span>Génica</span></h2>
+                    <p>La terapia génica introduce, silencia o modifica material genético en las células del paciente para tratar o prevenir enfermedades. El primer ensayo clínico aprobado fue en 1990 (ADA-SCID, NIH, Blaese y Anderson). Tras décadas de desarrollo marcadas por éxitos parciales, retrocesos (muerte de Jesse Gelsinger en 1999 por adenovirus de alta dosis, leucemias secundarias en ensayos de γ-retrovirus 2002-2003) y el renacimiento con vectores AAV de nueva generación, hoy hay más de 30 ATMPs aprobados globalmente.</p>
+                    <p>Los enfoques son: <strong>ex vivo</strong> — se extraen células del paciente, se modifican en laboratorio bajo GMP y se reinfunden; <strong>in vivo</strong> — el vector se inyecta directamente en el paciente y entrega el gen a las células diana. La modalidad ex vivo permite mayor control de calidad y selección de células exitosamente transducidas.</p>
+                    <div class="ta-hbox">
+                        <strong>Clasificación por Objetivo Terapéutico</strong>
+                        <p><strong>Terapia génica sustitutiva:</strong> reemplaza un gen defectuoso con una copia funcional (Luxturna®-RPE65, Zolgensma®-SMN1, Hemgenix®-FIX). <strong>Silenciamiento génico:</strong> siRNA, ASO o miRNA suprimen un gen patológico (Onpattro®-TTR). <strong>Edición génica:</strong> CRISPR, TALEN o ZFN corrigen la mutación in situ (Casgevy®-BCL11A). <strong>Terapia génica oncológica:</strong> entrega de genes suicidas, supresores tumorales o inmunomoduladores (Imlygic®-T-VEC).</p>
+                    </div>
+                    <div class="ta-hbox purple">
+                        <strong>ITR — Secuencias de Repetición Terminal Invertida (AAV)</strong>
+                        <p>Los ITR (Inverted Terminal Repeats) de 145 nt flanquean el genoma AAV y son indispensables para la replicación, empaquetamiento y conversión a ADN bicatenario episomal en el núcleo. El transgén va entre los dos ITR junto al promotor (tisular específico o CAG ubiquitario), la secuencia codificante y la señal poli-A. Tamaño máximo de carga: ~4.7 kb en AAV estándar; hasta ~8.9 kb con estrategias de trans-splicing.</p>
+                    </div>
+                </div>
+                <div class="ta-3d">
+                    <canvas id="ta-canvas-gene" title="AAV entregando gen 3D — Rotar con mouse"></canvas>
+                    <div class="ta-3d-lbl">▸ AAV · ITR-Gen · Poro Nuclear · Cromatina · Entrega in vivo</div>
+                </div>
+            </div>
+
+            <div data-ta-reveal>
+                <div class="ta-sh">Terapias Génicas Aprobadas — FDA / EMA / Acceso Chile (2024)</div>
+                <div class="ta-tbl-wrap">
+                    <table class="ta-tbl">
+                        <thead>
+                            <tr><th>Nombre comercial</th><th>DCI</th><th>Gen/Diana</th><th>Vector</th><th>Enfermedad</th><th>Aprobación</th><th>Precio aprox.</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Luxturna®</td>
+                                <td>Voretigene neparvovec</td>
+                                <td>RPE65</td>
+                                <td><span class="ta-tag ta-t-c">AAV2</span></td>
+                                <td>Amaurosis congénita Leber tipo 2 / Retinitis pigmentosa</td>
+                                <td><span class="ta-tag ta-t-g">FDA 2017 · EMA 2018</span></td>
+                                <td>~$850.000 USD/ojo</td>
+                            </tr>
+                            <tr>
+                                <td>Zolgensma®</td>
+                                <td>Onasemnogene abeparvovec</td>
+                                <td>SMN1</td>
+                                <td><span class="ta-tag ta-t-c">AAV9</span></td>
+                                <td>Atrofia muscular espinal (AME) tipo 1, ≤2 años</td>
+                                <td><span class="ta-tag ta-t-g">FDA 2019 · EMA 2020</span></td>
+                                <td>~$2.1M USD (una dosis)</td>
+                            </tr>
+                            <tr>
+                                <td>Hemgenix®</td>
+                                <td>Etranacogene dezaparvovec</td>
+                                <td>FIX-Padua (R338L)</td>
+                                <td><span class="ta-tag ta-t-c">AAV5</span></td>
+                                <td>Hemofilia B (FIX ≤2%)</td>
+                                <td><span class="ta-tag ta-t-g">FDA nov.2022 · EMA 2023</span></td>
+                                <td>~$3.5M USD (una dosis)</td>
+                            </tr>
+                            <tr>
+                                <td>Roctavian®</td>
+                                <td>Valoctocogene roxaparvovec</td>
+                                <td>FVIII-SQ</td>
+                                <td><span class="ta-tag ta-t-c">AAVhu37</span></td>
+                                <td>Hemofilia A severa (FVIII &lt;1%)</td>
+                                <td><span class="ta-tag ta-t-g">FDA jun.2023 · EMA 2022</span></td>
+                                <td>~$2.9M USD (una dosis)</td>
+                            </tr>
+                            <tr>
+                                <td>Casgevy®</td>
+                                <td>Exagamglogene autotemcel</td>
+                                <td>BCL11A (enhancer)</td>
+                                <td><span class="ta-tag ta-t-pk">CRISPR-Cas9</span></td>
+                                <td>Drepanocitosis / β-talasemia dependiente transfusiones</td>
+                                <td><span class="ta-tag ta-t-g">FDA dic.2023 · EMA 2024</span></td>
+                                <td>~$2.2M USD</td>
+                            </tr>
+                            <tr>
+                                <td>Lyfgenia®</td>
+                                <td>Lovotibeglogene autotemcel</td>
+                                <td>βA-T87Q-globina</td>
+                                <td><span class="ta-tag ta-t-p">Lentivirus</span></td>
+                                <td>Drepanocitosis (HbSS/HbSβ0)</td>
+                                <td><span class="ta-tag ta-t-g">FDA dic.2023</span></td>
+                                <td>~$3.1M USD</td>
+                            </tr>
+                            <tr>
+                                <td>Skysona® (ALD)</td>
+                                <td>Elivaldogene autotemcel</td>
+                                <td>ABCD1</td>
+                                <td><span class="ta-tag ta-t-p">Lentivirus BB305</span></td>
+                                <td>Adrenoleucodistrofia cerebral (cALD), niños</td>
+                                <td><span class="ta-tag ta-t-g">FDA sep.2022 · EMA 2021</span></td>
+                                <td>~$3.0M USD</td>
+                            </tr>
+                            <tr>
+                                <td>Strimvelis® (ADA-SCID)</td>
+                                <td>Autologous CD34+ ADA</td>
+                                <td>ADA (adenosina desaminasa)</td>
+                                <td><span class="ta-tag ta-t-p">γ-Retrovirus</span></td>
+                                <td>ADA-SCID (déficit inmunodeficiencia)</td>
+                                <td><span class="ta-tag ta-t-g">EMA 2016</span> (UE)</td>
+                                <td>~$665.000 USD</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div data-ta-reveal>
+                <div class="ta-sh">Hitos Históricos de la Terapia Génica</div>
+                <div class="ta-tl">
+                    <div class="ta-tl-item">
+                        <div class="ta-tl-yr">1990 — Primer ensayo clínico aprobado</div>
+                        <div class="ta-tl-tx"><strong>W. French Anderson, Michael Blaese y Ken Culver (NIH):</strong> transfusión de linfocitos T autólogos transducidos con γ-retrovirus portador de ADA a Ashanti DeSilva (4 años, ADA-SCID). Respuesta parcial mantenida durante años. Inicio de la era de la terapia génica clínica.</div>
+                    </div>
+                    <div class="ta-tl-item">
+                        <div class="ta-tl-yr">1999 — Caso Jesse Gelsinger: freno a la terapia génica</div>
+                        <div class="ta-tl-tx"><strong>Universidad de Pennsylvania (James Wilson):</strong> muerte de Jesse Gelsinger (18 años, OTC deficiency) por respuesta inflamatoria masiva a adenovirus de alta dosis (3.8 × 10¹³ vp). La FDA suspendió múltiples ensayos. Catalizó regulaciones más estrictas para seguridad de vectores virales.</div>
+                    </div>
+                    <div class="ta-tl-item">
+                        <div class="ta-tl-yr">2002-2003 — Leucemias por inserción en X-SCID</div>
+                        <div class="ta-tl-tx"><strong>Alain Fischer (París) / Nick Howe (Royal Free, Londres):</strong> 5 de 20 niños con X-SCID desarrollaron leucemia linfocítica T aguda por activación del proto-oncogén LMO2. Los vectores γ-retrovirus de primera generación integraban preferentemente cerca de promotores activos. Shift hacia lentivirus SIN (self-inactivating).</div>
+                    </div>
+                    <div class="ta-tl-item">
+                        <div class="ta-tl-yr">2012 — Glybera: 1ª terapia génica aprobada occidente</div>
+                        <div class="ta-tl-tx"><strong>UniQure:</strong> Alipogene tiparvovec (AAV1-LPLS447X) para deficiencia de lipoproteína lipasa. Primera aprobación EMA para terapia génica. Precio: 1.4M USD. Retirada en 2017 por bajísima demanda (1 paciente tratado). Demostró el problema del acceso y la sostenibilidad económica de las terapias génicas ultra-raras.</div>
+                    </div>
+                    <div class="ta-tl-item">
+                        <div class="ta-tl-yr">2017-2019 — Era AAV: Luxturna y Zolgensma</div>
+                        <div class="ta-tl-tx"><strong>Spark Therapeutics / AveXis-Novartis:</strong> Luxturna (AAV2-RPE65, ojos) y Zolgensma (AAV9-SMN1, IV sistémico) establecen el estándar de oro para enfermedades monogénicas. Zolgensma (~2.1M USD) es el medicamento más caro por dosis en el mundo, cubierto por Ley Ricarte Soto en Chile para AME tipo 1.</div>
+                    </div>
+                    <div class="ta-tl-item">
+                        <div class="ta-tl-yr">2023 — CRISPR clínica: Casgevy aprobada</div>
+                        <div class="ta-tl-tx"><strong>Vertex / CRISPR Therapeutics:</strong> Casgevy (exagamglogene autotemcel) aprobada por FDA (dic. 2023) y EMA (2024) para drepanocitosis y β-talasemia. Primera terapia basada en CRISPR-Cas9 en el mundo. Edición ex vivo de células madre hematopoyéticas CD34+. El 97% de pacientes con drepanocitosis no presentaron crisis vasooclusivas en 12 meses post-tratamiento.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ta-norma" data-ta-reveal>
+                <div class="ta-norma-ico">🏛️</div>
+                <div>
+                    <h4>Regulación ATMP en Chile: ISP, Ley Ricarte Soto y Acceso Extraordinario</h4>
+                    <p>Chile clasifica las terapias génicas y celulares como ATMPs (Medicamentos de Terapia Avanzada) bajo el marco regulatorio del ISP, que evalúa dossiers CTD siguiendo criterios EMA/FDA. El mecanismo de acceso extraordinario (Resolución ISP N°9.256 exenta/2019) permite importar ATMPs sin registro formal cuando no existe alternativa terapéutica. La <strong>Ley Ricarte Soto (N°20.850, 2015)</strong> financia tratamientos de alto costo para diagnósticos priorizados: AME tipo 1 (Zolgensma®) fue incorporada en 2022 mediante decreto N°4/2022, cubriendo pacientes ≤2 años con indicación clínica. El <strong>GES (Garantías Explícitas en Salud)</strong> no cubre actualmente ATMPs. El <strong>Comité de Ministros para Medicamentos de Alto Costo</strong> evalúa incorporación periódicamente. Para ensayos clínicos de terapias génicas en Chile se aplica el D.S. 709/2021 y el acuerdo de regulación de ensayos ATMPs del MINSAL 2023.</p>
+                </div>
+            </div>
+        </div><!-- /panel 0 -->
+
+        <!-- ═══ PANEL 2: CAR-T ═══ -->
+        <div class="ta-panel" id="ta-p1">
+
+            <div class="ta-intro rev" data-ta-reveal>
+                <div class="ta-intro-text">
+                    <h2>Inmunoterapia <span>CAR-T</span></h2>
+                    <p>Las células T con receptor de antígeno quimérico (CAR-T) son linfocitos T del propio paciente (autólogos) o de donante sano (alogénicos) modificados genéticamente para expresar un receptor artificial que reconoce antígenos específicos de las células tumorales, independientemente del complejo MHC. El gen CAR se integra mediante vector lentiviral o retroviral durante el proceso de manufactura ex vivo.</p>
+                    <p>El concepto fue desarrollado por Zelig Eshhar (Weizmann Institute) en 1989 y refinado por Carl June (UPenn) y Michel Sadelain (MSK). La primera aprobación fue Kymriah® (tisagenlecleucel, Novartis/UPenn) en agosto 2017 para B-ALL pediátrica refractaria, con una tasa de remisión completa del 81%.</p>
+                    <div class="ta-hbox">
+                        <strong>Arquitectura del Receptor CAR — 4 Generaciones</strong>
+                        <p><strong>Gen 1:</strong> scFv + CD3ζ solo. Respuesta débil y no persistente (años 1989-2003). <strong>Gen 2:</strong> scFv + CD28 o 4-1BB + CD3ζ. Estándar actual de terapias aprobadas. CD28 → expansión rápida pero agotamiento; 4-1BB → persistencia prolongada. <strong>Gen 3:</strong> Dos dominios coestimuladores (CD28 + 4-1BB). Mayor activación pero también mayor toxicidad potencial. <strong>Gen 4 (Armored CAR):</strong> Secreta citocinas (IL-12, IL-18) o expresa ligandos adicionales para remodeling del microambiente tumoral inmunosupresor.</p>
+                    </div>
+                    <div class="ta-hbox purple">
+                        <strong>Diferencia CAR-T vs TCR-T</strong>
+                        <p><strong>CAR-T:</strong> Reconoce antígenos de superficie celular (proteínas, carbohidratos) sin necesitar presentación MHC. Ideal para antígenos extracelulares (CD19, BCMA, CD22, HER2). <strong>TCR-T:</strong> Utiliza receptor TCR αβ modificado que reconoce péptidos presentados por MHC-I (epítopos intracelulares). Permite atacar proteínas mutadas intracelulares (NY-ESO-1, MART-1, AFP, p53). Ensayos clínicos prometedores en melanoma, sarcoma y CLL.</p>
+                    </div>
+                </div>
+                <div class="ta-3d">
+                    <canvas id="ta-canvas-cart" title="CAR-T receptor 3D — Rotar con mouse"></canvas>
+                    <div class="ta-3d-lbl">▸ scFv VH/VL · Hinge · Transmembrana · 4-1BB · CD3ζ · ITAMs · Antígeno CD19</div>
+                </div>
+            </div>
+
+            <div data-ta-reveal>
+                <div class="ta-sh">CAR-T Aprobadas FDA/EMA — Datos Clínicos 2024</div>
+                <div class="ta-tbl-wrap">
+                    <table class="ta-tbl">
+                        <thead>
+                            <tr><th>Producto</th><th>Diana</th><th>Coestimulador</th><th>Indicación</th><th>CR rate</th><th>Aprobación</th><th>Empresa</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Kymriah® (tisagenlecleucel)</td>
+                                <td><span class="ta-tag ta-t-c">CD19</span></td>
+                                <td>4-1BB</td>
+                                <td>B-ALL pediátrica ≤25a refractaria/recaída; LBCL adulto ≥2L</td>
+                                <td><span class="ta-tag ta-t-g">81% B-ALL</span></td>
+                                <td>FDA ago.2017 · EMA ago.2018</td>
+                                <td>Novartis</td>
+                            </tr>
+                            <tr>
+                                <td>Yescarta® (axicabtagene ciloleucel)</td>
+                                <td><span class="ta-tag ta-t-c">CD19</span></td>
+                                <td>CD28</td>
+                                <td>LBCL refractario ≥2L; FL grado 3B; PMBCL</td>
+                                <td><span class="ta-tag ta-t-g">58% LBCL</span></td>
+                                <td>FDA oct.2017 · EMA ago.2018</td>
+                                <td>Kite/Gilead</td>
+                            </tr>
+                            <tr>
+                                <td>Tecartus® (brexucabtagene autoleucel)</td>
+                                <td><span class="ta-tag ta-t-c">CD19</span></td>
+                                <td>CD28</td>
+                                <td>MCL refractario; B-ALL adulto recaída</td>
+                                <td><span class="ta-tag ta-t-g">62% MCL</span></td>
+                                <td>FDA jul.2020 · EMA dic.2021</td>
+                                <td>Kite/Gilead</td>
+                            </tr>
+                            <tr>
+                                <td>Breyanzi® (lisocabtagene maraleucel)</td>
+                                <td><span class="ta-tag ta-t-c">CD19</span></td>
+                                <td>4-1BB</td>
+                                <td>LBCL refractario ≥2L; FL; MZL; DLBCL 1L alto riesgo</td>
+                                <td><span class="ta-tag ta-t-g">53% LBCL</span></td>
+                                <td>FDA feb.2021 · EMA abr.2022</td>
+                                <td>BMS/Juno</td>
+                            </tr>
+                            <tr>
+                                <td>Abecma® (idecabtagene vicleucel)</td>
+                                <td><span class="ta-tag ta-t-pk">BCMA</span></td>
+                                <td>4-1BB</td>
+                                <td>Mieloma múltiple refractario ≥4 líneas previas</td>
+                                <td><span class="ta-tag ta-t-g">28% ORR 73%</span></td>
+                                <td>FDA mar.2021 · EMA ago.2021</td>
+                                <td>BMS/bluebird</td>
+                            </tr>
+                            <tr>
+                                <td>Carvykti® (ciltacabtagene autoleucel)</td>
+                                <td><span class="ta-tag ta-t-pk">BCMA</span></td>
+                                <td>4-1BB</td>
+                                <td>Mieloma múltiple refractario ≥4L (ahora 1ª línea en RRMM)</td>
+                                <td><span class="ta-tag ta-t-g">73% CR en RRMM</span></td>
+                                <td>FDA feb.2022 · EMA may.2022</td>
+                                <td>J&amp;J/Legend</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div data-ta-reveal>
+                <div class="ta-sh">Proceso de Manufactura CAR-T — De Leucoféresis a Infusión</div>
+                <div class="ta-proc">
+                    <div class="ta-step">
+                        <div class="ta-step-n">🩸</div>
+                        <div class="ta-step-t">1. Leucoféresis</div>
+                        <div class="ta-step-d">Aféresis de células mononucleares (~3-4 h). Almacenamiento criogénico hasta procesamiento.</div>
+                    </div>
+                    <div class="ta-step">
+                        <div class="ta-step-n">🔬</div>
+                        <div class="ta-step-t">2. Selección CD4/CD8</div>
+                        <div class="ta-step-d">Selección positiva de linfocitos T CD4+ y CD8+ por selección magnética (CliniMACS®).</div>
+                    </div>
+                    <div class="ta-step">
+                        <div class="ta-step-n">⚡</div>
+                        <div class="ta-step-t">3. Activación</div>
+                        <div class="ta-step-d">Activación con anti-CD3/CD28 beads + IL-2 (48-72h). Expansión previa a transducción.</div>
+                    </div>
+                    <div class="ta-step">
+                        <div class="ta-step-n">🦠</div>
+                        <div class="ta-step-t">4. Transducción</div>
+                        <div class="ta-step-d">Lentivirus SIN-CAR (MOI ~3-5). Integración del constructo CAR en genoma celular T.</div>
+                    </div>
+                    <div class="ta-step">
+                        <div class="ta-step-n">📈</div>
+                        <div class="ta-step-t">5. Expansión</div>
+                        <div class="ta-step-d">Cultivo en biorreactor (G-Rex®, Wave bag) 8-14 días. Target: 100-300 × 10⁶ CAR-T cells.</div>
+                    </div>
+                    <div class="ta-step">
+                        <div class="ta-step-n">🧪</div>
+                        <div class="ta-step-t">6. QC Release</div>
+                        <div class="ta-step-d">Viabilidad, % CAR+, esterilidad, micoplasmas, ausencia RCL, potencia citotóxica in vitro.</div>
+                    </div>
+                    <div class="ta-step">
+                        <div class="ta-step-n">❄️</div>
+                        <div class="ta-step-t">7. Criopreservación</div>
+                        <div class="ta-step-d">CryoStor CS10 (DMSO 10%). Almacenamiento LN₂ (-196°C) o vapor (-150°C) hasta uso.</div>
+                    </div>
+                    <div class="ta-step">
+                        <div class="ta-step-n">💉</div>
+                        <div class="ta-step-t">8. Infusión</div>
+                        <div class="ta-step-d">Linfodepleción (fludarabina + ciclofosfamida D-5 a D-3), luego CAR-T IV en día 0.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div data-ta-reveal>
+                <div class="ta-sh">Toxicidades CAR-T — Manejo Clínico (ASTCT 2019)</div>
+                <div class="ta-mec">
+                    <div class="ta-mec-card">
+                        <div class="ta-mec-ico">🌡️</div>
+                        <h4>CRS — Síndrome de Liberación de Citocinas</h4>
+                        <p>Hiperactivación del sistema inmune. Mediado por IL-6, IFN-γ, IL-10. Grado 1-2: fiebre ≥38°C, manejo sintomático. Grado 3-4: hipotensión refractaria, tocilizumab (anti-IL-6R) ± corticosteroides. Incidencia: 70-90% cualquier grado; grado ≥3: 15-25%. Tipicamente día 2-5 post-infusión.</p>
+                    </div>
+                    <div class="ta-mec-card">
+                        <div class="ta-mec-ico">🧠</div>
+                        <h4>ICANS — Neurotoxicidad (Antes CRES)</h4>
+                        <p>Immune Effector Cell-Associated Neurotoxicity Syndrome. Afasia, encefalopatía, convulsiones, edema cerebral. Escala CARTOX/ICANS 0-10. Tratamiento: dexametasona IV. Más frecuente con CD28 (Yescarta) vs 4-1BB. Grado ≥3: ~20-30% con axi-cel. Monitoreo neurológico estricto días 0-14.</p>
+                    </div>
+                    <div class="ta-mec-card">
+                        <div class="ta-mec-ico">🩸</div>
+                        <h4>Aplasia de Células B (B-cell aplasia)</h4>
+                        <p>Destrucción de células B normales CD19+ (on-target off-tumor). Puede persistir meses-años. Requiere sustitución mensual de IVIG (0.5 g/kg) mientras dure aplasia. Biomarcador de persistencia CAR-T. Aplasia prolongada = CAR-T persistentes = buen pronóstico.</p>
+                    </div>
+                    <div class="ta-mec-card">
+                        <div class="ta-mec-ico">⚠️</div>
+                        <h4>Síndrome de Macrófagos (MAS/HLH)</h4>
+                        <p>Hemofagocitosis, pancitopenia, hiperferritinemia (&gt;10.000 ng/mL), esplenomegalia. Raro pero potencialmente fatal. Criterios HScore para diagnóstico. Anakinra (anti-IL-1R) o ruxolitinib (JAK1/2i) + corticosteroides. FDA Black Box Warning en todos los productos CAR-T.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ta-norma" data-ta-reveal>
+                <div class="ta-norma-ico">🏥</div>
+                <div>
+                    <h4>CAR-T en Chile: Acceso, Infraestructura y Perspectivas 2024</h4>
+                    <p>A la fecha (2026), ninguna terapia CAR-T está disponible comercialmente en Chile dentro del sistema público (FONASA). El acceso es exclusivamente privado a través de importación extraordinaria por ISP, con costos que oscilan entre USD 350.000–500.000 por tratamiento (producto + logística + manejo hospitalario). El Instituto Nacional del Cáncer (INC) y el Hospital Dr. Gustavo Fricke están evaluando protocolos de ensayo clínico para CAR-T anti-CD19 en B-ALL pediátrica. La infraestructura mínima requerida (UCI onco-hematológica, manejo de CRS grado 3-4 con tocilizumab, neurólogo disponible 24/7) existe solo en 3-4 centros del país. La Sociedad Chilena de Hematología (SOCHIHEM) publicó en 2023 una guía de recomendaciones para implementación progresiva de CAR-T en Chile, con hoja de ruta al 2027.</p>
+                </div>
+            </div>
+        </div><!-- /panel 1 -->
+
+        <!-- ═══ PANEL 3: NANOMEDICINA ═══ -->
+        <div class="ta-panel" id="ta-p2">
+
+            <div class="ta-intro" data-ta-reveal>
+                <div class="ta-intro-text">
+                    <h2><span>Nanomedicina</span> y Entrega de Fármacos</h2>
+                    <p>La nanomedicina aplica principios de la nanotecnología (1–1000 nm) al diagnóstico y tratamiento de enfermedades. Los nanosistemas de entrega de fármacos mejoran la farmacocinética (prolongan el t½), reducen la toxicidad sistémica (mayor selectividad tumoral), permiten administrar fármacos hidrofóbicos, y posibilitan la entrega de macromoléculas terapéuticas (ARNm, siRNA, proteínas) que no pueden ser administradas sistémicamente de forma libre.</p>
+                    <p>La revolución ARNm demostrada con las vacunas COVID-19 (Comirnaty®/Spikevax®) catapultó las nanopartículas lipídicas (LNP) como la plataforma de entrega de biológicos más prometedora. El primer siRNA aprobado en LNP fue Onpattro® (patisiran, 2018, Alnylam) para amiloidosis TTR, con eficacia del 80% de reducción de TTR sérica.</p>
+                    <div class="ta-hbox">
+                        <strong>Efecto EPR — Enhanced Permeability and Retention</strong>
+                        <p>Los tumores tienen vasculatura hiperpermeable (uniones endoteliales laxas, 100-800 nm de abertura) y drenaje linfático defectuoso. Las nanopartículas de 10-200 nm se acumulan pasivamente en tumores por el <strong>efecto EPR</strong>. Sin embargo, estudios recientes (Wilhelm et al., Nature Nanotech. 2016) demuestran que solo ~0.7% de la dosis IV llega al tumor. Esto ha motivado el desarrollo de nanopartículas con targeting activo (ligandos: anticuerpos, aptámeros, péptidos RGD, folato) y estrategias físicas (ultrasonido focalizado, hipertermia magnética).</p>
+                    </div>
+                    <div class="ta-hbox cyan">
+                        <strong>Lípidos Ionizables — El Corazón de las LNP</strong>
+                        <p>Los lípidos ionizables (pKa 6.2-6.8) son neutros a pH fisiológico (minimizando toxicidad y aclaramiento) pero se protonan en el endosoma ácido (pH~5.5), desestabilizando la membrana endosomal y facilitando escape del ARNm al citoplasma. <strong>DLin-MC3-DMA</strong> (Onpattro®), <strong>ALC-0315</strong> (Comirnaty®), <strong>SM-102</strong> (Spikevax®) son los 3 lípidos ionizables aprobados en productos clínicos.</p>
+                    </div>
+                </div>
+                <div class="ta-3d">
+                    <canvas id="ta-canvas-nano" title="LNP ARNm 3D — Rotar con mouse"></canvas>
+                    <div class="ta-3d-lbl">▸ LNP: Lípido Ionizable · PEG · DSPC · Colesterol · ARNm encapsulado</div>
+                </div>
+            </div>
+
+            <div data-ta-reveal>
+                <div class="ta-sh">Plataformas de Nanomedicina Aprobadas o en Fase Avanzada</div>
+                <div class="ta-tbl-wrap">
+                    <table class="ta-tbl">
+                        <thead>
+                            <tr><th>Plataforma</th><th>Producto ejemplo</th><th>Carga terapéutica</th><th>Indicación</th><th>Tamaño / Estado</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>LNP (mRNA)</td>
+                                <td>Comirnaty® (BNT162b2, Pfizer/BioNTech)</td>
+                                <td>ARNm modificado (N1-metilpseudouridina)</td>
+                                <td>Vacuna COVID-19</td>
+                                <td><span class="ta-tag ta-t-g">~80 nm · Aprobado FDA 2021</span></td>
+                            </tr>
+                            <tr>
+                                <td>LNP (siRNA)</td>
+                                <td>Onpattro® (patisiran, Alnylam)</td>
+                                <td>siRNA anti-TTR (hígado)</td>
+                                <td>Amiloidosis TTR polineuropatía</td>
+                                <td><span class="ta-tag ta-t-g">~80 nm · FDA 2018</span></td>
+                            </tr>
+                            <tr>
+                                <td>Liposoma PEGilado</td>
+                                <td>Doxil® / Caelyx® (doxorrubicina)</td>
+                                <td>Doxorrubicina HCl (citotóxico)</td>
+                                <td>Ovario, Kaposi, MM</td>
+                                <td><span class="ta-tag ta-t-g">~85 nm · FDA 1995</span></td>
+                            </tr>
+                            <tr>
+                                <td>Nanopartícula albumina</td>
+                                <td>Abraxane® (nab-paclitaxel, BMS)</td>
+                                <td>Paclitaxel unido a albúmina</td>
+                                <td>Cáncer mama/pulmón/páncreas</td>
+                                <td><span class="ta-tag ta-t-g">~130 nm · FDA 2005</span></td>
+                            </tr>
+                            <tr>
+                                <td>ADC (Antibody-Drug Conjugate)</td>
+                                <td>Enhertu® (trastuzumab deruxtecan, Daiichi/AZ)</td>
+                                <td>DXd (topoisomerasa I inhibidor)</td>
+                                <td>HER2+ mama/gástrico/pulmón</td>
+                                <td><span class="ta-tag ta-t-g">DAR=8 · FDA 2019</span></td>
+                            </tr>
+                            <tr>
+                                <td>ADC</td>
+                                <td>Kadcyla® (ado-trastuzumab emtansine, Roche)</td>
+                                <td>DM1 (anti-microtúbulos)</td>
+                                <td>HER2+ mama metastásico</td>
+                                <td><span class="ta-tag ta-t-g">DAR=3.5 · FDA 2013</span></td>
+                            </tr>
+                            <tr>
+                                <td>LNP (mRNA terapéutico)</td>
+                                <td>mRNA-3705 (Moderna, MSUD)</td>
+                                <td>ARNm BCKDHA/BCKDHB</td>
+                                <td>Enfermedad orina jarabe de arce</td>
+                                <td><span class="ta-tag ta-t-pk">Fase I/II (2024)</span></td>
+                            </tr>
+                            <tr>
+                                <td>LNP (CRISPR in vivo)</td>
+                                <td>NTLA-2001 (Intellia)</td>
+                                <td>Cas9 mRNA + ARNg TTR</td>
+                                <td>Amiloidosis TTR hereditaria</td>
+                                <td><span class="ta-tag ta-t-pk">Fase I/II (2024)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div data-ta-reveal>
+                <div class="ta-sh">Anticuerpos-Fármaco Conjugados (ADC) — Tecnología "Misil Mágico"</div>
+                <div class="ta-cards">
+                    <div class="ta-card">
+                        <div class="ta-card-ico">🎯</div>
+                        <h4>Estructura de un ADC</h4>
+                        <p>Tres componentes: <strong>Anticuerpo</strong> (IgG1/4, selectividad tumoral), <strong>Linker</strong> (clivable o no-clivable, controla liberación del payload), <strong>Payload</strong> (citotóxico de alta potencia: maytansinoides DM1/DM4, auristatinas MMAE/MMAF, topoisomerasa I PBD, DXd). DAR (Drug-to-Antibody Ratio): 2-8 moléculas de fármaco por anticuerpo.</p>
+                        <span class="ta-badge">DAR 2-8 · Linker clivable</span>
+                    </div>
+                    <div class="ta-card">
+                        <div class="ta-card-ico">⚗️</div>
+                        <h4>Enhertu® — Revolución ADC</h4>
+                        <p>Trastuzumab deruxtecan (T-DXd): DAR=8, linker tetrapeptídico clivable, payload DXd (análogo camptotecina). Bystander effect: libera DXd que penetra células vecinas. Actividad en HER2-low (IHC 1+ y 2+ ISH-). Remodelando el paradigma de HER2-positivo.</p>
+                        <span class="ta-badge">HER2-low · Bystander</span>
+                    </div>
+                    <div class="ta-card">
+                        <div class="ta-card-ico">🔗</div>
+                        <h4>Linkers: Clivables vs No-clivables</h4>
+                        <p><strong>Clivables:</strong> pH-sensibles (hidrazona), reductores (disulfuro, liberación intracelular), proteasa-sensibles (Val-Cit-PABC, catepsina B). Ventaja: bystander effect. <strong>No-clivables:</strong> tioéter (SMCC en Kadcyla). Solo liberan payload tras degradación total del AcM en lisosoma. Mayor estabilidad sérica.</p>
+                        <span class="ta-badge">Cathepsin B · Val-Cit</span>
+                    </div>
+                    <div class="ta-card">
+                        <div class="ta-card-ico">🌡️</div>
+                        <h4>Nanopartículas Inorgánicas</h4>
+                        <p><strong>Óxido de hierro (SPION):</strong> Feraheme® (ferumoxytol) anemia; MRI contrast; hipertermia magnética tumoral. <strong>Oro nanoesferas/nanorods:</strong> fototerapia fototérmica (PTT) con NIR. <strong>Sílice mesoporosa:</strong> carga de fármacos hidrofóbicos. <strong>Quantum Dots:</strong> diagnóstico por fluorescencia multicolor (investigación).</p>
+                        <span class="ta-badge">SPION · Au nanorod · PTT</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ta-norma" data-ta-reveal>
+                <div class="ta-norma-ico">💊</div>
+                <div>
+                    <h4>Nanomedicinas en Chile: Registro ISP y Disponibilidad</h4>
+                    <p>Chile cuenta con varias nanomedicinas de referencia registradas en el ISP. <strong>Abraxane®</strong> (nab-paclitaxel) está disponible en FONASA con cobertura GES para cáncer de mama metastásico (D. Hacienda 2021). <strong>Doxil®/Caelyx®</strong> es de uso hospitalario oncológico. Los ADC de nueva generación como <strong>Enhertu®</strong> y <strong>Kadcyla®</strong> tienen registro ISP y están disponibles en el sector privado. <strong>Onpattro®</strong> (patisiran) no tiene registro formal en Chile pero puede importarse bajo acceso extraordinario. Las vacunas ARNm-LNP (Comirnaty®, Spikevax®) fueron autorizadas de emergencia por ISP en 2021 y están plenamente incorporadas al PNI chileno 2024. El ISP aplica los lineamientos de la Guía ICH Q6B más la Guidance for Industry on Nanotechnology de la FDA (2014/2022) para la evaluación de productos nanomédicos.</p>
+                </div>
+            </div>
+        </div><!-- /panel 2 -->
+
+        <!-- ═══ PANEL 4: MEDICINA REGENERATIVA ═══ -->
+        <div class="ta-panel" id="ta-p3">
+
+            <div class="ta-intro rev" data-ta-reveal>
+                <div class="ta-intro-text">
+                    <h2>Medicina <span>Regenerativa</span></h2>
+                    <p>La medicina regenerativa busca reparar, reemplazar o regenerar tejidos y órganos dañados usando células, biomateriales, factores de crecimiento y sus combinaciones. Integra la biología de células madre, la ingeniería de tejidos, la bioimpresión 3D y la biología sintética para crear soluciones terapéuticas que van más allá de la farmacología convencional.</p>
+                    <p>El descubrimiento de las células madre pluripotentes inducidas (<strong>iPSC</strong>) por Shinya Yamanaka en 2006 (Nobel 2012 con John Gurdon) fue transformador: demostró que células somáticas diferenciadas adultas podían ser reprogramadas a un estado embrionario induciendo solo 4 factores de transcripción (<em>OCT4, SOX2, KLF4, c-MYC</em>), eliminando la necesidad de usar embriones y abriendo la puerta a medicina personalizada basada en células propias del paciente.</p>
+                    <div class="ta-hbox green">
+                        <strong>iPSC — Células Madre Pluripotentes Inducidas</strong>
+                        <p>Obtenidas por reprogramación de fibroblastos dérmicos, keratinocitos, linfocitos o células urinarias del paciente. Métodos de reprogramación (sin integración): ARNm sintético (Moderna), vectores Sendai (no-integrativos), proteínas recombinantes, CpG-free episomal plasmids. Potencial ilimitado de auto-renovación y diferenciación a cualquier tipo celular. Usadas como modelos de enfermedad, screening de fármacos y futura terapia celular autóloga.</p>
+                    </div>
+                    <div class="ta-hbox purple">
+                        <strong>Organoides — Órganos en Miniatura</strong>
+                        <p>Estructuras 3D autoensambladas derivadas de células madre (iPSC o células primarias) que recapitulan la arquitectura y función del órgano de origen. Descritos por Hans Clevers (intestino, 2009), luego expandidos a cerebro, hígado, riñón, pulmón, páncreas, corazón. Usos: modelos de enfermedad personalizados, testing de toxicidad farmacológica, medicina de precisión y (futuro) trasplante. Limitaciones: ausencia de vascularización, sistema nervioso e inmune.</p>
+                    </div>
+                </div>
+                <div class="ta-3d">
+                    <canvas id="ta-canvas-regen" title="iPSC diferenciación 3D — Rotar con mouse"></canvas>
+                    <div class="ta-3d-lbl">▸ iPSC central · Factores Yamanaka · Diferenciación Cardíaca/Neural/Hepática · Scaffold</div>
+                </div>
+            </div>
+
+            <div data-ta-reveal>
+                <div class="ta-sh">Tipos de Células Madre — Clasificación y Aplicaciones Clínicas</div>
+                <div class="ta-tbl-wrap">
+                    <table class="ta-tbl">
+                        <thead>
+                            <tr><th>Tipo celular</th><th>Potencia</th><th>Fuente</th><th>Ventajas</th><th>Limitaciones</th><th>Aplicación clínica</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Células madre embrionarias (hESC)</td>
+                                <td><span class="ta-tag ta-t-g">Pluripotente</span></td>
+                                <td>Blastocisto (D5-D7)</td>
+                                <td>Potencial diferenciación ilimitado, estabilidad genómica</td>
+                                <td>Ética, aloinmunogenicidad, riesgo teratoma, limitaciones legales</td>
+                                <td>Ensayos: RPE para DME (Lineage Cell Therapeutics, Fase II)</td>
+                            </tr>
+                            <tr>
+                                <td>iPSC (inducidas)</td>
+                                <td><span class="ta-tag ta-t-g">Pluripotente</span></td>
+                                <td>Fibroblastos, keratinocitos, PBMC del paciente</td>
+                                <td>Autólogas (no inmunogénicas), sin restricciones éticas, escalables</td>
+                                <td>Riesgo genotóxico residual, costosas, tiempo de producción 3-6 meses</td>
+                                <td>Modelos enfermedades, screening. Fase I: Parkinson (iPSC-DA neurons, Kyoto 2018)</td>
+                            </tr>
+                            <tr>
+                                <td>Células madre hematopoyéticas (HSC)</td>
+                                <td><span class="ta-tag ta-t-c">Multipotente</span></td>
+                                <td>Médula ósea, sangre periférica (G-CSF), sangre cordón</td>
+                                <td>Más clínicamente validadas, 50+ años de trasplante alogénico</td>
+                                <td>EICH (trasplante alogénico), procedimiento invasivo</td>
+                                <td>Trasplante HSCT (leucemia, linfoma, thalasemia). Base de CAR-T y terapia génica</td>
+                            </tr>
+                            <tr>
+                                <td>Células madre mesenquimales (MSC)</td>
+                                <td><span class="ta-tag ta-t-c">Multipotente</span></td>
+                                <td>Médula ósea, tejido adiposo, cordón umbilical (Wharton jelly)</td>
+                                <td>Inmunomoduladoras, fácil obtención, baja inmunogenicidad, GMP escalable</td>
+                                <td>Heterogeneidad de preparaciones, mecanismo no totalmente claro</td>
+                                <td>EICH aguda (Prochymal® EMA 2012), Crohn fistulizante (Alofisel®), COVID-19 (ensayos)</td>
+                            </tr>
+                            <tr>
+                                <td>Células madre neurales (NSC)</td>
+                                <td><span class="ta-tag ta-t-c">Multipotente</span></td>
+                                <td>Subventricular zone, hipocampo, tejido fetal</td>
+                                <td>Diferenciación a neuronas, astrocitos y oligodendrocitos</td>
+                                <td>Acceso limitado, riesgo tumorigénico</td>
+                                <td>Ensayos ELA/ALS, lesión medular (Asterias, Fase II), Parkinson</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div data-ta-reveal>
+                <div class="ta-sh">Bioimpresión 3D y Organoides — Frontera Tecnológica</div>
+                <div class="ta-mec">
+                    <div class="ta-mec-card">
+                        <div class="ta-mec-ico">🖨️</div>
+                        <h4>Bioimpresión por Extrusión (FDM)</h4>
+                        <p>Deposición de biotinta (hidrogel + células) capa a capa. Resolución ~100-500 µm. Materiales: alginato, GelMA, fibrina, colágeno, pluronic. Empresa clave: Organovo® (tejido hepático 3D), Cellink® (bioprinters). Aplicaciones: modelos de toxicidad hepática farmacológica, cartílago, piel.</p>
+                    </div>
+                    <div class="ta-mec-card">
+                        <div class="ta-mec-ico">💡</div>
+                        <h4>Bioimpresión por Estereolitografía (SLA/DLP)</h4>
+                        <p>Fotopolimerización UV de bioresin (GelMA, PEGDA). Alta resolución (~10-50 µm). Permite microvasculatura. MIT &amp; Harvard: estructuras vasculares funcionales en colágeno fotocrosslinkable. Ideal para scaffolds complejos con geometría precisa.</p>
+                    </div>
+                    <div class="ta-mec-card">
+                        <div class="ta-mec-ico">🧠</div>
+                        <h4>Organoides Cerebrales</h4>
+                        <p>Madeline Lancaster (2013, MRC): protocolo de diferenciación iPSC en matrices Matrigel. Organoides ~1-5 mm con regiones cortical, hipocampal, coroides. Usados para modelar microcefalia, Zika, Alzheimer, Parkinson, epilepsia y screening de fármacos neuro. Limitación crítica: ausencia de vascularización (necrosis central).</p>
+                    </div>
+                    <div class="ta-mec-card">
+                        <div class="ta-mec-ico">❤️</div>
+                        <h4>Parches Cardíacos (Cardiomiocitos iPSC)</h4>
+                        <p>Cardiomiocitos derivados de iPSC (iPSC-CM): modelo gold standard para cardiotoxicidad farmacológica (ICH S7B). Parche cardíaco (HEALIOS/Osaka University, Japón 2020): primer ensayo clínico con iPSC en el mundo, para insuficiencia cardíaca post-infarto. Resultados Fase I/II favorables 2024.</p>
+                    </div>
+                    <div class="ta-mec-card">
+                        <div class="ta-mec-ico">🩸</div>
+                        <h4>Terapias de Sangre de Cordón</h4>
+                        <p>Chile cuenta con bancos de cordón privados (BioBank Chile, Criogenésis) y el Banco Público de Sangre de Cordón Umbilical (MINSALPUC, iniciado 2019). Las HSC de cordón se usan en trasplante pediátrico. El ISP regula bancos de sangre de cordón bajo Res. Ex. 2019.</p>
+                    </div>
+                    <div class="ta-mec-card">
+                        <div class="ta-mec-ico">🔬</div>
+                        <h4>Organ-on-a-Chip</h4>
+                        <p>Microdispositivos de PDMS con canales de escala celular que recrean la fisiología de órganos (pulmón, riñón, intestino, hígado). Emulate Inc.: Lung-Chip reprodujo SARS-CoV-2 infección in vitro. Alternativa a modelos animales para farmacocinética y toxicología preclinica. FDA: proyecto Organ Chip Initiative 2022.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div data-ta-reveal>
+                <div class="ta-sh">Terapias de Medicina Regenerativa Aprobadas Globalmente</div>
+                <div class="ta-tbl-wrap">
+                    <table class="ta-tbl">
+                        <thead>
+                            <tr><th>Producto</th><th>Tipo celular</th><th>Indicación</th><th>Aprobación</th><th>Empresa</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>MACI® (Autologous cultured chondrocytes)</td>
+                                <td>Condrocitos autólogos en matriz de colágeno</td>
+                                <td>Defectos condrales rodilla (adultos)</td>
+                                <td><span class="ta-tag ta-t-g">FDA 2016</span></td>
+                                <td>Vericel Corp.</td>
+                            </tr>
+                            <tr>
+                                <td>Alofisel® (darvadstrocel)</td>
+                                <td>MSC adiposa alogénica (Cx601)</td>
+                                <td>Enfermedad Crohn fistulizante compleja</td>
+                                <td><span class="ta-tag ta-t-g">EMA 2018</span></td>
+                                <td>TiGenix/Takeda</td>
+                            </tr>
+                            <tr>
+                                <td>Holoclar®</td>
+                                <td>Células limbales autólogas (stem cells córnea)</td>
+                                <td>Insuficiencia de células limbares por quemaduras</td>
+                                <td><span class="ta-tag ta-t-g">EMA 2015</span></td>
+                                <td>Chiesi Farmaceutici</td>
+                            </tr>
+                            <tr>
+                                <td>Epifin® / Epicel®</td>
+                                <td>Queratinocitos autólogos expandidos in vitro</td>
+                                <td>Quemaduras de gran extensión (&gt;30% SCT)</td>
+                                <td><span class="ta-tag ta-t-g">FDA 1988 (HDE)</span></td>
+                                <td>Vericel Corp.</td>
+                            </tr>
+                            <tr>
+                                <td>Prochymal® (remestemcel-L)</td>
+                                <td>MSC médula ósea alogénica</td>
+                                <td>EICH aguda pediátrica refractaria</td>
+                                <td><span class="ta-tag ta-t-g">Health Canada/NZ 2012</span></td>
+                                <td>Mesoblast</td>
+                            </tr>
+                            <tr>
+                                <td>Neocart® (Fase III EE.UU.)</td>
+                                <td>Condrocitos autólogos 3D scaffold</td>
+                                <td>Defectos cartílago rodilla</td>
+                                <td><span class="ta-tag ta-t-pk">Fase III completada</span></td>
+                                <td>Histogen</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="ta-norma" data-ta-reveal>
+                <div class="ta-norma-ico">🌱</div>
+                <div>
+                    <h4>Medicina Regenerativa en Chile: Infraestructura, Investigación y Regulación</h4>
+                    <p>Chile cuenta con centros de investigación y aplicación clínica en medicina regenerativa. El <strong>Centro FONDAP de Medicina Regenerativa (CMRM)</strong>, liderado por la Universidad de Chile, coordina investigación nacional en iPSC, células madre y bioimpresión. El <strong>Hospital Clínico Universidad de Chile</strong> y la <strong>PUC</strong> tienen programas de trasplante de células madre hematopoyéticas (HSCT). El ISP regula los medicamentos de terapia celular somática bajo el concepto ATMP con requisitos similares a EMA. La <strong>Ley 20.120</strong> (2006) regula la investigación científica con seres humanos y material genético humano, prohibiendo la clonación reproductiva pero permitiendo investigación en células madre con fines terapéuticos bajo supervisión del Comité Ético Científico. ANID financia proyectos de medicina regenerativa a través de Fondecyt Regular y Fondequip. La Red NANOMED Chile (ANID RING) coordina investigación en nanomedicina aplicada al cáncer.</p>
+                </div>
+            </div>
+        </div><!-- /panel 3 -->
+
+        <!-- NAV INFERIOR -->
+        <div class="ta-page-nav">
+            <a href="produccion.html"  class="ta-nbtn">← Unidad 3: Producción Biotecnológica</a>
+            <a href="../index.html"    class="ta-nbtn">Módulo Biotecnología</a>
+            <a href="../index.html"    class="ta-nbtn pri">Completar Módulo Biotecnología ✓</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>© 2026 PharmaLab Chile — Biotecnología · Unidad 4: Terapias Avanzadas</p>
+            <p class="footer-disclaimer">Contenido educacional universitario. Datos clínicos y regulatorios basados en fuentes FDA/EMA/ISP/MINSAL actualizados a 2024. No reemplaza asesoría profesional médica.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="../../script.js"></script>
+<script src="terapias-avanzadas.js"></script>
+</body>
+</html>

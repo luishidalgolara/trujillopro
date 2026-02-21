@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regulación ISP — PharmaLab Chile</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../farmacia.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="module-farmacia">
+
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <div class="logo-icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/><circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/><line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/><line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/><line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/></svg></div>
+                <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../../quimica/index.html" class="nav-link" data-module="quimica">⚗️ Química</a>
+                <a href="../../farmacia/index.html" class="nav-link active" data-module="farmacia">💊 Farmacia</a>
+                <a href="../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf">🧬 Q. Farmacéutica</a>
+                <a href="../../biotecnologia/index.html" class="nav-link" data-module="biotech">🔬 Biotecnología</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="module-hero" style="min-height:42vh; padding-bottom:40px;">
+        <div class="hero-content">
+            <span class="section-tag">Farmacia — Unidad 3</span>
+            <h1 class="section-title">Regulación <span class="text-gradient-farmacia">ISP</span></h1>
+            <p class="section-desc">Instituto de Salud Pública de Chile: registro sanitario, bioequivalencia, farmacovigilancia y fiscalización farmacéutica.</p>
+        </div>
+    </section>
+
+    <section class="lesson-content">
+        <div class="container">
+            <div class="lesson-body">
+
+                <div class="lesson-index">
+                    <h4>📑 Contenido de esta Unidad</h4>
+                    <ol>
+                        <li><a href="#isp">El ISP: Organización y Funciones</a></li>
+                        <li><a href="#registro">Registro Sanitario de Medicamentos</a></li>
+                        <li><a href="#bioequivalencia">Bioequivalencia en Chile</a></li>
+                        <li><a href="#farmacovigilancia">Farmacovigilancia</a></li>
+                        <li><a href="#fiscalizacion">Fiscalización y Sanciones</a></li>
+                        <li><a href="#cenabast">CENABAST: Central Nacional de Abastecimiento</a></li>
+                    </ol>
+                </div>
+
+                <!-- 1. ISP -->
+                <div class="lesson-section" id="isp">
+                    <h2>1. <span>El ISP: Organización y Funciones</span></h2>
+                    <p>El Instituto de Salud Pública (ISP) de Chile es un organismo público funcionalmente descentralizado, con personalidad jurídica y patrimonio propio, que depende del Ministerio de Salud. Fue creado en 1981 y es la autoridad técnica sanitaria nacional en materia de medicamentos, alimentos, cosméticos y otros productos de uso humano.</p>
+
+                    <div class="info-block">
+                        <h3>🏛️ Misión y Visión del ISP</h3>
+                        <p><strong>Misión:</strong> Contribuir a la protección de la salud de la población chilena a través de la vigilancia, el control y la fiscalización de productos, establecimientos y actividades relacionadas con la salud humana.</p>
+                        <p style="margin-top:12px"><strong>Visión:</strong> Ser una institución de referencia en América Latina por su excelencia técnica, modernidad y eficacia en la regulación sanitaria.</p>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>🔬 Departamentos Clave del ISP</h3>
+                        <ul>
+                            <li><strong>Agencia Nacional de Medicamentos (ANAMED):</strong> Encargada del registro, control y vigilancia de medicamentos y demás productos farmacéuticos. Es el departamento más relevante para el ejercicio farmacéutico.</li>
+                            <li><strong>Departamento de Laboratorio Biomédico Nacional:</strong> Diagnóstico de laboratorio de enfermedades infecciosas, control de calidad de reactivos y equipos de diagnóstico.</li>
+                            <li><strong>Departamento de Salud Ocupacional:</strong> Control de riesgos laborales relacionados con agentes químicos, físicos y biológicos.</li>
+                            <li><strong>Departamento de Epidemiología:</strong> Vigilancia epidemiológica nacional.</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>📋 Funciones Principales de ANAMED (ISP)</h3>
+                        <ul>
+                            <li>Evaluar y otorgar el Registro Sanitario de productos farmacéuticos, cosméticos y productos de uso médico.</li>
+                            <li>Verificar la bioequivalencia de medicamentos genéricos.</li>
+                            <li>Fiscalizar laboratorios farmacéuticos (inspecciones BPM).</li>
+                            <li>Fiscalizar farmacias, droguerías y botiquines.</li>
+                            <li>Recibir y evaluar notificaciones de reacciones adversas a medicamentos (farmacovigilancia).</li>
+                            <li>Emitir alertas sanitarias y retirar del mercado productos que representen riesgo para la salud.</li>
+                            <li>Publicar el Formulario Nacional de Medicamentos de Chile.</li>
+                            <li>Gestionar el sistema de información pública sobre medicamentos (SINAEM).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 2. REGISTRO -->
+                <div class="lesson-section" id="registro">
+                    <h2>2. <span>Registro Sanitario de Medicamentos</span></h2>
+                    <p>El Registro Sanitario es la autorización otorgada por el ISP (a través de ANAMED) para que un producto farmacéutico pueda ser comercializado en Chile. Sin este registro, ningún medicamento puede ser importado, exportado, producido, distribuido ni expendido en el país.</p>
+
+                    <div class="info-block">
+                        <h3>📝 Tipos de Registro en Chile</h3>
+                        <ul>
+                            <li><strong>Innovador (Referencia):</strong> Primer producto farmacéutico que contiene un determinado principio activo, con estudios clínicos completos de fase I, II y III que avalan su eficacia, seguridad y calidad.</li>
+                            <li><strong>Similar:</strong> Producto que contiene el mismo principio activo que un innovador con igual forma farmacéutica, vía de administración y dosis, pero sin requerir estudios clínicos completos. Se basa en equivalencia farmacéutica demostrada in vitro.</li>
+                            <li><strong>Bioequivalente:</strong> Similar que además ha demostrado bioequivalencia con el medicamento de referencia mediante estudios in vivo (biodisponibilidad comparada en voluntarios sanos) o estudios in vitro validados (CIVIV). Permite inferir equivalencia terapéutica.</li>
+                        </ul>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Parámetro</th>
+                                <th>Innovador</th>
+                                <th>Similar</th>
+                                <th>Bioequivalente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Estudios clínicos completos</td>
+                                <td>✅ Sí</td>
+                                <td>❌ No</td>
+                                <td>❌ No</td>
+                            </tr>
+                            <tr>
+                                <td>Estudios de bioequivalencia</td>
+                                <td>No aplica</td>
+                                <td>❌ No</td>
+                                <td>✅ Sí</td>
+                            </tr>
+                            <tr>
+                                <td>Equivalencia farmacéutica</td>
+                                <td>Referencia</td>
+                                <td>✅ Sí</td>
+                                <td>✅ Sí</td>
+                            </tr>
+                            <tr>
+                                <td>Equivalencia terapéutica inferida</td>
+                                <td>✅ Sí</td>
+                                <td>❌ No garantizada</td>
+                                <td>✅ Sí</td>
+                            </tr>
+                            <tr>
+                                <td>Puede sustituirse sin consultar</td>
+                                <td>Por QF</td>
+                                <td>❌ No</td>
+                                <td>✅ Por QF</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="info-block">
+                        <h3>⏱️ Proceso de Registro Sanitario: Etapas</h3>
+                        <ul>
+                            <li><strong>1. Solicitud y pago de aranceles:</strong> El titular del registro (laboratorio fabricante o importador) presenta la solicitud junto con el arancel correspondiente.</li>
+                            <li><strong>2. Revisión documental (ANAMED):</strong> Se verifica que la documentación esté completa y cumpla los requisitos formales. Si hay observaciones, el solicitante tiene plazo para subsanarlas.</li>
+                            <li><strong>3. Evaluación técnica:</strong> Equipo de profesionales del ISP evalúa la calidad, seguridad y eficacia del producto. Puede incluir análisis de laboratorio de muestras.</li>
+                            <li><strong>4. Otorgamiento o rechazo del registro:</strong> Si todo es conforme, se otorga el Registro Sanitario con un número único y una vigencia de 5 años.</li>
+                            <li><strong>5. Renovación:</strong> Debe solicitarse antes del vencimiento. Se evalúan nuevos antecedentes de seguridad y eficacia post-comercialización.</li>
+                        </ul>
+                    </div>
+
+                    <div class="alert-box alert-info">
+                        <span class="alert-icon">ℹ️</span>
+                        <div>
+                            <strong>Número de Registro ISP</strong>
+                            <p>Cada medicamento registrado en Chile tiene un número único asignado por el ISP, visible en el envase: <span class="code-inline">ISP-F-XX/XXXX</span> (donde F indica "farmacéutico" y los números corresponden al año y correlativo). Este número puede verificarse en el SINAEM (Sistema de Información Nacional de Medicamentos) en el sitio web del ISP.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. BIOEQUIVALENCIA -->
+                <div class="lesson-section" id="bioequivalencia">
+                    <h2>3. <span>Bioequivalencia en Chile</span></h2>
+
+                    <div class="info-block">
+                        <h3>🔬 Conceptos Fundamentales</h3>
+                        <ul>
+                            <li><strong>Equivalencia Farmacéutica:</strong> Dos medicamentos son farmacéuticamente equivalentes si contienen el mismo principio activo en la misma cantidad, con la misma forma farmacéutica y la misma vía de administración, cumpliendo especificaciones de calidad similares.</li>
+                            <li><strong>Biodisponibilidad:</strong> Velocidad y magnitud en que el principio activo es absorbido desde una forma farmacéutica y está disponible en el sitio de acción. Se mide por los parámetros farmacocinéticos: Cmáx, tmáx y AUC.</li>
+                            <li><strong>Bioequivalencia:</strong> Dos medicamentos son bioequivalentes si sus biodisponibilidades (velocidad y extensión de absorción) son similares en un grado tal que sus efectos en cuanto a eficacia y seguridad serán esencialmente los mismos.</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>📊 Criterios Estadísticos de Bioequivalencia (ISP — ICH)</h3>
+                        <p>Para que un medicamento sea considerado bioequivalente por el ISP, el intervalo de confianza al 90% de la razón de medias geométricas (test/referencia) para Cmáx y AUC debe estar contenido dentro del rango:</p>
+                        <p style="text-align:center; padding: 16px 0; font-family:'JetBrains Mono', monospace; font-size:1.2rem; color: var(--farmacia-light);">80,00% — 125,00%</p>
+                        <p>Para medicamentos de estrecho margen terapéutico (ciclosporina, tacrolimus, warfarina, digoxina, litio, fenitoína), el rango es más estrecho:</p>
+                        <p style="text-align:center; padding: 16px 0; font-family:'JetBrains Mono', monospace; font-size:1.2rem; color: var(--farmacia-light);">90,00% — 111,11%</p>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>🧪 Estudios de Bioequivalencia: Tipos</h3>
+                        <ul>
+                            <li><strong>Estudios in vivo (Fase I en voluntarios sanos):</strong> Diseño cruzado aleatorizado en voluntarios sanos. Se administra el medicamento de referencia y el test en períodos distintos (cross-over) con un período de lavado entre ellos. Se miden los parámetros farmacocinéticos en sangre/plasma.</li>
+                            <li><strong>Estudios in vitro (Correlación in vitro-in vivo, CIVIV):</strong> Para formas farmacéuticas de liberación inmediata de alta solubilidad y permeabilidad (Sistema de Clasificación Biofarmacéutica — SCB), se puede demostrar bioequivalencia mediante pruebas de disolución comparativa bajo ciertas condiciones (SCB Clases I y III).</li>
+                            <li><strong>Biowaivers:</strong> Exenciones del estudio in vivo para medicamentos de baja concentración con perfil de seguridad establecido (condiciones estrictas del ISP).</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>📋 Sistema de Clasificación Biofarmacéutica (SCB)</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Clase</th>
+                                    <th>Solubilidad</th>
+                                    <th>Permeabilidad</th>
+                                    <th>Biowaiver posible</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Clase I</strong></td>
+                                    <td>Alta</td>
+                                    <td>Alta</td>
+                                    <td>Sí (condiciones ISP)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Clase II</strong></td>
+                                    <td>Baja</td>
+                                    <td>Alta</td>
+                                    <td>No (estudio in vivo requerido)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Clase III</strong></td>
+                                    <td>Alta</td>
+                                    <td>Baja</td>
+                                    <td>Sí con condiciones</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Clase IV</strong></td>
+                                    <td>Baja</td>
+                                    <td>Baja</td>
+                                    <td>No (siempre in vivo)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 4. FARMACOVIGILANCIA -->
+                <div class="lesson-section" id="farmacovigilancia">
+                    <h2>4. <span>Farmacovigilancia en Chile</span></h2>
+                    <p>La Farmacovigilancia (FV) es la ciencia y el conjunto de actividades relativas a la detección, evaluación, comprensión y prevención de los efectos adversos de los medicamentos o de cualquier otro problema relacionado con ellos. En Chile, el ISP es el organismo rector de la FV a través de ANAMED.</p>
+
+                    <div class="info-block">
+                        <h3>⚠️ Clasificación de Reacciones Adversas a Medicamentos (RAM)</h3>
+                        <ul>
+                            <li><strong>Tipo A (Augmented — Aumentadas):</strong> Relacionadas con la acción farmacológica del medicamento, predecibles, dosis-dependientes. Generalmente reversibles al reducir la dosis. Ejemplo: hipoglucemia con insulina, hemorragia con anticoagulantes.</li>
+                            <li><strong>Tipo B (Bizarre — Raras):</strong> No relacionadas con la acción farmacológica, impredecibles, no dosis-dependientes. Incluyen reacciones alérgicas e idiosincrásicas. Ejemplo: anafilaxia por penicilina, agranulocitosis por clozapina.</li>
+                            <li><strong>Tipo C (Chronic — Crónicas):</strong> Relacionadas con la exposición acumulativa o el uso prolongado. Ejemplo: nefrotoxicidad por AINE crónicos.</li>
+                            <li><strong>Tipo D (Delayed — Retardadas):</strong> Aparecen tiempo después del uso del medicamento. Ejemplo: carcinogénesis por agentes alquilantes, teratogénesis.</li>
+                            <li><strong>Tipo E (End of use — Fin de uso):</strong> Relacionadas con la interrupción del tratamiento. Ejemplo: síndrome de abstinencia por opioides o benzodiacepinas.</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>📢 Sistema de Notificación de RAM en Chile</h3>
+                        <ul>
+                            <li><strong>Obligados a notificar:</strong> Todo profesional de la salud (médicos, QF, enfermeras, dentistas) debe notificar las RAM graves, inesperadas o de medicamentos nuevos (menos de 5 años en el mercado).</li>
+                            <li><strong>Canal de notificación:</strong> Formulario de notificación de RAM disponible en el sitio web del ISP (www.ispch.cl) o directamente en papel.</li>
+                            <li><strong>Plazos:</strong> RAM graves o letales: notificación urgente (15 días calendario). RAM graves no letales: 30 días. RAM no graves: sin plazo definido, pero se fomenta su notificación.</li>
+                            <li><strong>Confidencialidad:</strong> Los datos del notificador son confidenciales. El sistema es de notificación voluntaria para el público general.</li>
+                            <li><strong>Red PARF (OPS):</strong> Chile integra la red panamericana de farmacovigilancia y reporta al Centro de Uppsala (UMC — Programa OMS de Farmacovigilancia Internacional).</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>🚨 Alertas Sanitarias del ISP</h3>
+                        <p>Cuando el ISP detecta un problema de seguridad con un medicamento, puede emitir distintos tipos de alertas:</p>
+                        <ul>
+                            <li><strong>Alerta de seguridad:</strong> Comunicación a profesionales de la salud sobre nuevos riesgos identificados (Dear Doctor Letter).</li>
+                            <li><strong>Suspensión temporal del registro:</strong> Se suspende temporalmente la venta del medicamento mientras se investiga.</li>
+                            <li><strong>Cancelación del registro:</strong> Se retira definitivamente el medicamento del mercado.</li>
+                            <li><strong>Retiro de lote:</strong> Se retira del mercado un lote específico por problemas de calidad (contaminación, potencia incorrecta, envase defectuoso).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 5. FISCALIZACIÓN -->
+                <div class="lesson-section" id="fiscalizacion">
+                    <h2>5. <span>Fiscalización y Sanciones</span></h2>
+
+                    <div class="info-block">
+                        <h3>🔍 Actividades de Fiscalización del ISP</h3>
+                        <ul>
+                            <li><strong>Inspección de Farmacias:</strong> El ISP y los Servicios de Salud regionales fiscalizan farmacias para verificar: cumplimiento de requisitos de autorización, presencia del QF, condiciones de almacenamiento, control de medicamentos caducados, manejo de controlados y libros de registro.</li>
+                            <li><strong>Inspección BPM a Laboratorios:</strong> Inspecciones periódicas a laboratorios farmacéuticos para verificar el cumplimiento de las Buenas Prácticas de Manufactura.</li>
+                            <li><strong>Control de calidad post-registro:</strong> ANAMED puede tomar muestras del mercado y analizarlas para verificar que el medicamento sigue cumpliendo sus especificaciones registradas.</li>
+                            <li><strong>Vigilancia de publicidad:</strong> Control de la publicidad de medicamentos, especialmente de venta directa, para verificar que no se promuevan medicamentos de venta bajo receta sin indicación médica.</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>⚖️ Sanciones por Infracciones Farmacéuticas</h3>
+                        <ul>
+                            <li><strong>Amonestación:</strong> Para infracciones leves o de primera vez.</li>
+                            <li><strong>Multa:</strong> Hasta 1.000 UTM según la gravedad de la infracción.</li>
+                            <li><strong>Clausura temporal:</strong> Cierre del establecimiento por un período determinado hasta que se corrijan las deficiencias.</li>
+                            <li><strong>Clausura definitiva:</strong> Cierre permanente del establecimiento por infracciones graves o reiteradas.</li>
+                            <li><strong>Cancelación del Registro Sanitario:</strong> Para laboratorios que fabrican medicamentos sin cumplir estándares de calidad o seguridad.</li>
+                            <li><strong>Cancelación de la autorización profesional:</strong> En casos de grave negligencia o delito del QF director técnico.</li>
+                        </ul>
+                    </div>
+
+                    <div class="alert-box alert-danger">
+                        <span class="alert-icon">🚨</span>
+                        <div>
+                            <strong>Infracciones Más Frecuentes en Farmacias Chilenas (ISP)</strong>
+                            <p>Según reportes del ISP, las infracciones más frecuentes detectadas en fiscalizaciones de farmacias son: ausencia del QF durante el horario de funcionamiento, medicamentos con fecha de vencimiento expirada en stock, almacenamiento inadecuado de medicamentos termolábiles, irregularidades en el libro de control de medicamentos controlados, y venta de medicamentos sin la receta correspondiente.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. CENABAST -->
+                <div class="lesson-section" id="cenabast">
+                    <h2>6. <span>CENABAST: Central Nacional de Abastecimiento</span></h2>
+                    <p>La Central Nacional de Abastecimiento (CENABAST) es un organismo dependiente del Ministerio de Salud que actúa como intermediario entre los proveedores de medicamentos e insumos médicos y los establecimientos del Sistema Nacional de Servicios de Salud.</p>
+
+                    <div class="info-block">
+                        <h3>🏛️ Funciones de CENABAST</h3>
+                        <ul>
+                            <li><strong>Compra centralizada:</strong> Adquiere medicamentos e insumos a gran escala para los hospitales y establecimientos de salud públicos, obteniendo mejores precios por volumen.</li>
+                            <li><strong>Distribución:</strong> Gestiona la distribución a los Servicios de Salud regionales de todo Chile.</li>
+                            <li><strong>Licitaciones públicas:</strong> Realiza licitaciones abiertas a través del sistema ChileCompra para la adquisición de medicamentos, garantizando transparencia y libre competencia.</li>
+                            <li><strong>Intermediación para privados:</strong> Desde 2014, personas naturales y empleadores privados pueden comprar medicamentos a través de CENABAST a precios de compra pública, lo que reduce significativamente los costos.</li>
+                            <li><strong>Formulario Nacional:</strong> Elabora y actualiza el Formulario Nacional de Medicamentos, la lista oficial de medicamentos disponibles en el sistema público de salud chileno.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pharma-highlight">
+                        <div class="ph-icon">🏥</div>
+                        <h3>CENABAST y el Acceso a Medicamentos en Chile</h3>
+                        <p>La compra centralizada a través de CENABAST permite que los medicamentos en el sistema público de salud costen hasta un 90% menos que en farmacias privadas. Este mecanismo es fundamental para garantizar el acceso equitativo a medicamentos esenciales, especialmente para enfermedades crónicas como diabetes, hipertensión y VIH/SIDA, donde el costo del tratamiento es un factor determinante en la adherencia terapéutica.</p>
+                    </div>
+                </div>
+
+                <div class="lesson-nav">
+                    <a href="dispensacion.html">← Unidad 2: Dispensación</a>
+                    <a href="buenas-practicas.html">Siguiente: BPM / BPL / BPA →</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 PharmaLab Chile — Farmacia: Regulación ISP</p>
+                <p class="footer-disclaimer">Contenido educacional actualizado según normativas ISP y MINSAL vigentes. No reemplaza asesoría profesional.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

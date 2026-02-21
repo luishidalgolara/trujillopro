@@ -1,0 +1,487 @@
+{
+  "cases": [
+    {
+      "id": "case_hta_01",
+      "title": "Hipertensión en Adulto Mayor",
+      "difficulty": "intermedio",
+      "category": "cardiovascular",
+      "icon": "🫀",
+      "patient": {
+        "name": "Carmen Rojas Soto",
+        "age": 68,
+        "sex": "F",
+        "weight_kg": 72,
+        "height_cm": 158,
+        "imc": 28.8,
+        "occupation": "Jubilada, exsecretaria",
+        "allergies": ["Ninguna conocida"],
+        "habits": {
+          "smoking": "Exfumadora (dejó hace 10 años, 20 pack-years)",
+          "alcohol": "Ocasional (1 copa de vino/semana)",
+          "exercise": "Caminata 20 min 3 veces/semana",
+          "diet": "Alta en sal (según encuesta dietética)"
+        }
+      },
+      "presentation": {
+        "chief_complaint": "Control de salud cardiovascular. Le encontraron 'la presión alta' en su CESFAM hace 2 semanas.",
+        "history": "Paciente de 68 años con hallazgo reciente de PA elevada en control de rutina. Refiere cefalea occipital matutina ocasional, sin otros síntomas. Sin antecedentes previos de tratamiento antihipertensivo.",
+        "vital_signs": {
+          "pa_sistolica": 162,
+          "pa_diastolica": 94,
+          "fc": 78,
+          "fr": 16,
+          "temp": 36.4,
+          "sat_o2": 97
+        },
+        "labs": {
+          "creatinina": { "value": 0.9, "unit": "mg/dL", "ref": "0.6-1.1" },
+          "bun": { "value": 18, "unit": "mg/dL", "ref": "7-20" },
+          "potasio": { "value": 4.2, "unit": "mEq/L", "ref": "3.5-5.0" },
+          "glicemia": { "value": 98, "unit": "mg/dL", "ref": "70-100" },
+          "col_total": { "value": 242, "unit": "mg/dL", "ref": "<200" },
+          "ldl": { "value": 158, "unit": "mg/dL", "ref": "<130" },
+          "hdl": { "value": 48, "unit": "mg/dL", "ref": ">50" },
+          "tg": { "value": 180, "unit": "mg/dL", "ref": "<150" },
+          "tfge": { "value": 62, "unit": "mL/min/1.73m²", "ref": ">60" }
+        },
+        "comorbidities": ["Dislipidemia mixta (recién diagnosticada)", "Sobrepeso (IMC 28.8)", "TFGe limítrofe"],
+        "current_medications": []
+      },
+      "correct_answers": {
+        "phase1_drug": "enalapril",
+        "phase1_reasoning": "IECA de primera línea para HTA según Guía MINSAL 2023. Beneficio adicional en nefroprotección dado TFGe limítrofe. Alternativa válida: losartán si hay tos.",
+        "phase1_alternatives": ["losartan"],
+        "phase1_wrong": {
+          "metformina": "No es antihipertensivo. Es un antidiabético. La paciente no tiene diabetes.",
+          "amoxicilina": "Es un antibiótico. No tiene indicación en hipertensión arterial.",
+          "atorvastatina": "Es hipolipemiante. Aunque la paciente tiene dislipidemia, la pregunta es sobre el antihipertensivo.",
+          "salbutamol": "Es un broncodilatador. No tiene indicación en hipertensión."
+        },
+        "phase2_form": "comprimido",
+        "phase2_reasoning": "Paciente adulta con función deglutoria normal, tratamiento crónico oral. El comprimido es la forma farmacéutica estándar para antihipertensivos crónicos.",
+        "phase3_dose": {
+          "drug": "enalapril",
+          "strength": "10 mg",
+          "frequency": "1 vez al día",
+          "daily_mg": 10,
+          "calculation": "Iniciar con 10 mg/día VO. En adulto mayor se podría iniciar con 5 mg si hay riesgo de hipotensión. TFGe 62 mL/min → no requiere ajuste renal (ajuste a partir de CLcr <30).",
+          "notes": "Aumentar a 20 mg/día en 2-4 semanas si PA no controlada. Meta: <140/90 mmHg (>65 años según MINSAL)."
+        },
+        "phase4_prescription": {
+          "type": "receta_simple",
+          "justification": "Los IECA son medicamentos de venta bajo receta simple (no retenida). No son psicotrópicos ni estupefacientes.",
+          "rx_class": "Venta Bajo Receta"
+        },
+        "phase5_counseling": [
+          "Tomar el comprimido todos los días a la misma hora, preferiblemente en la mañana.",
+          "Puede producir tos seca. Si es muy molesta, consultar para cambiar a otro medicamento (losartán).",
+          "Reducir consumo de sal (<5 g/día) y mantener actividad física.",
+          "Acudir a control en 2-4 semanas para evaluar respuesta y ajustar dosis.",
+          "No suspender el medicamento aunque se sienta bien. La hipertensión es asintomática.",
+          "Signos de alarma: hinchazón de cara/labios (angioedema) → urgencia inmediata."
+        ]
+      },
+      "scoring": {
+        "max_points": 100,
+        "phase1": 25,
+        "phase2": 15,
+        "phase3": 25,
+        "phase4": 20,
+        "phase5": 15
+      }
+    },
+    {
+      "id": "case_dm2_01",
+      "title": "Diabetes Tipo 2 en Adulto",
+      "difficulty": "intermedio",
+      "category": "endocrinología",
+      "icon": "🩸",
+      "patient": {
+        "name": "Jorge Muñoz Pizarro",
+        "age": 52,
+        "sex": "M",
+        "weight_kg": 94,
+        "height_cm": 173,
+        "imc": 31.4,
+        "occupation": "Taxista",
+        "allergies": ["Sulfonamidas (exantema)"],
+        "habits": {
+          "smoking": "Fumador activo (10 cigarrillos/día x 15 años)",
+          "alcohol": "Cerveza 2-3 veces/semana (2-3 latas)",
+          "exercise": "Sedentario",
+          "diet": "Alta en carbohidratos refinados, bebidas azucaradas diarias"
+        }
+      },
+      "presentation": {
+        "chief_complaint": "Polidipsia, poliuria y baja de peso no intencional de 4 kg en 2 meses. Derivado desde CESFAM tras glicemia en ayunas de 248 mg/dL.",
+        "history": "Paciente de 52 años, obeso, sedentario, con síntomas cardinales de hiperglicemia de 2 meses de evolución. Madre diabética tipo 2. Sin controles previos regulares.",
+        "vital_signs": {
+          "pa_sistolica": 138,
+          "pa_diastolica": 88,
+          "fc": 82,
+          "fr": 16,
+          "temp": 36.6,
+          "sat_o2": 98
+        },
+        "labs": {
+          "glicemia": { "value": 248, "unit": "mg/dL", "ref": "70-100" },
+          "hba1c": { "value": 9.2, "unit": "%", "ref": "<5.7" },
+          "creatinina": { "value": 0.95, "unit": "mg/dL", "ref": "0.7-1.2" },
+          "potasio": { "value": 4.5, "unit": "mEq/L", "ref": "3.5-5.0" },
+          "tfge": { "value": 88, "unit": "mL/min/1.73m²", "ref": ">60" },
+          "col_total": { "value": 220, "unit": "mg/dL", "ref": "<200" },
+          "ldl": { "value": 138, "unit": "mg/dL", "ref": "<130" },
+          "tg": { "value": 198, "unit": "mg/dL", "ref": "<150" },
+          "alt": { "value": 42, "unit": "U/L", "ref": "<40" },
+          "orina_completa": "Glucosuria +++, sin cetonuria"
+        },
+        "comorbidities": ["Obesidad grado I (IMC 31.4)", "Dislipidemia", "Tabaquismo activo", "Antecedente familiar DM2"],
+        "current_medications": []
+      },
+      "correct_answers": {
+        "phase1_drug": "metformina",
+        "phase1_reasoning": "Metformina es primera línea para DM2 según ADA/EASD/MINSAL. Beneficios: no causa hipoglucemia, reduce peso, cardioprotectora, bajo costo. TFGe 88 → sin contraindicación renal. HbA1c 9.2% → considerar agregar segundo agente (pero la pregunta es sobre el fármaco de primera línea).",
+        "phase1_alternatives": [],
+        "phase1_wrong": {
+          "enalapril": "Es antihipertensivo. Aunque el paciente tiene PA limítrofe, la consulta es por diabetes.",
+          "losartan": "Es antihipertensivo. No tiene efecto hipoglucemiante.",
+          "amoxicilina": "Es antibiótico. No tiene indicación en diabetes.",
+          "atorvastatina": "Es hipolipemiante. Aunque el paciente necesitará una estatina, la prioridad es el control glucémico.",
+          "salbutamol": "Es broncodilatador. No tiene indicación en diabetes."
+        },
+        "phase2_form": "comprimido",
+        "phase2_reasoning": "Paciente adulto con deglución normal. Tratamiento crónico oral. Si presenta intolerancia GI, considerar comprimido de liberación prolongada (XR).",
+        "phase3_dose": {
+          "drug": "metformina",
+          "strength": "850 mg",
+          "frequency": "2 veces al día con comidas (almuerzo y cena)",
+          "daily_mg": 1700,
+          "calculation": "Iniciar 500 mg/día con cena x 1 semana → 500 mg c/12h x 1 semana → 850 mg c/12h. Meta: 1700-2000 mg/día. Titular lentamente para minimizar efectos GI. Peso 94 kg, TFGe 88 → dosis completa permitida.",
+          "notes": "HbA1c 9.2%: si no alcanza meta (<7%) en 3 meses, agregar segundo agente (iDPP4 o iSGLT2). Considerar inicio combinado dado HbA1c >9%."
+        },
+        "phase4_prescription": {
+          "type": "receta_simple",
+          "justification": "Metformina es de venta bajo receta simple. No es psicotrópico ni estupefaciente.",
+          "rx_class": "Venta Bajo Receta"
+        },
+        "phase5_counseling": [
+          "Tomar siempre con las comidas (almuerzo y cena) para reducir molestias estomacales.",
+          "Puede causar diarrea, náuseas y sabor metálico las primeras semanas. Esto mejora con el tiempo.",
+          "NO suspender sin indicación médica. Si olvida una dosis, tomar con la siguiente comida.",
+          "Reducir bebidas azucaradas y carbohidratos refinados. Iniciar actividad física gradual.",
+          "Medir glicemia capilar según indicación (idealmente en ayunas y postprandial).",
+          "Control con HbA1c en 3 meses para evaluar respuesta.",
+          "Evitar consumo excesivo de alcohol (riesgo de acidosis láctica).",
+          "Si necesita un examen con medio de contraste, avisar que toma metformina."
+        ]
+      },
+      "scoring": {
+        "max_points": 100,
+        "phase1": 25,
+        "phase2": 15,
+        "phase3": 25,
+        "phase4": 20,
+        "phase5": 15
+      }
+    },
+    {
+      "id": "case_ira_ped_01",
+      "title": "Faringoamigdalitis en Paciente Pediátrico",
+      "difficulty": "básico",
+      "category": "infectología",
+      "icon": "🧒",
+      "patient": {
+        "name": "Sofía Vergara Tapia",
+        "age": 7,
+        "sex": "F",
+        "weight_kg": 24,
+        "height_cm": 122,
+        "imc": 16.1,
+        "occupation": "Estudiante de 2° básico",
+        "allergies": ["Ninguna conocida"],
+        "habits": {
+          "smoking": "N/A",
+          "alcohol": "N/A",
+          "exercise": "Juega en el recreo",
+          "diet": "Normal para la edad"
+        }
+      },
+      "presentation": {
+        "chief_complaint": "Fiebre alta (39.2°C) de 2 días, dolor de garganta intenso, dificultad para tragar. Madre la trae a consultorio.",
+        "history": "Niña de 7 años con cuadro agudo de odinofagia, fiebre y decaimiento de 48 horas. Compañeros de curso con cuadros similares. Al examen: faringe intensamente eritematosa con exudado amigdalino bilateral purulento, adenopatías cervicales anteriores dolorosas. Test rápido Strep A: POSITIVO.",
+        "vital_signs": {
+          "pa_sistolica": 100,
+          "pa_diastolica": 65,
+          "fc": 110,
+          "fr": 22,
+          "temp": 39.2,
+          "sat_o2": 98
+        },
+        "labs": {
+          "test_strep_a": { "value": "Positivo", "unit": "", "ref": "Negativo" },
+          "hemograma_leucocitos": { "value": 14200, "unit": "/µL", "ref": "4500-13500" },
+          "pcr": { "value": 48, "unit": "mg/L", "ref": "<5" }
+        },
+        "comorbidities": [],
+        "current_medications": [
+          { "name": "Paracetamol", "dose": "15 mg/kg c/6h", "since": "2 días (automedicación materna)" }
+        ],
+        "centor_score": {
+          "fever": true,
+          "exudate": true,
+          "adenopathy": true,
+          "no_cough": true,
+          "age_3_14": true,
+          "total": 5,
+          "interpretation": "McIsaac 5 puntos → Alta probabilidad de etiología estreptocócica (>50%). Test rápido confirma. Antibiótico indicado."
+        }
+      },
+      "correct_answers": {
+        "phase1_drug": "amoxicilina",
+        "phase1_reasoning": "Amoxicilina es primera línea para faringoamigdalitis estreptocócica (GAS) según Guía MINSAL IRA y guías AAP. Cubre S. pyogenes con alta eficacia, buena tolerancia y sabor aceptable en suspensión. Previene fiebre reumática (complicación importante en Chile).",
+        "phase1_alternatives": [],
+        "phase1_wrong": {
+          "enalapril": "Es antihipertensivo. No tiene actividad antimicrobiana.",
+          "losartan": "Es antihipertensivo. No tiene indicación en infecciones.",
+          "metformina": "Es antidiabético. No tiene actividad antimicrobiana.",
+          "atorvastatina": "Es hipolipemiante. No tiene indicación en infecciones.",
+          "salbutamol": "Es broncodilatador. La paciente no tiene broncoespasmo."
+        },
+        "phase2_form": "suspensión oral",
+        "phase2_reasoning": "Paciente de 7 años (24 kg). Los niños menores de 8-10 años generalmente no pueden tragar comprimidos grandes. La suspensión oral permite dosificación exacta por peso y mejor aceptabilidad. Concentración recomendada: 250 mg/5mL.",
+        "phase3_dose": {
+          "drug": "amoxicilina",
+          "strength": "250 mg/5mL suspensión",
+          "frequency": "cada 8 horas por 10 días",
+          "daily_mg": 1200,
+          "calculation": "Dosis: 50 mg/kg/día ÷ 3 tomas = 50 × 24 = 1200 mg/día ÷ 3 = 400 mg c/8h. En suspensión 250 mg/5mL: 400 mg = 8 mL cada 8 horas. Duración: 10 días (prevención fiebre reumática, estándar GAS).",
+          "volume_per_dose_ml": 8,
+          "notes": "Completar los 10 días de tratamiento aunque mejore antes. NO suspender al tercer día."
+        },
+        "phase4_prescription": {
+          "type": "receta_simple",
+          "justification": "Amoxicilina es de venta bajo receta simple. No es psicotrópico. En menores, la receta debe incluir edad y peso del paciente.",
+          "rx_class": "Venta Bajo Receta"
+        },
+        "phase5_counseling": [
+          "Administrar 8 mL de suspensión cada 8 horas (con jeringa dosificadora, no cucharita de cocina).",
+          "Agitar bien el frasco antes de cada dosis.",
+          "Completar los 10 días completos de tratamiento, aunque la niña se sienta mejor al 2°-3° día.",
+          "Conservar la suspensión reconstituida en refrigerador (2-8°C). Descartar lo sobrante a los 14 días.",
+          "Continuar paracetamol 15 mg/kg cada 6 horas si hay fiebre o dolor.",
+          "Ofrecer líquidos fríos, helados o alimentos blandos para el dolor de garganta.",
+          "Signos de alarma: dificultad respiratoria, incapacidad de tragar líquidos, fiebre que no cede en 48-72h con antibiótico.",
+          "La niña puede volver al colegio 24 horas después de iniciado el antibiótico si está afebril."
+        ]
+      },
+      "scoring": {
+        "max_points": 100,
+        "phase1": 25,
+        "phase2": 20,
+        "phase3": 25,
+        "phase4": 15,
+        "phase5": 15
+      }
+    },
+    {
+      "id": "case_asma_01",
+      "title": "Crisis Asmática Leve en Joven",
+      "difficulty": "básico",
+      "category": "respiratorio",
+      "icon": "🫁",
+      "patient": {
+        "name": "Matías González Bravo",
+        "age": 22,
+        "sex": "M",
+        "weight_kg": 70,
+        "height_cm": 175,
+        "imc": 22.9,
+        "occupation": "Estudiante universitario de Ingeniería",
+        "allergies": ["Ácaros del polvo", "Polen de gramíneas"],
+        "habits": {
+          "smoking": "No fuma",
+          "alcohol": "Social los fines de semana",
+          "exercise": "Fútbol 2 veces/semana (abandonó por síntomas)",
+          "diet": "Normal"
+        }
+      },
+      "presentation": {
+        "chief_complaint": "Dificultad para respirar y silbido en el pecho que empezó anoche. Usa un inhalador 'azul' prestado por un amigo que le alivió, pero los síntomas volvieron.",
+        "history": "Paciente de 22 años con antecedente de asma en la infancia (sin tratamiento controlador actual). Refiere disnea episódica, sibilancias y tos seca nocturna que han empeorado en las últimas 3 semanas coincidiendo con inicio de primavera. Usa salbutamol de rescate prestado 4-5 veces/semana.",
+        "vital_signs": {
+          "pa_sistolica": 120,
+          "pa_diastolica": 78,
+          "fc": 96,
+          "fr": 22,
+          "temp": 36.5,
+          "sat_o2": 95
+        },
+        "labs": {
+          "espirometria_fev1": { "value": 72, "unit": "% predicho", "ref": ">80%" },
+          "fev1_fvc": { "value": 0.68, "unit": "ratio", "ref": ">0.70" },
+          "reversibilidad": { "value": 18, "unit": "% mejora FEV1 post-BD", "ref": ">12% = positiva" },
+          "pef": { "value": 380, "unit": "L/min", "ref": ">480 (predicho)" }
+        },
+        "comorbidities": ["Rinitis alérgica estacional"],
+        "current_medications": [
+          { "name": "Loratadina", "dose": "10 mg/día", "since": "Automedicación" }
+        ],
+        "asthma_control": {
+          "daytime_symptoms_week": ">2",
+          "night_symptoms": "1-2/semana",
+          "rescue_use_week": "4-5 veces",
+          "activity_limitation": "Sí (abandonó fútbol)",
+          "classification": "Asma NO controlada — Paso 2 GINA mínimo"
+        }
+      },
+      "correct_answers": {
+        "phase1_drug": "salbutamol",
+        "phase1_reasoning": "Salbutamol inhalado (SABA) es el broncodilatador de rescate estándar para alivio rápido del broncoespasmo agudo según GINA 2024. IMPORTANTE: este paciente también necesita un controlador (corticoide inhalado), pero la pregunta de rescate inmediato es salbutamol. El paciente necesita su PROPIO inhalador, no uno prestado.",
+        "phase1_alternatives": [],
+        "phase1_wrong": {
+          "enalapril": "Es antihipertensivo. Además, los IECA pueden empeorar la tos en asmáticos.",
+          "losartan": "Es antihipertensivo. No tiene efecto broncodilatador.",
+          "metformina": "Es antidiabético. No tiene indicación en asma.",
+          "amoxicilina": "Es antibiótico. El asma no es una infección. No usar antibióticos en crisis asmática sin evidencia de infección.",
+          "atorvastatina": "Es hipolipemiante. No tiene indicación en asma."
+        },
+        "phase2_form": "inhalador presurizado (MDI)",
+        "phase2_reasoning": "El inhalador presurizado (MDI) con aerocámara es la forma de administración estándar para asma. Permite dosis exactas, acción local rápida, mínimos efectos sistémicos. La nebulización se reserva para crisis moderadas-graves en urgencia.",
+        "phase3_dose": {
+          "drug": "salbutamol",
+          "strength": "100 mcg/puff",
+          "frequency": "2 puffs cada 4-6 horas según necesidad (SOS)",
+          "daily_mg": 0.4,
+          "calculation": "200 mcg (2 puffs de 100 mcg) por uso, máximo cada 4 horas. Si necesita >2 veces/semana → asma no controlada, necesita controlador. Técnica: agitar MDI, exhalar, activar al inicio de inspiración lenta y profunda, mantener 10 segundos.",
+          "notes": "CRÍTICO: Este paciente necesita además un CONTROLADOR (beclometasona o budesonida inhalado). El salbutamol solo de rescate NO es tratamiento suficiente para asma persistente."
+        },
+        "phase4_prescription": {
+          "type": "receta_simple",
+          "justification": "Salbutamol inhalador es de venta bajo receta simple.",
+          "rx_class": "Venta Bajo Receta"
+        },
+        "phase5_counseling": [
+          "Usar el inhalador SOLO cuando sienta dificultad para respirar o silbido (rescate).",
+          "Técnica correcta: agitar → exhalar completamente → activar al inicio de inspiración lenta → mantener respiración 10 segundos.",
+          "Idealmente usar con aerocámara (espaciador) para mejorar el depósito pulmonar.",
+          "Si necesita usar el inhalador más de 2 veces por semana, su asma NO está controlada.",
+          "Necesita un tratamiento CONTROLADOR diario (corticoide inhalado). Debe consultar con su médico.",
+          "Evitar alérgenos conocidos: ácaros (cubrir colchón, lavar ropa de cama en agua caliente), polen.",
+          "No abandonar el deporte: con tratamiento controlador adecuado, puede hacer ejercicio normal.",
+          "Signos de alarma: dificultad respiratoria severa, no puede hablar frases completas, labios azules → urgencia."
+        ]
+      },
+      "scoring": {
+        "max_points": 100,
+        "phase1": 25,
+        "phase2": 20,
+        "phase3": 20,
+        "phase4": 15,
+        "phase5": 20
+      }
+    },
+    {
+      "id": "case_dlp_01",
+      "title": "Dislipidemia con Riesgo Cardiovascular Alto",
+      "difficulty": "avanzado",
+      "category": "cardiovascular",
+      "icon": "💔",
+      "patient": {
+        "name": "Roberto Espinoza Contreras",
+        "age": 58,
+        "sex": "M",
+        "weight_kg": 88,
+        "height_cm": 170,
+        "imc": 30.4,
+        "occupation": "Contador, trabaja 10+ horas sentado",
+        "allergies": ["Ninguna conocida"],
+        "habits": {
+          "smoking": "Fumador activo (15 cigarrillos/día x 30 años)",
+          "alcohol": "2-3 cervezas diarias",
+          "exercise": "Sedentario total",
+          "diet": "Alta en grasas saturadas, comida rápida frecuente"
+        }
+      },
+      "presentation": {
+        "chief_complaint": "Derivado por médico de CESFAM tras exámenes de control con colesterol muy elevado. Padre falleció de infarto a los 62 años.",
+        "history": "Paciente de 58 años, obeso, fumador, sedentario, con dislipidemia severa de reciente diagnóstico. Antecedente familiar de IAM precoz (padre a los 62 años). Hipertenso en tratamiento con enalapril 20 mg/día hace 3 años. Sin síntomas cardiovasculares actuales pero con alto riesgo CV global.",
+        "vital_signs": {
+          "pa_sistolica": 142,
+          "pa_diastolica": 88,
+          "fc": 76,
+          "fr": 16,
+          "temp": 36.5,
+          "sat_o2": 97
+        },
+        "labs": {
+          "col_total": { "value": 298, "unit": "mg/dL", "ref": "<200" },
+          "ldl": { "value": 198, "unit": "mg/dL", "ref": "<130" },
+          "hdl": { "value": 35, "unit": "mg/dL", "ref": ">40" },
+          "tg": { "value": 325, "unit": "mg/dL", "ref": "<150" },
+          "glicemia": { "value": 112, "unit": "mg/dL", "ref": "70-100" },
+          "hba1c": { "value": 6.1, "unit": "%", "ref": "<5.7" },
+          "creatinina": { "value": 1.0, "unit": "mg/dL", "ref": "0.7-1.2" },
+          "alt": { "value": 38, "unit": "U/L", "ref": "<40" },
+          "ast": { "value": 32, "unit": "U/L", "ref": "<40" },
+          "ck": { "value": 145, "unit": "U/L", "ref": "<190" },
+          "tfge": { "value": 78, "unit": "mL/min/1.73m²", "ref": ">60" }
+        },
+        "comorbidities": ["HTA en tratamiento", "Obesidad grado I", "Prediabetes (HbA1c 6.1%)", "Tabaquismo activo", "Antecedente familiar IAM precoz"],
+        "current_medications": [
+          { "name": "Enalapril", "dose": "20 mg/día", "since": "3 años" }
+        ],
+        "cv_risk": {
+          "framingham_10y": "Alto (>20%)",
+          "factors": ["Hombre >55", "Tabaquismo activo", "HTA", "HDL bajo", "AF de IAM precoz", "Prediabetes"],
+          "target_ldl": "<100 mg/dL (riesgo alto) o <70 mg/dL (si se considera muy alto)"
+        }
+      },
+      "correct_answers": {
+        "phase1_drug": "atorvastatina",
+        "phase1_reasoning": "Atorvastatina de alta intensidad es el tratamiento de primera línea para pacientes con riesgo CV alto según ACC/AHA 2018 y Guía MINSAL Dislipidemia. Con LDL 198 mg/dL y múltiples factores de riesgo, necesita reducción ≥50% del LDL (terapia de alta intensidad: atorvastatina 40-80 mg).",
+        "phase1_alternatives": [],
+        "phase1_wrong": {
+          "enalapril": "Ya lo usa. Aunque necesita optimizar su HTA, la consulta es por la dislipidemia.",
+          "losartan": "Es antihipertensivo. No reduce el colesterol.",
+          "metformina": "Es antidiabético. Aunque tiene prediabetes, la prioridad actual es la dislipidemia severa.",
+          "amoxicilina": "Es antibiótico. No tiene indicación aquí.",
+          "salbutamol": "Es broncodilatador. No tiene indicación aquí."
+        },
+        "phase2_form": "comprimido recubierto",
+        "phase2_reasoning": "Tratamiento crónico oral en adulto. Comprimido recubierto estándar para atorvastatina. Puede tomarse a cualquier hora (a diferencia de simvastatina que debe ser nocturna).",
+        "phase3_dose": {
+          "drug": "atorvastatina",
+          "strength": "40 mg",
+          "frequency": "1 vez al día (preferiblemente nocturno)",
+          "daily_mg": 40,
+          "calculation": "Riesgo CV alto → terapia de alta intensidad (atorvastatina 40-80 mg/día). Iniciar con 40 mg. Si no alcanza meta LDL <100 en 4-8 semanas, subir a 80 mg. Transaminasas basales normales (ALT 38) → puede iniciar sin restricción. CK basal 145 → documentar para seguimiento.",
+          "notes": "Solicitar perfil lipídico de control en 4-8 semanas. Si no alcanza meta con 80 mg, considerar agregar ezetimiba 10 mg."
+        },
+        "phase4_prescription": {
+          "type": "receta_simple",
+          "justification": "Las estatinas son de venta bajo receta simple.",
+          "rx_class": "Venta Bajo Receta"
+        },
+        "phase5_counseling": [
+          "Tomar un comprimido cada noche (la síntesis de colesterol es mayor durante la noche).",
+          "Puede causar dolor muscular. Si aparece dolor intenso o debilidad muscular, consultar de inmediato.",
+          "NO consumir jugo de pomelo durante el tratamiento (aumenta niveles del fármaco).",
+          "Si le recetan antibióticos (claritromicina, eritromicina), informar que usa atorvastatina.",
+          "Reducir grasas saturadas, aumentar fibra y omega-3. Iniciar actividad física gradual.",
+          "Es fundamental dejar de fumar. El tabaquismo es el factor de riesgo modificable más importante.",
+          "El alcohol en exceso aumenta el riesgo hepático y de triglicéridos. Limitar consumo.",
+          "Control de laboratorio (perfil lipídico + transaminasas) en 4-8 semanas.",
+          "Este medicamento es de uso prolongado (posiblemente de por vida). No suspender sin consultar."
+        ]
+      },
+      "scoring": {
+        "max_points": 100,
+        "phase1": 25,
+        "phase2": 10,
+        "phase3": 25,
+        "phase4": 15,
+        "phase5": 25
+      }
+    }
+  ]
+}

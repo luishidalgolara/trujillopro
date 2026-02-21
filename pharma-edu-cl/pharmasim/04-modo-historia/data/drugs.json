@@ -1,0 +1,467 @@
+{
+  "drugs": [
+    {
+      "id": "enalapril",
+      "inn": "Enalapril",
+      "inn_en": "Enalapril",
+      "salt": "Maleato de enalapril",
+      "atc": "C09AA02",
+      "class": "IECA (Inhibidor de la Enzima Convertidora de Angiotensina)",
+      "mechanism": "Inhibe competitivamente la enzima convertidora de angiotensina (ECA), impidiendo la conversión de angiotensina I en angiotensina II. Reduce la vasoconstricción, la secreción de aldosterona y la retención de sodio/agua. Es un profármaco que se hidroliza in vivo a enalaprilato (metabolito activo).",
+      "pharmacokinetics": {
+        "absorption": "60% por vía oral. Los alimentos no afectan significativamente la absorción.",
+        "bioavailability": 60,
+        "tmax_h": 1,
+        "tmax_active_h": 3.5,
+        "protein_binding_pct": 50,
+        "vd_lkg": 1.7,
+        "metabolism": "Hepático: hidrólisis a enalaprilato (metabolito activo). No involucra CYP450.",
+        "half_life_h": 11,
+        "elimination": "Renal (60% como enalaprilato, 20% como enalapril). Requiere ajuste en IRC.",
+        "onset_h": 1,
+        "peak_effect_h": 4,
+        "duration_h": 24
+      },
+      "molecular": {
+        "formula": "C₂₀H₂₈N₂O₅",
+        "mw_base": 376.45,
+        "mw_salt": 492.52,
+        "salt_factor": 0.764,
+        "pka": 3.0,
+        "logP": 0.07,
+        "solubility_class": "BCS Clase III"
+      },
+      "dosing": {
+        "adult": {
+          "initial": "5-10 mg/día VO",
+          "usual": "10-20 mg/día VO en 1-2 tomas",
+          "max": "40 mg/día",
+          "renal_adjustment": {
+            "clcr_30_80": "5 mg/día inicial",
+            "clcr_below_30": "2.5 mg/día inicial",
+            "hemodialysis": "2.5 mg post-diálisis"
+          }
+        },
+        "pediatric": {
+          "initial": "0.08 mg/kg/día VO (máx 5 mg)",
+          "usual": "0.08-0.6 mg/kg/día",
+          "max": "0.6 mg/kg/día o 40 mg/día"
+        },
+        "elderly": "2.5-5 mg/día inicial. Titular lentamente."
+      },
+      "forms": [
+        { "type": "Comprimido", "strengths": ["5 mg", "10 mg", "20 mg"] }
+      ],
+      "contraindications": [
+        "Hipersensibilidad a IECA",
+        "Antecedente de angioedema por IECA",
+        "Embarazo (categoría D — teratogénico: oligohidramnios, hipoplasia pulmonar fetal)",
+        "Estenosis bilateral de arterias renales",
+        "Uso concomitante con sacubitril/valsartán (riesgo angioedema)"
+      ],
+      "adverse_effects": [
+        { "effect": "Tos seca", "frequency": "5-35%", "severity": "leve", "note": "Por acumulación de bradicinina. Cambiar a ARA-II si es intolerable." },
+        { "effect": "Hipotensión", "frequency": "5-7%", "severity": "moderado", "note": "Especialmente primera dosis en depletos de volumen." },
+        { "effect": "Hiperkalemia", "frequency": "2-6%", "severity": "grave", "note": "Monitorizar K+ especialmente con IRC, espironolactona o AINEs." },
+        { "effect": "Angioedema", "frequency": "<1%", "severity": "grave", "note": "Emergencia médica. Suspender inmediatamente. Contraindicado de por vida." },
+        { "effect": "Insuficiencia renal aguda", "frequency": "raro", "severity": "grave", "note": "En estenosis renal bilateral." }
+      ],
+      "interactions": [
+        { "drug": "AINEs", "severity": "moderada", "effect": "Reducen efecto antihipertensivo y aumentan riesgo de IRA e hiperkalemia" },
+        { "drug": "Espironolactona", "severity": "moderada", "effect": "Hiperkalemia. Monitorizar K+ sérico" },
+        { "drug": "Litio", "severity": "grave", "effect": "Aumenta niveles de litio. Riesgo de toxicidad" },
+        { "drug": "Suplementos de potasio", "severity": "moderada", "effect": "Hiperkalemia" }
+      ],
+      "monitoring": ["Presión arterial", "Creatinina sérica", "Potasio sérico", "BUN"],
+      "pregnancy_category": "D",
+      "lactation": "Compatible según e-lactancia. Enalaprilato se excreta en mínimas cantidades.",
+      "indications": ["Hipertensión arterial esencial", "Insuficiencia cardíaca (NYHA II-IV)", "Nefropatía diabética", "Disfunción ventricular izquierda post-IAM"],
+      "references": ["Guía Clínica MINSAL HTA 2023", "BNF 86 (2023)", "UpToDate 2024", "Goodman & Gilman 14ª Ed."]
+    },
+    {
+      "id": "losartan",
+      "inn": "Losartán",
+      "inn_en": "Losartan",
+      "salt": "Losartán potásico",
+      "atc": "C09CA01",
+      "class": "ARA-II (Antagonista del Receptor de Angiotensina II)",
+      "mechanism": "Bloquea selectivamente el receptor AT1 de angiotensina II en músculo liso vascular, glándula suprarrenal y otros tejidos. A diferencia de los IECA, no inhibe el metabolismo de bradicinina, por lo que no produce tos seca. El metabolito activo E-3174 (formado por CYP2C9/3A4) tiene 10-40x más potencia que losartán.",
+      "pharmacokinetics": {
+        "absorption": "Buena absorción oral. Biodisponibilidad ~33% por extenso primer paso hepático.",
+        "bioavailability": 33,
+        "tmax_h": 1,
+        "tmax_active_h": 3,
+        "protein_binding_pct": 99,
+        "vd_lkg": 0.47,
+        "metabolism": "Hepático vía CYP2C9 y CYP3A4 al metabolito activo E-3174 (ácido carboxílico). El 14% de la dosis se convierte al metabolito activo.",
+        "half_life_h": 6,
+        "half_life_metabolite_h": 9,
+        "elimination": "Renal 35%, biliar 60%",
+        "onset_h": 2,
+        "peak_effect_h": 6,
+        "duration_h": 24
+      },
+      "molecular": {
+        "formula": "C₂₂H₂₂ClN₆O·K",
+        "mw_base": 422.91,
+        "mw_salt": 461.00,
+        "salt_factor": 0.917,
+        "pka": 4.9,
+        "logP": 4.01,
+        "solubility_class": "BCS Clase II"
+      },
+      "dosing": {
+        "adult": {
+          "initial": "50 mg/día VO",
+          "usual": "50-100 mg/día VO en 1-2 tomas",
+          "max": "100 mg/día",
+          "renal_adjustment": {
+            "clcr_30_80": "Sin ajuste",
+            "clcr_below_30": "25 mg/día inicial",
+            "hemodialysis": "No se dializa significativamente"
+          },
+          "hepatic_adjustment": "25 mg/día inicial en insuficiencia hepática"
+        },
+        "pediatric": {
+          "initial": "0.7 mg/kg/día (máx 50 mg)",
+          "usual": "0.7-1.4 mg/kg/día",
+          "max": "1.4 mg/kg/día o 100 mg/día"
+        },
+        "elderly": "50 mg/día. Sin ajuste especial salvo insuficiencia hepática."
+      },
+      "forms": [
+        { "type": "Comprimido recubierto", "strengths": ["50 mg", "100 mg"] }
+      ],
+      "contraindications": [
+        "Hipersensibilidad a losartán",
+        "Embarazo (categoría D — igual que IECA)",
+        "Uso concomitante con aliskiren en diabéticos",
+        "Estenosis bilateral de arterias renales"
+      ],
+      "adverse_effects": [
+        { "effect": "Mareo", "frequency": "3-4%", "severity": "leve", "note": "Generalmente transitorio." },
+        { "effect": "Hiperkalemia", "frequency": "1-5%", "severity": "grave", "note": "Menor frecuencia que IECA." },
+        { "effect": "Hipotensión", "frequency": "1-2%", "severity": "moderado", "note": "Primera dosis en depletos de volumen." },
+        { "effect": "Insuficiencia renal aguda", "frequency": "raro", "severity": "grave", "note": "En estenosis renal bilateral." }
+      ],
+      "interactions": [
+        { "drug": "AINEs", "severity": "moderada", "effect": "Reducen efecto antihipertensivo y riesgo de IRA" },
+        { "drug": "Suplementos de potasio", "severity": "moderada", "effect": "Hiperkalemia" },
+        { "drug": "Litio", "severity": "grave", "effect": "Aumenta niveles de litio" },
+        { "drug": "Rifampicina", "severity": "moderada", "effect": "Reduce niveles del metabolito activo (inductor CYP)" }
+      ],
+      "monitoring": ["Presión arterial", "Creatinina sérica", "Potasio sérico"],
+      "pregnancy_category": "D",
+      "lactation": "No recomendado. Datos insuficientes.",
+      "indications": ["Hipertensión arterial esencial", "Nefropatía diabética tipo 2", "IC cuando IECA no tolerado", "Reducción riesgo ACV en HTA con HVI"],
+      "references": ["Guía Clínica MINSAL HTA 2023", "BNF 86 (2023)", "UpToDate 2024"]
+    },
+    {
+      "id": "metformina",
+      "inn": "Metformina",
+      "inn_en": "Metformin",
+      "salt": "Clorhidrato de metformina",
+      "atc": "A10BA02",
+      "class": "Biguanida (Antidiabético oral)",
+      "mechanism": "Reduce la producción hepática de glucosa (gluconeogénesis) activando AMPK (proteína quinasa activada por AMP). Aumenta la sensibilidad periférica a la insulina en músculo y tejido adiposo. Reduce la absorción intestinal de glucosa. NO estimula la secreción de insulina → no produce hipoglucemia en monoterapia.",
+      "pharmacokinetics": {
+        "absorption": "Absorción lenta e incompleta en intestino delgado. Alimentos reducen velocidad pero no extensión de absorción.",
+        "bioavailability": 55,
+        "tmax_h": 2.5,
+        "protein_binding_pct": 0,
+        "vd_lkg": 3.5,
+        "metabolism": "No se metaboliza. Se elimina sin cambios.",
+        "half_life_h": 5,
+        "elimination": "Renal 100% (filtración glomerular + secreción tubular). CLr = 450-500 mL/min.",
+        "onset_h": 2,
+        "peak_effect_h": 6,
+        "duration_h": 12
+      },
+      "molecular": {
+        "formula": "C₄H₁₁N₅·HCl",
+        "mw_base": 129.16,
+        "mw_salt": 165.63,
+        "salt_factor": 0.780,
+        "pka": 11.5,
+        "logP": -1.43,
+        "solubility_class": "BCS Clase III"
+      },
+      "dosing": {
+        "adult": {
+          "initial": "500 mg/día VO con cena (o 500 mg c/12h con comidas)",
+          "usual": "1500-2000 mg/día en 2-3 tomas con comidas",
+          "max": "2550 mg/día (850 mg c/8h)",
+          "renal_adjustment": {
+            "clcr_30_45": "Máximo 1000 mg/día. No iniciar si CLcr <30.",
+            "clcr_below_30": "CONTRAINDICADO",
+            "hemodialysis": "CONTRAINDICADO"
+          },
+          "titration": "Aumentar 500 mg cada 1-2 semanas para minimizar efectos GI"
+        },
+        "pediatric": {
+          "initial": "500 mg/día (≥10 años)",
+          "usual": "1000-2000 mg/día",
+          "max": "2000 mg/día"
+        },
+        "elderly": "Iniciar 500 mg/día. Monitorizar función renal frecuentemente."
+      },
+      "forms": [
+        { "type": "Comprimido", "strengths": ["500 mg", "850 mg", "1000 mg"] },
+        { "type": "Comprimido liberación prolongada", "strengths": ["500 mg XR", "750 mg XR", "1000 mg XR"] }
+      ],
+      "contraindications": [
+        "TFGe < 30 mL/min/1.73m² (contraindicación absoluta)",
+        "Acidosis metabólica aguda o crónica, incluyendo cetoacidosis diabética",
+        "Insuficiencia hepática grave (riesgo acidosis láctica)",
+        "Alcoholismo crónico (interfiere metabolismo del lactato)",
+        "Situaciones de hipoxia tisular: ICC descompensada, shock, sepsis",
+        "48h antes y después de procedimientos con medios de contraste yodados"
+      ],
+      "adverse_effects": [
+        { "effect": "Diarrea y molestias GI", "frequency": "20-30%", "severity": "leve", "note": "Más frecuente al inicio. Tomar con comidas. Usar XR si persiste." },
+        { "effect": "Náuseas", "frequency": "10-15%", "severity": "leve", "note": "Titulación lenta reduce incidencia." },
+        { "effect": "Sabor metálico", "frequency": "5%", "severity": "leve", "note": "Transitorio." },
+        { "effect": "Deficiencia vitamina B12", "frequency": "5-10%", "severity": "moderado", "note": "Uso prolongado. Monitorizar niveles anuales." },
+        { "effect": "Acidosis láctica", "frequency": "<0.01%", "severity": "grave", "note": "Rara pero potencialmente fatal. Riesgo aumenta con IRC, hepatopatía, hipoxia." }
+      ],
+      "interactions": [
+        { "drug": "Alcohol", "severity": "grave", "effect": "Potencia riesgo de acidosis láctica y de hipoglucemia" },
+        { "drug": "Medios de contraste yodados", "severity": "grave", "effect": "Suspender 48h antes. Riesgo de IRA → acidosis láctica" },
+        { "drug": "Cimetidina", "severity": "moderada", "effect": "Inhibe secreción tubular de metformina. Aumenta niveles 60%" },
+        { "drug": "Corticosteroides", "severity": "moderada", "effect": "Antagonizan efecto hipoglucemiante" }
+      ],
+      "monitoring": ["HbA1c (cada 3-6 meses)", "Glicemia en ayunas", "Creatinina sérica / TFGe", "Vitamina B12 (anual)", "Hemograma"],
+      "pregnancy_category": "B",
+      "lactation": "Compatible. Se excreta en leche en bajas concentraciones.",
+      "indications": ["Diabetes mellitus tipo 2 (primera línea según ADA/EASD/MINSAL)", "Prediabetes (prevención)", "Síndrome de ovario poliquístico (uso off-label)"],
+      "references": ["Guía Clínica MINSAL DM2 2023", "ADA Standards of Care 2024", "UpToDate 2024", "Goodman & Gilman 14ª Ed."]
+    },
+    {
+      "id": "amoxicilina",
+      "inn": "Amoxicilina",
+      "inn_en": "Amoxicillin",
+      "salt": "Amoxicilina trihidrato",
+      "atc": "J01CA04",
+      "class": "Aminopenicilina (β-lactámico)",
+      "mechanism": "Inhibe la síntesis de pared celular bacteriana uniéndose a las proteínas fijadoras de penicilina (PBPs), especialmente PBP-1a, PBP-1b y PBP-3. Interfiere la transpeptidación (entrecruzamiento del peptidoglicano), causando lisis osmótica bacteriana. Es bactericida y tiempo-dependiente (T>CIM).",
+      "pharmacokinetics": {
+        "absorption": "Rápida y completa. No se afecta significativamente por alimentos.",
+        "bioavailability": 90,
+        "tmax_h": 1.5,
+        "protein_binding_pct": 18,
+        "vd_lkg": 0.36,
+        "metabolism": "Mínimo hepático (~30% a ácido peniciloico inactivo).",
+        "half_life_h": 1.3,
+        "elimination": "Renal 60-70% sin cambios por filtración glomerular y secreción tubular.",
+        "onset_h": 0.5,
+        "peak_effect_h": 2,
+        "duration_h": 8
+      },
+      "molecular": {
+        "formula": "C₁₆H₁₉N₃O₅S·3H₂O",
+        "mw_base": 365.40,
+        "mw_salt": 419.45,
+        "salt_factor": 0.871,
+        "pka": 2.4,
+        "logP": 0.87,
+        "solubility_class": "BCS Clase I"
+      },
+      "dosing": {
+        "adult": {
+          "initial": "500 mg c/8h VO",
+          "usual": "500 mg c/8h o 875 mg c/12h VO",
+          "max": "3000 mg/día",
+          "renal_adjustment": {
+            "clcr_10_30": "250-500 mg c/12h",
+            "clcr_below_10": "250-500 mg c/24h",
+            "hemodialysis": "Dosis adicional post-diálisis"
+          }
+        },
+        "pediatric": {
+          "initial": "25 mg/kg/día dividido c/8h",
+          "usual": "25-50 mg/kg/día en 2-3 dosis",
+          "high_dose": "80-90 mg/kg/día para otitis media (neumococo resistente)",
+          "max": "3000 mg/día"
+        },
+        "elderly": "Ajustar según función renal."
+      },
+      "forms": [
+        { "type": "Comprimido", "strengths": ["500 mg", "875 mg"] },
+        { "type": "Cápsula", "strengths": ["500 mg"] },
+        { "type": "Suspensión oral", "strengths": ["125 mg/5mL", "250 mg/5mL", "500 mg/5mL"] }
+      ],
+      "contraindications": [
+        "Alergia a penicilinas (reacción tipo I mediada por IgE)",
+        "Mononucleosis infecciosa (riesgo de exantema 70-100%)",
+        "Antecedente de ictericia o daño hepático por amoxicilina"
+      ],
+      "adverse_effects": [
+        { "effect": "Diarrea", "frequency": "5-10%", "severity": "leve", "note": "Alteración de flora intestinal." },
+        { "effect": "Exantema", "frequency": "3-5%", "severity": "leve", "note": "Diferenciar de alergia verdadera." },
+        { "effect": "Náuseas/vómitos", "frequency": "2-5%", "severity": "leve", "note": "" },
+        { "effect": "Anafilaxia", "frequency": "<0.05%", "severity": "grave", "note": "Reacción de hipersensibilidad tipo I. Requiere adrenalina IM." },
+        { "effect": "Colitis por C. difficile", "frequency": "raro", "severity": "grave", "note": "Sospechar en diarrea >3 días o con sangre." }
+      ],
+      "interactions": [
+        { "drug": "Probenecid", "severity": "moderada", "effect": "Inhibe secreción tubular. Aumenta niveles y vida media" },
+        { "drug": "Metotrexato", "severity": "grave", "effect": "Reduce excreción renal de MTX. Toxicidad hematológica" },
+        { "drug": "Anticoagulantes orales", "severity": "moderada", "effect": "Puede aumentar INR. Monitorizar" },
+        { "drug": "Anticonceptivos orales", "severity": "leve", "effect": "Teórica reducción de eficacia. Evidencia débil" }
+      ],
+      "monitoring": ["Función renal (tratamientos prolongados)", "Signos de alergia", "Resolución de infección"],
+      "pregnancy_category": "B",
+      "lactation": "Compatible. Se excreta en leche en bajas concentraciones.",
+      "indications": ["Faringoamigdalitis estreptocócica", "Otitis media aguda", "Sinusitis bacteriana aguda", "Infección urinaria no complicada", "Neumonía adquirida en la comunidad (leve)", "Erradicación H. pylori (en esquema triple)"],
+      "references": ["Guía Clínica MINSAL IRA 2023", "Sanford Guide 2024", "BNF 86 (2023)", "UpToDate 2024"]
+    },
+    {
+      "id": "atorvastatina",
+      "inn": "Atorvastatina",
+      "inn_en": "Atorvastatin",
+      "salt": "Atorvastatina cálcica trihidrato",
+      "atc": "C10AA05",
+      "class": "Estatina (Inhibidor de HMG-CoA Reductasa)",
+      "mechanism": "Inhibe competitivamente la HMG-CoA reductasa, enzima limitante en la biosíntesis hepática de colesterol. La reducción del colesterol intracelular upregula los receptores LDL en la superficie del hepatocito, aumentando la captación de LDL-C circulante. Reduce LDL-C 30-55%, triglicéridos 15-30% y aumenta HDL-C 5-10%. Efectos pleiotrópicos: antiinflamatorio, estabilización de placa ateromatosa.",
+      "pharmacokinetics": {
+        "absorption": "Rápida. Los alimentos reducen Cmax 25% pero no afectan reducción de LDL.",
+        "bioavailability": 14,
+        "tmax_h": 1.5,
+        "protein_binding_pct": 98,
+        "vd_lkg": 5.6,
+        "metabolism": "Hepático extenso vía CYP3A4. Metabolitos activos (orto y para-hidroxilados).",
+        "half_life_h": 14,
+        "half_life_active_h": 24,
+        "elimination": "Biliar >98%. <2% renal. No se dializa.",
+        "onset_h": 24,
+        "peak_effect_weeks": 2,
+        "duration_h": 24
+      },
+      "molecular": {
+        "formula": "C₃₃H₃₅FN₂O₅",
+        "mw_base": 558.64,
+        "mw_salt": 1209.42,
+        "salt_factor": 0.924,
+        "pka": 4.46,
+        "logP": 4.46,
+        "solubility_class": "BCS Clase II"
+      },
+      "dosing": {
+        "adult": {
+          "initial": "10-20 mg/día VO (nocturno)",
+          "usual": "10-40 mg/día VO",
+          "max": "80 mg/día",
+          "renal_adjustment": {
+            "any_clcr": "Sin ajuste necesario (eliminación biliar)"
+          },
+          "intensity": {
+            "moderate": "10-20 mg/día (reducción LDL 30-49%)",
+            "high": "40-80 mg/día (reducción LDL ≥50%)"
+          }
+        },
+        "pediatric": {
+          "initial": "10 mg/día (10-17 años, hipercolesterolemia familiar)",
+          "max": "20 mg/día"
+        },
+        "elderly": "Sin ajuste. Considerar riesgo de miopatía."
+      },
+      "forms": [
+        { "type": "Comprimido recubierto", "strengths": ["10 mg", "20 mg", "40 mg", "80 mg"] }
+      ],
+      "contraindications": [
+        "Enfermedad hepática activa o elevación persistente e inexplicada de transaminasas >3x LSN",
+        "Embarazo y lactancia (categoría X)",
+        "Uso concomitante con gemfibrozilo (riesgo rabdomiólisis)",
+        "Hipersensibilidad a atorvastatina"
+      ],
+      "adverse_effects": [
+        { "effect": "Mialgias", "frequency": "5-10%", "severity": "leve", "note": "Más frecuente con dosis altas. Medir CK si sospecha." },
+        { "effect": "Elevación de transaminasas", "frequency": "1-3%", "severity": "moderado", "note": "Generalmente transitoria. Suspender si ALT >3x LSN persistente." },
+        { "effect": "Diabetes de novo", "frequency": "1-3%", "severity": "moderado", "note": "Mayor riesgo con dosis altas en prediabéticos." },
+        { "effect": "Rabdomiólisis", "frequency": "<0.01%", "severity": "grave", "note": "Emergencia. CK >10x LSN + mioglobinuria. Suspender inmediatamente." }
+      ],
+      "interactions": [
+        { "drug": "Claritromicina/Eritromicina", "severity": "grave", "effect": "Inhiben CYP3A4. Aumentan niveles y riesgo de miopatía" },
+        { "drug": "Jugo de pomelo", "severity": "moderada", "effect": "Inhibe CYP3A4 intestinal. Aumenta biodisponibilidad" },
+        { "drug": "Gemfibrozilo", "severity": "grave", "effect": "Riesgo de rabdomiólisis. CONTRAINDICADO" },
+        { "drug": "Ciclosporina", "severity": "grave", "effect": "Aumenta niveles de atorvastatina. Máx 10 mg/día" }
+      ],
+      "monitoring": ["Perfil lipídico (basal + 4-12 semanas)", "Transaminasas hepáticas", "CK si síntomas musculares", "HbA1c en prediabéticos"],
+      "pregnancy_category": "X",
+      "lactation": "Contraindicado.",
+      "indications": ["Hipercolesterolemia primaria", "Dislipidemia mixta", "Prevención cardiovascular primaria y secundaria", "Hipercolesterolemia familiar heterocigota"],
+      "references": ["Guía Clínica MINSAL Dislipidemia 2023", "ACC/AHA Guideline 2018", "UpToDate 2024", "Goodman & Gilman 14ª Ed."]
+    },
+    {
+      "id": "salbutamol",
+      "inn": "Salbutamol",
+      "inn_en": "Salbutamol (Albuterol)",
+      "salt": "Sulfato de salbutamol",
+      "atc": "R03AC02",
+      "class": "Agonista β2-adrenérgico selectivo de acción corta (SABA)",
+      "mechanism": "Agonista selectivo del receptor β2-adrenérgico en el músculo liso bronquial. Activa la adenilato ciclasa → aumenta AMPc intracelular → relajación del músculo liso → broncodilatación rápida. También inhibe la liberación de mediadores de mastocitos y mejora el aclaramiento mucociliar.",
+      "pharmacokinetics": {
+        "absorption": "Inhalación: 10-20% llega a vías aéreas inferiores. Oral: bien absorbido pero extenso primer paso.",
+        "bioavailability_inh": 20,
+        "bioavailability_oral": 50,
+        "tmax_inh_min": 15,
+        "tmax_oral_h": 2,
+        "protein_binding_pct": 10,
+        "metabolism": "Hepático: sulfatación intestinal y hepática (no CYP450).",
+        "half_life_h": 4,
+        "elimination": "Renal 70% (30% sin cambios), fecal 30%.",
+        "onset_inh_min": 5,
+        "peak_effect_inh_min": 30,
+        "duration_inh_h": 4
+      },
+      "molecular": {
+        "formula": "C₁₃H₂₁NO₃",
+        "mw_base": 239.31,
+        "mw_salt": 576.70,
+        "salt_factor": 0.830,
+        "pka": 9.3,
+        "logP": 0.64,
+        "solubility_class": "BCS Clase III"
+      },
+      "dosing": {
+        "adult": {
+          "rescue_inh": "200 mcg (2 puffs) cada 4-6h según necesidad",
+          "nebulization": "2.5-5 mg en 3 mL SF cada 20 min x3 (crisis)",
+          "oral": "2-4 mg c/8h VO (raramente usado)",
+          "max_inh": "800 mcg/día (uso regular NO recomendado)"
+        },
+        "pediatric": {
+          "rescue_inh": "100-200 mcg (1-2 puffs) con aerocámara",
+          "nebulization": "0.15 mg/kg (mín 2.5 mg) en SF cada 20 min x3",
+          "oral": "0.1-0.15 mg/kg c/8h (jarabe)"
+        },
+        "elderly": "Misma dosis. Precaución con arritmias."
+      },
+      "forms": [
+        { "type": "Inhalador presurizado (MDI)", "strengths": ["100 mcg/dosis"] },
+        { "type": "Solución para nebulización", "strengths": ["5 mg/mL"] },
+        { "type": "Jarabe", "strengths": ["2 mg/5mL"] },
+        { "type": "Comprimido", "strengths": ["2 mg", "4 mg"] }
+      ],
+      "contraindications": [
+        "Hipersensibilidad a salbutamol",
+        "No debe usarse como monoterapia en asma persistente (siempre con corticoide inhalado según GINA 2024)"
+      ],
+      "adverse_effects": [
+        { "effect": "Temblor fino de manos", "frequency": "15-20%", "severity": "leve", "note": "Dosis-dependiente. Estimulación β2 en músculo esquelético." },
+        { "effect": "Taquicardia", "frequency": "5-10%", "severity": "leve", "note": "Estimulación β1 residual. Más frecuente en nebulización." },
+        { "effect": "Hipokalemia", "frequency": "3-5%", "severity": "moderado", "note": "Entrada de K+ al intracelular. Monitorizar en crisis asmática." },
+        { "effect": "Cefalea", "frequency": "5%", "severity": "leve", "note": "" }
+      ],
+      "interactions": [
+        { "drug": "β-bloqueadores", "severity": "grave", "effect": "Antagonismo farmacológico. Evitar β-bloqueadores no selectivos en asmáticos" },
+        { "drug": "Diuréticos tiazídicos", "severity": "moderada", "effect": "Potencian hipokalemia" },
+        { "drug": "Digoxina", "severity": "moderada", "effect": "Hipokalemia potencia toxicidad digitálica" }
+      ],
+      "monitoring": ["Frecuencia de uso de rescate (>2 veces/semana = asma no controlada)", "Frecuencia cardíaca", "Potasio sérico en uso intensivo"],
+      "pregnancy_category": "C",
+      "lactation": "Compatible. Uso inhalatorio preferido.",
+      "indications": ["Broncoespasmo agudo (asma, EPOC)", "Prevención de broncoespasmo inducido por ejercicio", "Crisis asmática (nebulización en urgencia)"],
+      "references": ["GINA 2024", "Guía Clínica MINSAL Asma 2023", "BNF 86 (2023)", "Goodman & Gilman 14ª Ed."]
+    }
+  ]
+}

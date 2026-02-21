@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería Genética y Herencia 3D — PharmaLab Chile</title>
+  <meta name="description" content="Galería interactiva 3D de Genética y Herencia. ADN, ARN, genes, genoma, epigenoma, herencia mendeliana, transposones y más. Contenido universitario PharmaLab Chile.">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="galeria.css">
+</head>
+<body>
+
+<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#" class="nav-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+      <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+    </a>
+    <a href="../index.html" class="nav-back-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      Volver
+    </a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="gc-hero">
+  <div class="gc-hero-bg">
+    <div class="gc-hero-grid"></div>
+    <div class="gc-orb gc-orb-1"></div>
+    <div class="gc-orb gc-orb-2"></div>
+    <div class="gc-orb gc-orb-3"></div>
+    <canvas id="gc-hero-canvas"></canvas>
+  </div>
+  <div class="gc-hero-inner">
+    <div class="gc-wrap">
+      <div class="gc-hero-content">
+        <div class="gc-crumb">
+          <span>Inicio</span><span class="sep">/</span>
+          <span>Genética y Herencia</span><span class="sep">/</span>
+          <span style="color:#fff">Galería 3D</span>
+        </div>
+        <div class="gc-hero-tag">
+          <span class="gc-dot"></span>
+          Galería Interactiva · Genética y Herencia
+        </div>
+        <h1 class="gc-hero-title">La <span class="gc-gr">Genética</span><br>en 3D</h1>
+        <p class="gc-hero-desc">Explora los conceptos fundamentales de la Genética y la Herencia con visualizaciones tridimensionales interactivas. Desde la doble hélice del ADN hasta los mecanismos de herencia — ciencia de precisión universitaria.</p>
+        <div class="gc-hero-stats">
+          <div class="gc-stat">
+            <span class="gc-stat-num">17</span>
+            <span class="gc-stat-label">Conceptos de genética</span>
+          </div>
+          <div class="gc-stat">
+            <span class="gc-stat-num">3D</span>
+            <span class="gc-stat-label">Visualización interactiva</span>
+          </div>
+          <div class="gc-stat">
+            <span class="gc-stat-num">3×10⁹</span>
+            <span class="gc-stat-label">Pares de bases en el genoma humano</span>
+          </div>
+        </div>
+        <div class="gc-hero-actions">
+          <button class="gc-btn-primary" onclick="document.getElementById('galeria').scrollIntoView({behavior:'smooth'})">
+            Explorar Galería →
+          </button>
+          <button class="gc-btn-secondary" onclick="document.getElementById('info').scrollIntoView({behavior:'smooth'})">
+            ¿Qué es la genética?
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ INFO RÁPIDA ═══════════════════════ -->
+<section class="gc-section" id="info">
+  <div class="gc-wrap">
+    <div class="gc-datos" data-gc-reveal>
+      <div class="gc-dato">
+        <span class="gc-dato-n">~2 m</span>
+        <span class="gc-dato-l">Longitud total del ADN en una sola célula humana si se estirara completamente</span>
+      </div>
+      <div class="gc-dato">
+        <span class="gc-dato-n">~25,000</span>
+        <span class="gc-dato-l">Genes codificantes de proteínas en el genoma humano. Solo el 1.5% del ADN codifica directamente</span>
+      </div>
+      <div class="gc-dato">
+        <span class="gc-dato-n">>50%</span>
+        <span class="gc-dato-l">Del genoma humano está compuesto por elementos transponibles (transposones) activos o inactivos</span>
+      </div>
+      <div class="gc-dato">
+        <span class="gc-dato-n">1953</span>
+        <span class="gc-dato-l">Watson & Crick proponen la estructura de doble hélice del ADN, basándose en la difracción de rayos X de Franklin</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FILTROS + GALERÍA ═══════════════════════ -->
+<section class="gc-section" id="galeria">
+  <div class="gc-wrap">
+    <div class="gc-section-hd" data-gc-reveal>
+      <div class="gc-sec-tag">🧬 Galería Interactiva 3D</div>
+      <h2 class="gc-sec-title">Explora cada <span class="gc-hl">Concepto Genético</span></h2>
+      <p class="gc-sec-sub">Haz clic en cualquier tarjeta para abrir la visualización 3D interactiva con descripción científica detallada</p>
+    </div>
+
+    <div class="gc-filters" data-gc-reveal>
+      <button class="gc-filter active" data-filter="all">Todos</button>
+      <button class="gc-filter" data-filter="molecula">Moléculas</button>
+      <button class="gc-filter" data-filter="arn">Tipos de ARN</button>
+      <button class="gc-filter" data-filter="genoma">Genoma</button>
+      <button class="gc-filter" data-filter="variacion">Variación Genética</button>
+      <button class="gc-filter" data-filter="herencia">Herencia</button>
+    </div>
+
+    <div class="gc-grid" id="gcGrid" data-gc-reveal>
+
+      <div class="gc-card" data-category="molecula" data-id="0" onclick="openModal(0)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="0"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Molécula</div>
+          <h3 class="gc-card-title">ADN</h3>
+          <p class="gc-card-desc">Doble hélice antiparalela portadora de la información genética. Bases A=T (2 PH) y G≡C (3 PH). 147 pb por nucleosoma.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🧬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="molecula" data-id="1" onclick="openModal(1)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="1"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Molécula</div>
+          <h3 class="gc-card-title">ARN</h3>
+          <p class="gc-card-desc">Cadena simple de ribonucleótidos. Uracilo reemplaza a Timina. Múltiples tipos: mensajero, ribosomal, transferencia y más.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🧬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="arn" data-id="2" onclick="openModal(2)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="2"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Tipo de ARN</div>
+          <h3 class="gc-card-title">ARN Mensajero</h3>
+          <p class="gc-card-desc">Intermediario ADN→Proteína. 5′cap, codones, cola poli-A. Traducido por ribosomas 80S. Base de vacunas de ARNm.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🧬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="arn" data-id="3" onclick="openModal(3)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="3"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Tipo de ARN</div>
+          <h3 class="gc-card-title">ARN Ribosomal</h3>
+          <p class="gc-card-desc">~65% de la masa ribosomal. Ribosoma 80S = 40S (18S) + 60S (28S+5.8S+5S). Cataliza el enlace peptídico (ribozima).</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🧬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="arn" data-id="4" onclick="openModal(4)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="4"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Tipo de ARN</div>
+          <h3 class="gc-card-title">ARN de Transferencia</h3>
+          <p class="gc-card-desc">Adaptador traduccional. Hoja de trébol con anticodón. 3′-CCA porta el aminoácido. Cargado por aminoacil-ARNt sintetasas.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🧬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="genoma" data-id="5" onclick="openModal(5)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="5"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Genoma</div>
+          <h3 class="gc-card-title">Genes</h3>
+          <p class="gc-card-desc">Unidad funcional de herencia. Promotor + Exones + Intrones. ~25,000 genes en humanos. 95% con splicing alternativo.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🧬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="genoma" data-id="6" onclick="openModal(6)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="6"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Genoma</div>
+          <h3 class="gc-card-title">Genoma</h3>
+          <p class="gc-card-desc">Conjunto completo del ADN. 3×10⁹ pb en 23 cromosomas. >50% elementos repetitivos. Secuenciado en 2003 (HGP).</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🧬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="genoma" data-id="7" onclick="openModal(7)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="7"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Regulación</div>
+          <h3 class="gc-card-title">Epigenoma</h3>
+          <p class="gc-card-desc">Modificaciones heredables sin cambio de secuencia. Metilación CpG, acetilación/metilación histonas. Código de histonas.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🧬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="variacion" data-id="8" onclick="openModal(8)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="8"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Variación Genética</div>
+          <h3 class="gc-card-title">Alelos</h3>
+          <p class="gc-card-desc">Variantes de un gen en el mismo locus. >10⁷ SNPs en humanos. Homocigoto vs heterocigoto. Equilibrio de Hardy-Weinberg.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🧬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="variacion" data-id="9" onclick="openModal(9)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="9"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Variación Genética</div>
+          <h3 class="gc-card-title">Mutaciones</h3>
+          <p class="gc-card-desc">Cambio permanente en la secuencia de ADN. Puntuales, cromosómicas, numéricas. Motor de la evolución y causa de enfermedades.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🧬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="variacion" data-id="10" onclick="openModal(10)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="10"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Variación Genética</div>
+          <h3 class="gc-card-title">Recombinación Genética</h3>
+          <p class="gc-card-desc">Crossing-over entre cromátidas homólogas en meiosis I. ~600 eventos por meiosis humana. RAD51 como recombinasa principal.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🧬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="herencia" data-id="11" onclick="openModal(11)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="11"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Herencia</div>
+          <h3 class="gc-card-title">Dominancia</h3>
+          <p class="gc-card-desc">El alelo dominante enmascara al recesivo en el heterocigoto. Razón fenotípica 3:1 en F2. Haploinsuficiencia y efecto negativo dominante.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🧬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="herencia" data-id="12" onclick="openModal(12)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="12"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Herencia</div>
+          <h3 class="gc-card-title">Codominancia</h3>
+          <p class="gc-card-desc">Ambos alelos se expresan simultáneamente. Sistema ABO: IᴬIᴮ → Grupo AB. HbA + HbS en drepanocitosis heterocigota.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🧬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="herencia" data-id="13" onclick="openModal(13)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="13"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Herencia</div>
+          <h3 class="gc-card-title">Herencia Mendeliana</h3>
+          <p class="gc-card-desc">Leyes de Mendel (1865). Segregación y distribución independiente. Razón 9:3:3:1 en dihibrido. Base de >8,000 rasgos humanos.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🧬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="herencia" data-id="14" onclick="openModal(14)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="14"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Herencia</div>
+          <h3 class="gc-card-title">Herencia Ligada al Sexo</h3>
+          <p class="gc-card-desc">Genes en cromosomas X e Y. Hemicigosidad masculina. Portadoras femeninas. Hemofilia, DMD, daltonismo, X frágil.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🧬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="herencia" data-id="15" onclick="openModal(15)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="15"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Epigenética</div>
+          <h3 class="gc-card-title">Impronta Genómica</h3>
+          <p class="gc-card-desc">Expresión génica según origen parental. IGF2 (paterno) / H19 (materno). Síndromes de Prader-Willi y Angelman. Metilación diferencial.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🧬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="genoma" data-id="16" onclick="openModal(16)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="16"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Genoma</div>
+          <h3 class="gc-card-title">Transposones</h3>
+          <p class="gc-card-desc">>50% del genoma humano. LINEs (L1), SINEs (Alu), LTR-retrotransposones. Elementos móviles. Descubiertos por McClintock (1950, Nobel 1983).</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🧬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ MODAL 3D ═══════════════════════ -->
+<div class="gc-modal-overlay" id="gcModal" onclick="closeModal(event)">
+  <div class="gc-modal" id="gcModalInner">
+    <button class="gc-modal-close" onclick="closeModal(null, true)" aria-label="Cerrar">✕</button>
+    <div class="gc-modal-layout">
+      <div class="gc-modal-canvas-wrap">
+        <canvas id="gcModalCanvas"></canvas>
+        <div class="gc-modal-canvas-label" id="gcModalCanvasLabel">⟳ Arrastra para rotar · Scroll para zoom</div>
+        <div class="gc-modal-controls">
+          <button class="gc-ctrl-btn" id="btnRotate" onclick="toggleAutoRotate()" title="Auto-rotación">⟳</button>
+          <button class="gc-ctrl-btn" id="btnReset"  onclick="resetView()"        title="Resetear vista">⌂</button>
+        </div>
+      </div>
+      <div class="gc-modal-info">
+        <div class="gc-modal-tag"   id="gcModalTag">—</div>
+        <h2  class="gc-modal-title" id="gcModalTitle">—</h2>
+        <p   class="gc-modal-desc"  id="gcModalDesc">—</p>
+        <div class="gc-modal-section">
+          <div class="gc-modal-sh">📐 Datos Clave</div>
+          <div class="gc-modal-datos" id="gcModalDatos"></div>
+        </div>
+        <div class="gc-modal-section">
+          <div class="gc-modal-sh">🧬 Componentes</div>
+          <div class="gc-modal-comps" id="gcModalComps"></div>
+        </div>
+        <div class="gc-modal-section">
+          <div class="gc-modal-sh">🔬 Función / Relevancia Biológica</div>
+          <p class="gc-modal-func" id="gcModalFunc">—</p>
+        </div>
+        <div class="gc-modal-nav">
+          <button class="gc-mnav-btn" id="btnPrev" onclick="navigateModal(-1)">← Anterior</button>
+          <span   class="gc-mnav-counter" id="gcModalCounter">1 / 17</span>
+          <button class="gc-mnav-btn" id="btnNext" onclick="navigateModal(1)">Siguiente →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="gc-footer">
+  <div class="gc-wrap">
+    <div class="gc-footer-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+      <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+    </div>
+    <div class="gc-footer-bottom">
+      <p>© 2026 PharmaLab Chile — Genética y Herencia · Galería Interactiva 3D</p>
+      <p class="gc-footer-disc">Contenido educacional universitario. Información basada en Lewin "Genes XII" (2022), Strachan & Read "Human Molecular Genetics" 5ª ed. (2019) y Alberts "Molecular Biology of the Cell" 7ª ed. (2022). No reemplaza asesoría académica profesional.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="gc-data.js"></script>
+<script src="gc-state.js"></script>
+<script src="gc-renderers.js"></script>
+<script src="gc-modal.js"></script>
+<script src="gc-ui.js"></script>
+</body>
+</html>

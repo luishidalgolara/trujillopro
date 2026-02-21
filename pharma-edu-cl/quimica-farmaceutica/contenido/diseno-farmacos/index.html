@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño de Fármacos — PharmaLab Chile</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="module-qf">
+
+<!-- ── NAVBAR ──────────────────────────────────────────────── -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="../../../index.html" class="nav-logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="../../../quimica/index.html" class="nav-link" data-module="quimica">⚗️ Química</a>
+            <a href="../../../farmacia/index.html" class="nav-link" data-module="farmacia">💊 Farmacia</a>
+            <a href="../../../quimica-farmaceutica/index.html" class="nav-link active" data-module="qf">🧬 Q. Farmacéutica</a>
+            <a href="../../../biotecnologia/index.html" class="nav-link" data-module="biotech">🔬 Biotecnología</a>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────────────── -->
+<section class="module-hero" style="padding-bottom:20px; min-height:auto;">
+    <div class="hero-content">
+        <span class="section-tag">Unidad 1 — Química Farmacéutica</span>
+        <h1 class="section-title">Diseño de <span style="background:linear-gradient(135deg,#e056a0,#ff70b8,#c04080);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Fármacos</span></h1>
+        <p class="section-desc">Relación estructura-actividad, diseño racional, modelamiento molecular, targets farmacológicos y optimización de moléculas líderes. Fundamentos reales para futuros químicos farmacéuticos.</p>
+    </div>
+</section>
+
+<!-- ── BREADCRUMB ──────────────────────────────────────────── -->
+<div class="container">
+    <div class="breadcrumb">
+        <a href="../../../index.html">Inicio</a>
+        <span>›</span>
+        <a href="../../../quimica-farmaceutica/index.html">Q. Farmacéutica</a>
+        <span>›</span>
+        <span class="current">Diseño de Fármacos</span>
+    </div>
+</div>
+
+<!-- ── STATS ROW ───────────────────────────────────────────── -->
+<div class="container" style="margin-bottom:32px;">
+    <div class="stats-row">
+        <div class="stat-item">
+            <div class="stat-num">~10,000</div>
+            <div class="stat-label">Compuestos estudiados por cada fármaco aprobado</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">12–15</div>
+            <div class="stat-label">Años promedio desde descubrimiento hasta aprobación</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">$2,600M</div>
+            <div class="stat-label">USD costo promedio de desarrollo (Tufts CSDD, 2020)</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">&lt;10%</div>
+            <div class="stat-label">Tasa de éxito desde fase I hasta aprobación FDA</div>
+        </div>
+    </div>
+</div>
+
+<!-- ── 3D DRUG VIEWER ──────────────────────────────────────── -->
+<section class="viewer-section">
+    <div class="container">
+        <div class="viewer-container">
+            <div id="drugViewer" class="viewer-3d"></div>
+            <div class="viewer-controls">
+                <button class="ctrl-btn drug-ctrl-btn active" data-drug="aspirina">💊 Aspirina</button>
+                <button class="ctrl-btn drug-ctrl-btn" data-drug="paracetamol">🌡️ Paracetamol</button>
+                <button class="ctrl-btn drug-ctrl-btn" data-drug="ibuprofeno">🔥 Ibuprofeno</button>
+                <button class="ctrl-btn drug-ctrl-btn" data-drug="imatinib">🎯 Imatinib</button>
+                <button class="ctrl-btn drug-ctrl-btn" data-drug="sildenafil">⚡ Sildenafil</button>
+            </div>
+            <div class="viewer-label" id="drugLabel">
+                <strong>Ácido Acetilsalicílico (Aspirina)</strong><br>
+                <span>AINE · Inhibidor irreversible de COX-1/COX-2 · PM: 180.2 g/mol</span>
+            </div>
+        </div>
+        <p class="viewer-hint">🖱️ Arrastra para rotar · Scroll para zoom · Selecciona un fármaco para explorar su estructura 3D</p>
+    </div>
+</section>
+
+<!-- ── CONTENT ─────────────────────────────────────────────── -->
+<section class="lesson-content">
+<div class="container">
+<div class="content-body">
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 1: INTRODUCCIÓN Y RELACIÓN ESTRUCTURA-ACTIVIDAD
+     ══════════════════════════════════════════════════════════ -->
+<article class="content-section" id="sar">
+    <h2>Relación Estructura-Actividad (SAR)</h2>
+    <p class="section-subtitle">Structure-Activity Relationship — El lenguaje molecular de los fármacos</p>
+
+    <p>La <strong>relación estructura-actividad (SAR)</strong> es el principio fundamental del diseño de fármacos: la actividad biológica de una molécula está determinada directamente por su estructura química. Pequeñas modificaciones en grupos funcionales, estereoquímica, longitud de cadena o tipo de enlace pueden aumentar, disminuir o eliminar completamente la actividad farmacológica.</p>
+
+    <p>Este concepto fue formalizado por primera vez por <strong>Hansch y Fujita (1964)</strong> con el análisis QSAR (Quantitative Structure-Activity Relationship), que relaciona matemáticamente descriptores fisicoquímicos de moléculas con su actividad biológica. Hoy es el pilar del diseño racional de fármacos moderno.</p>
+
+    <div class="info-box">
+        <div class="info-box-title">🧪 Ejemplo clásico: Anestésicos locales</div>
+        <p>La cocaína fue el primer anestésico local conocido (Koller, 1884). El análisis SAR de su estructura reveló que el <strong>grupo éster</strong> era esencial para la actividad, pero también responsable de la toxicidad e inestabilidad. Esto llevó al diseño de la <strong>procaína</strong> (1905), luego la <strong>lidocaína</strong> (1943) con grupo amida más estable, y más tarde la <strong>bupivacaína</strong>, con mayor duración de acción. Cada generación mejoró la relación eficacia/toxicidad.</p>
+    </div>
+
+    <h4 style="margin:28px 0 16px; font-size:1.1rem; font-weight:700;">Descriptores SAR fundamentales</h4>
+
+    <div class="cards-grid">
+        <div class="card">
+            <div class="card-badge">Electrónico</div>
+            <h4>Efecto inductivo y mesomérico</h4>
+            <p>Los grupos electroatractores (−NO₂, −CF₃, −CN) y electrodonadores (−NH₂, −OH, −OCH₃) modifican la densidad electrónica del núcleo aromático, afectando la unión al receptor. El parámetro de Hammett <strong>σ</strong> cuantifica este efecto.</p>
+            <div class="card-mono">σₚ(NO₂) = +0.78 | σₚ(NH₂) = −0.66</div>
+        </div>
+        <div class="card">
+            <div class="card-badge blue">Estérico</div>
+            <h4>Volumen molecular y tamaño</h4>
+            <p>El acceso de un fármaco al sitio activo de un receptor depende de su tamaño y forma. El parámetro de Taft <strong>Es</strong> mide el efecto estérico. Grupos voluminosos en posición orto del benceno suelen reducir actividad.</p>
+            <div class="card-mono">Parámetro de Verloop: L, B1, B2, B3, B4</div>
+        </div>
+        <div class="card">
+            <div class="card-badge green">Lipofílico</div>
+            <h4>Lipofilicidad (log P)</h4>
+            <p>El coeficiente de partición n-octanol/agua (log P) predice la capacidad de un fármaco para atravesar membranas biológicas. Valor óptimo: <strong>1 ≤ log P ≤ 5</strong>. Muy alto = mala solubilidad; muy bajo = no atraviesa membranas.</p>
+            <div class="card-mono">Aspirina: log P = 1.19 | Ibuprofeno: 3.97</div>
+        </div>
+    </div>
+
+    <h4 style="margin:28px 0 16px; font-size:1.1rem; font-weight:700;">QSAR: Ecuación de Hansch</h4>
+
+    <div class="info-box blue">
+        <div class="info-box-title">📐 Modelo matemático QSAR</div>
+        <p>La ecuación de Hansch correlaciona la actividad biológica (expresada como pC, el logaritmo negativo de la concentración efectiva) con parámetros fisicoquímicos:</p>
+        <p style="font-family:var(--font-mono); font-size:0.95rem; color:var(--accent-green); padding:12px; background:rgba(0,229,160,0.05); border-radius:8px; margin:12px 0;">pC = a(log P) − b(log P)² + cσ + dEs + e</p>
+        <p>Donde <strong>a, b, c, d</strong> son coeficientes de regresión determinados experimentalmente. Esta ecuación permite predecir la actividad de análogos no sintetizados, guiando la optimización estructural de manera racional y eficiente.</p>
+    </div>
+
+    <h4 style="margin:28px 0 16px; font-size:1.1rem; font-weight:700;">Propiedades farmacológicas de los fármacos del visor</h4>
+
+    <div class="property-bar">
+        <span class="property-bar-label">Aspirina (AAS)</span>
+        <div class="property-bar-track"><div class="property-bar-fill" data-width="68%" style="width:0%"></div></div>
+        <span class="property-bar-value">Kd: baja</span>
+    </div>
+    <div class="property-bar">
+        <span class="property-bar-label">Paracetamol</span>
+        <div class="property-bar-track"><div class="property-bar-fill" data-width="55%" style="width:0%"></div></div>
+        <span class="property-bar-value">Kd: media</span>
+    </div>
+    <div class="property-bar">
+        <span class="property-bar-label">Ibuprofeno</span>
+        <div class="property-bar-track"><div class="property-bar-fill blue" data-width="72%" style="width:0%"></div></div>
+        <span class="property-bar-value">log P: 3.97</span>
+    </div>
+    <div class="property-bar">
+        <span class="property-bar-label">Imatinib</span>
+        <div class="property-bar-track"><div class="property-bar-fill" data-width="91%" style="width:0%"></div></div>
+        <span class="property-bar-value">IC₅₀: 0.1µM</span>
+    </div>
+    <div class="property-bar">
+        <span class="property-bar-label">Sildenafil</span>
+        <div class="property-bar-track"><div class="property-bar-fill green" data-width="85%" style="width:0%"></div></div>
+        <span class="property-bar-value">IC₅₀: 3.5nM</span>
+    </div>
+</article>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 2: DISEÑO RACIONAL
+     ══════════════════════════════════════════════════════════ -->
+<article class="content-section" id="diseno-racional">
+    <h2>Diseño Racional de Fármacos</h2>
+    <p class="section-subtitle">Rational Drug Design — Del target a la molécula</p>
+
+    <p>El <strong>diseño racional de fármacos</strong> es el proceso de crear moléculas con actividad biológica específica, partiendo del conocimiento de la estructura tridimensional de la proteína target (receptor, enzima, canal iónico). A diferencia del descubrimiento empírico tradicional, el diseño racional usa la estructura para "construir" una molécula que encaje en el sitio activo como una llave en su cerradura.</p>
+
+    <p>El hito fundacional fue la resolución por rayos X de la estructura de la hemoglobina (<strong>Perutz, 1960</strong>) y la primera enzima (lisozima, Phillips, 1965). A partir de la década de 1980, con el auge de la cristalografía de rayos X y posteriormente la cryo-EM, el diseño racional se convirtió en el enfoque dominante de la industria farmacéutica.</p>
+
+    <div class="drug-card">
+        <div class="drug-card-info">
+            <h3>Imatinib: El Paradigma del Diseño Racional</h3>
+            <span class="drug-name">Imatinib mesilato · Gleevec® / Glivec® · Novartis AG, 2001</span>
+            <p>El imatinib es considerado el primer fármaco diseñado racionalmente que transformó el pronóstico de una enfermedad mortal. La <strong>leucemia mieloide crónica (LMC)</strong> era fatal en 3-5 años; con imatinib, la supervivencia a 10 años supera el 85%.</p>
+            <p>El target es la tirosina quinasa <strong>BCR-ABL</strong>, una proteína de fusión oncogénica producida por la translocación cromosómica t(9;22), el "cromosoma Filadelfia". Imatinib ocupa el bolsillo de unión al ATP de BCR-ABL, bloqueando la transferencia del grupo fosfato necesaria para la señalización proliferativa.</p>
+            <p>El fármaco también inhibe c-Kit y PDGFR-α, lo que explica su eficacia adicional en tumores del estroma gastrointestinal (GIST) y otras neoplasias.</p>
+        </div>
+        <div class="drug-card-stats">
+            <h4>Perfil Farmacológico</h4>
+            <div class="drug-stat"><span class="drug-stat-label">Target primario</span><span class="drug-stat-value">BCR-ABL</span></div>
+            <div class="drug-stat"><span class="drug-stat-label">IC₅₀ BCR-ABL</span><span class="drug-stat-value">0.1 µM</span></div>
+            <div class="drug-stat"><span class="drug-stat-label">Biodisponibilidad</span><span class="drug-stat-value">~98% oral</span></div>
+            <div class="drug-stat"><span class="drug-stat-label">Unión proteínas</span><span class="drug-stat-value">~95%</span></div>
+            <div class="drug-stat"><span class="drug-stat-label">t½ eliminación</span><span class="drug-stat-value">~18 h</span></div>
+            <div class="drug-stat"><span class="drug-stat-label">Metabolismo</span><span class="drug-stat-value">CYP3A4</span></div>
+            <div class="drug-stat"><span class="drug-stat-label">PM</span><span class="drug-stat-value">493.6 g/mol</span></div>
+            <div class="drug-stat"><span class="drug-stat-label">log P</span><span class="drug-stat-value">4.4</span></div>
+        </div>
+    </div>
+
+    <h4 style="margin:32px 0 16px; font-size:1.1rem; font-weight:700;">Metodologías de Diseño Racional</h4>
+
+    <div class="cards-grid-2">
+        <div class="card">
+            <div class="card-badge">Estructura-Basado</div>
+            <h4>SBDD — Structure-Based Drug Design</h4>
+            <p>Utiliza la estructura 3D del target obtenida por <strong>cristalografía de rayos X, RMN o cryo-EM</strong>. El fármaco se diseña para complementar la forma, carga y polaridad del sitio de unión. Herramientas: AutoDock, Glide, GOLD.</p>
+            <p>Permite realizar <strong>docking molecular</strong>: simulación computacional de cómo una molécula se une a su target, calculando la energía de interacción (scoring function).</p>
+        </div>
+        <div class="card">
+            <div class="card-badge blue">Ligando-Basado</div>
+            <h4>LBDD — Ligand-Based Drug Design</h4>
+            <p>Cuando la estructura del target no está disponible, se analizan las propiedades de los ligandos activos conocidos. Incluye <strong>pharmacophore modeling</strong> (identificación de los grupos funcionales esenciales para la actividad) y análisis QSAR.</p>
+            <p>El <strong>modelo farmacofórico</strong> es la representación mínima de los elementos estructurales necesarios para la unión al receptor: grupos H-bond donor/acceptor, zonas hidrofóbicas, cargas.</p>
+        </div>
+        <div class="card">
+            <div class="card-badge green">Fragmentos</div>
+            <h4>FBDD — Fragment-Based Drug Design</h4>
+            <p>Se parte de fragmentos moleculares pequeños (PM &lt;300 Da) con baja afinidad pero eficiencia de unión alta. Mediante técnicas biofísicas (SPR, NMR, cristalografía), se identifican fragmentos que se unen al sitio activo y luego se "crecen" o "enlazan" para obtener moléculas potentes.</p>
+            <p>Ejemplo: <strong>Venetoclax</strong> (ABT-199), inhibidor de BCL-2 en leucemia linfocítica crónica, fue diseñado por FBDD.</p>
+        </div>
+        <div class="card">
+            <div class="card-badge gold">IA/Computacional</div>
+            <h4>AI-Driven Design</h4>
+            <p>Desde 2020, modelos de inteligencia artificial como <strong>AlphaFold2 (DeepMind, 2021)</strong> permiten predecir la estructura de proteínas desde su secuencia con precisión atómica, resolviendo el "Protein Folding Problem" de 50 años. Esto democratiza el diseño racional.</p>
+            <p>Redes neuronales generativas (<strong>GAN, VAE, Transformer</strong>) proponen nuevas moléculas de novo con propiedades deseadas. Ejemplos: Insilico Medicine, Exscientia.</p>
+        </div>
+    </div>
+
+    <h4 style="margin:32px 0 16px; font-size:1.1rem; font-weight:700;">Regla de los Cinco de Lipinski</h4>
+
+    <p>Propuesta por <strong>Christopher Lipinski (Pfizer, 1997)</strong>, establece criterios empíricos para que un fármaco tenga buena <strong>biodisponibilidad oral</strong>. Un compuesto oral-activo debería cumplir:</p>
+
+    <table class="rule-table">
+        <thead>
+            <tr>
+                <th>Propiedad</th>
+                <th>Límite Ro5</th>
+                <th>Aspirina</th>
+                <th>Ibuprofeno</th>
+                <th>Imatinib</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Peso molecular</td>
+                <td class="mono">≤ 500 Da</td>
+                <td class="ok">180.2 ✓</td>
+                <td class="ok">206.3 ✓</td>
+                <td class="fail">493.6 ≈ límite</td>
+            </tr>
+            <tr>
+                <td>log P (lipofilicidad)</td>
+                <td class="mono">≤ 5</td>
+                <td class="ok">1.19 ✓</td>
+                <td class="ok">3.97 ✓</td>
+                <td class="ok">4.4 ✓</td>
+            </tr>
+            <tr>
+                <td>Donores H-bond (N-H, O-H)</td>
+                <td class="mono">≤ 5</td>
+                <td class="ok">1 ✓</td>
+                <td class="ok">1 ✓</td>
+                <td class="ok">2 ✓</td>
+            </tr>
+            <tr>
+                <td>Aceptores H-bond (N, O)</td>
+                <td class="mono">≤ 10</td>
+                <td class="ok">4 ✓</td>
+                <td class="ok">2 ✓</td>
+                <td class="ok">8 ✓</td>
+            </tr>
+            <tr>
+                <td>Superficie polar topológica</td>
+                <td class="mono">≤ 140 Å²</td>
+                <td class="ok">63.6 ✓</td>
+                <td class="ok">37.3 ✓</td>
+                <td class="ok">86.3 ✓</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="info-box">
+        <div class="info-box-title">⚠️ Excepciones a la Ro5</div>
+        <p>Los <strong>fármacos biológicos</strong> (anticuerpos monoclonales, péptidos, macroláctonas) no cumplen la Ro5 pero son oralmente inactivos y se administran por vía parenteral. Algunos fármacos naturales como la ciclosporina A (PM 1202 Da) son excepciones por mecanismos de absorción especiales.</p>
+        <p>La <strong>Ro3 de Congreve</strong> se aplica a fragmentos en FBDD: PM ≤ 300 Da, log P ≤ 3, donores H-bond ≤ 3, aceptores H-bond ≤ 3.</p>
+    </div>
+</article>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 3: TARGETS FARMACOLÓGICOS
+     ══════════════════════════════════════════════════════════ -->
+<article class="content-section" id="targets">
+    <h2>Targets Farmacológicos</h2>
+    <p class="section-subtitle">Las dianas biológicas donde los fármacos ejercen su acción</p>
+
+    <p>Un <strong>target farmacológico</strong> es la macromolécula biológica con la que interactúa el fármaco para producir su efecto terapéutico. El target ideal debe ser específico del proceso patológico (ausente o diferente en tejidos sanos), estructuralmente conocido, "drugable" (con sitio de unión accesible a moléculas pequeñas) y validado genética y farmacológicamente.</p>
+
+    <p>El <strong>genoma humano</strong> codifica aproximadamente 20,000 proteínas. Solo ~3,000 tienen relevancia en enfermedad y se estima que ~1,500 son potencialmente "drugables". Actualmente, los fármacos aprobados actúan sobre menos de 700 targets únicos (Santos et al., Nature Reviews Drug Discovery, 2017).</p>
+
+    <div class="targets-visual">
+        <div class="target-item">
+            <span class="target-icon">🔑</span>
+            <div class="target-name">Receptores</div>
+            <div class="target-desc">Proteínas transmembrana o intracelulares que reconocen señales moleculares</div>
+            <div class="target-examples">
+                <span>GPCR</span><span>RTK</span><span>Nuclear</span>
+            </div>
+        </div>
+        <div class="target-item">
+            <span class="target-icon">⚙️</span>
+            <div class="target-name">Enzimas</div>
+            <div class="target-desc">Catalizadores biológicos que aceleran reacciones metabólicas clave</div>
+            <div class="target-examples">
+                <span>Quinasas</span><span>Proteasas</span><span>Fosfatasas</span>
+            </div>
+        </div>
+        <div class="target-item">
+            <span class="target-icon">🚪</span>
+            <div class="target-name">Canales Iónicos</div>
+            <div class="target-desc">Proteínas que controlan el flujo de iones a través de membranas</div>
+            <div class="target-examples">
+                <span>Na⁺</span><span>K⁺</span><span>Ca²⁺</span>
+            </div>
+        </div>
+        <div class="target-item">
+            <span class="target-icon">🚛</span>
+            <div class="target-name">Transportadores</div>
+            <div class="target-desc">Proteínas que median el transporte de moléculas a través de membranas</div>
+            <div class="target-examples">
+                <span>SERT</span><span>DAT</span><span>NET</span>
+            </div>
+        </div>
+    </div>
+
+    <h4 style="margin:32px 0 16px; font-size:1.1rem; font-weight:700;">Tipos de targets en detalle</h4>
+
+    <div class="cards-grid-2">
+        <div class="card">
+            <div class="card-badge">~34% de fármacos</div>
+            <h4>GPCRs — Receptores acoplados a proteína G</h4>
+            <p>Son la familia de proteínas más grande del genoma (~800 miembros). Su estructura incluye 7 hélices transmembrana. Al activarse, acoplan proteínas G heterotriméricas (Gαβγ) que modulan segundos mensajeros (AMPc, DAG, IP₃, Ca²⁺).</p>
+            <p><strong>Ejemplos farmacológicos:</strong> β-bloqueantes (propranolol, metoprolol) actúan sobre receptores β-adrenérgicos. Los opioides (morfina, fentanilo) activan receptores µ-opioides. Los antihistamínicos (cetirizina, loratadina) bloquean receptores H₁.</p>
+            <div class="card-mono">AMPc ↑ → PKA → fosforilación proteínas</div>
+        </div>
+        <div class="card">
+            <div class="card-badge blue">~25% de fármacos</div>
+            <h4>Enzimas — Inhibición enzimática</h4>
+            <p>Los inhibidores enzimáticos son el segundo grupo más grande de fármacos. Pueden ser competitivos (compiten con el sustrato en el sitio activo), no competitivos (se unen a sitio alostérico) o irreversibles (forman enlace covalente con el sitio activo).</p>
+            <p><strong>Ejemplos:</strong> Estatinas (atorvastatina, rosuvastatina) inhiben la HMG-CoA reductasa (colesterol). Los IECAs (enalapril) inhiben la enzima convertidora de angiotensina. Aspirina inhibe irreversiblemente la COX por acetilación de Ser530.</p>
+            <div class="card-mono">Ki = [E][I] / [EI] (constante inhibición)</div>
+        </div>
+        <div class="card">
+            <div class="card-badge green">~18% de fármacos</div>
+            <h4>Canales Iónicos</h4>
+            <p>Regulan la excitabilidad neuronal y muscular. Pueden ser voltaje-dependientes (Na⁺, K⁺, Ca²⁺) o ligando-dependientes (nAChR, GABA-A, NMDA). Los anestésicos locales bloquean canales Nav de forma uso-dependiente.</p>
+            <p><strong>Ejemplos:</strong> Amlodipino (Ca²⁺ bloqueante, antihipertensivo). Lidocaína (bloqueante Nav, anestésico). Diazepam (potencia GABA-A, benzodiazepina). Ivermectina (activa Cl⁻ en nematodos).</p>
+            <div class="card-mono">IC₅₀ amlodipino Nav: ~100 µM</div>
+        </div>
+        <div class="card">
+            <div class="card-badge gold">~10% de fármacos</div>
+            <h4>Transportadores</h4>
+            <p>Los inhibidores de recaptación de neurotransmisores son fundamentales en psiquiatría. Los SSRIs (fluoxetina, sertralina) bloquean el transportador de serotonina (SERT), aumentando su concentración sináptica. Los SGLT2 (empagliflozina) inhiben la reabsorción renal de glucosa.</p>
+            <p><strong>ABC transporters:</strong> Muchos tumores sobreexpresan MDR1 (P-glicoproteína), bombeando quimioterápicos fuera de la célula. La inhibición de MDR1 es estrategia anticancerígena activa.</p>
+            <div class="card-mono">Km SERT para 5-HT: ~0.5 µM</div>
+        </div>
+    </div>
+
+    <div class="info-box green">
+        <div class="info-box-title">🏆 El druggable genome</div>
+        <p>El concepto de "druggabilidad" fue acuñado por Hopkins & Groom (2002). Una proteína es "drugable" si tiene un bolsillo de unión definido, suficientemente hidrofóbico y accesible para moléculas pequeñas. Se estima que solo el 10-15% del proteoma humano es actualmente drugable con moléculas pequeñas. Los esfuerzos de la industria buscan ampliar este espacio mediante <strong>PROTACs</strong> (degradadores de proteínas) y <strong>covalent drugs</strong>.</p>
+    </div>
+</article>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 4: MODELAMIENTO MOLECULAR
+     ══════════════════════════════════════════════════════════ -->
+<article class="content-section" id="modelamiento">
+    <h2>Modelamiento Molecular</h2>
+    <p class="section-subtitle">Simulando las interacciones fármaco-target en la computadora</p>
+
+    <p>El <strong>modelamiento molecular</strong> es el conjunto de técnicas computacionales que permiten representar, visualizar y simular el comportamiento de moléculas y sus interacciones a nivel atómico. En diseño farmacéutico, permite evaluar miles de moléculas virtualmente antes de sintetizar físicamente ninguna, reduciendo drásticamente el tiempo y costo del desarrollo.</p>
+
+    <h4 style="margin:28px 0 16px; font-size:1.1rem; font-weight:700;">Técnicas principales</h4>
+
+    <div class="cards-grid">
+        <div class="card">
+            <div class="card-badge">Docking</div>
+            <h4>Docking Molecular</h4>
+            <p>Predice la orientación y conformación preferencial de un ligando en el sitio activo del receptor (pose de docking). Calcula la energía de interacción mediante una <strong>scoring function</strong>: suma de términos de Van der Waals, electrostáticos, desolvación y entropía conformacional.</p>
+            <p>Software principal: <strong>AutoDock Vina</strong> (gratuito), Glide (Schrödinger), GOLD (CCDC), rDock.</p>
+            <div class="card-mono">ΔGbinding = ΔH − TΔS ≈ scoring</div>
+        </div>
+        <div class="card">
+            <div class="card-badge blue">MD</div>
+            <h4>Dinámica Molecular</h4>
+            <p>Simula el movimiento de átomos en función del tiempo aplicando la mecánica clásica (ecuaciones de Newton). Permite ver cómo el complejo fármaco-receptor evoluciona, evaluar estabilidad del complejo y calcular energía libre de unión con mayor precisión.</p>
+            <p>Software: <strong>GROMACS, AMBER, NAMD</strong>. Las simulaciones hoy alcanzan µs-ms con GPUs. D.E. Shaw Research construyó el supercomputador Anton específicamente para MD.</p>
+            <div class="card-mono">F = ma → r(t), v(t) actualizados cada fs</div>
+        </div>
+        <div class="card">
+            <div class="card-badge green">MM/PBSA</div>
+            <h4>Cálculo de Energía Libre</h4>
+            <p>Los métodos <strong>MM/PBSA y MM/GBSA</strong> (Molecular Mechanics Poisson–Boltzmann Surface Area) calculan la energía libre de unión a partir de trayectorias de MD. Más precisos que el simple docking, permiten rankear correctamente series de análogos.</p>
+            <p>Los métodos de perturbación de energía libre (<strong>FEP, TI</strong>) son el gold standard para predicciones cuantitativas, esenciales en la fase final de optimización.</p>
+            <div class="card-mono">ΔGbind = ΔGcomplex − ΔGrec − ΔGlig</div>
+        </div>
+    </div>
+
+    <h4 style="margin:32px 0 16px; font-size:1.1rem; font-weight:700;">AlphaFold2 y la Revolución Estructural</h4>
+
+    <div class="info-box gold">
+        <div class="info-box-title">🤖 AlphaFold2 — Un antes y un después</div>
+        <p>En noviembre de 2020, <strong>DeepMind</strong> presentó AlphaFold2 en el CASP14, logrando predicciones de estructura proteica con precisión comparable a la cristalografía de rayos X. En 2021, publicaron la estructura predicha de casi todo el proteoma humano (>200,000 proteínas), disponible gratuitamente en la <strong>AlphaFold Protein Structure Database</strong>.</p>
+        <p>El impacto para el diseño de fármacos es masivo: donde antes se tardaban años en obtener una estructura por cristalografía, ahora en horas se dispone de una predicción de alta calidad. Ya se han identificado nuevas dianas terapéuticas para enfermedades desatendidas (chagas, malaria, leishmaniasis) usando estructuras de AlphaFold2.</p>
+        <p>En 2024, <strong>RoseTTAFold All-Atom (Baker Lab, UW)</strong> extendió el paradigma prediciendo complejos proteína-ligando, proteína-ácido nucleico y proteínas con modificaciones post-traduccionales.</p>
+    </div>
+
+    <div class="fragment-display">
+        <div class="fragment-chip">Pyr<div class="tooltip">Pirrolidina: base nitrogenada, potencia básica</div></div>
+        <div class="fragment-chip">Ph-OH<div class="tooltip">Fenol: donor H-bond, polaridad</div></div>
+        <div class="fragment-chip">-CONH-<div class="tooltip">Amida: estabilidad metabólica alta</div></div>
+        <div class="fragment-chip">-SO₂NR₂<div class="tooltip">Sulfonamida: H-bond acceptor fuerte</div></div>
+        <div class="fragment-chip">Imidazol<div class="tooltip">Ring aromático: π-stacking en sitio activo</div></div>
+        <div class="fragment-chip">-CF₃<div class="tooltip">Trifluorometil: bloqueo metabolismo CYP, lipofilia</div></div>
+        <div class="fragment-chip">Indol<div class="tooltip">Bioisóstero del triptófano, HAT-activo</div></div>
+        <div class="fragment-chip">-OMe<div class="tooltip">Metoxilo: donador electrónico, log P moderado</div></div>
+        <div class="fragment-chip">Piperazina<div class="tooltip">Mejora solubilidad acuosa y farmacocinética</div></div>
+        <div class="fragment-chip">Morfolin<div class="tooltip">Reduce log P, mejora unión a kinases</div></div>
+        <div class="fragment-chip">-CN<div class="tooltip">Nitrilo: bioisóstero del COOH, mejora actividad</div></div>
+        <div class="fragment-chip">Benzimidazol<div class="tooltip">Inhibidores de bomba de protones (omeprazol)</div></div>
+    </div>
+    <p style="font-size:.8rem; color:var(--text-muted); margin-top:4px;">💡 Pasa el cursor sobre los fragmentos para ver su rol farmacológico</p>
+</article>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 5: LEAD OPTIMIZATION
+     ══════════════════════════════════════════════════════════ -->
+<article class="content-section" id="lead-optimization">
+    <h2>Lead Optimization</h2>
+    <p class="section-subtitle">Del "hit" al candidato a fármaco: el proceso de optimización</p>
+
+    <p>La <strong>optimización de moléculas líderes (lead optimization)</strong> es el proceso iterativo de modificar un "hit" (compuesto con actividad mínima demostrable) para convertirlo en un candidato farmacéutico (drug candidate) con el perfil óptimo de eficacia, selectividad, farmacocinética, seguridad y propiedades físico-químicas.</p>
+
+    <p>Este proceso, que puede tomar 2-5 años y costar cientos de millones de dólares, integra química medicinal, farmacología, toxicología, metabolismo y ADMET (Absorción, Distribución, Metabolismo, Excreción, Toxicidad).</p>
+
+    <h4 style="margin:28px 0 16px; font-size:1.1rem; font-weight:700;">El Embudo del Descubrimiento Farmacéutico</h4>
+
+    <div class="funnel-container">
+        <div class="funnel-step">
+            <span class="funnel-count">~10,000</span>
+            <div class="funnel-label">Compuestos en cribado primario (HTS)</div>
+            <div class="funnel-desc">High-Throughput Screening · Bibliotecas químicas, extractos naturales</div>
+        </div>
+        <div class="funnel-step">
+            <span class="funnel-count">~1,000</span>
+            <div class="funnel-label">Hits confirmados</div>
+            <div class="funnel-desc">CI₅₀ &lt; 10 µM · Reproducibles · Sin PAINS (Pan-Assay Interference)</div>
+        </div>
+        <div class="funnel-step">
+            <span class="funnel-count">~100</span>
+            <div class="funnel-label">Leads seleccionados</div>
+            <div class="funnel-desc">Optimización SAR inicial · Druggability · Propiedades ADMET preliminares</div>
+        </div>
+        <div class="funnel-step">
+            <span class="funnel-count">~10</span>
+            <div class="funnel-label">Candidatos optimizados</div>
+            <div class="funnel-desc">Estudios in vivo · Farmacocinética · Seguridad preclínica</div>
+        </div>
+        <div class="funnel-step">
+            <span class="funnel-count">1–2</span>
+            <div class="funnel-label">Candidato a fármaco (IND)</div>
+            <div class="funnel-desc">Investigational New Drug · Inicio ensayos clínicos · FDA/ISP Chile</div>
+        </div>
+    </div>
+
+    <h4 style="margin:32px 0 16px; font-size:1.1rem; font-weight:700;">Estrategias de Optimización</h4>
+
+    <div class="process-steps">
+        <div class="process-step">
+            <div class="step-number">01</div>
+            <div class="step-content">
+                <h4>Mejora de Potencia y Selectividad</h4>
+                <p>Modificaciones estructurales guiadas por SAR y docking molecular para aumentar la afinidad al target primario (↓ IC₅₀, ↓ Kd) y minimizar interacciones con off-targets. El <strong>selectivity profiling</strong> frente a paneles de enzimas o receptores relacionados es clave. La herramienta del <strong>selectivity score (S(10), S(35))</strong> cuantifica la selectividad de quinasas frente a un panel de 442.</p>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-number">02</div>
+            <div class="step-content">
+                <h4>Optimización ADMET</h4>
+                <p>El 40% de los fracasos clínicos históricos se debían a problemas farmacocinéticos. El perfil ADMET ideal incluye buena absorción oral (F &gt; 20%), distribución adecuada (Vd ~1 L/kg), metabolismo predecible (t½ 6-24h), excreción renal/biliar equilibrada y ausencia de toxicidades específicas (hepatotoxicidad, cardiotoxicidad por hERG). Las modificaciones bioisostéricas (reemplazar −COOH por tetrazol, Ph por piridin) pueden mejorar drásticamente este perfil sin perder actividad.</p>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-number">03</div>
+            <div class="step-content">
+                <h4>Estabilidad Metabólica</h4>
+                <p>Los microsomas hepáticos humanos y las isoformas CYP450 (CYP1A2, 2C9, 2C19, 2D6, 3A4) metabolizan la mayoría de los fármacos. La introducción de <strong>grupos bloqueantes</strong> (−F, −Cl, −CF₃ en posición de metabolismo), la <strong>restricción conformacional</strong> o el uso de <strong>heterociclos</strong> en lugar de anillos bencénicos son estrategias habituales. La técnica de <strong>deuteración</strong> (reemplazar H por D) puede extender la t½ al enlentecimiento del metabolismo oxidativo (efecto KIE).</p>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-number">04</div>
+            <div class="step-content">
+                <h4>Bioisosterismo</h4>
+                <p>Los <strong>bioisósteros</strong> son grupos que tienen propiedades fisicoquímicas similares pero diferente estructura química. Su uso permite modificar la actividad, selectividad o propiedades ADMET sin afectar el modo de unión fundamental. Ejemplos clásicos: Ph ↔ tiofeno, COOH ↔ tetrazol, ester ↔ amida (mejora estabilidad), −H ↔ −F (similar Van der Waals, bloquea metabolismo), −OH ↔ −NH₂ (similar H-bonding). La sustitución bioisostérica del ester de la procaína por amida dio lugar a la lidocaína, con mayor estabilidad y menor toxicidad.</p>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-number">05</div>
+            <div class="step-content">
+                <h4>Control de Estereoquímica</h4>
+                <p>Los receptores biológicos son entidades quirales: reconocen un enantiómero con mayor afinidad que el otro. El <strong>switch quiral</strong> (desarrollar el eutómero puro de un racemato) ha generado importantes fármacos: el dexketoprofeno (eutómero del ketoprofeno), la esomeprazol (S-omeprazol), el escitalopram (S-citalopram). La isomería cis/trans en anillos afecta la presentación de grupos funcionales al sitio de unión, cambiando órdenes de magnitud la actividad biológica.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <div class="info-box-title">💡 Caso de optimización: De fenacetina a paracetamol</div>
+        <p>La <strong>fenacetina</strong> fue introducida en 1887 como analgésico. El análisis metabólico reveló que se biotransformaba en <strong>paracetamol</strong> (acetaminofén), que era el metabolito activo real. Sin embargo, la fenacetina también generaba meta-hemoglobinemia y nefropatía. La síntesis directa del metabolito activo, el paracetamol, eliminó estos efectos adversos manteniendo la actividad analgésica y antipirética. Este es un ejemplo temprano de metabolismo-guiado en la optimización de fármacos.</p>
+    </div>
+
+    <h4 style="margin:32px 0 16px; font-size:1.1rem; font-weight:700;">Técnicas analíticas en Lead Optimization</h4>
+
+    <div class="cards-grid">
+        <div class="card">
+            <div class="card-badge">Biofísica</div>
+            <h4>SPR — Resonancia de Plasmón de Superficie</h4>
+            <p>Mide la cinética de unión fármaco-receptor en tiempo real: constante de asociación (ka), disociación (kd) y afinidad (Kd = kd/ka). No requiere marcaje del ligando. El Biacore (Cytiva) es el instrumento estándar. Permite diferenciar compuestos con igual IC₅₀ pero diferente cinética (entropía vs. entalpía de unión).</p>
+        </div>
+        <div class="card">
+            <div class="card-badge blue">NMR</div>
+            <h4>RMN — Resonancia Magnética Nuclear</h4>
+            <p>Proporciona información estructural tridimensional del complejo fármaco-proteína en solución. El <strong>STD-NMR</strong> (Saturation Transfer Difference) identifica cuáles protones del ligando interactúan con el receptor. Esencial en FBDD para confirmar la unión de fragmentos de baja afinidad.</p>
+        </div>
+        <div class="card">
+            <div class="card-badge green">Cryo-EM</div>
+            <h4>Microscopía Cryo-Electrónica</h4>
+            <p>Revolución técnica (Nobel Química 2017). Permite resolver estructuras de complejos fármaco-receptor sin cristalización, incluso de GPCRs en membranas lipídicas. Resoluciones actuales alcanzan 1.5-2.5 Å. Fundamental para el diseño de fármacos para GPCRs y canales iónicos intratables por cristalografía.</p>
+        </div>
+    </div>
+</article>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 6: TENDENCIAS ACTUALES
+     ══════════════════════════════════════════════════════════ -->
+<article class="content-section" id="tendencias">
+    <h2>Tendencias Actuales en Diseño de Fármacos</h2>
+    <p class="section-subtitle">Las fronteras del campo en 2024-2026</p>
+
+    <p>El diseño de fármacos atraviesa una revolución sin precedentes impulsada por la inteligencia artificial, nuevas modalidades terapéuticas y una comprensión más profunda de la biología molecular. Los enfoques emergentes están desafiando paradigmas establecidos durante décadas.</p>
+
+    <div class="cards-grid-2">
+        <div class="card">
+            <div class="card-badge">Emergente</div>
+            <h4>PROTACs — Degradación proteolítica dirigida</h4>
+            <p>Las <strong>PROTACs</strong> (PROteolysis TArgeting Chimeras) son moléculas bifuncionales: un extremo une al target de interés, el otro une una E3 ubiquitina ligasa. El complejo ternario resultante ubiquitina al target para su degradación por el proteasoma. Esto permite atacar proteínas "indrogables" como factores de transcripción o proteínas con función estructural (scaffold).</p>
+            <p>En 2023, ARV-471 (degradador de ERα) demostró eficacia en cáncer de mama. El campo de la <strong>targeted protein degradation (TPD)</strong> tiene más de 20 PROTACs en ensayos clínicos.</p>
+            <div class="card-mono">E3 Ligase → Ubiquitinación → 26S Proteasoma</div>
+        </div>
+        <div class="card">
+            <div class="card-badge blue">Covalente</div>
+            <h4>Fármacos Covalentes</h4>
+            <p>Los fármacos covalentes forman un enlace covalente irreversible (o reversible) con un residuo nucleofílico del sitio activo (Cys, Ser, Lys, Tyr). Este enfoque permite mayor potencia y duración de acción, pero requiere selectividad exquisita para evitar reacciones fuera del target.</p>
+            <p>Ejemplos aprobados: <strong>Osimertinib</strong> (AZD9291, inhibidor EGFR T790M, cáncer de pulmón), <strong>Afatinib</strong> (EGFR pan-inhibidor, covalente), <strong>Ibrutinib</strong> (BTK inhibidor, LLC). El <strong>warhead</strong> típico es una acrilamida que reacciona con Cys por adición de Michael.</p>
+            <div class="card-mono">Acrilamida + Cys-SH → enlace C-S permanente</div>
+        </div>
+        <div class="card">
+            <div class="card-badge green">IA Generativa</div>
+            <h4>Generative AI en Diseño de Fármacos</h4>
+            <p>Los modelos de <strong>deep learning generativo</strong> (VAE, GAN, Diffusion Models, Transformers) proponen moléculas novedosas optimizadas para múltiples propiedades simultáneamente. Exscientia fue la primera empresa en llevar a ensayo clínico una molécula diseñada completamente por IA (DSP-1181, OCD, 2020).</p>
+            <p>Modelos como <strong>RFdiffusion (Baker Lab, 2023)</strong> diseñan proteínas de novo para unirse a targets específicos. <strong>ChemBERTa, MolBERT</strong> y modelos de lenguaje molecular permiten transferir el aprendizaje de millones de moléculas conocidas a nuevas estructuras.</p>
+            <div class="card-mono">SMILES → Model → Novel Drug Candidate</div>
+        </div>
+        <div class="card">
+            <div class="card-badge gold">Chile</div>
+            <h4>Contexto Regulatorio en Chile</h4>
+            <p>En Chile, el <strong>ISP (Instituto de Salud Pública)</strong> es la autoridad regulatoria de medicamentos, bajo la Ley N° 20.724 (2014) y el DFL N° 1/2010 (Código Sanitario). Los ensayos clínicos requieren registro en CEC (Comité Ético Científico) y autorización del ISP.</p>
+            <p>Chile se rige por las <strong>Buenas Prácticas Clínicas ICH E6(R2)</strong> y adhiere a la Declaración de Helsinki. La Farmacopea de referencia es la USP (United States Pharmacopeia), aunque se aceptan BP y Ph.Eur. El sistema CENABAST centraliza adquisiciones para el sector público.</p>
+            <div class="card-mono">ISP → Autorización IND → Fases I-III → Registro</div>
+        </div>
+    </div>
+
+    <div class="info-box blue">
+        <div class="info-box-title">🌐 El futuro: Medicina de precisión y farmacogenómica</div>
+        <p>La <strong>farmacogenómica</strong> estudia cómo las variantes genéticas individuales (SNPs, CNVs) afectan la respuesta a los fármacos. El polimorfismo en CYP2D6 clasifica a los pacientes en metabolizadores pobres, intermedios, extensivos y ultra-rápidos, explicando variabilidades de hasta 30 veces en exposición plasmática al mismo fármaco. Ejemplos: codeína en metabolizadores ultrarrápidos (riesgo de toxicidad opiácea), clopidogrel en metabolizadores pobres CYP2C19 (falla antiagregante).</p>
+        <p>La integración de <strong>genómica, proteómica, metabolómica y datos clínicos</strong> mediante machine learning permite el desarrollo de terapias personalizadas: el fármaco correcto, para el paciente correcto, en la dosis correcta. Oncología ya opera en este paradigma con biomarcadores obligatorios (EGFR, KRAS, HER2, PD-L1) para seleccionar terapias dirigidas.</p>
+    </div>
+
+    <!-- NAV LESSON -->
+    <div class="lesson-nav">
+        <a href="../../../quimica-farmaceutica/index.html">← Q. Farmacéutica</a>
+        <a href="../contenido/sintesis.html">Síntesis de Fármacos →</a>
+    </div>
+</article>
+
+</div><!-- /content-body -->
+</div><!-- /container -->
+</section><!-- /lesson-content -->
+
+<!-- ── FOOTER ───────────────────────────────────────────────── -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>© 2026 PharmaLab Chile — Diseño de Fármacos · Química Farmacéutica</p>
+            <p class="footer-disclaimer">Contenido educacional universitario. Información basada en literatura científica revisada por pares. No reemplaza asesoría profesional.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ── SCRIPTS ──────────────────────────────────────────────── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

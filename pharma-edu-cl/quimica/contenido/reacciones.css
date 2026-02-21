@@ -1,0 +1,342 @@
+/* ===================================================
+   REACCIONES QUÍMICAS — ESTILOS
+   PharmaLab Chile · Química Universitaria
+   =================================================== */
+
+/* ── Variables locales ── */
+:root {
+    --accent: #10b981;
+    --accent-light: #34d399;
+    --accent-rgb: 16, 185, 129;
+    --bg-card: #0f1923;
+    --bg-elevated: #131d28;
+    --bg-card-hover: #162230;
+    --border: rgba(255,255,255,.06);
+    --border-hover: rgba(255,255,255,.12);
+    --text-primary: #e2e8f0;
+    --text-secondary: #8a99a8;
+    --text-tertiary: #556677;
+}
+
+/* ── Layout ── */
+.lesson-content { padding: 40px 0 120px }
+.lesson-body    { max-width: 960px; margin: 0 auto }
+
+/* ── Section blocks ── */
+.rxn-block       { margin-bottom: 64px }
+.rxn-block-tag   {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 5px 14px; border-radius: 100px;
+    font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; margin-bottom: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(var(--accent-rgb,16,185,129),.08);
+    border: 1px solid rgba(var(--accent-rgb,16,185,129),.3);
+    color: rgb(var(--accent-rgb,16,185,129))
+}
+.rxn-block h2 {
+    font-size: clamp(1.6rem,3.5vw,2.2rem); font-weight: 800;
+    letter-spacing: -.02em; line-height: 1.2; margin-bottom: 14px
+}
+.rxn-block h2 .grad {
+    background: linear-gradient(135deg, var(--accent,#10b981), var(--accent-light,#34d399));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text
+}
+.rxn-block > .intro {
+    font-size: .95rem; color: var(--text-secondary,#8a99a8);
+    line-height: 1.75; margin-bottom: 32px; max-width: 800px
+}
+
+/* ── Topic cards ── */
+.rxn-topics {
+    display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 20px; margin-bottom: 32px
+}
+.rxn-topic {
+    background: var(--bg-card,#0f1923);
+    border: 1px solid var(--border,rgba(255,255,255,.06));
+    border-radius: 18px; padding: 28px; position: relative;
+    overflow: hidden; transition: all .35s cubic-bezier(.4,0,.2,1)
+}
+.rxn-topic::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--topic-accent, var(--accent,#10b981)); opacity: 0; transition: opacity .3s
+}
+.rxn-topic:hover { transform: translateY(-3px); border-color: var(--border-hover,rgba(255,255,255,.12)); box-shadow: 0 12px 40px -10px rgba(0,0,0,.4) }
+.rxn-topic:hover::before { opacity: 1 }
+.rxn-topic-num  { font-family: 'JetBrains Mono',monospace; font-size: .68rem; font-weight: 700; color: var(--text-tertiary,#556677); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px }
+.rxn-topic h3   { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; color: var(--text-primary,#e2e8f0) }
+.rxn-topic p    { font-size: .85rem; color: var(--text-secondary,#8a99a8); line-height: 1.65; margin-bottom: 8px }
+.rxn-topic ul   { list-style: none; padding: 0; margin-top: 12px; display: flex; flex-direction: column; gap: 8px }
+.rxn-topic li   { display: flex; align-items: flex-start; gap: 9px; font-size: .84rem; color: var(--text-secondary,#8a99a8); line-height: 1.6 }
+.rxn-topic li .bul { width: 5px; height: 5px; border-radius: 50%; background: var(--topic-accent,var(--accent,#10b981)); flex-shrink: 0; margin-top: 8px }
+.rxn-topic li strong { color: var(--text-primary,#e2e8f0) }
+
+/* ── Formula box ── */
+.rxn-formula {
+    background: var(--bg-elevated,#131d28);
+    border: 1px solid var(--border,rgba(255,255,255,.06));
+    border-radius: 14px; padding: 20px 24px; margin: 16px 0;
+    font-family: 'JetBrains Mono',monospace; font-size: .82rem;
+    line-height: 1.9; color: var(--accent-light,#34d399); overflow-x: auto
+}
+.rxn-formula .label { color: var(--text-tertiary,#556677); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: 8px }
+.rxn-formula .eq    { color: var(--text-primary,#e2e8f0); font-size: .88rem }
+
+/* ── Detail cards ── */
+.rxn-detail {
+    background: var(--bg-card,#0f1923);
+    border: 1px solid var(--border,rgba(255,255,255,.06));
+    border-radius: 16px; padding: 26px; margin-bottom: 20px;
+    position: relative; overflow: hidden
+}
+.rxn-detail::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: var(--stripe, var(--accent,#10b981)); border-radius: 3px 0 0 3px
+}
+.rxn-detail h4     { font-size: .95rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; color: var(--text-primary,#e2e8f0) }
+.rxn-detail h4 .dot{ width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0 }
+.rxn-detail p      { font-size: .84rem; color: var(--text-secondary,#8a99a8); line-height: 1.7 }
+
+/* ── Table ── */
+.rxn-table-wrap { overflow-x: auto; border-radius: 14px; border: 1px solid var(--border,rgba(255,255,255,.06)); margin: 20px 0 }
+.rxn-table      { width: 100%; border-collapse: collapse; font-size: .84rem; min-width: 700px }
+.rxn-table thead{ background: var(--bg-elevated,#131d28) }
+.rxn-table th   { padding: 11px 14px; text-align: left; font-weight: 700; font-size: .74rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-tertiary,#556677); border-bottom: 1px solid var(--border,rgba(255,255,255,.06)) }
+.rxn-table td   { padding: 11px 14px; border-bottom: 1px solid var(--border,rgba(255,255,255,.06)); color: var(--text-secondary,#8a99a8); vertical-align: top }
+.rxn-table tbody tr { background: var(--bg-card,#0f1923); transition: background .2s }
+.rxn-table tbody tr:hover { background: var(--bg-card-hover,#162230) }
+.rxn-table .td-name { font-weight: 700; color: var(--text-primary,#e2e8f0) }
+.rxn-table .td-mono { font-family: 'JetBrains Mono',monospace; font-size: .76rem; color: var(--accent,#10b981) }
+
+/* ── Callout ── */
+.rxn-callout {
+    background: linear-gradient(135deg,rgba(var(--accent-rgb,16,185,129),.06),rgba(var(--accent-rgb,16,185,129),.02));
+    border: 1px solid rgba(var(--accent-rgb,16,185,129),.2);
+    border-radius: 18px; padding: 28px; margin-top: 28px
+}
+.rxn-callout h3     { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; color: var(--text-primary,#e2e8f0) }
+.rxn-callout p      { font-size: .88rem; color: var(--text-secondary,#8a99a8); line-height: 1.7 }
+.rxn-callout strong { color: var(--text-primary,#e2e8f0) }
+
+/* ── Timeline ── */
+.rxn-timeline {
+    display: flex; align-items: flex-start; gap: 6px;
+    background: var(--bg-card,#0f1923); border: 1px solid var(--border,rgba(255,255,255,.06));
+    border-radius: 18px; padding: 28px; overflow-x: auto; margin-bottom: 24px
+}
+.rxn-tl-step  { display: flex; flex-direction: column; gap: 6px; min-width: 150px; flex: 1 }
+.rxn-tl-num   { font-family: 'JetBrains Mono',monospace; font-size: 1.3rem; font-weight: 900; line-height: 1; color: var(--accent,#10b981) }
+.rxn-tl-step h4 { font-size: .84rem; font-weight: 700; line-height: 1.3; color: var(--text-primary,#e2e8f0) }
+.rxn-tl-step p  { font-size: .74rem; color: var(--text-secondary,#8a99a8); line-height: 1.5 }
+.rxn-tl-arrow   { font-size: 1.3rem; color: var(--text-tertiary,#556677); padding-top: 2px; flex-shrink: 0; align-self: flex-start; margin-top: 4px }
+
+/* ── Nav ── */
+.lesson-nav { display: flex; justify-content: space-between; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border,rgba(255,255,255,.06)); flex-wrap: wrap; gap: 12px }
+.lesson-nav a {
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px;
+    background: var(--bg-card,#0f1923); border: 1px solid var(--border,rgba(255,255,255,.06));
+    border-radius: 12px; font-size: .88rem; color: var(--text-secondary,#8a99a8);
+    font-weight: 600; transition: .3s
+}
+.lesson-nav a:hover { border-color: var(--border-hover,rgba(255,255,255,.12)); color: var(--text-primary,#e2e8f0) }
+
+/* ────────────────────────────────────────────
+   3D MOLÉCULA — SECCIÓN INTERACTIVA
+   ──────────────────────────────────────────── */
+.rxn-3d-section {
+    margin-bottom: 64px;
+    background: var(--bg-card,#0f1923);
+    border: 1px solid var(--border,rgba(255,255,255,.06));
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.rxn-3d-header {
+    padding: 28px 32px 0;
+}
+
+.rxn-3d-header h2 {
+    font-size: clamp(1.4rem,3vw,2rem);
+    font-weight: 800;
+    letter-spacing: -.02em;
+    color: var(--text-primary,#e2e8f0);
+    margin-bottom: 8px;
+}
+
+.rxn-3d-header p {
+    font-size: .88rem;
+    color: var(--text-secondary,#8a99a8);
+    line-height: 1.6;
+    max-width: 680px;
+    margin-bottom: 20px;
+}
+
+/* Selector de moléculas */
+.mol-selector {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 0 32px 20px;
+}
+
+.mol-btn {
+    padding: 7px 18px;
+    border-radius: 100px;
+    border: 1px solid var(--border,rgba(255,255,255,.06));
+    background: var(--bg-elevated,#131d28);
+    color: var(--text-secondary,#8a99a8);
+    font-size: .78rem;
+    font-weight: 600;
+    font-family: 'JetBrains Mono',monospace;
+    cursor: pointer;
+    transition: all .2s;
+    letter-spacing: .04em;
+}
+
+.mol-btn:hover,
+.mol-btn.active {
+    border-color: var(--accent,#10b981);
+    color: var(--accent,#10b981);
+    background: rgba(16,185,129,.08);
+}
+
+/* Canvas wrapper */
+.rxn-3d-canvas-wrap {
+    position: relative;
+    height: 400px;
+    background: radial-gradient(ellipse at center, #0a1520 0%, #050d14 100%);
+    border-top: 1px solid var(--border,rgba(255,255,255,.06));
+    border-bottom: 1px solid var(--border,rgba(255,255,255,.06));
+}
+
+#mol-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.rxn-3d-hint {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: .7rem;
+    color: var(--text-tertiary,#556677);
+    font-family: 'JetBrains Mono',monospace;
+    letter-spacing: .06em;
+    pointer-events: none;
+    background: rgba(5,13,20,.7);
+    padding: 4px 14px;
+    border-radius: 100px;
+    border: 1px solid rgba(255,255,255,.04);
+}
+
+/* Info panel */
+.rxn-3d-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.rxn-3d-info-col {
+    padding: 24px 32px;
+    border-right: 1px solid var(--border,rgba(255,255,255,.06));
+}
+
+.rxn-3d-info-col:last-child { border-right: none }
+
+.rxn-3d-info-col h4 {
+    font-size: .75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--text-tertiary,#556677);
+    margin-bottom: 12px;
+    font-family: 'JetBrains Mono',monospace;
+}
+
+.rxn-3d-info-col p {
+    font-size: .84rem;
+    color: var(--text-secondary,#8a99a8);
+    line-height: 1.65;
+}
+
+.rxn-3d-info-col .mol-name {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-primary,#e2e8f0);
+    margin-bottom: 4px;
+    display: block;
+}
+
+.rxn-3d-info-col .mol-formula {
+    font-family: 'JetBrains Mono',monospace;
+    font-size: .88rem;
+    color: var(--accent,#10b981);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.mol-prop-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0;
+}
+
+.mol-prop-list li {
+    font-size: .8rem;
+    color: var(--text-secondary,#8a99a8);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    line-height: 1.5;
+}
+
+.mol-prop-list li .prop-key {
+    color: var(--text-tertiary,#556677);
+    font-family: 'JetBrains Mono',monospace;
+    font-size: .72rem;
+    min-width: 64px;
+    flex-shrink: 0;
+    padding-top: 1px;
+}
+
+/* ── Mini info cards adicionales ── */
+.rxn-infocard {
+    background: rgba(var(--accent-rgb,16,185,129),.04);
+    border: 1px solid rgba(var(--accent-rgb,16,185,129),.12);
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin: 12px 0;
+    font-size: .84rem;
+    color: var(--text-secondary,#8a99a8);
+    line-height: 1.65;
+}
+
+.rxn-infocard .ic-title {
+    font-size: .76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: rgb(var(--accent-rgb,16,185,129));
+    font-family: 'JetBrains Mono',monospace;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.rxn-infocard strong { color: var(--text-primary,#e2e8f0) }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .rxn-topics      { grid-template-columns: 1fr }
+    .rxn-timeline    { flex-direction: column; gap: 14px }
+    .rxn-tl-arrow    { transform: rotate(90deg); margin: 0 auto }
+    .rxn-3d-info     { grid-template-columns: 1fr }
+    .rxn-3d-info-col { border-right: none; border-bottom: 1px solid var(--border,rgba(255,255,255,.06)) }
+    .rxn-3d-info-col:last-child { border-bottom: none }
+    .rxn-3d-canvas-wrap { height: 300px }
+}

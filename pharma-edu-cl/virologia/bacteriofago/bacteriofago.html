@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bacteriófago T4 — Genética Molecular, Estructura y Ciclo Lítico | PharmaLab Chile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="bacteriofago.css">
+</head>
+<body class="bt4-page">
+
+  <!-- NAVBAR -->
+  <nav class="bt4-navbar" id="bt4-navbar">
+    <div class="bt4-nav-inner">
+      <a href="../../index.html" class="bt4-nav-logo">
+        <svg viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        Pharma<span class="accent">Lab</span>
+      </a>
+      <div class="bt4-nav-links" id="bt4NavLinks">
+        <a href="../index.html">← Virología</a>
+        <a href="#estructura">Estructura 3D</a>
+        <a href="#ciclo">Ciclo Lítico</a>
+        <a href="#genetica">Genética Molecular</a>
+        <a href="#aplicaciones">Aplicaciones</a>
+        <a href="#" class="active">Fago T4</a>
+      </div>
+      <button class="bt4-nav-toggle" id="bt4NavToggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="bt4-hero">
+    <div class="bt4-hero-bg"></div>
+    <canvas id="bt4-hero-canvas"></canvas>
+    <div class="bt4-hero-content">
+      <div class="bt4-badge">Virología · Patógeno 10/10 · BSL-1</div>
+      <h1 class="bt4-hero-title">
+        <span class="accent">Bacteriófago T4</span><br>
+        Fago T4 — Myoviridae
+      </h1>
+      <p class="bt4-hero-desc">
+        El <strong>modelo experimental más importante de la biología molecular</strong>: un virus que infecta 
+        <em>Escherichia coli</em> y que fue clave para descifrar el código genético, demostrar que el ADN 
+        es el material hereditario y establecer los principios de la <strong>genética molecular moderna</strong>. 
+        Con su morfología única de cabeza icosaédrica y cola contráctil, el fago T4 es un 
+        <strong>nanodispositivo de inyección de ADN</strong> de extraordinaria precisión.
+      </p>
+      <div class="bt4-hero-meta">
+        <div class="bt4-meta-item">
+          <span class="bt4-meta-val">~168.9 kb</span>
+          <span class="bt4-meta-label">Genoma dsDNA lineal</span>
+        </div>
+        <div class="bt4-meta-item">
+          <span class="bt4-meta-val">~289</span>
+          <span class="bt4-meta-label">ORFs codificantes (Miller et al., 2003)</span>
+        </div>
+        <div class="bt4-meta-item">
+          <span class="bt4-meta-val">~200 nm</span>
+          <span class="bt4-meta-label">Longitud total (cabeza + cola)</span>
+        </div>
+        <div class="bt4-meta-item">
+          <span class="bt4-meta-val">~25 min</span>
+          <span class="bt4-meta-label">Ciclo lítico completo a 37 °C</span>
+        </div>
+      </div>
+    </div>
+    <div class="bt4-scroll-hint">
+      <span>Explorar</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- STATS ROW -->
+  <div class="bt4-container">
+    <div class="bt4-stats-row">
+      <div class="bt4-stat-card">
+        <span class="bt4-stat-val" data-target="169" data-suffix=" kb">0</span>
+        <span class="bt4-stat-label">Genoma dsDNA (168.903 pb)</span>
+      </div>
+      <div class="bt4-stat-card">
+        <span class="bt4-stat-val" data-target="289" data-suffix="">0</span>
+        <span class="bt4-stat-label">ORFs identificados (Miller et al., 2003)</span>
+      </div>
+      <div class="bt4-stat-card">
+        <span class="bt4-stat-val" data-target="150" data-suffix="+">0</span>
+        <span class="bt4-stat-label">Partículas por célula lisada (burst size)</span>
+      </div>
+      <div class="bt4-stat-card">
+        <span class="bt4-stat-val" data-target="34" data-suffix="%">0</span>
+        <span class="bt4-stat-label">Contenido G+C del genoma (~34.5%)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 1 — ESTRUCTURA 3D -->
+  <section class="bt4-section" id="estructura">
+    <div class="bt4-container">
+      <div class="bt4-section-tag tag-emerald">🔬 Estructura del Virión</div>
+      <h2 class="bt4-section-title">Anatomía del <span class="gradient">Fago T4</span> en 3D</h2>
+      <p class="bt4-section-sub">El bacteriófago T4 es un virus complejo con simetría binaria: cabeza icosaédrica prolada (simetría T=13, Q=20) que contiene el ADN y una cola helicoidal contráctil con placa basal hexagonal y fibras caudales largas. Su estructura fue revelada por cristalografía y cryo-EM (Fokine et al., 2004; Leiman et al., 2003).</p>
+
+      <div class="bt4-viewer-wrap">
+        <div>
+          <div class="bt4-canvas-box">
+            <canvas id="bt4-model-canvas"></canvas>
+            <div class="bt4-canvas-label">Fago T4 · Caudovirales · Myoviridae · ~200 nm</div>
+          </div>
+        </div>
+        <div class="bt4-struct-info">
+          <div class="bt4-struct-card" style="--stripe-color:#10b981">
+            <h4><span class="dot" style="background:#10b981"></span>Cabeza icosaédrica prolada — gp23* (T=13)</h4>
+            <p>La cabeza mide ~115 × 85 nm y tiene simetría icosaédrica prolada (elongada). La proteína mayoritaria de la cápside es gp23* (producto procesado de gen 23 por la proteasa gp21). Contiene 930 copias de gp23* organizadas en hexámeros, más 55 copias de gp24* en los vértices pentaméricos. Proteínas decorativas Hoc (highly antigenic outer capsid protein, 155 copias) y Soc (small outer capsid protein, 810 copias) estabilizan la cápside contra pH extremo y temperatura.</p>
+          </div>
+          <div class="bt4-struct-card" style="--stripe-color:#34d399">
+            <h4><span class="dot" style="background:#34d399"></span>Cola contráctil — gp18 (vaina) + gp19 (tubo)</h4>
+            <p>La cola mide ~113 nm de largo. Consiste en un tubo interno rígido (144 copias de gp19) rodeado por una vaina contráctil (144 copias de gp18). La vaina se contrae de ~113 nm a ~36 nm durante la infección, empujando el tubo interno a través de la membrana externa y el peptidoglicano de <em>E. coli</em>. El conector cabeza-cola (gp15) sella el ADN dentro de la cápside hasta la inyección.</p>
+          </div>
+          <div class="bt4-struct-card" style="--stripe-color:#a3e635">
+            <h4><span class="dot" style="background:#a3e635"></span>Placa basal hexagonal — 15+ proteínas distintas</h4>
+            <p>La placa basal es un complejo multiproteico de ~6.5 MDa formado por al menos 15 proteínas distintas (gp5–gp12, gp25, gp27, gp28, gp29, gp48, gp53, gp54). Actúa como sensor molecular: al contactar la superficie bacteriana, cambia de conformación hexagonal a forma de estrella, disparando la contracción de la vaina. El trímero gp5–gp27 forma una "aguja de perforación" con actividad lisozima que degrada localmente el peptidoglicano.</p>
+          </div>
+          <div class="bt4-struct-card" style="--stripe-color:#14b8a6">
+            <h4><span class="dot" style="background:#14b8a6"></span>Fibras caudales largas (LTF) — gp34–gp37</h4>
+            <p>Seis fibras caudales largas (~145 nm cada una) formadas por gp34, gp35, gp36 y gp37. La proteína distal gp37 reconoce receptores específicos en la superficie de <em>E. coli</em>: el lipopolisacárido (LPS) y la proteína OmpC de la membrana externa. Las LTF son estructuras articuladas que se pliegan reversiblemente durante el reconocimiento del hospedero. Fibras cortas (STF, gp12) en la placa basal proporcionan unión irreversible.</p>
+          </div>
+          <div class="bt4-struct-card" style="--stripe-color:#22d3ee">
+            <h4><span class="dot" style="background:#22d3ee"></span>ADN genómico — 168.903 pb, dsDNA lineal</h4>
+            <p>El genoma es ADN bicatenario lineal de ~169 kb, empaquetado a una densidad de ~500 mg/mL dentro de la cápside (presión interna ~6 MPa). Contiene bases modificadas: la citosina es reemplazada por 5-hidroximetilcitosina (5-hmC) glucosilada, lo que protege el ADN viral de sus propias nucleasas y de las enzimas de restricción del hospedero. El ADN se empaqueta por un motor molecular (terminasa gp16–gp17) que transloca ADN a velocidades de ~700 pb/s.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2 — CICLO LÍTICO -->
+  <section class="bt4-section" id="ciclo">
+    <div class="bt4-container">
+      <div class="bt4-section-tag tag-emerald">🦠 Ciclo de Vida</div>
+      <h2 class="bt4-section-title">Ciclo <span class="gradient">Lítico</span> del Fago T4</h2>
+      <p class="bt4-section-sub">El fago T4 es estrictamente lítico: no posee ciclo lisogénico. El ciclo completo dura ~25 minutos a 37 °C en <em>E. coli</em> B y produce ~150–200 partículas virales por célula (burst size). Es el ciclo lítico mejor caracterizado de la virología.</p>
+
+      <!-- TIMELINE CICLO LÍTICO -->
+      <div class="bt4-react-timeline">
+        <div class="bt4-rt-step">
+          <span class="bt4-rt-num" style="color:#10b981">01</span>
+          <h4>Adsorción (t=0)</h4>
+          <p>Las fibras caudales largas (gp37) reconocen LPS y OmpC en la superficie de <em>E. coli</em>. La unión es reversible inicialmente. Las fibras cortas (gp12) establecen contacto irreversible con la membrana. Velocidad de adsorción: ~2.4 × 10⁻⁹ mL/min.</p>
+        </div>
+        <div class="bt4-rt-arrow">→</div>
+        <div class="bt4-rt-step">
+          <span class="bt4-rt-num" style="color:#34d399">02</span>
+          <h4>Inyección de ADN (t=0–1 min)</h4>
+          <p>La placa basal cambia de conformación hexagonal → estrella. La vaina se contrae y el tubo interno perfora la envuelta celular. La aguja gp5-gp27 (con actividad lisozima) degrada el peptidoglicano. La presión osmótica interna (~6 MPa) impulsa los primeros ~8 kb de ADN; el resto es translocado activamente.</p>
+        </div>
+        <div class="bt4-rt-arrow">→</div>
+        <div class="bt4-rt-step">
+          <span class="bt4-rt-num" style="color:#a3e635">03</span>
+          <h4>Genes tempranos (t=1–5 min)</h4>
+          <p>La ARN polimerasa del hospedero transcribe los genes tempranos inmediatos (usando factores σ⁷⁰ del hospedero). Productos: nucleasas que degradan el ADN del hospedero, ADP-ribosiltransferasa (Alt, ModA, ModB) que modifica la RNAP del hospedero, enzimas de síntesis de 5-hmC. Shutdown completo de la transcripción/traducción bacteriana.</p>
+        </div>
+        <div class="bt4-rt-arrow">→</div>
+        <div class="bt4-rt-step">
+          <span class="bt4-rt-num" style="color:#14b8a6">04</span>
+          <h4>Replicación del ADN (t=5–12 min)</h4>
+          <p>El ADN viral se replica por recombinación-dependiente: múltiples orígenes de replicación, DNA polimerasa gp43, helicasa gp41, primasa gp61, SSB gp32 (proteína de unión a ADN monocatenario). Se producen concatámeros de ADN por recombinación homóloga mediada por UvsX (recombinasa tipo RecA).</p>
+        </div>
+        <div class="bt4-rt-arrow">→</div>
+        <div class="bt4-rt-step">
+          <span class="bt4-rt-num" style="color:#22d3ee">05</span>
+          <h4>Ensamblaje + Lisis (t=12–25 min)</h4>
+          <p>Tres vías de ensamblaje independientes: cabeza, cola y fibras. La terminasa (gp16-gp17) empaqueta ADN por mecanismo headful. La holina (gp ∈ [t gene]) forma poros en la membrana interna a ~25 min. La endolisina (gp e) degrada el peptidoglicano. Lisis celular libera ~150–200 fagos.</p>
+        </div>
+      </div>
+
+      <div class="bt4-content-grid" style="margin-top:40px">
+        <div class="bt4-content-card" style="--card-accent:#10b981">
+          <div class="bt4-card-num">Mecanismo de Infección</div>
+          <h3>Estrategia de Takeover — Secuestro Total del Hospedero</h3>
+          <ul>
+            <li><span class="bullet" style="background:#10b981"></span><strong style="color:var(--bt4-text)">Degradación del ADN del hospedero:</strong> Las endonucleasas tempranas (EndoII, EndoIV) degradan el ADN cromosómico de <em>E. coli</em> en los primeros 5 minutos. Los nucleótidos liberados son reciclados para sintetizar ADN viral. La citosina es convertida enzimáticamente a 5-hidroximetilcitosina (5-hmC) por la dCMP hidroximetilasa (gen 42) y luego glucosilada por las glucosiltransferasas α-GT (gen α-gt) y β-GT (gen β-gt).</li>
+            <li><span class="bullet" style="background:#10b981"></span><strong style="color:var(--bt4-text)">Modificación de la RNAP del hospedero:</strong> El fago T4 no codifica su propia RNAP (a diferencia de T7). En su lugar, modifica progresivamente la RNAP de <em>E. coli</em>: ADP-ribosiltransferasa Alt (inyectada con el ADN), ModA y ModB modifican la subunidad α. Los factores anti-sigma (AsiA) y los coactivadores (MotA) redirigen la RNAP hacia promotores del fago.</li>
+            <li><span class="bullet" style="background:#10b981"></span><strong style="color:var(--bt4-text)">Inhibición de la traducción del hospedero:</strong> La proteína Srd degrada el factor de traducción bacteriano IF3. El fago T4 también produce un ARNt anticodón (codon bias) que favorece la traducción de mensajeros virales ricos en codones AT, consistente con el bajo contenido G+C del genoma viral (~34.5% vs ~50.8% de <em>E. coli</em>).</li>
+            <li><span class="bullet" style="background:#10b981"></span><strong style="color:var(--bt4-text)">Sistema inmune anti-CRISPR:</strong> El fago T4 codifica al menos 6 proteínas anti-CRISPR (Acr) que inhiben los sistemas CRISPR-Cas tipo I-E y I-F de <em>E. coli</em>. Además, la glucosilación de la 5-hmC protege el ADN viral contra la mayoría de las enzimas de restricción-modificación (R-M) del hospedero — una doble estrategia de evasión inmune.</li>
+          </ul>
+        </div>
+
+        <div class="bt4-content-card" style="--card-accent:#34d399">
+          <div class="bt4-card-num">Lysis Timing — Control Temporal</div>
+          <h3>El Sistema Holina-Endolisina-Spanina</h3>
+          <ul>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--bt4-text)">Holina (gen t):</strong> La holina T4 es una proteína de membrana integral de clase I con 3 dominios transmembrana. Se acumula en la membrana interna durante la infección. A un tiempo preciso (~25 min a 37 °C), las holinas se oligomerizan formando poros de ~300 nm de diámetro → colapso del potencial de membrana (Δψ). La antihholina (gen rI) inhibe la lisis prematura si hay partículas del fago T4 adsorbidas externamente (lysis inhibition, LIN).</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--bt4-text)">Endolisina (gen e):</strong> La lisozima T4 (gp e, 164 aa) es una muramidasa que degrada el enlace β-1,4 entre N-acetilmurámico (MurNAc) y N-acetilglucosamina (GlcNAc) del peptidoglicano. No tiene péptido señal: depende completamente de la holina para acceder al periplasma. La lisozima T4 fue la segunda enzima cristalizada de la historia (Matthews & Remington, 1974).</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--bt4-text)">Spaninas (gen rI, spanina interna; gen rIII, spanina externa):</strong> Las spaninas fusionan la membrana interna y externa de <em>E. coli</em> para completar la lisis. Sin spaninas funcionales, los fagos quedan atrapados en esferoplastos. Descubiertas por el grupo de Ry Young (Texas A&M), las spaninas representan el tercer componente necesario para la lisis de bacterias Gram-negativas.</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--bt4-text)">Lysis Inhibition (LIN):</strong> Si bacterias ya están siendo infectadas por múltiples T4 (superinfección), la proteína RIII bloquea la holina desde el periplasma → la lisis se retarda hasta 3–4 horas → burst size aumenta a >1000 partículas/célula. Este fenómeno, descrito por Emory Ellis y Max Delbrück (1939), fue uno de los primeros ejemplos de comunicación viral y optimización de fitness.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3 — GENÉTICA MOLECULAR -->
+  <section class="bt4-section" id="genetica">
+    <div class="bt4-container">
+      <div class="bt4-section-tag tag-cyan">🧬 Genética Molecular</div>
+      <h2 class="bt4-section-title">El Fago T4 en la <span class="gradient">Historia</span> de la Biología Molecular</h2>
+      <p class="bt4-section-sub">El bacteriófago T4 fue protagonista de los descubrimientos más fundamentales de la genética molecular del siglo XX. Prácticamente todos los conceptos centrales de la biología molecular moderna fueron descubiertos o validados usando fagos T-par como modelo experimental.</p>
+
+      <div class="bt4-neuro-grid">
+        <div class="bt4-neuro-card" style="--neuro-color:#10b981;--neuro-dim:rgba(16,185,129,.12)">
+          <span class="bt4-neuro-icon">🧪</span>
+          <h4>Hershey-Chase (1952) — El ADN es el Material Genético</h4>
+          <p>Alfred Hershey y Martha Chase usaron el fago T2 (estrechamente emparentado con T4) marcado con ³²P (ADN) y ³⁵S (proteínas). Tras infección y agitación en licuadora Waring, demostraron que el ³²P (ADN) entraba a la bacteria mientras el ³⁵S (cápside) quedaba fuera. Confirmación definitiva de que el ADN — no las proteínas — es el material hereditario. Premio Nobel 1969 (compartido).</p>
+          <span class="bt4-neuro-detail">T2 · ³²P/³⁵S · ADN = material genético</span>
+        </div>
+        <div class="bt4-neuro-card" style="--neuro-color:#34d399;--neuro-dim:rgba(52,211,153,.12)">
+          <span class="bt4-neuro-icon">🔬</span>
+          <h4>Benzer (1955–1961) — Mapa Genético de Resolución Máxima</h4>
+          <p>Seymour Benzer usó el locus rII del fago T4 para construir el primer mapa genético de resolución nucleotídica. Demostró que el gen es divisible (concepto de cistrón vs recon vs mutón), que las mutaciones son puntuales y recombinables, y que el gen tiene una estructura lineal. Su sistema rII permitió detectar recombinantes con frecuencia de 10⁻⁸ — la resolución genética más alta jamás lograda.</p>
+          <span class="bt4-neuro-detail">Locus rII · cistrón · resolución 10⁻⁸</span>
+        </div>
+        <div class="bt4-neuro-card" style="--neuro-color:#a3e635;--neuro-dim:rgba(163,230,53,.12)">
+          <span class="bt4-neuro-icon">📐</span>
+          <h4>Crick et al. (1961) — El Código Genético es de Tripletes</h4>
+          <p>Francis Crick, Sydney Brenner, Leslie Barnett y R.J. Watts-Tobin usaron mutantes frameshift del gen rIIB del fago T4 (inducidos por proflavina) para demostrar que el código genético se lee en tripletes (codones de 3 nucleótidos), sin solapamiento ni comas, desde un punto de inicio fijo. Combinaciones de +1/+1/+1 o -1/-1/-1 restauraban el marco de lectura → prueba genética del código triplete.</p>
+          <span class="bt4-neuro-detail">Codones tripletes · frameshift · proflavina</span>
+        </div>
+        <div class="bt4-neuro-card" style="--neuro-color:#14b8a6;--neuro-dim:rgba(20,184,166,.12)">
+          <span class="bt4-neuro-icon">🧬</span>
+          <h4>Epstein et al. (1963) — Mutantes Condicionales</h4>
+          <p>Richard Epstein, Robert Edgar y colaboradores aislaron los primeros mutantes condicionales (amber, temperature-sensitive) del fago T4. Identificaron >75 genes esenciales. Los mutantes amber (codón de terminación UAG suprimible) se convirtieron en herramienta universal de la genética molecular. Edgar y Wood (1966) usaron complementación in vitro para definir las vías de ensamblaje de cabeza, cola y fibras.</p>
+          <span class="bt4-neuro-detail">Amber mutants · complementación in vitro</span>
+        </div>
+        <div class="bt4-neuro-card" style="--neuro-color:#22d3ee;--neuro-dim:rgba(34,211,238,.12)">
+          <span class="bt4-neuro-icon">✂️</span>
+          <h4>Intrones en T4 — Autocorte Tipo I (1984)</h4>
+          <p>En 1984 se descubrió que tres genes del fago T4 (td, nrdB y sunY) contienen intrones del grupo I autocatalíticos — la primera vez que se encontraron intrones fuera de eucariotas. Estos intrones se autoescinden por un mecanismo de transesterificación mediado por ARN catalítico (ribozima). Además, algunos intrones codifican endonucleasas homing (I-TevI, I-TevII) que promueven su propia diseminación por gene conversion — elementos genéticos egoístas.</p>
+          <span class="bt4-neuro-detail">Intrones grupo I · ribozimas · homing endonucleasas</span>
+        </div>
+        <div class="bt4-neuro-card" style="--neuro-color:#3b82f6;--neuro-dim:rgba(59,130,246,.12)">
+          <span class="bt4-neuro-icon">⚡</span>
+          <h4>Recombinación Homóloga — Sistema UvsX</h4>
+          <p>El fago T4 codifica su propio sistema de recombinación homóloga: UvsX (recombinasa, homóloga de RecA), UvsY (mediador de carga en ssDNA) y gp32 (SSB). Este sistema es esencial para la replicación del ADN de T4 (replicación dependiente de recombinación) y para la reparación del ADN. El sistema UvsX-UvsY-gp32 fue modelo para entender la recombinación eucariota mediada por Rad51-BRCA2-RPA.</p>
+          <span class="bt4-neuro-detail">UvsX · RecA homólogo · Rad51 modelo</span>
+        </div>
+      </div>
+
+      <!-- TABLA GENES CLAVE -->
+      <div class="bt4-section-tag tag-emerald" style="margin-top:48px">📊 Genes Esenciales del Fago T4 — Selección</div>
+      <div class="bt4-table-wrap" style="margin-top:16px">
+        <table class="bt4-table">
+          <thead>
+            <tr>
+              <th>Gen</th>
+              <th>Proteína / Producto</th>
+              <th>Función</th>
+              <th>Copias / Relevancia</th>
+              <th>Hito Histórico</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="gene-name">23</td>
+              <td class="gene-fn">gp23* (cápside mayor)</td>
+              <td>Proteína mayoritaria de la cápside icosaédrica</td>
+              <td>930 copias/virión</td>
+              <td>Primer ensamblaje viral reconstituido in vitro (Kellenberger, 1966).</td>
+            </tr>
+            <tr>
+              <td class="gene-name">18</td>
+              <td class="gene-fn">gp18 (vaina contráctil)</td>
+              <td>Forma la vaina helicoidal contráctil de la cola</td>
+              <td>144 copias (6 × 24 anillos)</td>
+              <td>Modelo para nanomáquinas contráctiles bacterianas (T6SS).</td>
+            </tr>
+            <tr>
+              <td class="gene-name">32</td>
+              <td class="gene-fn">gp32 (SSB)</td>
+              <td>Proteína de unión a ADN monocatenario; estabiliza ssDNA en replicación y recombinación</td>
+              <td>~10.000 copias/célula infectada</td>
+              <td>Primera SSB caracterizada. Modelo para RPA eucariota (Alberts & Frey, 1970).</td>
+            </tr>
+            <tr>
+              <td class="gene-name">43</td>
+              <td class="gene-fn">gp43 (DNA polimerasa)</td>
+              <td>ADN polimerasa replicativa con actividad exonucleasa 3'→5' (proofreading)</td>
+              <td>Alta fidelidad: error ~10⁻⁷/pb</td>
+              <td>Modelo de DNA pol familia B. Cristalizada (Wang et al., 2004).</td>
+            </tr>
+            <tr>
+              <td class="gene-name">rII A/B</td>
+              <td class="gene-fn">Función de lisis rápida</td>
+              <td>Lisis rápida en cepas K-12(λ); función exacta debatida (interacción con membrana)</td>
+              <td>Dos cistrines: rIIA y rIIB</td>
+              <td>Sistema de Benzer: mapa genético de máxima resolución (1955–1961).</td>
+            </tr>
+            <tr>
+              <td class="gene-name">td</td>
+              <td class="gene-fn">Timidilato sintasa</td>
+              <td>Convierte dUMP → dTMP. Contiene intrón grupo I autocatalítico</td>
+              <td>Esencial para síntesis de dTTP</td>
+              <td>Primer intrón en un genoma de fago/procariota (Chu et al., 1984).</td>
+            </tr>
+            <tr>
+              <td class="gene-name">uvsX</td>
+              <td class="gene-fn">UvsX (recombinasa)</td>
+              <td>Recombinación homóloga; forma filamentos nucleoproteicos sobre ssDNA</td>
+              <td>Homólogo funcional de RecA/Rad51</td>
+              <td>Modelo para entender recombinación eucariota mediada por Rad51.</td>
+            </tr>
+            <tr>
+              <td class="gene-name">e (lysozyme)</td>
+              <td class="gene-fn">Lisozima T4 (gp e)</td>
+              <td>Muramidasa: hidroliza enlace β-1,4 MurNAc-GlcNAc del peptidoglicano</td>
+              <td>164 aminoácidos</td>
+              <td>Segunda enzima cristalizada de la historia (Matthews & Remington, 1974).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4 — APLICACIONES -->
+  <section class="bt4-section" id="aplicaciones">
+    <div class="bt4-container">
+      <div class="bt4-section-tag tag-teal">🧬 Aplicaciones Biotecnológicas</div>
+      <h2 class="bt4-section-title">Del modelo clásico a las <span class="gradient">aplicaciones</span> modernas</h2>
+      <p class="bt4-section-sub">El fago T4 no es solo un modelo histórico: sus proteínas y su biología están en el centro de aplicaciones actuales en terapia fágica, nanotecnología, display de antígenos y biología sintética. El renacimiento de la terapia con fagos ante la crisis de resistencia antimicrobiana ha puesto al T4 de nuevo en el foco de atención.</p>
+
+      <div class="bt4-neuro-grid">
+        <div class="bt4-neuro-card" style="--neuro-color:#10b981;--neuro-dim:rgba(16,185,129,.12)">
+          <span class="bt4-neuro-icon">💊</span>
+          <h4>Terapia Fágica — Crisis de Resistencia Antimicrobiana</h4>
+          <p>Ante la crisis global de resistencia a antibióticos (~1.27 millones de muertes atribuibles en 2019, Lancet), la terapia con bacteriófagos resurge como alternativa. El fago T4 es candidato para cócteles fágicos contra infecciones por <em>E. coli</em> multirresistentes (UTI, sepsis, meningitis neonatal). Ensayos clínicos en curso en Bélgica (Phage4Cure), Francia (Phagoburn) y EE.UU. (FDA IND compassionate use). Ventajas: especificidad, autorreplicación in situ, baja toxicidad.</p>
+          <span class="bt4-neuro-detail">AMR · cócteles fágicos · FDA IND</span>
+        </div>
+        <div class="bt4-neuro-card" style="--neuro-color:#34d399;--neuro-dim:rgba(52,211,153,.12)">
+          <span class="bt4-neuro-icon">🔧</span>
+          <h4>Display en Cápside — Vacunas Multivalentes</h4>
+          <p>La cápside del T4 tolera la fusión de proteínas foráneas a Hoc (155 sitios) y Soc (810 sitios) sin perder infectividad. Esto permite crear nanopartículas de ~120 nm que despliegan antígenos de múltiples patógenos simultáneamente. El laboratorio de Venigalla Rao (Catholic University of America) ha desarrollado prototipos de vacunas T4-display contra ántrax (PA), plague (F1-V) y más recientemente SARS-CoV-2 (RBD-Soc), con respuesta inmune robusta en modelos animales.</p>
+          <span class="bt4-neuro-detail">Hoc (155) + Soc (810) · display multivalente</span>
+        </div>
+        <div class="bt4-neuro-card" style="--neuro-color:#a3e635;--neuro-dim:rgba(163,230,53,.12)">
+          <span class="bt4-neuro-icon">🧬</span>
+          <h4>Motor de Empaquetamiento — Nanotecnología</h4>
+          <p>La terminasa T4 (gp16–gp17) es uno de los motores moleculares más potentes conocidos: genera ~60 pN de fuerza y transloca ADN a ~700 pb/s. Este motor es modelo para el diseño de dispositivos nanomecánicos de transporte de ADN. Aplicaciones en curso: encapsulación de ADN terapéutico (gene delivery), biosensores de fuerza molecular, y nanocontenedores para drug delivery usando cápsides vacías de T4.</p>
+          <span class="bt4-neuro-detail">Terminasa · ~60 pN · 700 pb/s</span>
+        </div>
+        <div class="bt4-neuro-card" style="--neuro-color:#14b8a6;--neuro-dim:rgba(20,184,166,.12)">
+          <span class="bt4-neuro-icon">🛡️</span>
+          <h4>Seguridad Alimentaria y Biocontrol</h4>
+          <p>Los fagos T4-like (T4, T2, RB69 y cientos de fagos ambientales de la misma familia) son usados en preparaciones comerciales para biocontrol de <em>E. coli</em> O157:H7 en alimentos. La FDA otorgó estatus GRAS (Generally Recognized as Safe) a preparaciones fágicas para uso en alimentos en 2006. El fago T4 no integra su genoma en el hospedero (no hay riesgo de transducción de genes de virulencia) y no infecta células eucariotas — perfil de seguridad ideal.</p>
+          <span class="bt4-neuro-detail">GRAS · FDA 2006 · biocontrol E. coli</span>
+        </div>
+        <div class="bt4-neuro-card" style="--neuro-color:#22d3ee;--neuro-dim:rgba(34,211,238,.12)">
+          <span class="bt4-neuro-icon">⚡</span>
+          <h4>Biología Sintética — Genoma Mínimo de T4</h4>
+          <p>El genoma de T4 contiene ~130 genes no esenciales en condiciones de laboratorio. Proyectos de biología sintética buscan crear un "T4 mínimo" que retenga solo los ~80 genes esenciales para la replicación autónoma. Craig Venter Institute y otros laboratorios exploran la síntesis completa del genoma de T4 (~169 kb) como paso hacia la creación de fagos sintéticos diseñados para aplicaciones específicas (fagos programados contra bacterias resistentes).</p>
+          <span class="bt4-neuro-detail">~80 genes esenciales · genoma sintético</span>
+        </div>
+        <div class="bt4-neuro-card" style="--neuro-color:#3b82f6;--neuro-dim:rgba(59,130,246,.12)">
+          <span class="bt4-neuro-icon">🔬</span>
+          <h4>Herramientas de Laboratorio Derivadas de T4</h4>
+          <p>Múltiples herramientas moleculares derivan de T4: T4 DNA Ligasa (la más usada en clonación molecular), T4 Polinucleótido Kinasa (PNK, fosforilación de extremos 5'), T4 DNA Polimerasa (fill-in de extremos 3'), T4 RNA Ligasa (ligación de ARN, esencial para RNA-seq). Estas enzimas son productos comerciales multimillonarios (NEB, Thermo Fisher) y forman parte del kit básico de cualquier laboratorio de biología molecular.</p>
+          <span class="bt4-neuro-detail">T4 DNA Ligasa · PNK · DNA Pol · RNA Ligasa</span>
+        </div>
+      </div>
+
+      <!-- CALLOUT -->
+      <div class="bt4-callout">
+        <h3>🎓 El Fago T4 en la Formación Universitaria — Relevancia para Estudiantes de Ciencias</h3>
+        <p>
+          El bacteriófago T4 es <strong>el organismo modelo que construyó la biología molecular</strong>. Para el estudiante de bioquímica, biotecnología, microbiología o farmacia, entender el T4 es entender los fundamentos: 
+          <strong>la prueba de que el ADN es el material hereditario</strong> (Hershey-Chase), 
+          <strong>la naturaleza del código genético</strong> (Crick-Brenner), 
+          <strong>la estructura fina del gen</strong> (Benzer), 
+          <strong>la recombinación genética</strong> (Streisinger, Meselson),
+          y <strong>los mecanismos de ensamblaje de nanoestructuras biológicas</strong> (Edgar-Wood).
+          Hoy, el T4 sigue siendo relevante: la <strong>terapia fágica</strong> es una de las estrategias más prometedoras contra la resistencia antimicrobiana, 
+          las <strong>enzimas de T4</strong> (DNA Ligasa, PNK, DNA Pol) son herramientas fundamentales de cualquier laboratorio, 
+          y la <strong>plataforma de display en cápside</strong> abre caminos para vacunas de nueva generación.
+          El nivel de bioseguridad es <strong>BSL-1</strong> — puede trabajarse en cualquier laboratorio docente universitario.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM NAV -->
+  <div class="bt4-container" style="padding-bottom:60px">
+    <div class="bt4-bottom-nav">
+      <a href="../index.html" class="bt4-nav-btn">← Volver a Virología</a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#estructura"   class="bt4-nav-btn">Estructura 3D ↑</a>
+        <a href="#ciclo"        class="bt4-nav-btn">Ciclo Lítico ↑</a>
+        <a href="#genetica"     class="bt4-nav-btn">Genética Molecular ↑</a>
+        <a href="#aplicaciones" class="bt4-nav-btn">Aplicaciones ↑</a>
+      </div>
+      <a href="../../index.html" class="bt4-nav-btn">Inicio →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bt4-footer">
+    <div class="bt4-container">
+      <div class="bt4-footer-inner">
+        <p>© 2026 PharmaLab Chile · Basado en Miller et al. (2003) J. Bacteriol., Fokine & Rossmann (2014) Nat. Rev. Microbiol., Leiman et al. (2003) Cell. Mol. Life Sci., Kutter & Sulakvelidze (2004) Bacteriophages: Biology and Applications</p>
+        <p class="disclaimer">Contenido educacional universitario. No reemplaza bibliografía ni protocolos oficiales de laboratorio.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="bacteriofago.js"></script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmacia — PharmaLab Chile</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="farmacia.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body class="module-farmacia">
+
+    <!-- NAVBAR -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                        <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+                        <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+                        <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../quimica/index.html" class="nav-link" data-module="quimica">
+                    <span class="nav-link-icon">⚗️</span> Química
+                </a>
+                <a href="../farmacia/index.html" class="nav-link active" data-module="farmacia">
+                    <span class="nav-link-icon">💊</span> Farmacia
+                </a>
+                <a href="../quimica-farmaceutica/index.html" class="nav-link" data-module="qf">
+                    <span class="nav-link-icon">🧬</span> Q. Farmacéutica
+                </a>
+                <a href="../biotecnologia/index.html" class="nav-link" data-module="biotech">
+                    <span class="nav-link-icon">🔬</span> Biotecnología
+                </a>
+                <a href="../virologia/index.html" class="nav-link" data-module="virologia">
+                    <span class="nav-link-icon">🦠</span> Virología
+                </a>
+                <a href="../bioquimica/index.html" class="nav-link active" data-module="bioquimica">
+                    <span class="nav-link-icon">🧪</span> Bioquímica
+                </a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MODULE HERO con canvas 3D -->
+    <section class="module-hero farmacia-hero">
+        <canvas id="farmaciaCanvas3D"></canvas>
+        <div class="hero-content">
+            <span class="section-tag">Módulo 02</span>
+            <h1 class="section-title">Farmacia <span class="text-gradient-farmacia">Clínica y Regulatoria</span></h1>
+            <p class="section-desc">Legislación farmacéutica chilena, atención farmacéutica, dispensación responsable, receta médica, medicamentos controlados, regulación ISP y el rol del Químico Farmacéutico.</p>
+            <div class="hero-stats-farmacia">
+                <div class="hstat">
+                    <span class="hstat-num">4</span>
+                    <span class="hstat-label">Unidades</span>
+                </div>
+                <div class="hstat">
+                    <span class="hstat-num">ISP</span>
+                    <span class="hstat-label">Normativa Vigente</span>
+                </div>
+                <div class="hstat">
+                    <span class="hstat-num">2026</span>
+                    <span class="hstat-label">Actualizado</span>
+                </div>
+            </div>
+        </div>
+        <!-- Pill flotante decorativo -->
+        <div class="pill-float p1">💊</div>
+        <div class="pill-float p2">Rx</div>
+        <div class="pill-float p3">ISP</div>
+        <div class="pill-float p4">QF</div>
+        <div class="pill-float p5">BPM</div>
+    </section>
+
+    <!-- DESTACADOS RÁPIDOS -->
+    <section class="farmacia-highlights">
+        <div class="container">
+            <div class="highlights-grid">
+                <a href="contenido/fundamentos/rol-qf/index.html" class="highlight-card">
+                    <div class="highlight-icon">👨‍⚕️</div>
+                    <h4>Rol del QF</h4>
+                    <p>El Químico Farmacéutico es el profesional universitario responsable legal de la farmacia según el Código Sanitario.</p>
+                </a>
+                <a href="contenido/fundamentos/receta-medica/index.html" class="highlight-card">
+                    <div class="highlight-icon">📋</div>
+                    <h4>Receta Médica</h4>
+                    <p>Documento legal que autoriza la dispensación. Existen 4 tipos en Chile: Simple, Retenida, Cheque y Magistral.</p>
+                </a>
+                <a href="contenido/fundamentos/medicamentos-controlados/index.html" class="highlight-card">
+                    <div class="highlight-icon">🔒</div>
+                    <h4>Controlados</h4>
+                    <p>Estupefacientes y psicotrópicos regulados por el D.S. 404/1984 y D.S. 405/1984 del Ministerio de Salud.</p>
+                </a>
+                <a href="contenido/fundamentos/atencion-farmaceutica/index.html" class="highlight-card">
+                    <div class="highlight-icon">🏥</div>
+                    <h4>Atención Farmacéutica</h4>
+                    <p>Servicio centrado en el paciente para optimizar la farmacoterapia y mejorar resultados en salud.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT CARDS -->
+    <section class="module-content">
+        <div class="container">
+            <div class="section-header" style="margin-bottom:48px">
+                <span class="section-tag">Plan de Estudio</span>
+                <h2 class="section-title">4 Unidades <span class="text-gradient-farmacia">Especializadas</span></h2>
+                <p class="section-desc">Cada unidad cubre en profundidad los pilares del ejercicio farmacéutico en Chile.</p>
+            </div>
+            <div class="content-grid">
+                <a href="contenido/legislacion.html" class="content-card farmacia-card">
+                    <div class="card-number-badge">01</div>
+                    <span class="card-tag tag-farmacia">Unidad 1</span>
+                    <h3>Legislación Farmacéutica Chilena</h3>
+                    <p>Código Sanitario, Reglamento del Sistema Nacional de Control de Productos Farmacéuticos (D.S. 3/2010), Ley Ricarte Soto y toda la normativa que rige los medicamentos en Chile.</p>
+                    <div class="card-topics">
+                        <span>Código Sanitario</span>
+                        <span>D.S. 3/2010</span>
+                        <span>Ley Ricarte Soto</span>
+                        <span>Registro Sanitario</span>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </a>
+                <a href="contenido/dispensacion.html" class="content-card farmacia-card">
+                    <div class="card-number-badge">02</div>
+                    <span class="card-tag tag-farmacia">Unidad 2</span>
+                    <h3>Dispensación, Atención Farmacéutica y Receta</h3>
+                    <p>Proceso de dispensación paso a paso, tipos de receta médica, medicamentos controlados, atención farmacéutica centrada en el paciente y rol del Químico Farmacéutico.</p>
+                    <div class="card-topics">
+                        <span>Atención Farmacéutica</span>
+                        <span>Receta Médica</span>
+                        <span>Controlados</span>
+                        <span>Rol del QF</span>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </a>
+                <a href="contenido/regulacion-isp.html" class="content-card farmacia-card">
+                    <div class="card-number-badge">03</div>
+                    <span class="card-tag tag-farmacia">Unidad 3</span>
+                    <h3>Regulación ISP</h3>
+                    <p>Instituto de Salud Pública de Chile: registro sanitario, bioequivalencia, farmacovigilancia, fiscalización y control de calidad de medicamentos según normativa vigente.</p>
+                    <div class="card-topics">
+                        <span>Registro ISP</span>
+                        <span>Bioequivalencia</span>
+                        <span>Farmacovigilancia</span>
+                        <span>Fiscalización</span>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </a>
+                <a href="contenido/buenas-practicas.html" class="content-card farmacia-card">
+                    <div class="card-number-badge">04</div>
+                    <span class="card-tag tag-farmacia">Unidad 4</span>
+                    <h3>Buenas Prácticas BPM / BPL / BPA</h3>
+                    <p>Buenas Prácticas de Manufactura, Laboratorio y Almacenamiento según normativa chilena vigente, estándares OMS, ICH y GMP internacionales.</p>
+                    <div class="card-topics">
+                        <span>BPM</span>
+                        <span>BPL</span>
+                        <span>BPA</span>
+                        <span>OMS / ICH</span>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3D INTERACTIVA -->
+    <section class="farmacia-3d-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Visualización Interactiva</span>
+                <h2 class="section-title">Molécula <span class="text-gradient-farmacia">Farmacológica 3D</span></h2>
+                <p class="section-desc">Explora la representación 3D de una molécula farmacéutica. Arrastra para rotar.</p>
+            </div>
+            <div class="canvas-3d-wrapper">
+                <canvas id="molecula3D"></canvas>
+                <div class="canvas-3d-labels">
+                    <div class="mol-label ml1">Paracetamol<br><small>C₈H₉NO₂</small></div>
+                    <div class="mol-legend">
+                        <span class="atom-dot a-c"></span> Carbono
+                        <span class="atom-dot a-h"></span> Hidrógeno
+                        <span class="atom-dot a-n"></span> Nitrógeno
+                        <span class="atom-dot a-o"></span> Oxígeno
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NORMATIVA RÁPIDA -->
+    <section class="normativa-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Marco Legal</span>
+                <h2 class="section-title">Normativa <span class="text-gradient-farmacia">Chilena Vigente</span></h2>
+            </div>
+            <div class="normativa-grid">
+                <div class="normativa-item">
+                    <span class="norm-code">D.F.L. Nº 725</span>
+                    <h4>Código Sanitario</h4>
+                    <p>Base legal de toda la actividad sanitaria en Chile. Regula el ejercicio de las profesiones de la salud y establece requisitos para farmacias.</p>
+                </div>
+                <div class="normativa-item">
+                    <span class="norm-code">D.S. 3/2010</span>
+                    <h4>Reglamento SNC Farmacéutico</h4>
+                    <p>Regula el sistema nacional de control de productos farmacéuticos, cosméticos y otros de uso humano.</p>
+                </div>
+                <div class="normativa-item">
+                    <span class="norm-code">D.S. 404/1984</span>
+                    <h4>Reglamento Estupefacientes</h4>
+                    <p>Controla la producción, fabricación, elaboración, distribución y dispensación de sustancias estupefacientes.</p>
+                </div>
+                <div class="normativa-item">
+                    <span class="norm-code">D.S. 405/1984</span>
+                    <h4>Reglamento Psicotrópicos</h4>
+                    <p>Regula las sustancias psicotrópicas, sus precursores y las actividades relacionadas con estas.</p>
+                </div>
+                <div class="normativa-item">
+                    <span class="norm-code">Ley 20.850</span>
+                    <h4>Ley Ricarte Soto</h4>
+                    <p>Sistema de protección financiera para diagnósticos y tratamientos de alto costo. Vigente desde 2015.</p>
+                </div>
+                <div class="normativa-item">
+                    <span class="norm-code">Ley 20.724</span>
+                    <h4>Ley de Fármacos I</h4>
+                    <p>Modificación del Código Sanitario para regular precios, stock y prescripción por Denominación Común Internacional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../index.html" class="nav-logo">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/><circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/><line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/><line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/><line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/></svg>
+                        </div>
+                        <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+                    </a>
+                    <p>Módulo de Farmacia — Plataforma educacional para estudiantes universitarios chilenos.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Unidades</h4>
+                    <a href="contenido/legislacion.html">Legislación Farmacéutica</a>
+                    <a href="contenido/dispensacion.html">Dispensación y Receta</a>
+                    <a href="contenido/regulacion-isp.html">Regulación ISP</a>
+                    <a href="contenido/buenas-practicas.html">BPM / BPL / BPA</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Módulos</h4>
+                    <a href="../quimica/index.html">Química</a>
+                    <a href="../quimica-farmaceutica/index.html">Q. Farmacéutica</a>
+                    <a href="../biotecnologia/index.html">Biotecnología</a>
+                    <a href="../index.html">Inicio</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 PharmaLab Chile — Módulo de Farmacia</p>
+                <p class="footer-disclaimer">Contenido educacional actualizado según normativas ISP y MINSAL vigentes. No reemplaza asesoría profesional.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="farmacia.js"></script>
+</body>
+</html>

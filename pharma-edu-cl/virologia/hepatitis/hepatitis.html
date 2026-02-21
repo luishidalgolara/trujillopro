@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virus de la Hepatitis B (VHB) — Hígado, Cirrosis y Salud Pública | PharmaLab Chile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hepatitis.css">
+</head>
+<body class="hep-page">
+
+  <!-- NAVBAR -->
+  <nav class="hep-navbar" id="hep-navbar">
+    <div class="hep-nav-inner">
+      <a href="../../index.html" class="hep-nav-logo">
+        <svg viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        Pharma<span class="accent">Lab</span>
+      </a>
+      <div class="hep-nav-links" id="hepNavLinks">
+        <a href="../index.html">← Virología</a>
+        <a href="../../quimica/index.html">Química</a>
+        <a href="../../farmacia/index.html">Farmacia</a>
+        <a href="../../biotecnologia/index.html">Biotecnología</a>
+        <a href="#" class="active">Hepatitis B</a>
+      </div>
+      <button class="hep-nav-toggle" id="hepNavToggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hep-hero">
+    <div class="hep-hero-bg"></div>
+    <canvas id="hep-hero-canvas"></canvas>
+    <div class="hep-hero-content">
+      <div class="hep-badge">Virología · Patógeno 06/10</div>
+      <h1 class="hep-hero-title">
+        <span class="accent">Virus de la Hepatitis B</span><br>
+        VHB — Hepadnaviridae
+      </h1>
+      <p class="hep-hero-desc">
+        Virus ADN de doble cadena parcial que infecta exclusivamente hepatocitos humanos. 
+        Con <strong>296 millones de personas infectadas crónicamente</strong> (OMS 2022) y 
+        ~820.000 muertes anuales por cirrosis y carcinoma hepatocelular, es uno de los 
+        patógenos con mayor impacto en salud pública global. Tiene vacuna efectiva desde 1982 
+        pero aún carece de cura definitiva.
+      </p>
+      <div class="hep-hero-meta">
+        <div class="hep-meta-item">
+          <span class="hep-meta-val">~3,2 kb</span>
+          <span class="hep-meta-label">Genoma ADN circular relajado</span>
+        </div>
+        <div class="hep-meta-item">
+          <span class="hep-meta-val">296 M</span>
+          <span class="hep-meta-label">Infectados crónicos (OMS 2022)</span>
+        </div>
+        <div class="hep-meta-item">
+          <span class="hep-meta-val">BSL-2</span>
+          <span class="hep-meta-label">Nivel de bioseguridad</span>
+        </div>
+      </div>
+    </div>
+    <div class="hep-scroll-hint">
+      <span>Explorar</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- STATS ROW -->
+  <div class="hep-container">
+    <div class="hep-stats-row">
+      <div class="hep-stat-card">
+        <span class="hep-stat-val" data-target="296" data-suffix=" M">0</span>
+        <span class="hep-stat-label">Infectados crónicos globales</span>
+      </div>
+      <div class="hep-stat-card">
+        <span class="hep-stat-val" data-target="820" data-suffix=" k">0</span>
+        <span class="hep-stat-label">Muertes anuales (cirrosis + CHC)</span>
+      </div>
+      <div class="hep-stat-card">
+        <span class="hep-stat-val" data-target="25" data-suffix="%">0</span>
+        <span class="hep-stat-label">Infec. crónicas → cirrosis/CHC</span>
+      </div>
+      <div class="hep-stat-card">
+        <span class="hep-stat-val" data-target="95" data-suffix="%">0</span>
+        <span class="hep-stat-label">Eficacia vacuna anti-HBs</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 1 — ESTRUCTURA 3D -->
+  <section class="hep-section" id="estructura">
+    <div class="hep-container">
+      <div class="hep-section-tag tag-orange">🔬 Estructura del Virión</div>
+      <h2 class="hep-section-title">Anatomía del <span class="gradient">VHB (Partícula Dane)</span> en 3D</h2>
+      <p class="hep-section-sub">El virión completo infeccioso se llama "partícula Dane" (42 nm). Coexiste en sangre con partículas subvirales (filamentos y esferas de 22 nm) en concentraciones hasta 10.000 veces mayores que los viriones. Arrastra para rotar, scroll para zoom.</p>
+
+      <div class="hep-viewer-wrap">
+        <div>
+          <div class="hep-canvas-box">
+            <canvas id="hep-model-canvas"></canvas>
+            <div class="hep-canvas-label">VHB · Partícula Dane (42 nm)</div>
+          </div>
+          <p style="font-size:.78rem;color:#5a6478;margin-top:10px">🖱️ Arrastra para rotar · Scroll para zoom</p>
+        </div>
+        <div class="hep-struct-info">
+          <div class="hep-struct-card" style="--stripe-color:#f97316">
+            <h4><span class="dot" style="background:#f97316"></span> HBsAg — Antígeno de Superficie</h4>
+            <p>Glicoproteína de envoltura en 3 formas (L, M, S) codificada por el gen S. HBsAg es el marcador serológico de infección activa (aguda o crónica). Su detección persistente >6 meses define la infección crónica. Es el antígeno vacunal: la vacuna contiene HBsAg recombinante (proteína S) que induce anti-HBs neutralizantes. Las partículas subvirales de 22 nm son HBsAg sola, sin genoma.</p>
+          </div>
+          <div class="hep-struct-card" style="--stripe-color:#fb923c">
+            <h4><span class="dot" style="background:#fb923c"></span> HBcAg / HBeAg — Antígenos del Core</h4>
+            <p>HBcAg: proteína de la nucleocápside icosaédrica interna (T=4). No circula libre; solo detectable por biopsia. Anti-HBc (IgM) aparece en infección aguda; IgG persiste de por vida. HBeAg: proteína precore secretada, marcador de replicación activa y alta transmisibilidad. Anti-HBe = seroconversión, menor replicación. Mutantes precore (G1896A) son HBeAg negativas con replicación activa.</p>
+          </div>
+          <div class="hep-struct-card" style="--stripe-color:#fbbf24">
+            <h4><span class="dot" style="background:#fbbf24"></span> ADN-P — Polimerasa viral multifuncional</h4>
+            <p>Proteína de 90 kDa con 4 dominios: proteína terminal (TP, ceba la síntesis), spacer, dominio RT (transcriptasa inversa, sintetiza ADN desde ARN pregenómico) y RNasa H (degrada el molde ARN). La RT es el target de análogos de nucleós(t)idos (tenofovir, entecavir). Carece de función exonucleasa proofreading → tasa de mutación similar a retrovirus.</p>
+          </div>
+          <div class="hep-struct-card" style="--stripe-color:#34d399">
+            <h4><span class="dot" style="background:#34d399"></span> Genoma: ADN circular relajado (rcDNA) y cccDNA</h4>
+            <p>El rcDNA (~3,2 kb) tiene cadena larga (−) completa y cadena corta (+) incompleta. En el núcleo se repara a cccDNA (covalently closed circular DNA): el reservorio viral persistente, resistente a todos los antivirales actuales. Una célula infectada mantiene 5–50 copias de cccDNA como mini-cromosoma unido a histonas. La eliminación del cccDNA es el objetivo de la cura funcional del VHB.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2 — HÍGADO Y PATOLOGÍA -->
+  <section class="hep-section" id="higado">
+    <div class="hep-container">
+      <div class="hep-section-tag tag-orange">🫁 Tema 1 · Patología Hepática</div>
+      <h2 class="hep-section-title">El VHB y el <span class="gradient">Hígado</span></h2>
+      <p class="hep-section-sub">El hígado es el único órgano blanco del VHB. El virus es en sí mismo poco citopático — el daño hepático es principalmente inmunomediado, causado por la respuesta citotóxica del huésped contra los hepatocitos infectados.</p>
+
+      <div class="hep-content-grid">
+
+        <div class="hep-content-card" style="--card-accent:#f97316">
+          <div class="hep-card-num">Patogenia 01</div>
+          <h3>Ciclo Replicativo en el Hepatocito</h3>
+          <ul>
+            <li><span class="bullet" style="background:#f97316"></span><strong style="color:var(--hep-text)">Entrada celular:</strong> El receptor de entrada es NTCP (sodium taurocholate cotransporting polypeptide, SLC10A1) — identificado por Stephan Urban en 2012. La proteína preS1 del HBsAg-L se une a NTCP con alta afinidad. NTCP está expresado casi exclusivamente en hepatocitos humanos y de primates → tropismo estricto. Bulevirtide (aprobado EMA 2020) inhibe este paso.</li>
+            <li><span class="bullet" style="background:#f97316"></span><strong style="color:var(--hep-text)">Formación del cccDNA:</strong> El rcDNA se transporta al núcleo y es reparado por enzimas celulares → cccDNA. El cccDNA sirve como molde para todos los ARNm virales, incluido el ARN pregenómico (pgRNA, 3,5 kb) que es encapsidado y copiado a rcDNA por la RT.</li>
+            <li><span class="bullet" style="background:#f97316"></span><strong style="color:var(--hep-text)">Amplificación intranuclear:</strong> Parte de los nuevos rcDNA son transportados de vuelta al núcleo (en lugar de ser secretados) → aumentan el pool de cccDNA. Este mecanismo de amplificación hace que el cccDNA sea muy difícil de eliminar y persiste incluso con antivirales que suprimen la RT.</li>
+            <li><span class="bullet" style="background:#f97316"></span><strong style="color:var(--hep-text)">Integración:</strong> A diferencia de los retrovirus, la integración del ADN del VHB no es parte necesaria del ciclo replicativo. Ocurre accidentalmente en infección crónica → puede activar oncogenes (TERT, MYC) o inactivar genes supresores de tumor → contribuye a la hepatocarcinogénesis.</li>
+          </ul>
+        </div>
+
+        <div class="hep-content-card" style="--card-accent:#fb923c">
+          <div class="hep-card-num">Patogenia 02</div>
+          <h3>Historia Natural de la Infección</h3>
+          <ul>
+            <li><span class="bullet" style="background:#fb923c"></span><strong style="color:var(--hep-text)">Infección aguda:</strong> Período de incubación 45–180 días. 70% asintomáticos. 30% hepatitis ictérica (fatiga, ictericia, náuseas). ALT puede superar 1.000–5.000 U/L. <1% evoluciona a hepatitis fulminante (fallo hepático agudo, mortalidad >80% sin trasplante). El 95% de los adultos inmunocompetentes recupera completamente y desarrolla anti-HBs.</li>
+            <li><span class="bullet" style="background:#fb923c"></span><strong style="color:var(--hep-text)">Cronificación por edad:</strong> El riesgo de cronificación depende críticamente de la edad de infección: neonatos (90%), lactantes 1–5 años (25–30%), adultos inmunocompetentes (<5%). Esta diferencia explica la importancia de la vacunación al nacer (dosis "birth dose").</li>
+            <li><span class="bullet" style="background:#fb923c"></span><strong style="color:var(--hep-text)">Fases de la infección crónica:</strong> La EASL 2017 define 5 fases: (1) HBeAg+ con inflamación mínima (inmunotolerancia), (2) HBeAg+ hepatitis crónica activa (clearance inmune), (3) HBeAg− con carga viral baja (portador inactivo), (4) HBeAg− hepatitis crónica activa (mutante precore), (5) HBsAg negativo con anti-HBc+ (infección oculta).</li>
+            <li><span class="bullet" style="background:#fb923c"></span><strong style="color:var(--hep-text)">Coinfección VHB/VHD:</strong> El virus de la hepatitis D (VHD/delta) es un virión defectivo que requiere la envoltura de VHB para replicar. Superinfección VHD en portador crónico VHB → hepatitis grave, aceleración de cirrosis, mayor riesgo de CHC. Bulevirtide también inhibe la entrada de VHD (mismo receptor NTCP).</li>
+          </ul>
+        </div>
+
+        <div class="hep-content-card" style="--card-accent:#fbbf24">
+          <div class="hep-card-num">Complicaciones</div>
+          <h3>Diagnóstico Serológico y Marcadores</h3>
+          <p>La serología del VHB es compleja. Los diferentes marcadores tienen significados diagnósticos y pronósticos precisos que definen el manejo clínico.</p>
+          <ul>
+            <li><span class="bullet" style="background:#fbbf24"></span><strong style="color:var(--hep-text)">HBsAg (+):</strong> Infección activa (aguda o crónica). Persiste >6 meses = crónica.</li>
+            <li><span class="bullet" style="background:#fbbf24"></span><strong style="color:var(--hep-text)">Anti-HBs (+):</strong> Inmunidad (post-vacunal o post-infección resuelta). Nivel protector ≥10 mUI/mL.</li>
+            <li><span class="bullet" style="background:#fbbf24"></span><strong style="color:var(--hep-text)">Anti-HBc IgM (+):</strong> Infección aguda reciente. Anti-HBc IgG (+) = infección pasada o crónica.</li>
+            <li><span class="bullet" style="background:#fbbf24"></span><strong style="color:var(--hep-text)">HBeAg (+):</strong> Alta replicación, alta transmisibilidad. Anti-HBe (+) = seroconversión favorable.</li>
+            <li><span class="bullet" style="background:#fbbf24"></span><strong style="color:var(--hep-text)">ADN-VHB (PCR cuantitativo):</strong> Carga viral. Guía inicio y respuesta al tratamiento antiviral. Niveles > 2.000 UI/mL en portador inactivo sugieren reactivación.</li>
+            <li><span class="bullet" style="background:#fbbf24"></span><strong style="color:var(--hep-text)">"Ventana serológica":</strong> Período entre desaparición de HBsAg y aparición de anti-HBs. Solo anti-HBc IgM (+). Un paciente puede parecer "negativo" — solo PCR detecta el virus.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3 — CIRROSIS Y CHC -->
+  <section class="hep-section" id="cirrosis">
+    <div class="hep-container">
+      <div class="hep-section-tag tag-red">🎗️ Tema 2 · Cirrosis y Carcinoma Hepatocelular</div>
+      <h2 class="hep-section-title">De la Inflamación Crónica al <span class="gradient">Cáncer de Hígado</span></h2>
+      <p class="hep-section-sub">El VHB es la principal causa de cirrosis y carcinoma hepatocelular (CHC) en el mundo. El CHC asociado a VHB puede desarrollarse incluso SIN cirrosis previa — característica única entre los virus hepatotropos.</p>
+
+      <!-- PROGRESIÓN TIMELINE -->
+      <div class="hep-progress-bar">
+        <div class="hep-prog-step">
+          <div class="hep-prog-dot" style="background:#f97316"></div>
+          <div class="hep-prog-label">Hepatitis<br>Crónica</div>
+          <div class="hep-prog-sub">Inflamación persistente · ALT elevada</div>
+        </div>
+        <div class="hep-prog-line"></div>
+        <div class="hep-prog-step">
+          <div class="hep-prog-dot" style="background:#fb923c"></div>
+          <div class="hep-prog-label">Fibrosis<br>F1–F3</div>
+          <div class="hep-prog-sub">Activación de células estrelladas · Colágeno</div>
+        </div>
+        <div class="hep-prog-line"></div>
+        <div class="hep-prog-step">
+          <div class="hep-prog-dot" style="background:#ef4444"></div>
+          <div class="hep-prog-label">Cirrosis<br>F4</div>
+          <div class="hep-prog-sub">Nódulos regenerativos · HT portal</div>
+        </div>
+        <div class="hep-prog-line"></div>
+        <div class="hep-prog-step">
+          <div class="hep-prog-dot" style="background:#dc2626"></div>
+          <div class="hep-prog-label">CHC</div>
+          <div class="hep-prog-sub">Carcinoma hepatocelular</div>
+        </div>
+      </div>
+
+      <div class="hep-content-grid" style="margin-top:48px">
+
+        <div class="hep-content-card" style="--card-accent:#ef4444">
+          <div class="hep-card-num">Cirrosis</div>
+          <h3>Fisiopatología de la Cirrosis por VHB</h3>
+          <ul>
+            <li><span class="bullet" style="background:#ef4444"></span><strong style="color:var(--hep-text)">Mecanismo de fibrosis:</strong> La inflamación crónica mediada por LT CD8+ citotóxicos (que destruyen hepatocitos infectados) activa las células estrelladas hepáticas (HSC/células de Ito). Las HSC activadas se trandiferencian a miofibroblastos que producen colágeno tipo I y III → depósito fibrótico progresivo → distorsión de la arquitectura lobular.</li>
+            <li><span class="bullet" style="background:#ef4444"></span><strong style="color:var(--hep-text)">Evaluación de fibrosis:</strong> Biopsia hepática (gold standard, escala METAVIR F0-F4). Métodos no invasivos: Fibroscan (elastografía transitoria, medición en kPa), APRI (relación AST/plaquetas), FIB-4 (edad × AST/plaquetas × ALT^0.5). Orientan la indicación de tratamiento antiviral.</li>
+            <li><span class="bullet" style="background:#ef4444"></span><strong style="color:var(--hep-text)">Complicaciones de la cirrosis:</strong> Hipertensión portal → varices esofágicas (riesgo de hemorragia variceal), ascitis (transudado por HTP + hipoalbuminemia), encefalopatía hepática, síndrome hepatorrenal. Child-Pugh y MELD-Na son los scores pronósticos fundamentales (orientan lista de trasplante).</li>
+            <li><span class="bullet" style="background:#ef4444"></span><strong style="color:var(--hep-text)">Reversibilidad:</strong> La fibrosis hepática es parcialmente reversible con supresión viral sostenida (antivirales). Estudios muestran regresión histológica de fibrosis avanzada (F3→F1/F2) tras años de tratamiento con tenofovir o entecavir. La cirrosis establecida puede mejorar pero raramente se revierte completamente.</li>
+          </ul>
+        </div>
+
+        <div class="hep-content-card" style="--card-accent:#dc2626">
+          <div class="hep-card-num">Carcinoma Hepatocelular (CHC)</div>
+          <h3>VHB y Cáncer de Hígado</h3>
+          <ul>
+            <li><span class="bullet" style="background:#dc2626"></span><strong style="color:var(--hep-text)">Epidemiología:</strong> El CHC es el 6° cáncer más frecuente y la 3ª causa de muerte por cáncer en el mundo (IARC 2022). Aproximadamente 600.000 casos nuevos/año. VHB es responsable del ~50–55% de todos los CHC globales, especialmente en Asia y África subsahariana. VHC del ~25% y alcohol del ~15%.</li>
+            <li><span class="bullet" style="background:#dc2626"></span><strong style="color:var(--hep-text)">Mecanismos oncogénicos:</strong> (1) Inflamación crónica con daño oxidativo al ADN. (2) Integración del ADN viral con activación de oncogenes (inserción en TERT, MYC, CCNE1). (3) Proteína HBx (transactivador viral): activa NF-κB, Wnt/β-catenina, inhibe p53, activa mTOR → proliferación sin apoptosis. (4) VHB puede causar CHC SIN cirrosis (20–30% de CHC-VHB), lo que lo diferencia del VHC.</li>
+            <li><span class="bullet" style="background:#dc2626"></span><strong style="color:var(--hep-text)">Vigilancia y diagnóstico:</strong> Pacientes con cirrosis o VHB con riesgo elevado: ecografía abdominal + AFP cada 6 meses. Diagnóstico radiológico (sin biopsia): TC con contraste o RM dinámicas con contraste hepatoespecífico — criterio LI-RADS 5 = diagnóstico de CHC. AFP >400 ng/mL en cirrótico = diagnóstico presuntivo.</li>
+            <li><span class="bullet" style="background:#dc2626"></span><strong style="color:var(--hep-text)">Tratamiento CHC:</strong> Estadificación BCLC (Barcelona Clinic Liver Cancer). Estadio muy temprano/temprano (BCLC 0-A): resección quirúrgica, ablación por radiofrecuencia (ARF), trasplante hepático (criterios Milán). Estadio intermedio (BCLC-B): TACE (quimioembolización transarterial). Avanzado (BCLC-C): sorafenib, lenvatinib (primera línea), atezolizumab+bevacizumab (IMbrave150, 2020), tremelimumab+durvalumab (HIMALAYA, 2022).</li>
+          </ul>
+        </div>
+
+        <div class="hep-content-card" style="--card-accent:#f97316">
+          <div class="hep-card-num">Tratamiento Antiviral</div>
+          <h3>Antivirales contra el VHB — ¿Cura o Control?</h3>
+          <ul>
+            <li><span class="bullet" style="background:#f97316"></span><strong style="color:var(--hep-text)">Tenofovir disoproxil (TDF) y Tenofovir alafenamida (TAF):</strong> Análogos de nucleotídos (NtRTI), inhibidores de la RT. Primera línea actual según AASLD, EASL, APASL. Alta barrera genética a la resistencia (mutaciones de resistencia extremadamente raras con TAF/TDF). TAF: menor nefrotoxicidad y menor pérdida ósea vs TDF. Supresión del ADN-VHB en >95% de pacientes a 48 semanas.</li>
+            <li><span class="bullet" style="background:#f97316"></span><strong style="color:var(--hep-text)">Entecavir (ETV):</strong> Análogo de guanosina (NRTI). También de primera línea. Alta barrera de resistencia (en pacientes naive a lamivudina). En naïve: resistencia <1% a 5 años. Evitar en pacientes con historia de resistencia a lamivudina (riesgo de resistencia cruzada multigenética).</li>
+            <li><span class="bullet" style="background:#f97316"></span><strong style="color:var(--hep-text)">Interferón pegilado alfa-2a (PEG-IFN):</strong> Inmunomodulador + antiviral. Ventaja: duración finita (48 semanas), mayor tasa de seroconversión HBeAg y pérdida de HBsAg (~3% a 5 años vs <1% con NAs). Desventaja: inyectable, múltiples efectos adversos (síndrome gripal, neutropenia, trombocitopenia, depresión, contraindicado en cirrosis descompensada).</li>
+            <li><span class="bullet" style="background:#f97316"></span><strong style="color:var(--hep-text)">Limitación fundamental — el cccDNA:</strong> Ningún antiviral actual elimina el cccDNA intranuclear. La supresión viral con NAs es indefinida → al suspender el tratamiento, 90–100% de pacientes presentan reactivación. La "cura funcional" (pérdida sostenida de HBsAg + anti-HBs) ocurre en solo 1–3% con NAs y ~3–8% con PEG-IFN. Este es el mayor desafío terapéutico actual del VHB.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="hep-callout" style="margin-top:32px">
+        <h3>🧪 Nuevas Terapias en Desarrollo (2023–2025): La Búsqueda de la Cura Funcional</h3>
+        <p>
+          La investigación actual apunta a eliminar o silenciar el <strong>cccDNA</strong>. Las estrategias más avanzadas incluyen:
+          <strong>ARN interferente pequeño (siRNA)</strong> — JNJ-3989 (ARO-HBV), VIR-2218 — silencian el ARN pregenómico y reducen HBsAg >2 log.
+          <strong>Oligonucleótidos antisentido (ASO)</strong> — bepirovirsen (GSK3228836): reduce HBsAg y logra pérdida de HBsAg en ~9% (NEJM 2022).
+          <strong>Bulevirtide</strong> (Hepcludex, MYR GmbH): inhibidor de entrada vía NTCP; aprobado EMA 2020 para VHB/VHD crónico.
+          <strong>Capsid assembly modulators (CAM)</strong> — RO7049389, ABI-H0731: impiden el ensamblaje de la nucleocápside.
+          <strong>Vacunas terapéuticas</strong> y combinaciones con PD-1/PD-L1 checkpoint inhibitors para restaurar respuesta T-cell exhausted.
+          El objetivo declarado de la OMS y la industria es lograr la <strong>cura funcional del VHB para 2030</strong> en combinaciones de estas plataformas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4 — SALUD PÚBLICA -->
+  <section class="hep-section" id="salud-publica">
+    <div class="hep-container">
+      <div class="hep-section-tag tag-green">🌍 Tema 3 · Salud Pública Global</div>
+      <h2 class="hep-section-title">Epidemiología Global y <span class="gradient">Estrategia de Eliminación</span></h2>
+      <p class="hep-section-sub">La OMS fijó como meta la eliminación de la hepatitis B como amenaza de salud pública para 2030. A pesar de contar con una vacuna efectiva desde 1982, la hepatitis B crónica sigue siendo una epidemia silenciosa.</p>
+
+      <div class="hep-epidem-grid">
+        <div class="hep-epidem-card" style="--card-color:#f97316;--card-dim:rgba(249,115,22,0.12)">
+          <div class="hep-epidem-pct" style="color:#f97316">~296 M</div>
+          <h4>Personas con infección crónica</h4>
+          <p>Prevalencia global de HBsAg (+) crónico. Mayor carga en África sub-sahariana (~6,1%) y Pacífico Occidental (~6,2%). Solo el 10,5% conoce su diagnóstico.</p>
+        </div>
+        <div class="hep-epidem-card" style="--card-color:#fbbf24;--card-dim:rgba(251,191,36,0.12)">
+          <div class="hep-epidem-pct" style="color:#fbbf24">10,5%</div>
+          <h4>Diagnosticados del total</h4>
+          <p>La gran mayoría de infectados no sabe que tiene VHB crónico. Baja tasa de diagnóstico = transmisión no detectada y tratamiento tardío.</p>
+        </div>
+        <div class="hep-epidem-card" style="--card-color:#34d399;--card-dim:rgba(52,211,153,0.12)">
+          <div class="hep-epidem-pct" style="color:#34d399">42%</div>
+          <h4>Cobertura vacuna 3ª dosis</h4>
+          <p>Cobertura global de 3 dosis en lactantes (2022). La "dosis al nacer" (birth dose) — clave para prevenir transmisión perinatal — tiene solo 46% de cobertura global.</p>
+        </div>
+        <div class="hep-epidem-card" style="--card-color:#818cf8;--card-dim:rgba(129,140,248,0.12)">
+          <div class="hep-epidem-pct" style="color:#818cf8">2%</div>
+          <h4>En tratamiento del total</h4>
+          <p>Solo ~2% de todos los infectados crónicos recibe tratamiento antiviral (OMS 2022). Brecha diagnóstico-tratamiento enorme, especialmente en países de bajos ingresos.</p>
+        </div>
+      </div>
+
+      <div class="hep-content-grid" style="margin-top:40px">
+
+        <div class="hep-content-card" style="--card-accent:#34d399">
+          <div class="hep-card-num">Vacunación — Pilar Principal</div>
+          <h3>Vacuna contra la Hepatitis B</h3>
+          <ul>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--hep-text)">Historia:</strong> Primera vacuna comercial (1982): derivada de plasma de portadores crónicos (Merck). Desde 1986: vacuna recombinante (HBsAg producido en S. cerevisiae, Engerix-B y Recombivax HB). Primera vacuna anti-cáncer de la historia: al prevenir el VHB, previene el CHC.</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--hep-text)">Esquemas:</strong> Esquema estándar: 3 dosis (0, 1–2, 6 meses). En recién nacidos: dosis al nacer (dentro de 24 horas) + 2–3 dosis adicionales. Recién nacidos de madres HBsAg+: inmunoprofilaxis combinada = vacuna + HBIG (inmunoglobulina anti-HBs) dentro de 12 horas → eficacia >95% en prevención de transmisión perinatal.</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--hep-text)">Inmunogenicidad:</strong> >95% de individuos inmunocompetentes desarrollan anti-HBs ≥10 mUI/mL (nivel protector). En hemodializados, inmunocomprometidos, obesidad severa: respuesta reducida → doble dosis o esquema acelerado. Memoria inmunológica dura décadas aunque el anti-HBs decline → no se recomiendan refuerzos en población general.</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--hep-text)">Nuevas vacunas:</strong> PreHevbrio (VBI-2601): vacuna trivalente con antígenos HBsAg-S, M y L (preS1+preS2+S) → mayor inmunogenicidad en no-respondedores. HEPLISAV-B (CpG 1018): adyuvante TLR9 → respuesta superior en 2 dosis. Sci-B-Vac: trivalente PreS1+PreS2+S.</li>
+          </ul>
+        </div>
+
+        <div class="hep-content-card" style="--card-accent:#f97316">
+          <div class="hep-card-num">Transmisión y Prevención</div>
+          <h3>Vías de Transmisión y Control</h3>
+          <ul>
+            <li><span class="bullet" style="background:#f97316"></span><strong style="color:var(--hep-text)">Transmisión perinatal (vertical):</strong> Madre HBeAg+ → recién nacido. Riesgo sin profilaxis: 70–90%. La forma de transmisión más importante a nivel global (responsable de >50% de las infecciones crónicas en Asia). Con inmunoprofilaxis adecuada (vacuna + HBIG): riesgo <5%. En madres con carga viral muy alta (>200.000 UI/mL): añadir TDF en el 3er trimestre.</li>
+            <li><span class="bullet" style="background:#f97316"></span><strong style="color:var(--hep-text)">Transmisión sexual:</strong> Frecuente en adultos de países de baja endemicidad (EE.UU., Europa). VHB persiste en semen, fluido vaginal. El VHB es 50–100 veces más infeccioso que el VIH por vía sexual. Uso de preservativo + vacunación de parejas sexuales.</li>
+            <li><span class="bullet" style="background:#f97316"></span><strong style="color:var(--hep-text)">Transmisión parenteral:</strong> Compartir jeringas (UDIV — usuarios de drogas IV), transfusiones no tamizadas, procedimientos médicos con instrumental no esterilizado, tatuajes y perforaciones. El VHB puede sobrevivir fuera del huésped >7 días en superficies secas (vs VIH: minutos).</li>
+            <li><span class="bullet" style="background:#f97316"></span><strong style="color:var(--hep-text)">Reactivación iatrogénica:</strong> Pacientes con anti-HBc+ que reciben inmunosupresores (quimioterapia, anti-TNF, rituximab, corticoides) → riesgo de reactivación del VHB (incluyendo HBsAg negativo/infección oculta). Protocolo: screening VHB antes de toda inmunosupresión; profilaxis antiviral si HBsAg+ o anti-HBc+ con alto riesgo.</li>
+          </ul>
+        </div>
+
+        <div class="hep-content-card" style="--card-accent:#818cf8">
+          <div class="hep-card-num">Meta OMS 2030</div>
+          <h3>Estrategia Global de Eliminación</h3>
+          <ul>
+            <li><span class="bullet" style="background:#818cf8"></span><strong style="color:var(--hep-text)">Objetivos OMS 2030:</strong> Reducir en 90% las nuevas infecciones (desde ~1,5 M casos crónicos/año en 2015 a 150.000) y en 65% la mortalidad (de 820.000 a 290.000 muertes/año). Cobertura vacunal: ≥90% dosis al nacer y 3 dosis en lactantes. Diagnóstico del 90% de infectados. 80% en tratamiento de los diagnosticados.</li>
+            <li><span class="bullet" style="background:#818cf8"></span><strong style="color:var(--hep-text)">Brecha de diagnóstico:</strong> La principal barrera actual es el subdiagnóstico. En muchos países de alta endemicidad, la mayoría de los infectados desconoce su condición por falta de acceso a pruebas de HBsAg. La WHO lanzó en 2022 las guías de "testing simplificado" con pruebas rápidas de antígeno (RDTs) para ampliar cobertura diagnóstica en países de bajos ingresos.</li>
+            <li><span class="bullet" style="background:#818cf8"></span><strong style="color:var(--hep-text)">Tratamiento simplificado:</strong> Para alcanzar cobertura de tratamiento, la WHO 2024 propone "criterios simplificados de tratamiento": cualquier persona con VHB crónico y fibrosis significativa (Fibroscan >7 kPa, FIB-4 >1.45) o evidencia de replicación activa (ADN-VHB >2000 UI/mL con ALT elevada) → tratar, sin necesidad de biopsia. TDF genérico como opción de bajo costo.</li>
+            <li><span class="bullet" style="background:#818cf8"></span><strong style="color:var(--hep-text)">GAVI y financiamiento:</strong> GAVI Alliance ha subsidiado la vacunación en >90 países de bajos ingresos, logrando reducción de prevalencia de VHB en niños (<5 años) a <1% en África occidental (desde >8% pre-vacunación). Taiwan fue el primer país en implementar vacunación universal (1984) y redujo su prevalencia infantil de 10% a <0,7% en 25 años.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 5 — CHILE -->
+  <section class="hep-section" id="chile">
+    <div class="hep-container">
+      <div class="hep-section-tag tag-amber">🇨🇱 Contexto Nacional</div>
+      <h2 class="hep-section-title">Hepatitis B en <span class="gradient">Chile</span></h2>
+      <p class="hep-section-sub">Chile tiene una de las prevalencias más bajas de VHB crónico de América Latina, gracias a una política de vacunación universal temprana y al tamizaje en banco de sangre.</p>
+
+      <div class="hep-callout">
+        <h3>🇨🇱 Programa Nacional de Hepatitis B en Chile</h3>
+        <p>
+          Chile inició la <strong>vacunación universal contra VHB en 1990</strong> — pionero en América Latina — incluyendo 
+          al recién nacido (dosis al nacer) en el calendario nacional. El <strong>PNI (Programa Nacional de Inmunizaciones)</strong> 
+          ofrece vacuna hexavalente (DTPa-HepB-Hib-IPV) a los 2, 4 y 6 meses, con refuerzo del componente VHB en la 
+          dosis neonatal. La <strong>prevalencia actual de VHB crónico en Chile es <0,5%</strong>, comparado con >1% de 
+          países sin vacunación universal temprana. El <strong>ISP</strong> realiza vigilancia epidemiológica con notificación 
+          obligatoria de casos agudos y crónicos (Decreto 158/2004). El <strong>Banco de Sangre del Servicio Nacional de 
+          Salud</strong> realiza tamizaje obligatorio de HBsAg, anti-HBc y ADN-VHB por NAT (nucleic acid testing) en todas 
+          las donaciones desde 2012. El <strong>MINSAL/FONASA</strong> cubre el tratamiento con entecavir y tenofovir para 
+          pacientes con criterios de tratamiento confirmados por médico especialista en hepatología.
+          En 2024 el Ministerio incorporó la <strong>vigilancia de coinfección VHB/VHD</strong> en comunidades 
+          de alto riesgo del norte de Chile (migrantes de regiones andinas de alta endemicidad).
+        </p>
+      </div>
+
+      <!-- TABLA DIAGNÓSTICO SEROLÓGICO -->
+      <h3 style="margin-top:48px;margin-bottom:20px;font-size:1.2rem;font-weight:700">Interpretación de la Serología del VHB</h3>
+      <div class="hep-vax-table-wrap">
+        <table class="hep-vax-table">
+          <thead>
+            <tr>
+              <th>HBsAg</th>
+              <th>Anti-HBs</th>
+              <th>Anti-HBc IgM</th>
+              <th>Anti-HBc IgG</th>
+              <th>HBeAg</th>
+              <th>Interpretación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>−</td><td>−</td><td>−</td><td>−</td><td>−</td>
+              <td class="vax-name">Susceptible, nunca infectado, sin vacuna</td>
+            </tr>
+            <tr>
+              <td>−</td><td class="vax-tech">+</td><td>−</td><td>−</td><td>−</td>
+              <td class="vax-name">Inmune por vacunación (solo anti-HBs)</td>
+            </tr>
+            <tr>
+              <td>−</td><td class="vax-tech">+</td><td>−</td><td class="vax-tech">+</td><td>−</td>
+              <td class="vax-name">Inmune por infección resuelta</td>
+            </tr>
+            <tr>
+              <td class="vax-tech" style="color:#f97316">+</td><td>−</td><td class="vax-tech">+</td><td>−</td><td>±</td>
+              <td class="vax-name">Infección aguda activa</td>
+            </tr>
+            <tr>
+              <td>−</td><td>−</td><td class="vax-tech">+</td><td>−</td><td>−</td>
+              <td class="vax-name">Ventana serológica (fase aguda)</td>
+            </tr>
+            <tr>
+              <td class="vax-tech" style="color:#f97316">+</td><td>−</td><td>−</td><td class="vax-tech">+</td><td class="vax-tech">+</td>
+              <td class="vax-name">Infección crónica activa (alta replicación)</td>
+            </tr>
+            <tr>
+              <td class="vax-tech" style="color:#f97316">+</td><td>−</td><td>−</td><td class="vax-tech">+</td><td>−</td>
+              <td class="vax-name">Portador inactivo o mutante precore (medir ADN-VHB)</td>
+            </tr>
+            <tr>
+              <td>−</td><td>−</td><td>−</td><td class="vax-tech">+</td><td>−</td>
+              <td class="vax-name">Infección oculta (solo PCR; descartar infección resuelta)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM NAV -->
+  <div class="hep-container" style="padding-bottom:60px">
+    <div class="hep-bottom-nav">
+      <a href="../index.html" class="hep-nav-btn">← Volver a Virología</a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#estructura"    class="hep-nav-btn">Estructura 3D ↑</a>
+        <a href="#higado"        class="hep-nav-btn">Hígado ↑</a>
+        <a href="#cirrosis"      class="hep-nav-btn">Cirrosis/CHC ↑</a>
+        <a href="#salud-publica" class="hep-nav-btn">Salud Pública ↑</a>
+        <a href="#chile"         class="hep-nav-btn">Chile ↑</a>
+      </div>
+      <a href="../../index.html" class="hep-nav-btn">Inicio →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="hep-footer">
+    <div class="hep-container">
+      <div class="hep-footer-inner">
+        <p>© 2026 PharmaLab Chile · Contenido basado en OMS, EASL, AASLD, APASL, IARC, ISP Chile, NEJM, Lancet, Hepatology</p>
+        <p class="disclaimer">Contenido educacional. No reemplaza asesoría médica profesional.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="hepatitis.js"></script>
+</body>
+</html>

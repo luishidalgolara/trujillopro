@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enzimología Moderna — PharmaLab Chile | Unidad 3</title>
+    <meta name="description" content="Cinética de Michaelis-Menten, inhibición competitiva y no competitiva, regulación alostérica y enzimas como blancos farmacológicos. Bioquímica universitaria Chile.">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../bioquimica.css">
+    <link rel="stylesheet" href="enzimologia-moderna.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="module-bioquimica">
+
+<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+<nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+        <a href="../../index.html" class="nav-logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="../../quimica/index.html"              class="nav-link" data-module="quimica">⚗️ Química</a>
+            <a href="../../farmacia/index.html"             class="nav-link" data-module="farmacia">💊 Farmacia</a>
+            <a href="../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf">🧬 Q. Farmacéutica</a>
+            <a href="../../biotecnologia/index.html"        class="nav-link" data-module="biotech">🔬 Biotecnología</a>
+            <a href="../../virologia/index.html"            class="nav-link" data-module="virologia">🦠 Virología</a>
+            <a href="../index.html"                         class="nav-link active" data-module="bioquimica">🧪 Bioquímica</a>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="em-hero">
+    <div class="em-hero-bg">
+        <div class="em-hero-grid"></div>
+        <div class="em-orb em-orb-1"></div>
+        <div class="em-orb em-orb-2"></div>
+        <div class="em-orb em-orb-3"></div>
+    </div>
+    <div class="em-hero-inner">
+        <div class="em-wrap">
+            <div>
+                <div class="em-crumb">
+                    <a href="../../index.html" style="color:inherit;text-decoration:none;">Inicio</a><span>/</span>
+                    <a href="../index.html"    style="color:inherit;text-decoration:none;">Bioquímica</a><span>/</span>
+                    <span style="color:#fff">Enzimología Moderna</span>
+                </div>
+                <div class="em-hero-tag">Unidad 3 · Bioquímica</div>
+                <h1 class="em-hero-title">Enzimología <span class="em-gr">Moderna</span></h1>
+                <p class="em-hero-desc">La ciencia de los catalizadores biológicos: desde la matemática precisa de Michaelis-Menten hasta la farmacología de inhibidores que salvan millones de vidas, pasando por la elegancia del control alostérico que regula el metabolismo celular.</p>
+                <div class="em-hero-stats">
+                    <div class="em-stat">
+                        <span class="em-stat-num" data-em-count="40" data-em-suf="%">40%</span>
+                        <span class="em-stat-label">de fármacos aprobados inhiben enzimas específicas</span>
+                    </div>
+                    <div class="em-stat">
+                        <span class="em-stat-num" data-em-count="10" data-em-suf="⁹">10⁹</span>
+                        <span class="em-stat-label">M⁻¹s⁻¹ — eficiencia catalítica máxima (límite de difusión)</span>
+                    </div>
+                    <div class="em-stat">
+                        <span class="em-stat-num" data-em-count="10" data-em-suf="¹⁴">10¹⁴</span>
+                        <span class="em-stat-label">veces más rápida la ureasa con catálisis vs sin enzima</span>
+                    </div>
+                </div>
+            </div>
+            <div class="em-hero-vis">
+                <canvas id="em-hero-canvas" title="Complejo enzima-sustrato 3D — cinética Michaelis-Menten"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ DATOS CLAVE ═══════════════════════ -->
+<section class="em-section">
+    <div class="em-wrap">
+        <div class="em-datos" data-em-reveal>
+            <div class="em-dato">
+                <span class="em-dato-n" data-em-count="95" data-em-suf=" µM">95</span>
+                <span class="em-dato-l">Km de acetilcolinesterasa para acetilcolina — una de las más eficientes</span>
+            </div>
+            <div class="em-dato">
+                <span class="em-dato-n" data-em-count="14000" data-em-suf=" s⁻¹">14000</span>
+                <span class="em-dato-l">kcat de acetilcolinesterasa — 14,000 sustratos/enzima/segundo</span>
+            </div>
+            <div class="em-dato">
+                <span class="em-dato-n" data-em-count="0.1" data-em-suf=" nM" data-em-dec="1">0.1</span>
+                <span class="em-dato-l">IC₅₀ de atorvastatina sobre HMG-CoA reductasa — inhibición ultrapotente</span>
+            </div>
+            <div class="em-dato">
+                <span class="em-dato-n" data-em-count="43" data-em-suf=" kJ/mol">43</span>
+                <span class="em-dato-l">Ea con ureasa (vs 146 kJ/mol sin enzima) — reducción de Ea de 103 kJ/mol</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ TABS ═══════════════════════ -->
+<section class="em-section" style="padding-top:0">
+    <div class="em-wrap">
+
+        <div class="em-section-hd" data-em-reveal>
+            <div class="em-sec-tag">⚙️ Contenidos</div>
+            <h2 class="em-sec-title">Cuatro Pilares de la <span class="em-hl">Enzimología Moderna</span></h2>
+            <p class="em-sec-sub">Del modelo matemático que describe toda cinética enzimática, a los mecanismos moleculares de inhibición que fundamentan el diseño racional de fármacos. Información actualizada con fuentes universitarias primarias.</p>
+        </div>
+
+        <!-- TABS NAV -->
+        <div class="em-tabs-nav" data-em-reveal>
+            <div class="em-tab-btn active">
+                <div class="em-tab-icon">📈</div>
+                <span class="em-tab-num">Tema 3.1</span>
+                <div class="em-tab-name">Michaelis-Menten</div>
+                <div class="em-tab-hint">Modelo cinético, derivación de la ecuación, Km, Vmax, kcat y gráficas de Lineweaver-Burk y Eadie-Hofstee.</div>
+                <div class="em-tab-arrow">→</div>
+            </div>
+            <div class="em-tab-btn">
+                <div class="em-tab-icon">🚫</div>
+                <span class="em-tab-num">Tema 3.2</span>
+                <div class="em-tab-name">Inhibición</div>
+                <div class="em-tab-hint">Inhibición competitiva, no competitiva, incompetitiva y mixta. Ki, IC₅₀ y aplicación en diseño de fármacos.</div>
+                <div class="em-tab-arrow">→</div>
+            </div>
+            <div class="em-tab-btn">
+                <div class="em-tab-icon">🔄</div>
+                <span class="em-tab-num">Tema 3.3</span>
+                <div class="em-tab-name">Alosterismo</div>
+                <div class="em-tab-hint">Regulación alostérica, modelo MWC, cooperatividad, curva sigmoide de Hill y retroalimentación metabólica.</div>
+                <div class="em-tab-arrow">→</div>
+            </div>
+            <div class="em-tab-btn">
+                <div class="em-tab-icon">💊</div>
+                <span class="em-tab-num">Tema 3.4</span>
+                <div class="em-tab-name">Farmacología</div>
+                <div class="em-tab-hint">Enzimas como dianas terapéuticas, estatinas, IECAs, inhibidores de proteasa y diseño racional de fármacos.</div>
+                <div class="em-tab-arrow">→</div>
+            </div>
+        </div>
+
+        <!-- PANELS WRAPPER -->
+        <div class="em-panels-wrap">
+
+            <!-- ══ PANEL 1: MICHAELIS-MENTEN ══ -->
+            <div class="em-panel active">
+                <div class="em-3d" data-em-reveal>
+                    <canvas id="em-canvas-mm" title="Cinética Michaelis-Menten 3D — saturación enzimática"></canvas>
+                    <div class="em-3d-lbl">⟳ Arrastra para rotar — Saturación Enzimática · Curva v₀ vs [S]</div>
+                </div>
+
+                <div data-em-reveal>
+                    <div class="em-sh">Modelo Cinético de Michaelis-Menten</div>
+                    <div class="em-mec">
+                        <div class="em-mec-card">
+                            <div class="em-mec-ico">⚗️</div>
+                            <h4>Derivación del Modelo</h4>
+                            <p>E + S ⇌ ES → E + P. Suposición del estado estacionario (Briggs-Haldane, 1925): d[ES]/dt = 0. Esto da v₀ = Vmax·[S] / (Km + [S]), donde Km = (k₋₁ + k₂)/k₁. La constante de Michaelis Km es la concentración de sustrato que produce v₀ = Vmax/2. A [S] >> Km: v₀ ≈ Vmax (saturación). A [S] << Km: v₀ ≈ (Vmax/Km)·[S] (comportamiento de primer orden). La hipérbola rectangular que describe esta ecuación es la "firma" de la catálisis enzimática simple.</p>
+                        </div>
+                        <div class="em-mec-card">
+                            <div class="em-mec-ico">📊</div>
+                            <h4>Significado de Km y Vmax</h4>
+                            <p>Km refleja la afinidad relativa enzima-sustrato: Km bajo = alta afinidad (la enzima se satura a baja [S]). Km varía con pH, temperatura, fuerza iónica y presencia de inhibidores. Vmax = kcat·[E]total; depende de la concentración total de enzima. kcat (número de recambio, turnover number) = Vmax/[E]total = moléculas de producto/enzima/segundo. La eficiencia catalítica kcat/Km (M⁻¹s⁻¹) es la mejor medida de rendimiento enzimático — límite difusional: ~10⁸-10⁹ M⁻¹s⁻¹.</p>
+                        </div>
+                        <div class="em-mec-card">
+                            <div class="em-mec-ico">📉</div>
+                            <h4>Gráfica de Lineweaver-Burk</h4>
+                            <p>Doble recíproca: 1/v₀ = (Km/Vmax)·(1/[S]) + 1/Vmax. Permite linearizar la hipérbola de Michaelis-Menten. Intercepto Y = 1/Vmax; intercepto X = -1/Km; pendiente = Km/Vmax. Desventaja: amplifica el error experimental a bajas [S] (región 1/[S] alta). La gráfica de Eadie-Hofstee (v vs v/[S]) y la de Hanes-Woolf ([S]/v vs [S]) tienen distribución de error más uniforme. Herramientas actuales: ajuste no lineal por mínimos cuadrados directamente a la curva de Michaelis.</p>
+                        </div>
+                        <div class="em-mec-card">
+                            <div class="em-mec-ico">🔬</div>
+                            <h4>Limitaciones y Extensiones</h4>
+                            <p>El modelo Michaelis-Menten asume: (1) [S] >> [E] (exceso de sustrato), (2) estado estacionario, (3) [P] ≈ 0 (velocidad inicial), (4) una sola reacción catalítica sin intermediarios adicionales. Extensiones: cinética bisubstrato (mecanismos Ping-Pong, ordenado, aleatorio — relevante para deshidrogenasas), cinética en medios confinados (organelos), modelos de enzimas alostéricas (Hill, MWC). La cinética de burst detecta pasos limitantes: acetilcolinesterasa muestra burst de p-nitrofenolato antes del estado estacionario.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-em-reveal>
+                    <div class="em-sh">Parámetros Cinéticos Comparados</div>
+                    <div class="em-tbl-wrap">
+                        <table class="em-tbl">
+                            <thead>
+                                <tr><th>Enzima</th><th>Sustrato</th><th>Km (µM)</th><th>kcat (s⁻¹)</th><th>kcat/Km (M⁻¹s⁻¹)</th><th>¿Perfecta?</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Acetilcolinesterasa</td><td>Acetilcolina</td><td><span class="em-tag em-t-g">95</span></td><td>1.4 × 10⁴</td><td><span class="em-tag em-t-g">1.5 × 10⁸</span></td><td><span class="em-tag em-t-g">Sí</span></td></tr>
+                                <tr><td>Anhidrasa carbónica II</td><td>CO₂</td><td><span class="em-tag em-t-go">12,000</span></td><td>1.0 × 10⁶</td><td><span class="em-tag em-t-g">8.3 × 10⁷</span></td><td><span class="em-tag em-t-g">Sí</span></td></tr>
+                                <tr><td>Triosa fosfato isomerasa</td><td>GAP</td><td><span class="em-tag em-t-g">470</span></td><td>4.3 × 10³</td><td><span class="em-tag em-t-g">9.1 × 10⁶</span></td><td><span class="em-tag em-t-g">Sí</span></td></tr>
+                                <tr><td>Hexocinasa</td><td>D-Glucosa</td><td><span class="em-tag em-t-g">80</span></td><td>650</td><td><span class="em-tag em-t-c">8.1 × 10⁶</span></td><td><span class="em-tag em-t-go">Parcial</span></td></tr>
+                                <tr><td>Quimotripsina</td><td>N-Ac-Trp</td><td><span class="em-tag em-t-go">5,100</span></td><td>40</td><td><span class="em-tag em-t-r">7.8 × 10³</span></td><td><span class="em-tag em-t-r">No</span></td></tr>
+                                <tr><td>Catalasa</td><td>H₂O₂</td><td><span class="em-tag em-t-go">25,000</span></td><td>4.0 × 10⁷</td><td><span class="em-tag em-t-g">1.6 × 10⁶</span></td><td><span class="em-tag em-t-go">Parcial</span></td></tr>
+                                <tr><td>Fumarasa</td><td>Fumarato</td><td><span class="em-tag em-t-g">5</span></td><td>800</td><td><span class="em-tag em-t-g">1.6 × 10⁸</span></td><td><span class="em-tag em-t-g">Sí</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size:.78rem;color:rgba(255,255,255,.38);margin-top:10px;font-family:'JetBrains Mono',monospace;">Enzima "perfecta" = kcat/Km &gt; 10⁸ M⁻¹s⁻¹ (límite de difusión). Fuente: Stryer 9th ed., Lehninger 8th ed.</p>
+                </div>
+
+                <div class="em-norma" data-em-reveal>
+                    <div class="em-norma-ico">🇨🇱</div>
+                    <div>
+                        <h4>Cinética Enzimática en el Laboratorio Clínico Chileno</h4>
+                        <p>La determinación de actividad enzimática sérica es fundamental en el diagnóstico clínico chileno. Los laboratorios acreditados por el ISP (Instituto de Salud Pública) miden actividades bajo condiciones de saturación de sustrato ([S] >> Km) para obtener velocidades máximas reproducibles. La ALT (alanina aminotransferasa, Km para alanina ~0.9 mM) se mide a [alanina] = 500 mM en el reactivo estándar — garantizando que v₀ ≈ Vmax. Las unidades de actividad enzimática (U/L = µmol/min/L) permiten comparación entre laboratorios. El programa PEEC del ISP (Programa de Evaluación Externa de la Calidad) fiscaliza que los valores de referencia enzimáticos en Chile sean comparables con estándares IFCC internacionales, ajustados a 37°C según la recomendación del Comité de Expertos Latinoamericano (COLABIOCLI).</p>
+                    </div>
+                </div>
+            </div><!-- /panel MM -->
+
+            <!-- ══ PANEL 2: INHIBICIÓN ══ -->
+            <div class="em-panel">
+                <div class="em-3d" data-em-reveal>
+                    <canvas id="em-canvas-inhibicion" title="Inhibición competitiva y no competitiva 3D"></canvas>
+                    <div class="em-3d-lbl">⟳ Arrastra para rotar — Inhibición Competitiva vs No Competitiva</div>
+                </div>
+
+                <div data-em-reveal>
+                    <div class="em-sh">Tipos de Inhibición Enzimática</div>
+                    <div class="em-mec">
+                        <div class="em-mec-card">
+                            <div class="em-mec-ico">🥊</div>
+                            <h4>Inhibición Competitiva</h4>
+                            <p>El inhibidor (I) se une reversiblemente al sitio activo libre (E), compitiendo con el sustrato (S). Constante de inhibición: Ki = [E][I]/[EI]. Ecuación modificada: v = Vmax·[S] / (Km·alpha + [S]), donde alpha = 1 + [I]/Ki. Efecto: Km aparente aumenta (Km' = Km·alpha); Vmax sin cambio. En Lineweaver-Burk: líneas con pendiente mayor, mismo intercepto Y (1/Vmax). Superable con exceso de sustrato. Ejemplos farmacológicos: estatinas (compiten con HMG-CoA), metotrexato (compite con dihidrofolato en DHFR), neostigmina (compite con acetilcolina en AChE).</p>
+                        </div>
+                        <div class="em-mec-card">
+                            <div class="em-mec-ico">🔒</div>
+                            <h4>Inhibición No Competitiva</h4>
+                            <p>El inhibidor se une al sitio alostérico tanto de E como de ES con igual afinidad (Ki = Ki'). No bloquea la unión del sustrato. Ecuación: v = Vmax/(1+[I]/Ki) · [S]/(Km+[S]). Efecto: Vmax disminuye (Vmax' = Vmax/alpha); Km sin cambio. En Lineweaver-Burk: líneas paralelas con diferente intercepto Y. No superable con exceso de sustrato. Ejemplos: algunos metales pesados (Pb²⁺, Hg²⁺) que se unen a grupos -SH fuera del sitio activo; cianuro en Complejo IV mitocondrial; inhibidores de HDAC (ácido valproico).</p>
+                        </div>
+                        <div class="em-mec-card">
+                            <div class="em-mec-ico">🔐</div>
+                            <h4>Inhibición Incompetitiva</h4>
+                            <p>El inhibidor solo se une al complejo ES (no a E libre). Ecuación: v = (Vmax/alpha')·[S] / (Km/alpha' + [S]), donde alpha' = 1 + [I]/Ki'. Efecto: tanto Km como Vmax disminuyen en igual proporción (Km' = Km/alpha'; Vmax' = Vmax/alpha'). En Lineweaver-Burk: líneas paralelas. El cociente Vmax/Km (pendiente de Michaelis) no cambia. Ejemplos: litio inhibe IMPasa (inositol monofosfatasa) — mecanismo de acción del litio en trastorno bipolar. Inhibidores incompetitivos de glutamato sintetasa en bacterias son antibacterianos potenciales.</p>
+                        </div>
+                        <div class="em-mec-card">
+                            <div class="em-mec-ico">⚡</div>
+                            <h4>Inhibición Mixta e Irreversible</h4>
+                            <p>Mixta: I se une a E y ES con diferente afinidad (Ki ≠ Ki'). Afecta Km y Vmax. Si Ki' > Ki (preferencia por E): parece más competitiva. Si Ki' < Ki (preferencia por ES): parece más incompetitiva. Irreversible: I forma enlace covalente con la enzima. Progresiva en el tiempo — pseudo-primer orden. Ejemplos: aspirina (acetila irreversiblemente Ser530 de COX-1/2); organofosforados (fosforilan Ser195 de AChE); omeprazol (sulfenilo activo alquila Cys813 de H⁺/K⁺-ATPasa gástrica). Cinética: [E activa] = [E]₀·e^(-ki·[I]·t).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-em-reveal>
+                    <div class="em-sh">Diagnóstico de Tipo de Inhibición — Lineweaver-Burk</div>
+                    <div class="em-proc">
+                        <div class="em-step">
+                            <div class="em-step-n">CI</div>
+                            <div class="em-step-t">Competitiva</div>
+                            <div class="em-step-d">Pendiente ↑. Mismo intercepto Y (1/Vmax sin cambio). Intercepto X cambia (-1/Km').</div>
+                        </div>
+                        <div class="em-step">
+                            <div class="em-step-n">NC</div>
+                            <div class="em-step-t">No Competitiva</div>
+                            <div class="em-step-d">Pendiente ↑. Intercepto Y ↑ (1/Vmax' sube). Intercepto X igual (-1/Km sin cambio).</div>
+                        </div>
+                        <div class="em-step">
+                            <div class="em-step-n">IC</div>
+                            <div class="em-step-t">Incompetitiva</div>
+                            <div class="em-step-d">Rectas paralelas (misma pendiente). Intercepto Y ↑. Intercepto X ↑ (-1/Km' menos negativo).</div>
+                        </div>
+                        <div class="em-step">
+                            <div class="em-step-n">MX</div>
+                            <div class="em-step-t">Mixta</div>
+                            <div class="em-step-d">Pendiente ↑. Intercepto Y ↑. Las líneas se cruzan en el segundo cuadrante (alpha ≠ alpha').</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-em-reveal>
+                    <div class="em-sh">Inhibidores Enzimáticos Farmacológicos Clave</div>
+                    <div class="em-tbl-wrap">
+                        <table class="em-tbl">
+                            <thead>
+                                <tr><th>Fármaco</th><th>Enzima diana</th><th>Tipo inhibición</th><th>Ki / IC₅₀</th><th>Uso clínico</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Atorvastatina</td><td>HMG-CoA reductasa</td><td><span class="em-tag em-t-g">Competitiva</span></td><td><span class="em-tag em-t-c">IC₅₀ = 8.2 nM</span></td><td>Hipercolesterolemia, cardioprotección</td></tr>
+                                <tr><td>Enalaprilato</td><td>ECA (ACE)</td><td><span class="em-tag em-t-g">Competitiva</span></td><td><span class="em-tag em-t-c">Ki = 0.2 nM</span></td><td>Hipertensión, insuficiencia cardíaca</td></tr>
+                                <tr><td>Metotrexato</td><td>DHFR (dihidrofolato reductasa)</td><td><span class="em-tag em-t-g">Competitiva</span></td><td><span class="em-tag em-t-c">Ki = 0.03 nM</span></td><td>Cáncer, artritis reumatoide</td></tr>
+                                <tr><td>Aspirina (AAS)</td><td>COX-1 / COX-2</td><td><span class="em-tag em-t-r">Irreversible</span></td><td><span class="em-tag em-t-go">IC₅₀ = 1.7 µM</span></td><td>Antiinflamatorio, antiagregante plaquetario</td></tr>
+                                <tr><td>Omeprazol</td><td>H⁺/K⁺-ATPasa gástrica</td><td><span class="em-tag em-t-r">Irreversible</span></td><td><span class="em-tag em-t-c">IC₅₀ = 3.8 µM</span></td><td>Úlcera péptica, ERGE</td></tr>
+                                <tr><td>Lopinavir</td><td>HIV-1 proteasa</td><td><span class="em-tag em-t-p">Mixta</span></td><td><span class="em-tag em-t-c">Ki = 1.3 pM</span></td><td>Infección por VIH/SIDA</td></tr>
+                                <tr><td>Cloruro de litio</td><td>IMPasa (inositol monofosfatasa)</td><td><span class="em-tag em-t-go">Incompetitiva</span></td><td><span class="em-tag em-t-go">Ki = 1 mM</span></td><td>Trastorno bipolar (estabilizador del ánimo)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="em-norma" data-em-reveal>
+                    <div class="em-norma-ico">💊</div>
+                    <div>
+                        <h4>Inhibición Enzimática y Formulario MINSAL Chile</h4>
+                        <p>El Formulario Nacional de Medicamentos del MINSAL (FNM 2021) incluye numerosos inhibidores enzimáticos como medicamentos esenciales. Las estatinas (atorvastatina 10-80 mg, rosuvastatina 5-40 mg) son los fármacos más prescritos en Chile para hipercolesterolemia — su mecanismo de inhibición competitiva de HMG-CoA reductasa reduce la síntesis endógena de colesterol en un 30-60%, upregulando el receptor LDLR hepático. Los IECAs (enalapril 5-40 mg/día) inhiben competitivamente la enzima convertidora de angiotensina (ECA), reduciendo la generación de angiotensina II — un vasoconstrictor. La interacción farmacológica más relevante clínicamente es la inhibición del citocromo P450 3A4 (CYP3A4) por claritromicina o jugo de pomelo, que eleva los niveles plasmáticos de estatinas metabolizadas por esta isoforma (simvastatina, lovastatina) aumentando el riesgo de miopatía (Ki de claritromicina sobre CYP3A4 = 1.6 µM).</p>
+                    </div>
+                </div>
+            </div><!-- /panel inhibición -->
+
+            <!-- ══ PANEL 3: ALOSTERISMO ══ -->
+            <div class="em-panel">
+                <div class="em-3d" data-em-reveal>
+                    <canvas id="em-canvas-alosterismo" title="Regulación alostérica 3D — conformaciones T y R"></canvas>
+                    <div class="em-3d-lbl">⟳ Arrastra para rotar — Conformación T (inactiva) / R (activa) · Cooperatividad</div>
+                </div>
+
+                <div data-em-reveal>
+                    <div class="em-sh">Regulación Alostérica — Control del Metabolismo</div>
+                    <div class="em-mec">
+                        <div class="em-mec-card">
+                            <div class="em-mec-ico">🔀</div>
+                            <h4>Modelo Concertado MWC (Monod-Wyman-Changeux)</h4>
+                            <p>Las enzimas alostéricas son oligoméricas con simetría. Existen en dos estados: T (tenso, baja afinidad/actividad) y R (relajado, alta afinidad/actividad). El modelo MWC postula que todas las subunidades cambian de estado simultáneamente (concertadamente). La constante de equilibrio L = [T]/[R] en ausencia de ligando. Activadores alostéricos desplazan el equilibrio hacia R (L disminuye). Inhibidores desplazan hacia T (L aumenta). Este modelo explica la curva sigmoidea (cooperatividad) sin necesidad de comunicación entre sitios activos.</p>
+                        </div>
+                        <div class="em-mec-card">
+                            <div class="em-mec-ico">📈</div>
+                            <h4>Cooperatividad y Ecuación de Hill</h4>
+                            <p>La cooperatividad ocurre cuando la unión de un ligando altera la afinidad de los sitios restantes. Cooperatividad positiva: unión de 1er ligando facilita el 2do (hemoglobina). Negativa: unión de 1er ligando dificulta el 2do (raro en enzimas). Ecuación de Hill: v = Vmax·[S]^n / (K'^n + [S]^n). Coeficiente de Hill n: n=1 (no cooperativa, hipérbola); n>1 (positiva, sigmoidea); n<1 (negativa). La hemoglobina tiene n ≈ 2.8 para O₂ (máximo teórico = 4, subunidades). La PFK-1 tiene n ≈ 3.5 para fructosa-6-P en condiciones de AMP alto.</p>
+                        </div>
+                        <div class="em-mec-card">
+                            <div class="em-mec-ico">🎛️</div>
+                            <h4>Retroalimentación Metabólica</h4>
+                            <p>El control alostérico permite retroalimentación negativa (feedback inhibition): el producto final de una vía inhibe la primera enzima comprometida — evita acumulación de intermediarios. Ejemplos clásicos: CTP inhibe ATCasa (aspartato transcarbamolilasa) — enzima comprometida de la síntesis de pirimidinas. IMP/AMP/GMP inhiben las enzimas de síntesis de purinas. ATP inhibe isocitrato deshidrogenasa (ciclo de Krebs). AMP activa fosforilasa de glucógeno. La activación por moduladores positivos permite encender vías: AMP activa PFK-1 en músculo en ejercicio.</p>
+                        </div>
+                        <div class="em-mec-card">
+                            <div class="em-mec-ico">🧬</div>
+                            <h4>Ejemplos de Enzimas Alostéricas Clave</h4>
+                            <p>Hemoglobina (aunque técnicamente no es una enzima): cooperatividad con O₂ (n=2.8), modulada por 2,3-BPG, CO₂ y pH (efecto Bohr). Fosfofructocinasa-1 (PFK-1): enzima reguladora central de glucólisis — inhibida por ATP y citrato, activada por AMP, ADP, fructosa-2,6-bisfosfato. ATCasa: inhibida por CTP (producto final), activada por ATP. Piruvato cinasa (forma L hepática): inhibida por alanina y ATP, activada por fructosa-1,6-BP (regulación por sustrato del paso anterior = feedforward).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-em-reveal>
+                    <div class="em-sh">Red de Regulación Alostérica en el Metabolismo Central</div>
+                    <div class="em-tl">
+                        <div class="em-tl-item">
+                            <div class="em-tl-yr">SEÑAL: [ATP] alto / [AMP] bajo (célula energizada)</div>
+                            <div class="em-tl-tx"><strong>Respuesta inhibitoria glucólisis:</strong> ATP inhibe PFK-1 (se une al sitio alostérico, disminuye afinidad por F-6-P → sigmoidea más pronunciada). Citrato inhibe PFK-1 (señal de abundancia de intermediarios de Krebs). ATP inhibe piruvato cinasa hepática. Resultado: glucólisis frenada — glucosa se deriva a glucogénesis o pentosa fosfato.</div>
+                        </div>
+                        <div class="em-tl-item">
+                            <div class="em-tl-yr">SEÑAL: [AMP] alto / [ATP] bajo (déficit energético)</div>
+                            <div class="em-tl-tx"><strong>Respuesta activadora glucólisis:</strong> AMP activa PFK-1 (aumenta afinidad por F-6-P, revierte inhibición por ATP). AMP activa AMPK (AMP-activated protein kinase) — sensor maestro energético celular. Fructosa-2,6-BP (sintetizada por PFK-2, activada por insulina/glucagón) activa PFK-1 potentemente. Resultado: glucólisis acelerada para regenerar ATP.</div>
+                        </div>
+                        <div class="em-tl-item">
+                            <div class="em-tl-yr">SEÑAL: Productos finales acumulados (feedback)</div>
+                            <div class="em-tl-tx"><strong>Retroalimentación negativa clásica:</strong> CTP inhibe ATCasa → frena síntesis de pirimidinas cuando hay exceso de CTP. IMP inhibe adenilosuccinato sintetasa y SAICAR → frena síntesis de purinas. Los ácidos grasos-CoA inhiben acetil-CoA carboxilasa → frena síntesis de nuevos ácidos grasos.</div>
+                        </div>
+                        <div class="em-tl-item">
+                            <div class="em-tl-yr">SEÑAL: Modificación covalente (fosforilación)</div>
+                            <div class="em-tl-tx"><strong>Regulación enzimática reversible:</strong> La fosforilación de Ser/Thr/Tyr por cinasas (PKA, PKC, AMPK, CaMKII) modifica la actividad. Glucógeno fosforilasa: fosforilada → activa (glucogenólisis). Glucógeno sintasa: fosforilada → inactiva. Esta regulación covalente amplifica señales hormonales (adrenalina → PKA → fosforilación de múltiples targets en segundos).</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="em-norma" data-em-reveal>
+                    <div class="em-norma-ico">🔬</div>
+                    <div>
+                        <h4>Alosterismo y Medicina de Precisión en Chile</h4>
+                        <p>La comprensión del alosterismo enzimático ha abierto una nueva era en el diseño de fármacos. Los moduladores alostéricos positivos (PAM) y negativos (NAM) ofrecen ventajas sobre los inhibidores clásicos del sitio activo: mayor selectividad (los sitios alostéricos son menos conservados entre enzimas relacionadas), menor toxicidad y efectos más fisiológicos. En Chile, investigadores del CBIB (Centro de Bioinformática y Biología Integrativa, Universidad Andrés Bello) y del Laboratorio de Biofísica Molecular de la USACH trabajan en modelamiento computacional de sitios alostéricos en enzimas de T. cruzi (Chagas) y M. tuberculosis — ambas enfermedades con alta prevalencia en regiones del norte de Chile. El proyecto FONDEF ID21I10177 (2022-2024) financiado por ANID explora inhibidores alostéricos de triosephosphate isomerase de T. cruzi como antiparasitarios selectivos.</p>
+                    </div>
+                </div>
+            </div><!-- /panel alosterismo -->
+
+            <!-- ══ PANEL 4: FARMACOLOGÍA ══ -->
+            <div class="em-panel">
+                <div class="em-3d" data-em-reveal>
+                    <canvas id="em-canvas-farmacologia" title="Diseño racional de fármacos 3D — enzima-inhibidor"></canvas>
+                    <div class="em-3d-lbl">⟳ Arrastra para rotar — Diseño Racional de Fármacos · Complementariedad Molecular</div>
+                </div>
+
+                <div data-em-reveal>
+                    <div class="em-sh">Enzimas como Blancos Farmacológicos</div>
+                    <div class="em-mec">
+                        <div class="em-mec-card">
+                            <div class="em-mec-ico">🎯</div>
+                            <h4>Criterios para una Diana Enzimática Válida</h4>
+                            <p>Para que una enzima sea un blanco farmacológico útil debe cumplir: (1) Relevancia patológica demostrada — knockout o mutación causa la enfermedad o agrava síntomas. (2) Expresión diferencial — idealmente expresada en tejido enfermo pero no en tejido sano (o con diferencias estructurales aprovechables). (3) Estructura conocida — cristalografía de rayos X o cryo-EM del sitio activo con resolución &lt;2.5 Å. (4) Sitio activo druggable — cavidad con residuos polares y apolares que permitan interacciones favorables (regla de Lipinski). (5) Ausencia de compensación fisiológica — si hay isoenzimas alternativas, el fármaco debe discriminarlas.</p>
+                        </div>
+                        <div class="em-mec-card">
+                            <div class="em-mec-ico">🔭</div>
+                            <h4>Diseño Racional de Fármacos (SBDD)</h4>
+                            <p>Structure-Based Drug Design: la estructura 3D de la enzima (PDB) guía el diseño del inhibidor. Etapas: (1) Determinación de estructura enzimática (rayos X, cryo-EM, NMR). (2) Identificación del sitio de unión y residuos clave. (3) Cribado virtual (docking molecular — AutoDock, Glide, GOLD) de millones de compuestos. (4) Síntesis y prueba de hits. (5) Optimización SAR (relación estructura-actividad): mejorar Ki, selectividad, ADME. (6) Lead optimization → candidato a fármaco. Ejemplo modelo: inhibidores de HIV-1 proteasa (saquinavir, ritonavir) diseñados con base en la estructura del sitio activo Asp25/Asp25' (aspartil proteasa).</p>
+                        </div>
+                        <div class="em-mec-card">
+                            <div class="em-mec-ico">🧪</div>
+                            <h4>Casos de Éxito Históricos</h4>
+                            <p>Captopril (1981): primer IECA diseñado racionalmente usando la estructura del sitio activo de la ECA (zinc-metaloproteasa). Ki = 1.7 nM. Imatinib (Gleevec, 2001): inhibe Bcr-Abl (quinasa oncogénica en LMC) con Ki = 13 nM — revolucionó el tratamiento de la leucemia mieloide crónica. Oseltamivir (Tamiflu): diseñado usando la estructura de la neuraminidasa del virus influenza — compuesto de transición estabilizado. Venetoclax: inhibidor de BCL-2 (proteína antiapoptótica) — diseñado con SBDD, aprobado en leucemia linfocítica crónica refractaria (Ki &lt; 1 nM).</p>
+                        </div>
+                        <div class="em-mec-card">
+                            <div class="em-mec-ico">🌐</div>
+                            <h4>Selectividad y Efectos Adversos</h4>
+                            <p>La falta de selectividad genera toxicidad off-target. El CYP450 es la familia más problemática: 57 isoenzimas en humanos, muchas con sitios activos similares. CYP3A4 metaboliza ~50% de fármacos; CYP2D6 (~25%) tiene polimorfismos que crean metabolizadores ultra-rápidos y pobres. La inhibición de CYP3A4 por ketoconazol eleva [ciclosporina] 5-10 veces → toxicidad renal. La selectividad COX-2 > COX-1 de celecoxib reduce úlceras gástricas (COX-1 protege mucosa), pero aumentó riesgo cardiovascular (COX-2 produce prostaciclina cardioprotectora) — retirada de rofecoxib (Vioxx) en 2004.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-em-reveal>
+                    <div class="em-sh">Principales Clases de Fármacos por Mecanismo Enzimático</div>
+                    <div class="em-tbl-wrap">
+                        <table class="em-tbl">
+                            <thead>
+                                <tr><th>Clase</th><th>Enzima inhibida</th><th>Mecanismo</th><th>Fármacos representativos</th><th>Indicación</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Estatinas</td><td>HMG-CoA reductasa</td><td><span class="em-tag em-t-g">Competitiva</span></td><td>Atorvastatina, Rosuvastatina, Simvastatina</td><td>Hipercolesterolemia, cardioprotección</td></tr>
+                                <tr><td>IECAs</td><td>ECA (dipeptidil carboxipeptidasa)</td><td><span class="em-tag em-t-g">Competitiva</span></td><td>Enalapril, Captopril, Lisinopril, Ramipril</td><td>HTA, insuficiencia cardíaca, nefroprotección</td></tr>
+                                <tr><td>IBP</td><td>H⁺/K⁺-ATPasa gástrica</td><td><span class="em-tag em-t-r">Irreversible</span></td><td>Omeprazol, Pantoprazol, Esomeprazol</td><td>ERGE, úlcera péptica, H. pylori</td></tr>
+                                <tr><td>Anti-VIH IP</td><td>HIV-1 proteasa (aspartil)</td><td><span class="em-tag em-t-p">Transición</span></td><td>Lopinavir, Ritonavir, Darunavir, Atazanavir</td><td>Infección VIH/SIDA (TARV)</td></tr>
+                                <tr><td>Antifúngicos azólicos</td><td>Lanosterol 14-demetilasa (CYP51)</td><td><span class="em-tag em-t-g">Competitiva</span></td><td>Fluconazol, Itraconazol, Voriconazol</td><td>Candidiasis, aspergilosis, criptococosis</td></tr>
+                                <tr><td>Anticolinesterásicos</td><td>Acetilcolinesterasa</td><td><span class="em-tag em-t-go">Reversible/irrev.</span></td><td>Donepezilo (rev.), Neostigmina (rev.), DIFP (irrev.)</td><td>Alzheimer, miastenia gravis, agente nervioso</td></tr>
+                                <tr><td>Antigotosos</td><td>Xantina oxidasa</td><td><span class="em-tag em-t-r">Irreversible</span></td><td>Alopurinol (prodrug → oxipurinol)</td><td>Gota, hiperuricemia</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="em-norma" data-em-reveal>
+                    <div class="em-norma-ico">🏥</div>
+                    <div>
+                        <h4>Investigación en Enzimas Farmacológicas en Chile — ANID y Universidades</h4>
+                        <p>Chile tiene una creciente comunidad científica en enzimología aplicada a farmacología. El Centro de Estudios Científicos (CECs, Valdivia) de la Dra. Patricia Cárdenas trabaja en canales iónicos y enzimas de membrana como dianas terapéuticas. La Facultad de Ciencias Químicas y Farmacéuticas de la U. de Chile cuenta con el Laboratorio de Bioquímica y Biología Molecular donde se estudian proteasas de parásitos (Leishmania, Plasmodium falciparum — endémico en la Región de Arica y Parinacota) como blancos antiparasitarios. El FONDECYT Regular 1220338 (2022-2026) financia investigación sobre inhibidores de FtsZ (GTPasa bacteriana análoga a tubulina) como antibacterianos contra M. tuberculosis resistente a rifampicina — un problema creciente en Chile (tasa de TB: 8.7/100,000 según MINSAL 2022). Las metodologías empleadas incluyen cristalografía de rayos X en el beamline BL13-XALOC del ALBA Synchrotron (acceso gestionado por ANID a través del consorcio LAAMP) y cryo-EM en el Centro de Nanociencias de la PUC.</p>
+                    </div>
+                </div>
+            </div><!-- /panel farmacología -->
+
+        </div><!-- /panels-wrap -->
+
+        <!-- NAV INFERIOR -->
+        <div class="em-page-nav">
+            <a href="../biomoleculas/biomoleculas.html" class="em-nbtn">← Unidad 2: Biomoléculas</a>
+            <a href="../index.html"                     class="em-nbtn">Volver al índice</a>
+            <a href="../metabolismo/metabolismo.html"   class="em-nbtn pri">Siguiente: Unidad 4 — Metabolismo →</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>© 2026 PharmaLab Chile — Bioquímica · Unidad 3: Enzimología Moderna</p>
+            <p class="footer-disclaimer">Contenido educacional universitario. Datos basados en Stryer 9ª ed., Lehninger 8ª ed., Berg-Tymoczko-Gatto 9ª ed. y bases BRENDA/UniProtKB. No reemplaza asesoría médica profesional.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="../../script.js"></script>
+<script src="enzimologia-moderna.js"></script>
+</body>
+</html>

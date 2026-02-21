@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virus del Zika (ZIKV) — Congénito, Epidemiología y Vectorial | PharmaLab Chile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="zika.css">
+</head>
+<body class="zkv-page">
+
+  <!-- NAVBAR -->
+  <nav class="zkv-navbar" id="zkv-navbar">
+    <div class="zkv-nav-inner">
+      <a href="../../index.html" class="zkv-nav-logo">
+        <svg viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        Pharma<span class="accent">Lab</span>
+      </a>
+      <div class="zkv-nav-links" id="zkvNavLinks">
+        <a href="../index.html">← Virología</a>
+        <a href="#estructura">Estructura 3D</a>
+        <a href="#congenito">Congénito</a>
+        <a href="#epidemiologia">Epidemiología</a>
+        <a href="#vectorial">Vectorial</a>
+        <a href="#" class="active">Zika</a>
+      </div>
+      <button class="zkv-nav-toggle" id="zkvNavToggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="zkv-hero">
+    <div class="zkv-hero-bg"></div>
+    <canvas id="zkv-hero-canvas"></canvas>
+    <div class="zkv-hero-content">
+      <div class="zkv-badge">Virología · Patógeno 08/10 · BSL-2</div>
+      <h1 class="zkv-hero-title">
+        <span class="accent">Virus del Zika</span><br>
+        ZIKV — Flaviviridae
+      </h1>
+      <p class="zkv-hero-desc">
+        Flavivirus ARN de cadena positiva, transmitido principalmente por el mosquito 
+        <em>Aedes aegypti</em>. Causante de la <strong>epidemia 2015–2016 en América</strong> 
+        que reveló su devastadora capacidad de producir <strong>microcefalia y malformaciones 
+        congénitas</strong> graves. Primer arbovirus asociado a síndrome de Guillain-Barré 
+        y primera ITS de transmisión vectorial documentada.
+      </p>
+      <div class="zkv-hero-meta">
+        <div class="zkv-meta-item">
+          <span class="zkv-meta-val">~10.8 kb</span>
+          <span class="zkv-meta-label">Genoma ARN (+)ssRNA lineal</span>
+        </div>
+        <div class="zkv-meta-item">
+          <span class="zkv-meta-val">+700k</span>
+          <span class="zkv-meta-label">Casos confirmados Américas 2015–2016</span>
+        </div>
+        <div class="zkv-meta-item">
+          <span class="zkv-meta-val">BSL-2</span>
+          <span class="zkv-meta-label">Nivel de bioseguridad</span>
+        </div>
+        <div class="zkv-meta-item">
+          <span class="zkv-meta-val">87</span>
+          <span class="zkv-meta-label">Países con transmisión activa (OPS 2016)</span>
+        </div>
+      </div>
+    </div>
+    <div class="zkv-scroll-hint">
+      <span>Explorar</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- STATS ROW -->
+  <div class="zkv-container">
+    <div class="zkv-stats-row">
+      <div class="zkv-stat-card">
+        <span class="zkv-stat-val" data-target="3893" data-suffix="">0</span>
+        <span class="zkv-stat-label">Casos de microcefalia Brasil 2015–2016 (PAHO)</span>
+      </div>
+      <div class="zkv-stat-card">
+        <span class="zkv-stat-val" data-target="87" data-suffix="">0</span>
+        <span class="zkv-stat-label">Países/territorios con transmisión vectorial activa</span>
+      </div>
+      <div class="zkv-stat-card">
+        <span class="zkv-stat-val" data-target="80" data-suffix="%">0</span>
+        <span class="zkv-stat-label">Infecciones asintomáticas (estima OMS)</span>
+      </div>
+      <div class="zkv-stat-card">
+        <span class="zkv-stat-val" data-target="10" data-suffix=" genes">0</span>
+        <span class="zkv-stat-label">Proteínas codificadas (3 estructurales + 7 NS)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 1 — ESTRUCTURA 3D -->
+  <section class="zkv-section" id="estructura">
+    <div class="zkv-container">
+      <div class="zkv-section-tag tag-teal">🔬 Estructura del Virión</div>
+      <h2 class="zkv-section-title">Anatomía del <span class="gradient">ZIKV</span> en 3D</h2>
+      <p class="zkv-section-sub">El ZIKV es un flavivirus icosaédrico envuelto (~50 nm). Comparte arquitectura con el dengue y el virus del Nilo Occidental, pero con propiedades neurotrópicas únicas. Arrastra para rotar, scroll para zoom.</p>
+
+      <div class="zkv-viewer-wrap">
+        <div>
+          <div class="zkv-canvas-box">
+            <canvas id="zkv-model-canvas"></canvas>
+            <div class="zkv-canvas-label">ZIKV · Virión icosaédrico envuelto (~50 nm)</div>
+          </div>
+        </div>
+        <div class="zkv-struct-info">
+          <div class="zkv-struct-card" style="--stripe-color:#10b981">
+            <h4><span class="dot" style="background:#10b981"></span>Envoltura lipídica + proteína E</h4>
+            <p>Bicapa lipídica derivada del retículo endoplasmático (no de la membrana plasmática, a diferencia del Ébola). La glicoproteína E (envelope) forma 90 dímeros dispuestos en simetría icosaédrica. E media la fusión endosomal vía receptor AXL/TYRO3 y es la principal diana de anticuerpos neutralizantes.</p>
+          </div>
+          <div class="zkv-struct-card" style="--stripe-color:#06b6d4">
+            <h4><span class="dot" style="background:#06b6d4"></span>Proteínas estructurales C, prM/M, E</h4>
+            <p>La proteína C (cápside) encapsida el ARN genómico. prM es procesada a M durante la maduración — los viriones inmaduros con prM son no infecciosos. La maduración ocurre en el trans-Golgi por la furina celular. Este procesamiento incompleto en ciertos contextos contribuye a la variabilidad de infectividad.</p>
+          </div>
+          <div class="zkv-struct-card" style="--stripe-color:#a3e635">
+            <h4><span class="dot" style="background:#a3e635"></span>Proteínas no estructurales NS1–NS5</h4>
+            <p>NS1 es secretada (sNS1) y actúa como señuelo inmune (similar a sGP del Ébola). NS3 es la helicasa/proteasa viral. NS5 es la ARN polimerasa ARN-dependiente (RdRp) — diana de antivirales en investigación. NS2A, NS2B, NS4A, NS4B reorganizan membranas intracelulares formando el compartimento de replicación.</p>
+          </div>
+          <div class="zkv-struct-card" style="--stripe-color:#f59e0b">
+            <h4><span class="dot" style="background:#f59e0b"></span>Genoma ARN(+) ~ 10.8 kb — ORF único</h4>
+            <p>Un único marco de lectura abierto (ORF) codifica una poliproteína que es clivada co- y post-traduccionalmente en 10 proteínas. Sin caperuza en el extremo 5' (cap no convencional tipo I). El genoma puede actuar directamente como ARNm al entrar al citoplasma — ventaja cinética sobre los virus ARN(−).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2 — CONGÉNITO -->
+  <section class="zkv-section" id="congenito">
+    <div class="zkv-container">
+      <div class="zkv-section-tag tag-teal">🧠 Síndrome Congénito por Zika</div>
+      <h2 class="zkv-section-title">El impacto <span class="gradient">congénito</span> del ZIKV</h2>
+      <p class="zkv-section-sub">El Síndrome Congénito por Zika (SCZ) es la consecuencia más grave de la infección. Afecta principalmente al sistema nervioso central fetal cuando la infección ocurre en el primer y segundo trimestre del embarazo.</p>
+
+      <!-- TIMELINE PATOGENIA FETAL -->
+      <div class="zkv-react-timeline">
+        <div class="zkv-rt-step">
+          <span class="zkv-rt-num" style="color:#10b981">01</span>
+          <h4>Infección materna + barrera placentaria</h4>
+          <p>La madre se infecta por picadura de Aedes. El ZIKV cruza la barrera placentaria infectando trofoblastos, células de Hofbauer (macrófagos placentarios) y células del citotrofoblasto. El receptor AXL es altamente expresado en la placenta — facilitador clave del cruce transplacentario.</p>
+        </div>
+        <div class="zkv-rt-arrow">→</div>
+        <div class="zkv-rt-step">
+          <span class="zkv-rt-num" style="color:#06b6d4">02</span>
+          <h4>Neurotropismo fetal — células progenitoras</h4>
+          <p>El ZIKV infecta células progenitoras neurales (NPCs) corticales fetales con alta eficiencia. Preferencia por células de la zona ventricular/subventricular. Induce apoptosis masiva, detención del ciclo celular (↓ proliferación), mitosis aberrante y disrupción de la organización laminar cortical.</p>
+        </div>
+        <div class="zkv-rt-arrow">→</div>
+        <div class="zkv-rt-step">
+          <span class="zkv-rt-num" style="color:#a3e635">03</span>
+          <h4>Microcefalia y malformaciones SNC</h4>
+          <p>La pérdida masiva de NPCs produce microcefalia (PC &lt;−2 DE) — el signo cardinal del SCZ. Además: lisencefalia, paquigiria, calcificaciones corticales subcorticales, hipoplasia cerebelosa, ventriculomegalia, artrogriposis (por disfunción motora). La gravedad depende del trimestre de infección.</p>
+        </div>
+        <div class="zkv-rt-arrow">→</div>
+        <div class="zkv-rt-step">
+          <span class="zkv-rt-num" style="color:#f59e0b">04</span>
+          <h4>Secuelas neurológicas posnatales</h4>
+          <p>Los neonatos con SCZ presentan: epilepsia refractaria (>60%), espasticidad severa, sordera neurosensorial, ceguera cortical, disfagia, irritabilidad extrema. El espectro es amplio — algunos RN normocéfalos desarrollan manifestaciones tardías. El SCZ es una condición crónica, no solo neonatal.</p>
+        </div>
+        <div class="zkv-rt-arrow">→</div>
+        <div class="zkv-rt-step">
+          <span class="zkv-rt-num" style="color:#ec4899">05</span>
+          <h4>Síndrome de Guillain-Barré (SGB) en adultos</h4>
+          <p>ZIKV fue el primer arbovirus asociado a SGB — polineuropatía desmielinizante por mecanismo autoinmune (mimetismo molecular anti-gangliósidos). Brote Polinesia Francesa 2013–2014: incidencia de SGB 20x mayor que basal. Patrón AMAN/AMSAN. Recuperación generalmente completa con IVIG + soporte ventilatorio.</p>
+        </div>
+      </div>
+
+      <div class="zkv-content-grid" style="margin-top:40px">
+        <div class="zkv-content-card" style="--card-accent:#10b981">
+          <div class="zkv-card-num">Diagnóstico Prenatal</div>
+          <h3>Evaluación del Embarazo con Sospecha ZIKV</h3>
+          <ul>
+            <li><span class="bullet" style="background:#10b981"></span><strong style="color:var(--zkv-text)">RT-PCR ZIKV en sangre materna:</strong> Positiva en días 1–7 post-infección (ventana viremia corta). En orina: detectable hasta 14 días. En líquido amniótico: confirmación de transmisión vertical cuando es positivo (técnica de referencia para infección fetal confirmada). Umbral Ct &lt;38.</li>
+            <li><span class="bullet" style="background:#10b981"></span><strong style="color:var(--zkv-text)">Serología IgM/IgG (MAC-ELISA, PRNT):</strong> IgM aparece en días 4–7, puede persistir meses. Alta reactividad cruzada con dengue y fiebre amarilla — el test de neutralización por reducción en placas (PRNT80) es el gold standard para distinguir flavivirus. En mujeres vacunadas contra FA: interpretación compleja.</li>
+            <li><span class="bullet" style="background:#10b981"></span><strong style="color:var(--zkv-text)">Ecografía obstétrica seriada:</strong> Control cada 3–4 semanas en embarazadas expuestas. Signos de alarma: PC &lt;−2 DE, calcificaciones cerebrales, ventriculomegalia, artrogriposis, RCIU. La microcefalia puede no ser evidente hasta semanas 28–32. RM fetal (segunda línea) para mejor caracterización de malformaciones corticales.</li>
+            <li><span class="bullet" style="background:#10b981"></span><strong style="color:var(--zkv-text)">Amniocentesis:</strong> Indicada ante signos ecográficos sugestivos. RT-PCR en líquido amniótico tiene alta especificidad para confirmar infección fetal. Riesgo procedimiento ~0.1–0.3%. Decisión compartida con la familia — no cambia el manejo obstétrico pero sí el pronóstico y counseling.</li>
+          </ul>
+        </div>
+
+        <div class="zkv-content-card" style="--card-accent:#06b6d4">
+          <div class="zkv-card-num">Mecanismo Molecular</div>
+          <h3>¿Por qué el ZIKV es Neuroteratógeno?</h3>
+          <ul>
+            <li><span class="bullet" style="background:#06b6d4"></span><strong style="color:var(--zkv-text)">Receptor AXL — puerta de entrada neural:</strong> AXL (receptor tirosina kinasa) es altamente expresado en NPCs del feto y en células de Müller retinianas. ZIKV usa AXL como receptor de entrada principal vía TYRO3/GAS6. La inhibición de AXL reduce dramáticamente la infección neural en modelos in vitro — base para inhibidores de AXL como potenciales antivirales.</li>
+            <li><span class="bullet" style="background:#06b6d4"></span><strong style="color:var(--zkv-text)">NS4A y NS4B — supresión de la vía Akt-mTOR:</strong> Las proteínas no estructurales NS4A+NS4B del ZIKV inhiben la vía PI3K-Akt-mTOR en NPCs fetales. mTOR regula la proliferación, diferenciación y supervivencia neural. La inhibición de mTOR en el feto produce microcefalia — replicando el fenotipo de mutaciones humanas de mTOR. Este mecanismo es único al ZIKV vs otros flavivirus.</li>
+            <li><span class="bullet" style="background:#06b6d4"></span><strong style="color:var(--zkv-text)">Ventana crítica de vulnerabilidad:</strong> 1er trimestre (semanas 6–16): máximo riesgo de microcefalia severa (~1–13% de embarazadas infectadas). 2° trimestre: riesgo menor pero con malformaciones corticales de organización. 3er trimestre: neurotropismo reducido, manifestaciones clínicas más sutiles. Infección periconcepcional: riesgo incierto pero no nulo.</li>
+            <li><span class="bullet" style="background:#06b6d4"></span><strong style="color:var(--zkv-text)">El enigma del "spike" de microcefalia Brasil:</strong> La cepa asiática (que llegó a Brasil vía Polinesia Francesa) adquirió la mutación S139N en la proteína prM — mayor capacidad de infectar NPCs humanas vs cepas africanas. Esta mutación se asocia a mayor neurovirulencia y puede explicar parcialmente el patrón inusual de microcefalia observado en Brasil 2015.</li>
+          </ul>
+        </div>
+
+        <div class="zkv-content-card" style="--card-accent:#a3e635">
+          <div class="zkv-card-num">Manejo Clínico</div>
+          <h3>Atención al Neonato con SCZ</h3>
+          <ul>
+            <li><span class="bullet" style="background:#a3e635"></span><strong style="color:var(--zkv-text)">Evaluación multidisciplinaria al nacer:</strong> Neurología pediátrica (EEG, RM cerebral), oftalmología (fondo de ojo — coloboma, hipoplasia macular), otorrinolaringología (PEAT neonatal), fisiatría, fonoaudiología. La evaluación completa define el espectro de afectación y el plan de rehabilitación temprana.</li>
+            <li><span class="bullet" style="background:#a3e635"></span><strong style="color:var(--zkv-text)">Control de epilepsia:</strong> Principal comorbilidad — afecta >60% de los casos de SCZ. Espasmos infantiles (síndrome de West) frecuentes en el primer año. Tratamiento: ACTH/vigabatrina para espasmos. Monoterapia con valproato, levetiracetam o fenobarbital para otras formas. La epilepsia suele ser refractaria a monoterapia.</li>
+            <li><span class="bullet" style="background:#a3e635"></span><strong style="color:var(--zkv-text)">Rehabilitación intensiva temprana:</strong> Kinesiología motora, terapia ocupacional, fonoaudiología (deglución y comunicación), estimulación visual. La plasticidad cerebral neonatal es máxima — la intervención temprana mejora el pronóstico funcional. Programas de atención temprana del desarrollo reducen la severidad de las secuelas motoras.</li>
+            <li><span class="bullet" style="background:#a3e635"></span><strong style="color:var(--zkv-text)">No existe tratamiento antiviral específico aprobado:</strong> El manejo es 100% sintomático y de soporte. En investigación: antivirales como NITD008 (inhibidor RdRp NS5), sofosbuvir (repurposing del antiviral VHC — activo in vitro vs ZIKV NS5), favipiravir. Ninguno ha alcanzado fase III para ZIKV. La vacuna es la estrategia más prometedora para prevención.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3 — EPIDEMIOLOGÍA -->
+  <section class="zkv-section" id="epidemiologia">
+    <div class="zkv-container">
+      <div class="zkv-section-tag tag-cyan">🌍 Epidemiología Global</div>
+      <h2 class="zkv-section-title">La <span class="gradient">epidemia</span> que cambió la virología</h2>
+      <p class="zkv-section-sub">En 60 años el ZIKV pasó de ser un virus oscuro de Uganda a provocar una ESPII de la OMS. La epidemia de las Américas 2015–2016 redefinió la vigilancia epidemiológica de arbovirosis y la teratología viral.</p>
+
+      <div class="zkv-neuro-grid">
+        <div class="zkv-neuro-card" style="--neuro-color:#10b981;--neuro-dim:rgba(16,185,129,.12)">
+          <span class="zkv-neuro-icon">🇺🇬</span>
+          <h4>Descubrimiento — Uganda 1947</h4>
+          <p>Aislado del suero de un mono Rhesus centinela en el Bosque Zika (Uganda), parte de un estudio de vigilancia de fiebre amarilla. Primer caso humano documentado en Uganda 1952. Durante 60 años produjo brotes esporádicos pequeños en África y Asia con enfermedad leve.</p>
+          <span class="zkv-neuro-detail">Bosque Zika · Uganda · 1947</span>
+        </div>
+        <div class="zkv-neuro-card" style="--neuro-color:#06b6d4;--neuro-dim:rgba(6,182,212,.12)">
+          <span class="zkv-neuro-icon">🌊</span>
+          <h4>Explosión Oceánica — Polinesia Francesa 2013</h4>
+          <p>Primer brote explosivo: ~28.000 personas afectadas (~11% de la población). Primera documentación de casos de SGB asociados a ZIKV. La cepa asiática se expande por Micronesia (2007) → Polinesia Francesa (2013) → Isla de Pascua (2014) → Brasil (2015). Análisis filogenético confirmó esta ruta migratoria.</p>
+          <span class="zkv-neuro-detail">28.000 casos · Primer SGB</span>
+        </div>
+        <div class="zkv-neuro-card" style="--neuro-color:#a3e635;--neuro-dim:rgba(163,230,53,.12)">
+          <span class="zkv-neuro-icon">🇧🇷</span>
+          <h4>ESPII OMS — Américas 2015–2016</h4>
+          <p>Brasil reporta brote masivo en 2015. En octubre 2015 se detecta el aumento anormal de microcefalia en Pernambuco → se establece nexo causal ZIKV-microcefalia (febrero 2016). OMS declara ESPII el 1 de febrero 2016 — primera en la historia por una arbovirosis con impacto teratogénico. Fin de la ESPII: noviembre 2016.</p>
+          <span class="zkv-neuro-detail">ESPII OMS · Feb 2016</span>
+        </div>
+        <div class="zkv-neuro-card" style="--neuro-color:#f59e0b;--neuro-dim:rgba(245,158,11,.12)">
+          <span class="zkv-neuro-icon">🦟</span>
+          <h4>Distribución Actual — 2024</h4>
+          <p>El ZIKV es endémico en zonas tropicales y subtropicales con presencia de Aedes aegypti: América Central y del Sur, Caribe, África Subsahariana, Asia Suroriental, Oceanía. En Europa: transmisión local en Madeira (Portugal). Estados Unidos: transmisión local documentada en Florida y Texas. Chile sin transmisión autóctona (no hay Ae. aegypti establecido en Chile continental).</p>
+          <span class="zkv-neuro-detail">87 países · Transmisión activa</span>
+        </div>
+        <div class="zkv-neuro-card" style="--neuro-color:#ec4899;--neuro-dim:rgba(236,72,153,.12)">
+          <span class="zkv-neuro-icon">💉</span>
+          <h4>Transmisión Sexual — ITS Emergente</h4>
+          <p>ZIKV fue el primer arbovirus con transmisión sexual documentada robustamente. El virus persiste en semen hasta 3–6 meses post-infección (más larga que en sangre). Transmisión hombre→mujer, mujer→hombre y hombre→hombre documentada. Recomendación OMS: uso de preservativo o abstinencia durante 3 meses post-infección en viajeros retornados de zonas endémicas.</p>
+          <span class="zkv-neuro-detail">Persistencia en semen: 3–6 meses</span>
+        </div>
+        <div class="zkv-neuro-card" style="--neuro-color:#a855f7;--neuro-dim:rgba(168,85,247,.12)">
+          <span class="zkv-neuro-icon">🔬</span>
+          <h4>Reactivación Post-Epidemia</h4>
+          <p>Luego del pico 2016, los casos globales cayeron dramáticamente — posiblemente por inmunidad de rebaño en poblaciones afectadas (Rₒ estimado 1.4–6.6 en brotes). Sin embargo, la vigilancia continúa activa: brotes documentados en la India (2021), Etiopía (2022), Bolivia y Paraguay (2023). El riesgo de reemergencia es real conforme disminuye la inmunidad poblacional.</p>
+          <span class="zkv-neuro-detail">R₀: 1.4–6.6 · Riesgo reemergencia</span>
+        </div>
+      </div>
+
+      <!-- TABLA COMPARATIVA FLAVIVIRUS -->
+      <div class="zkv-section-tag tag-teal" style="margin-top:48px">📊 Comparativa: ZIKV vs Otros Flavivirus</div>
+      <div class="zkv-vax-table-wrap" style="margin-top:16px">
+        <table class="zkv-vax-table">
+          <thead>
+            <tr>
+              <th>Característica</th>
+              <th>ZIKV (Zika)</th>
+              <th>DENV (Dengue)</th>
+              <th>YFV (Fiebre Amarilla)</th>
+              <th>WNV (Nilo Occidental)</th>
+              <th>JEV (Encefalitis Japonesa)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="vax-name">Vector</td>
+              <td>Ae. aegypti / Ae. albopictus</td>
+              <td class="vax-tech">Ae. aegypti / Ae. albopictus</td>
+              <td>Ae. aegypti</td>
+              <td>Culex spp.</td>
+              <td>Culex tritaeniorhynchus</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Hospedero amplificador</td>
+              <td>Humano / primates</td>
+              <td class="vax-tech">Humano (ciclo urbano)</td>
+              <td>Monos (ciclo selvático)</td>
+              <td>Aves migratorias</td>
+              <td>Cerdos / aves acuáticas</td>
+            </tr>
+            <tr>
+              <td class="vax-name">CFR</td>
+              <td>&lt;1% (adultos)</td>
+              <td class="vax-tech">1–5% (dengue grave)</td>
+              <td>20–60% (forma grave)</td>
+              <td>3–15% (neuro-invasiva)</td>
+              <td>20–30% (encefalitis)</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Teratogenicidad</td>
+              <td style="color:#10b981;font-weight:700">Sí — microcefalia, SCZ</td>
+              <td class="vax-tech">No documentada</td>
+              <td>No documentada</td>
+              <td>Posible (en investigación)</td>
+              <td>Pérdida fetal (no malformación)</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Transmisión sexual</td>
+              <td style="color:#10b981;font-weight:700">Sí documentada</td>
+              <td class="vax-tech">No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Vacuna aprobada</td>
+              <td>No (en desarrollo)</td>
+              <td class="vax-tech">Dengvaxia (CYD-TDV, Sanofi)</td>
+              <td>17D (YF-VAX) — Gold standard</td>
+              <td>No (en humanos)</td>
+              <td>IXIARO / JESPECT</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Reactividad cruzada serológica</td>
+              <td>Alta con DENV, YFV, WNV</td>
+              <td class="vax-tech">Alta con ZIKV, YFV</td>
+              <td>Alta con ZIKV, DENV</td>
+              <td>Alta con JEV, SLE</td>
+              <td>Alta con WNV, DENV</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4 — VECTORIAL -->
+  <section class="zkv-section" id="vectorial">
+    <div class="zkv-container">
+      <div class="zkv-section-tag tag-green">🦟 Transmisión Vectorial</div>
+      <h2 class="zkv-section-title">El vector: <span class="gradient">Aedes aegypti</span></h2>
+      <p class="zkv-section-sub">Comprender la biología de Aedes aegypti es inseparable del control del Zika. Este mosquito es el principal vector de cuatro arbovirosis de importancia global: Zika, dengue, chikungunya y fiebre amarilla urbana.</p>
+
+      <div class="zkv-content-grid">
+        <div class="zkv-content-card" style="--card-accent:#10b981">
+          <div class="zkv-card-num">Biología del Vector</div>
+          <h3>Aedes aegypti — El Mosquito Urbano</h3>
+          <ul>
+            <li><span class="bullet" style="background:#10b981"></span><strong style="color:var(--zkv-text)">Ciclo de vida (huevo→adulto: 8–10 días a 28°C):</strong> Huevo (diapausa hasta 1 año en seco) → larva (4 estadíos, criaderos de agua limpia/estancada) → pupa → adulto. La hembra adulta vive 2–4 semanas. Solo la hembra pica (necesita sangre para madurar óvulos). Oviposición en recipientes artificiales pequeños (neumáticos, floreros, baldes).</li>
+            <li><span class="bullet" style="background:#10b981"></span><strong style="color:var(--zkv-text)">Período de incubación extrínseca (EIP):</strong> 7–14 días a 28°C (temperatura-dependiente). El mosquito pica a una persona virèmica → el ZIKV replica en intestino medio → cruza la barrera intestinal → llega a glándulas salivales → mosquito es infeccioso. Por debajo de 18°C, el EIP se prolonga indefinidamente (importancia del cambio climático).</li>
+            <li><span class="bullet" style="background:#10b981"></span><strong style="color:var(--zkv-text)">Distribución geográfica y cambio climático:</strong> Históricamente tropical/subtropical. La expansión de Aedes hacia latitudes más altas (Mediterráneo, sur de EE.UU., norte de Argentina) es atribuible al calentamiento global. Modelos predicen que para 2050 el 49% de la población mundial vivirá en zonas de transmisión de Aedes. Ae. albopictus (tigre asiático) extiende el riesgo a zonas templadas.</li>
+            <li><span class="bullet" style="background:#10b981"></span><strong style="color:var(--zkv-text)">Competencia vectorial ZIKV vs DENV:</strong> Aedes aegypti muestra mayor competencia vectorial para DENV vs ZIKV (tasa de infección intestinal y diseminación mayor para DENV). Sin embargo, Ae. albopictus muestra competencia similar para ambos. La transmisión vertical (transovarica) del ZIKV en Aedes ha sido documentada — mecanismo de mantenimiento en la naturaleza.</li>
+          </ul>
+        </div>
+
+        <div class="zkv-content-card" style="--card-accent:#06b6d4">
+          <div class="zkv-card-num">Control Vectorial</div>
+          <h3>Estrategias de Control de Aedes</h3>
+          <ul>
+            <li><span class="bullet" style="background:#06b6d4"></span><strong style="color:var(--zkv-text)">Control larvario (más costo-efectivo):</strong> Eliminación de criaderos (manejo ambiental): tapa recipientes, cambia agua floreros cada 3 días, rellena huecos en árboles. Larvicidas biológicos: Bacillus thuringiensis israelensis (Bti) y Bacillus sphaericus en agua potable/ornamental. Temefos (organofosforado) en recipientes no potables — resistencia creciente documentada en Brasil y Colombia.</li>
+            <li><span class="bullet" style="background:#06b6d4"></span><strong style="color:var(--zkv-text)">Control adulticida:</strong> Fumigación espacial con piretroides (deltametrina, permetrina) — eficacia limitada por corta exposición del adulto al insecticida y resistencia. Resistencia a piretroides documentada en poblaciones de Ae. aegypti de Brasil, Colombia, Venezuela, México — mediada por mutaciones kdr en el canal de sodio (knockdown resistance).</li>
+            <li><span class="bullet" style="background:#06b6d4"></span><strong style="color:var(--zkv-text)">Wolbachia — control biológico avanzado:</strong> Liberación de Ae. aegypti infectados con Wolbachia pipientis (cepa wMel). La bacteria bloquea la replicación de ZIKV, dengue y chikungunya en el mosquito y se autopropaga en la población. Ensayo aleatorizado en Yogyakarta, Indonesia (2019–2021): reducción 77% dengue. Proyecto World Mosquito Program activo en Brasil, Colombia, Australia, Vietnam.</li>
+            <li><span class="bullet" style="background:#06b6d4"></span><strong style="color:var(--zkv-text)">Mosquitos OGM (Oxitec):</strong> OX513A: machos Ae. aegypti modificados genéticamente con gen letal dominante condicional (tTA). Descendencia muere en ausencia de tetraciclina. Ensayos en Brasil (Piracicaba, 2015): reducción ~82% de población larvaria. OX5034 (autoextinción): más eficiente. Aprobado por EPA (2020) para EE.UU. Debates éticos sobre impacto ecosistémico.</li>
+          </ul>
+        </div>
+
+        <div class="zkv-content-card" style="--card-accent:#f59e0b">
+          <div class="zkv-card-num">Vacuna — Estado Actual 2024–2025</div>
+          <h3>Carrera hacia la Vacuna Anti-ZIKV</h3>
+          <ul>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--zkv-text)">VRC-ZKADNA085 (NIH/NIAID) — ADN plasmídico:</strong> Expresa prM+E del ZIKV. Fase II completada — seroconversión en 90% de participantes. Limitación: requiere 3 dosis y electroprecipitación. Eficacia protectora en primates no humanos demostrada. Pendiente fase III para evaluar eficacia clínica — diseño complejo por baja incidencia actual.</li>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--zkv-text)">mRNA-1893 (Moderna) — plataforma ARNm:</strong> Similar a las vacunas COVID. Codifica prM+E. Fase II (2021–2023): seroconversión >90%, bien tolerada, 2 dosis. Considerada el candidato más prometedor por la plataforma demostrada. Pendiente decisión de avance a Fase III — desafío: demostrar eficacia en contexto de baja circulación viral post-epidemia.</li>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--zkv-text)">V180 (Sanofi Pasteur) — subunidad proteica:</strong> Proteína E truncada (sE) en superficie. Alta inmunogenicidad, plataforma estable. Fase I completada. El riesgo de ADE (potenciación dependiente de anticuerpos, mecanismo importante en dengue) con vacunas anti-Zika es teórico pero debe descartarse antes de aprobación — las vacunas anti-Zika podrían potenciar dengue y viceversa.</li>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--zkv-text)">Desafíos regulatorios únicos:</strong> La baja incidencia actual dificulta trials de eficacia (¿cómo demostrar protección sin casos suficientes?). Uso en embarazadas (principal población objetivo) requiere datos de seguridad extensos antes de aprobación. El problema del ADE cruzado ZIKV-DENV es el mayor obstáculo científico. Posible solución: vacuna bivalente ZIKV+DENV simultánea en desarrollo.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CALLOUT CHILE -->
+      <div class="zkv-callout">
+        <h3>🇨🇱 Zika en Chile — Riesgo, Vigilancia y Recomendaciones</h3>
+        <p>
+          Chile continental <strong>no tiene transmisión autóctona de ZIKV</strong> — no existe Aedes aegypti establecido en territorio continental chileno (temperatura y humedad no son adecuadas). Sin embargo, el riesgo no es nulo:
+          <strong>Isla de Pascua (Rapa Nui)</strong> es zona de riesgo potencial por su clima tropical y presencia de Aedes aegypti — fue incluida en la vigilancia especial del MINSAL durante la epidemia 2016. No se documentó transmisión local en Rapa Nui durante la ESPII.
+          El principal riesgo para Chile es la <strong>importación de casos</strong> por viajeros retornados de zonas endémicas (Brasil, Colombia, Venezuela, Centroamérica). El <strong>ISP Chile</strong> mantiene vigilancia de ZIKV con RT-PCR disponible para casos sospechosos en embarazadas viajeras.
+          Las <strong>guías MINSAL / SEREMI</strong> recomiendan a mujeres embarazadas o que planifiquen embarazo posponer viajes a zonas con transmisión activa de ZIKV y usar protección estricta contra mosquitos (ropa, repelente DEET ≥20%, mosquitero).
+          El Servicio de Salud y las maternidades chilenas tienen protocolo de tamizaje para embarazadas con antecedente de viaje a zona endémica en los últimos 6 meses — con derivación a ecografía fetal de detalle.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM NAV -->
+  <div class="zkv-container" style="padding-bottom:60px">
+    <div class="zkv-bottom-nav">
+      <a href="../index.html" class="zkv-nav-btn">← Volver a Virología</a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#estructura"    class="zkv-nav-btn">Estructura 3D ↑</a>
+        <a href="#congenito"     class="zkv-nav-btn">Congénito ↑</a>
+        <a href="#epidemiologia" class="zkv-nav-btn">Epidemiología ↑</a>
+        <a href="#vectorial"     class="zkv-nav-btn">Vectorial ↑</a>
+      </div>
+      <a href="../../index.html" class="zkv-nav-btn">Inicio →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="zkv-footer">
+    <div class="zkv-container">
+      <div class="zkv-footer-inner">
+        <p>© 2026 PharmaLab Chile · Contenido basado en OMS, CDC, PAHO, NIH/NIAID, NEJM, Lancet, Cell, Nature Medicine, MINSAL Chile</p>
+        <p class="disclaimer">Contenido educacional universitario. No reemplaza asesoría médica ni protocolos oficiales de salud pública.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="zika.js"></script>
+</body>
+</html>

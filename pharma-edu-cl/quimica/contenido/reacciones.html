@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reacciones Químicas — Cinética, Equilibrio, Termodinámica y Mecanismos | PharmaLab Chile</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../quimica.css">
+    <link rel="stylesheet" href="reacciones.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Three.js para el visor 3D de moléculas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body class="module-quimica">
+
+    <!-- ═══════════════════════════════════════════════════
+         NAVBAR
+    ═══════════════════════════════════════════════════ -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none">
+                        <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                        <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+                        <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+                        <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../../quimica/index.html" class="nav-link active" data-module="quimica">Química</a>
+                <a href="../../farmacia/index.html" class="nav-link" data-module="farmacia">Farmacia</a>
+                <a href="../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf">Q. Farmacéutica</a>
+                <a href="../../biotecnologia/index.html" class="nav-link" data-module="biotech">Biotecnología</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════════════ -->
+    <section class="module-hero" style="padding-bottom:40px;min-height:auto">
+        <div class="hero-content">
+            <span class="section-tag">Química — Unidad 2</span>
+            <h1 class="section-title">Reacciones Químicas</h1>
+            <p class="section-desc">Cinética, equilibrio, termodinámica y mecanismos de reacción aplicados a la síntesis farmacéutica. Contenido para estudiantes universitarios de Química, Farmacia y Bioquímica.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         CONTENIDO PRINCIPAL
+    ═══════════════════════════════════════════════════ -->
+    <section class="lesson-content">
+        <div class="container">
+            <div class="lesson-body">
+
+                <!-- ═══════════════════════════════════════════════════
+                     BLOQUE 1 — CINÉTICA QUÍMICA
+                ═══════════════════════════════════════════════════ -->
+                <div class="rxn-block" id="cinetica">
+                    <div class="rxn-block-tag">⚡ Cinética Química</div>
+                    <h2>Velocidad de reacción y <span class="grad">cinética</span></h2>
+                    <p class="intro">La cinética química estudia la velocidad a la que ocurren las reacciones químicas y los factores que la modifican. En farmacia, la cinética determina la velocidad de degradación de fármacos (estabilidad), la velocidad de absorción y eliminación (farmacocinética), y las condiciones óptimas de síntesis industrial.</p>
+
+                    <!-- Ley de velocidad -->
+                    <div class="rxn-formula">
+                        <span class="label">Ley de velocidad general</span>
+                        <span class="eq">v = k · [A]<sup>m</sup> · [B]<sup>n</sup></span><br>
+                        <span style="color:var(--text-secondary,#8a99a8);font-size:.76rem">
+                            v = velocidad de reacción (mol·L⁻¹·s⁻¹) &nbsp;|&nbsp; k = constante de velocidad &nbsp;|&nbsp; [A],[B] = concentraciones molares<br>
+                            m, n = órdenes parciales de reacción (se determinan experimentalmente, NO por estequiometría)
+                        </span>
+                    </div>
+
+                    <div class="rxn-topics">
+                        <div class="rxn-topic" style="--topic-accent:#10b981">
+                            <div class="rxn-topic-num">Cinética — Orden Cero</div>
+                            <h3>Reacciones de Orden Cero</h3>
+                            <p>La velocidad es constante e independiente de la concentración del reactivo. Ley integrada: [A] = [A]₀ − kt. Gráfico [A] vs t es lineal con pendiente −k.</p>
+                            <ul>
+                                <li><span class="bul"></span><strong>Vida media:</strong> t₁/₂ = [A]₀ / 2k — depende de la concentración inicial.</li>
+                                <li><span class="bul"></span><strong>Unidades de k:</strong> mol·L⁻¹·s⁻¹ (M/s).</li>
+                                <li><span class="bul"></span><strong>Ejemplo farmacéutico:</strong> Eliminación de etanol en el organismo (~7 g/h constantes, metabolismo hepático por ADH saturada). Liberación de fármacos desde sistemas de liberación controlada (parches transdérmicos, bombas osmóticas OROS).</li>
+                                <li><span class="bul"></span><strong>Ejemplo clínico:</strong> Fenitoína a dosis terapéuticas sigue cinética de orden cero (saturación de CYP2C9) — pequeños aumentos de dosis producen grandes aumentos de concentración plasmática. Riesgo de toxicidad.</li>
+                            </ul>
+                        </div>
+                        <div class="rxn-topic" style="--topic-accent:#34d399">
+                            <div class="rxn-topic-num">Cinética — Primer Orden</div>
+                            <h3>Reacciones de Primer Orden</h3>
+                            <p>La velocidad es directamente proporcional a la concentración de un reactivo. Ley integrada: ln[A] = ln[A]₀ − kt. Gráfico ln[A] vs t es lineal con pendiente −k.</p>
+                            <ul>
+                                <li><span class="bul"></span><strong>Vida media:</strong> t₁/₂ = 0.693 / k — constante, independiente de [A]₀. Esta es la propiedad más importante en farmacocinética.</li>
+                                <li><span class="bul"></span><strong>Unidades de k:</strong> s⁻¹ (o min⁻¹, h⁻¹).</li>
+                                <li><span class="bul"></span><strong>Ejemplo farmacéutico:</strong> La mayoría de los fármacos se eliminan por cinética de primer orden: la velocidad de eliminación es proporcional a la concentración plasmática. Ejemplo: paracetamol (t₁/₂ ≈ 2 h), ibuprofeno (t₁/₂ ≈ 2 h), amoxicilina (t₁/₂ ≈ 1 h).</li>
+                                <li><span class="bul"></span><strong>Degradación:</strong> La estabilidad de fármacos en solución suele seguir cinética de primer orden. La fecha de vencimiento (shelf life) se calcula como t₉₀ = 0.105/k (tiempo para perder 10% de potencia).</li>
+                                <li><span class="bul"></span><strong>Desintegración radiactiva:</strong> Todos los isótopos radiactivos siguen cinética de primer orden. Base del uso de ⁹⁹ᵐTc (t₁/₂ = 6 h) en medicina nuclear.</li>
+                            </ul>
+                        </div>
+                        <div class="rxn-topic" style="--topic-accent:#22d3ee">
+                            <div class="rxn-topic-num">Cinética — Segundo Orden</div>
+                            <h3>Reacciones de Segundo Orden</h3>
+                            <p>La velocidad depende del cuadrado de la concentración de un reactivo o del producto de dos concentraciones. Ley integrada: 1/[A] = 1/[A]₀ + kt. Gráfico 1/[A] vs t es lineal.</p>
+                            <ul>
+                                <li><span class="bul"></span><strong>Vida media:</strong> t₁/₂ = 1 / (k·[A]₀) — depende de la concentración inicial (a menor concentración, mayor t₁/₂).</li>
+                                <li><span class="bul"></span><strong>Unidades de k:</strong> L·mol⁻¹·s⁻¹ (M⁻¹s⁻¹).</li>
+                                <li><span class="bul"></span><strong>Ejemplo:</strong> Hidrólisis del ácido acetilsalicílico (aspirina) en solución, donde la velocidad depende de [aspirina] y [OH⁻] → v = k[aspirina][OH⁻]. Relevante para la estabilidad de formulaciones líquidas.</li>
+                                <li><span class="bul"></span><strong>Modelo de Michaelis-Menten:</strong> A bajas concentraciones de sustrato, las reacciones enzimáticas se comportan como segundo orden (v ≈ (Vmax/Km)·[S]). A alta [S], se saturan y pasan a orden cero (v ≈ Vmax).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Ecuación de Arrhenius -->
+                    <div class="rxn-detail" style="--stripe:#10b981">
+                        <h4><span class="dot" style="background:#10b981"></span>Ecuación de Arrhenius — Efecto de la temperatura</h4>
+                        <p>La constante de velocidad k depende exponencialmente de la temperatura según la ecuación de Arrhenius: <strong>k = A · e<sup>−Ea/RT</sup></strong>, donde A es el factor preexponencial (frecuencia de colisiones con orientación adecuada), Ea es la energía de activación (kJ/mol), R es la constante de los gases (8.314 J·mol⁻¹·K⁻¹) y T es la temperatura absoluta (K). En forma logarítmica: ln k = ln A − Ea/(RT). Un gráfico de ln k vs 1/T produce una recta con pendiente −Ea/R. Regla empírica: un aumento de 10 °C aproximadamente duplica la velocidad de muchas reacciones. En la industria farmacéutica, los estudios de estabilidad acelerada (ICH Q1A) utilizan la ecuación de Arrhenius para predecir la vida útil de medicamentos a 25 °C a partir de datos obtenidos a 40 °C y 50 °C.</p>
+                    </div>
+
+                    <div class="rxn-detail" style="--stripe:#34d399">
+                        <h4><span class="dot" style="background:#34d399"></span>Catálisis — Disminución de la Energía de Activación</h4>
+                        <p>Un catalizador aumenta la velocidad de reacción sin consumirse, proporcionando una vía alternativa con menor energía de activación (Ea). No altera la posición del equilibrio ni la termodinámica de la reacción: solo acelera la llegada al equilibrio. <strong>Catálisis homogénea:</strong> catalizador y reactivos en la misma fase (ej: catálisis ácida en hidrólisis de ésteres). <strong>Catálisis heterogénea:</strong> catalizador en fase distinta (ej: hidrogenación catalítica con Pd/C o Pt/H₂ — síntesis farmacéutica industrial). <strong>Catálisis enzimática:</strong> las enzimas son catalizadores biológicos extraordinariamente específicos. El modelo de Michaelis-Menten describe la cinética enzimática: v = Vmax·[S]/(Km + [S]), donde Km es la constante de Michaelis y Vmax la velocidad máxima. Ejemplo farmacéutico: CYP3A4 metaboliza >50% de los fármacos comercializados.</p>
+                    </div>
+
+                    <!-- Info adicional: cinética Michaelis-Menten -->
+                    <div class="rxn-infocard">
+                        <span class="ic-title">🔬 Cinética enzimática — Michaelis-Menten en detalle</span>
+                        Los parámetros Km y Vmax se obtienen experimentalmente mediante la gráfica de Lineweaver-Burk (doble recíproco: 1/v vs 1/[S]). <strong>Km bajo</strong> indica alta afinidad enzima-sustrato; <strong>Km alto</strong> indica baja afinidad. La inhibición enzimática puede ser competitiva (aumenta Km aparente, Vmax constante) o no competitiva (reduce Vmax, Km no cambia). Muchos fármacos actúan como inhibidores enzimáticos: metrotrexato (inhibición de DHFR), IECAs como enalapril (inhibición de ECA). El cociente Vmax/Km = kcat/Km se denomina <strong>eficiencia catalítica</strong> y es la mejor medida de cuán buena es una enzima.
+                    </div>
+
+                    <!-- Tabla resumen órdenes -->
+                    <div class="rxn-table-wrap">
+                        <table class="rxn-table">
+                            <thead>
+                                <tr>
+                                    <th>Orden</th>
+                                    <th>Ley de velocidad</th>
+                                    <th>Ley integrada</th>
+                                    <th>Gráfico lineal</th>
+                                    <th>t₁/₂</th>
+                                    <th>Unidades de k</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="td-name">0</td>
+                                    <td class="td-mono">v = k</td>
+                                    <td class="td-mono">[A] = [A]₀ − kt</td>
+                                    <td>[A] vs t</td>
+                                    <td class="td-mono">[A]₀ / 2k</td>
+                                    <td>M·s⁻¹</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-name">1</td>
+                                    <td class="td-mono">v = k[A]</td>
+                                    <td class="td-mono">ln[A] = ln[A]₀ − kt</td>
+                                    <td>ln[A] vs t</td>
+                                    <td class="td-mono">0.693 / k</td>
+                                    <td>s⁻¹</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-name">2</td>
+                                    <td class="td-mono">v = k[A]²</td>
+                                    <td class="td-mono">1/[A] = 1/[A]₀ + kt</td>
+                                    <td>1/[A] vs t</td>
+                                    <td class="td-mono">1 / (k·[A]₀)</td>
+                                    <td>M⁻¹·s⁻¹</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <!-- ═══════════════════════════════════════════════════
+                     BLOQUE 2 — EQUILIBRIO QUÍMICO
+                ═══════════════════════════════════════════════════ -->
+                <div class="rxn-block" id="equilibrio">
+                    <div class="rxn-block-tag" style="--accent-rgb:59,130,246">⚖️ Equilibrio Químico</div>
+                    <h2>Equilibrio químico y <span class="grad">constante K</span></h2>
+                    <p class="intro">El equilibrio químico es el estado en que las velocidades de la reacción directa e inversa se igualan y las concentraciones de reactivos y productos permanecen constantes en el tiempo. Es un equilibrio dinámico: las reacciones no cesan, sino que se compensan. La constante de equilibrio K cuantifica la posición del equilibrio y es fundamental para predecir el rendimiento de una reacción de síntesis.</p>
+
+                    <div class="rxn-formula" style="--accent-light:#60a5fa">
+                        <span class="label">Constante de equilibrio (para aA + bB ⇌ cC + dD)</span>
+                        <span class="eq">K<sub>c</sub> = [C]<sup>c</sup> · [D]<sup>d</sup> / ([A]<sup>a</sup> · [B]<sup>b</sup>)</span><br>
+                        <span class="eq" style="margin-top:6px;display:block">K<sub>p</sub> = (P<sub>C</sub>)<sup>c</sup> · (P<sub>D</sub>)<sup>d</sup> / ((P<sub>A</sub>)<sup>a</sup> · (P<sub>B</sub>)<sup>b</sup>)</span><br>
+                        <span style="color:var(--text-secondary,#8a99a8);font-size:.76rem">
+                            K<sub>c</sub> en concentraciones molares &nbsp;|&nbsp; K<sub>p</sub> en presiones parciales (gases) &nbsp;|&nbsp; Relación: K<sub>p</sub> = K<sub>c</sub>·(RT)<sup>Δn</sup><br>
+                            Sólidos y líquidos puros no aparecen en la expresión de K (actividad = 1)
+                        </span>
+                    </div>
+
+                    <div class="rxn-topics">
+                        <div class="rxn-topic" style="--topic-accent:#3b82f6">
+                            <div class="rxn-topic-num">Equilibrio — Principio de Le Chatelier</div>
+                            <h3>Principio de Le Chatelier-Braun</h3>
+                            <p>Si un sistema en equilibrio es perturbado por un cambio externo, el sistema se desplaza en el sentido que tiende a contrarrestar la perturbación hasta alcanzar un nuevo equilibrio.</p>
+                            <ul>
+                                <li><span class="bul" style="background:#3b82f6"></span><strong>Cambio de concentración:</strong> Agregar reactivo → desplazamiento a la derecha (más producto). Agregar producto → desplazamiento a la izquierda. Retirar producto → desplazamiento a la derecha (aumenta rendimiento). Este principio fundamenta la destilación reactiva en síntesis farmacéutica.</li>
+                                <li><span class="bul" style="background:#3b82f6"></span><strong>Cambio de presión (gases):</strong> Aumentar P → desplazamiento hacia el lado con menor número de moles gaseosos. Ejemplo clásico: síntesis de NH₃ (proceso Haber-Bosch): N₂ + 3H₂ ⇌ 2NH₃ (Δn = −2), se favorece a alta presión (~200 atm).</li>
+                                <li><span class="bul" style="background:#3b82f6"></span><strong>Cambio de temperatura:</strong> Aumentar T favorece la reacción endotérmica (ΔH > 0). Disminuir T favorece la exotérmica. La temperatura es la única variable que modifica el valor numérico de K<sub>eq</sub>.</li>
+                                <li><span class="bul" style="background:#3b82f6"></span><strong>Catalizador:</strong> No desplaza el equilibrio. Solo acelera la llegada al mismo punto de equilibrio.</li>
+                            </ul>
+                        </div>
+                        <div class="rxn-topic" style="--topic-accent:#60a5fa">
+                            <div class="rxn-topic-num">Equilibrio — Cociente de Reacción Q</div>
+                            <h3>Cociente de Reacción Q vs K</h3>
+                            <p>Q tiene la misma expresión matemática que K, pero se calcula con concentraciones en cualquier instante (no necesariamente en equilibrio). La comparación Q vs K predice la dirección del desplazamiento.</p>
+                            <ul>
+                                <li><span class="bul" style="background:#60a5fa"></span><strong>Q &lt; K:</strong> La reacción avanza hacia la derecha (formación de productos) hasta que Q = K.</li>
+                                <li><span class="bul" style="background:#60a5fa"></span><strong>Q > K:</strong> La reacción avanza hacia la izquierda (formación de reactivos) hasta que Q = K.</li>
+                                <li><span class="bul" style="background:#60a5fa"></span><strong>Q = K:</strong> El sistema está en equilibrio. No hay desplazamiento neto.</li>
+                                <li><span class="bul" style="background:#60a5fa"></span><strong>Aplicación farmacéutica:</strong> En la formulación de buffers para inyectables, el cálculo de Q permite ajustar las concentraciones de ácido/base conjugada para mantener el pH en el rango fisiológico (7.35–7.45). El equilibrio del buffer fosfato (H₂PO₄⁻/HPO₄²⁻, pKa₂ = 7.21) es fundamental en formulaciones parenterales.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="rxn-detail" style="--stripe:#3b82f6">
+                        <h4><span class="dot" style="background:#3b82f6"></span>Equilibrios en solución — Relevancia farmacéutica</h4>
+                        <p>Varios equilibrios en solución son centrales en farmacia: <strong>Equilibrio ácido-base:</strong> Ka y Kb determinan el grado de ionización de fármacos ácidos y básicos débiles. La ecuación de Henderson-Hasselbalch (pH = pKa + log([A⁻]/[HA])) permite predecir la forma ionizada/no ionizada del fármaco a un pH dado — crucial para absorción (solo la forma no ionizada atraviesa membranas lipídicas). <strong>Equilibrio de solubilidad:</strong> Kps (producto de solubilidad) determina la solubilidad máxima de compuestos poco solubles. Ejemplo: la solubilidad del sulfato de bario (BaSO₄, Kps = 1.1×10⁻¹⁰) es tan baja que se usa como medio de contraste radiográfico (no se absorbe). <strong>Equilibrio de complejación:</strong> La formación de complejos (constante de estabilidad Kf) se aplica en quelación terapéutica: EDTA-Ca²⁺ para intoxicación por plomo, deferoxamina para sobrecarga de hierro.</p>
+                    </div>
+
+                    <!-- Info adicional: Henderson-Hasselbalch -->
+                    <div class="rxn-infocard" style="--accent-rgb:59,130,246">
+                        <span class="ic-title" style="color:rgb(59,130,246)">💊 Henderson-Hasselbalch y absorción de fármacos</span>
+                        La ecuación pH = pKa + log([A⁻]/[HA]) es la herramienta central para predecir la absorción gastrointestinal. Un fármaco ácido débil (pKa 4–6) como el ibuprofeno estará mayoritariamente no ionizado en el estómago (pH ≈ 2) → se absorbe bien por vía oral. Un fármaco básico débil como la codeína (pKa ≈ 8.2) estará ionizado en el estómago pero se absorbe en el intestino delgado (pH 6–7). <strong>Regla práctica:</strong> cuando pH < pKa en 2 unidades → >99% de la forma ácida protonada (HA). Cuando pH > pKa en 2 unidades → >99% de la base conjugada (A⁻).
+                    </div>
+                </div>
+
+
+                <!-- ═══════════════════════════════════════════════════
+                     BLOQUE 3 — TERMODINÁMICA
+                ═══════════════════════════════════════════════════ -->
+                <div class="rxn-block" id="termodinamica">
+                    <div class="rxn-block-tag" style="--accent-rgb:245,158,11">🔥 Termodinámica</div>
+                    <h2>Termodinámica de <span class="grad">reacciones químicas</span></h2>
+                    <p class="intro">La termodinámica responde a la pregunta: ¿es una reacción espontánea? Mientras la cinética se ocupa de la velocidad (¿qué tan rápido?), la termodinámica determina la dirección y el alcance de una reacción (¿ocurre o no?). Las tres magnitudes fundamentales son entalpía (H), entropía (S) y energía libre de Gibbs (G).</p>
+
+                    <div class="rxn-topics">
+                        <div class="rxn-topic" style="--topic-accent:#f59e0b">
+                            <div class="rxn-topic-num">Termodinámica — Entalpía</div>
+                            <h3>Entalpía (ΔH) — Calor de Reacción</h3>
+                            <ul>
+                                <li><span class="bul" style="background:#f59e0b"></span><strong>Definición:</strong> ΔH = H<sub>productos</sub> − H<sub>reactivos</sub>. Mide el calor intercambiado a presión constante.</li>
+                                <li><span class="bul" style="background:#f59e0b"></span><strong>Reacción exotérmica:</strong> ΔH &lt; 0 → libera calor al entorno. Ejemplo: combustión de glucosa (C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O, ΔH° = −2803 kJ/mol) — base del metabolismo energético.</li>
+                                <li><span class="bul" style="background:#f59e0b"></span><strong>Reacción endotérmica:</strong> ΔH > 0 → absorbe calor. Ejemplo: disolución de NH₄NO₃ en agua (ΔH = +25.7 kJ/mol) — usado en compresas frías instantáneas.</li>
+                                <li><span class="bul" style="background:#f59e0b"></span><strong>Ley de Hess:</strong> ΔH de una reacción global es la suma de los ΔH de las etapas individuales, independientemente del camino. Permite calcular ΔH de reacciones difíciles de medir directamente a partir de entalpías de formación estándar (ΔH°f) tabuladas.</li>
+                                <li><span class="bul" style="background:#f59e0b"></span><strong>Entalpías de enlace:</strong> ΔH ≈ Σ(energías de enlaces rotos) − Σ(energías de enlaces formados). Permite estimaciones rápidas del calor de reacción.</li>
+                            </ul>
+                        </div>
+                        <div class="rxn-topic" style="--topic-accent:#fbbf24">
+                            <div class="rxn-topic-num">Termodinámica — Entropía</div>
+                            <h3>Entropía (ΔS) — Desorden Molecular</h3>
+                            <ul>
+                                <li><span class="bul" style="background:#fbbf24"></span><strong>Definición:</strong> La entropía (S) mide el número de microestados accesibles del sistema. Un aumento de entropía (ΔS > 0) indica mayor desorden molecular.</li>
+                                <li><span class="bul" style="background:#fbbf24"></span><strong>Segunda Ley de la Termodinámica:</strong> En todo proceso espontáneo, la entropía total del universo (sistema + entorno) aumenta: ΔS<sub>universo</sub> > 0.</li>
+                                <li><span class="bul" style="background:#fbbf24"></span><strong>Tercera Ley:</strong> La entropía de un cristal perfecto a 0 K es cero (S = 0). Esto establece una escala absoluta de entropía.</li>
+                                <li><span class="bul" style="background:#fbbf24"></span><strong>Predicción cualitativa:</strong> ΔS > 0 cuando: aumenta el número de moles gaseosos, se disuelve un sólido, se calienta un sistema, se pasa de sólido→líquido→gas.</li>
+                                <li><span class="bul" style="background:#fbbf24"></span><strong>Relevancia farmacéutica:</strong> La entropía de disolución es componente clave de la solubilidad de fármacos. Fármacos con alta cristalinidad (baja S sólido) requieren mayor energía para disolverse → polimorfismo y amorfismo como estrategias de formulación.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Energía libre de Gibbs -->
+                    <div class="rxn-formula" style="--accent-light:#fbbf24">
+                        <span class="label">Energía libre de Gibbs</span>
+                        <span class="eq">ΔG = ΔH − TΔS</span><br>
+                        <span class="eq" style="display:block;margin-top:6px">ΔG° = −RT · ln K<sub>eq</sub></span><br>
+                        <span style="color:var(--text-secondary,#8a99a8);font-size:.76rem">
+                            ΔG &lt; 0 → reacción espontánea (exergónica) &nbsp;|&nbsp; ΔG > 0 → no espontánea (endergónica) &nbsp;|&nbsp; ΔG = 0 → equilibrio<br>
+                            Relación clave: ΔG° = −RT ln K conecta termodinámica con equilibrio. Si K > 1 → ΔG° &lt; 0 (productos favorecidos)
+                        </span>
+                    </div>
+
+                    <div class="rxn-detail" style="--stripe:#f59e0b">
+                        <h4><span class="dot" style="background:#f59e0b"></span>Criterio de espontaneidad — Combinación ΔH y ΔS</h4>
+                        <p><strong>Caso 1:</strong> ΔH &lt; 0 y ΔS > 0 → ΔG siempre negativo → espontánea a cualquier temperatura (ej: combustión). <strong>Caso 2:</strong> ΔH > 0 y ΔS &lt; 0 → ΔG siempre positivo → nunca espontánea (ej: electrólisis sin fuente externa). <strong>Caso 3:</strong> ΔH &lt; 0 y ΔS &lt; 0 → espontánea solo a baja temperatura (T &lt; ΔH/ΔS). <strong>Caso 4:</strong> ΔH > 0 y ΔS > 0 → espontánea solo a alta temperatura (T > ΔH/ΔS). En síntesis farmacéutica, conocer estos criterios permite elegir las condiciones óptimas de temperatura y presión para maximizar el rendimiento de la reacción deseada.</p>
+                    </div>
+
+                    <div class="rxn-detail" style="--stripe:#fbbf24">
+                        <h4><span class="dot" style="background:#fbbf24"></span>Primera Ley de la Termodinámica — Conservación de la Energía</h4>
+                        <p>ΔU = q + w (la energía interna de un sistema cambia por calor absorbido y trabajo realizado). A presión constante: q<sub>p</sub> = ΔH. A volumen constante: q<sub>v</sub> = ΔU. La calorimetría (bomba calorimétrica) mide ΔU directamente. En farmacia: la calorimetría diferencial de barrido (DSC) es la técnica principal para estudiar transiciones de fase (fusión, cristalización, transición vítrea) de principios activos y excipientes — dato esencial para el control de calidad de medicamentos según normas ICH Q6A.</p>
+                    </div>
+
+                    <!-- Info adicional: Energía de Gibbs en síntesis -->
+                    <div class="rxn-infocard" style="--accent-rgb:245,158,11">
+                        <span class="ic-title" style="color:rgb(245,158,11)">⚗️ ΔG y viabilidad de síntesis farmacéutica</span>
+                        En síntesis orgánica, la relación ΔG° = −RT ln K permite calcular el rendimiento teórico máximo de una reacción. Si ΔG° = −10 kJ/mol a 25°C → K ≈ 57 → conversión ~98%. Si ΔG° = +5 kJ/mol → K ≈ 0.13 → solo ~12% de conversión. En la práctica, las reacciones con ΔG ligeramente positivo pueden impulsarse: eliminando el producto (Le Chatelier), acoplando a una reacción con gran −ΔG, o usando solventes que estabilicen el producto. <strong>Ejemplo:</strong> la formación de péptidos (enlace amida) tiene ΔG° ≈ +3.5 kJ/mol en solución acuosa; la biología la impulsa usando ATP (ΔG ≈ −30 kJ/mol). La síntesis química usa agentes activantes (HATU, EDC) con el mismo propósito termodinámico.
+                    </div>
+                </div>
+
+
+                <!-- ═══════════════════════════════════════════════════
+                     BLOQUE 4 — MECANISMOS DE REACCIÓN
+                ═══════════════════════════════════════════════════ -->
+                <div class="rxn-block" id="mecanismos">
+                    <div class="rxn-block-tag" style="--accent-rgb:168,85,247">🧬 Mecanismos de Reacción</div>
+                    <h2>Mecanismos y <span class="grad">reacciones orgánicas</span> en síntesis</h2>
+                    <p class="intro">Un mecanismo de reacción describe el camino paso a paso (etapas elementales) mediante el cual los reactivos se convierten en productos, incluyendo intermediarios, estados de transición y la redistribución de enlaces. En química farmacéutica, entender el mecanismo permite diseñar rutas de síntesis eficientes, predecir productos secundarios y optimizar rendimientos.</p>
+
+                    <!-- Timeline mecanismo SN2 -->
+                    <div class="rxn-timeline">
+                        <div class="rxn-tl-step">
+                            <span class="rxn-tl-num" style="color:#a855f7">01</span>
+                            <h4>Sustitución Nucleofílica S<sub>N</sub>2</h4>
+                            <p>Mecanismo bimolecular concertado: el nucleófilo ataca el carbono electrofílico por el lado opuesto al grupo saliente. Un solo paso, un solo estado de transición. Inversión de configuración (inversión de Walden). Cinética de segundo orden: v = k[Nu⁻][R-X].</p>
+                        </div>
+                        <div class="rxn-tl-arrow">→</div>
+                        <div class="rxn-tl-step">
+                            <span class="rxn-tl-num" style="color:#c084fc">02</span>
+                            <h4>Sustitución S<sub>N</sub>1</h4>
+                            <p>Mecanismo unimolecular en dos pasos: (1) ionización del sustrato → carbocatión + grupo saliente. (2) Ataque del nucleófilo al carbocatión. Cinética de primer orden: v = k[R-X]. Racemización parcial. Favorecido en sustratos terciarios y solventes polares próticos.</p>
+                        </div>
+                        <div class="rxn-tl-arrow">→</div>
+                        <div class="rxn-tl-step">
+                            <span class="rxn-tl-num" style="color:#e879f9">03</span>
+                            <h4>Eliminación E1 y E2</h4>
+                            <p>E2: concertado (anti-periplanar), base fuerte. E1: dos pasos vía carbocatión (compete con S<sub>N</sub>1). Regla de Zaitsev: se forma el alqueno más sustituido (más estable). Competencia S<sub>N</sub>/E depende de base, sustrato, solvente y temperatura.</p>
+                        </div>
+                        <div class="rxn-tl-arrow">→</div>
+                        <div class="rxn-tl-step">
+                            <span class="rxn-tl-num" style="color:#f0abfc">04</span>
+                            <h4>Adición y Condensación</h4>
+                            <p>Adición electrofílica a C=C (Markovnikov/anti-Markovnikov). Adición nucleofílica a C=O (formación de hemiacetales, iminas, enaminas). Condensación aldólica: C–C bond formation clave en síntesis orgánica. Base de retrosíntesis farmacéutica (Corey).</p>
+                        </div>
+                    </div>
+
+                    <div class="rxn-topics">
+                        <div class="rxn-topic" style="--topic-accent:#a855f7">
+                            <div class="rxn-topic-num">Mecanismos — Síntesis Farmacéutica</div>
+                            <h3>Reacciones Clave en Química Farmacéutica</h3>
+                            <ul>
+                                <li><span class="bul" style="background:#a855f7"></span><strong>Acoplamiento de Suzuki-Miyaura:</strong> Formación de enlace C–C entre ácido borónico (ArB(OH)₂) y haluro arílico (Ar-X) catalizado por Pd(0). Premio Nobel de Química 2010. Usado en síntesis de losartán, valsartán y otros fármacos con fragmentos biarilo.</li>
+                                <li><span class="bul" style="background:#a855f7"></span><strong>Amidación:</strong> Formación del enlace amida (−CONH−) entre ácido carboxílico y amina, generalmente activado con agentes como HATU, EDC/HOBt o cloruro de acilo. El enlace amida es el grupo funcional más prevalente en fármacos aprobados por FDA.</li>
+                                <li><span class="bul" style="background:#a855f7"></span><strong>Reducción asimétrica:</strong> Hidrogenación catalítica enantioselectiva (Noyori, Knowles — Nobel 2001). Permite obtener un solo enantiómero del fármaco. Ejemplo: síntesis del (S)-naproxeno con Ru-BINAP. Importancia regulatoria: la ICH Q3D exige control de enantiómeros.</li>
+                                <li><span class="bul" style="background:#a855f7"></span><strong>Reacción de Grignard:</strong> Formación de enlace C–C usando reactivos organomagnesianos (RMgX). Permite introducir cadenas carbonadas en cetonas, aldehídos y ésteres. Usada en síntesis de tamoxifeno y otros fármacos.</li>
+                            </ul>
+                        </div>
+                        <div class="rxn-topic" style="--topic-accent:#c084fc">
+                            <div class="rxn-topic-num">Mecanismos — Conceptos Avanzados</div>
+                            <h3>Estado de Transición y Etapa Limitante</h3>
+                            <ul>
+                                <li><span class="bul" style="background:#c084fc"></span><strong>Estado de transición (‡):</strong> Estructura de máxima energía a lo largo de la coordenada de reacción. No es un intermediario aislable. Se representa con [‡]. La teoría del estado de transición (Eyring, 1935) conecta la cinética con la termodinámica: k = (k<sub>B</sub>T/h) · e<sup>−ΔG‡/RT</sup>.</li>
+                                <li><span class="bul" style="background:#c084fc"></span><strong>Etapa limitante (rate-determining step):</strong> En un mecanismo de múltiples pasos, la etapa más lenta determina la velocidad global. Identificarla es clave para optimizar la reacción.</li>
+                                <li><span class="bul" style="background:#c084fc"></span><strong>Intermediarios de reacción:</strong> Carbocationes (estabilidad: 3° > 2° > 1°), carbaniones, radicales libres. No aparecen en la ecuación global pero determinan la estereoquímica y la selectividad del producto.</li>
+                                <li><span class="bul" style="background:#c084fc"></span><strong>Postulado de Hammond:</strong> El estado de transición de una etapa exotérmica se asemeja más a los reactivos, y el de una etapa endotérmica se asemeja más a los productos. Permite predecir la selectividad de reacciones que pasan por intermediarios (ej: regioselectividad en adición electrofílica).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Info adicional: retrosíntesis -->
+                    <div class="rxn-infocard" style="--accent-rgb:168,85,247">
+                        <span class="ic-title" style="color:rgb(168,85,247)">🧩 Retrosíntesis — Análisis de Corey</span>
+                        La retrosíntesis (E.J. Corey, Nobel 1990) es el proceso de "desmontar" una molécula objetivo hasta alcanzar materiales de partida accesibles, identificando los pasos sintéticos en sentido inverso. Se usan <strong>disconnections</strong> (corte de enlaces clave) y <strong>synthons</strong> (fragmentos equivalentes con carácter nucleofílico o electrofílico). Ejemplo: para sintetizar una cetona α,β-insaturada, la retrosíntesis sugiere una condensación aldólica. Esta estrategia permite planificar síntesis de 10-30 pasos para fármacos complejos como taxol, eritromicina o lovastatina antes de entrar al laboratorio.
+                    </div>
+
+                    <!-- Reacciones redox -->
+                    <div class="rxn-detail" style="--stripe:#a855f7">
+                        <h4><span class="dot" style="background:#a855f7"></span>Reacciones Redox — Transferencia de Electrones</h4>
+                        <p>Las reacciones de oxidación-reducción implican transferencia de electrones: la especie que pierde electrones se oxida (número de oxidación aumenta) y la que los gana se reduce (número de oxidación disminuye). <strong>En farmacia:</strong> oxidación de fármacos es el principal mecanismo de degradación (autooxidación por O₂) — requiere antioxidantes (BHT, ácido ascórbico, metabisulfito de sodio) en formulaciones. El metabolismo hepático de Fase I es mayoritariamente oxidativo (CYP450). Las reacciones redox enzimáticas (cadena de transporte de electrones, NAD⁺/NADH, FAD/FADH₂) son la base del metabolismo energético celular. La electroquímica (voltamperometría) se usa para estudiar el comportamiento redox de fármacos y determinar potenciales de reducción estándar (E°).</p>
+                    </div>
+                </div>
+
+
+                <!-- ═══════════════════════════════════════════════════
+                     BLOQUE 5 — VISOR 3D DE MOLÉCULAS (NUEVO)
+                ═══════════════════════════════════════════════════ -->
+                <div id="visor3d" class="rxn-3d-section">
+                    <div class="rxn-3d-header">
+                        <div class="rxn-block-tag" style="--accent-rgb:99,202,183">🧪 Visor Molecular 3D</div>
+                        <h2>Explora moléculas <span class="grad">en tres dimensiones</span></h2>
+                        <p>Selecciona una molécula farmacológicamente relevante y rótala en el espacio. Observa geometría, grupos funcionales y comprende la relación entre estructura 3D y propiedades fisicoquímicas.</p>
+                    </div>
+
+                    <!-- Selector de moléculas -->
+                    <div class="mol-selector">
+                        <button class="mol-btn active" data-mol="agua">H₂O — Agua</button>
+                        <button class="mol-btn" data-mol="paracetamol">Paracetamol</button>
+                        <button class="mol-btn" data-mol="aspirina">Aspirina</button>
+                        <button class="mol-btn" data-mol="glucosa">Glucosa</button>
+                    </div>
+
+                    <!-- Canvas Three.js -->
+                    <div class="rxn-3d-canvas-wrap">
+                        <canvas id="mol-canvas"></canvas>
+                        <span class="rxn-3d-hint">⟳ Arrastra para rotar · Scroll para zoom</span>
+                    </div>
+
+                    <!-- Panel de información -->
+                    <div class="rxn-3d-info">
+                        <div class="rxn-3d-info-col">
+                            <h4>Molécula</h4>
+                            <span class="mol-name" id="mol-name">Agua</span>
+                            <span class="mol-formula" id="mol-formula">H₂O</span>
+                            <p id="mol-desc">Solvente universal. Molécula polar doblada (ángulo H-O-H ≈ 104.5°). Imprescindible en solubilización de fármacos polares e ionizados.</p>
+                        </div>
+                        <div class="rxn-3d-info-col">
+                            <h4>Propiedades clave</h4>
+                            <ul class="mol-prop-list" id="mol-props">
+                                <li><span class="prop-key">PM</span>18.02 g/mol</li>
+                                <li><span class="prop-key">pKa</span>15.7 (agua pura)</li>
+                                <li><span class="prop-key">Geometría</span>Angular / doblada</li>
+                                <li><span class="prop-key">Enlace</span>H-O covalente polar</li>
+                                <li><span class="prop-key">Uso farm.</span>Solvente para formas farmacéuticas líquidas, inyectables, soluciones orales</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- ═══════════════════════════════════════════════════
+                     CALLOUT FINAL
+                ═══════════════════════════════════════════════════ -->
+                <div class="rxn-callout">
+                    <h3>🎓 Integración — ¿Por qué son importantes las reacciones químicas para el farmacéutico?</h3>
+                    <p>
+                        Las reacciones químicas son el lenguaje central de la farmacia: desde la <strong>síntesis del principio activo</strong> (mecanismos, rendimiento, estereoquímica), 
+                        pasando por la <strong>estabilidad del medicamento</strong> (cinética de degradación, ecuación de Arrhenius, estudios ICH Q1A), 
+                        hasta la <strong>farmacocinética clínica</strong> (cinética de eliminación de primer orden, vida media, estado estacionario).
+                        El <strong>equilibrio químico</strong> gobierna la ionización de fármacos (pKa), su solubilidad (Kps) y el diseño de sistemas buffer.
+                        La <strong>termodinámica</strong> determina si una reacción de síntesis es viable (ΔG), cuánta energía se libera o se necesita (ΔH), y cómo el desorden molecular (ΔS) afecta la estabilidad de formulaciones sólidas (polimorfismo). 
+                        Comprender estos cuatro pilares — <strong>cinética, equilibrio, termodinámica y mecanismos</strong> — es requisito para cualquier profesional farmacéutico que aspire a entender y controlar los procesos químicos que sustentan la salud humana.
+                    </p>
+                </div>
+
+
+                <!-- NAV -->
+                <div class="lesson-nav">
+                    <a href="../index.html">← Volver a Química</a>
+                    <div style="display:flex;gap:10px;flex-wrap:wrap">
+                        <a href="#cinetica">Cinética ↑</a>
+                        <a href="#equilibrio">Equilibrio ↑</a>
+                        <a href="#termodinamica">Termodinámica ↑</a>
+                        <a href="#mecanismos">Mecanismos ↑</a>
+                        <a href="#visor3d">Visor 3D ↑</a>
+                    </div>
+                    <a href="../../index.html">Inicio →</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 PharmaLab Chile · Basado en Atkins' Physical Chemistry (12ᵗʰ ed.), Clayden Organic Chemistry (2ⁿᵈ ed.), Foye's Principles of Medicinal Chemistry, USP-NF, ICH Guidelines (Q1A, Q3D, Q6A)</p>
+                <p style="font-size:.72rem;opacity:.6;margin-top:6px">Contenido educacional universitario. No reemplaza bibliografía oficial ni protocolos de laboratorio.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+    <script src="reacciones.js"></script>
+</body>
+</html>

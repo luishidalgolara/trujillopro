@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virología — PharmaLab Chile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="virologia.css">
+</head>
+<body class="virologia-page">
+
+  <!-- ════════════════════════════════════════
+       NAVBAR
+  ════════════════════════════════════════ -->
+  <nav class="vir-navbar" id="vir-navbar">
+    <div class="vir-nav-container">
+      <a href="../index.html" class="vir-nav-logo">
+        <div class="vir-logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+            <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+            <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+            <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+            <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <span class="vir-logo-text">Pharma<span class="vir-logo-accent">Lab</span></span>
+      </a>
+      <div class="vir-nav-links" id="virNavLinks">
+        <a href="../quimica/index.html" class="vir-nav-link">
+          <span class="vir-nav-link-icon">⚗️</span> Química
+        </a>
+        <a href="../farmacia/index.html" class="vir-nav-link">
+          <span class="vir-nav-link-icon">💊</span> Farmacia
+        </a>
+        <a href="../quimica-farmaceutica/index.html" class="vir-nav-link">
+          <span class="vir-nav-link-icon">🧬</span> Q. Farmacéutica
+        </a>
+        <a href="../biotecnologia/index.html" class="vir-nav-link">
+          <span class="vir-nav-link-icon">🔬</span> Biotecnología
+        </a>
+        <a href="../virologia/index.html" class="vir-nav-link active">
+          <span class="vir-nav-link-icon">🦠</span> Virología
+        </a>
+        <a href="../bioquimica/index.html" class="nav-link active" data-module="bioquimica">
+          <span class="nav-link-icon">🧪</span> Bioquímica
+        </a>
+      </div>
+      <button class="vir-nav-toggle" id="virNavToggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════ -->
+  <section class="vir-hero">
+    <div class="vir-hero-bg"></div>
+    <canvas id="vir-hero-canvas"></canvas>
+    <div class="vir-hero-content">
+      <div class="vir-tag">🦠 Módulo 05 · Virología</div>
+      <h1 class="vir-hero-title">
+        El mundo invisible de los<br>
+        <span class="accent-green">Virus</span>
+      </h1>
+      <p class="vir-hero-desc">
+        Explora la estructura, mecanismos de infección, patógenos clave y el desarrollo de 
+        antivíricos y vacunas. Desde el VIH hasta los bacteriófagos, comprende las entidades 
+        biológicas más estudiadas de la ciencia moderna.
+      </p>
+      <div class="vir-hero-stats">
+        <div>
+          <span class="vir-stat-num">10</span>
+          <span class="vir-stat-label">Virus Clave</span>
+        </div>
+        <div>
+          <span class="vir-stat-num">BSL 1–4</span>
+          <span class="vir-stat-label">Niveles Bioseguridad</span>
+        </div>
+        <div>
+          <span class="vir-stat-num">4</span>
+          <span class="vir-stat-label">Modelos 3D</span>
+        </div>
+      </div>
+    </div>
+    <div class="vir-scroll-hint">
+      <span>Explorar</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       STATS ROW
+  ════════════════════════════════════════ -->
+  <div class="vir-container">
+    <div class="vir-stats-row">
+      <div class="vir-stat-card">
+        <span class="vir-stat-val" data-target="10">0</span>
+        <span class="vir-stat-card-label">Patógenos clave</span>
+      </div>
+      <div class="vir-stat-card">
+        <span class="vir-stat-val" data-target="4" data-suffix=" modelos">0</span>
+        <span class="vir-stat-card-label">Virus 3D interactivos</span>
+      </div>
+      <div class="vir-stat-card">
+        <span class="vir-stat-val" data-target="7" data-suffix=" familias">0</span>
+        <span class="vir-stat-card-label">Familias virales</span>
+      </div>
+      <div class="vir-stat-card">
+        <span class="vir-stat-val" data-target="4" data-suffix=" niveles">0</span>
+        <span class="vir-stat-card-label">Bioseguridad (BSL)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 1 — CLASIFICACIÓN VIRAL
+  ════════════════════════════════════════ -->
+  <section class="vir-section" id="clasificacion">
+    <div class="vir-container">
+      <div class="vir-section-header">
+        <div class="vir-section-tag tag-green">🧬 Conceptos Base</div>
+        <h2 class="vir-section-title">Clasificación <span class="gradient">Viral</span></h2>
+        <p class="vir-section-sub">Los virus se clasifican según su ácido nucleico, estructura y mecanismo de replicación.</p>
+      </div>
+      <div class="vir-class-grid">
+        <div class="vir-class-card">
+          <div class="vir-class-icon">🧬</div>
+          <div class="vir-class-title">ADN Virus</div>
+          <div class="vir-class-value">Doble / Simple cadena</div>
+        </div>
+        <div class="vir-class-card">
+          <div class="vir-class-icon">🔗</div>
+          <div class="vir-class-title">ARN Virus</div>
+          <div class="vir-class-value">Sentido (+) / (−)</div>
+        </div>
+        <div class="vir-class-card">
+          <div class="vir-class-icon">🔄</div>
+          <div class="vir-class-title">Retrovirus</div>
+          <div class="vir-class-value">Transcriptasa inversa</div>
+        </div>
+        <div class="vir-class-card">
+          <div class="vir-class-icon">🛡️</div>
+          <div class="vir-class-title">Envueltos / Desnudos</div>
+          <div class="vir-class-value">Membrana lipídica</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 2 — 3D VIRUS VIEWER
+  ════════════════════════════════════════ -->
+  <section class="vir-section" id="modelos-3d">
+    <div class="vir-container">
+      <div class="vir-section-tag tag-cyan">🔬 Modelos 3D Interactivos</div>
+      <h2 class="vir-section-title">Estructura Viral en <span class="gradient">3D</span></h2>
+      <p class="vir-section-sub">
+        Explora la morfología de los virus más estudiados. Arrastra para rotar, scroll para zoom.
+      </p>
+
+      <div class="vir-viewer-wrap">
+        <div>
+          <div class="vir-canvas-box">
+            <canvas id="vir-model-canvas"></canvas>
+            <div class="vir-canvas-label" id="vir-model-label">SARS-CoV-2 — Coronaviridae</div>
+          </div>
+          <div class="vir-model-controls">
+            <button class="vir-model-btn active" data-virus="coronavirus">SARS-CoV-2</button>
+            <button class="vir-model-btn" data-virus="vih">VIH</button>
+            <button class="vir-model-btn" data-virus="influenza">Influenza A</button>
+            <button class="vir-model-btn" data-virus="bacteriofago">Bacteriófago T4</button>
+          </div>
+          <p style="font-size:0.78rem;color:#5a6478;margin-top:10px">🖱️ Arrastra para rotar · Scroll para zoom</p>
+        </div>
+
+        <div class="vir-model-info">
+          <div class="vir-info-card">
+            <h3 id="vir-model-name">SARS-CoV-2</h3>
+            <span class="vir-family-tag" id="vir-model-family">Coronaviridae</span>
+            <p style="margin-top:12px">
+              Virus con envoltura lipídica y proteínas Spike (S) que median la entrada celular 
+              vía receptor ACE2. Genoma ARN de sentido positivo (~30 kb), el más grande entre los virus ARN.
+            </p>
+          </div>
+          <div class="vir-info-card">
+            <h3>🧪 Componentes Estructurales</h3>
+            <p>
+              <strong style="color:#00d4ff">Proteína S (Spike):</strong> Unión al receptor, target de vacunas.<br><br>
+              <strong style="color:#ff3355">Proteína M (Membrana):</strong> Ensamblaje del virión.<br><br>
+              <strong style="color:#ffaa00">Proteína N (Nucleocápside):</strong> Empaqueta el ARN genómico.<br><br>
+              <strong style="color:#a855f7">Proteína E (Envoltura):</strong> Canal iónico, liberación viral.
+            </p>
+          </div>
+          <div class="vir-info-card">
+            <h3>⚠️ Niveles de Bioseguridad (BSL)</h3>
+            <p>
+              <strong style="color:#00e87b">BSL-1:</strong> Agentes no patógenos (E. coli K12, fago T4).<br><br>
+              <strong style="color:#ffaa00">BSL-2:</strong> Riesgo moderado (VPH, Influenza, Dengue).<br><br>
+              <strong style="color:#ff3355">BSL-3:</strong> Patógenos potencialmente letales (VIH, SARS-CoV-2).<br><br>
+              <strong style="color:#ff0044">BSL-4:</strong> Máxima contención (Ébola, Marburg).
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 3 — 10 VIRUS CARDS
+  ════════════════════════════════════════ -->
+  <section class="vir-section" id="patogenos">
+    <div class="vir-container">
+      <div class="vir-section-header">
+        <div class="vir-section-tag tag-red">🦠 Patógenos Clave</div>
+        <h2 class="vir-section-title">10 Virus que debes <span class="gradient">dominar</span></h2>
+        <p class="vir-section-sub">Cada virus representa un modelo único de estudio en virología, inmunología y desarrollo de terapias.</p>
+      </div>
+
+      <div class="vir-grid">
+
+        <!-- 01. VIH -->
+        <a href="Virus-de-la-Inmunodeficiencia-Humana/vih.html" class="vir-card" data-virus="vih" style="cursor:pointer">
+          <span class="vir-card-num">01 / 10</span>
+          <div class="vir-card-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="10" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="4" stroke="currentColor" stroke-width="2" opacity="0.5"/><path d="M24 14V8M24 40V34M14 24H8M40 24H34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="7" r="2" fill="currentColor" opacity="0.6"/><circle cx="24" cy="41" r="2" fill="currentColor" opacity="0.6"/><circle cx="7" cy="24" r="2" fill="currentColor" opacity="0.6"/><circle cx="41" cy="24" r="2" fill="currentColor" opacity="0.6"/></svg>
+          </div>
+          <div class="vir-card-body">
+            <h3 class="vir-card-name">Virus de la Inmunodeficiencia Humana</h3>
+            <p class="vir-card-sci">VIH-1 / VIH-2 — Retroviridae</p>
+            <p class="vir-card-desc">Causa el SIDA. Modelo fundamental en inmunología, virología y desarrollo de terapias antirretrovirales de impacto mundial.</p>
+          </div>
+          <div class="vir-card-tags">
+            <span class="vir-tag-pill">SIDA</span>
+            <span class="vir-tag-pill">Antirretrovirales</span>
+            <span class="vir-tag-pill">Inmunología</span>
+          </div>
+          <span class="vir-bsl bsl-3">BSL-3</span>
+        </a>
+
+        <!-- 02. SARS-CoV-2 -->
+        <a href="SARS-CoV-2/sars.html" class="vir-card" data-virus="sars" style="cursor:pointer">
+          <span class="vir-card-num">02 / 10</span>
+          <div class="vir-card-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="11" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="13" r="2.5" fill="currentColor" opacity="0.7"/><circle cx="24" cy="35" r="2.5" fill="currentColor" opacity="0.7"/><circle cx="13" cy="24" r="2.5" fill="currentColor" opacity="0.7"/><circle cx="35" cy="24" r="2.5" fill="currentColor" opacity="0.7"/><circle cx="16" cy="16" r="2" fill="currentColor" opacity="0.5"/><circle cx="32" cy="16" r="2" fill="currentColor" opacity="0.5"/><circle cx="16" cy="32" r="2" fill="currentColor" opacity="0.5"/><circle cx="32" cy="32" r="2" fill="currentColor" opacity="0.5"/><path d="M24 13V8M24 40V35M13 24H8M40 24H35M16 16L12 12M32 16L36 12M16 32L12 36M32 32L36 36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="vir-card-body">
+            <h3 class="vir-card-name">SARS-CoV-2</h3>
+            <p class="vir-card-sci">Coronaviridae — Betacoronavirus</p>
+            <p class="vir-card-desc">Causante del COVID-19. Revolucionó la investigación biomédica moderna con vacunas ARNm, genómica y epidemiología global.</p>
+          </div>
+          <div class="vir-card-tags">
+            <span class="vir-tag-pill">COVID-19</span>
+            <span class="vir-tag-pill">Vacunas ARNm</span>
+            <span class="vir-tag-pill">Pandemia</span>
+          </div>
+          <span class="vir-bsl bsl-3">BSL-3</span>
+        </a>
+
+        <!-- 03. Influenza A — ENLAZADO: onclick navega a la página, data-virus activa el modelo 3D -->
+        <div class="vir-card vir-card-linked" data-virus="influenza" onclick="window.location.href='influenza/influenza.html'" style="cursor:pointer">
+          <span class="vir-card-num">03 / 10</span>
+          <!-- Ícono de enlace sutil en la esquina superior derecha -->
+          <span class="vir-card-link-hint" title="Ver página completa">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </span>
+          <div class="vir-card-icon">
+            <svg viewBox="0 0 48 48" fill="none"><ellipse cx="24" cy="24" rx="13" ry="10" stroke="currentColor" stroke-width="2.5"/><path d="M14 18C14 18 18 22 24 22C30 22 34 18 34 18" stroke="currentColor" stroke-width="1.5" opacity="0.4"/><line x1="20" y1="14" x2="18" y2="9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="28" y1="14" x2="30" y2="9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="24" y1="14" x2="24" y2="8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="18" cy="8" r="1.5" fill="currentColor" opacity="0.6"/><circle cx="30" cy="8" r="1.5" fill="currentColor" opacity="0.6"/><circle cx="24" cy="7" r="1.5" fill="currentColor" opacity="0.6"/></svg>
+          </div>
+          <div class="vir-card-body">
+            <h3 class="vir-card-name">Virus de la Influenza A</h3>
+            <p class="vir-card-sci">Orthomyxoviridae — H1N1, H5N1, H3N2</p>
+            <p class="vir-card-desc">Responsable de pandemias históricas. Modelo clásico para estudiar mutaciones, drift y shift antigénico.</p>
+          </div>
+          <div class="vir-card-tags">
+            <span class="vir-tag-pill">Pandemias</span>
+            <span class="vir-tag-pill">Mutaciones</span>
+            <span class="vir-tag-pill">Variabilidad</span>
+          </div>
+          <span class="vir-bsl bsl-2">BSL-2</span>
+        </div>
+
+        <!-- 04. VPH -->
+        <div class="vir-card vir-card-linked" data-virus="vph" 
+             onclick="window.location.href='vph/vph.html'" style="cursor:pointer">
+          <span class="vir-card-num">04 / 10</span>
+          <div class="vir-card-icon">
+            <svg viewBox="0 0 48 48" fill="none"><polygon points="24,8 38,18 34,34 14,34 10,18" stroke="currentColor" stroke-width="2.5" fill="none"/><polygon points="24,14 32,20 30,30 18,30 16,20" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.4"/><circle cx="24" cy="22" r="3" stroke="currentColor" stroke-width="2" opacity="0.6"/></svg>
+          </div>
+          <div class="vir-card-body">
+            <h3 class="vir-card-name">Virus del Papiloma Humano</h3>
+            <p class="vir-card-sci">VPH — Papillomaviridae</p>
+            <p class="vir-card-desc">Asociado al cáncer cervicouterino. Clave en oncología viral y prevención mediante programas de vacunación.</p>
+          </div>
+          <div class="vir-card-tags">
+            <span class="vir-tag-pill">Oncología</span>
+            <span class="vir-tag-pill">Vacunación</span>
+            <span class="vir-tag-pill">Cáncer</span>
+          </div>
+          <span class="vir-bsl bsl-2">BSL-2</span>
+        </div>
+
+        <!-- 05. Herpes Simple -->
+        <div class="vir-card vir-card-linked" data-virus="herpes"
+             onclick="window.location.href='herpes/herpes.html'" style="cursor:pointer">
+          <span class="vir-card-num">05 / 10</span>
+          <div class="vir-card-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="12" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="7" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5"/><circle cx="24" cy="24" r="3" fill="currentColor" opacity="0.4"/></svg>
+          </div>
+          <div class="vir-card-body">
+            <h3 class="vir-card-name">Virus del Herpes Simple</h3>
+            <p class="vir-card-sci">HSV-1 / HSV-2 — Herpesviridae</p>
+            <p class="vir-card-desc">Infecciones latentes recurrentes. Modelo fundamental para el estudio de la latencia viral y reactivación neuronal.</p>
+          </div>
+          <div class="vir-card-tags">
+            <span class="vir-tag-pill">Latencia</span>
+            <span class="vir-tag-pill">Reactivación</span>
+            <span class="vir-tag-pill">Neurotrópico</span>
+          </div>
+          <span class="vir-bsl bsl-2">BSL-2</span>
+        </div>
+
+        <!-- 06. Hepatitis B -->
+        <div class="vir-card vir-card-linked" data-virus="hepatitis"
+             onclick="window.location.href='hepatitis/hepatitis.html'" style="cursor:pointer">
+          <span class="vir-card-num">06 / 10</span>
+          <div class="vir-card-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="11" stroke="currentColor" stroke-width="2.5"/><path d="M18 20C18 20 20 28 24 28C28 28 30 20 30 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.6"/><circle cx="20" cy="20" r="2" fill="currentColor" opacity="0.5"/><circle cx="28" cy="20" r="2" fill="currentColor" opacity="0.5"/></svg>
+          </div>
+          <div class="vir-card-body">
+            <h3 class="vir-card-name">Virus de la Hepatitis B</h3>
+            <p class="vir-card-sci">VHB — Hepadnaviridae</p>
+            <p class="vir-card-desc">Infecta hepatocitos. Relacionado con cirrosis y carcinoma hepatocelular. Pilar fundamental en salud pública global.</p>
+          </div>
+          <div class="vir-card-tags">
+            <span class="vir-tag-pill">Hígado</span>
+            <span class="vir-tag-pill">Cirrosis</span>
+            <span class="vir-tag-pill">Salud Pública</span>
+          </div>
+          <span class="vir-bsl bsl-2">BSL-2</span>
+        </div>
+
+        <!-- 07. Ébola -->
+        <div class="vir-card vir-card-linked" data-virus="ebola"
+             onclick="window.location.href='VIRUS-EBOLA/ebola.html'" style="cursor:pointer">
+          <span class="vir-card-num">07 / 10</span>
+          <div class="vir-card-icon">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M24 6C24 6 22 14 22 24C22 34 24 42 24 42" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M24 6C24 6 26 14 26 24C26 34 24 42 24 42" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M20 12L14 16M28 12L34 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.6"/><path d="M19 24H12M29 24H36" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.5"/><path d="M20 34L14 38M28 34L34 38" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.6"/><circle cx="24" cy="42" r="2.5" fill="currentColor" opacity="0.6"/></svg>
+          </div>
+          <div class="vir-card-body">
+            <h3 class="vir-card-name">Virus del Ébola</h3>
+            <p class="vir-card-sci">EBOV — Filoviridae</p>
+            <p class="vir-card-desc">Fiebre hemorrágica con alta mortalidad. Estudiado en virología avanzada, bioseguridad y respuesta a brotes epidémicos.</p>
+          </div>
+          <div class="vir-card-tags">
+            <span class="vir-tag-pill">Hemorrágico</span>
+            <span class="vir-tag-pill">Bioseguridad</span>
+            <span class="vir-tag-pill">Alta Mortalidad</span>
+          </div>
+          <span class="vir-bsl bsl-4">BSL-4</span>
+        </div>
+
+        <!-- 08. Zika -->
+        <div class="vir-card vir-card-linked" data-virus="zika"
+             onclick="window.location.href='virus-zika/zika.html'" style="cursor:pointer">
+          <span class="vir-card-num">08 / 10</span>
+          <div class="vir-card-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="9" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="4" stroke="currentColor" stroke-width="1.5" opacity="0.5"/><path d="M24 15L24 10M24 38L24 33M15 24L10 24M38 24L33 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="9" r="2" fill="currentColor" opacity="0.5"/><circle cx="24" cy="39" r="2" fill="currentColor" opacity="0.5"/><circle cx="9" cy="24" r="2" fill="currentColor" opacity="0.5"/><circle cx="39" cy="24" r="2" fill="currentColor" opacity="0.5"/></svg>
+          </div>
+          <div class="vir-card-body">
+            <h3 class="vir-card-name">Virus del Zika</h3>
+            <p class="vir-card-sci">ZIKV — Flaviviridae</p>
+            <p class="vir-card-desc">Asociado a microcefalia y malformaciones congénitas. Alta relevancia en virología, epidemiología y salud materno-fetal.</p>
+          </div>
+          <div class="vir-card-tags">
+            <span class="vir-tag-pill">Congénito</span>
+            <span class="vir-tag-pill">Epidemiología</span>
+            <span class="vir-tag-pill">Vectorial</span>
+          </div>
+          <span class="vir-bsl bsl-2">BSL-2</span>
+        </div>
+
+        <!-- 09. Dengue -->
+        <div class="vir-card vir-card-linked" data-virus="dengue"
+             onclick="window.location.href='virus-dengue/dengue.html'" style="cursor:pointer">
+          <span class="vir-card-num">09 / 10</span>
+          <div class="vir-card-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="10" stroke="currentColor" stroke-width="2.5"/><path d="M18 18L30 30M30 18L18 30" stroke="currentColor" stroke-width="1.5" opacity="0.3"/><circle cx="24" cy="24" r="5" stroke="currentColor" stroke-width="2" opacity="0.5"/><circle cx="24" cy="14" r="2" fill="currentColor" opacity="0.5"/><circle cx="24" cy="34" r="2" fill="currentColor" opacity="0.5"/><circle cx="14" cy="24" r="2" fill="currentColor" opacity="0.5"/><circle cx="34" cy="24" r="2" fill="currentColor" opacity="0.5"/></svg>
+          </div>
+          <div class="vir-card-body">
+            <h3 class="vir-card-name">Virus del Dengue</h3>
+            <p class="vir-card-sci">DENV 1–4 — Flaviviridae</p>
+            <p class="vir-card-desc">Altamente relevante en Latinoamérica. Estudiado por su complejo mecanismo inmunológico y el fenómeno de ADE.</p>
+          </div>
+          <div class="vir-card-tags">
+            <span class="vir-tag-pill">Latinoamérica</span>
+            <span class="vir-tag-pill">ADE</span>
+            <span class="vir-tag-pill">Inmunología</span>
+          </div>
+          <span class="vir-bsl bsl-2">BSL-2</span>
+        </div>
+
+        <!-- 10. Bacteriófago T4 -->
+        <div class="vir-card vir-card-linked" data-virus="bacteriofago"
+             onclick="window.location.href='bacteriofago/bacteriofago.html'" style="cursor:pointer">
+          <span class="vir-card-num">10 / 10</span>
+          <div class="vir-card-icon">
+            <svg viewBox="0 0 48 48" fill="none"><polygon points="24,6 32,16 16,16" stroke="currentColor" stroke-width="2.5" fill="none"/><rect x="21" y="16" width="6" height="14" stroke="currentColor" stroke-width="2" fill="none"/><line x1="18" y1="30" x2="30" y2="30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M18 30L12 40M30 30L36 40M21 30L18 42M27 30L30 42M24 30L24 42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/></svg>
+          </div>
+          <div class="vir-card-body">
+            <h3 class="vir-card-name">Bacteriófago T4</h3>
+            <p class="vir-card-sci">Fago T4 — Myoviridae</p>
+            <p class="vir-card-desc">Infecta bacterias (E. coli). Modelo experimental clásico fundamental en genética molecular y biología del ADN.</p>
+          </div>
+          <div class="vir-card-tags">
+            <span class="vir-tag-pill">Bacterias</span>
+            <span class="vir-tag-pill">Genética Molecular</span>
+            <span class="vir-tag-pill">Modelo Clásico</span>
+          </div>
+          <span class="vir-bsl bsl-1">BSL-1</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <footer class="vir-footer">
+    <div class="vir-container">
+      <div class="vir-footer-grid">
+        <div class="vir-footer-brand">
+          <a href="../index.html" class="vir-nav-logo">
+            <div class="vir-logo-icon">
+              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+                <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+                <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
+            <span class="vir-logo-text">Pharma<span class="vir-logo-accent">Lab</span></span>
+          </a>
+          <p>Plataforma educacional de Química y Farmacia para estudiantes universitarios chilenos.</p>
+        </div>
+        <div class="vir-footer-links">
+          <h4>Módulos</h4>
+          <a href="../quimica/index.html">Química</a>
+          <a href="../farmacia/index.html">Farmacia</a>
+          <a href="../quimica-farmaceutica/index.html">Q. Farmacéutica</a>
+          <a href="../biotecnologia/index.html">Biotecnología</a>
+          <a href="../virologia/index.html">Virología</a>
+        </div>
+        <div class="vir-footer-links">
+          <h4>Recursos</h4>
+          <a href="#">Glosario</a>
+          <a href="#">Tabla Periódica</a>
+          <a href="#">Calculadoras</a>
+          <a href="#">Referencias</a>
+        </div>
+        <div class="vir-footer-links">
+          <h4>Normativa</h4>
+          <a href="#">ISP Chile</a>
+          <a href="#">MINSAL</a>
+          <a href="#">Farmacopea</a>
+          <a href="#">BPM</a>
+        </div>
+      </div>
+      <div class="vir-footer-bottom">
+        <p>© 2026 PharmaLab Chile — Contenido educacional. No reemplaza asesoría profesional.</p>
+        <p class="vir-footer-disclaimer">Regulado según normativas del Instituto de Salud Pública de Chile (ISP) y MINSAL.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="virologia.js"></script>
+
+  <!-- ════════════════════════════════════════
+       PARCHE: Estilos para tarjeta con enlace
+       Agrega esto al final del body o en virologia.css
+  ════════════════════════════════════════ -->
+  <style>
+    /* Tarjeta enlazable — mismo aspecto que las demás, sólo agrega indicador de link */
+    .vir-card-linked {
+      position: relative;
+    }
+    .vir-card-link-hint {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      color: var(--vir-muted, #8892a8);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+    }
+    .vir-card-linked:hover .vir-card-link-hint {
+      opacity: 0.6;
+    }
+  </style>
+</body>
+</html>

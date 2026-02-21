@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receta Médica — PharmaLab Chile</title>
+    <link rel="stylesheet" href="../../../../styles.css">
+    <link rel="stylesheet" href="../../../farmacia.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="module-farmacia">
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../../../../index.html" class="nav-logo">
+                <div class="logo-icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/><circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/><line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/><line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/><line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/></svg></div>
+                <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../../../../quimica/index.html" class="nav-link" data-module="quimica">⚗️ Química</a>
+                <a href="../../../../farmacia/index.html" class="nav-link active" data-module="farmacia">💊 Farmacia</a>
+                <a href="../../../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf">🧬 Q. Farmacéutica</a>
+                <a href="../../../../biotecnologia/index.html" class="nav-link" data-module="biotech">🔬 Biotecnología</a>
+            </div>
+            <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="module-hero" style="min-height:38vh;padding-bottom:40px;">
+        <div class="hero-content">
+            <span class="section-tag">Farmacia — Fundamentos</span>
+            <h1 class="section-title">Receta <span class="text-gradient-farmacia">Médica</span></h1>
+            <p class="section-desc">Tipos de receta en Chile, requisitos legales, validez, causas de rechazo y responsabilidad del QF en la dispensación.</p>
+        </div>
+    </section>
+
+    <section class="lesson-content">
+        <div class="container">
+            <div class="lesson-body">
+
+                <div class="lesson-index">
+                    <h4>📑 Contenido</h4>
+                    <ol>
+                        <li><a href="#definicion">Definición y Marco Legal</a></li>
+                        <li><a href="#tipos">Tipos de Receta en Chile</a></li>
+                        <li><a href="#requisitos">Requisitos Legales</a></li>
+                        <li><a href="#simple">Receta Simple</a></li>
+                        <li><a href="#retenida">Receta Retenida</a></li>
+                        <li><a href="#cheque">Receta Cheque</a></li>
+                        <li><a href="#magistral">Receta Magistral</a></li>
+                        <li><a href="#rechazo">Causas de Rechazo</a></li>
+                        <li><a href="#dci">Prescripción por DCI</a></li>
+                        <li><a href="#cronicas">Recetas para Enfermedades Crónicas</a></li>
+                    </ol>
+                </div>
+
+                <div class="lesson-section" id="definicion">
+                    <h2>1. <span>Definición y Marco Legal</span></h2>
+                    <p>La receta médica es el documento legal mediante el cual un profesional de la salud habilitado prescribe medicamentos a un paciente. Es el instrumento que autoriza al QF a dispensar medicamentos que requieren prescripción.</p>
+                    <div class="info-block">
+                        <h3>⚖️ Base Legal en Chile</h3>
+                        <ul>
+                            <li><strong>Código Sanitario D.F.L. 725, Art. 107–130:</strong> Ciertos medicamentos solo pueden dispensarse con receta médica.</li>
+                            <li><strong>D.S. N° 3/2010:</strong> Define tipos de receta, formato, requisitos y condiciones de validez.</li>
+                            <li><strong>D.S. N° 404/1984:</strong> Formato especial de receta cheque para estupefacientes.</li>
+                            <li><strong>D.S. N° 405/1984:</strong> Receta especial para psicotrópicos.</li>
+                            <li><strong>Ley 20.724/2014:</strong> Obliga a prescribir por DCI.</li>
+                        </ul>
+                    </div>
+                    <div class="alert-box alert-info">
+                        <span class="alert-icon">ℹ️</span>
+                        <div>
+                            <strong>¿Quiénes pueden prescribir en Chile?</strong>
+                            <p>Médicos cirujanos, cirujanos dentistas (uso odontológico), matronas (anticonceptivos y embarazo) y enfermeras con formación específica autorizada. Los médicos veterinarios prescriben para uso animal.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-section" id="tipos">
+                    <h2>2. <span>Tipos de Receta en Chile</span></h2>
+                    <table class="data-table">
+                        <thead><tr><th>Tipo</th><th>Formato</th><th>Retención</th><th>Vigencia</th><th>Aplicación</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>Simple</strong></td><td>Blanca / libre</td><td>No se retiene</td><td>30 días</td><td>Antihipertensivos, antidiabéticos, estatinas</td></tr>
+                            <tr><td><strong>Retenida</strong></td><td>Blanca / libre</td><td>Queda en farmacia</td><td>30 días</td><td>Antibióticos, corticoides sistémicos</td></tr>
+                            <tr><td><strong>Cheque Estupefacientes</strong></td><td>Triplicado oficial</td><td>Obligatoria</td><td>5 días hábiles</td><td>Morfina, Fentanil, Metadona, Oxicodona</td></tr>
+                            <tr><td><strong>Cheque Psicotrópicos Lista I</strong></td><td>Formulario oficial</td><td>Obligatoria</td><td>30 días</td><td>Clonazepam, Alprazolam, Midazolam</td></tr>
+                            <tr><td><strong>Magistral</strong></td><td>Blanca</td><td>Según contenido</td><td>Variable</td><td>Preparaciones individualizadas</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="lesson-section" id="requisitos">
+                    <h2>3. <span>Requisitos Legales de Toda Receta</span></h2>
+                    <div class="info-block">
+                        <h3>📋 Datos Obligatorios según D.S. 3/2010</h3>
+                        <ul>
+                            <li>Nombre completo y RUT del prescriptor.</li>
+                            <li>Nombre y dirección del establecimiento o consulta.</li>
+                            <li><strong>Fecha de emisión</strong> (día, mes, año).</li>
+                            <li>Nombre completo del paciente.</li>
+                            <li><strong>DCI</strong> del principio activo — obligatorio desde Ley 20.724.</li>
+                            <li>Concentración, forma farmacéutica y cantidad total a dispensar.</li>
+                            <li>Posología completa: dosis, frecuencia y duración.</li>
+                            <li>Firma y timbre del prescriptor.</li>
+                        </ul>
+                    </div>
+                    <div class="alert-box alert-warning">
+                        <span class="alert-icon">⚠️</span>
+                        <div>
+                            <strong>Enmendaduras en Recetas</strong>
+                            <p>Solo son válidas si están salvadas por el prescriptor con firma al margen. En receta cheque, cualquier enmendadura invalida automáticamente el documento.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-section" id="simple">
+                    <h2>4. <span>Receta Simple</span></h2>
+                    <div class="info-block">
+                        <h3>📄 Características</h3>
+                        <ul>
+                            <li>Sin formato oficial obligatorio.</li>
+                            <li>Vigencia: <strong>30 días</strong>. No se retiene en la farmacia.</li>
+                            <li>Puede dispensarse en partes dentro del período de vigencia.</li>
+                        </ul>
+                    </div>
+                    <div class="info-block">
+                        <h3>💊 Ejemplos de Medicamentos VBR</h3>
+                        <ul>
+                            <li>Antihipertensivos: enalapril, losartán, amlodipino, hidroclorotiazida.</li>
+                            <li>Hipoglucemiantes: metformina, glibenclamida, sitagliptina.</li>
+                            <li>Hipolipemiantes: atorvastatina, rosuvastatina.</li>
+                            <li>Broncodilatadores: salbutamol, formoterol.</li>
+                            <li>Levotiroxina para hipotiroidismo.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lesson-section" id="retenida">
+                    <h2>5. <span>Receta Retenida</span></h2>
+                    <div class="info-block">
+                        <h3>📄 Características</h3>
+                        <ul>
+                            <li>El documento <strong>queda archivado en la farmacia</strong> al momento de la dispensación.</li>
+                            <li>Vigencia: <strong>30 días</strong>. Archivo mínimo: 1 año.</li>
+                            <li>Fiscalizable por ISP y Servicios de Salud.</li>
+                        </ul>
+                    </div>
+                    <div class="info-block">
+                        <h3>💊 Medicamentos VBRR más comunes</h3>
+                        <ul>
+                            <li><strong>Antibióticos:</strong> Amoxicilina, azitromicina, ciprofloxacino, cefalexina.</li>
+                            <li><strong>Corticoides sistémicos:</strong> Prednisona, betametasona, dexametasona.</li>
+                            <li><strong>Antivirales:</strong> Aciclovir oral, oseltamivir.</li>
+                            <li><strong>Antifúngicos sistémicos:</strong> Fluconazol, itraconazol.</li>
+                        </ul>
+                    </div>
+                    <div class="alert-box alert-warning">
+                        <span class="alert-icon">⚠️</span>
+                        <div>
+                            <strong>Antibióticos y Resistencia Antimicrobiana</strong>
+                            <p>La condición VBRR de los antibióticos es una medida de salud pública. El QF debe educar al paciente: completar el tratamiento y no compartirlo con terceros.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-section" id="cheque">
+                    <h2>6. <span>Receta Cheque</span></h2>
+                    <div class="info-block">
+                        <h3>📋 Características</h3>
+                        <ul>
+                            <li><strong>Formulario oficial triplicado numerado</strong> por el MINSAL. No reemplazable por receta común.</li>
+                            <li>Talonarios entregados personalmente a médicos habilitados por el Servicio de Salud regional.</li>
+                            <li>Vigencia estupefacientes: <strong>5 días hábiles</strong>. Psicotrópicos Lista I: <strong>30 días</strong>.</li>
+                            <li>El QF retiene el documento y lo registra en el libro de control.</li>
+                            <li>Verificar identidad del portador con cédula de identidad.</li>
+                        </ul>
+                    </div>
+                    <div class="info-block">
+                        <h3>💊 Medicamentos con Receta Cheque</h3>
+                        <ul>
+                            <li><strong>Estupefacientes:</strong> Morfina, Fentanil, Metadona, Oxicodona, Meperidina, Codeína pura.</li>
+                            <li><strong>Psicotrópicos Lista I:</strong> Clonazepam, Alprazolam, Midazolam, Flunitrazepam, Lorazepam.</li>
+                            <li><strong>Psicotrópicos Lista II (receta especial):</strong> Diazepam, Bromazepam, Zolpidem, Metilfenidato.</li>
+                        </ul>
+                    </div>
+                    <div class="alert-box alert-danger">
+                        <span class="alert-icon">🚨</span>
+                        <div>
+                            <strong>Falsificación de Receta Cheque: Delito Penal</strong>
+                            <p>La falsificación o uso fraudulento de receta cheque es delito tipificado en el Código Penal y Ley 20.000. El QF puede enfrentar cargos penales y cancelación de habilitación profesional.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-section" id="magistral">
+                    <h2>7. <span>Receta Magistral</span></h2>
+                    <div class="info-block">
+                        <h3>📋 Contenido Obligatorio</h3>
+                        <ul>
+                            <li>Nombre del paciente y datos del prescriptor.</li>
+                            <li>Fórmula cualitativa y cuantitativa completa.</li>
+                            <li>Forma farmacéutica a elaborar.</li>
+                            <li>Cantidad total a preparar.</li>
+                            <li>Posología y vía de administración.</li>
+                            <li>Instrucciones especiales de conservación.</li>
+                        </ul>
+                    </div>
+                    <div class="info-block">
+                        <h3>🧪 Preparaciones Magistrales Frecuentes</h3>
+                        <ul>
+                            <li>Cremas dermatológicas a concentraciones no comerciales.</li>
+                            <li>Soluciones orales pediátricas individualizadas.</li>
+                            <li>Cápsulas de dosis no disponibles comercialmente.</li>
+                            <li>Preparaciones hormonales bioidentales.</li>
+                            <li>Colirios con principios activos sin presentación comercial.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lesson-section" id="rechazo">
+                    <h2>8. <span>Causas de Rechazo de una Receta</span></h2>
+                    <div class="info-block">
+                        <h3>🚫 El QF debe rechazar cuando:</h3>
+                        <ul>
+                            <li>Receta vencida (superó su período de vigencia).</li>
+                            <li>Datos del prescriptor incompletos o ilegibles.</li>
+                            <li>Ausencia de firma y/o timbre del médico.</li>
+                            <li>Enmendaduras no salvadas.</li>
+                            <li>Tipo de receta inadecuado para el medicamento.</li>
+                            <li>Prescriptor no habilitado para ese tipo de medicamento.</li>
+                            <li>Cantidad prescrita superior al límite legal para controlados.</li>
+                            <li>Sospecha razonable de falsificación.</li>
+                            <li>Medicamento retirado del mercado por el ISP.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lesson-section" id="dci">
+                    <h2>9. <span>Prescripción por DCI</span></h2>
+                    <p>Desde Ley 20.724 (2014), los médicos en Chile deben incluir la DCI del principio activo en todas sus prescripciones.</p>
+                    <table class="data-table">
+                        <thead><tr><th>Situación</th><th>Acción del QF</th></tr></thead>
+                        <tbody>
+                            <tr><td>Médico prescribe por DCI, existe bioequivalente</td><td>Obligatorio informar sobre el genérico</td></tr>
+                            <tr><td>Médico prescribe por marca, existe bioequivalente</td><td>Puede ofrecer genérico; paciente decide</td></tr>
+                            <tr><td>Médico indica "No sustituir"</td><td>No puede ofrecer alternativa</td></tr>
+                            <tr><td>No existe bioequivalente registrado</td><td>Dispensar el medicamento prescrito</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="lesson-section" id="cronicas">
+                    <h2>10. <span>Recetas para Enfermedades Crónicas</span></h2>
+                    <div class="info-block">
+                        <h3>📅 Receta Crónica — Normativa Vigente 2022</h3>
+                        <p>Las recetas simples para tratamientos crónicos pueden tener vigencia de hasta <strong>6 meses</strong> cuando el médico lo indique expresamente. Aplica a HTA, DM2, dislipidemia, hipotiroidismo y otros crónicos estables. El médico debe indicar: <em>"Receta crónica, válida por 6 meses."</em></p>
+                    </div>
+                    <div class="pharma-highlight">
+                        <div class="ph-icon">💡</div>
+                        <h3>Receta Crónica y Adherencia</h3>
+                        <p>La receta crónica mejora la adherencia al reducir la necesidad de consultas solo para renovar recetas. El QF es clave en el seguimiento del paciente durante los 6 meses de vigencia.</p>
+                    </div>
+                </div>
+
+                <div class="lesson-nav">
+                    <a href="../atencion-farmaceutica/index.html">← Atención Farmacéutica</a>
+                    <a href="../medicamentos-controlados/index.html">Siguiente: Controlados →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 PharmaLab Chile — Fundamentos: Receta Médica</p>
+                <p class="footer-disclaimer">Contenido educacional actualizado. No reemplaza asesoría profesional.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../../../../script.js"></script>
+</body>
+</html>

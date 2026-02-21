@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos Químicos — Unidad 1 — PharmaLab Chile</title>
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../../quimica.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .unit-hub { padding: 60px 0 120px; }
+        .sub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 24px; }
+        .sub-card {
+            position: relative; padding: 36px; background: var(--bg-card);
+            border: 1px solid var(--border); border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1); overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        .sub-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 3px; background: linear-gradient(90deg, #00e5a0, #33ffbb);
+            transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+        }
+        .sub-card:hover::before { transform: scaleX(1); }
+        .sub-card:hover { transform: translateY(-4px); border-color: rgba(0,229,160,0.3); background: var(--bg-card-hover); }
+        .sub-number { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #00e5a0; margin-bottom: 16px; letter-spacing: 2px; }
+        .sub-icon { font-size: 2.8rem; margin-bottom: 16px; }
+        .sub-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
+        .sub-card p { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; flex-grow: 1; }
+        .sub-card .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+        .sub-card .tag-row span {
+            padding: 3px 10px; background: rgba(0,229,160,0.08); border-radius: 50px;
+            font-size: 0.72rem; color: #00e5a0;
+        }
+        .sub-arrow {
+            display: inline-flex; align-items: center; gap: 6px; margin-top: 20px;
+            font-size: 0.85rem; font-weight: 600; color: #00e5a0; transition: gap 0.3s;
+        }
+        .sub-card:hover .sub-arrow { gap: 12px; }
+        .breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 32px; font-size: 0.85rem; }
+        .breadcrumb a { color: var(--text-muted); transition: color 0.3s; }
+        .breadcrumb a:hover { color: #00e5a0; }
+        .breadcrumb span { color: var(--text-muted); }
+        .unit-intro { max-width: 800px; margin-bottom: 48px; }
+        .unit-intro p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; }
+    </style>
+</head>
+<body class="module-quimica">
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../../../index.html" class="nav-logo">
+                <div class="logo-icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/><circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/><line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/><line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/><line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/></svg></div>
+                <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../../index.html" class="nav-link active" data-module="quimica"><span class="nav-link-icon">⚗️</span> Química</a>
+                <a href="../../../farmacia/index.html" class="nav-link" data-module="farmacia"><span class="nav-link-icon">💊</span> Farmacia</a>
+                <a href="../../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf"><span class="nav-link-icon">🧬</span> Q. Farmacéutica</a>
+                <a href="../../../biotecnologia/index.html" class="nav-link" data-module="biotech"><span class="nav-link-icon">🔬</span> Biotecnología</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="module-hero" style="padding-bottom:40px;min-height:auto">
+        <div class="hero-content">
+            <span class="section-tag">Química — Unidad 1</span>
+            <h1 class="section-title">Fundamentos <span class="text-gradient-quimica">Químicos</span></h1>
+            <p class="section-desc">Domina las bases de la química: desde la estructura del átomo hasta las propiedades que definen el comportamiento de los elementos en la industria farmacéutica.</p>
+        </div>
+    </section>
+
+    <section class="unit-hub">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../../index.html">Inicio</a> <span>›</span>
+                <a href="../../index.html">Química</a> <span>›</span>
+                <span style="color:var(--text-primary)">Fundamentos Químicos</span>
+            </div>
+
+            <div class="unit-intro">
+                <p>Los fundamentos químicos son la base esencial para comprender cómo se diseñan y crean los medicamentos. En esta unidad estudiarás la estructura atómica, la organización de los elementos en la tabla periódica, los tipos de enlaces que forman las moléculas y las propiedades periódicas que determinan la reactividad química. Cada tema incluye visualizaciones 3D interactivas para facilitar tu aprendizaje.</p>
+            </div>
+
+            <div class="sub-grid">
+                <a href="estructura-atomica/index.html" class="sub-card">
+                    <div class="sub-number">01 / 04</div>
+                    <div class="sub-icon">⚛️</div>
+                    <h3>Estructura Atómica</h3>
+                    <p>Modelos atómicos, partículas subatómicas, configuración electrónica y orbitales. Incluye visor 3D interactivo del átomo.</p>
+                    <div class="tag-row">
+                        <span>Protones</span><span>Neutrones</span><span>Electrones</span><span>Orbitales</span><span>Visor 3D</span>
+                    </div>
+                    <div class="sub-arrow">Estudiar tema →</div>
+                </a>
+
+                <a href="tabla-periodica/index.html" class="sub-card">
+                    <div class="sub-number">02 / 04</div>
+                    <div class="sub-icon">📊</div>
+                    <h3>Tabla Periódica</h3>
+                    <p>Los 118 elementos organizados: grupos, períodos, bloques s/p/d/f y clasificación por familias. Tabla interactiva completa.</p>
+                    <div class="tag-row">
+                        <span>118 Elementos</span><span>Grupos</span><span>Períodos</span><span>Interactiva</span>
+                    </div>
+                    <div class="sub-arrow">Estudiar tema →</div>
+                </a>
+
+                <a href="enlaces-quimicos/index.html" class="sub-card">
+                    <div class="sub-number">03 / 04</div>
+                    <div class="sub-icon">🔗</div>
+                    <h3>Enlaces Químicos</h3>
+                    <p>Enlaces iónicos, covalentes, metálicos y fuerzas intermoleculares. Visualización 3D de formación de enlaces y moléculas.</p>
+                    <div class="tag-row">
+                        <span>Iónico</span><span>Covalente</span><span>Metálico</span><span>Van der Waals</span><span>3D</span>
+                    </div>
+                    <div class="sub-arrow">Estudiar tema →</div>
+                </a>
+
+                <a href="propiedades-periodicas/index.html" class="sub-card">
+                    <div class="sub-number">04 / 04</div>
+                    <div class="sub-icon">📈</div>
+                    <h3>Propiedades Periódicas</h3>
+                    <p>Radio atómico, electronegatividad, energía de ionización, afinidad electrónica y sus tendencias. Gráficos interactivos.</p>
+                    <div class="tag-row">
+                        <span>Radio Atómico</span><span>Electronegatividad</span><span>Ionización</span><span>Gráficos</span>
+                    </div>
+                    <div class="sub-arrow">Estudiar tema →</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container"><div class="footer-bottom">
+            <p>© 2026 PharmaLab Chile — Química: Fundamentos Químicos</p>
+            <p class="footer-disclaimer">Contenido educacional verificado. No reemplaza asesoría profesional.</p>
+        </div></div>
+    </footer>
+    <script src="../../../script.js"></script>
+</body>
+</html>

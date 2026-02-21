@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIH — Virus de la Inmunodeficiencia Humana | PharmaLab Chile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="vih.css">
+</head>
+<body class="vih-page">
+
+  <!-- ════════════════════════════════════════
+       NAVBAR
+  ════════════════════════════════════════ -->
+  <nav class="vih-navbar" id="vih-navbar">
+    <div class="vih-nav-inner">
+      <a href="../../index.html" class="vih-nav-logo">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        Pharma<span class="accent">Lab</span>
+      </a>
+      <div class="vih-nav-links" id="vihNavLinks">
+        <a href="../index.html">← Virología</a>
+        <a href="../../quimica/index.html">Química</a>
+        <a href="../../farmacia/index.html">Farmacia</a>
+        <a href="../../biotecnologia/index.html">Biotecnología</a>
+        <a href="#" class="active">VIH</a>
+      </div>
+      <button class="vih-nav-toggle" id="vihNavToggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════ -->
+  <section class="vih-hero">
+    <div class="vih-hero-bg"></div>
+    <canvas id="vih-hero-canvas"></canvas>
+    <div class="vih-hero-content">
+      <div class="vih-badge">Virología · Patógeno 01/10</div>
+      <h1 class="vih-hero-title">
+        Virus de la<br>
+        <span class="accent">Inmunodeficiencia Humana</span>
+      </h1>
+      <p class="vih-hero-desc">
+        Retrovirus que infecta linfocitos T CD4+, macrófagos y células dendríticas, 
+        causando una destrucción progresiva del sistema inmune que conduce al SIDA. 
+        Su estudio ha revolucionado la inmunología, la virología y la farmacología moderna.
+      </p>
+      <div class="vih-hero-meta">
+        <div class="vih-meta-item">
+          <span class="vih-meta-val">~39 M</span>
+          <span class="vih-meta-label">Personas viviendo con VIH (2023, ONUSIDA)</span>
+        </div>
+        <div class="vih-meta-item">
+          <span class="vih-meta-val">1983</span>
+          <span class="vih-meta-label">Año de aislamiento (Montagnier & Barré-Sinoussi)</span>
+        </div>
+        <div class="vih-meta-item">
+          <span class="vih-meta-val">BSL-3</span>
+          <span class="vih-meta-label">Nivel de bioseguridad</span>
+        </div>
+      </div>
+    </div>
+    <div class="vih-scroll-hint">
+      <span>Explorar</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       STATS
+  ════════════════════════════════════════ -->
+  <div class="vih-container">
+    <div class="vih-stats-row">
+      <div class="vih-stat-card">
+        <span class="vih-stat-val" data-target="9" data-suffix=",7 kb">0</span>
+        <span class="vih-stat-label">Genoma ARN (2 copias)</span>
+      </div>
+      <div class="vih-stat-card">
+        <span class="vih-stat-val" data-target="15" data-suffix=" proteínas">0</span>
+        <span class="vih-stat-label">Codificadas por 9 genes</span>
+      </div>
+      <div class="vih-stat-card">
+        <span class="vih-stat-val" data-target="6" data-suffix=" clases">0</span>
+        <span class="vih-stat-label">Antirretrovirales aprobados</span>
+      </div>
+      <div class="vih-stat-card">
+        <span class="vih-stat-val" data-target="120" data-suffix=" nm">0</span>
+        <span class="vih-stat-label">Diámetro del virión</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 1 — ESTRUCTURA 3D DEL VIH
+  ════════════════════════════════════════ -->
+  <section class="vih-section" id="estructura">
+    <div class="vih-container">
+      <div class="vih-section-tag tag-red">🔬 Estructura del Virión</div>
+      <h2 class="vih-section-title">Anatomía del <span class="gradient">VIH</span> en 3D</h2>
+      <p class="vih-section-sub">
+        El VIH es un retrovirus envuelto con una cápside cónica característica (p24). 
+        Arrastra para rotar el modelo. Scroll para acercar/alejar.
+      </p>
+
+      <div class="vih-viewer-wrap">
+        <div>
+          <div class="vih-canvas-box">
+            <canvas id="vih-model-canvas"></canvas>
+            <div class="vih-canvas-label">VIH-1 · Virión completo</div>
+          </div>
+          <p style="font-size:0.78rem;color:#5a6478;margin-top:10px">🖱️ Arrastra para rotar · Scroll para zoom</p>
+        </div>
+
+        <div class="vih-struct-info">
+          <div class="vih-struct-card" style="--stripe-color: #ff6699">
+            <h4><span class="color-dot" style="background:#ff6699"></span> Glicoproteínas gp120/gp41</h4>
+            <p>Trimeros de gp120 (externa) y gp41 (transmembrana). La gp120 se une al receptor CD4 y correceptores CCR5/CXCR4. La gp41 media la fusión de membranas. Target principal de anticuerpos neutralizantes y vacunas.</p>
+          </div>
+          <div class="vih-struct-card" style="--stripe-color: #8b2252">
+            <h4><span class="color-dot" style="background:#8b2252"></span> Envoltura Lipídica</h4>
+            <p>Bicapa lipídica derivada de la membrana del hospedero durante la gemación. Contiene proteínas del huésped (HLA-II, ICAM-1) que facilitan la infección. Sensible a detergentes y desinfectantes.</p>
+          </div>
+          <div class="vih-struct-card" style="--stripe-color: #ff6644">
+            <h4><span class="color-dot" style="background:#ff6644"></span> Cápside Cónica (p24, CA)</h4>
+            <p>Forma cónica característica compuesta por ~250 hexámeros y 12 pentámeros de p24. Protege el genoma ARN y las enzimas virales. La proteína p24 es el antígeno usado en test de diagnóstico ELISA de 4ª generación.</p>
+          </div>
+          <div class="vih-struct-card" style="--stripe-color: #00ccff">
+            <h4><span class="color-dot" style="background:#00ccff"></span> ARN Genómico (2 copias)</h4>
+            <p>Dos cadenas idénticas de ARN de cadena simple, sentido positivo, ~9,7 kb cada una. Codifica 9 genes: gag, pol, env (estructurales) + tat, rev, nef, vif, vpr, vpu (reguladores/accesorios).</p>
+          </div>
+          <div class="vih-struct-card" style="--stripe-color: #ffcc00">
+            <h4><span class="color-dot" style="background:#ffcc00"></span> Transcriptasa Inversa (RT)</h4>
+            <p>Heterodímero p66/p51. Convierte ARN viral en ADN proviral de doble cadena. Tasa de error: ~1 mutación por genoma por ciclo replicativo, generando la enorme variabilidad genética del VIH.</p>
+          </div>
+          <div class="vih-struct-card" style="--stripe-color: #22cc88">
+            <h4><span class="color-dot" style="background:#22cc88"></span> Integrasa (IN)</h4>
+            <p>Inserta el ADN proviral en el genoma del hospedero. Target de los inhibidores de integrasa (Dolutegravir, Bictegravir), actualmente la clase de ARV de primera línea recomendada por OMS.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 2 — SIDA
+  ════════════════════════════════════════ -->
+  <section class="vih-section" id="sida">
+    <div class="vih-container">
+      <div class="vih-section-tag tag-red">🩸 Tema 1 · SIDA</div>
+      <h2 class="vih-section-title">Síndrome de Inmunodeficiencia <span class="gradient">Adquirida</span></h2>
+      <p class="vih-section-sub">
+        El SIDA es el estadio final de la infección por VIH, caracterizado por inmunosupresión severa 
+        (CD4 &lt; 200 céls/µL) y aparición de infecciones oportunistas y neoplasias definitorias.
+      </p>
+
+      <div class="vih-content-grid">
+        <!-- Estadios CDC -->
+        <div class="vih-content-card" style="--card-accent: #ff3355">
+          <div class="vih-card-num">Clasificación CDC 2014</div>
+          <h3>Estadios Clínicos del VIH</h3>
+          <p>La clasificación CDC/OMS define estadios basados en el conteo de linfocitos T CD4+ y condiciones clínicas:</p>
+          <ul>
+            <li><span class="bullet" style="background:#00e87b"></span><strong style="color:#00e87b">Estadio 1:</strong> CD4 ≥ 500 céls/µL. Asintomático o linfadenopatía generalizada persistente.</li>
+            <li><span class="bullet" style="background:#ffaa00"></span><strong style="color:#ffaa00">Estadio 2:</strong> CD4 200–499 céls/µL. Síntomas constitucionales, herpes zóster, candidiasis orofaríngea.</li>
+            <li><span class="bullet" style="background:#ff3355"></span><strong style="color:#ff3355">Estadio 3 (SIDA):</strong> CD4 &lt; 200 céls/µL o presencia de condición definitoria de SIDA.</li>
+          </ul>
+        </div>
+
+        <!-- Infecciones oportunistas -->
+        <div class="vih-content-card" style="--card-accent: #a855f7">
+          <div class="vih-card-num">Infecciones Oportunistas</div>
+          <h3>Condiciones Definitorias de SIDA</h3>
+          <p>Patologías que indican inmunosupresión severa (criterios CDC):</p>
+          <ul>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--vih-text)">Pneumocystis jirovecii (PCP):</strong> Neumonía fúngica. CD4 &lt; 200. Profilaxis: TMP-SMX.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--vih-text)">Toxoplasma gondii:</strong> Encefalitis. CD4 &lt; 100. Lesiones anulares en TAC cerebral.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--vih-text)">Mycobacterium tuberculosis:</strong> TB pulmonar y extrapulmonar. Coinfección más frecuente a nivel global.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--vih-text)">Sarcoma de Kaposi:</strong> HHV-8. Neoplasia más frecuente en VIH. Lesiones cutáneas violáceas.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--vih-text)">Criptococosis meníngea:</strong> C. neoformans. CD4 &lt; 100. Diagnóstico: tinta china en LCR, antígeno criptocócico.</li>
+          </ul>
+        </div>
+
+        <!-- Diagnóstico -->
+        <div class="vih-content-card" style="--card-accent: #00d4ff">
+          <div class="vih-card-num">Diagnóstico Virológico</div>
+          <h3>Métodos Diagnósticos del VIH</h3>
+          <p>Algoritmo diagnóstico según normativa ISP Chile y OMS:</p>
+          <ul>
+            <li><span class="bullet" style="background:#00d4ff"></span><strong style="color:var(--vih-text)">ELISA 4ª generación:</strong> Detecta anticuerpos anti-VIH-1/2 + antígeno p24. Período ventana: ~2 semanas.</li>
+            <li><span class="bullet" style="background:#00d4ff"></span><strong style="color:var(--vih-text)">Test rápido:</strong> Inmunocromatografía. Resultado en 15–20 min. Sensibilidad &gt; 99%.</li>
+            <li><span class="bullet" style="background:#00d4ff"></span><strong style="color:var(--vih-text)">Western Blot / Immunoblot:</strong> Test confirmatorio. Detecta anticuerpos contra proteínas específicas (gp160, gp120, gp41, p24, p31).</li>
+            <li><span class="bullet" style="background:#00d4ff"></span><strong style="color:var(--vih-text)">PCR Carga Viral (RT-qPCR):</strong> Cuantifica copias de ARN viral/mL de plasma. Gold standard para monitoreo de TARV.</li>
+          </ul>
+        </div>
+
+        <!-- Carga viral y CD4 -->
+        <div class="vih-content-card" style="--card-accent: #ffaa00">
+          <div class="vih-card-num">Marcadores de Laboratorio</div>
+          <h3>Carga Viral y Conteo CD4</h3>
+          <p>Los dos pilares del seguimiento clínico del paciente con VIH:</p>
+          <div class="vih-kv">
+            <span class="vih-kv-key" style="color:#ffaa00">Carga viral</span>
+            <span class="vih-kv-val">N° de copias de ARN-VIH por mL de plasma. Objetivo TARV: indetectable (&lt; 50 copias/mL).</span>
+          </div>
+          <div class="vih-kv">
+            <span class="vih-kv-key" style="color:#ffaa00">Conteo CD4</span>
+            <span class="vih-kv-val">Normal: 500–1500 céls/µL. SIDA: &lt; 200 céls/µL. Determina riesgo de infecciones oportunistas.</span>
+          </div>
+          <div class="vih-kv">
+            <span class="vih-kv-key" style="color:#ffaa00">I = I</span>
+            <span class="vih-kv-val">Indetectable = Intransmisible. Evidencia PARTNER/PARTNER2: 0 transmisiones con CV indetectable sostenida.</span>
+          </div>
+          <div class="vih-kv">
+            <span class="vih-kv-key" style="color:#ffaa00">Set point viral</span>
+            <span class="vih-kv-val">Nivel estable de CV tras la infección aguda (~3–6 meses). Predictor de progresión a SIDA.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 3 — ANTIRRETROVIRALES (TARV)
+  ════════════════════════════════════════ -->
+  <section class="vih-section" id="antirretrovirales">
+    <div class="vih-container">
+      <div class="vih-section-tag tag-green">💊 Tema 2 · Antirretrovirales</div>
+      <h2 class="vih-section-title">Terapia <span class="gradient">Antirretroviral</span> (TARV)</h2>
+      <p class="vih-section-sub">
+        La TARV combina fármacos de distintas clases para suprimir la replicación viral, 
+        restaurar la función inmune y prevenir la transmisión. Recomendada por OMS para 
+        todos los pacientes VIH+ independiente del conteo CD4 (estrategia "Test and Treat").
+      </p>
+
+      <!-- ARV Table -->
+      <div class="vih-arv-table-wrap">
+        <table class="vih-arv-table">
+          <thead>
+            <tr>
+              <th>Clase</th>
+              <th>Diana Molecular</th>
+              <th>Fármacos Representativos</th>
+              <th>Mecanismo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="drug-class">INTR</td>
+              <td class="drug-target">Transcriptasa inversa</td>
+              <td>Tenofovir (TDF/TAF), Emtricitabina (FTC), Lamivudina (3TC), Abacavir (ABC), Zidovudina (AZT)</td>
+              <td>Análogos de nucleós(t)idos. Se incorporan a la cadena de ADN proviral naciente, causando terminación prematura de la cadena.</td>
+            </tr>
+            <tr>
+              <td class="drug-class">INNTR</td>
+              <td class="drug-target">Transcriptasa inversa</td>
+              <td>Efavirenz (EFV), Nevirapina (NVP), Rilpivirina (RPV), Doravirina (DOR)</td>
+              <td>No nucleosídicos. Se unen alostéricamente al sitio hidrofóbico de la RT, induciendo cambio conformacional que bloquea la polimerización.</td>
+            </tr>
+            <tr>
+              <td class="drug-class">IP</td>
+              <td class="drug-target">Proteasa viral</td>
+              <td>Darunavir (DRV), Atazanavir (ATV), Lopinavir (LPV). Siempre potenciados con Ritonavir (r) o Cobicistat (c).</td>
+              <td>Inhiben la proteasa aspártica viral, impidiendo el clivaje de poliproteínas Gag-Pol en proteínas maduras funcionales.</td>
+            </tr>
+            <tr>
+              <td class="drug-class">INI</td>
+              <td class="drug-target">Integrasa (IN)</td>
+              <td>Dolutegravir (DTG), Bictegravir (BIC), Raltegravir (RAL), Cabotegravir (CAB)</td>
+              <td>Inhibidores de la transferencia de hebra (INSTI). Bloquean la inserción del ADN proviral en el genoma del hospedero. 1ª línea OMS 2019+.</td>
+            </tr>
+            <tr>
+              <td class="drug-class">Inhibidores de entrada</td>
+              <td class="drug-target">gp41 / CCR5</td>
+              <td>Enfuvirtida (T-20, fusión), Maraviroc (MVC, antagonista CCR5), Fostemsavir (gp120), Ibalizumab (CD4 post-unión)</td>
+              <td>Bloquean distintas etapas de la entrada viral: unión a CD4, unión a correceptor, o fusión de membranas.</td>
+            </tr>
+            <tr>
+              <td class="drug-class">Inhibidor de cápside</td>
+              <td class="drug-target">Proteína CA (p24)</td>
+              <td>Lenacapavir (LEN) — aprobado 2022. Administración subcutánea cada 6 meses.</td>
+              <td>Inhibe múltiples etapas del ciclo viral dependientes de la cápside: ensamblaje, transporte nuclear, decapsidación y maduración.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Esquemas recomendados -->
+      <div class="vih-content-grid" style="margin-top:48px">
+        <div class="vih-content-card" style="--card-accent: #00e87b">
+          <div class="vih-card-num">OMS 2023 · Primera Línea</div>
+          <h3>Esquemas TARV Recomendados</h3>
+          <p>Régimen preferido para adultos y adolescentes (OMS + Guías GES Chile):</p>
+          <ul>
+            <li><span class="bullet" style="background:#00e87b"></span><strong style="color:#00e87b">TDF/3TC/DTG</strong> — Esquema preferido OMS. Comprimido único diario. Alta barrera genética a resistencia.</li>
+            <li><span class="bullet" style="background:#00d4ff"></span><strong style="color:#00d4ff">TAF/FTC/BIC</strong> — Alternativa con mejor perfil renal y óseo (Biktarvy®). Muy usado en países de altos ingresos.</li>
+            <li><span class="bullet" style="background:#ffaa00"></span><strong style="color:#ffaa00">TDF/3TC/EFV 400</strong> — Alternativa si DTG no disponible. EFV a dosis reducida (400 mg).</li>
+          </ul>
+        </div>
+
+        <div class="vih-content-card" style="--card-accent: #a855f7">
+          <div class="vih-card-num">Innovación Farmacológica</div>
+          <h3>TARV de Acción Prolongada</h3>
+          <p>La nueva generación de antirretrovirales elimina la necesidad de comprimidos diarios:</p>
+          <ul>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--vih-text)">Cabotegravir + Rilpivirina IM:</strong> Inyección intramuscular cada 2 meses. No inferior a TARV oral (ensayos ATLAS-2M, FLAIR).</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--vih-text)">Lenacapavir SC:</strong> Inyección subcutánea cada 6 meses. Primer inhibidor de cápside aprobado (2022). Indicado en VIH multirresistente.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--vih-text)">PrEP inyectable:</strong> Cabotegravir LA cada 2 meses para prevención. Superior a TDF/FTC oral (ensayo HPTN 083/084).</li>
+          </ul>
+        </div>
+
+        <div class="vih-content-card" style="--card-accent: #ff3355">
+          <div class="vih-card-num">Resistencia Farmacológica</div>
+          <h3>Resistencia a ARV</h3>
+          <p>La alta tasa de error de la RT (~3×10⁻⁵ mutaciones/nucleótido/ciclo) genera diversidad viral:</p>
+          <ul>
+            <li><span class="bullet" style="background:#ff3355"></span><strong style="color:var(--vih-text)">M184V:</strong> Resistencia a 3TC/FTC. Mutación más frecuente. Reduce fitness viral.</li>
+            <li><span class="bullet" style="background:#ff3355"></span><strong style="color:var(--vih-text)">K65R:</strong> Resistencia a Tenofovir. Compromete backbone INTR.</li>
+            <li><span class="bullet" style="background:#ff3355"></span><strong style="color:var(--vih-text)">K103N:</strong> Resistencia a Efavirenz/Nevirapina (INNTR 1ª gen).</li>
+            <li><span class="bullet" style="background:#ff3355"></span><strong style="color:var(--vih-text)">Barrera genética:</strong> DTG y BIC requieren múltiples mutaciones acumuladas, lo que les confiere alta barrera a resistencia.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Callout Chile -->
+      <div class="vih-callout">
+        <h3>🇨🇱 TARV en Chile — Garantías GES (AUGE)</h3>
+        <p>
+          En Chile, el tratamiento del VIH/SIDA está incluido en las <strong>Garantías Explícitas en Salud (GES)</strong> 
+          desde 2005. Todo paciente confirmado VIH+ tiene derecho a TARV gratuita, exámenes de carga viral y CD4, 
+          genotipificación de resistencia y profilaxis de infecciones oportunistas. El <strong>ISP</strong> es el laboratorio 
+          de referencia nacional para confirmación diagnóstica. La <strong>Norma Técnica N°0187 del MINSAL</strong> 
+          establece las guías clínicas vigentes, alineadas con recomendaciones OMS. Chile adoptó DTG como primera línea 
+          en 2019, siguiendo las directrices internacionales.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 4 — INMUNOLOGÍA DEL VIH
+  ════════════════════════════════════════ -->
+  <section class="vih-section" id="inmunologia">
+    <div class="vih-container">
+      <div class="vih-section-tag tag-purple">🧬 Tema 3 · Inmunología</div>
+      <h2 class="vih-section-title">Inmunología de la infección por <span class="gradient">VIH</span></h2>
+      <p class="vih-section-sub">
+        El VIH infecta las células centrales del sistema inmune adaptativo. 
+        Comprender su ciclo replicativo y estrategias de evasión es fundamental 
+        para el diseño de terapias y vacunas.
+      </p>
+
+      <!-- Ciclo replicativo -->
+      <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:24px">Ciclo Replicativo del VIH (7 etapas)</h3>
+      <div class="vih-cycle-grid">
+        <div class="vih-cycle-step">
+          <div class="vih-cycle-num">01</div>
+          <h4>Unión (Binding)</h4>
+          <p>gp120 se une al receptor CD4 del linfocito T helper. Cambio conformacional expone sitio de unión al correceptor.</p>
+        </div>
+        <div class="vih-cycle-step">
+          <div class="vih-cycle-num">02</div>
+          <h4>Correceptor</h4>
+          <p>gp120 se une a CCR5 (cepas R5, macrófago-trópicas) o CXCR4 (cepas X4, T-trópicas). Segundo cambio conformacional.</p>
+        </div>
+        <div class="vih-cycle-step">
+          <div class="vih-cycle-num">03</div>
+          <h4>Fusión</h4>
+          <p>gp41 despliega su péptido de fusión e inserta en la membrana celular. Formación del "six-helix bundle" → fusión de membranas.</p>
+        </div>
+        <div class="vih-cycle-step">
+          <div class="vih-cycle-num">04</div>
+          <h4>Transcripción inversa</h4>
+          <p>RT convierte ARN viral en ADN proviral de doble cadena dentro del complejo de preintegración (PIC). RNasa H degrada el molde de ARN.</p>
+        </div>
+        <div class="vih-cycle-step">
+          <div class="vih-cycle-num">05</div>
+          <h4>Integración</h4>
+          <p>Integrasa cataliza la inserción del ADN proviral en el genoma del hospedero. El provirus integrado persiste de por vida (reservorio latente).</p>
+        </div>
+        <div class="vih-cycle-step">
+          <div class="vih-cycle-num">06</div>
+          <h4>Transcripción y traducción</h4>
+          <p>ARN polimerasa II del hospedero transcribe el provirus. Tat potencia la transcripción ~100×. Rev exporta ARNm no procesados al citoplasma.</p>
+        </div>
+        <div class="vih-cycle-step">
+          <div class="vih-cycle-num">07</div>
+          <h4>Ensamblaje y gemación</h4>
+          <p>Poliproteínas Gag y Gag-Pol se ensamblan en la membrana. El virión inmaduro gema, adquiriendo la envoltura lipídica. La proteasa cliva Gag → virión maduro infeccioso.</p>
+        </div>
+      </div>
+
+      <!-- Tropismo y evasión -->
+      <div class="vih-content-grid" style="margin-top:56px">
+        <div class="vih-content-card" style="--card-accent: #ec4899">
+          <div class="vih-card-num">Tropismo Celular</div>
+          <h3>Células Diana del VIH</h3>
+          <ul>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--vih-text)">Linfocitos T CD4+ (helpers):</strong> Célula diana principal. Su depleción causa la inmunodeficiencia. T CD4 activados y de memoria son los más susceptibles.</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--vih-text)">Macrófagos:</strong> Reservorio tisular. Cepas R5 (macrófago-trópicas) infectan vía CCR5. Resistentes a la muerte celular inducida por VIH.</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--vih-text)">Células dendríticas:</strong> Capturan VIH vía DC-SIGN y lo presentan a T CD4 en ganglios linfáticos, facilitando la diseminación (sinapsis virológica).</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--vih-text)">Células T CD4 foliculares (Tfh):</strong> Reservorio en centros germinales. Difícil acceso para CTL y fármacos.</li>
+          </ul>
+        </div>
+
+        <div class="vih-content-card" style="--card-accent: #00d4ff">
+          <div class="vih-card-num">Evasión Inmune</div>
+          <h3>Estrategias de Evasión del VIH</h3>
+          <ul>
+            <li><span class="bullet" style="background:#00d4ff"></span><strong style="color:var(--vih-text)">Hipervariabilidad antigénica:</strong> Región V3 de gp120 muta constantemente, escapando a anticuerpos neutralizantes.</li>
+            <li><span class="bullet" style="background:#00d4ff"></span><strong style="color:var(--vih-text)">Escudo de glicanos:</strong> gp120 está cubierta por N-glicanos densos (~50% de su masa), ocultando epítopos del reconocimiento inmune.</li>
+            <li><span class="bullet" style="background:#00d4ff"></span><strong style="color:var(--vih-text)">Nef:</strong> Regula a la baja MHC-I y CD4 de la superficie celular, evadiendo reconocimiento por CTL CD8+.</li>
+            <li><span class="bullet" style="background:#00d4ff"></span><strong style="color:var(--vih-text)">Reservorio latente:</strong> Provirus integrado en T CD4 de memoria en reposo. Invisible al sistema inmune y a la TARV. Principal barrera para la cura.</li>
+            <li><span class="bullet" style="background:#00d4ff"></span><strong style="color:var(--vih-text)">Vif vs APOBEC3G:</strong> Vif degrada APOBEC3G (deaminasa del hospedero que introduce hipermutaciones letales G→A en el ADN viral).</li>
+          </ul>
+        </div>
+
+        <div class="vih-content-card" style="--card-accent: #ffaa00">
+          <div class="vih-card-num">Respuesta Inmune</div>
+          <h3>Respuesta del Hospedero</h3>
+          <ul>
+            <li><span class="bullet" style="background:#ffaa00"></span><strong style="color:var(--vih-text)">Respuesta CTL (CD8+):</strong> Crucial en el control inicial. Los "Elite controllers" (&lt; 0.5% de infectados) controlan la viremia sin TARV gracias a respuestas CTL potentes (HLA-B*57, HLA-B*27).</li>
+            <li><span class="bullet" style="background:#ffaa00"></span><strong style="color:var(--vih-text)">Anticuerpos neutralizantes ampliamente reactivos (bNAbs):</strong> Se desarrollan en ~10-30% de pacientes tras años de infección. Targets: sitio CD4bs de gp120, V1V2 apex, MPER de gp41. Base para vacunas.</li>
+            <li><span class="bullet" style="background:#ffaa00"></span><strong style="color:var(--vih-text)">Inmunidad innata:</strong> NK cells y señalización IFN-I. Mutación CCR5-Δ32 (homocigota) confiere resistencia natural a cepas R5 (~1% europeos).</li>
+            <li><span class="bullet" style="background:#ffaa00"></span><strong style="color:var(--vih-text)">Activación inmune crónica:</strong> Paradójicamente, la hiperactivación inmune (↑CD38/HLA-DR en CD8) acelera la progresión a SIDA al agotar el pool de T CD4.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Reservorio y cura -->
+      <div class="vih-callout">
+        <h3>🔬 El Desafío del Reservorio Latente y la Búsqueda de la Cura</h3>
+        <p>
+          El principal obstáculo para erradicar el VIH es el <strong>reservorio de provirus latente</strong> integrado en 
+          linfocitos T CD4+ de memoria en reposo, establecido durante las primeras horas/días de la infección. 
+          Este reservorio es invisible al sistema inmune y a la TARV porque el provirus no se transcribe 
+          activamente. Su vida media estimada es de <strong>~44 meses</strong>, lo que implica que la TARV debería 
+          mantenerse >73 años para eliminarlo completamente. Las estrategias en investigación incluyen: 
+          <strong>"Shock and kill"</strong> (reactivar el provirus latente con LRAs + inmunidad para eliminarlo), 
+          <strong>"Block and lock"</strong> (silenciar permanentemente el provirus), <strong>terapia génica</strong> 
+          (eliminación de CCR5 mediante CRISPR-Cas9), y <strong>bNAbs terapéuticos</strong>. Los únicos casos de cura 
+          funcional hasta la fecha (Timothy Brown "Paciente de Berlín", Adam Castillejo "Paciente de Londres") 
+          fueron mediante trasplante de células madre de donantes CCR5-Δ32/Δ32 homocigotos.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       BOTTOM NAV
+  ════════════════════════════════════════ -->
+  <div class="vih-container" style="padding-bottom:60px">
+    <div class="vih-bottom-nav">
+      <a href="../index.html" class="vih-nav-btn">← Volver a Virología</a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#estructura" class="vih-nav-btn">Estructura 3D ↑</a>
+        <a href="#sida" class="vih-nav-btn">SIDA ↑</a>
+        <a href="#antirretrovirales" class="vih-nav-btn">TARV ↑</a>
+        <a href="#inmunologia" class="vih-nav-btn">Inmunología ↑</a>
+      </div>
+      <a href="../../index.html" class="vih-nav-btn">Inicio →</a>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <footer class="vih-footer">
+    <div class="vih-container">
+      <div class="vih-footer-inner">
+        <p>© 2026 PharmaLab Chile · Contenido basado en OMS, ONUSIDA, CDC, ISP Chile, Guías GES MINSAL</p>
+        <p class="disclaimer">Contenido educacional. No reemplaza asesoría médica profesional.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="vih.js"></script>
+</body>
+</html>

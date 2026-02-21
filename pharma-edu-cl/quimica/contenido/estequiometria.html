@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estequiometría — Mol, Concentraciones, Diluciones y Rendimiento | PharmaLab Chile</title>
+    <meta name="description" content="Estequiometría universitaria: mol y masas molares, concentraciones, diluciones y rendimiento de reacciones. Aplicaciones farmacéuticas reales. PharmaLab Chile.">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../quimica.css">
+    <link rel="stylesheet" href="estequiometria.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="module-quimica">
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+        <a href="../../index.html" class="nav-logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="../../quimica/index.html"              class="nav-link active" data-module="quimica">Química</a>
+            <a href="../../farmacia/index.html"             class="nav-link" data-module="farmacia">Farmacia</a>
+            <a href="../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf">Q. Farmacéutica</a>
+            <a href="../../biotecnologia/index.html"        class="nav-link" data-module="biotech">Biotecnología</a>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="eq-hero">
+    <div class="eq-hero-grid"></div>
+    <div class="eq-orb eq-orb-1"></div>
+    <div class="eq-orb eq-orb-2"></div>
+
+    <div class="eq-hero-inner">
+        <div class="eq-container">
+            <div class="eq-hero-left">
+                <div class="eq-breadcrumb">
+                    <a href="../../index.html">Inicio</a>
+                    <span class="sep">/</span>
+                    <a href="../index.html">Química</a>
+                    <span class="sep">/</span>
+                    <span>Estequiometría</span>
+                </div>
+                <div class="eq-hero-tag">Unidad 3 · Química General</div>
+                <h1 class="eq-hero-title">
+                    <span class="eq-grad">Estequio</span>metría
+                </h1>
+                <p class="eq-hero-desc">
+                    El lenguaje cuantitativo de la química. Desde el concepto de mol hasta el cálculo de rendimiento en síntesis farmacéutica industrial — domina los cálculos que gobiernan cada formulación, cada reacción y cada proceso en el laboratorio.
+                </p>
+                <div class="eq-hero-stats">
+                    <div class="eq-stat">
+                        <span class="eq-stat-num" data-eq-count="6.022" data-eq-suffix="×10²³" data-eq-dec="3" id="sc1">6.022×10²³</span>
+                        <span class="eq-stat-label">Número de Avogadro (mol⁻¹)</span>
+                    </div>
+                    <div class="eq-stat">
+                        <span class="eq-stat-num" data-eq-count="4" data-eq-suffix=" temas" id="sc2">4 temas</span>
+                        <span class="eq-stat-label">Contenidos interactivos</span>
+                    </div>
+                    <div class="eq-stat">
+                        <span class="eq-stat-num" data-eq-count="100" data-eq-suffix="%" id="sc3">100%</span>
+                        <span class="eq-stat-label">Ejemplos farmacéuticos reales</span>
+                    </div>
+                </div>
+            </div>
+            <div class="eq-hero-canvas-wrap">
+                <canvas id="eq-hero-canvas" title="Balanza molecular 3D — Arrastra para rotar"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ DATOS CLAVE ═══════════ -->
+<div class="eq-datos-strip">
+    <div class="eq-container">
+        <div class="eq-datos-grid" data-eq-reveal>
+            <div class="eq-dato">
+                <span class="eq-dato-num" data-eq-count="1811" data-eq-suffix="" id="dc1">1811</span>
+                <span class="eq-dato-label">Avogadro propone que volúmenes iguales de gas contienen igual número de moléculas</span>
+            </div>
+            <div class="eq-dato">
+                <span class="eq-dato-num" data-eq-count="22.4" data-eq-suffix=" L/mol" data-eq-dec="1" id="dc2">22.4 L/mol</span>
+                <span class="eq-dato-label">Volumen molar de gas ideal a CNTP (0°C, 1 atm)</span>
+            </div>
+            <div class="eq-dato">
+                <span class="eq-dato-num" data-eq-count="98" data-eq-suffix="%" id="dc3">98%</span>
+                <span class="eq-dato-label">Rendimiento típico máximo en síntesis farmacéutica multi-etapas</span>
+            </div>
+            <div class="eq-dato">
+                <span class="eq-dato-num" data-eq-count="1000" data-eq-suffix="+" id="dc4">1000+</span>
+                <span class="eq-dato-label">Diluciones seriadas utilizadas en análisis microbiológico farmacéutico</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════ CONTENIDO PRINCIPAL ═══════════ -->
+<section class="eq-section">
+    <div class="eq-container">
+
+        <div class="eq-section-header" data-eq-reveal>
+            <div class="eq-section-tag">⚗️ Contenidos</div>
+            <h2 class="eq-section-title">Cuatro Pilares de la <span class="eq-hl">Estequiometría</span></h2>
+            <p class="eq-section-sub">Selecciona un tema para explorar su contenido, fórmulas clave, ejemplos farmacéuticos reales y visualización 3D interactiva.</p>
+        </div>
+
+        <!-- ── PILLS NAVEGACIÓN ── -->
+        <div class="eq-temas-grid" data-eq-reveal>
+            <div class="eq-tema-pill active" data-tab="0">
+                <div class="eq-tema-icon">⚛️</div>
+                <span class="eq-tema-num">Tema 3.1</span>
+                <div class="eq-tema-name">Mol y Masas Molares</div>
+                <div class="eq-tema-desc">El mol como unidad fundamental. Número de Avogadro, masa molar, conversiones mol↔gramos↔moléculas.</div>
+                <div class="eq-tema-arrow">→</div>
+            </div>
+            <div class="eq-tema-pill" data-tab="1">
+                <div class="eq-tema-icon">🧪</div>
+                <span class="eq-tema-num">Tema 3.2</span>
+                <div class="eq-tema-name">Concentraciones</div>
+                <div class="eq-tema-desc">Molaridad, molalidad, %m/v, %m/m, ppm y ppb. Expresiones cuantitativas de concentración en farmacia.</div>
+                <div class="eq-tema-arrow">→</div>
+            </div>
+            <div class="eq-tema-pill" data-tab="2">
+                <div class="eq-tema-icon">💧</div>
+                <span class="eq-tema-num">Tema 3.3</span>
+                <div class="eq-tema-name">Diluciones</div>
+                <div class="eq-tema-desc">Ley C₁V₁ = C₂V₂, diluciones seriadas, factor de dilución. Preparación de soluciones farmacéuticas.</div>
+                <div class="eq-tema-arrow">→</div>
+            </div>
+            <div class="eq-tema-pill" data-tab="3">
+                <div class="eq-tema-icon">⚖️</div>
+                <span class="eq-tema-num">Tema 3.4</span>
+                <div class="eq-tema-name">Rendimiento de Reacción</div>
+                <div class="eq-tema-desc">Reactivo limitante, rendimiento teórico, real y porcentual. Optimización en síntesis de principios activos.</div>
+                <div class="eq-tema-arrow">→</div>
+            </div>
+        </div>
+
+
+        <!-- ══════════════════════════════════════════
+             PANEL 1: MOL Y MASAS MOLARES
+        ══════════════════════════════════════════ -->
+        <div class="eq-panel active" id="panel-mol">
+
+            <div class="eq-panel-intro" data-eq-reveal>
+                <div class="eq-panel-text">
+                    <h2>Mol y <span>Masas Molares</span></h2>
+                    <p>El <strong>mol (mol)</strong> es la unidad del Sistema Internacional para la cantidad de sustancia. Un mol contiene exactamente <strong>6.02214076 × 10²³</strong> entidades elementales (átomos, moléculas, iones), número conocido como <em>constante de Avogadro</em> (Nₐ). Esta definición, vigente desde la revisión del SI en 2019, establece Nₐ como un valor exacto por definición.</p>
+                    <p>La <strong>masa molar (M)</strong> es la masa de un mol de sustancia, expresada en g/mol. Para un elemento, es numéricamente igual a su masa atómica en u.m.a. Para un compuesto, es la suma de las masas atómicas de todos sus átomos multiplicadas por sus respectivos coeficientes estequiométricos.</p>
+
+                    <div class="eq-formula-box">
+                        <span class="eq-fl">Conversiones fundamentales</span>
+                        <span class="eq-fe">n (mol) = m (g) / M (g/mol)</span>
+                        <span class="eq-fe">N (partículas) = n × Nₐ</span>
+                        <span class="eq-fn">n = moles · m = masa · M = masa molar · Nₐ = 6.022×10²³ mol⁻¹</span>
+                    </div>
+
+                    <div class="eq-hbox">
+                        <strong>¿Por qué el mol importa en farmacia?</strong>
+                        <p>Las reacciones ocurren en proporciones molares exactas, no en proporciones de masa. Para preparar 500 mL de solución 0.1 M de NaCl (PM = 58.44 g/mol), se necesitan: n = 0.1 mol/L × 0.5 L = 0.05 mol → m = 0.05 × 58.44 = <strong>2.922 g</strong>. Sin el concepto de mol, este cálculo no sería posible.</p>
+                    </div>
+
+                    <div class="eq-hbox green">
+                        <strong>Masa molar de fármacos comunes</strong>
+                        <ul>
+                            <li>Ácido acetilsalicílico (AAS): <strong>180.16 g/mol</strong></li>
+                            <li>Paracetamol (C₈H₉NO₂): <strong>151.16 g/mol</strong></li>
+                            <li>Ibuprofeno (C₁₃H₁₈O₂): <strong>206.28 g/mol</strong></li>
+                            <li>Amoxicilina (C₁₆H₁₉N₃O₅S): <strong>365.40 g/mol</strong></li>
+                            <li>Glucosa (C₆H₁₂O₆): <strong>180.16 g/mol</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="eq-3d-wrap">
+                    <canvas id="eq-c-mol" title="Átomo 3D con órbitas — Arrastra para rotar"></canvas>
+                    <div class="eq-3d-label">▸ Átomo de Carbono · Protones, Neutrones y Electrones · Interactivo</div>
+                </div>
+            </div>
+
+            <!-- Cards conceptuales -->
+            <div class="eq-info-cards" data-eq-reveal>
+                <div class="eq-info-card">
+                    <div class="eq-info-card-icon">🔢</div>
+                    <h4>Número de Avogadro (Nₐ)</h4>
+                    <p>Nₐ = 6.02214076 × 10²³ mol⁻¹. Valor exacto por definición desde la revisión del SI (2019). Determina la cantidad de átomos o moléculas en un mol de sustancia. En términos cotidianos: 1 mol de agua (18 g) contiene el mismo número de moléculas que 1 mol de glucosa (180 g).</p>
+                    <span class="eq-badge">IUPAC 2019 · SI Exacto</span>
+                </div>
+                <div class="eq-info-card">
+                    <div class="eq-info-card-icon">⚖️</div>
+                    <h4>Unidad de Masa Atómica</h4>
+                    <p>1 u.m.a. = 1/12 de la masa del isótopo ¹²C = 1.66054 × 10⁻²⁴ g. La masa atómica de un elemento en la tabla periódica es su promedio ponderado por abundancia isotópica natural. Ejemplo: cloro tiene masa atómica 35.45 u (mezcla de ³⁵Cl 75.77% y ³⁷Cl 24.23%).</p>
+                    <span class="eq-badge">IUPAC · Tabla Periódica</span>
+                </div>
+                <div class="eq-info-card">
+                    <div class="eq-info-card-icon">🧮</div>
+                    <h4>Fórmula Molecular vs Empírica</h4>
+                    <p>La <strong>fórmula empírica</strong> representa la razón más simple de átomos (ej: CH₂O para glucosa). La <strong>fórmula molecular</strong> indica el número real de átomos (C₆H₁₂O₆). La masa molar de la fórmula molecular es un múltiplo entero de la de la fórmula empírica. Relevante para determinar estructura de nuevos principios activos.</p>
+                    <span class="eq-badge">Análisis Elemental · HRMS</span>
+                </div>
+                <div class="eq-info-card">
+                    <div class="eq-info-card-icon">📐</div>
+                    <h4>Análisis Elemental (% Composición)</h4>
+                    <p>%X = (n·Mx / Mcompuesto) × 100. Para paracetamol (C₈H₉NO₂, M=151.16): %C = (8×12.01/151.16)×100 = <strong>63.55%</strong>. Este análisis, junto con espectrometría de masas (MS), permite confirmar la identidad y pureza de principios activos según normas USP-NF y Farmacopea Europea.</p>
+                    <span class="eq-badge">USP-NF · Farmacopea Europea</span>
+                </div>
+            </div>
+
+            <!-- Tabla masas molares elementos farmacéuticos -->
+            <div class="eq-table-section" data-eq-reveal>
+                <h3>Masas Atómicas de Elementos Frecuentes en Farmacia</h3>
+                <div class="eq-table-wrap">
+                    <table class="eq-table">
+                        <thead>
+                            <tr>
+                                <th>Elemento</th>
+                                <th>Símbolo</th>
+                                <th>Z (N° atómico)</th>
+                                <th>Masa atómica (u)</th>
+                                <th>Presencia en fármacos</th>
+                                <th>Ejemplo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Hidrógeno</td><td class="mono">H</td><td>1</td><td class="mono">1.008</td><td>Universal en compuestos orgánicos</td><td>Todos los fármacos orgánicos</td></tr>
+                            <tr><td>Carbono</td><td class="mono">C</td><td>6</td><td class="mono">12.011</td><td>Esqueleto de toda molécula orgánica</td><td>AAS, paracetamol, ibuprofeno</td></tr>
+                            <tr><td>Nitrógeno</td><td class="mono">N</td><td>7</td><td class="mono">14.007</td><td>Aminas, amidas, anillos N-heterocíclicos</td><td>Amoxicilina, lidocaína, cafeína</td></tr>
+                            <tr><td>Oxígeno</td><td class="mono">O</td><td>8</td><td class="mono">15.999</td><td>Ésteres, éteres, OH, C=O</td><td>AAS, glucosa, ácido ascórbico</td></tr>
+                            <tr><td>Fósforo</td><td class="mono">P</td><td>15</td><td class="mono">30.974</td><td>Fosfatos, fosfolípidos, ATP</td><td>Oseltamivir (Tamiflu®)</td></tr>
+                            <tr><td>Azufre</td><td class="mono">S</td><td>16</td><td class="mono">32.06</td><td>Sulfonamidas, penicilinas, tiol</td><td>Amoxicilina, omeprazol</td></tr>
+                            <tr><td>Cloro</td><td class="mono">Cl</td><td>17</td><td class="mono">35.45</td><td>Halogenuros, aumenta lipofilia</td><td>Clorpromazina, loratadina</td></tr>
+                            <tr><td>Sodio</td><td class="mono">Na</td><td>11</td><td class="mono">22.990</td><td>Sales farmacéuticas (solubilidad)</td><td>Diclofenaco sódico, NaCl 0.9%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Timeline historia -->
+            <div class="eq-table-section" data-eq-reveal>
+                <h3>Hitos Históricos del Concepto de Mol</h3>
+                <div class="eq-timeline">
+                    <div class="eq-tl-item">
+                        <div class="eq-tl-title">1811 — Hipótesis de Avogadro</div>
+                        <div class="eq-tl-body"><strong>Amedeo Avogadro</strong> propone que volúmenes iguales de gases distintos, a igual T y P, contienen igual número de moléculas. Ignorada durante 50 años, fue fundamental para establecer masas atómicas correctas.</div>
+                    </div>
+                    <div class="eq-tl-item">
+                        <div class="eq-tl-title">1865 — Loschmidt estima Nₐ</div>
+                        <div class="eq-tl-body"><strong>Johann Josef Loschmidt</strong> obtiene la primera estimación razonable del número de moléculas por volumen de gas. Por eso en alemán se denomina "Loschmidt-Zahl" a Nₐ.</div>
+                    </div>
+                    <div class="eq-tl-item">
+                        <div class="eq-tl-title">1909 — Perrin determina Nₐ experimentalmente</div>
+                        <div class="eq-tl-body"><strong>Jean Baptiste Perrin</strong> determina Nₐ mediante movimiento browniano de partículas coloidales. Premio Nobel de Física 1926. Valor obtenido: ~6.0 × 10²³ mol⁻¹.</div>
+                    </div>
+                    <div class="eq-tl-item">
+                        <div class="eq-tl-title">1971 — El mol ingresa al SI</div>
+                        <div class="eq-tl-body">La 14ª Conferencia General de Pesas y Medidas (CGPM) incorpora el <strong>mol</strong> como 7ª unidad base del Sistema Internacional, definido en función del carbono-12.</div>
+                    </div>
+                    <div class="eq-tl-item">
+                        <div class="eq-tl-title">2019 — Redefinición del SI</div>
+                        <div class="eq-tl-body">La revisión del SI establece <strong>Nₐ = 6.02214076 × 10²³ mol⁻¹ exacto</strong> por definición. El mol pasa a definirse directamente en términos de este número fijo, sin referencia al carbono-12.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ejemplo resuelto farmacéutico -->
+            <div class="eq-norma-box" data-eq-reveal>
+                <div class="eq-norma-icon">💊</div>
+                <div class="eq-norma-content">
+                    <h4>Ejemplo Resuelto: Preparación de Solución de Amoxicilina 500 mg/5 mL</h4>
+                    <p>Un farmacéutico debe preparar 200 mL de suspensión oral de amoxicilina con concentración 500 mg/5 mL (= 100 mg/mL). M(amoxicilina) = 365.40 g/mol. <br>
+                    <strong>Paso 1:</strong> Masa total = 100 mg/mL × 200 mL = 20,000 mg = 20.00 g.<br>
+                    <strong>Paso 2:</strong> n = 20.00 g / 365.40 g/mol = 0.05474 mol.<br>
+                    <strong>Paso 3:</strong> N° moléculas = 0.05474 × 6.022×10²³ = 3.296 × 10²² moléculas de amoxicilina en 200 mL.<br>
+                    <strong>Paso 4:</strong> Concentración molar = 0.05474 mol / 0.200 L = <strong>0.274 M</strong>.<br>
+                    Este cálculo es esencial para control de calidad de preparados magistrales, regulados por el Decreto 466/84 del MINSAL Chile.</p>
+                </div>
+            </div>
+
+        </div><!-- /panel-mol -->
+
+
+        <!-- ══════════════════════════════════════════
+             PANEL 2: CONCENTRACIONES
+        ══════════════════════════════════════════ -->
+        <div class="eq-panel" id="panel-conc">
+
+            <div class="eq-panel-intro reverse" data-eq-reveal>
+                <div class="eq-panel-text">
+                    <h2><span>Concentraciones</span> de Soluciones</h2>
+                    <p>La <strong>concentración</strong> de una solución es la cantidad de soluto contenida en una cantidad definida de solución o solvente. En farmacia, la expresión correcta de la concentración es crítica: un error de factor 10 en la preparación de un inyectable puede ser fatal.</p>
+                    <p>Existen múltiples formas de expresar concentración, cada una adecuada para distintos contextos: la <strong>Molaridad</strong> es fundamental para cálculos de equilibrio y cinética; el <strong>%m/v</strong> es el estándar en rótulos farmacéuticos; y las <strong>ppm/ppb</strong> se usan en análisis de trazas e impurezas según ICH Q3D.</p>
+
+                    <div class="eq-formula-box">
+                        <span class="eq-fl">Expresiones de concentración</span>
+                        <span class="eq-fe">M (mol/L) = n (mol) / V (L)</span>
+                        <span class="eq-fe">%m/v = [m(g) / V(mL)] × 100</span>
+                        <span class="eq-fe">ppm = mg soluto / L solución ≈ mg/kg</span>
+                        <span class="eq-fn">Normalidad N = M × n° eq. ácido-base o redox &nbsp;|&nbsp; Molalidad b = n/kg solvente</span>
+                    </div>
+
+                    <div class="eq-hbox blue">
+                        <strong>Molaridad en laboratorio farmacéutico</strong>
+                        <p>HCl concentrado (37%, d = 1.19 g/mL, M = 36.46 g/mol): M = (37 × 1.19 × 10) / 36.46 = <strong>12.08 M</strong>. Para preparar 500 mL de HCl 0.1 M se toman V₁ = (0.1 × 500) / 12.08 = <strong>4.14 mL</strong> de HCl concentrado, se agrega lentamente a agua (nunca al revés — regla de seguridad).</p>
+                    </div>
+                </div>
+                <div class="eq-3d-wrap">
+                    <canvas id="eq-c-conc" title="Solución con partículas animadas"></canvas>
+                    <div class="eq-3d-label">▸ Solución — Partículas de Soluto en Solvente · Animación en Tiempo Real</div>
+                </div>
+            </div>
+
+            <!-- Tabla comparativa de unidades -->
+            <div class="eq-table-section" data-eq-reveal>
+                <h3>Comparativa de Unidades de Concentración</h3>
+                <div class="eq-table-wrap">
+                    <table class="eq-table">
+                        <thead>
+                            <tr>
+                                <th>Unidad</th>
+                                <th>Símbolo</th>
+                                <th>Definición</th>
+                                <th>Fórmula</th>
+                                <th>Contexto farmacéutico</th>
+                                <th>Ejemplo real</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Molaridad</td>
+                                <td class="mono">M o c</td>
+                                <td>mol soluto / L solución</td>
+                                <td class="mono">M = n/V</td>
+                                <td>Preparación de soluciones volumétricas, buffers</td>
+                                <td>NaCl 0.154 M = suero fisiológico</td>
+                            </tr>
+                            <tr>
+                                <td>Molalidad</td>
+                                <td class="mono">b o m</td>
+                                <td>mol soluto / kg solvente</td>
+                                <td class="mono">b = n/kg</td>
+                                <td>Propiedades coligativas (punto ebullición, osmosis)</td>
+                                <td>Cálculo de presión osmótica de soluciones IV</td>
+                            </tr>
+                            <tr>
+                                <td>Porcentaje masa/volumen</td>
+                                <td class="mono">%m/v</td>
+                                <td>g soluto / 100 mL solución</td>
+                                <td class="mono">(m/V)×100</td>
+                                <td>Estándar en rótulos farmacéuticos (USP-NF)</td>
+                                <td>Glucosa 5% = 5 g/100 mL</td>
+                            </tr>
+                            <tr>
+                                <td>Porcentaje masa/masa</td>
+                                <td class="mono">%m/m</td>
+                                <td>g soluto / 100 g solución</td>
+                                <td class="mono">(m₁/m_t)×100</td>
+                                <td>Reactivos de laboratorio comerciales</td>
+                                <td>H₂SO₄ 96% m/m</td>
+                            </tr>
+                            <tr>
+                                <td>Partes por millón</td>
+                                <td class="mono">ppm</td>
+                                <td>mg soluto / L (o mg/kg)</td>
+                                <td class="mono">ppm ≈ mg/L</td>
+                                <td>Impurezas elementales ICH Q3D, agua purificada</td>
+                                <td>Plomo ≤ 5 ppm en agua purificada USP</td>
+                            </tr>
+                            <tr>
+                                <td>Partes por billón</td>
+                                <td class="mono">ppb</td>
+                                <td>µg soluto / L</td>
+                                <td class="mono">ppb ≈ µg/L</td>
+                                <td>Contaminantes traza, análisis por ICP-MS</td>
+                                <td>Mercurio ≤ 30 ppb (ICH Q3D)</td>
+                            </tr>
+                            <tr>
+                                <td>Normalidad</td>
+                                <td class="mono">N</td>
+                                <td>equivalentes / L</td>
+                                <td class="mono">N = M × feq</td>
+                                <td>Titulaciones ácido-base, redox (en desuso parcial)</td>
+                                <td>HCl 1 N = HCl 1 M (1 protón)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Cards de conceptos clave -->
+            <div class="eq-info-cards" data-eq-reveal>
+                <div class="eq-info-card">
+                    <div class="eq-info-card-icon">🏥</div>
+                    <h4>Suero Fisiológico (NaCl 0.9%)</h4>
+                    <p>NaCl 0.9% m/v = 9 g/L = 9 g/1000 mL. M(NaCl) = 58.44 g/mol. Molaridad = 9/58.44 = <strong>0.154 M</strong>. Osmolaridad = 2 × 154 = 308 mOsm/L ≈ plasma humano (280–310 mOsm/L) → solución isotónica. Base de los sueros IV en Chile, regulados por norma ISP.</p>
+                    <span class="eq-badge">Isotónico · ISP Chile</span>
+                </div>
+                <div class="eq-info-card">
+                    <div class="eq-info-card-icon">🍬</div>
+                    <h4>Glucosa 5% (D5W)</h4>
+                    <p>Dextrosa 5% = 50 g/L. M(glucosa) = 180.16 g/mol. Molaridad = 50/180.16 = <strong>0.278 M</strong>. Osmolaridad = 278 mOsm/L (levemente hipotónica). Vehículo IV estándar. Al metabolizarse, aporta agua libre → útil en deshidratación hipertónica. CENABAST distribuye al sistema público chileno.</p>
+                    <span class="eq-badge">Hipotónica · CENABAST</span>
+                </div>
+                <div class="eq-info-card">
+                    <div class="eq-info-card-icon">⚗️</div>
+                    <h4>Buffer Fosfato (PBS)</h4>
+                    <p>Buffer más usado en laboratorio farmacéutico. PBS 1× contiene NaCl 137 mM, KCl 2.7 mM, Na₂HPO₄ 10 mM, KH₂PO₄ 1.8 mM. pH = 7.4 ± 0.05 a 25°C. La ecuación de Henderson-Hasselbalch (pH = pKₐ + log[A⁻]/[HA]) permite calcular las proporciones para cualquier pH deseado.</p>
+                    <span class="eq-badge">pH 7.4 · Henderson-Hasselbalch</span>
+                </div>
+                <div class="eq-info-card">
+                    <div class="eq-info-card-icon">📊</div>
+                    <h4>ppm en Farmacopea</h4>
+                    <p>La guía ICH Q3D (Elemental Impurities) establece límites en µg/día o ppm para metales en medicamentos: Pb ≤ 5 µg/día (oral), As ≤ 15 µg/día, Cd ≤ 5 µg/día, Hg ≤ 30 µg/día. Se cuantifican por ICP-MS o ICP-OES. El ISP Chile adoptó ICH Q3D en 2019 mediante resolución N° 453.</p>
+                    <span class="eq-badge">ICH Q3D · ISP Chile 2019</span>
+                </div>
+            </div>
+
+            <div class="eq-norma-box" data-eq-reveal>
+                <div class="eq-norma-icon">⚠️</div>
+                <div class="eq-norma-content">
+                    <h4>Seguridad: Errores de Concentración en Medicamentos</h4>
+                    <p>Los errores de medicación por confusión de concentración son causa significativa de eventos adversos graves. La OMS y el MINSAL Chile clasifican como "medicamentos de alto riesgo" a soluciones concentradas de KCl, heparina, insulina, morfina y quimioterapéuticos, que requieren doble verificación independiente antes de administrar. El Decreto 466/84 del MINSAL regula el etiquetado obligatorio indicando concentración en unidades del sistema métrico. El sistema de validación farmacéutica de dosis unitarias (UDS) en hospitales chilenos ha demostrado reducir errores de concentración hasta en un 80%.</p>
+                </div>
+            </div>
+
+        </div><!-- /panel-conc -->
+
+
+        <!-- ══════════════════════════════════════════
+             PANEL 3: DILUCIONES
+        ══════════════════════════════════════════ -->
+        <div class="eq-panel" id="panel-dil">
+
+            <div class="eq-panel-intro" data-eq-reveal>
+                <div class="eq-panel-text">
+                    <h2><span>Diluciones</span> y Factor de Dilución</h2>
+                    <p>Una <strong>dilución</strong> es el proceso de reducir la concentración de una solución añadiendo solvente. La masa de soluto se conserva: la cantidad de moles en la solución original es igual a la cantidad de moles en la solución diluida. Esta conservación da origen a la ecuación fundamental <strong>C₁V₁ = C₂V₂</strong>.</p>
+                    <p>Las <strong>diluciones seriadas</strong> (diluciones logarítmicas sucesivas) son fundamentales en microbiología farmacéutica, análisis clínico, inmunología y farmacodinamia. Una dilución seriada 1:10 produce concentraciones en proporción 10⁻¹, 10⁻², 10⁻³... siendo la base de los antibiogramas y pruebas de sensibilidad antimicrobiana.</p>
+
+                    <div class="eq-formula-box">
+                        <span class="eq-fl">Ecuación de dilución</span>
+                        <span class="eq-fe">C₁ · V₁ = C₂ · V₂</span>
+                        <span class="eq-fe">Factor de dilución (FD) = C_f / C_i = V_i / V_f</span>
+                        <span class="eq-fn">C₁ = conc. inicial &nbsp;|&nbsp; V₁ = vol. alícuota tomada &nbsp;|&nbsp; C₂ = conc. final &nbsp;|&nbsp; V₂ = vol. final<br>Para dilución seriada 1:n: C_n = C₀ × (1/n)^k donde k = número de diluciones</span>
+                    </div>
+
+                    <div class="eq-hbox">
+                        <strong>Ejemplo resuelto — Preparación de HCl 0.1 M desde HCl 12 M</strong>
+                        <p>Se desea preparar 250 mL de HCl 0.1 M. Usando C₁V₁ = C₂V₂: V₁ = (C₂ × V₂) / C₁ = (0.1 M × 250 mL) / 12 M = <strong>2.08 mL</strong> de HCl concentrado. Se miden en pipeta volumétrica, se colocan en matraz aforado de 250 mL con ~200 mL de agua, se mezcla (con precaución, exotérmico), y se lleva al aforo con agua destilada.</p>
+                    </div>
+
+                    <div class="eq-hbox red">
+                        <strong>⚠ Regla de Oro: Siempre ÁCIDO al AGUA</strong>
+                        <p>Al diluir ácidos concentrados (H₂SO₄, HCl, HNO₃), siempre se agrega el ácido al agua y nunca al revés. El agua tiene mayor calor específico y absorbe el calor de dilución sin ebullición violenta. Agregar agua sobre ácido concentrado puede causar proyección de líquido corrosivo por ebullición explosiva.</p>
+                    </div>
+                </div>
+                <div class="eq-3d-wrap">
+                    <canvas id="eq-c-dil" title="Diluciones seriadas animadas"></canvas>
+                    <div class="eq-3d-label">▸ Dilución Seriada 1:2 · Partículas en Tiempo Real · C₁V₁ = C₂V₂</div>
+                </div>
+            </div>
+
+            <!-- Proceso de dilución paso a paso -->
+            <div class="eq-steps-section" data-eq-reveal>
+                <h3>Procedimiento de Dilución — Laboratorio Farmacéutico</h3>
+                <div class="eq-steps">
+                    <div class="eq-step">
+                        <div class="eq-step-num"><div>🧮</div></div>
+                        <div class="eq-step-title">1. Calcular Volumen</div>
+                        <div class="eq-step-desc">Aplicar C₁V₁ = C₂V₂ para determinar el volumen de solución madre necesario. Verificar unidades (todas deben ser consistentes).</div>
+                    </div>
+                    <div class="eq-step">
+                        <div class="eq-step-num"><div>📏</div></div>
+                        <div class="eq-step-title">2. Medir Alícuota</div>
+                        <div class="eq-step-desc">Medir V₁ con pipeta volumétrica calibrada (±0.02 mL) o micropipeta (±0.5%). Registrar en bitácora de laboratorio.</div>
+                    </div>
+                    <div class="eq-step">
+                        <div class="eq-step-num"><div>🧪</div></div>
+                        <div class="eq-step-title">3. Transferir y Mezclar</div>
+                        <div class="eq-step-desc">Transferir al matraz aforado con ~2/3 del volumen final de solvente. Mezclar por inversión 10 veces para homogenizar.</div>
+                    </div>
+                    <div class="eq-step">
+                        <div class="eq-step-num"><div>🌡️</div></div>
+                        <div class="eq-step-title">4. Llevar al Aforo</div>
+                        <div class="eq-step-desc">Añadir solvente hasta enrasar a la marca de aforo del matraz a 20°C (temperatura de calibración). Mezclar nuevamente por inversión.</div>
+                    </div>
+                    <div class="eq-step">
+                        <div class="eq-step-num"><div>✅</div></div>
+                        <div class="eq-step-title">5. Verificar y Rotular</div>
+                        <div class="eq-step-desc">Verificar concentración (espectrofotometría, titulación). Rotular con: soluto, concentración, fecha, lote, responsable. Según GMP/GLP.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla diluciones seriadas -->
+            <div class="eq-table-section" data-eq-reveal>
+                <h3>Diluciones Seriadas 1:10 — Aplicación en Microbiología Farmacéutica</h3>
+                <div class="eq-table-wrap">
+                    <table class="eq-table">
+                        <thead>
+                            <tr>
+                                <th>Tubo</th>
+                                <th>Dilución</th>
+                                <th>Factor</th>
+                                <th>Procedimiento</th>
+                                <th>UFC/mL esperadas*</th>
+                                <th>Aplicación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Muestra</td>
+                                <td class="mono">10⁰</td>
+                                <td class="mono">1</td>
+                                <td>Muestra pura</td>
+                                <td class="green">~10⁸ UFC/mL</td>
+                                <td>Stock inicial</td>
+                            </tr>
+                            <tr>
+                                <td>Tubo 1</td>
+                                <td class="mono">10⁻¹</td>
+                                <td class="mono">0.1</td>
+                                <td>1 mL muestra + 9 mL PBS</td>
+                                <td class="green">~10⁷ UFC/mL</td>
+                                <td>Incontable (TMTC)</td>
+                            </tr>
+                            <tr>
+                                <td>Tubo 2</td>
+                                <td class="mono">10⁻²</td>
+                                <td class="mono">0.01</td>
+                                <td>1 mL T1 + 9 mL PBS</td>
+                                <td class="green">~10⁶ UFC/mL</td>
+                                <td>Incontable (TMTC)</td>
+                            </tr>
+                            <tr>
+                                <td>Tubo 4</td>
+                                <td class="mono">10⁻⁴</td>
+                                <td class="mono">10⁻⁴</td>
+                                <td>1 mL T3 + 9 mL PBS</td>
+                                <td class="green">~10⁴ UFC/mL</td>
+                                <td>Contaje posible</td>
+                            </tr>
+                            <tr>
+                                <td>Tubo 5</td>
+                                <td class="mono">10⁻⁵</td>
+                                <td class="mono">10⁻⁵</td>
+                                <td>1 mL T4 + 9 mL PBS</td>
+                                <td class="green">~10³ UFC/mL</td>
+                                <td><span class="eq-tag eq-tag-green">Óptimo (30–300 UFC/placa)</span></td>
+                            </tr>
+                            <tr>
+                                <td>Tubo 6</td>
+                                <td class="mono">10⁻⁶</td>
+                                <td class="mono">10⁻⁶</td>
+                                <td>1 mL T5 + 9 mL PBS</td>
+                                <td class="green">~10² UFC/mL</td>
+                                <td><span class="eq-tag eq-tag-amber">Límite inferior conteo</span></td>
+                            </tr>
+                            <tr>
+                                <td>Tubo 7</td>
+                                <td class="mono">10⁻⁷</td>
+                                <td class="mono">10⁻⁷</td>
+                                <td>1 mL T6 + 9 mL PBS</td>
+                                <td class="green">~10 UFC/mL</td>
+                                <td><span class="eq-tag eq-tag-red">Muy pocas colonias (TFTC)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="font-size:.76rem;color:rgba(255,255,255,.35);margin-top:8px;">*UFC = Unidades Formadoras de Colonias · TMTC = Too Many To Count · TFTC = Too Few To Count · PBS = Buffer Fosfato Salino</p>
+            </div>
+
+            <div class="eq-norma-box" data-eq-reveal>
+                <div class="eq-norma-icon">📋</div>
+                <div class="eq-norma-content">
+                    <h4>Regulación: Preparación de Soluciones en Farmacia — GMP / USP &lt;1&gt;</h4>
+                    <p>Las Buenas Prácticas de Manufactura (GMP, DS N°08/1983 MINSAL Chile, alineado con WHO TRS 986 Annex 2) exigen documentar todo el proceso de dilución: materias primas con certificados de análisis, equipos calibrados con trazabilidad ENAC/SAC, registros firmados por QC, y verificación analítica de concentración final. El capítulo USP &lt;1&gt; "Injections and Implanted Drug Products" y la Farmacopea Europea 5.20 especifican que las soluciones inyectables preparadas por dilución deben ser verificadas por al menos dos métodos ortogonales (ej: HPLC + Karl Fischer para determinación de agua). El programa de Farmacias de Especialidades del MINSAL Chile exige estas validaciones para todos los preparados magistrales IV.</p>
+                </div>
+            </div>
+
+        </div><!-- /panel-dil -->
+
+
+        <!-- ══════════════════════════════════════════
+             PANEL 4: RENDIMIENTO
+        ══════════════════════════════════════════ -->
+        <div class="eq-panel" id="panel-rend">
+
+            <div class="eq-panel-intro reverse" data-eq-reveal>
+                <div class="eq-panel-text">
+                    <h2><span>Rendimiento</span> de Reacción</h2>
+                    <p>El <strong>rendimiento</strong> de una reacción química es la relación entre la cantidad de producto obtenida experimentalmente y la cantidad máxima teóricamente posible, expresada como porcentaje. En la industria farmacéutica, el rendimiento de cada etapa de síntesis es fundamental para determinar la viabilidad económica y ambiental de un proceso.</p>
+                    <p>Para calcular el rendimiento teórico, es necesario identificar primero el <strong>reactivo limitante</strong>: aquel reactivo que se consume completamente primero y que por tanto limita la cantidad máxima de producto que puede formarse. El reactivo en exceso queda remanente al finalizar la reacción.</p>
+
+                    <div class="eq-formula-box">
+                        <span class="eq-fl">Rendimiento y reactivo limitante</span>
+                        <span class="eq-fe">%Rendimiento = (mol_real / mol_teórico) × 100</span>
+                        <span class="eq-fe">mol_teórico = mol_LR × (c_P / c_LR)</span>
+                        <span class="eq-fn">LR = reactivo limitante · c_P = coeficiente estequiométrico del producto · c_LR = coef. del LR<br>
+                        Rendimiento real siempre ≤ 100% (2ª Ley Termodinámica + pérdidas de proceso)</span>
+                    </div>
+
+                    <div class="eq-hbox green">
+                        <strong>¿Por qué el rendimiento nunca es 100%?</strong>
+                        <ul>
+                            <li><strong>Reacciones inversas:</strong> el equilibrio limita conversión completa</li>
+                            <li><strong>Reacciones secundarias:</strong> formación de subproductos no deseados</li>
+                            <li><strong>Pérdidas mecánicas:</strong> transferencias, filtración, cristalización</li>
+                            <li><strong>Descomposición:</strong> del producto o reactivo durante la reacción</li>
+                            <li><strong>Cinética:</strong> la reacción no alcanza equilibrio en el tiempo dado</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="eq-3d-wrap">
+                    <canvas id="eq-c-rend" title="Reactivo limitante animado"></canvas>
+                    <div class="eq-3d-label">▸ Reactivo Limitante vs Exceso · Formación de Productos · Animado</div>
+                </div>
+            </div>
+
+            <!-- Cards rendimiento -->
+            <div class="eq-info-cards" data-eq-reveal>
+                <div class="eq-info-card">
+                    <div class="eq-info-card-icon">🔍</div>
+                    <h4>Identificar el Reactivo Limitante</h4>
+                    <p>Para A + 2B → C: Si hay 3 mol A y 4 mol B disponibles, B limitaría (requiere 6 mol B para 3 mol A, pero solo hay 4 → solo se pueden usar 2 mol A → 2 mol C producidos). El método sistemático: dividir moles de cada reactivo por su coeficiente estequiométrico y el menor cociente identifica al limitante.</p>
+                    <span class="eq-badge">Estequiometría Básica</span>
+                </div>
+                <div class="eq-info-card">
+                    <div class="eq-info-card-icon">🏭</div>
+                    <h4>Rendimiento en Síntesis Multietapa</h4>
+                    <p>En síntesis farmacéutica de múltiples etapas, el rendimiento global se multiplica: 5 etapas con 85% c/u → 0.85⁵ = <strong>44.4% global</strong>. Por eso optimizar cada etapa 5% puede duplicar el rendimiento final. La síntesis de taxol (anticancerígeno) requirió 37 etapas — Holton 1994 logró ~0.1% rendimiento global.</p>
+                    <span class="eq-badge">API Synthesis · GMP</span>
+                </div>
+                <div class="eq-info-card">
+                    <div class="eq-info-card-icon">♻️</div>
+                    <h4>Economía Atómica (Green Chemistry)</h4>
+                    <p>%Economía atómica = (M producto deseado / Σ M todos los productos) × 100. Concepto de Trost (1991). Una reacción con 100% EA no genera subproductos. Ejemplo: Adición (100% EA) vs Sustitución (menor EA). ICH Q12 promueve síntesis con alta EA para reducir residuos en industria farmacéutica.</p>
+                    <span class="eq-badge">Green Chemistry · ICH Q12</span>
+                </div>
+                <div class="eq-info-card">
+                    <div class="eq-info-card-icon">📉</div>
+                    <h4>Factor E (Ambiental)</h4>
+                    <p>Factor E = kg residuos / kg producto. Propuesto por Sheldon (1992). Farmacéutica fina: Factor E = 25–100 (genera 25–100 kg residuos por kg de API). Objetivo de la industria: reducir Factor E mediante catálisis, solventes verdes, síntesis continua y recuperación/reciclado de solventes.</p>
+                    <span class="eq-badge">Sostenibilidad · API</span>
+                </div>
+            </div>
+
+            <!-- Ejemplo resuelto síntesis aspirina -->
+            <div class="eq-table-section" data-eq-reveal>
+                <h3>Ejemplo Resuelto: Síntesis del Ácido Acetilsalicílico (Aspirina)</h3>
+                <div class="eq-table-wrap">
+                    <table class="eq-table">
+                        <thead>
+                            <tr>
+                                <th>Paso</th>
+                                <th>Cálculo</th>
+                                <th>Resultado</th>
+                                <th>Notas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ecuación global</td>
+                                <td>C₇H₆O₃ + (CH₃CO)₂O → C₉H₈O₄ + CH₃COOH</td>
+                                <td class="mono">1 : 1 : 1 : 1</td>
+                                <td>Ácido salicílico + Anhídrido acético → AAS + Ácido acético</td>
+                            </tr>
+                            <tr>
+                                <td>Masas molares</td>
+                                <td>M(AcSalicílico) = 138.12 g/mol · M(Anhídrido) = 102.09 g/mol · M(AAS) = 180.16 g/mol</td>
+                                <td class="mono">—</td>
+                                <td>Calculadas desde fórmulas moleculares</td>
+                            </tr>
+                            <tr>
+                                <td>Masa inicial</td>
+                                <td>2.00 g ácido salicílico · 2.50 mL anhídrido acético (d = 1.082 g/mL → 2.71 g)</td>
+                                <td class="mono">2.00 g / 2.71 g</td>
+                                <td>Datos experimentales del laboratorio</td>
+                            </tr>
+                            <tr>
+                                <td>Moles de cada reactivo</td>
+                                <td>n(AcSal) = 2.00/138.12 = 0.01448 mol · n(Anhídrido) = 2.71/102.09 = 0.02654 mol</td>
+                                <td class="mono">0.01448 / 0.02654</td>
+                                <td>Relación 1:1 estequiométrica</td>
+                            </tr>
+                            <tr>
+                                <td>Reactivo limitante</td>
+                                <td>n(AcSal)/1 = 0.01448 &lt; n(Anhídrido)/1 = 0.02654</td>
+                                <td><span class="eq-tag eq-tag-red">Ác. Salicílico (LR)</span></td>
+                                <td>El menor cociente determina el LR</td>
+                            </tr>
+                            <tr>
+                                <td>Rendimiento teórico</td>
+                                <td>m_teo = 0.01448 mol × 180.16 g/mol</td>
+                                <td class="mono">2.606 g AAS</td>
+                                <td>Máximo posible con 2.00 g de salicílico</td>
+                            </tr>
+                            <tr>
+                                <td>Rendimiento real (ejemplo)</td>
+                                <td>Se obtienen 1.92 g de AAS purificado</td>
+                                <td class="mono">1.92 g</td>
+                                <td>Pérdidas en filtración, recristalización</td>
+                            </tr>
+                            <tr>
+                                <td>% Rendimiento</td>
+                                <td>%R = (1.92 / 2.606) × 100</td>
+                                <td><span class="eq-tag eq-tag-green">73.7%</span></td>
+                                <td>Valor típico en síntesis de laboratorio de pregrado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tabla rendimientos industria farmacéutica -->
+            <div class="eq-table-section" data-eq-reveal>
+                <h3>Rendimientos Típicos en Síntesis de APIs — Industria Farmacéutica</h3>
+                <div class="eq-table-wrap">
+                    <table class="eq-table">
+                        <thead>
+                            <tr>
+                                <th>Tipo de Síntesis</th>
+                                <th>Etapas</th>
+                                <th>Rendimiento/Etapa</th>
+                                <th>Rendimiento Global</th>
+                                <th>Ejemplo</th>
+                                <th>Factor E</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Síntesis simple</td>
+                                <td>1–3</td>
+                                <td class="green">85–99%</td>
+                                <td class="green">~80–95%</td>
+                                <td>AAS, paracetamol</td>
+                                <td><span class="eq-tag eq-tag-green">5–10</span></td>
+                            </tr>
+                            <tr>
+                                <td>Síntesis moderada</td>
+                                <td>4–8</td>
+                                <td class="green">75–90%</td>
+                                <td class="mono">~40–65%</td>
+                                <td>Amoxicilina, ibuprofeno</td>
+                                <td><span class="eq-tag eq-tag-amber">15–30</span></td>
+                            </tr>
+                            <tr>
+                                <td>Síntesis compleja</td>
+                                <td>10–20</td>
+                                <td class="mono">60–80%</td>
+                                <td class="mono">~10–30%</td>
+                                <td>Estatinas, antivirales</td>
+                                <td><span class="eq-tag eq-tag-amber">30–60</span></td>
+                            </tr>
+                            <tr>
+                                <td>Síntesis muy compleja</td>
+                                <td>&gt;20</td>
+                                <td class="mono">50–70%</td>
+                                <td><span class="eq-tag eq-tag-red">&lt;10%</span></td>
+                                <td>Taxol (37 etapas), Eritromicina</td>
+                                <td><span class="eq-tag eq-tag-red">60–200</span></td>
+                            </tr>
+                            <tr>
+                                <td>Biocatálisis enzimática</td>
+                                <td>1–5</td>
+                                <td class="green">90–99%</td>
+                                <td class="green">&gt;80%</td>
+                                <td>Insulina, EPO recombinante</td>
+                                <td><span class="eq-tag eq-tag-green">&lt;5</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="eq-norma-box" data-eq-reveal>
+                <div class="eq-norma-icon">🏛️</div>
+                <div class="eq-norma-content">
+                    <h4>Regulación: Rendimiento en Validación de Procesos Farmacéuticos — GMP Chile</h4>
+                    <p>Las Buenas Prácticas de Manufactura (GMP), reguladas en Chile por el DS N°08/2013 del MINSAL y alineadas con el Informe 37 de la OMS (TRS 986), exigen que todo proceso de síntesis de un principio activo (API) sea validado. La validación de proceso incluye demostrar que el rendimiento del proceso está dentro de límites aceptables (generalmente ±10% del valor histórico) en tres lotes de producción consecutivos. Los límites de rendimiento se establecen en el expediente técnico del producto (Drug Master File, DMF) presentado al ISP. Un rendimiento por debajo del límite de alerta obliga a investigación causal documentada y posible revalidación. ICH Q11 (Development and Manufacture of Drug Substances) es la guía internacional de referencia para el control de rendimiento en síntesis de APIs.</p>
+                </div>
+            </div>
+
+        </div><!-- /panel-rend -->
+
+
+        <!-- ══════════════════════════════════════════
+             CALLOUT FINAL
+        ══════════════════════════════════════════ -->
+        <div class="eq-callout" data-eq-reveal>
+            <h3>🎓 Estequiometría — El Lenguaje Cuantitativo de la Farmacia</h3>
+            <p>
+                La estequiometría es la base matemática de toda la química aplicada: desde calcular cuántos gramos de principio activo disolver para preparar una solución inyectable segura (<strong>mol y masas molares</strong>), hasta expresar correctamente la concentración en el rótulo de un medicamento (<strong>%m/v, Molaridad, ppm</strong>). La <strong>dilución correcta</strong> puede ser la diferencia entre una dosis terapéutica y una dosis tóxica, y el <strong>rendimiento de síntesis</strong> determina la viabilidad económica y ambiental de producir un medicamento a escala industrial. Dominar estos cuatro pilares — <strong>mol, concentraciones, diluciones y rendimiento</strong> — es requisito fundamental para cualquier profesional de las ciencias farmacéuticas.
+            </p>
+        </div>
+
+        <!-- NAV INFERIOR -->
+        <div class="eq-panel-nav" data-eq-reveal>
+            <a href="../index.html" class="eq-nav-btn">← Volver a Química</a>
+            <a href="../reacciones/reacciones.html" class="eq-nav-btn primary">Siguiente: Reacciones Químicas →</a>
+        </div>
+
+    </div><!-- /container -->
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>© 2026 PharmaLab Chile · Química Unidad 3: Estequiometría</p>
+            <p style="font-size:.72rem;opacity:.55;margin-top:6px">Contenido universitario basado en: Chang & Goldsby <em>Química</em> (12ª ed.), Atkins <em>Physical Chemistry</em> (12ª ed.), USP-NF, ICH Q3D, ICH Q11, DS N°03/2010 MINSAL Chile, GMP WHO TRS 986. No reemplaza bibliografía oficial ni protocolos de laboratorio.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="../../script.js"></script>
+<script src="estequiometria.js"></script>
+</body>
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virus del Papiloma Humano (VPH) — Oncología, Vacunas y Cáncer | PharmaLab Chile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="vph.css">
+</head>
+<body class="vph-page">
+
+  <!-- ════════════════════════════════
+       NAVBAR
+  ════════════════════════════════ -->
+  <nav class="vph-navbar" id="vph-navbar">
+    <div class="vph-nav-inner">
+      <a href="../../index.html" class="vph-nav-logo">
+        <svg viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        Pharma<span class="accent">Lab</span>
+      </a>
+      <div class="vph-nav-links" id="vphNavLinks">
+        <a href="../index.html">← Virología</a>
+        <a href="../../quimica/index.html">Química</a>
+        <a href="../../farmacia/index.html">Farmacia</a>
+        <a href="../../biotecnologia/index.html">Biotecnología</a>
+        <a href="#" class="active">VPH</a>
+      </div>
+      <button class="vph-nav-toggle" id="vphNavToggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════
+       HERO
+  ════════════════════════════════ -->
+  <section class="vph-hero">
+    <div class="vph-hero-bg"></div>
+    <canvas id="vph-hero-canvas"></canvas>
+    <div class="vph-hero-content">
+      <div class="vph-badge">Virología · Patógeno 04/10</div>
+      <h1 class="vph-hero-title">
+        <span class="accent">Virus del Papiloma</span><br>
+        Humano — VPH
+      </h1>
+      <p class="vph-hero-desc">
+        Virus ADN de doble cadena sin envoltura que infecta epitelios estratificados. 
+        Responsable del <strong>100% de los cánceres cervicouterinos</strong> y causante de 
+        múltiples neoplasias anogenitales y orofaríngeas. Es la infección de transmisión 
+        sexual más frecuente en el mundo y el virus oncogénico más estudiado de la historia.
+      </p>
+      <div class="vph-hero-meta">
+        <div class="vph-meta-item">
+          <span class="vph-meta-val">200+</span>
+          <span class="vph-meta-label">Genotipos identificados</span>
+        </div>
+        <div class="vph-meta-item">
+          <span class="vph-meta-val">~8 kb</span>
+          <span class="vph-meta-label">Genoma ADN circular</span>
+        </div>
+        <div class="vph-meta-item">
+          <span class="vph-meta-val">BSL-2</span>
+          <span class="vph-meta-label">Nivel de bioseguridad</span>
+        </div>
+      </div>
+    </div>
+    <div class="vph-scroll-hint">
+      <span>Explorar</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       STATS ROW
+  ════════════════════════════════ -->
+  <div class="vph-container">
+    <div class="vph-stats-row">
+      <div class="vph-stat-card">
+        <span class="vph-stat-val" data-target="604" data-suffix=" k">0</span>
+        <span class="vph-stat-label">Casos nuevos cáncer cx/año (OMS 2022)</span>
+      </div>
+      <div class="vph-stat-card">
+        <span class="vph-stat-val" data-target="342" data-suffix=" k">0</span>
+        <span class="vph-stat-label">Muertes por cáncer cx/año (OMS 2022)</span>
+      </div>
+      <div class="vph-stat-card">
+        <span class="vph-stat-val" data-target="16" data-suffix=" geno.">0</span>
+        <span class="vph-stat-label">Genotipos de alto riesgo oncogénico</span>
+      </div>
+      <div class="vph-stat-card">
+        <span class="vph-stat-val" data-target="98" data-suffix="%">0</span>
+        <span class="vph-stat-label">Eficacia vacuna 9-valente (tipos 16/18)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       SECCIÓN 1 — ESTRUCTURA 3D
+  ════════════════════════════════ -->
+  <section class="vph-section" id="estructura">
+    <div class="vph-container">
+      <div class="vph-section-tag tag-purple">🔬 Estructura del Virión</div>
+      <h2 class="vph-section-title">Anatomía del <span class="gradient">VPH</span> en 3D</h2>
+      <p class="vph-section-sub">Modelo 3D interactivo de la cápside icosaédrica del VPH. Virus ADN desnudo (sin envoltura), altamente resistente en el ambiente. Arrastra para rotar, scroll para zoom.</p>
+
+      <div class="vph-viewer-wrap">
+        <div>
+          <div class="vph-canvas-box">
+            <canvas id="vph-model-canvas"></canvas>
+            <div class="vph-canvas-label">VPH-16 · Cápside icosaédrica (T=7)</div>
+          </div>
+          <p style="font-size:.78rem;color:#5a6478;margin-top:10px">🖱️ Arrastra para rotar · Scroll para zoom</p>
+        </div>
+        <div class="vph-struct-info">
+          <div class="vph-struct-card" style="--stripe-color:#a855f7">
+            <h4><span class="dot" style="background:#a855f7"></span> Proteína L1 (Mayor de cápside)</h4>
+            <p>Forma pentámeros (capsómeros) que se ensamblan en la cápside icosaédrica T=7 con 72 capsómeros = 360 moléculas de L1. Peso ~57 kDa. Altamente conservada entre genotipos. La base de TODAS las vacunas VPH: las VLPs (virus-like particles) son cápsides L1 vacías auto-ensambladas, sin ADN, por lo que no son infecciosas ni oncogénicas.</p>
+          </div>
+          <div class="vph-struct-card" style="--stripe-color:#ec4899">
+            <h4><span class="dot" style="background:#ec4899"></span> Proteína L2 (Menor de cápside)</h4>
+            <p>Proteína interna, ~44 kDa. Esencial para el empaquetamiento del ADN viral y la infectividad. Región N-terminal de L2 está más conservada entre genotipos que L1 → target de vacunas de "segunda generación" pan-VPH. L2 facilita el escape endosomal y el transporte nuclear del genoma.</p>
+          </div>
+          <div class="vph-struct-card" style="--stripe-color:#f59e0b">
+            <h4><span class="dot" style="background:#f59e0b"></span> Genoma ADN circular (~7.900 pb)</h4>
+            <p>ADN circular bicatenario (dsDNA) de ~7,9 kb empaquetado con histonas celulares. Organizado en 3 regiones: URR (región reguladora upstream, no codificante), región temprana E1–E7 (replicación y oncogénesis) y región tardía L1–L2 (cápside). E6 y E7 son los oncogenes principales.</p>
+          </div>
+          <div class="vph-struct-card" style="--stripe-color:#34d399">
+            <h4><span class="dot" style="background:#34d399"></span> Proteínas E6 y E7 (Oncoproteínas)</h4>
+            <p>E6 (158 aa): se une a la ubiquitina ligasa E6AP y degrada p53 vía proteosoma → pérdida de apoptosis y reparación del ADN. E7 (98 aa): se une a pRb (proteína retinoblastoma) desplazando E2F → activación del ciclo celular sin restricción. Juntas transforman células normales en inmortales. Son los biomarcadores de elección para diagnóstico de lesiones de alto grado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       SECCIÓN 2 — CLASIFICACIÓN Y ONCOGÉNESIS
+  ════════════════════════════════ -->
+  <section class="vph-section" id="oncogenesis">
+    <div class="vph-container">
+      <div class="vph-section-tag tag-red">🧬 Tema 1 · Oncogénesis Viral</div>
+      <h2 class="vph-section-title">Mecanismo Molecular de <span class="gradient">Transformación Cancerosa</span></h2>
+      <p class="vph-section-sub">El VPH es el único virus cuyo rol causal en el cáncer humano está completamente demostrado. Harald zur Hausen recibió el Nobel de Medicina 2008 por este descubrimiento.</p>
+
+      <div class="vph-content-grid">
+
+        <div class="vph-content-card" style="--card-accent:#a855f7">
+          <div class="vph-card-num">Clasificación de Riesgo</div>
+          <h3>Genotipos de Alto y Bajo Riesgo</h3>
+          <p>No todos los VPH causan cáncer. La clasificación por riesgo oncogénico determina el manejo clínico y los programas de tamizaje.</p>
+          <ul>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--vph-text)">Alto riesgo (AR) — Grupo 1 IARC:</strong> VPH 16, 18, 31, 33, 45, 52, 58 → carcinógenos humanos confirmados. VPH-16 solo causa ~50% de todos los cánceres de cuello uterino; VPH-18 ~15%. Juntos responsables del 70% de todos los cánceres de CU.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--vph-text)">Posible alto riesgo — Grupo 2A/2B IARC:</strong> VPH 26, 53, 66, 67, 68, 70, 73, 82. Evidencia limitada de carcinogenicidad en humanos.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--vph-text)">Bajo riesgo (BR):</strong> VPH 6, 11, 40, 42, 43, 44. Causan condilomas acuminados (verrugas genitales) pero no transforman células. VPH-6 y -11 responsables del 90% de los condilomas genitales y papilomatosis laríngea recurrente.</li>
+          </ul>
+        </div>
+
+        <div class="vph-content-card" style="--card-accent:#ec4899">
+          <div class="vph-card-num">Patogenia 01</div>
+          <h3>Infección y Progresión a Neoplasia</h3>
+          <ul>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--vph-text)">Entrada viral:</strong> El VPH infecta células basales del epitelio cervical en la zona de transformación (unión escamocolumnar). La micro-abrasión expone las células basales. L1 se une a sulfato de heparán en la membrana → internalización por endocitosis.</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--vph-text)">Infección productiva (bajo riesgo / transitoria):</strong> ADN viral persiste como episoma extracromosomal en células basales. Se replica de forma sincronizada con la célula huésped. En capas superficiales se produce amplificación del ADN viral + síntesis de L1/L2 → ensamblaje de nuevos viriones. 90% de infecciones son aclaradas por el sistema inmune en 1–2 años.</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--vph-text)">Persistencia e integración (alto riesgo):</strong> En ~10% de infecciones AR el ADN viral se integra en el cromosoma huésped. La integración interrumpe E2 (represor de E6/E7) → sobreexpresión desregulada de E6 y E7. Esta es la etapa crítica: paso de infección a transformación neoplásica.</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--vph-text)">Progresión:</strong> CIN 1 (displasia leve, 70% regresión espontánea) → CIN 2 → CIN 3 (carcinoma in situ) → carcinoma invasor. El tiempo promedio de progresión CIN3 → carcinoma invasor: 10–15 años (ventana de tamizaje).</li>
+          </ul>
+        </div>
+
+        <div class="vph-content-card" style="--card-accent:#f59e0b">
+          <div class="vph-card-num">Mecanismo Molecular</div>
+          <h3>E6/E7 y la Desregulación del Ciclo Celular</h3>
+          <ul>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--vph-text)">E6 → degradación de p53:</strong> E6 forma un complejo ternario con la ubiquitina-ligasa E6AP (UBE3A) y p53 → ubiquitinación y degradación proteosomal de p53. Sin p53 funcional: no hay parada del ciclo en respuesta a daño del ADN, no hay apoptosis, acumulación de mutaciones → inestabilidad genómica.</li>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--vph-text)">E7 → inactivación de pRb:</strong> E7 se une a pRb (proteína del retinoblastoma) con alta afinidad (sitio LXCXE). Esto libera E2F de la represión por pRb → activación transcripcional constitutiva de genes de fase S (ciclina E, CDK2, PCNA). La célula entra en ciclo sin señales mitogénicas.</li>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--vph-text)">Inmortalización:</strong> E6 también activa la telomerasa (hTERT) → elongación de telómeros → inmortalización celular. E7 induce centrosomas supernumerarios → aneuploidía. La combinación E6+E7 es suficiente para transformar queratinocitos primarios in vitro (línea celular HeLa expresa E6/E7 de VPH-18).</li>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--vph-text)">Biomarcador p16ink4a:</strong> La inactivación de pRb por E7 induce sobreexpresión compensatoria de p16INK4A (inhibidor de CDK4/6). p16 es biomarcador de infección productiva VPH-AR: se usa en inmunohistoquímica para confirmar lesiones de alto grado (CIN 2/3) y en carcinoma orofaríngeo VPH+.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       SECCIÓN 3 — TIPOS DE CÁNCER
+  ════════════════════════════════ -->
+  <section class="vph-section" id="cancer">
+    <div class="vph-container">
+      <div class="vph-section-tag tag-red">🎗️ Tema 2 · Cánceres Asociados</div>
+      <h2 class="vph-section-title">Neoplasias <span class="gradient">Atribuibles al VPH</span></h2>
+      <p class="vph-section-sub">El VPH no solo causa cáncer de cuello uterino — es responsable de múltiples neoplasias en hombres y mujeres. Globalmente se atribuyen al VPH ~690.000 casos de cáncer anuales (IARC 2023).</p>
+
+      <div class="vph-cancer-grid">
+
+        <div class="vph-cancer-card" style="--cancer-color:#ec4899;--cancer-dim:rgba(236,72,153,0.12)">
+          <div class="vph-cancer-pct" style="color:#ec4899">100%</div>
+          <h4>Cáncer Cervicouterino (CU)</h4>
+          <p>100% de los casos son VPH+. 604.000 casos nuevos/año; 342.000 muertes/año (OMS 2022). 90% son carcinoma escamoso (CE) o adenocarcinoma (AC). VPH-16/18 causan 70% de CE y >85% de AC. La OMS lanzó la estrategia global de eliminación del CU (2020–2030): vacunación 90% + tamizaje 70% + tratamiento 90%.</p>
+          <div class="vph-cancer-types">
+            <span>VPH 16</span><span>VPH 18</span><span>VPH 45</span><span>VPH 31</span>
+          </div>
+        </div>
+
+        <div class="vph-cancer-card" style="--cancer-color:#f59e0b;--cancer-dim:rgba(245,158,11,0.12)">
+          <div class="vph-cancer-pct" style="color:#f59e0b">88%</div>
+          <h4>Cáncer Anal</h4>
+          <p>88% atribuible a VPH. 50.000 casos nuevos anuales globalmente. Incidencia creciente especialmente en HSH (hombres que tienen sexo con hombres) VIH+. VPH-16 dominante (>75% de casos). Tamizaje anal con citología y anoscopia de alta resolución recomendado en poblaciones de alto riesgo. CDC/ACOG recomiendan vacunación hasta 26 años (edad extendida hasta 45 en casos seleccionados).</p>
+          <div class="vph-cancer-types">
+            <span>VPH 16</span><span>VPH 18</span><span>VPH 33</span>
+          </div>
+        </div>
+
+        <div class="vph-cancer-card" style="--cancer-color:#a855f7;--cancer-dim:rgba(168,85,247,0.12)">
+          <div class="vph-cancer-pct" style="color:#a855f7">~70%</div>
+          <h4>Cáncer Orofaríngeo (COF)</h4>
+          <p>El único cáncer VPH-relacionado con incidencia en AUMENTO en países desarrollados (≠ CU que decrece por tamizaje). Compromete amígdalas palatinas y base de lengua. VPH-16 en >90% de casos. Pronóstico mejor que COF VPH- (mayor respuesta a radio-quimioterapia). Diagnóstico: p16+ en IHQ confirma etiología. EE.UU.: más de 20.000 casos/año, superando al cáncer de cérvix.</p>
+          <div class="vph-cancer-types">
+            <span>VPH 16</span><span>VPH 18</span>
+          </div>
+        </div>
+
+        <div class="vph-cancer-card" style="--cancer-color:#34d399;--cancer-dim:rgba(52,211,153,0.12)">
+          <div class="vph-cancer-pct" style="color:#34d399">~50%</div>
+          <h4>Cáncer de Vagina y Vulva</h4>
+          <p>Cáncer vaginal: ~65% atribuible a VPH (prácticamente todos los escamosos). Cáncer vulvar: ~40-50% de los escamosos son VPH+; la otra mitad se asocia a liquen escleroso (vía no-VPH). VPH-16 predominante. Tratamiento: cirugía, radioterapia, y en casos seleccionados inmunoterapia (pembrolizumab para carcinomas PD-L1+).</p>
+          <div class="vph-cancer-types">
+            <span>VPH 16</span><span>VPH 33</span><span>VPH 45</span>
+          </div>
+        </div>
+
+        <div class="vph-cancer-card" style="--cancer-color:#22d3ee;--cancer-dim:rgba(34,211,238,0.12)">
+          <div class="vph-cancer-pct" style="color:#22d3ee">~50%</div>
+          <h4>Cáncer de Pene</h4>
+          <p>~50% de los cánceres de pene son VPH-positivos (principalmente tipo escamoso). VPH-16 y 18 son los más frecuentes. Incidencia baja pero con impacto significativo en calidad de vida. La circuncisión reduce el riesgo de adquirir y transmitir VPH. La vacunación masculina es relevante tanto para prevenir cáncer de pene como para interrumpir la cadena de transmisión a mujeres.</p>
+          <div class="vph-cancer-types">
+            <span>VPH 16</span><span>VPH 18</span><span>VPH 6</span>
+          </div>
+        </div>
+
+        <div class="vph-cancer-card" style="--cancer-color:#f87171;--cancer-dim:rgba(248,113,113,0.12)">
+          <div class="vph-cancer-pct" style="color:#f87171">~1%</div>
+          <h4>Condilomas y Papilomatosis</h4>
+          <p>Condilomas acuminados (verrugas genitales): >90% causados por VPH-6/11 (bajo riesgo). No oncogénicos pero de alto impacto en calidad de vida. 160 millones de casos prevalentes globalmente. Papilomatosis laríngea recurrente (PLR): VPH-6/11 en vías aéreas, transmisión perinatal. PLR juvenil puede ser grave con obstrucción de vía aérea. Tratamiento: desbridamiento quirúrgico + bevacizumab intralesional o cidofovir coadyuvante.</p>
+          <div class="vph-cancer-types">
+            <span>VPH 6</span><span>VPH 11</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="vph-callout" style="margin-top:40px">
+        <h3>🇨🇱 Cáncer Cervicouterino en Chile — Situación Actual</h3>
+        <p>
+          El cáncer cervicouterino es la <strong>4ª causa de muerte por cáncer en mujeres chilenas</strong> (MINSAL/DEIS 2023). 
+          Cada año se diagnostican aproximadamente <strong>1.500 casos nuevos</strong> y fallecen ~700 mujeres. 
+          La mortalidad es <strong>3 veces mayor en mujeres de zonas rurales y de menores ingresos</strong>, reflejando 
+          desigualdad en el acceso al tamizaje. El <strong>Programa Nacional de Pesquisa (PNP)</strong> del MINSAL 
+          ofrece PAP gratuito cada 3 años a mujeres entre 25–64 años. Desde 2014 se incorporó la 
+          <strong>prueba de VPH como tamizaje primario</strong> (más sensible que PAP) en el sistema público (FONASA). 
+          La tasa de mortalidad chilena (~5,5 por 100.000) es mayor que la de Argentina (~4,8) y muy superior 
+          a la de países con coberturas de vacunación y tamizaje óptimas como Australia (~1,5 por 100.000).
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       SECCIÓN 4 — TAMIZAJE
+  ════════════════════════════════ -->
+  <section class="vph-section" id="tamizaje">
+    <div class="vph-container">
+      <div class="vph-section-tag tag-cyan">🔍 Tema 3 · Diagnóstico y Tamizaje</div>
+      <h2 class="vph-section-title">Detección Precoz y <span class="gradient">Algoritmos Diagnósticos</span></h2>
+      <p class="vph-section-sub">El cáncer de cuello uterino es el único cáncer con un largo período preinvasivo (10–15 años) que permite detección y tratamiento curativo antes del desarrollo del cáncer invasor.</p>
+
+      <div class="vph-content-grid">
+
+        <div class="vph-content-card" style="--card-accent:#22d3ee">
+          <div class="vph-card-num">Método 01 — Tamizaje Primario</div>
+          <h3>Prueba de VPH (ADN/ARNm)</h3>
+          <ul>
+            <li><span class="bullet" style="background:#22d3ee"></span><strong style="color:var(--vph-text)">Fundamento:</strong> Detección del ADN de genotipos de alto riesgo (o ARNm de E6/E7) por PCR/hibridación en muestra cervical. Sensibilidad para CIN 2+: ~90–95% (vs 55–70% del PAP). Especificidad menor → requiere test de triage para positivos.</li>
+            <li><span class="bullet" style="background:#22d3ee"></span><strong style="color:var(--vph-text)">Genotipificación parcial:</strong> Plataformas como cobas HPV, BD Onclarity, Roche AHPV detectan VPH-16/18 por separado (mayor riesgo) del pool de otros 12 AR. Guía la derivación: VPH-16/18 positivo → colposcopía directa sin triage; otros AR positivos → triaje con citología o genotipificación extendida.</li>
+            <li><span class="bullet" style="background:#22d3ee"></span><strong style="color:var(--vph-text)">Intervalo recomendado:</strong> OMS 2021: tamizaje con prueba VPH cada 5 años desde los 30 años (con negativa confirmada). En Chile: prueba VPH disponible en FONASA desde 2014, reemplazando PAP como método primario en la red pública.</li>
+            <li><span class="bullet" style="background:#22d3ee"></span><strong style="color:var(--vph-text)">Autotoma:</strong> La autotoma vaginal (self-sampling) con prueba VPH tiene sensibilidad similar a la toma clínica y mejora la cobertura en poblaciones que evitan el tamizaje. Estudiada en Chile en contexto de MINSAL/ISP.</li>
+          </ul>
+        </div>
+
+        <div class="vph-content-card" style="--card-accent:#a855f7">
+          <div class="vph-card-num">Método 02 — Citología</div>
+          <h3>PAP (Papanicolau) y Clasificación Bethesda</h3>
+          <ul>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--vph-text)">Sistema Bethesda 2014:</strong> Clasifica alteraciones citológicas como ASC-US (células escamosas atípicas de significado indeterminado), LSIL (lesión intraepitelial de bajo grado), HSIL (alto grado), ASC-H (no se puede excluir HSIL), y carcinoma.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--vph-text)">Cotesting:</strong> Combinación de PAP + prueba VPH. VPN (valor predictivo negativo) >99% para CIN 3+ → intervalos de 5 años. Recomendado por ASCCP 2019 para mujeres 30–65 años.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--vph-text)">Koilocitos:</strong> Célula escamosa con halo citoplasmático perinuclear y núcleo hipercromático arrugado — efecto citopatológico típico de la infección VPH productiva. Hallazgo de LSIL/CIN1.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--vph-text)">Limitaciones:</strong> Sensibilidad individual baja (~55–70% para CIN 2+). Requiere personal entrenado. Sujeto a variabilidad de muestra y lectura. Por esto la OMS recomienda migrar al test VPH como primario.</li>
+          </ul>
+        </div>
+
+        <div class="vph-content-card" style="--card-accent:#ec4899">
+          <div class="vph-card-num">Método 03 — Diagnóstico de Lesión</div>
+          <h3>Colposcopía, Biopsia e IHQ</h3>
+          <ul>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--vph-text)">Colposcopía:</strong> Examen visual magnificado del cérvix con ácido acético 3–5% (zonas acetobrancas = epitelio anormal) y solución de Lugol (zonas yodo-negativas = falta de glucógeno en epitelio displásico). Identifica zona de transformación y áreas para biopsia dirigida.</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--vph-text)">Biopsia e histología:</strong> Gold standard diagnóstico. Clasificación histológica OMS 2020: CIN 1 (LSIL), CIN 2, CIN 3 (HSIL), adenocarcinoma in situ (AIS), carcinoma escamoso invasor, adenocarcinoma invasor.</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--vph-text)">Inmunohistoquímica p16/Ki-67:</strong> p16 diffuse block-positive + Ki-67 positivo en capas medias y superficiales del epitelio = marcador dual de infección transformante (CINtec PLUS). Mejora reproducibilidad diagnóstica de CIN 2 (categoría más problemática por alta variabilidad inter-observador). Recomendado por ASCCP 2019 para CIN 2.</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--vph-text)">Tratamiento de lesiones:</strong> CIN 1: observación. CIN 2/3: LEEP (Loop Electrosurgical Excision Procedure) o cono frío. LEEP bajo anestesia local, ambulatorio; tasa curación CIN 3 >95%. Seguimiento post-tratamiento: test VPH a los 6 y 12 meses.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       SECCIÓN 5 — VACUNAS
+  ════════════════════════════════ -->
+  <section class="vph-section" id="vacunas">
+    <div class="vph-container">
+      <div class="vph-section-tag tag-green">💉 Tema 4 · Vacunas contra el VPH</div>
+      <h2 class="vph-section-title">Las Vacunas <span class="gradient">Profilácticas contra el VPH</span></h2>
+      <p class="vph-section-sub">Las vacunas VPH son el ejemplo más exitoso de vacuna anti-cáncer preventiva. Su base tecnológica (VLPs) ha sido paradigmática para el desarrollo de nuevas plataformas vacunales.</p>
+
+      <!-- TABLA VACUNAS -->
+      <div class="vph-vax-table-wrap">
+        <table class="vph-vax-table">
+          <thead>
+            <tr>
+              <th>Vacuna</th>
+              <th>Genotipos cubiertos</th>
+              <th>Tecnología</th>
+              <th>Esquema</th>
+              <th>Eficacia</th>
+              <th>Estado Chile</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="vax-name">Gardasil 9 (Merck)</td>
+              <td class="vax-tech">6, 11, 16, 18, 31, 33, 45, 52, 58</td>
+              <td>VLP L1 (9 tipos)</td>
+              <td>2 dosis (9–14 años); 3 dosis (15–45 años)</td>
+              <td>~97–98% CIN 2+ tipos cubiertos; ~90% condilomas</td>
+              <td>PNI Chile desde 2021 (9v). Mujeres 4° básico + niños 8° básico</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Gardasil 4 / Silgard (Merck)</td>
+              <td class="vax-tech">6, 11, 16, 18</td>
+              <td>VLP L1 (4 tipos)</td>
+              <td>3 dosis (0, 2, 6 meses)</td>
+              <td>~96% CIN 2/3 tipo 16/18; ~99% condilomas</td>
+              <td>Usado en Chile hasta 2021 (reemplazado por 9v)</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Cervarix (GSK)</td>
+              <td class="vax-tech">16, 18</td>
+              <td>VLP L1 + AS04 (adyuvante)</td>
+              <td>3 dosis (0, 1, 6 meses)</td>
+              <td>>93% CIN 2+ 16/18; protección cruzada 31/33/45</td>
+              <td>No incluida en PNI Chile. Disponible vía privada</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Cecolin (Innovax, China)</td>
+              <td class="vax-tech">16, 18</td>
+              <td>VLP L1 (bivalente, baculovirus)</td>
+              <td>3 dosis (0, 1, 6 meses)</td>
+              <td>~100% contra lesiones 16/18 (ensayos fase III)</td>
+              <td>Aprobada OMS (precalificada 2021). Clave en países de bajos ingresos</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="vph-content-grid" style="margin-top:48px">
+
+        <div class="vph-content-card" style="--card-accent:#34d399">
+          <div class="vph-card-num">Tecnología Vacunal</div>
+          <h3>¿Cómo funcionan las VLPs (Virus-Like Particles)?</h3>
+          <ul>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--vph-text)">Producción recombinante:</strong> El gen L1 de cada genotipo se expresa en sistemas de levadura (Saccharomyces cerevisiae en Gardasil) o baculovirus-Trichoplusia ni (Cervarix, Cecolin). Las proteínas L1 se auto-ensamblan espontáneamente en VLPs icosaédricas idénticas morfológicamente al virión nativo.</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--vph-text)">Sin ADN → Sin riesgo:</strong> Las VLPs son partículas vacías sin material genético viral. Son imposibles de replicar o causar infección/cancer. La seguridad está bien establecida con más de 600 millones de dosis administradas globalmente (2006-2024).</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--vph-text)">Respuesta inmune:</strong> Las VLPs inducen títulos de anticuerpos anti-L1 hasta 100 veces mayores que la infección natural. Anticuerpos neutralizantes IgG de larga duración (>10 años en estudios de seguimiento). Estudios en Finlandia muestran protección ≥30 años con esquema completo.</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--vph-text)">Adyuvantes:</strong> Gardasil usa AAHS (sulfato de hidroxifosfato de aluminio amorfo). Cervarix usa AS04 (aluminio + MPL = monofosforil lípido A, agonista TLR4) → mayor activación de células dendríticas, mayor respuesta Th1 y memoria de larga duración.</li>
+          </ul>
+        </div>
+
+        <div class="vph-content-card" style="--card-accent:#a855f7">
+          <div class="vph-card-num">Estrategia Vacunal Chile</div>
+          <h3>Programa Nacional de Inmunizaciones (PNI) — VPH</h3>
+          <ul>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--vph-text)">Historia:</strong> Chile comenzó la vacunación con bivalente (Cervarix) en 2014 para niñas de 4° básico. En 2016 amplió a cuadrivalente. Desde 2021 se implementa la vacuna 9-valente (Gardasil 9) como parte del PNI.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--vph-text)">Población objetivo actual (2024):</strong> Niñas y niños de 4° básico (~9–10 años): 2 dosis (0 y 6 meses). La inclusión de varones es fundamental para interrumpir la transmisión y proteger a hombres del cáncer orofaríngeo y anal.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--vph-text)">Esquema 2 dosis:</strong> En menores de 15 años sin inmunocompromiso, 2 dosis son tan eficaces como 3 dosis (noninferioridad demostrada en estudios de inmunogenicidad y eficacia). Este esquema simplificado mejora adherencia y reduce costos.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--vph-text)">Vacunación en inmunocomprometidos:</strong> Personas VIH+, trasplantados, con enfermedades autoinmunes: 3 dosis (0, 2, 6 meses) independiente de edad. Mayor riesgo de persistencia VPH y progresión a neoplasia → indicación reforzada.</li>
+          </ul>
+        </div>
+
+        <div class="vph-content-card" style="--card-accent:#f59e0b">
+          <div class="vph-card-num">Impacto Demostrado</div>
+          <h3>Evidencia de Efectividad Poblacional</h3>
+          <ul>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--vph-text)">Australia (líder mundial):</strong> Primero en vacunar en 2007 (niñas) + 2013 (niños). Eliminación funcional de VPH-16/18/6/11 en adolescentes: reducción del 92% en VPH-16/18 en mujeres 18–24 años. Cánceres genitales en vía de eliminación. Modelo para el mundo (Lancet, Canfell 2021).</li>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--vph-text)">Reino Unido:</strong> Programa nacional desde 2008. Estudio de cohorte nacional 2021 (Lancet): reducción del 87% en cáncer cervicouterino en mujeres vacunadas a los 12–13 años vs no-vacunadas. Primera evidencia directa de prevención del cáncer invasor por vacuna VPH.</li>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--vph-text)">Efecto de rebaño:</strong> En países con alta cobertura vacunal en niñas (>50%), se observa reducción de VPH-16/18 también en hombres no vacunados y en mujeres mayores no vacunadas. La vacunación universal amplifica este efecto.</li>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--vph-text)">Vacunación terapéutica (experimental):</strong> A diferencia de las profilácticas (que previenen la infección), las vacunas terapéuticas buscan activar inmunidad celular (CD8+) contra E6/E7 en personas ya infectadas. Varios candidatos en fase II-III: ISA101 (SLP peptídica), VGX-3100 (ADN electro-porado), MVA-E2. Aún sin aprobación regulatoria (2024).</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       SECCIÓN 6 — TRATAMIENTO Y FUTURO
+  ════════════════════════════════ -->
+  <section class="vph-section" id="tratamiento">
+    <div class="vph-container">
+      <div class="vph-section-tag tag-amber">⚕️ Tema 5 · Tratamiento y Perspectivas</div>
+      <h2 class="vph-section-title">Tratamiento del <span class="gradient">Cáncer por VPH</span></h2>
+      <p class="vph-section-sub">No existe antiviral que elimine la infección establecida por VPH. El tratamiento se enfoca en las lesiones preneoplásicas y neoplásicas inducidas por el virus.</p>
+
+      <div class="vph-content-grid">
+
+        <div class="vph-content-card" style="--card-accent:#ec4899">
+          <div class="vph-card-num">Lesiones Preneoplásicas</div>
+          <h3>Tratamiento de CIN y Condilomas</h3>
+          <ul>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--vph-text)">CIN 1:</strong> Observación activa (70% regresión espontánea en 2 años). Repetir citología+VPH a 12 meses. Solo tratar si persiste >2 años o progresa.</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--vph-text)">CIN 2/3 (HSIL):</strong> Escisión electroquirúrgica con asa (LEEP/LLETZ): estándar de oro. Conización fría en AIS (adenocarcinoma in situ). Tasa de curación >95%. Crioterapia y ablación térmica (para recursos limitados, criterios específicos).</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--vph-text)">Condilomas acuminados:</strong> Podofilotoxina 0,5% o 0,15% crema (autoaplic.), Imiquimod 5% (inmunomodulador, TLR7/8), sinecatequinas 10% (Veregen, extracto té verde), tricloroacético 80–90%, crioterapia, láser CO₂, electrocoagulación. Alta tasa de recurrencia (25–65%) → múltiples sesiones habituales.</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--vph-text)">PLR (papilomatosis laríngea recurrente):</strong> Desbridamiento quirúrgico con microdebridor o láser KTP/CO₂. Bevacizumab intralesional (inhibidor VEGF) redujo recidivas en estudios. Cidofovir intralesional como coadyuvante. Vacuna VPH reduce recurrencias post-quirúrgicas (evidencia emergente).</li>
+          </ul>
+        </div>
+
+        <div class="vph-content-card" style="--card-accent:#22d3ee">
+          <div class="vph-card-num">Cáncer Cervicouterino Invasor</div>
+          <h3>Tratamiento según Estadio FIGO 2018</h3>
+          <ul>
+            <li><span class="bullet" style="background:#22d3ee"></span><strong style="color:var(--vph-text)">Estadio IA1–IB1 (microinvasor/temprano):</strong> Histerectomía radical (Wertheim-Meigs) o traquelectomía radical (preservación de fertilidad en casos seleccionados). Conización puede ser suficiente en IA1 sin invasión linfovascular.</li>
+            <li><span class="bullet" style="background:#22d3ee"></span><strong style="color:var(--vph-text)">Estadios IB2–IVA (localmente avanzado):</strong> Radioquimioterapia concurrente (RQTC): cisplatino 40 mg/m² semanal + radioterapia externa pélvica + braquiterapia endocavitaria. Estándar desde los estudios GOG del año 1999 (5 ensayos aleatorizados que establecieron el rol del cisplatino como radiosensibilizante).</li>
+            <li><span class="bullet" style="background:#22d3ee"></span><strong style="color:var(--vph-text)">Estadio IVB / recurrente / metastásico:</strong> Quimioterapia: Bevacizumab + paclitaxel + cisplatino (GOG 240, Tewari 2014). Primera vez que se demostró beneficio en SG con la adición de bevacizumab. Inmunoterapia: pembrolizumab (anti-PD-1) aprobado FDA 2021 para CU PD-L1+ metastásico (KEYNOTE-826, 21% reducción de riesgo de muerte).</li>
+            <li><span class="bullet" style="background:#22d3ee"></span><strong style="color:var(--vph-text)">Terapias dirigidas emergentes (2023–2025):</strong> Tisotumab vedotina (anticuerpo-conjugado anti-factor tisular, ADC) aprobado FDA 2021 (innovaTV 204). Cemiplimab para CU recurrente (anti-PD-1, EMPOWER-Cervical). Modificadores de E6/E7 en investigación preclínica (PROTAC-E6, siRNA-E7).</li>
+          </ul>
+        </div>
+
+        <div class="vph-content-card" style="--card-accent:#34d399">
+          <div class="vph-card-num">Estrategia Global OMS 2030</div>
+          <h3>Eliminación del Cáncer Cervicouterino</h3>
+          <ul>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--vph-text)">Meta 90-70-90 (OMS 2020):</strong> Para 2030: 90% de niñas vacunadas con VPH antes de los 15 años + 70% de mujeres tamizadas al menos 2 veces en su vida (35 y 45 años) con test de alto rendimiento + 90% de mujeres con lesiones precancerosas o cáncer recibiendo tratamiento.</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--vph-text)">Eliminación definida:</strong> Incidencia <4 por 100.000 mujeres/año (Australia ya está en ~2,5, en trayectoria). Modelo OMS estima que alcanzar meta 90-70-90 globalmente en 2030 evitaría 62 millones de muertes por cáncer cervicouterino durante los próximos 100 años.</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--vph-text)">Rol de Chile:</strong> Para 2030, Chile debe alcanzar >90% de cobertura vacunal (actualmente ~65–70% en niñas) y expandir el tamizaje con prueba VPH a mayor cobertura territorial, especialmente en zonas rurales y comunidades vulnerables con acceso limitado a CESFAM.</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--vph-text)">GAVI y países LMIC:</strong> GAVI Alliance ha financiado vacunación en >50 países de bajos ingresos. Sin embargo, el COVID-19 interrumpió programas, con 2,3 millones de niñas que perdieron su primera dosis en 2020 (UNICEF). Recuperación de coberturas es urgente.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       BOTTOM NAV
+  ════════════════════════════════ -->
+  <div class="vph-container" style="padding-bottom:60px">
+    <div class="vph-bottom-nav">
+      <a href="../index.html" class="vph-nav-btn">← Volver a Virología</a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#estructura" class="vph-nav-btn">Estructura 3D ↑</a>
+        <a href="#oncogenesis" class="vph-nav-btn">Oncogénesis ↑</a>
+        <a href="#cancer" class="vph-nav-btn">Cánceres ↑</a>
+        <a href="#tamizaje" class="vph-nav-btn">Tamizaje ↑</a>
+        <a href="#vacunas" class="vph-nav-btn">Vacunas ↑</a>
+        <a href="#tratamiento" class="vph-nav-btn">Tratamiento ↑</a>
+      </div>
+      <a href="../../index.html" class="vph-nav-btn">Inicio →</a>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       FOOTER
+  ════════════════════════════════ -->
+  <footer class="vph-footer">
+    <div class="vph-container">
+      <div class="vph-footer-inner">
+        <p>© 2026 PharmaLab Chile · Contenido basado en OMS, IARC, CDC, MINSAL Chile, NEJM, Lancet, Cell, ASCCP 2019</p>
+        <p class="disclaimer">Contenido educacional. No reemplaza asesoría médica profesional.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="vph.js"></script>
+</body>
+</html>

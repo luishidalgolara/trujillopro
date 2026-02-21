@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería Química General 3D — PharmaLab Chile</title>
+  <meta name="description" content="Galería interactiva 3D de conceptos de Química General. Átomo, molécula, elemento, enlace químico, partículas subatómicas y más. Contenido universitario PharmaLab Chile.">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="galeria.css">
+</head>
+<body>
+
+<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#" class="nav-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+      <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+    </a>
+    <a href="../index.html" class="nav-back-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      Volver
+    </a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="gc-hero">
+  <div class="gc-hero-bg">
+    <div class="gc-hero-grid"></div>
+    <div class="gc-orb gc-orb-1"></div>
+    <div class="gc-orb gc-orb-2"></div>
+    <div class="gc-orb gc-orb-3"></div>
+    <canvas id="gc-hero-canvas"></canvas>
+  </div>
+  <div class="gc-hero-inner">
+    <div class="gc-wrap">
+      <div class="gc-hero-content">
+        <div class="gc-crumb">
+          <span>Inicio</span><span class="sep">/</span>
+          <span>Química General</span><span class="sep">/</span>
+          <span style="color:#fff">Galería 3D</span>
+        </div>
+        <div class="gc-hero-tag">
+          <span class="gc-dot"></span>
+          Galería Interactiva · Química General
+        </div>
+        <h1 class="gc-hero-title">La <span class="gc-gr">Química</span><br>en 3D</h1>
+        <p class="gc-hero-desc">Explora los conceptos fundamentales de la Química General con visualizaciones tridimensionales interactivas. Desde el átomo hasta los diferentes tipos de enlace — ciencia de precisión universitaria.</p>
+        <div class="gc-hero-stats">
+          <div class="gc-stat">
+            <span class="gc-stat-num">14</span>
+            <span class="gc-stat-label">Conceptos fundamentales</span>
+          </div>
+          <div class="gc-stat">
+            <span class="gc-stat-num">3D</span>
+            <span class="gc-stat-label">Visualización interactiva</span>
+          </div>
+          <div class="gc-stat">
+            <span class="gc-stat-num">118</span>
+            <span class="gc-stat-label">Elementos en la Tabla Periódica</span>
+          </div>
+        </div>
+        <div class="gc-hero-actions">
+          <button class="gc-btn-primary" onclick="document.getElementById('galeria').scrollIntoView({behavior:'smooth'})">
+            Explorar Galería →
+          </button>
+          <button class="gc-btn-secondary" onclick="document.getElementById('info').scrollIntoView({behavior:'smooth'})">
+            ¿Qué estudia la Química?
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ INFO RÁPIDA ═══════════════════════ -->
+<section class="gc-section" id="info">
+  <div class="gc-wrap">
+    <div class="gc-datos" data-gc-reveal>
+      <div class="gc-dato">
+        <span class="gc-dato-n">~10⁻¹⁰ m</span>
+        <span class="gc-dato-l">Radio atómico típico. El átomo es mayoritariamente espacio vacío entre núcleo y nube electrónica</span>
+      </div>
+      <div class="gc-dato">
+        <span class="gc-dato-n">6.022×10²³</span>
+        <span class="gc-dato-l">Constante de Avogadro. Número de entidades en un mol de sustancia. Base de la estequiometría</span>
+      </div>
+      <div class="gc-dato">
+        <span class="gc-dato-n">436 kJ/mol</span>
+        <span class="gc-dato-l">Energía del enlace H-H. La ruptura y formación de enlaces es la esencia de toda reacción química</span>
+      </div>
+      <div class="gc-dato">
+        <span class="gc-dato-n">118</span>
+        <span class="gc-dato-l">Elementos conocidos en la Tabla Periódica moderna. Solo 94 se encuentran de forma natural en la Tierra</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FILTROS ═══════════════════════ -->
+<section class="gc-section" id="galeria">
+  <div class="gc-wrap">
+    <div class="gc-section-hd" data-gc-reveal>
+      <div class="gc-sec-tag">⚗️ Galería Interactiva 3D</div>
+      <h2 class="gc-sec-title">Explora cada <span class="gc-hl">Concepto Químico</span></h2>
+      <p class="gc-sec-sub">Haz clic en cualquier tarjeta para abrir la visualización 3D interactiva con descripción científica detallada</p>
+    </div>
+
+    <div class="gc-filters" data-gc-reveal>
+      <button class="gc-filter active" data-filter="all">Todos</button>
+      <button class="gc-filter" data-filter="materia">Materia</button>
+      <button class="gc-filter" data-filter="enlace">Enlace Químico</button>
+      <button class="gc-filter" data-filter="subatomica">Partículas Subatómicas</button>
+      <button class="gc-filter" data-filter="propiedad">Propiedades Atómicas</button>
+    </div>
+
+    <div class="gc-grid" id="gcGrid" data-gc-reveal>
+
+      <div class="gc-card" data-category="materia" data-id="0" onclick="openModal(0)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="0"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Fundamento</div>
+          <h3 class="gc-card-title">Átomo</h3>
+          <p class="gc-card-desc">Unidad fundamental de la materia. Núcleo denso rodeado de nube electrónica en orbitales cuánticos s, p, d, f.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">⚗️ Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="materia" data-id="1" onclick="openModal(1)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="1"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Estructura</div>
+          <h3 class="gc-card-title">Molécula</h3>
+          <p class="gc-card-desc">Agrupación neutra de átomos unidos por enlaces covalentes con geometría definida por la teoría VSEPR.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">⚗️ Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="materia" data-id="2" onclick="openModal(2)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="2"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Tabla Periódica</div>
+          <h3 class="gc-card-title">Elemento</h3>
+          <p class="gc-card-desc">Sustancia pura no descomponible. Organizada por número atómico Z en la Tabla Periódica moderna de 118 elementos.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">⚗️ Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="materia" data-id="3" onclick="openModal(3)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="3"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Sustancia</div>
+          <h3 class="gc-card-title">Compuesto</h3>
+          <p class="gc-card-desc">Sustancia pura formada por dos o más elementos en proporción fija y constante. Ley de Proust (1799).</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">⚗️ Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="enlace" data-id="4" onclick="openModal(4)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="4"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Enlace Químico</div>
+          <h3 class="gc-card-title">Enlace Químico</h3>
+          <p class="gc-card-desc">Fuerza de atracción que une átomos o iones. Tipos: covalente, iónico y metálico, según diferencia de electronegatividad.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">⚗️ Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="enlace" data-id="5" onclick="openModal(5)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="5"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Enlace</div>
+          <h3 class="gc-card-title">Enlace Covalente</h3>
+          <p class="gc-card-desc">Compartición de pares electrónicos entre no metales. Simple (σ), doble (σ+π) o triple (σ+2π). Base de la química orgánica.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">⚗️ Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="enlace" data-id="6" onclick="openModal(6)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="6"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Enlace</div>
+          <h3 class="gc-card-title">Enlace Iónico</h3>
+          <p class="gc-card-desc">Transferencia de electrones entre metal y no metal. Forma cationes y aniones con atracción electrostática. ΔEN > 1.7.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">⚗️ Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="enlace" data-id="7" onclick="openModal(7)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="7"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Enlace</div>
+          <h3 class="gc-card-title">Enlace Metálico</h3>
+          <p class="gc-card-desc">Mar de electrones delocalizados entre cationes metálicos. Explica conductividad eléctrica, térmica y maleabilidad.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">⚗️ Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="enlace" data-id="8" onclick="openModal(8)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="8"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Interacción</div>
+          <h3 class="gc-card-title">Enlace de Hidrógeno</h3>
+          <p class="gc-card-desc">Interacción D-H···:A entre H unido a F, O o N y un par libre. Estabiliza ADN, proteínas y propiedades del agua.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">⚗️ Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="subatomica" data-id="9" onclick="openModal(9)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="9"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Partícula Subatómica</div>
+          <h3 class="gc-card-title">Electrón</h3>
+          <p class="gc-card-desc">Partícula de carga −1, masa 9.1×10⁻³¹ kg, espín ½. Orbita en orbitales cuánticos. Dualidad onda-partícula.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">⚗️ Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="subatomica" data-id="10" onclick="openModal(10)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="10"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Partícula Subatómica</div>
+          <h3 class="gc-card-title">Protón</h3>
+          <p class="gc-card-desc">Partícula de carga +1 en el núcleo. Compuesto por quarks uud. Número de protones Z define el elemento químico.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">⚗️ Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="subatomica" data-id="11" onclick="openModal(11)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="11"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Partícula Subatómica</div>
+          <h3 class="gc-card-title">Neutrón</h3>
+          <p class="gc-card-desc">Partícula neutra en el núcleo. Quarks udd. Estabiliza el núcleo. Define isótopos. Vida media libre ~15 minutos.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">⚗️ Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="propiedad" data-id="12" onclick="openModal(12)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="12"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Propiedad Nuclear</div>
+          <h3 class="gc-card-title">Número Atómico</h3>
+          <p class="gc-card-desc">Z = número de protones en el núcleo. Define el elemento. Organiza la Tabla Periódica. Invariante en reacciones químicas.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">⚗️ Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="propiedad" data-id="13" onclick="openModal(13)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="13"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Propiedad Atómica</div>
+          <h3 class="gc-card-title">Masa Atómica</h3>
+          <p class="gc-card-desc">Promedio ponderado de masas isotópicas en u.m.a. Conecta escala atómica con macroscópica vía Avogadro.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">⚗️ Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ MODAL 3D ═══════════════════════ -->
+<div class="gc-modal-overlay" id="gcModal" onclick="closeModal(event)">
+  <div class="gc-modal" id="gcModalInner">
+    <button class="gc-modal-close" onclick="closeModal(null, true)" aria-label="Cerrar">✕</button>
+    <div class="gc-modal-layout">
+      <div class="gc-modal-canvas-wrap">
+        <canvas id="gcModalCanvas"></canvas>
+        <div class="gc-modal-canvas-label" id="gcModalCanvasLabel">⟳ Arrastra para rotar · Scroll para zoom</div>
+        <div class="gc-modal-controls">
+          <button class="gc-ctrl-btn" id="btnRotate" onclick="toggleAutoRotate()" title="Auto-rotación">⟳</button>
+          <button class="gc-ctrl-btn" id="btnReset"  onclick="resetView()"        title="Resetear vista">⌂</button>
+        </div>
+      </div>
+      <div class="gc-modal-info">
+        <div class="gc-modal-tag"   id="gcModalTag">—</div>
+        <h2  class="gc-modal-title" id="gcModalTitle">—</h2>
+        <p   class="gc-modal-desc"  id="gcModalDesc">—</p>
+        <div class="gc-modal-section">
+          <div class="gc-modal-sh">📐 Datos Clave</div>
+          <div class="gc-modal-datos" id="gcModalDatos"></div>
+        </div>
+        <div class="gc-modal-section">
+          <div class="gc-modal-sh">⚗️ Componentes</div>
+          <div class="gc-modal-comps" id="gcModalComps"></div>
+        </div>
+        <div class="gc-modal-section">
+          <div class="gc-modal-sh">🔬 Función / Relevancia Química</div>
+          <p class="gc-modal-func" id="gcModalFunc">—</p>
+        </div>
+        <div class="gc-modal-nav">
+          <button class="gc-mnav-btn" id="btnPrev" onclick="navigateModal(-1)">← Anterior</button>
+          <span   class="gc-mnav-counter" id="gcModalCounter">1 / 14</span>
+          <button class="gc-mnav-btn" id="btnNext" onclick="navigateModal(1)">Siguiente →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="gc-footer">
+  <div class="gc-wrap">
+    <div class="gc-footer-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+      <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+    </div>
+    <div class="gc-footer-bottom">
+      <p>© 2026 PharmaLab Chile — Química General · Galería Interactiva 3D</p>
+      <p class="gc-footer-disc">Contenido educacional universitario. Información basada en Chang & Goldsby "Chemistry" 12ª ed., Atkins "Physical Chemistry" 11ª ed. y recomendaciones IUPAC 2021. No reemplaza asesoría académica profesional.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/gc-data.js"></script>
+<script src="js/gc-state.js"></script>
+<script src="js/gc-renderers.js"></script>
+<script src="js/gc-modal.js"></script>
+<script src="js/gc-ui.js"></script>
+</body>
+</html>

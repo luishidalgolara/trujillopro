@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Síntesis de Fármacos — PharmaLab Chile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="sintesis.css">
+  <style>
+    /* ── minimal navbar reset ── */
+    .sin-navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(8,11,20,0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 24px; height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .sin-navbar-logo {
+      font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em;
+      color: #f1f5f9; text-decoration: none;
+    }
+    .sin-navbar-logo span { color: #00f5d4; }
+    .sin-navbar-links { display: flex; gap: 24px; }
+    .sin-navbar-links a {
+      font-size: 0.85rem; font-weight: 600; color: #94a3b8;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .sin-navbar-links a:hover { color: #f1f5f9; }
+    .sin-navbar-links a.active { color: #00f5d4; }
+    @media(max-width:640px){ .sin-navbar-links { display: none; } }
+  </style>
+</head>
+<body class="sintesis-page">
+
+  <!-- NAVBAR -->
+  <nav class="sin-navbar">
+    <a href="../../index.html" class="sin-navbar-logo">Pharma<span>Lab</span></a>
+    <div class="sin-navbar-links">
+      <a href="../../quimica/index.html">Química</a>
+      <a href="../../farmacia/index.html">Farmacia</a>
+      <a href="../../quimica-farmaceutica/index.html" class="active">Q. Farmacéutica</a>
+      <a href="../../biotecnologia/index.html">Biotecnología</a>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════ -->
+  <section class="sin-hero">
+    <div class="sin-hero-bg"></div>
+    <canvas id="sin-hero-canvas"></canvas>
+    <div class="sin-hero-content">
+      <div class="sin-tag">⚗️ Unidad 2 · Química Farmacéutica</div>
+      <h1 class="sin-hero-title">
+        Síntesis de<br>
+        <span class="accent-cyan">Fármacos</span>
+      </h1>
+      <p class="sin-hero-desc">
+        Rutas sintéticas reales, química orgánica aplicada, grupos funcionales clave
+        y el viaje desde el matraz al reactor industrial.
+      </p>
+    </div>
+    <div class="sin-scroll-hint">
+      <span>Explorar</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       STATS
+  ════════════════════════════════════════ -->
+  <div class="sin-container">
+    <div class="sin-stats-row">
+      <div class="sin-stat">
+        <span class="sin-stat-val" data-target="4" data-suffix=" temas">0 temas</span>
+        <span class="sin-stat-label">Áreas cubiertas</span>
+      </div>
+      <div class="sin-stat">
+        <span class="sin-stat-val" data-target="3" data-suffix=" moléculas">0 moléculas</span>
+        <span class="sin-stat-label">Modelos 3D</span>
+      </div>
+      <div class="sin-stat">
+        <span class="sin-stat-val" data-target="6" data-suffix=" preguntas">0 preguntas</span>
+        <span class="sin-stat-label">Quiz interactivo</span>
+      </div>
+      <div class="sin-stat">
+        <span class="sin-stat-val" data-target="4" data-suffix=" etapas">0 etapas</span>
+        <span class="sin-stat-label">Scale-up industrial</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 1 – RUTAS SINTÉTICAS
+  ════════════════════════════════════════ -->
+  <section class="sin-section" id="rutas">
+    <div class="sin-container">
+      <div class="sin-section-tag tag-cyan">🗺️ Tema 1</div>
+      <h2 class="sin-section-title">Rutas Sintéticas</h2>
+      <p class="sin-section-sub">
+        Una ruta sintética es la secuencia planificada de reacciones que transforma materias primas
+        simples en un fármaco activo con la estructura, pureza e identidad correctas.
+      </p>
+
+      <!-- Reaction flow: ASPIRINA -->
+      <div class="sin-reaction-flow" style="margin-bottom: 48px;">
+        <h3>⚗️ Síntesis Clásica: Aspirina (ASS)</h3>
+        <p class="subtitle">Reacción de acetilación del ácido salicílico — Unidad: Bayer, 1897</p>
+        <div class="sin-rxn-steps">
+          <div class="sin-rxn-step">
+            <div class="sin-rxn-mol">
+              <div>
+                <div class="mol-icon">🌿</div>
+                <div>ÁC. SALICÍLICO</div>
+              </div>
+            </div>
+            <div class="sin-rxn-name">C₇H₆O₃<br><span style="font-size:0.65rem;color:#64748b">Precursor natural</span></div>
+          </div>
+          <div class="sin-rxn-arrow">
+            <div class="sin-rxn-arrow-line"></div>
+            <div class="sin-rxn-reagent">+ Ac₂O<br>H⁺ cat.</div>
+          </div>
+          <div class="sin-rxn-step">
+            <div class="sin-rxn-mol" style="border-color:rgba(0,245,212,0.3)">
+              <div>
+                <div class="mol-icon">💊</div>
+                <div>ASPIRINA</div>
+              </div>
+            </div>
+            <div class="sin-rxn-name">C₉H₈O₄<br><span style="font-size:0.65rem;color:#00f5d4">Producto farmacéutico</span></div>
+          </div>
+          <div class="sin-rxn-arrow">
+            <div class="sin-rxn-arrow-line" style="background:linear-gradient(90deg,#a855f7,#ff2d78)"></div>
+            <div class="sin-rxn-reagent" style="color:#a855f7">+ H₂O<br>destilación</div>
+          </div>
+          <div class="sin-rxn-step">
+            <div class="sin-rxn-mol" style="border-color:rgba(168,85,247,0.3)">
+              <div>
+                <div class="mol-icon">✨</div>
+                <div>PURIFICADO</div>
+              </div>
+            </div>
+            <div class="sin-rxn-name">≥ 99.5%<br><span style="font-size:0.65rem;color:#a855f7">Pureza farmacopea</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sin-route-grid">
+        <!-- Card 1 -->
+        <div class="sin-route-card" style="--card-accent: #00f5d4">
+          <div class="sin-route-num">RUTA 01 · CONVERGENTE</div>
+          <h3>Síntesis Convergente</h3>
+          <p>Se sintetizan fragmentos moleculares en paralelo y luego se ensamblan. Minimiza pasos lineales y aumenta el rendimiento global.</p>
+          <div class="sin-steps">
+            <div class="sin-step"><div class="sin-step-dot">1</div><span>Preparar fragmento A (anillo aromático funcionalizado)</span></div>
+            <div class="sin-step"><div class="sin-step-dot">2</div><span>Preparar fragmento B (cadena lateral con grupo reactivo)</span></div>
+            <div class="sin-step"><div class="sin-step-dot">3</div><span>Acoplamiento A+B con catalizador de Pd</span></div>
+            <div class="sin-step"><div class="sin-step-dot">4</div><span>Desprotección y purificación cromatográfica</span></div>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="sin-route-card" style="--card-accent: #ff2d78">
+          <div class="sin-route-num">RUTA 02 · LINEAL</div>
+          <h3>Síntesis Lineal Clásica</h3>
+          <p>Transformaciones secuenciales desde el material de partida hasta el producto. Sencilla de diseñar, pero el rendimiento global decae con cada paso.</p>
+          <div class="sin-steps">
+            <div class="sin-step"><div class="sin-step-dot">1</div><span>Material de partida: molécula asequible y barata</span></div>
+            <div class="sin-step"><div class="sin-step-dot">2</div><span>Transformación funcional (oxidación, reducción, alquilación)</span></div>
+            <div class="sin-step"><div class="sin-step-dot">3</div><span>Activación del grupo de enlace</span></div>
+            <div class="sin-step"><div class="sin-step-dot">4</div><span>Formación del núcleo farmacofórico</span></div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="sin-route-card" style="--card-accent: #a855f7">
+          <div class="sin-route-num">RUTA 03 · ASIMÉTRICA</div>
+          <h3>Síntesis Asimétrica</h3>
+          <p>Produce enantiómeros puros. Esencial cuando solo un enantiómero tiene actividad farmacológica (regla de Pasteur aplicada a fármacos).</p>
+          <div class="sin-steps">
+            <div class="sin-step"><div class="sin-step-dot">1</div><span>Identificar centro estereogénico en la molécula objetivo</span></div>
+            <div class="sin-step"><div class="sin-step-dot">2</div><span>Elegir catalizador quiral (BINAP, organocatalizador)</span></div>
+            <div class="sin-step"><div class="sin-step-dot">3</div><span>Reducción/adición asimétrica con exceso enantiomérico >95%</span></div>
+            <div class="sin-step"><div class="sin-step-dot">4</div><span>Determinación de ee% por HPLC quiral</span></div>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="sin-route-card" style="--card-accent: #22c55e">
+          <div class="sin-route-num">RUTA 04 · RETROSÍNTESIS</div>
+          <h3>Análisis Retrosintético</h3>
+          <p>Estrategia de E.J. Corey (Premio Nobel 1990): se parte del producto final y se trabaja hacia atrás hasta llegar a precursores comerciales.</p>
+          <div class="sin-steps">
+            <div class="sin-step"><div class="sin-step-dot">1</div><span>Definir la molécula objetivo (Target Molecule, TM)</span></div>
+            <div class="sin-step"><div class="sin-step-dot">2</div><span>Identificar disconnections (puntos de ruptura lógicos)</span></div>
+            <div class="sin-step"><div class="sin-step-dot">3</div><span>Generar synthons y sus equivalentes sintéticos</span></div>
+            <div class="sin-step"><div class="sin-step-dot">4</div><span>Ejecutar la síntesis en dirección directa</span></div>
+          </div>
+        </div>
+        <!-- Card 5: Paracetamol -->
+        <div class="sin-route-card" style="--card-accent: #fbbf24">
+          <div class="sin-route-num">EJEMPLO REAL · PARACETAMOL</div>
+          <h3>Síntesis Industrial del Paracetamol</h3>
+          <p>Producción: ~120.000 toneladas/año mundial. Ruta principal desde nitrobenceno o p-nitrofenol vía Hoechst.</p>
+          <div class="sin-steps">
+            <div class="sin-step"><div class="sin-step-dot">1</div><span>Nitrobenceno → Reducción catalítica (Fe/HCl) → Anilina</span></div>
+            <div class="sin-step"><div class="sin-step-dot">2</div><span>Anilina → Oxidación (H₂O₂) → p-aminofenol</span></div>
+            <div class="sin-step"><div class="sin-step-dot">3</div><span>p-aminofenol + Anhídrido acético → Paracetamol</span></div>
+            <div class="sin-step"><div class="sin-step-dot">4</div><span>Cristalización, filtración, secado y molienda</span></div>
+          </div>
+        </div>
+        <!-- Card 6: Ibuprofeno -->
+        <div class="sin-route-card" style="--card-accent: #06b6d4">
+          <div class="sin-route-num">EJEMPLO REAL · IBUPROFENO</div>
+          <h3>Síntesis Verde del Ibuprofeno</h3>
+          <p>Ruta BHC Company (Premio ACS Green Chemistry 1997). 3 pasos versus 6 de la ruta original Boots. Rendimiento ≥77%.</p>
+          <div class="sin-steps">
+            <div class="sin-step"><div class="sin-step-dot">1</div><span>Isobutilbenceno + Ac₂O/HF → Acilación Friedel-Crafts</span></div>
+            <div class="sin-step"><div class="sin-step-dot">2</div><span>Hidrogenación catalítica (Raney-Ni) del carbonilo</span></div>
+            <div class="sin-step"><div class="sin-step-dot">3</div><span>Carbonilación con CO/Pd → Ácido carboxílico (ibuprofeno)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 2 – QUÍMICA ORGÁNICA + 3D
+  ════════════════════════════════════════ -->
+  <section class="sin-section" id="quimica-organica">
+    <div class="sin-container">
+      <div class="sin-section-tag tag-pink">🔬 Tema 2</div>
+      <h2 class="sin-section-title">Química Orgánica Aplicada</h2>
+      <p class="sin-section-sub">
+        Explora los fármacos más importantes en 3D. Arrastra para rotar, scroll para zoom.
+        Cada átomo tiene color estándar: carbono (gris), oxígeno (rojo), nitrógeno (azul).
+      </p>
+
+      <div class="sin-viewer-wrap">
+        <div>
+          <div class="sin-canvas-box">
+            <canvas id="sin-mol-canvas"></canvas>
+            <div class="sin-canvas-label" id="sin-mol-formula">C₉H₈O₄</div>
+          </div>
+          <div class="sin-mol-controls" style="margin-top:16px">
+            <button class="sin-mol-btn active" data-mol="aspirina">Aspirina</button>
+            <button class="sin-mol-btn" data-mol="paracetamol">Paracetamol</button>
+            <button class="sin-mol-btn" data-mol="ibuprofeno">Ibuprofeno</button>
+          </div>
+          <p style="font-size:0.78rem;color:#64748b;margin-top:10px">🖱️ Arrastra para rotar · Scroll para zoom</p>
+        </div>
+
+        <div class="sin-mol-info">
+          <div class="sin-mol-card">
+            <h3 id="sin-mol-name">Ácido Acetilsalicílico (Aspirina)</h3>
+            <span class="sin-formula" id="sin-mol-formula-card">C₉H₈O₄</span>
+            <p style="margin-top:12px">
+              Primer fármaco sintético de uso masivo (Bayer, 1899). Inhibe la enzima COX-1 y COX-2
+              de forma irreversible mediante acetilación del residuo Ser530, bloqueando la síntesis
+              de prostaglandinas y tromboxanos.
+            </p>
+          </div>
+          <div class="sin-mol-card">
+            <h3>💡 ¿Por qué el color importa?</h3>
+            <p>El código de colores CPK (Corey–Pauling–Koltun) es estándar universal:
+              <br>⚫ <strong>Carbono</strong> — gris oscuro
+              <br>🔴 <strong>Oxígeno</strong> — rojo
+              <br>🔵 <strong>Nitrógeno</strong> — azul
+              <br>⚪ <strong>Hidrógeno</strong> — blanco
+            </p>
+          </div>
+          <div class="sin-mol-card">
+            <h3>🔗 Reacciones Clave</h3>
+            <p>
+              <strong style="color:#00f5d4">Esterificación:</strong> Forma enlace éster (-COO-) entre OH del alcohol y COOH del ácido.<br><br>
+              <strong style="color:#ff2d78">Acetilación:</strong> Introducción del grupo acetilo (-COCH₃), esencial en aspirina y paracetamol.<br><br>
+              <strong style="color:#a855f7">Aromaticidad:</strong> Anillo bencénico estabilizado por resonancia, base estructural de la mayoría de los AINE.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 3 – GRUPOS FUNCIONALES
+  ════════════════════════════════════════ -->
+  <section class="sin-section" id="grupos-funcionales">
+    <div class="sin-container">
+      <div class="sin-section-tag tag-purple">⚛️ Tema 3</div>
+      <h2 class="sin-section-title">Grupos Funcionales</h2>
+      <p class="sin-section-sub">
+        Los grupos funcionales determinan la reactividad, solubilidad y actividad biológica.
+        Son el "vocabulario" de la química farmacéutica.
+      </p>
+
+      <!-- Cards rápidas -->
+      <div class="sin-groups-grid">
+        <div class="sin-group-card" style="--glow-color: rgba(255,51,0,0.1)">
+          <span class="sin-group-formula">-OH</span>
+          <div class="sin-group-name">Hidroxilo</div>
+          <div class="sin-group-desc">Aumenta solubilidad en agua. Participa en puentes de hidrógeno con receptores biológicos.</div>
+          <span class="sin-group-example">Paracetamol, Morfina</span>
+        </div>
+        <div class="sin-group-card" style="--glow-color: rgba(255,45,120,0.1)">
+          <span class="sin-group-formula">-COOH</span>
+          <div class="sin-group-name">Carboxilo</div>
+          <div class="sin-group-desc">Ácido débil (pKa 4-5). Da carácter aniónico a pH fisiológico. Clave en AINE.</div>
+          <span class="sin-group-example">Aspirina, Ibuprofeno</span>
+        </div>
+        <div class="sin-group-card" style="--glow-color: rgba(51,102,255,0.1)">
+          <span class="sin-group-formula">-NH₂</span>
+          <div class="sin-group-name">Amino</div>
+          <div class="sin-group-desc">Base débil. Puede protonarse a pH ácido. Fundamental en antibióticos y neurotransmisores.</div>
+          <span class="sin-group-example">Ampicilina, Dopamina</span>
+        </div>
+        <div class="sin-group-card" style="--glow-color: rgba(168,85,247,0.1)">
+          <span class="sin-group-formula">C=O</span>
+          <div class="sin-group-name">Carbonilo</div>
+          <div class="sin-group-desc">Grupo electrófilo reactivo. Presente en aldehídos, cetonas, ésteres y amidas.</div>
+          <span class="sin-group-example">Cortisol, Progesterona</span>
+        </div>
+        <div class="sin-group-card" style="--glow-color: rgba(34,197,94,0.1)">
+          <span class="sin-group-formula">-NHCO</span>
+          <div class="sin-group-name">Amida</div>
+          <div class="sin-group-desc">Enlace resistente a hidrólisis. Forma el enlace peptídico. Presente en muchos fármacos orales.</div>
+          <span class="sin-group-example">Paracetamol, Lidocaína</span>
+        </div>
+        <div class="sin-group-card" style="--glow-color: rgba(251,191,36,0.1)">
+          <span class="sin-group-formula">-COO-</span>
+          <div class="sin-group-name">Éster</div>
+          <div class="sin-group-desc">Profármaco clásico. Se hidroliza in vivo liberando el fármaco activo. Mejora biodisponibilidad oral.</div>
+          <span class="sin-group-example">Aspirina, Enalapril</span>
+        </div>
+        <div class="sin-group-card" style="--glow-color: rgba(0,245,212,0.1)">
+          <span class="sin-group-formula">-SH</span>
+          <div class="sin-group-name">Tiol</div>
+          <div class="sin-group-desc">Muy nucleófilo. Forma puentes disulfuro y coordina metales. Presente en cisteína y captopril.</div>
+          <span class="sin-group-example">Captopril, NAC</span>
+        </div>
+        <div class="sin-group-card" style="--glow-color: rgba(6,182,212,0.1)">
+          <span class="sin-group-formula">Ph</span>
+          <div class="sin-group-name">Fenilo (Areno)</div>
+          <div class="sin-group-desc">Anillo aromático estabilizado. Confiere lipofilia y rigidez conformacional. Base del farmacóforo.</div>
+          <span class="sin-group-example">Ibuprofeno, Diazepam</span>
+        </div>
+      </div>
+
+      <!-- 3D Interactive group viewer -->
+      <div class="sin-group-3d-wrap">
+        <div>
+          <canvas id="sin-group-canvas" width="300" height="300" style="border-radius:20px;border:1px solid rgba(255,255,255,0.07)"></canvas>
+          <p style="font-size:0.75rem;color:#64748b;margin-top:10px;text-align:center">Modelo 3D interactivo</p>
+        </div>
+        <div class="sin-group-list">
+          <div class="sin-group-item active" data-group="hidroxilo">
+            <div class="sin-group-item-formula">-OH</div>
+            <div class="sin-group-item-info">
+              <h4>Grupo Hidroxilo</h4>
+              <p>Hidrofilicidad, puentes H, solubilidad acuosa</p>
+            </div>
+          </div>
+          <div class="sin-group-item" data-group="carboxilo">
+            <div class="sin-group-item-formula">-COOH</div>
+            <div class="sin-group-item-info">
+              <h4>Grupo Carboxilo</h4>
+              <p>Acidez, ionización a pH fisiológico</p>
+            </div>
+          </div>
+          <div class="sin-group-item" data-group="amino">
+            <div class="sin-group-item-formula">-NH₂</div>
+            <div class="sin-group-item-info">
+              <h4>Grupo Amino</h4>
+              <p>Basicidad, protonación, interacción iónica</p>
+            </div>
+          </div>
+          <div class="sin-group-item" data-group="carbonilo">
+            <div class="sin-group-item-formula">C=O</div>
+            <div class="sin-group-item-info">
+              <h4>Grupo Carbonilo</h4>
+              <p>Electrofilia, reacciones de adición nucleofílica</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Regla de Lipinski -->
+      <div style="margin-top:48px;background:var(--sin-card);border:1px solid var(--sin-border);border-radius:20px;padding:32px">
+        <div class="sin-section-tag tag-green" style="margin-bottom:16px">💊 Regla de Lipinski (Ro5)</div>
+        <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:16px">Predicción de biodisponibilidad oral</h3>
+        <p style="color:var(--sin-muted);font-size:0.9rem;line-height:1.7;margin-bottom:24px">
+          La Regla de los 5 de Lipinski predice si un compuesto tiene buena absorción y permeabilidad oral.
+          Se basa 100% en los grupos funcionales presentes en la molécula.
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+          <div style="background:var(--sin-card2);border:1px solid var(--sin-border);border-radius:12px;padding:18px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:#00f5d4">MW ≤ 500</div>
+            <div style="font-size:0.82rem;color:var(--sin-muted);margin-top:4px">Peso molecular (Da)</div>
+          </div>
+          <div style="background:var(--sin-card2);border:1px solid var(--sin-border);border-radius:12px;padding:18px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:#ff2d78">LogP ≤ 5</div>
+            <div style="font-size:0.82rem;color:var(--sin-muted);margin-top:4px">Lipofilia (partición oct/agua)</div>
+          </div>
+          <div style="background:var(--sin-card2);border:1px solid var(--sin-border);border-radius:12px;padding:18px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:#a855f7">HBD ≤ 5</div>
+            <div style="font-size:0.82rem;color:var(--sin-muted);margin-top:4px">Dadores de puente H (-OH, -NH)</div>
+          </div>
+          <div style="background:var(--sin-card2);border:1px solid var(--sin-border);border-radius:12px;padding:18px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:#22c55e">HBA ≤ 10</div>
+            <div style="font-size:0.82rem;color:var(--sin-muted);margin-top:4px">Aceptores de puente H (=O, -N)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 4 – SCALE-UP INDUSTRIAL
+  ════════════════════════════════════════ -->
+  <section class="sin-section" id="scale-up">
+    <div class="sin-container">
+      <div class="sin-section-tag tag-green">🏭 Tema 4</div>
+      <h2 class="sin-section-title">Scale-Up Industrial</h2>
+      <p class="sin-section-sub">
+        El camino desde el matraz de 25 mL hasta el reactor de 10.000 litros enfrenta
+        desafíos únicos de ingeniería química y regulación farmacéutica.
+      </p>
+
+      <div class="sin-scaleup-grid">
+        <div>
+          <div class="sin-scale-stages">
+            <div class="sin-stage" style="--stage-color: #00f5d4">
+              <div class="sin-stage-icon">🔬</div>
+              <div class="sin-stage-info">
+                <h4>Escala de Laboratorio</h4>
+                <div class="scale-vol">1 mL – 1 L</div>
+                <p>Optimización de condiciones: temperatura, pH, solvente, catalizador, tiempo. Objetivo: maximizar rendimiento y selectividad.</p>
+              </div>
+            </div>
+            <div class="sin-stage" style="--stage-color: #a855f7">
+              <div class="sin-stage-icon">⚗️</div>
+              <div class="sin-stage-info">
+                <h4>Planta Piloto</h4>
+                <div class="scale-vol">10 L – 100 L</div>
+                <p>Primera validación de transferencia de calor y mezcla. Se detectan problemas de exotermia, espumado y separación de fases. Datos para ICH Q11.</p>
+              </div>
+            </div>
+            <div class="sin-stage" style="--stage-color: #ff2d78">
+              <div class="sin-stage-icon">🏗️</div>
+              <div class="sin-stage-info">
+                <h4>Escala Semi-Industrial</h4>
+                <div class="scale-vol">100 L – 1.000 L</div>
+                <p>Optimización de ingeniería de proceso. Número de Reynolds, coeficientes de transferencia de masa. Validación GMP Fase III.</p>
+              </div>
+            </div>
+            <div class="sin-stage" style="--stage-color: #22c55e">
+              <div class="sin-stage-icon">🏭</div>
+              <div class="sin-stage-info">
+                <h4>Planta Industrial</h4>
+                <div class="scale-vol">1.000 L – 50.000 L</div>
+                <p>Producción continua bajo cGMP. Sistemas SCADA, control en línea de CQA (Critical Quality Attributes). Auditorías FDA/EMA/ISP Chile.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <canvas id="sin-scale-canvas"></canvas>
+
+          <!-- Parámetros críticos -->
+          <div style="margin-top:24px;background:var(--sin-card);border:1px solid var(--sin-border);border-radius:16px;padding:24px">
+            <h4 style="font-size:1rem;font-weight:700;margin-bottom:16px;color:var(--sin-cyan)">⚙️ Parámetros Críticos de Scale-Up</h4>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;align-items:center;gap:12px">
+                <div style="width:8px;height:8px;border-radius:50%;background:#00f5d4;flex-shrink:0"></div>
+                <span style="font-size:0.85rem;color:var(--sin-muted)"><strong style="color:var(--sin-text)">Número de Reynolds (Re)</strong> — caracteriza el régimen de flujo (laminar vs turbulento)</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px">
+                <div style="width:8px;height:8px;border-radius:50%;background:#ff2d78;flex-shrink:0"></div>
+                <span style="font-size:0.85rem;color:var(--sin-muted)"><strong style="color:var(--sin-text)">U·A (coef. global de transferencia)</strong> — determina el tiempo necesario para calentar/enfriar el reactor</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px">
+                <div style="width:8px;height:8px;border-radius:50%;background:#a855f7;flex-shrink:0"></div>
+                <span style="font-size:0.85rem;color:var(--sin-muted)"><strong style="color:var(--sin-text)">Tiempo de mezcla (θ)</strong> — homogeneización de reactivos; crítico para reacciones rápidas</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px">
+                <div style="width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0"></div>
+                <span style="font-size:0.85rem;color:var(--sin-muted)"><strong style="color:var(--sin-text)">PAT (Process Analytical Technology)</strong> — monitoreo en línea: FTIR, Raman, NIR para control de calidad continuo</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px">
+                <div style="width:8px;height:8px;border-radius:50%;background:#fbbf24;flex-shrink:0"></div>
+                <span style="font-size:0.85rem;color:var(--sin-muted)"><strong style="color:var(--sin-text)">QbD (Quality by Design)</strong> — metodología ICH Q8: diseñar calidad desde el inicio, no solo verificarla al final</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Normativa chilena -->
+      <div style="margin-top:40px;background:linear-gradient(135deg,rgba(34,197,94,0.05),rgba(0,245,212,0.05));border:1px solid rgba(34,197,94,0.2);border-radius:20px;padding:32px">
+        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:12px">🇨🇱 Normativa Chilena — ISP y Marco Regulatorio</h3>
+        <p style="color:var(--sin-muted);font-size:0.9rem;line-height:1.7">
+          En Chile, la producción industrial de fármacos está regulada por el <strong style="color:var(--sin-text)">Instituto de Salud Pública (ISP)</strong>
+          bajo el <strong style="color:var(--sin-text)">Decreto Supremo N°3/2010</strong> (Reglamento de Cosmecéuticos) y las
+          <strong style="color:var(--sin-text)">BPM (Buenas Prácticas de Manufactura)</strong> alineadas con ICH Q7.
+          Todo proceso de scale-up debe presentar un <strong style="color:#00f5d4">Dossier de Registro Sanitario</strong>
+          con datos de validación de proceso, estudios de estabilidad (ICH Q1A) y control de impurezas (ICH Q3A/Q3B).
+          La inspección de planta por parte del ISP verifica in situ el cumplimiento de cGMP antes de autorizar la comercialización.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 5 – QUIZ
+  ════════════════════════════════════════ -->
+  <section class="sin-section" id="quiz">
+    <div class="sin-container">
+      <div class="sin-section-tag tag-pink">🧠 Autoevaluación</div>
+      <h2 class="sin-section-title">Quiz Interactivo</h2>
+      <p class="sin-section-sub">Pon a prueba tu comprensión. 6 preguntas de nivel universitario.</p>
+
+      <div class="sin-quiz-wrap">
+        <div class="sin-quiz-card">
+          <div class="sin-quiz-num" id="sin-qnum">Pregunta 1 de 6</div>
+          <div class="sin-quiz-q" id="sin-question">Cargando pregunta...</div>
+          <div class="sin-quiz-options" id="sin-quiz-opts"></div>
+          <div class="sin-quiz-feedback" id="sin-quiz-feedback"></div>
+          <div class="sin-quiz-actions">
+            <span class="sin-quiz-progress" id="sin-quiz-prog">1 / 6</span>
+            <button class="sin-btn-next" id="sin-quiz-next">Siguiente →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       FOOTER NAV
+  ════════════════════════════════════════ -->
+  <div class="sin-container" style="padding-bottom:80px">
+    <div class="sin-bottom-nav">
+      <a href="../index.html" class="sin-nav-link">← Volver a Q. Farmacéutica</a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#rutas" class="sin-nav-link">Rutas Sintéticas ↑</a>
+        <a href="#grupos-funcionales" class="sin-nav-link">Grupos Funcionales ↑</a>
+        <a href="#scale-up" class="sin-nav-link">Scale-Up ↑</a>
+      </div>
+      <a href="../../index.html" class="sin-nav-link">Inicio →</a>
+    </div>
+    <p style="text-align:center;color:#334466;font-size:0.78rem;margin-top:40px">
+      © 2026 PharmaLab Chile · Contenido basado en ICH Guidelines, USP, Farmacopea Chilena e ISP
+    </p>
+  </div>
+
+  <!-- TOOLTIP -->
+  <div class="sin-tooltip" id="sin-tooltip"></div>
+
+  <!-- SCRIPTS -->
+  <script src="sintesis.js"></script>
+</body>
+</html>

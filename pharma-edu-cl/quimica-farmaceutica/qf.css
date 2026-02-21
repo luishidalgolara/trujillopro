@@ -1,0 +1,41 @@
+/* Química Farmacéutica Module Styles */
+.text-gradient-qf {
+    background: linear-gradient(135deg, #e056a0, #c04080, #ff70b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tag-qf {
+    background: rgba(224, 86, 160, 0.12);
+    color: #e056a0;
+}
+
+.module-qf .content-card:hover {
+    border-color: rgba(224, 86, 160, 0.25);
+}
+
+.module-qf .nav-link.active {
+    color: #e056a0;
+    background: rgba(224, 86, 160, 0.08);
+}
+
+.card-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+}
+
+.card-topics span {
+    padding: 3px 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 50px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+.module-qf .content-card:hover .card-topics span {
+    background: rgba(224, 86, 160, 0.08);
+    color: #e056a0;
+}

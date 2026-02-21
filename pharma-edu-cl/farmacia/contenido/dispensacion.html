@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispensación, Atención Farmacéutica y Receta — PharmaLab Chile</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../farmacia.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="module-farmacia">
+
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <div class="logo-icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/><circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/><line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/><line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/><line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/></svg></div>
+                <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../../quimica/index.html" class="nav-link" data-module="quimica">⚗️ Química</a>
+                <a href="../../farmacia/index.html" class="nav-link active" data-module="farmacia">💊 Farmacia</a>
+                <a href="../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf">🧬 Q. Farmacéutica</a>
+                <a href="../../biotecnologia/index.html" class="nav-link" data-module="biotech">🔬 Biotecnología</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="module-hero" style="min-height:42vh; padding-bottom:40px;">
+        <div class="hero-content">
+            <span class="section-tag">Farmacia — Unidad 2</span>
+            <h1 class="section-title">Dispensación, <span class="text-gradient-farmacia">Atención Farmacéutica y Receta</span></h1>
+            <p class="section-desc">Proceso de dispensación, tipos de receta médica, medicamentos controlados, atención farmacéutica centrada en el paciente y el rol del Químico Farmacéutico en Chile.</p>
+        </div>
+    </section>
+
+    <section class="lesson-content">
+        <div class="container">
+            <div class="lesson-body">
+
+                <div class="lesson-index">
+                    <h4>📑 Contenido de esta Unidad</h4>
+                    <ol>
+                        <li><a href="#atencion-farmaceutica">Atención Farmacéutica (AF): Concepto y Modelos</a></li>
+                        <li><a href="#rol-qf">Rol del Químico Farmacéutico en Chile</a></li>
+                        <li><a href="#receta-medica">Receta Médica: Tipos y Requisitos Legales</a></li>
+                        <li><a href="#dispensacion">Proceso de Dispensación Paso a Paso</a></li>
+                        <li><a href="#controlados">Medicamentos Controlados: Estupefacientes y Psicotrópicos</a></li>
+                        <li><a href="#prm">Problemas Relacionados con Medicamentos (PRM)</a></li>
+                        <li><a href="#seguimiento">Seguimiento Farmacoterapéutico</a></li>
+                    </ol>
+                </div>
+
+                <!-- 1. ATENCIÓN FARMACÉUTICA -->
+                <div class="lesson-section" id="atencion-farmaceutica">
+                    <h2>1. <span>Atención Farmacéutica</span></h2>
+                    <p>La Atención Farmacéutica (AF) es la provisión responsable de la farmacoterapia con el propósito de alcanzar resultados definidos que mejoren la calidad de vida del paciente. Va más allá de la simple dispensación: implica un compromiso profesional con el paciente, con su tratamiento y con los resultados en salud.</p>
+
+                    <div class="info-block">
+                        <h3>📖 Definición Oficial (OPS/OMS)</h3>
+                        <p>Según la Organización Panamericana de la Salud (OPS) y la OMS, la Atención Farmacéutica se define como: <em>"La participación activa del farmacéutico en la asistencia al paciente en la dosificación, seguimiento y evaluación del tratamiento farmacológico, con el fin de conseguir resultados que mejoren su calidad de vida."</em></p>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>🔄 Modelo Dáder de Seguimiento Farmacoterapéutico</h3>
+                        <p>El modelo Dáder, desarrollado en la Universidad de Granada (España) y adoptado ampliamente en Chile, es la metodología más utilizada para el seguimiento farmacoterapéutico estructurado:</p>
+                        <ul>
+                            <li><strong>Fase 1 — Oferta del servicio:</strong> El farmacéutico informa al paciente sobre el servicio de seguimiento disponible.</li>
+                            <li><strong>Fase 2 — Primera entrevista:</strong> Recogida de información sobre el paciente: medicamentos, problemas de salud, hábitos de vida.</li>
+                            <li><strong>Fase 3 — Estado de situación:</strong> Análisis de la relación entre los medicamentos y los problemas de salud del paciente.</li>
+                            <li><strong>Fase 4 — Fase de estudio:</strong> Identificación de posibles Resultados Negativos asociados a la Medicación (RNM).</li>
+                            <li><strong>Fase 5 — Fase de evaluación:</strong> Establecer si existen sospechas de RNM.</li>
+                            <li><strong>Fase 6 — Fase de intervención:</strong> Diseño del plan de actuación farmacéutico con el paciente y/o el médico.</li>
+                            <li><strong>Fase 7 — Resultado de la intervención:</strong> Evaluación de resultados.</li>
+                            <li><strong>Fase 8 — Nuevo estado de situación:</strong> Actualización continua.</li>
+                        </ul>
+                    </div>
+
+                    <div class="alert-box alert-info">
+                        <span class="alert-icon">ℹ️</span>
+                        <div>
+                            <strong>Indicación Farmacéutica en Chile</strong>
+                            <p>La Indicación Farmacéutica es la actividad del QF que consiste en la selección de un medicamento de venta directa (sin receta) para aliviar o resolver síntomas menores, o derivar al médico cuando la situación lo requiere. Es una herramienta legal en Chile y forma parte de la Atención Farmacéutica.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. ROL QF -->
+                <div class="lesson-section" id="rol-qf">
+                    <h2>2. <span>Rol del Químico Farmacéutico en Chile</span></h2>
+
+                    <div class="pharma-highlight">
+                        <div class="ph-icon">👨‍⚕️</div>
+                        <h3>El QF: Profesional Esencial en el Sistema de Salud</h3>
+                        <p>El Químico Farmacéutico (QF) es un profesional universitario de la salud cuya formación abarca la química, farmacología, farmacia clínica, análisis clínicos y gestión de la calidad. En Chile, su ejercicio está regulado por el Código Sanitario y diversas normativas del MINSAL.</p>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>📋 Funciones Legales del QF según Código Sanitario</h3>
+                        <ul>
+                            <li><strong>Director Técnico de Farmacia:</strong> Todo establecimiento farmacéutico debe contar con un QF como director técnico responsable. Responde legalmente ante el Servicio de Salud por el funcionamiento del establecimiento.</li>
+                            <li><strong>Dispensación de medicamentos:</strong> El QF supervisa o realiza directamente la dispensación, especialmente de medicamentos de mayor riesgo.</li>
+                            <li><strong>Elaboración magistral:</strong> Preparaciones farmacéuticas individualizadas para pacientes específicos, bajo prescripción médica.</li>
+                            <li><strong>Control de calidad:</strong> Responsable del control de calidad de los medicamentos en el establecimiento (fechas de vencimiento, conservación, integridad).</li>
+                            <li><strong>Farmacovigilancia:</strong> Notificación de reacciones adversas a medicamentos al ISP.</li>
+                            <li><strong>Información de medicamentos:</strong> Proveer información objetiva, basada en evidencia, sobre medicamentos a pacientes y otros profesionales de la salud.</li>
+                            <li><strong>Gestión de medicamentos controlados:</strong> Único autorizado para manejar el libro de control, la caja de seguridad y las recetas de estupefacientes y psicotrópicos.</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>🏥 Ámbitos de Ejercicio Profesional del QF en Chile</h3>
+                        <ul>
+                            <li><strong>Farmacia Comunitaria:</strong> Farmacias de barrio, cadenas (Cruz Verde, Salcobrand, FASA), farmacias municipales.</li>
+                            <li><strong>Farmacia Hospitalaria:</strong> Gestión del arsenal farmacológico hospitalario, preparación de mezclas IV, quimioterapia, nutrición parenteral.</li>
+                            <li><strong>Industria Farmacéutica:</strong> Control de calidad, investigación y desarrollo, registro de medicamentos, farmacovigilancia.</li>
+                            <li><strong>Análisis Clínicos (Bioquímica Clínica):</strong> Laboratorios de análisis clínicos, banco de sangre, microbiología.</li>
+                            <li><strong>Regulación y Salud Pública:</strong> ISP, MINSAL, Servicios de Salud, Cenabast.</li>
+                            <li><strong>Academia e Investigación:</strong> Universidades, centros de investigación.</li>
+                        </ul>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Establecimiento</th>
+                                <th>Rol del QF</th>
+                                <th>Normativa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Farmacia Comunitaria</td>
+                                <td>Director técnico, dispensación, AF</td>
+                                <td>Código Sanitario Art. 127-129</td>
+                            </tr>
+                            <tr>
+                                <td>Hospital Público/Privado</td>
+                                <td>Farmacéutico clínico, Unidad Farmacia</td>
+                                <td>D.S. 3/2010, Normas MINSAL</td>
+                            </tr>
+                            <tr>
+                                <td>Laboratorio Farmacéutico</td>
+                                <td>Control calidad, producción, registro</td>
+                                <td>D.S. 97/2010 (BPM)</td>
+                            </tr>
+                            <tr>
+                                <td>ISP</td>
+                                <td>Registro, fiscalización, farmacovigilancia</td>
+                                <td>Ley Orgánica ISP</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 3. RECETA MÉDICA -->
+                <div class="lesson-section" id="receta-medica">
+                    <h2>3. <span>Receta Médica: Tipos y Requisitos Legales</span></h2>
+                    <p>La receta médica es el documento legal mediante el cual un profesional de la salud habilitado prescribe medicamentos a un paciente. En Chile existen 4 tipos de receta, cada uno con requisitos y procedimientos específicos establecidos por el D.S. 3/2010.</p>
+
+                    <div class="info-block">
+                        <h3>📋 Requisitos Generales de Toda Receta Médica en Chile</h3>
+                        <ul>
+                            <li>Nombre completo y RUT del prescriptor.</li>
+                            <li>Número de registro o colegiatura en el prestador de salud.</li>
+                            <li>Nombre y dirección del establecimiento de salud o consulta.</li>
+                            <li>Fecha de emisión (día, mes, año).</li>
+                            <li>Nombre del paciente.</li>
+                            <li>Denominación Común Internacional (DCI) del principio activo (obligatorio desde Ley 20.724).</li>
+                            <li>Concentración, forma farmacéutica y cantidad a dispensar.</li>
+                            <li>Posología: dosis, frecuencia y duración del tratamiento.</li>
+                            <li>Firma y timbre del prescriptor.</li>
+                        </ul>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Tipo de Receta</th>
+                                <th>Color</th>
+                                <th>Retención</th>
+                                <th>Vigencia</th>
+                                <th>Uso típico</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Receta Simple</strong></td>
+                                <td>Blanca</td>
+                                <td>No se retiene</td>
+                                <td>30 días</td>
+                                <td>Medicamentos VBR (antihipertensivos, antidiabéticos, etc.)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Receta Retenida</strong></td>
+                                <td>Blanca</td>
+                                <td>Sí, se retiene</td>
+                                <td>30 días</td>
+                                <td>Antibióticos, corticoides sistémicos, VBRR</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Receta Cheque (Estupefacientes)</strong></td>
+                                <td>Amarilla / especial</td>
+                                <td>Sí, obligatoria</td>
+                                <td>5 días</td>
+                                <td>Morfina, Fentanil, Codeína pura, Metadona</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Receta Cheque (Psicotrópicos Lista I)</strong></td>
+                                <td>Verde / especial</td>
+                                <td>Sí, obligatoria</td>
+                                <td>30 días</td>
+                                <td>Clonazepam, Alprazolam, Zolpidem</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Receta Magistral</strong></td>
+                                <td>Blanca</td>
+                                <td>Según contenido</td>
+                                <td>Variable</td>
+                                <td>Preparaciones magistrales individualizadas</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="alert-box alert-warning">
+                        <span class="alert-icon">⚠️</span>
+                        <div>
+                            <strong>Validez y Caducidad de Recetas</strong>
+                            <p>Una receta médica en Chile es válida por 30 días desde su fecha de emisión (salvo recetas de estupefacientes: 5 días). Las recetas para tratamientos crónicos pueden extenderse hasta por 6 meses según la normativa vigente desde 2022, con indicación expresa del médico.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>🚫 Causas de Rechazo de una Receta en la Farmacia</h3>
+                        <ul>
+                            <li>Receta vencida (más de 30 días desde su emisión).</li>
+                            <li>Datos del prescriptor incompletos o ilegibles.</li>
+                            <li>Sin firma y/o timbre del médico.</li>
+                            <li>Enmendaduras o correcciones no autorizadas por el prescriptor.</li>
+                            <li>Uso de receta simple para medicamento que requiere receta especial.</li>
+                            <li>Prescriptor no habilitado para recetar (suspendido, inhabilitado).</li>
+                            <li>Cantidad prescrita superior al límite legal para controlados.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 4. DISPENSACIÓN -->
+                <div class="lesson-section" id="dispensacion">
+                    <h2>4. <span>Proceso de Dispensación Paso a Paso</span></h2>
+                    <p>La dispensación es el acto profesional farmacéutico mediante el cual, en respuesta a la demanda de un paciente o cuidador, el farmacéutico entrega uno o varios medicamentos, habitualmente como consecuencia de una prescripción médica. Implica la interpretación de la receta, la preparación del medicamento y la entrega acompañada de información.</p>
+
+                    <div class="steps-process">
+                        <div class="step-item">
+                            <div class="step-number">01</div>
+                            <div class="step-line"></div>
+                            <div class="step-body">
+                                <h4>Recepción y lectura de la receta</h4>
+                                <p>El QF o técnico recibe la receta y verifica su autenticidad, completitud y vigencia. Se corroboran los datos del prescriptor, la fecha, el nombre del paciente y que el tipo de receta corresponda al medicamento prescrito.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">02</div>
+                            <div class="step-line"></div>
+                            <div class="step-body">
+                                <h4>Interpretación farmacéutica</h4>
+                                <p>Análisis de la prescripción: identificación del principio activo (DCI), concentración, forma farmacéutica, dosis y duración del tratamiento. Se evalúa la idoneidad de la prescripción y se detectan posibles errores o interacciones.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">03</div>
+                            <div class="step-line"></div>
+                            <div class="step-body">
+                                <h4>Oferta del genérico (Ley 20.724)</h4>
+                                <p>Si el médico prescribió por DCI o existe un genérico bioequivalente, el QF está obligado a informar al paciente sobre la existencia de alternativas de menor precio. El paciente decide libremente.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">04</div>
+                            <div class="step-line"></div>
+                            <div class="step-body">
+                                <h4>Preparación o selección del medicamento</h4>
+                                <p>Se retira el medicamento del stock, verificando: nombre, concentración, forma farmacéutica, número de lote, fecha de vencimiento e integridad del envase. Para medicamentos magistrales, se procede a su elaboración.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">05</div>
+                            <div class="step-line"></div>
+                            <div class="step-body">
+                                <h4>Etiquetado (cuando corresponde)</h4>
+                                <p>En medicamentos reacondicionados, fraccionados o magistrales, se coloca una etiqueta con: nombre del paciente, nombre del medicamento, dosis, posología, fecha de elaboración, fecha de vencimiento y precauciones especiales.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">06</div>
+                            <div class="step-line"></div>
+                            <div class="step-body">
+                                <h4>Entrega e información al paciente</h4>
+                                <p>El QF entrega el medicamento e informa sobre: cómo tomar el medicamento correctamente, efectos adversos esperados y cuándo consultar al médico, interacciones con alimentos o medicamentos, condiciones de conservación, e importancia de completar el tratamiento.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">07</div>
+                            <div class="step-line"></div>
+                            <div class="step-body">
+                                <h4>Registro de la dispensación</h4>
+                                <p>Registro en el sistema informático del establecimiento, retención de la receta (cuando corresponde) y actualización del libro de control (para medicamentos controlados).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert-box alert-info">
+                        <span class="alert-icon">ℹ️</span>
+                        <div>
+                            <strong>Dispensación vs. Expendio</strong>
+                            <p>En Chile se distingue la <strong>dispensación</strong> (acto farmacéutico profesional con consejo farmacéutico, realizado o supervisado por QF) del mero <strong>expendio</strong> (entrega del medicamento sin consejo). La Ley 20.724 refuerza que la dispensación implica información al paciente como obligación legal del QF.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. CONTROLADOS -->
+                <div class="lesson-section" id="controlados">
+                    <h2>5. <span>Medicamentos Controlados: Estupefacientes y Psicotrópicos</span></h2>
+
+                    <div class="info-block">
+                        <h3>🔒 Procedimiento de Dispensación de Estupefacientes (D.S. 404/1984)</h3>
+                        <ul>
+                            <li>Verificar que la receta cheque es original, tiene fecha reciente (máximo 5 días) y está correctamente emitida.</li>
+                            <li>Corroborar la identidad del portador de la receta (cédula de identidad).</li>
+                            <li>El QF (y sólo el QF) realiza el registro en el <strong>Libro de Control de Estupefacientes</strong>: número correlativo, fecha, nombre del paciente, nombre del médico, nombre del medicamento, cantidad dispensada, saldo en stock.</li>
+                            <li>Firma del QF en el libro de control.</li>
+                            <li>Retener el triplicado de la receta cheque (o según instrucciones del servicio de salud).</li>
+                            <li>Envío mensual del informe de movimientos al Servicio de Salud regional.</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>🔒 Almacenamiento Seguro de Controlados</h3>
+                        <ul>
+                            <li><strong>Caja fuerte o armario de seguridad certificado:</strong> Los estupefacientes deben almacenarse en un contenedor metálico empotrado o fijo con llave de seguridad.</li>
+                            <li><strong>Acceso restringido:</strong> Solo el QF director técnico tiene acceso y custodia de la llave.</li>
+                            <li><strong>Stock físico vs. libros:</strong> El inventario físico debe cuadrar exactamente con el libro de control en todo momento. Una discrepancia es una infracción grave.</li>
+                            <li><strong>Separación:</strong> Los estupefacientes se almacenan separados de psicotrópicos, y ambos separados del resto del stock.</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>💊 Psicotrópicos más Comunes en la Práctica Farmacéutica Chilena</h3>
+                        <ul>
+                            <li><strong>Benzodiazepinas:</strong> Clonazepam (Lista I), Alprazolam (Lista I), Diazepam (Lista II), Lorazepam (Lista II), Bromazepam (Lista II).</li>
+                            <li><strong>Hipnóticos no benzodiazepínicos:</strong> Zolpidem (Lista II).</li>
+                            <li><strong>Estimulantes del SNC:</strong> Metilfenidato (Lista II) — TDAH en niños y adultos.</li>
+                            <li><strong>Ansiolíticos:</strong> Midazolam (Lista I), Flunitrazepam (Lista I).</li>
+                        </ul>
+                    </div>
+
+                    <div class="alert-box alert-danger">
+                        <span class="alert-icon">🚨</span>
+                        <div>
+                            <strong>Consecuencias de Irregularidades con Controlados</strong>
+                            <p>El desvío, robo, pérdida no declarada o dispensación irregular de estupefacientes debe reportarse de inmediato al Servicio de Salud regional y eventualmente a Carabineros. El encubrimiento por parte del QF puede constituir delito tipificado en la Ley 20.000. El QF puede enfrentar sanciones desde multas hasta la cancelación de su inscripción profesional, más penas privativas de libertad.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. PRM -->
+                <div class="lesson-section" id="prm">
+                    <h2>6. <span>Problemas Relacionados con Medicamentos (PRM)</span></h2>
+                    <p>Los Problemas Relacionados con Medicamentos (PRM) son aquellas situaciones que en el proceso de uso de los medicamentos causan o pueden causar la aparición de un resultado negativo asociado a la medicación (RNM).</p>
+
+                    <div class="info-block">
+                        <h3>📊 Clasificación de PRM (Consenso de Granada, 3ª Edición)</h3>
+                        <ul>
+                            <li><strong>PRM de Necesidad:</strong>
+                                <ul>
+                                    <li>Problema de salud no tratado: El paciente tiene un problema de salud que necesita tratamiento farmacológico y no lo recibe.</li>
+                                    <li>Efecto de medicamento innecesario: El paciente usa un medicamento que no necesita.</li>
+                                </ul>
+                            </li>
+                            <li><strong>PRM de Efectividad:</strong>
+                                <ul>
+                                    <li>Inefectividad no cuantitativa: El medicamento no es el más efectivo para el problema de salud.</li>
+                                    <li>Inefectividad cuantitativa: La dosis es insuficiente para producir el efecto deseado.</li>
+                                </ul>
+                            </li>
+                            <li><strong>PRM de Seguridad:</strong>
+                                <ul>
+                                    <li>Inseguridad no cuantitativa: El medicamento produce una reacción adversa no relacionada con la dosis.</li>
+                                    <li>Inseguridad cuantitativa: La dosis produce reacciones adversas relacionadas con la sobredosificación.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>🔍 Causas Frecuentes de PRM en Farmacia Comunitaria Chilena</h3>
+                        <ul>
+                            <li>Automedicación inadecuada.</li>
+                            <li>Incumplimiento del tratamiento (mala adherencia).</li>
+                            <li>Interacciones medicamento-medicamento no detectadas.</li>
+                            <li>Interacciones medicamento-alimento (ej.: warfarina con vitamina K).</li>
+                            <li>Duplicidad terapéutica (dos médicos prescriben fármacos del mismo grupo).</li>
+                            <li>Uso de medicamentos inadecuados en adultos mayores (Criterios de Beers).</li>
+                            <li>Errores de dosificación en pediatría.</li>
+                            <li>Almacenamiento incorrecto por parte del paciente.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 7. SEGUIMIENTO -->
+                <div class="lesson-section" id="seguimiento">
+                    <h2>7. <span>Seguimiento Farmacoterapéutico</span></h2>
+                    <p>El Seguimiento Farmacoterapéutico (SFT) es el servicio profesional en el que el farmacéutico se responsabiliza de las necesidades del paciente relacionadas con los medicamentos mediante la detección, prevención y resolución de PRM, de forma continuada, sistematizada y documentada.</p>
+
+                    <div class="info-block">
+                        <h3>🎯 Pacientes Prioritarios para SFT en Chile</h3>
+                        <ul>
+                            <li>Pacientes polimedicados (5 o más medicamentos crónicos).</li>
+                            <li>Adultos mayores (>65 años) con patologías múltiples.</li>
+                            <li>Pacientes con patologías crónicas: HTA, DM2, asma, EPOC, epilepsia.</li>
+                            <li>Pacientes con alto riesgo de incumplimiento terapéutico.</li>
+                            <li>Pacientes en tratamiento con medicamentos de estrecho margen terapéutico (warfarina, digoxina, litio, fenitoína).</li>
+                            <li>Pacientes con insuficiencia renal o hepática (ajuste de dosis).</li>
+                            <li>Embarazadas y madres lactantes.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pharma-highlight">
+                        <div class="ph-icon">🎓</div>
+                        <h3>El QF como Pilar de la Salud Pública Chilena</h3>
+                        <p>Los estudios demuestran que la intervención del Químico Farmacéutico en el seguimiento farmacoterapéutico reduce las hospitalizaciones relacionadas con medicamentos hasta un 30%, mejora la adherencia terapéutica y disminuye los costos del sistema sanitario. En Chile, el MINSAL ha avanzado en la implementación de servicios de Atención Farmacéutica en la Atención Primaria de Salud (APS).</p>
+                    </div>
+                </div>
+
+                <div class="lesson-nav">
+                    <a href="legislacion.html">← Unidad 1: Legislación</a>
+                    <a href="regulacion-isp.html">Siguiente: Regulación ISP →</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 PharmaLab Chile — Farmacia: Dispensación y Atención Farmacéutica</p>
+                <p class="footer-disclaimer">Contenido educacional actualizado según normativas ISP y MINSAL vigentes. No reemplaza asesoría profesional.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

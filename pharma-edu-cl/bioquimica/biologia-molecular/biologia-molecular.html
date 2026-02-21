@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biología Molecular — PharmaLab Chile | Unidad 5</title>
+    <meta name="description" content="Replicación del ADN, transcripción, traducción, regulación génica, epigenética, mutaciones, CRISPR-Cas9 y ARNm aplicado a vacunas modernas. Bioquímica universitaria Chile.">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../bioquimica.css">
+    <link rel="stylesheet" href="biologia-molecular.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="module-bioquimica">
+
+<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+<nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+        <a href="../../index.html" class="nav-logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="../../quimica/index.html"              class="nav-link" data-module="quimica">⚗️ Química</a>
+            <a href="../../farmacia/index.html"             class="nav-link" data-module="farmacia">💊 Farmacia</a>
+            <a href="../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf">🧬 Q. Farmacéutica</a>
+            <a href="../../biotecnologia/index.html"        class="nav-link" data-module="biotech">🔬 Biotecnología</a>
+            <a href="../../virologia/index.html"            class="nav-link" data-module="virologia">🦠 Virología</a>
+            <a href="../index.html"                         class="nav-link active" data-module="bioquimica">🧪 Bioquímica</a>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="bm-hero">
+    <div class="bm-hero-bg">
+        <div class="bm-hero-grid"></div>
+        <div class="bm-orb bm-orb-1"></div>
+        <div class="bm-orb bm-orb-2"></div>
+        <div class="bm-orb bm-orb-3"></div>
+        <div class="bm-orb bm-orb-4"></div>
+    </div>
+    <div class="bm-hero-inner">
+        <div class="bm-wrap">
+            <div>
+                <div class="bm-crumb">
+                    <a href="../../index.html" style="color:inherit;text-decoration:none;">Inicio</a><span>/</span>
+                    <a href="../index.html"    style="color:inherit;text-decoration:none;">Bioquímica</a><span>/</span>
+                    <span style="color:#fff">Biología Molecular</span>
+                </div>
+                <div class="bm-hero-tag">Unidad 5 · Bioquímica</div>
+                <h1 class="bm-hero-title">Biología <span class="bm-gr">Molecular</span></h1>
+                <p class="bm-hero-desc">El lenguaje de la vida descifrado: desde la doble hélice de ADN y el dogma central de la biología hasta CRISPR-Cas9 que reescribe el genoma, los ARNm que revolucionaron las vacunas y la epigenética que explica cómo el ambiente moldea la expresión génica sin cambiar el código.</p>
+                <div class="bm-hero-stats">
+                    <div class="bm-stat">
+                        <span class="bm-stat-num" data-bm-count="3.2" data-bm-suf=" Gpb" data-bm-dec="1">3.2</span>
+                        <span class="bm-stat-label">pares de bases en el genoma humano haploide (GRCh38)</span>
+                    </div>
+                    <div class="bm-stat">
+                        <span class="bm-stat-num" data-bm-count="20000" data-bm-suf="">20 000</span>
+                        <span class="bm-stat-label">genes codificantes de proteínas en el genoma humano</span>
+                    </div>
+                    <div class="bm-stat">
+                        <span class="bm-stat-num" data-bm-count="95" data-bm-suf="%">95%</span>
+                        <span class="bm-stat-label">del ARNm de vacunas COVID-19 protegido por modificación m¹Ψ</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bm-hero-vis">
+                <canvas id="bm-hero-canvas" title="Doble hélice de ADN rotando en 3D — bases nitrogenadas y estructura B-DNA"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ DATOS CLAVE ═══════════════════════ -->
+<section class="bm-section">
+    <div class="bm-wrap">
+        <div class="bm-datos" data-bm-reveal>
+            <div class="bm-dato">
+                <span class="bm-dato-n" data-bm-count="1000" data-bm-suf=" pb/s">1000</span>
+                <span class="bm-dato-l">velocidad de replicación del ADN en humanos (ADN pol δ) — 50× más lenta que en E. coli</span>
+            </div>
+            <div class="bm-dato">
+                <span class="bm-dato-n" data-bm-count="30000" data-bm-suf=" nt">30 000</span>
+                <span class="bm-dato-l">nucleótidos del ARNm de la espícula SARS-CoV-2 codificados en vacuna Pfizer-BioNTech</span>
+            </div>
+            <div class="bm-dato">
+                <span class="bm-dato-n" data-bm-count="10" data-bm-suf="⁻⁹ M">10⁻⁹</span>
+                <span class="bm-dato-l">concentración mínima de Cas9-sgRNA para edición génica eficiente in vitro</span>
+            </div>
+            <div class="bm-dato">
+                <span class="bm-dato-n" data-bm-count="27" data-bm-suf=" CpG">27 M</span>
+                <span class="bm-dato-l">sitios CpG metilables en el genoma humano — base de la memoria epigenética</span>
+            </div>
+        </div>
+
+        <!-- ═══ SECTION HEADER ═══ -->
+        <div class="bm-section-hd" data-bm-reveal>
+            <div class="bm-sec-tag">🧬 Biología Molecular</div>
+            <h2 class="bm-sec-title">Los Cuatro Pilares del <span class="bm-hl">Lenguaje Genético</span></h2>
+            <p class="bm-sec-sub">Del ADN al ARNm, de la epigenética a la edición génica con CRISPR: explora los fundamentos moleculares de la herencia, la expresión génica y las biotecnologías que están transformando la medicina del siglo XXI.</p>
+        </div>
+
+        <!-- ═══ TABS NAV ═══ -->
+        <div class="bm-tabs-nav">
+            <button class="bm-tab-btn active">
+                <div class="bm-tab-icon">🧬</div>
+                <div class="bm-tab-num">Tema 01</div>
+                <div class="bm-tab-name">ADN / ARN</div>
+                <div class="bm-tab-hint">Estructura B-DNA, replicación semiconservadora, transcripción, traducción y dogma central</div>
+                <div class="bm-tab-arrow">→</div>
+            </button>
+            <button class="bm-tab-btn">
+                <div class="bm-tab-icon">✂️</div>
+                <div class="bm-tab-num">Tema 02</div>
+                <div class="bm-tab-name">CRISPR-Cas9</div>
+                <div class="bm-tab-hint">Mecanismo de corte, diseño de sgRNA, reparación HDR/NHEJ y aplicaciones terapéuticas</div>
+                <div class="bm-tab-arrow">→</div>
+            </button>
+            <button class="bm-tab-btn">
+                <div class="bm-tab-icon">🎭</div>
+                <div class="bm-tab-num">Tema 03</div>
+                <div class="bm-tab-name">Epigenética</div>
+                <div class="bm-tab-hint">Metilación del ADN, modificaciones de histonas, cromatina, imprinting e impacto en enfermedad</div>
+                <div class="bm-tab-arrow">→</div>
+            </button>
+            <button class="bm-tab-btn">
+                <div class="bm-tab-icon">💉</div>
+                <div class="bm-tab-num">Tema 04</div>
+                <div class="bm-tab-name">ARNm Terapéutico</div>
+                <div class="bm-tab-hint">Vacunas de ARNm COVID-19, nanopartículas lipídicas, modificaciones m¹Ψ y futuro oncológico</div>
+                <div class="bm-tab-arrow">→</div>
+            </button>
+        </div>
+
+        <!-- ═══════════════ PANELS ═══════════════ -->
+        <div class="bm-panels-wrap">
+
+            <!-- ══ PANEL 1: ADN / ARN ══ -->
+            <div class="bm-panel active">
+                <div class="bm-3d" data-bm-reveal>
+                    <canvas id="bm-canvas-adn" title="Doble hélice B-DNA 3D — pares de bases y surcos mayor/menor interactivos"></canvas>
+                    <div class="bm-3d-lbl">⟳ Arrastra para rotar — Doble Hélice B-DNA · Pares de Bases Watson-Crick · 10.5 pb/vuelta</div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">Estructura del ADN y el Dogma Central de la Biología Molecular</div>
+                    <div class="bm-mec">
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🔬</div>
+                            <h4>Estructura B-DNA (Watson y Crick, 1953)</h4>
+                            <p>La doble hélice de ADN en forma B (predominante en condiciones fisiológicas) tiene <strong>10.5 pares de bases por vuelta</strong>, con un paso de hélice de 3.4 nm y un diámetro de 2.0 nm. Las bases nitrogenadas forman pares específicos por puentes de hidrógeno (regla de Chargaff): <strong>Adenina-Timina</strong> (2 PH) y <strong>Guanina-Citosina</strong> (3 PH). Las cadenas son antiparalelas (5'→3' y 3'→5'). El surco mayor (2.2 nm) permite el reconocimiento específico por proteínas reguladoras; el surco menor (1.2 nm) es reconocido por antibióticos como netropsin. El apilamiento de bases aromáticas (π-stacking) contribuye más a la estabilidad que los PH (ΔG apilamiento ≈ −40 kJ/mol por par).</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🔄</div>
+                            <h4>Replicación Semiconservadora del ADN</h4>
+                            <p>Demostrada por Meselson-Stahl (1958): cada hebra parental sirve como molde para una hija. En humanos ocurre en ~30.000 orígenes de replicación (ARS) simultáneos. El replisoma en eucariotas incluye: <strong>Helicasa CMG</strong> (MCM2-7 + Cdc45 + GINS, desenrolla a ~700 rpm) → <strong>ADN Pol α</strong> (cebador de ARN + primeros nucleótidos) → <strong>ADN Pol δ/ε</strong> (síntesis del rezagado y adelantado, kcat ~1.000 nt/s, error: 1/10⁷) → <strong>PCNA</strong> (abrazadera deslizante, procestividad) → <strong>RNasa H</strong> + <strong>FEN1</strong> (eliminan cebadores) → <strong>Ligasa I</strong> (une fragmentos de Okazaki). La fidelidad final es 1 error/10¹⁰ con proofreading 3'→5' de pol δ.</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">📡</div>
+                            <h4>Transcripción: ADN → ARNm</h4>
+                            <p>La <strong>ARN Polimerasa II</strong> (RNAP II, 12 subunidades, 500 kDa) transcribe genes codificantes de proteínas. Proceso: (1) <strong>Iniciación</strong>: ensamble del complejo de preiniciación en la caja TATA (TFIID, TFIIA, TFIIB, TFIIF, TFIIE, TFIIH) → apertura del promotor por TFIIH (helicasa/ATPasa). (2) <strong>Elongación</strong>: RNAP II fosforilada en Ser5 del CTD (cola carboxilo-terminal, 52 repeticiones heptapeptídicas YSPTSPS) → velocidad ~20-40 nt/s. (3) <strong>Maduración del pre-ARNm</strong>: cap 7-metilguanosina en 5' (protección y reconocimiento ribosomal), splicing (espliceosoma 5 snRNPs, elimina intrones) y poliadenilación 3' (150-250 nt poli-A, estabilidad).</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">⚙️</div>
+                            <h4>Traducción: ARNm → Proteína</h4>
+                            <p>El ribosoma 80S (60S + 40S) traduce el código genético: 64 codones → 20 aminoácidos + 3 codones de stop. Fases: (1) <strong>Iniciación</strong>: reconocimiento del cap 5' por eIF4E → reclutamiento de eIF4G/4A → escaneo hasta AUG → unión de subunidad 60S. (2) <strong>Elongación</strong>: EF-Tu lleva aa-ARNt a sitio A → descodificación (reconocimiento codon-anticodón) → peptidil-transferasa (ARNr 23S/28S, ribozima) → translocación (EF-G/EF2, GTP) → velocidad: 4-20 aa/s en eucariotas. (3) <strong>Terminación</strong>: codón stop → factor de liberación eRF1/eRF3 → hidrólisis peptidil-ARNt → disociación. La fidelidad: 1 error/10³-10⁴ incorporaciones.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">Tipos de ARN y Sus Funciones Celulares</div>
+                    <div class="bm-tbl-wrap">
+                        <table class="bm-tbl">
+                            <thead>
+                                <tr><th>Tipo de ARN</th><th>Tamaño</th><th>Función Principal</th><th>Localización</th><th>Relevancia Clínica</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>ARNm (mensajero)</td><td>0.5–12 kb</td><td>Código para síntesis proteica; lleva la información del ADN al ribosoma</td><td>Núcleo → citoplasma</td><td>Base de vacunas ARNm (Pfizer BNT162b2, Moderna mRNA-1273); terapia de reemplazo proteico</td></tr>
+                                <tr><td>ARNr (ribosomal)</td><td>120 nt – 5.8 kb</td><td>Componente estructural y catalítico del ribosoma (ARNr 28S = ribozima peptidil-transferasa)</td><td>Nucléolo → ribosomas</td><td>Diana de antibióticos: tetraciclinas (30S), eritromicina (50S), fusidic acid (EF-G); mutaciones en ARNr → resistencia</td></tr>
+                                <tr><td>ARNt (transferencia)</td><td>73–93 nt</td><td>Adaptador anticodon-aminoácido; cargado por aminoacil-ARNt sintetasas (aaRS)</td><td>Citoplasma</td><td>Mutaciones ARNt mitocondriales: MELAS (m.3243A>G ARNt-Leu), MERRF (m.8344A>G ARNt-Lys); diana de mupirocina (isoleucil-aaRS bacteriana)</td></tr>
+                                <tr><td>ARNsi (small interfering)</td><td>21–23 nt</td><td>Silenciamiento post-transcripcional de ARNm complementario (RISC + Ago2)</td><td>Citoplasma</td><td>Patisiran (FDA 2018, ARNsi vs TTR para polineuropatía hereditaria); inclisiran (vs PCSK9, 2× año)</td></tr>
+                                <tr><td>microARN</td><td>~22 nt</td><td>Regulación post-transcripcional; complementariedad parcial con 3'UTR de ARNm diana → represión</td><td>Núcleo → citoplasma</td><td>miR-21 sobreexpresado en múltiples cánceres; miR-122 regula replicación HCV (objetivo de miravirsen)</td></tr>
+                                <tr><td>ARNlnc (largo no codificante)</td><td>&gt;200 nt</td><td>Regulación epigenética, imprinting, inactivación X (XIST), organización cromatina (HOTAIR)</td><td>Núcleo/citoplasma</td><td>HOTAIR sobreexpresado en cáncer de mama metastásico; MALAT1 en metástasis pulmonar; ANRIL en aterosclerosis</td></tr>
+                                <tr><td>ARNsn/sno</td><td>60–300 nt</td><td>ARNsn: splicing (snRNPs U1-U6 del espliceosoma); ARNsno: modificaciones del ARNr (metilación, pseudouridilación)</td><td>Núcleo</td><td>Spinal muscular atrophy (SMA): splicing aberrante de SMN2; tratamiento: nusinersen (ASO que corrige splicing), risdiplam</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">Mutaciones del ADN — Tipos, Mecanismos y Consecuencias</div>
+                    <div class="bm-proc">
+                        <div class="bm-step">
+                            <div class="bm-step-n">SNV</div>
+                            <div class="bm-step-t">Variante de Nucleótido Único</div>
+                            <div class="bm-step-d">Sustitución de una sola base. Puede ser: sinónima (mismo aminoácido), de sentido erróneo (aminoácido distinto) o sin sentido (codón stop). Ejemplo: HbS — Glu6Val en β-globina (adenina→timina en GAG→GTG) causa drepanocitosis. Prevalencia HbS en Chile: ~0.1%.</div>
+                        </div>
+                        <div class="bm-step">
+                            <div class="bm-step-n">INDEL</div>
+                            <div class="bm-step-t">Inserción / Deleción</div>
+                            <div class="bm-step-d">Inserción o deleción de 1–50 pb. Si no es múltiplo de 3 → cambio en el marco de lectura → proteína truncada. Ejemplo: ΔF508 en CFTR (deleción de 3 pb → pérdida de Phe508) → fibrosis quística. Tratado con moduladores CFTR (ivacaftor + elexacaftor + tezacaftor, Trikafta, FDA 2019).</div>
+                        </div>
+                        <div class="bm-step">
+                            <div class="bm-step-n">CNV</div>
+                            <div class="bm-step-t">Variación Número de Copias</div>
+                            <div class="bm-step-d">Amplificaciones o deleciones de grandes segmentos. Amplificación de HER2 (ERBB2) en 15-20% cánceres de mama → sobreexpresión del receptor → diana de trastuzumab (Herceptin). Deleción 17p13 (TP53) → pérdida del supresor tumoral → peor pronóstico en múltiples neoplasias.</div>
+                        </div>
+                        <div class="bm-step">
+                            <div class="bm-step-n">SV</div>
+                            <div class="bm-step-t">Variante Estructural</div>
+                            <div class="bm-step-d">Traslocaciones, inversiones, duplicaciones de segmentos >1 Mb. Ejemplo paradigmático: traslocación t(9;22)(q34;q11) → cromosoma Filadelfia → gen de fusión BCR-ABL1 (tirosina quinasa constitutivamente activa) → LMC. Diana de imatinib (Gleevec, primer inhibidor tirosina quinasa racional, 2001).</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bm-norma" data-bm-reveal>
+                    <div class="bm-norma-ico">🇨🇱</div>
+                    <div>
+                        <h4>Genómica en Chile — FONDECYT, CNAG y Secuenciación Clínica</h4>
+                        <p>Chile ha avanzado significativamente en genómica clínica y de poblaciones. El <strong>Proyecto Genoma Chileno</strong> (Dr. Ricardo Verdugo, ICBM U. de Chile, FONDECYT 1171006) caracterizó la variación genética de 3.302 chilenos mestizos, revelando proporciones de ancestría: ~60% europea, ~35% amerindia, ~5% africana — con gradiente norte-sur. El <strong>Centro de Genética y Genómica de la Clínica Las Condes</strong> realiza secuenciación de exoma clínico (WES) y de genoma completo (WGS) para diagnóstico de enfermedades raras (paneles de 4.500+ genes, con turnaround de 4-6 semanas). El <strong>MINSAL</strong> incorporó el tamizaje neonatal ampliado por MS/MS en 2019 (50+ enfermedades metabólicas). El <strong>PANDA</strong> (Programa Nacional Drogas Antineoplásicas) incorpora biomarcadores moleculares para prescripción de oncología de precisión: EGFR/ALK en NSCLC, HER2 en mama/gástrico, MSI-H para pembrolizumab, BRCA1/2 para olaparib. Chile es miembro del consorcio LAAMP (Latin American Alliance for Molecular Pathology) para harmonización de secuenciación diagnóstica.</p>
+                    </div>
+                </div>
+            </div><!-- /panel adn/arn -->
+
+            <!-- ══ PANEL 2: CRISPR-Cas9 ══ -->
+            <div class="bm-panel">
+                <div class="bm-3d" data-bm-reveal>
+                    <canvas id="bm-canvas-crispr" title="CRISPR-Cas9 cortando ADN — complejo RNP con sgRNA en 3D"></canvas>
+                    <div class="bm-3d-lbl">⟳ Arrastra para rotar — CRISPR-Cas9 · Corte DSB · sgRNA guiando Nucleasa al PAM</div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">CRISPR-Cas9: La Tijera Molecular del Genoma</div>
+                    <div class="bm-mec">
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🔍</div>
+                            <h4>Origen Biológico y Descubrimiento</h4>
+                            <p>CRISPR (Clustered Regularly Interspaced Short Palindromic Repeats) es un sistema inmune adaptativo de bacterias y arqueas, descubierto funcionalmente por Barrangou et al. (2007) en <em>Streptococcus thermophilus</em>. El sistema tipo II utiliza una sola proteína efectora, Cas9, guiada por un ARN guía (sgRNA = crRNA fusionado con tracrRNA, simplificado por Jinek et al. 2012). <strong>Jennifer Doudna y Emmanuelle Charpentier</strong> recibieron el Premio Nobel de Química 2020 por su aplicación como herramienta de edición. Cas9 de <em>S. pyogenes</em> (SpCas9, 1.368 aa, 160 kDa) es la variante más usada en investigación y terapia.</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🎯</div>
+                            <h4>Mecanismo Molecular Detallado</h4>
+                            <p>El complejo Cas9-sgRNA escanea el ADN buscando secuencias PAM (5'-NGG-3' para SpCas9; frecuencia: ~1 por cada 8 pb en genomas AT-ricos). Al encontrar el PAM: (1) <strong>Separación de hebras</strong>: la región spacer del sgRNA (20 nt) hibrida con la hebra complementaria (hebra sin PAM) → formación del R-loop. (2) <strong>Corte</strong>: el dominio RuvC corta la hebra no complementaria; el dominio HNH corta la hebra complementaria → rotura de doble cadena (DSB) a 3 pb del PAM. (3) <strong>Reparación</strong>: la célula repara el DSB por NHEJ (unión no homóloga de extremos → insertiones/deleciones → knockout) o HDR (recombinación homóloga dirigida + molde donante → inserción precisa → knock-in).</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🛠️</div>
+                            <h4>Variantes y Herramientas Derivadas</h4>
+                            <p>La ingeniería de Cas9 ha generado herramientas poderosas: <strong>dCas9</strong> (Cas9 catalíticamente muerto, sin corte): fusionado con activadores (VP64, p65, Rta → CRISPRa), represores (KRAB → CRISPRi) o epigenéticos (DNMT3A, TET1, HDAC). <strong>Cas9 nickase</strong> (D10A o H840A): solo corta una hebra → menor off-target. <strong>Base editing</strong> (David Liu lab, 2016): CBE (citosina→uracilo→timina, sin DSB) y ABE (adenina→inosina→guanina): corrección puntual de SNV patogénicos. <strong>Prime editing</strong> (2019): Cas9 nickase + RT fusionada + pegARN → inserción/sustitución/deleción precisa sin DSB. <strong>Cas12a (Cpf1)}</strong>: reconoce PAM 5'-TTTN-3', corte escalonado, activa en AT-rich. <strong>CasRx (Cas13d)</strong>: corta ARN (terapia para ARNm de transcripciones patológicas).</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">💊</div>
+                            <h4>Aplicaciones Terapéuticas Aprobadas y en Ensayo</h4>
+                            <p><strong>Casgevy (exagamglogene autotemcel, exa-cel)</strong>: primer terapia CRISPR aprobada por FDA (diciembre 2023) y EMA (2024) para hemoglobinopatías (anemia falciforme y β-talasemia dependiente de transfusiones). Mecanismo: edición ex vivo de células madre hematopoyéticas → knockout del gen BCL11A (represor de HbF) → reactivación de hemoglobina fetal (HbF) → compensación del déficit de HbA. En ensayo: <strong>NTLA-2001</strong> (Intellia, in vivo, hígado) para transtiretinemia hereditaria; <strong>CTX001</strong> análogo para LDL elevado; CRISPR para HIV (escisión del provirus integrado); edición de linfocitos CAR-T mejorados (CRISPR knockout de PD-1, TCR alogénico).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">Comparación de Herramientas de Edición Génica</div>
+                    <div class="bm-tbl-wrap">
+                        <table class="bm-tbl">
+                            <thead>
+                                <tr><th>Herramienta</th><th>Mecanismo</th><th>Precisión</th><th>Off-target</th><th>Tamaño / Entrega</th><th>Estado Clínico</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>CRISPR-SpCas9</td><td>DSB → NHEJ/HDR</td><td><span class="bm-tag bm-t-go">Moderada</span></td><td>~0.1–5%</td><td>160 kDa / LNP, AAV, RNP</td><td><span class="bm-tag bm-t-g">FDA Aprobado (2023)</span> Casgevy (exa-cel)</td></tr>
+                                <tr><td>Base editing (CBE/ABE)</td><td>Desaminación sin DSB</td><td><span class="bm-tag bm-t-g">Alta</span></td><td>&lt;0.1%</td><td>200 kDa / mARN + LNP</td><td><span class="bm-tag bm-t-tl">Ensayo Fase I/II</span> BEAM-101 (HbF reactivación)</td></tr>
+                                <tr><td>Prime editing</td><td>Nick + retrotranscripción</td><td><span class="bm-tag bm-t-g">Muy alta</span></td><td>&lt;0.01%</td><td>230 kDa / LNP</td><td><span class="bm-tag bm-t-c">Preclínico avanzado</span></td></tr>
+                                <tr><td>TALENs</td><td>DSB específico</td><td><span class="bm-tag bm-t-go">Moderada</span></td><td>Bajo</td><td>Proteínas grandes / electroporación</td><td><span class="bm-tag bm-t-g">Aprobado</span> Tecartus-like (TALEN CAR-T)</td></tr>
+                                <tr><td>ZFN</td><td>DSB con dedos de zinc</td><td><span class="bm-tag bm-t-go">Moderada</span></td><td>Bajo-mod.</td><td>Proteínas / retrovirus</td><td><span class="bm-tag bm-t-g">Aprobado</span> SB-728-T (ZFN anti-CCR5, HIV)</td></tr>
+                                <tr><td>CRISPRi/a (dCas9)</td><td>Regulación sin corte</td><td><span class="bm-tag bm-t-g">Alta</span></td><td>Mínimo</td><td>180 kDa / lentivirus, LNP</td><td><span class="bm-tag bm-t-c">Investigación</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bm-norma" data-bm-reveal>
+                    <div class="bm-norma-ico">🔬</div>
+                    <div>
+                        <h4>CRISPR en Chile — Regulación, Investigación y Perspectivas Éticas</h4>
+                        <p>En Chile, la investigación con CRISPR está regulada por el <strong>Decreto Supremo N°170 del MINSAL</strong> (modificado 2019) y la <strong>Ley 20.120</strong> sobre investigación científica en seres humanos — que prohíbe explícitamente la modificación de línea germinal en humanos (embriones, gametos). El <strong>ISP (Instituto de Salud Pública)</strong> certifica laboratorios de diagnóstico molecular que usan CRISPR como herramienta diagnóstica (SHERLOCK, DETECTR — plataformas de diagnóstico basadas en Cas12a/Cas13). Investigación activa: el laboratorio de Biología Molecular de la <strong>Universidad de Concepción</strong> (Dr. Claudio Villagra) trabaja en aplicaciones de CRISPR-Cas9 para corrección de mutaciones en células madre derivadas de pacientes chilenos con hemoglobinopatías (frecuencia en comunidad boliviana en Arica). La <strong>U. de Chile</strong> (Programa de Genética Humana, ICBM) desarrolla herramientas de CRISPR para modelado de variantes de BRCA1/BRCA2 identificadas en pacientes chilenas con cáncer de mama. El debate ético nacional sobre edición de embriones humanos fue impulsado por el caso <em>He Jiankui</em> (2018), llevando a la Comisión Nacional de Bioética a emitir pronunciamiento sobre límites aceptables de la edición génica somática vs germinal.</p>
+                    </div>
+                </div>
+            </div><!-- /panel crispr -->
+
+            <!-- ══ PANEL 3: EPIGENÉTICA ══ -->
+            <div class="bm-panel">
+                <div class="bm-3d" data-bm-reveal>
+                    <canvas id="bm-canvas-epigenetica" title="Nucleosoma y cromatina 3D — histonas H2A, H2B, H3, H4 con modificaciones"></canvas>
+                    <div class="bm-3d-lbl">⟳ Arrastra para rotar — Nucleosoma · Octámero de Histonas · Modificaciones Epigenéticas</div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">Epigenética: La Capa de Regulación Sobre el Genoma</div>
+                    <div class="bm-mec">
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🎭</div>
+                            <h4>Metilación del ADN — Silenciamiento Estable</h4>
+                            <p>La metilación del ADN ocurre principalmente en citosinas en contexto <strong>CpG</strong> (5-metilcitosina, 5mC) en mamíferos. Las <strong>ADN metiltransferasas (DNMT)</strong>: DNMT3A y DNMT3B (metilación de novo, durante desarrollo); DNMT1 (metilación de mantenimiento, copia el patrón en la replicación, asociada al replisoma). La 5mC se oxida secuencialmente por las <strong>dioxigenasas TET1/2/3</strong> → 5-hidroximetilcitosina (5hmC, "sexta base") → 5-formilcitosina (5fC) → 5-carboxilcitosina (5caC) → desmetilación activa. Las islas CpG (promotores de genes housekeeping) normalmente no metiladas; su hipermetilación en cáncer silencia genes supresores tumorales (BRCA1, MLH1, CDH1). ~5% de citosinas en genoma humano están metiladas.</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🔧</div>
+                            <h4>Modificaciones de Histonas — El Código de Histonas</h4>
+                            <p>Las 4 histonas del nuclesoma (H2A, H2B, H3, H4) tienen colas N-terminales no estructuradas con residuos Lys, Arg, Ser que son modificados covalentemente: <strong>Acetilación</strong> (HAT: p300/CBP, PCAF → elimina carga+, relaja cromatina → activación; HDAC remueve → represión). <strong>Metilación</strong> (HMT: EZH2→H3K27me3=represión, SETDB1→H3K9me3=heterocromatina; KDM/LSD1 demetilasas). <strong>Fosforilación</strong> (H3S10ph durante mitosis; γH2AX en daño al ADN, marcador de DSB). <strong>Ubiquitinación</strong> (H2AK119ub1 → Polycomb; H2BK120ub1 → activación). <strong>Sumoilación, PARilación</strong> (en respuesta a daño). El "código de histonas" (Strahl & Allis, 2000): combinaciones específicas de modificaciones crean estados cromatínicos que reclutan proteínas efectoras ("lectores").</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">📚</div>
+                            <h4>Cromatina, Imprinting e Inactivación del X</h4>
+                            <p>La cromatina existe en dos estados: <strong>eucromatina</strong> (abierta, transcripcionalmente activa, H3K4me3, H3K27ac, H3K36me3) y <strong>heterocromatina</strong> (compacta, silenciada; H3K9me3, H3K27me3, HP1). El <strong>imprinting genómico</strong> es una forma de epigenética que silencia alelos específicos según el progenitor de origen: <em>IGF2</em> (activo en alelo paterno), <em>H19</em> y <em>CDKN1C</em> (alelo materno). Defectos: Síndrome Prader-Willi (15q11.2 paterno silenciado, alelo materno SNRPN no funcional) y Angelman (UBE3A materno silenciado). <strong>Inactivación del X</strong>: ARNlnc XIST recubre el cromosoma X inactivo → reclutamiento de PRC2 (H3K27me3) + DNMT3A → silenciamiento global; escapan ~15% de genes. El cuerpo de Barr es el X inactivo compactado en heterocromatina.</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">💊</div>
+                            <h4>Fármacos Epigenéticos — Epidrogas</h4>
+                            <p>La reversibilidad de las marcas epigenéticas las hace dianas farmacológicas ideales. <strong>Inhibidores de HDAC</strong>: vorinostat (SAHA, FDA 2006, linfoma cutáneo T), romidepsina (depsipéptido, HDAC clase I), panobinostat (mieloma múltiple refractario). <strong>Inhibidores de DNMT</strong>: 5-azacitidina (azacitidina, Vidaza) y decitabina → incorporación en ADN → degradación de DNMT1 → desmetilación global → reactivación de genes supresores; indicados en SMD y AML. <strong>Inhibidores de BET</strong>: JQ1 (experimental), OTX015 → bloquean lectores de acetilación BRD2/3/4 → inhiben MYC; en ensayo clínico en leucemia y mieloma. <strong>Inhibidores de EZH2</strong>: tazemetostat (FDA 2020) para linfoma folicular EZH2-mutado y sarcoma epitelioide. <strong>IDH1/IDH2 inhibidores</strong>: acción indirecta sobre TET (ver Krebs, Unidad 4).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">Epigenética del Cáncer — Marcadores y Dianas Terapéuticas</div>
+                    <div class="bm-tbl-wrap">
+                        <table class="bm-tbl">
+                            <thead>
+                                <tr><th>Alteración Epigenética</th><th>Gen / Locus</th><th>Tipo de Cáncer</th><th>Consecuencia</th><th>Fármaco / Estado</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Hipermetilación isla CpG promotor</td><td>BRCA1</td><td>Cáncer de mama esporádico (~15%)</td><td>Silenciamiento; déficit reparación HR</td><td>Inhibidores PARP (olaparib) para tumores BRCA1-silenciados (BRCAness)</td></tr>
+                                <tr><td>Hipermetilación promotor</td><td>MLH1</td><td>Cáncer colorrectal MSI-H esporádico (~15%)</td><td>Déficit de MMR → inestabilidad microsatélites → hypermutador</td><td>Pembrolizumab (anti-PD-1) aprobado en MSI-H; activado por hipermetilación de MLH1</td></tr>
+                                <tr><td>Mutación ganancia función</td><td>EZH2 (Y641)</td><td>Linfoma folicular y DLBCL (~20%)</td><td>H3K27me3 excesivo → silenciamiento de genes supresores</td><td><span class="bm-tag bm-t-g">Aprobado</span> Tazemetostat (FDA 2020)</td></tr>
+                                <tr><td>Pérdida función</td><td>ARID1A (SWI/SNF)</td><td>Carcinoma de células claras de ovario (~50%)</td><td>Remodelación cromatina deficiente → desregulación transcripcional</td><td>Inhibidores EZH2 (dependencia sintética letal con ARID1A); ensayo NCT02860130</td></tr>
+                                <tr><td>Hipometilación global</td><td>Genoma completo</td><td>Múltiples cánceres</td><td>Inestabilidad genómica; activación de retrotransposones LINE-1</td><td>Biomarcador diagnóstico; no diana terapéutica directa aún</td></tr>
+                                <tr><td>Mutación IDH1/IDH2</td><td>IDH1 R132H / IDH2 R172K</td><td>Glioma bajo grado, AML, colangiocarcinoma</td><td>2-HG → inhibe TET/KDM → hipermetilación difusa (fenotipo CpG methylator, CIMP)</td><td><span class="bm-tag bm-t-g">Aprobado</span> Enasidenib (IDH2), Ivosidenib (IDH1)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bm-norma" data-bm-reveal>
+                    <div class="bm-norma-ico">🧪</div>
+                    <div>
+                        <h4>Epigenética Nutricional y Ambiental en Chile — Evidencia y Aplicaciones</h4>
+                        <p>La epigenética ambiental estudia cómo factores externos modifican el epigenoma sin alterar la secuencia del ADN. En Chile, investigaciones lideradas por el <strong>INTA (Instituto de Nutrición y Tecnología de Alimentos, U. de Chile)</strong> han documentado cambios en metilación del ADN en neonatos de madres con obesidad gestacional (hipometilación de IGFR1, ADIPOQ) — implicando riesgo aumentado de síndrome metabólico en la progenie. El grupo del <strong>Dr. Rodrigo Morales (U. de Concepción)</strong> investiga epigenética de retrotransposones en envejecimiento y neurodegeneración en modelos murinos. El <strong>Centro de Regulación del Genoma (CRG Santiago, U. Mayor)</strong> trabaja en epigenómica de cáncer gástrico — el más prevalente en varones chilenos, con alta incidencia en regiones de la Araucanía (poblaciones de origen mapuche). El Estudio de la Biome Chilena (U. Austral) examina interacciones microbiota-epigenoma en colon, relevante dado que H. pylori (presente en ~70% de adultos chilenos mayores de 40 años, MINSAL) altera metilación de CDH1 y RUNX3 aumentando riesgo de adenocarcinoma gástrico. La dieta chilena —rica en carbohidratos refinados y pobre en folato— puede comprometer la provisión de grupos metilo para DNMT (folato → SAM, dador universal de metilo).</p>
+                    </div>
+                </div>
+            </div><!-- /panel epigenética -->
+
+            <!-- ══ PANEL 4: ARNm TERAPÉUTICO ══ -->
+            <div class="bm-panel">
+                <div class="bm-3d" data-bm-reveal>
+                    <canvas id="bm-canvas-arnm" title="Nanopartícula lipídica (LNP) con ARNm en 3D — vacunas COVID-19"></canvas>
+                    <div class="bm-3d-lbl">⟳ Arrastra para rotar — Nanopartícula Lipídica (LNP) · ARNm · Vacuna COVID-19</div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">ARNm Terapéutico: La Revolución de las Vacunas Moleculares</div>
+                    <div class="bm-mec">
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">⚗️</div>
+                            <h4>Estructura y Modificaciones del ARNm Terapéutico</h4>
+                            <p>El ARNm terapéutico es producido por transcripción in vitro (IVT) con T7 RNAP desde un molde de ADN lineal. Componentes críticos: (1) <strong>Cap 5' ARCA</strong> (Anti-Reverse Cap Analog) o cap-1 enzimático (vaccinía capping enzyme + 2'-O-metilación) → eficiencia traductora 10× mayor, evasión de sensores innatos. (2) <strong>5'UTR</strong> optimizado (secuencias de HSP70 o Xenopus β-globina) → estabilidad y alta traducción. (3) <strong>Marco de lectura abierto (ORF)</strong> con optimización de codones (sustituye codones raros por sinónimos frecuentes en el huésped) y eliminación de sitios crípticos de splicing. (4) <strong>3'UTR</strong> (β-globina humana, dos copias en tándem en BNT162b2) → estabilidad del ARNm, semivida ~10h in vivo. (5) <strong>Cola poli-A</strong> (100-150 A) → protección de exonucleasas, exportación nuclear, eficiencia traductora.</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🧫</div>
+                            <h4>Pseudouridina (m¹Ψ) — La Modificación que lo Cambió Todo</h4>
+                            <p>La incorporación de <strong>N1-metilpseudouridina (m¹Ψ)</strong> en lugar de uridina en el ARNm terapéutico — desarrollada por <strong>Karikó y Weissman</strong> (Nobel 2023) — resolvió el principal obstáculo de la tecnología ARNm: la respuesta inmune innata. Los ARNm no modificados activan TLR3, TLR7, TLR8 (en endosomas) y MDA5, RIG-I (citosólicos) → IFN tipo I → inflamación → degradación del ARNm. La m¹Ψ: (1) No es reconocida por TLR → evasión inmune. (2) Aumenta la afinidad del ribosoma por el ARNm → mayor eficiencia traductora. (3) Reduce activación de PKR (protein quinasa R) → evita fosforilación de eIF2α → evita la respuesta de estrés integrado. Resultado: proteína espícula producida 5-10× más eficientemente que con uridina no modificada.</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">💧</div>
+                            <h4>Nanopartículas Lipídicas (LNP) — Sistema de Entrega</h4>
+                            <p>Las LNP encapsulan el ARNm y facilitan la entrada celular por endocitosis seguida de escape endosomal. Composición de Pfizer BNT162b2 (por dosis 0.3 mL): <strong>ALC-0315</strong> (lípido ionizable, 0.43 mg, desestabiliza membrana endosomal a pH ácido → escape al citosol), <strong>DSPC</strong> (fosfatidilcolina, estabilidad de bicapa), <strong>colesterol</strong> (fluidez de membrana), <strong>ALC-0159</strong> (PEG-lípido 2000 Da → stealth, previene opsonización y eliminación reticuloendotelial, aumenta semivida circulatoria). Los LNP tienen diámetro hidrodinámico ~80-100 nm, índice de polidispersidad <0.2, potencial ζ ≈ 0 mV a pH fisiológico (carga neutra). La LNP se une preferentemente a células dendríticas y macrófagos en músculo deltoides → presentación de antígeno → respuesta adaptativa.</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🚀</div>
+                            <h4>Más Allá de COVID — El Futuro del ARNm</h4>
+                            <p>La plataforma ARNm es adaptable en semanas versus meses para vacunas convencionales. Aplicaciones en desarrollo avanzado: <strong>Vacunas contra cáncer</strong>: mRNA-4157/V940 (Moderna + Merck) para melanoma — ARNm personalizado codificando hasta 34 neoantigenos tumorales del propio paciente (NGS → bioinformática → síntesis en 8 semanas) + pembrolizumab; reducción del 44% de recurrencia/muerte vs pembrolizumab solo (Fase IIb, 2023). <strong>VIH</strong>: ensayo HVTN 302 (IAVI/Moderna) con ARNm de trímero de env modificado + LNP. <strong>Influenza estacional y pandémica</strong>: mRNA-1010 (eficacia 65% vs influenza A/B en Fase III, 2023). <strong>RSV</strong>: mResvia (ARNm-1345, Moderna, FDA 2024) para adultos ≥60 años. <strong>Terapia génica</strong>: ARNm de factor IX para hemofilia B (replace proteica transitoria); ARNm de VEGF para angiogénesis cardíaca (AZD8601, AstraZeneca, Fase II).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">Vacunas ARNm COVID-19 Aprobadas — Comparativa Técnica</div>
+                    <div class="bm-tbl-wrap">
+                        <table class="bm-tbl">
+                            <thead>
+                                <tr><th>Vacuna</th><th>Empresa</th><th>ARNm (nt)</th><th>Modificación</th><th>LNP lípido ionizable</th><th>Dosis / Intervalo</th><th>Eficacia vs Wuhan</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>BNT162b2 (Comirnaty)</td><td>Pfizer-BioNTech</td><td>~4.284 nt</td><td>m¹Ψ (100%)</td><td>ALC-0315</td><td>30 µg / 21 días</td><td>95% (Fase III, N=43.548)</td></tr>
+                                <tr><td>mRNA-1273 (Spikevax)</td><td>Moderna</td><td>~4.101 nt</td><td>m¹Ψ (100%)</td><td>SM-102</td><td>100 µg / 28 días</td><td>94.1% (Fase III, N=30.420)</td></tr>
+                                <tr><td>mRNA-1273.222</td><td>Moderna</td><td>Bivalente</td><td>m¹Ψ (100%)</td><td>SM-102</td><td>50 µg (booster)</td><td>+3-4 veces neutralización BA.4/5</td></tr>
+                                <tr><td>BNT162b2 Bivalente</td><td>Pfizer-BioNTech</td><td>Bivalente</td><td>m¹Ψ (100%)</td><td>ALC-0315</td><td>30 µg (booster)</td><td>+4 veces neutralización BA.4/5</td></tr>
+                                <tr><td>CVnCoV</td><td>CureVac</td><td>4.002 nt</td><td>Sin modificar</td><td>HEPES lipoplex</td><td>12 µg / 28 días</td><td>47% (Fase IIb/III — abandonada)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size:.82rem;color:rgba(255,255,255,.4);margin-top:10px;">La comparación entre BNT162b2 (m¹Ψ, alta eficacia) y CVnCoV (sin modificación, baja eficacia) en seres humanos validó clínicamente el trabajo de Karikó y Weissman sobre la pseudouridina. [Fuente: NEJM 2020, 2021; Lancet 2021; FDA EUA/BLA reviews]</p>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">Línea de Tiempo: ARNm desde Concepto a Vacuna</div>
+                    <div class="bm-tl">
+                        <div class="bm-tl-item">
+                            <div class="bm-tl-yr">1961</div>
+                            <div class="bm-tl-tx"><strong>Descubrimiento del ARNm</strong> — Jacob y Monod (Pasteur) + Brenner, Jacob, Meselson (Caltech) describen el mensajero lábil que lleva la información del ADN al ribosoma. Nobel 1965 (Jacob, Monod, Lwoff).</div>
+                        </div>
+                        <div class="bm-tl-item">
+                            <div class="bm-tl-yr">1978</div>
+                            <div class="bm-tl-tx"><strong>Primer ARNm encapsulado en liposoma</strong> — Dimitriadis introduce ARN de globina en liposomas → entrega funcional in vitro.</div>
+                        </div>
+                        <div class="bm-tl-item">
+                            <div class="bm-tl-yr">1990</div>
+                            <div class="bm-tl-tx"><strong>Expresión de ARNm in vitro en músculo</strong> — Wolff et al. (Science): inyección intramuscular de ARNm desnudo en ratones → expresión proteica. Primera prueba de concepto de vacuna ARNm.</div>
+                        </div>
+                        <div class="bm-tl-item">
+                            <div class="bm-tl-yr">2005</div>
+                            <div class="bm-tl-tx"><strong>Pseudouridina suprime inmunogenicidad</strong> — <strong>Karikó y Weissman</strong> (U. Penn) publican en Immunity: ARNm con pseudouridina (Ψ) activa TLR mucho menos que ARNm no modificado → breakthrough que destraba la tecnología. Nobel de Medicina 2023.</div>
+                        </div>
+                        <div class="bm-tl-item">
+                            <div class="bm-tl-yr">2011</div>
+                            <div class="bm-tl-tx"><strong>LNP ionizables de nueva generación</strong> — Pierson, Hope et al. desarrollan nanopartículas lipídicas ionizables (DLin-MC3-DMA, base de patisiran). Pierson y Kulkarni refinan composición 4-componente para entrega de ARNm.</div>
+                        </div>
+                        <div class="bm-tl-item">
+                            <div class="bm-tl-yr">2018</div>
+                            <div class="bm-tl-tx"><strong>Primer ARNsi aprobado (Patisiran, Alnylam)</strong> — valida el concepto de terapia de ácido nucleico con LNP. Abre la puerta regulatoria para tecnologías similares de ARNm.</div>
+                        </div>
+                        <div class="bm-tl-item">
+                            <div class="bm-tl-yr">2020</div>
+                            <div class="bm-tl-tx"><strong>Vacunas COVID-19 ARNm en tiempo récord</strong> — BNT162b2 (Pfizer, 11 meses desde secuencia a Autorización de Uso de Emergencia FDA) y mRNA-1273 (Moderna, 12 meses). Primera vacuna ARNm aprobada para uso humano masivo.</div>
+                        </div>
+                        <div class="bm-tl-item">
+                            <div class="bm-tl-yr">2023</div>
+                            <div class="bm-tl-tx"><strong>Nobel de Medicina a Karikó y Weissman</strong> + <strong>Vacuna personalizada anticáncer ARNm Fase IIb positiva</strong> (mRNA-4157 + pembro en melanoma) + <strong>Casgevy CRISPR FDA aprobado</strong>. El año más productivo en biología molecular terapéutica.</div>
+                        </div>
+                        <div class="bm-tl-item">
+                            <div class="bm-tl-yr">2024–26</div>
+                            <div class="bm-tl-tx"><strong>mResvia (Moderna) aprobada</strong> para RSV en adultos mayores. Ensayos de ARNm para VIH, influenza pandémica, cáncer de pulmón y melanoma en Fase III. Prime editing y base editing en primeras Fases I en humanos.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bm-norma" data-bm-reveal>
+                    <div class="bm-norma-ico">💉</div>
+                    <div>
+                        <h4>Vacunas ARNm COVID-19 en Chile — Programa Nacional y Ciencia Local</h4>
+                        <p>Chile lanzó en <strong>febrero de 2021</strong> uno de los procesos de vacunación más rápidos del mundo, alcanzando el 75% de cobertura con esquema completo en 6 meses (Agosto 2021) — destacando internacionalmente. Se utilizaron principalmente <strong>CoronaVac (Sinovac)</strong> y <strong>BNT162b2 (Pfizer-BioNTech)</strong>. El estudio de cohorte del MINSAL (Jara et al., NEJM 2021) evaluó efectividad de CoronaVac en ~10,2 millones de personas vacunadas en Chile — publicación de alto impacto que documentó la estrategia de Salud Pública chilena en la comunidad científica global. El <strong>ISP de Chile</strong> realizó farmacovigilancia activa de los ARNm vacunales, contribuyendo a la base de datos global sobre miocarditis post-ARNm (incidencia: ~1-4/100.000 dosis en hombres jóvenes, típicamente leve y autolimitada). La <strong>U. de Chile</strong> y la <strong>PUC</strong> desarrollaron estudios de inmunogenicidad de vacunas en población chilena, con hallazgos relevantes sobre persistencia de anticuerpos anti-espícula y respuesta de células T de memoria. El Laboratorio de Nanotecnología y Entrega de Fármacos de la <strong>USACH</strong> (Dra. Marcela Gutiérrez) investiga formulaciones LNP de segunda generación para entrega de ARNm terapéutico en cáncer gástrico — el tumor más frecuente en hombres chilenos.</p>
+                    </div>
+                </div>
+            </div><!-- /panel arnm -->
+
+        </div><!-- /panels-wrap -->
+
+        <!-- NAV INFERIOR -->
+        <div class="bm-page-nav">
+            <a href="../metabolismo/metabolismo.html"  class="bm-nbtn">← Unidad 4: Metabolismo y Bioenergética</a>
+            <a href="../index.html"                    class="bm-nbtn">Volver al índice</a>
+            <a href="../inmunologia/inmunologia.html"  class="bm-nbtn pri">Siguiente: Unidad 6 — Inmunología →</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>© 2026 PharmaLab Chile — Bioquímica · Unidad 5: Biología Molecular</p>
+            <p class="footer-disclaimer">Contenido educacional universitario. Datos basados en Stryer 9ª ed., Lewin's Genes XIII, NEJM, Nat. Rev. Genet., FDA reviews y bases OMIM/ClinVar/PubMed. No reemplaza asesoría médica profesional.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="../../script.js"></script>
+<script src="biologia-molecular.js"></script>
+</body>
+</html>

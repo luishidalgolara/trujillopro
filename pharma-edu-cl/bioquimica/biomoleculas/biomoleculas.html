@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biomoléculas Esenciales — PharmaLab Chile | Unidad 2</title>
+    <meta name="description" content="Proteínas, enzimas, carbohidratos y lípidos. Estructura, función y metabolismo de las biomoléculas esenciales. Contenido universitario para bioquímica en Chile.">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../bioquimica.css">
+    <link rel="stylesheet" href="biomoleculas.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="module-bioquimica">
+
+<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+<nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+        <a href="../../index.html" class="nav-logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="../../quimica/index.html"              class="nav-link" data-module="quimica">⚗️ Química</a>
+            <a href="../../farmacia/index.html"             class="nav-link" data-module="farmacia">💊 Farmacia</a>
+            <a href="../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf">🧬 Q. Farmacéutica</a>
+            <a href="../../biotecnologia/index.html"        class="nav-link" data-module="biotech">🔬 Biotecnología</a>
+            <a href="../../virologia/index.html"            class="nav-link" data-module="virologia">🦠 Virología</a>
+            <a href="../index.html"                         class="nav-link active" data-module="bioquimica">🧪 Bioquímica</a>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="bm-hero">
+    <div class="bm-hero-bg">
+        <div class="bm-hero-grid"></div>
+        <div class="bm-orb bm-orb-1"></div>
+        <div class="bm-orb bm-orb-2"></div>
+        <div class="bm-orb bm-orb-3"></div>
+    </div>
+    <div class="bm-hero-inner">
+        <div class="bm-wrap">
+            <div>
+                <div class="bm-crumb">
+                    <a href="../../index.html" style="color:inherit;text-decoration:none;">Inicio</a><span>/</span>
+                    <a href="../index.html"    style="color:inherit;text-decoration:none;">Bioquímica</a><span>/</span>
+                    <span style="color:#fff">Biomoléculas Esenciales</span>
+                </div>
+                <div class="bm-hero-tag">Unidad 2 · Bioquímica</div>
+                <h1 class="bm-hero-title">Biomoléculas <span class="bm-gr">Esenciales</span></h1>
+                <p class="bm-hero-desc">Las moléculas que definen la vida: desde la precisión estructural de las proteínas hasta la versatilidad energética de los lípidos, pasando por enzimas que catalizan con perfección y carbohidratos que sostienen cada célula del organismo.</p>
+                <div class="bm-hero-stats">
+                    <div class="bm-stat">
+                        <span class="bm-stat-num" data-bm-count="20" data-bm-suf="">20</span>
+                        <span class="bm-stat-label">Aminoácidos estándar — codificados genéticamente</span>
+                    </div>
+                    <div class="bm-stat">
+                        <span class="bm-stat-num" data-bm-count="10" data-bm-suf="⁸" data-bm-dec="0">10⁸</span>
+                        <span class="bm-stat-label">kcat/Km máx enzimas perfectas (M⁻¹s⁻¹)</span>
+                    </div>
+                    <div class="bm-stat">
+                        <span class="bm-stat-num" data-bm-count="4" data-bm-suf="">4</span>
+                        <span class="bm-stat-label">Niveles estructurales de las proteínas</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bm-hero-vis">
+                <canvas id="bm-hero-canvas" title="Estructura proteica 3D — hélice alfa y lámina beta"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ DATOS CLAVE ═══════════════════════ -->
+<section class="bm-section">
+    <div class="bm-wrap">
+        <div class="bm-datos" data-bm-reveal>
+            <div class="bm-dato">
+                <span class="bm-dato-n" data-bm-count="500" data-bm-suf="">500</span>
+                <span class="bm-dato-l">Residuos de aa promedio en una proteína globular — plegamiento en ms</span>
+            </div>
+            <div class="bm-dato">
+                <span class="bm-dato-n" data-bm-count="38" data-bm-suf=" ATP">38</span>
+                <span class="bm-dato-l">ATP obtenidos por molécula de glucosa (oxidación completa)</span>
+            </div>
+            <div class="bm-dato">
+                <span class="bm-dato-n" data-bm-count="9" data-bm-suf=" kcal/g" data-bm-dec="0">9</span>
+                <span class="bm-dato-l">Energía por gramo de lípidos — más del doble que carbohidratos (4 kcal/g)</span>
+            </div>
+            <div class="bm-dato">
+                <span class="bm-dato-n" data-bm-count="6.022" data-bm-suf="×10²³" data-bm-dec="3">6.022×10²³</span>
+                <span class="bm-dato-l">Moléculas/mol — escala de las reacciones enzimáticas en la célula</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ TABS ═══════════════════════ -->
+<section class="bm-section" style="padding-top:0">
+    <div class="bm-wrap">
+
+        <div class="bm-section-hd" data-bm-reveal>
+            <div class="bm-sec-tag">🧬 Contenidos</div>
+            <h2 class="bm-sec-title">Cuatro Clases de <span class="bm-hl">Biomoléculas Esenciales</span></h2>
+            <p class="bm-sec-sub">Las macromoléculas biológicas que constituyen la base estructural y funcional de todos los organismos vivos. Información actualizada con datos de fuentes universitarias primarias.</p>
+        </div>
+
+        <!-- TABS NAV -->
+        <div class="bm-tabs-nav" data-bm-reveal>
+            <div class="bm-tab-btn active">
+                <div class="bm-tab-icon">🧬</div>
+                <span class="bm-tab-num">Tema 2.1</span>
+                <div class="bm-tab-name">Proteínas</div>
+                <div class="bm-tab-hint">Aminoácidos, estructura primaria/secundaria/terciaria/cuaternaria, plegamiento, desnaturalización y función biológica.</div>
+                <div class="bm-tab-arrow">→</div>
+            </div>
+            <div class="bm-tab-btn">
+                <div class="bm-tab-icon">⚙️</div>
+                <span class="bm-tab-num">Tema 2.2</span>
+                <div class="bm-tab-name">Enzimas</div>
+                <div class="bm-tab-hint">Catálisis enzimática, cinética Michaelis-Menten, inhibición, regulación alostérica y cofactores.</div>
+                <div class="bm-tab-arrow">→</div>
+            </div>
+            <div class="bm-tab-btn">
+                <div class="bm-tab-icon">🍬</div>
+                <span class="bm-tab-num">Tema 2.3</span>
+                <div class="bm-tab-name">Carbohidratos</div>
+                <div class="bm-tab-hint">Monosacáridos, disacáridos, polisacáridos, glucólisis, glicógeno y función estructural-energética.</div>
+                <div class="bm-tab-arrow">→</div>
+            </div>
+            <div class="bm-tab-btn">
+                <div class="bm-tab-icon">🫧</div>
+                <span class="bm-tab-num">Tema 2.4</span>
+                <div class="bm-tab-name">Lípidos</div>
+                <div class="bm-tab-hint">Ácidos grasos, triglicéridos, fosfolípidos, membrana celular, colesterol y metabolismo lipídico.</div>
+                <div class="bm-tab-arrow">→</div>
+            </div>
+        </div>
+
+        <!-- PANELS WRAPPER -->
+        <div class="bm-panels-wrap">
+
+            <!-- ══ PANEL 1: PROTEÍNAS ══ -->
+            <div class="bm-panel active">
+                <div class="bm-3d" data-bm-reveal>
+                    <canvas id="bm-canvas-proteinas" title="Estructura proteica 3D — hélice alfa y lámina beta"></canvas>
+                    <div class="bm-3d-lbl">⟳ Arrastra para rotar — Hélice α · Lámina β · Plegamiento proteico</div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">Aminoácidos — Bloques Fundamentales</div>
+                    <div class="bm-mec">
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🔤</div>
+                            <h4>Estructura General y Clasificación</h4>
+                            <p>Los 20 aminoácidos canónicos comparten: grupo α-amino (–NH₃⁺), α-carboxilo (–COO⁻), H y cadena lateral R sobre el carbono α (quiralidad L, excepto Gly). Clasificación por R: apolares/hidrofóbicos (Ala, Val, Leu, Ile, Pro, Met, Phe, Trp), polares sin carga (Ser, Thr, Cys, Tyr, Asn, Gln), con carga positiva/básicos (Lys, Arg, His) y carga negativa/ácidos (Asp, Glu). La glicina es el único sin quiral.</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🔗</div>
+                            <h4>Enlace Peptídico</h4>
+                            <p>Formado por condensación entre el grupo carboxilo de un aa y el amino del siguiente (eliminación de H₂O). El enlace C–N tiene carácter parcial de doble enlace (~40%) por resonancia → es rígido y planar (ω = 0° o 180°). Los ángulos diedros φ (N–Cα) y ψ (Cα–C) determinan la conformación. El mapa de Ramachandran muestra regiones permitidas para hélice α (φ=−57°, ψ=−47°) y lámina β (φ=−120°, ψ=130°).</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">⚡</div>
+                            <h4>Propiedades Ácido-Base</h4>
+                            <p>Los aminoácidos son anfóteros (zwitteriones). pKa del grupo α-COOH ~2.0–2.4; pKa del α-NH₃⁺ ~9.0–9.8. pI = punto isoeléctrico = (pKa₁ + pKa₂)/2. Para aa con cadena ionizable: Asp (pI 2.77), Glu (pI 3.22), His (pI 7.59), Lys (pI 9.74), Arg (pI 10.76). La electroforesis separa proteínas según su pI (punto en que migración neta = 0).</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🔬</div>
+                            <h4>Aminoácidos Esenciales</h4>
+                            <p>Los 9 esenciales (no sintetizados por humanos) deben obtenerse de la dieta: His, Ile, Leu, Lys, Met, Phe, Thr, Trp, Val. Semi-esenciales en etapas de crecimiento: Arg, Cys, Gln, Tyr. Deficiencia de Trp → pelagra (déficit de niacina, ya que Trp es precursor de vitamina B₃). Deficiencia de Lys → común en dietas basadas en cereales (trigo, maíz); corregida combinando con leguminosas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">Niveles de Estructura Proteica</div>
+                    <div class="bm-proc">
+                        <div class="bm-step">
+                            <div class="bm-step-n">1°</div>
+                            <div class="bm-step-t">Primaria</div>
+                            <div class="bm-step-d">Secuencia de aminoácidos — determinada por el ADN. Estabilizada por enlaces peptídicos covalentes. Determina toda la estructura superior (dogma de Anfinsen).</div>
+                        </div>
+                        <div class="bm-step">
+                            <div class="bm-step-n">2°</div>
+                            <div class="bm-step-t">Secundaria</div>
+                            <div class="bm-step-d">Hélice α (3.6 residuos/vuelta, paso 5.4 Å) y lámina β (paralela/antiparalela). Estabilizadas por puentes H entre C=O y N–H del esqueleto peptídico.</div>
+                        </div>
+                        <div class="bm-step">
+                            <div class="bm-step-n">3°</div>
+                            <div class="bm-step-t">Terciaria</div>
+                            <div class="bm-step-d">Plegamiento 3D completo de la cadena. Estabilizada por: puentes disulfuro (–S–S–), interacciones hidrofóbicas, puentes H y fuerzas de Van der Waals.</div>
+                        </div>
+                        <div class="bm-step">
+                            <div class="bm-step-n">4°</div>
+                            <div class="bm-step-t">Cuaternaria</div>
+                            <div class="bm-step-d">Asociación de subunidades (Hb: 2α + 2β). Cooperatividad alostérica. No todas las proteínas tienen este nivel — solo las oligoméricas.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">Proteínas Biológicamente Importantes</div>
+                    <div class="bm-tbl-wrap">
+                        <table class="bm-tbl">
+                            <thead>
+                                <tr><th>Proteína</th><th>Tipo</th><th>Función</th><th>Relevancia Clínica</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Hemoglobina</td><td><span class="bm-tag bm-t-c">Globular</span></td><td>Transporte de O₂ y CO₂ en sangre (cooperatividad sigmoidea)</td><td>Anemia falciforme (Glu6→Val en cadena β)</td></tr>
+                                <tr><td>Colágeno</td><td><span class="bm-tag bm-t-g">Fibrosa</span></td><td>Soporte estructural (triple hélice: Gly-X-Y)</td><td>Escorbuto (déficit vitamina C → falla hidroxilación Pro/Lys)</td></tr>
+                                <tr><td>Insulina</td><td><span class="bm-tag bm-t-go">Hormonal</span></td><td>Regulación glucemia — 51 aa, 2 cadenas (A y B) unidas por puentes S–S</td><td>Diabetes mellitus tipo 1 (destrucción autoinmune de células β)</td></tr>
+                                <tr><td>Actina/Miosina</td><td><span class="bm-tag bm-t-p">Motora</span></td><td>Contracción muscular — ciclo actomiosina-ATPasa</td><td>Miopatías hereditarias, cardiomiopatías hipertróficas</td></tr>
+                                <tr><td>Inmunoglobulina G</td><td><span class="bm-tag bm-t-tl">Inmune</span></td><td>Reconocimiento y neutralización de antígenos (IgG: 2H + 2L)</td><td>Inmunodeficiencias, terapia con anticuerpos monoclonales</td></tr>
+                                <tr><td>Albúmina sérica</td><td><span class="bm-tag bm-t-c">Transporte</span></td><td>Transporte de fármacos, ácidos grasos, hormonas. Presión oncótica</td><td>Hipoalbuminemia: edema, alteración PK de fármacos unidos a proteínas</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bm-norma" data-bm-reveal>
+                    <div class="bm-norma-ico">🇨🇱</div>
+                    <div>
+                        <h4>Proteínas y Nutrición Clínica en Chile — MINSAL</h4>
+                        <p>Las guías alimentarias del MINSAL (2013, actualizadas 2022) recomiendan 0.8 g de proteína/kg/día para adultos sanos, aumentando a 1.2–2.0 g/kg/día en estados catabólicos (cirugía, quemaduras, UCI). En Chile, la desnutrición proteico-energética afecta especialmente a adultos mayores institucionalizados (~30% de sarcopenia en mayores de 70 años, datos ECOG 2014). El score de calidad proteica PDCAAS/DIAAS (valorado en la hueva de pescado, leche y soja) es fundamental para el diseño de suplementos nutricionales en programas como el PNAC del MINSAL.</p>
+                    </div>
+                </div>
+            </div><!-- /panel proteínas -->
+
+            <!-- ══ PANEL 2: ENZIMAS ══ -->
+            <div class="bm-panel">
+                <div class="bm-3d" data-bm-reveal>
+                    <canvas id="bm-canvas-enzimas" title="Sitio activo enzimático 3D — complejo enzima-sustrato"></canvas>
+                    <div class="bm-3d-lbl">⟳ Arrastra para rotar — Complejo Enzima–Sustrato · Sitio Activo</div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">Catálisis Enzimática — Mecanismos y Principios</div>
+                    <div class="bm-mec">
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🎯</div>
+                            <h4>Sitio Activo y Especificidad</h4>
+                            <p>El sitio activo es una hendidura tridimensional (~10–30 residuos de aa) que une el sustrato por complementariedad estérica, electrostática e hidrofóbica. Modelo de Induced Fit (Koshland, 1958): la enzima cambia de conformación al unir el sustrato, optimizando la catálisis. La especificidad es absoluta (glucosa-6-fosfatasa solo actúa sobre G-6-P) o de grupo (proteasas de serina reconocen enlaces peptídicos). La quimotripsina reconoce residuos aromáticos/grandes (Phe, Tyr, Trp) en P1.</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">⚡</div>
+                            <h4>Mecanismos de Catálisis</h4>
+                            <p>Las enzimas reducen Ea mediante: (1) Catálisis ácido-base general: His como donador/aceptor de H⁺ (pKa ~6.0). (2) Catálisis covalente: formación de intermediario covalente (Ser195 en quimotripsina → tetaédrico). (3) Catálisis por iones metálicos: Zn²⁺ en carboxipeptidasa A activa H₂O para ataque nucleofílico. (4) Efectos de proximidad y orientación: ΔG‡ cae al forzar la orientación correcta del sustrato. La carbóxipeptidasa disminuye Ea de ~90 kJ/mol a ~40 kJ/mol.</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">📈</div>
+                            <h4>Cinética Michaelis-Menten</h4>
+                            <p>E + S ⇌ ES → E + P. v₀ = Vmax·[S]/(Km + [S]). Km es la concentración de sustrato que da v₀ = Vmax/2 (medida de afinidad: ↓Km = ↑afinidad). Vmax = kcat·[E]total. Eficiencia catalítica: kcat/Km. Gráfica de Lineweaver-Burk (1/v vs 1/[S]): intercepto Y = 1/Vmax, intercepto X = −1/Km. Ecuación de Hill: para enzimas cooperativas, v = Vmax·[S]ⁿ/(K'ⁿ + [S]ⁿ); n>1 = cooperatividad positiva.</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🚫</div>
+                            <h4>Tipos de Inhibición Enzimática</h4>
+                            <p>Competitiva: inhibidor (I) compite con S por el sitio activo → ↑Km aparente, Vmax sin cambio. Ki = [E][I]/[EI]. Ejemplos: estatinas (inhiben HMG-CoA reductasa), metotrexato (DHFR). No competitiva: I se une fuera del sitio activo → ↓Vmax, Km sin cambio. Incompetitiva: I solo une ES → ↓Vmax y ↓Km (litio en IMPasa). Irreversible: DIFP inhibe serín-proteasas (mecanismo de agentes nerviosos organofosforados).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">Regulación y Clasificación Enzimática</div>
+                    <div class="bm-mec">
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🔄</div>
+                            <h4>Regulación Alostérica</h4>
+                            <p>Las enzimas alostéricas tienen sitios reguladores distintos al activo (modelo MWC: conformaciones T/R). Moduladores positivos (activadores) → ↑actividad. Negativos (inhibidores retroalimentación) → ↓actividad. Ejemplos clave: fosfofructocinasa-1 (PFK-1) inhibida por ATP y citrato, activada por AMP y fructosa-2,6-bisfosfato. ATCasa (primer enzima de síntesis de pirimidinas) inhibida por CTP (producto final). Sigmoide Hill en graficas v vs [S].</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🔩</div>
+                            <h4>Cofactores y Coenzimas</h4>
+                            <p>Apoenzima (inactiva) + cofactor = holoenzima (activa). Inorgánicos: Zn²⁺ (carboxipeptidasa, anhidrasa carbónica), Mg²⁺ (hexocinasa, enolasa), Fe²⁺/³⁺ (catalasa, citocromo P450), Cu²⁺ (citocromo c oxidasa), Se (glutatión peroxidasa). Orgánicos (coenzimas): NAD⁺/NADH (B₃-niacina), FAD/FADH₂ (B₂-riboflavina), CoA (B₅-pantotenato), TPP (B₁-tiamina), PLP (B₆-piridoxina), biotina (B₇), tetrahidrofolato (B₉), cobalamina (B₁₂).</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🏷️</div>
+                            <h4>Clasificación IUB (EC)</h4>
+                            <p>EC 1 — Oxidorreductasas: transfieren e⁻ (deshidrogenasas, oxidasas). EC 2 — Transferasas: transfieren grupos funcionales (cinasas, transaminasas). EC 3 — Hidrolasas: hidrólisis (proteasas, lipasas, fosfatasas). EC 4 — Liasas: adición/eliminación sin H₂O (descarboxilasas). EC 5 — Isomerasas: interconvierten isómeros (racemasa, epimerasas). EC 6 — Ligasas: forman enlaces usando ATP (sintetasas, carboxilasas).</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">💊</div>
+                            <h4>Enzimas como Dianas Farmacológicas</h4>
+                            <p>~40% de los fármacos aprobados inhiben enzimas. Estatinas (atorvastatina): inhiben HMG-CoA reductasa competitivamente (IC₅₀ = 8.2 nM). IECA (enalaprilato): inhibe la ECA, que convierte angiotensina I → II. Inhibidores de proteasa VIH (lopinavir): sitio activo de la HIV-1 proteasa. Metotrexato: inhibe DHFR (dihidrofolato reductasa) — quimioterapia. Aspirin (AAS): inhibe COX-1/2 irreversiblemente (acetilación de Ser530).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">Parámetros Cinéticos de Enzimas Relevantes</div>
+                    <div class="bm-tbl-wrap">
+                        <table class="bm-tbl">
+                            <thead>
+                                <tr><th>Enzima</th><th>Sustrato</th><th>Km (µM)</th><th>kcat (s⁻¹)</th><th>kcat/Km (M⁻¹s⁻¹)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Acetilcolinesterasa</td><td>Acetilcolina</td><td><span class="bm-tag bm-t-c">95</span></td><td>1.4 × 10⁴</td><td><span class="bm-tag bm-t-g">1.5 × 10⁸</span></td></tr>
+                                <tr><td>Anhidrasa carbónica</td><td>CO₂</td><td><span class="bm-tag bm-t-c">12,000</span></td><td>1.0 × 10⁶</td><td><span class="bm-tag bm-t-g">8.3 × 10⁷</span></td></tr>
+                                <tr><td>Triosa fosfato isomerasa</td><td>D-Gliceraldehído-3-P</td><td><span class="bm-tag bm-t-c">470</span></td><td>4.3 × 10³</td><td><span class="bm-tag bm-t-g">9.1 × 10⁶</span></td></tr>
+                                <tr><td>HMG-CoA reductasa</td><td>HMG-CoA</td><td><span class="bm-tag bm-t-go">4,000</span></td><td>28</td><td><span class="bm-tag bm-t-c">7.0 × 10³</span></td></tr>
+                                <tr><td>Hexocinasa (músculo)</td><td>D-Glucosa</td><td><span class="bm-tag bm-t-go">80</span></td><td>650</td><td><span class="bm-tag bm-t-c">8.1 × 10⁶</span></td></tr>
+                                <tr><td>Quimotripsina</td><td>N-Ac-Trp-NH₂</td><td><span class="bm-tag bm-t-go">5,100</span></td><td>4.0 × 10¹</td><td><span class="bm-tag bm-t-c">7.8 × 10³</span></td></tr>
+                                <tr><td>Catalasa</td><td>H₂O₂</td><td><span class="bm-tag bm-t-r">25,000</span></td><td>4.0 × 10⁷</td><td><span class="bm-tag bm-t-g">1.6 × 10⁶</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size:.78rem; color:rgba(255,255,255,.38); margin-top:10px; font-family:'JetBrains Mono',monospace;">Fuente: Stryer Biochemistry 9th ed.; Lehninger 8th ed. Appendix B. Valores a 25°C, pH 7.0.</p>
+                </div>
+
+                <div class="bm-norma" data-bm-reveal>
+                    <div class="bm-norma-ico">💊</div>
+                    <div>
+                        <h4>Enzimología Clínica en Chile — Diagnóstico por Marcadores Enzimáticos</h4>
+                        <p>En Chile, el diagnóstico por enzimas séricas es estándar en hospitales del sistema público y privado. La Troponina I/T (marcador de necrosis cardiaca), CK-MB (creatina cinasa fracción MB) y LDH (lactato deshidrogenasa) se miden en protocolo de IAM del MINSAL (Guía GES Infarto Agudo al Miocardio, 2010). La ALT/GPT y AST/GOT son marcadores de daño hepático — valores normales: ALT 7–56 U/L; AST 10–40 U/L. La GGT (gamma-glutamil transferasa) es el marcador más sensible para hepatotoxicidad por alcohol. El Laboratorio de Enzimología de la PUC y la USACH publican valores de referencia para población chilena (que difiere ligeramente de la norteamericana por diferencias étnicas y dietéticas).</p>
+                    </div>
+                </div>
+            </div><!-- /panel enzimas -->
+
+            <!-- ══ PANEL 3: CARBOHIDRATOS ══ -->
+            <div class="bm-panel">
+                <div class="bm-3d" data-bm-reveal>
+                    <canvas id="bm-canvas-carbohidratos" title="Glucosa y red de polisacáridos 3D"></canvas>
+                    <div class="bm-3d-lbl">⟳ Arrastra para rotar — Red de Glucosa · Glicógeno · Almidón</div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">Clasificación y Estructura de los Carbohidratos</div>
+                    <div class="bm-mec">
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🍇</div>
+                            <h4>Monosacáridos — Unidades Básicas</h4>
+                            <p>Fórmula general (CH₂O)n. Triosas (n=3): gliceraldehído (aldosa) y dihidroxiacetona (cetosa). Pentosas (n=5): ribosa (ARN), desoxirribosa (ADN), xilosa. Hexosas (n=6): D-glucosa (aldohexosa, anómero α-D-glucopiranosa), fructosa (cetohexosa), galactosa (epiméro C4 de glucosa). Los monosacáridos en solución existen principalmente en forma cíclica (piranoide/furanoide) — anomería: α (OH axial) y β (OH ecuatorial). La mutarrotación interconvierte los anómeros.</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🔗</div>
+                            <h4>Disacáridos y Enlace Glucosídico</h4>
+                            <p>Enlace O-glucosídico formado por condensación entre el C anomérico de un monosacárido y el grupo –OH de otro (eliminación de H₂O). Sacarosa: α-D-glucosa(1→2)β-D-fructosa — no reductor (C anomérico de ambas unidades está en el enlace). Lactosa: β-D-galactosa(1→4)β-D-glucosa — reductor. Maltosa: α-D-glucosa(1→4)α-D-glucosa — reductor. Trehalosa: α(1→1)α — no reductor, crioprotector en insectos y levaduras.</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🌾</div>
+                            <h4>Polisacáridos — Almidón y Glicógeno</h4>
+                            <p>Almidón: amilosa (cadenas lineales α(1→4), 1,000–4,000 residuos) + amilopectina (ramificaciones α(1→6) cada 24–30 residuos). Glicógeno: α(1→4) con ramificaciones α(1→6) cada 8–12 residuos (~55,000 residuos). Celulosa: β(1→4)-glucosa — no digerible por humanos (no hay β-glucosidasa), función estructural en plantas. Quitina: N-acetilglucosamina β(1→4) — exoesqueleto artrópodos, paredes fúngicas.</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">📊</div>
+                            <h4>Glucólisis — Vía Central del Catabolismo</h4>
+                            <p>10 reacciones en citosol. Glucosa → 2 piruvatos + 2 ATP netos + 2 NADH. Etapas: Fase de inversión (consume 2 ATP, reacciones 1–5) → Fase de recuperación (genera 4 ATP + 2 NADH, reacciones 6–10). Enzimas clave: hexocinasa (EC 2.7.1.1), PFK-1 (enzima reguladora principal, EC 2.7.1.11), piruvato cinasa (EC 2.7.1.40). ΔG°' total = −73.3 kJ/mol. En condiciones anaeróbicas → fermentación láctica (músculo) o alcohólica (levaduras).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">Metabolismo de Carbohidratos — Vías Integradas</div>
+                    <div class="bm-tl">
+                        <div class="bm-tl-item">
+                            <div class="bm-tl-yr">GLUCÓLISIS (citosol)</div>
+                            <div class="bm-tl-tx"><strong>Glucosa → 2 Piruvato.</strong> Balance: +2 ATP netos, +2 NADH. Regulada por: PFK-1 (activada por AMP/fructosa-2,6-BP; inhibida por ATP/citrato), hexocinasa (inhibida por producto G-6-P), piruvato cinasa (activada por fructosa-1,6-BP).</div>
+                        </div>
+                        <div class="bm-tl-item">
+                            <div class="bm-tl-yr">PIRUVATO DESHIDROGENASA (matriz mitocondrial)</div>
+                            <div class="bm-tl-tx"><strong>Piruvato → Acetil-CoA + CO₂ + NADH.</strong> Complejo multienzimático (E1/E2/E3). Cofactores: TPP, lipoamida, CoA, FAD, NAD⁺. Irreversible — punto de no retorno hacia oxidación completa.</div>
+                        </div>
+                        <div class="bm-tl-item">
+                            <div class="bm-tl-yr">CICLO DE KREBS (matriz mitocondrial)</div>
+                            <div class="bm-tl-tx"><strong>Acetil-CoA → 2CO₂ + 3NADH + FADH₂ + GTP.</strong> 8 reacciones. Por molécula de glucosa: 6NADH + 2FADH₂ + 2GTP. Enzimas reguladas: citrato sintasa, isocitrato DH, α-cetoglutarato DH.</div>
+                        </div>
+                        <div class="bm-tl-item">
+                            <div class="bm-tl-yr">GLUCONEOGÉNESIS (hígado, corteza renal)</div>
+                            <div class="bm-tl-tx"><strong>Lactato/piruvato/aa glucogénicos → Glucosa.</strong> No es la glucólisis al revés — 3 enzimas únicas: piruvato carboxilasa, PEPCK, fructosa-1,6-bisfosfatasa, glucosa-6-fosfatasa. Costo: 6 ATP + 2 GTP. Activada en ayuno por glucagón/glucocorticoides.</div>
+                        </div>
+                        <div class="bm-tl-item">
+                            <div class="bm-tl-yr">VÍA DE LAS PENTOSAS FOSFATO (citosol)</div>
+                            <div class="bm-tl-tx"><strong>G-6-P → NADPH + Ribosa-5-P.</strong> NADPH para biosíntesis y protección oxidativa (regenera GSH). Ribosa-5-P para síntesis de nucleótidos. Deficiencia de G6PD → crisis hemolítica por oxidación de eritrocitos (enfermedad ligada al X, prevalente en Chile en pacientes del norte).</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">Carbohidratos en Medicina — Datos Clave</div>
+                    <div class="bm-tbl-wrap">
+                        <table class="bm-tbl">
+                            <thead>
+                                <tr><th>Condición</th><th>Carbohidrato implicado</th><th>Mecanismo</th><th>Tratamiento</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Diabetes mellitus tipo 1</td><td><span class="bm-tag bm-t-r">Glucosa</span></td><td>Déficit de insulina → hiperglucemia crónica → glicación proteica (HbA1c)</td><td>Insulinoterapia, monitoreo de glucemia</td></tr>
+                                <tr><td>Galactosemia</td><td><span class="bm-tag bm-t-go">Galactosa</span></td><td>Déficit galactosa-1-P uridiltransferasa → acumulación de galactosa-1-P</td><td>Dieta libre de lactosa/galactosa de por vida</td></tr>
+                                <tr><td>Intolerancia a la lactosa</td><td><span class="bm-tag bm-t-c">Lactosa</span></td><td>Déficit de lactasa intestinal → fermentación bacteriana → diarrea osmótica</td><td>Sustitución por lactasa exógena, dieta</td></tr>
+                                <tr><td>Enfermedad de Von Gierke</td><td><span class="bm-tag bm-t-g">Glicógeno</span></td><td>Déficit glucosa-6-fosfatasa → acumulación hepática/renal</td><td>Alimentación frecuente con almidón crudo</td></tr>
+                                <tr><td>Deficiencia G6PD</td><td><span class="bm-tag bm-t-p">NADPH</span></td><td>Falta de NADPH → estrés oxidativo en eritrocitos → hemólisis</td><td>Evitar oxidantes (primaquina, habas, infecciones)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bm-norma" data-bm-reveal>
+                    <div class="bm-norma-ico">🍎</div>
+                    <div>
+                        <h4>Carbohidratos y Salud Pública en Chile — Contexto MINSAL</h4>
+                        <p>Chile enfrenta una epidemia de diabetes mellitus tipo 2 (DM2): prevalencia del 12.3% en adultos según la Encuesta Nacional de Salud (ENS 2016-2017), una de las más altas de Latinoamérica. La Ley 20.606 (Ley de Etiquetado de Alimentos, 2012) obliga a marcar con octógonos el exceso de azúcares añadidos (>22.5 g por 100 g o >11.25 g por 100 mL). El Programa Nacional de Diabetes del MINSAL establece como target de control metabólico HbA1c ≤7% (que representa un promedio de glucosa de ~154 mg/dL en los últimos 3 meses, proporcional a la glicación no enzimática de la hemoglobina). El tratamiento con metformina (biguanida) actúa principalmente inhibiendo el Complejo I mitocondrial y activando AMPK, reduciendo la gluconeogénesis hepática.</p>
+                    </div>
+                </div>
+            </div><!-- /panel carbohidratos -->
+
+            <!-- ══ PANEL 4: LÍPIDOS ══ -->
+            <div class="bm-panel">
+                <div class="bm-3d" data-bm-reveal>
+                    <canvas id="bm-canvas-lipidos" title="Membrana fosfolipídica bicapa 3D"></canvas>
+                    <div class="bm-3d-lbl">⟳ Arrastra para rotar — Bicapa Fosfolipídica · Membrana Celular</div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">Clasificación y Estructura de los Lípidos</div>
+                    <div class="bm-mec">
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🧈</div>
+                            <h4>Ácidos Grasos</h4>
+                            <p>Cadenas de C con un grupo carboxilo terminal. Saturados: sin dobles enlaces (palmítico C16:0, esteárico C18:0) — sólidos a T° ambiente, puntos de fusión altos. Insaturados: uno (oleico C18:1Δ9, cis) o varios dobles enlaces (linoleico C18:2Δ9,12 — ω-6; α-linolénico C18:3Δ9,12,15 — ω-3). Los ácidos grasos esenciales (linoleico y α-linolénico) deben obtenerse de la dieta. El DHA (C22:6 ω-3) es fundamental para el desarrollo neural neonatal.</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">💧</div>
+                            <h4>Fosfolípidos y Membrana Celular</h4>
+                            <p>Estructura: glicerol + 2 ácidos grasos + fosfato + cabeza polar (colina, etanolamina, serina, inositol). Anfipáticos → bicapa lipídica espontánea en H₂O. La fluidez de membrana depende del grado de insaturación (cis-dobles enlaces crean codos que reducen empaquetamiento) y del colesterol (tampona fluidez). Lipid rafts: microdominios ricos en esfingolípidos y colesterol — sitios de señalización y entrada viral.</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🔄</div>
+                            <h4>β-Oxidación de Ácidos Grasos</h4>
+                            <p>Ocurre en matriz mitocondrial. Ácido graso → Acil-CoA (activación en citosol, 2 ATP). Transporte a mitocondria: sistema carnitina (CAT-I regulado por malonil-CoA). Ciclo de β-oxidación (por cada ciclo para C₁₆): −2C como Acetil-CoA + 1 NADH + 1 FADH₂. Palmitato (C16:0): 7 ciclos → 8 Acetil-CoA + 7 NADH + 7 FADH₂ → 106 ATP totales. Rendimiento superior a glucosa por unidad de masa (9 kcal/g vs 4 kcal/g).</p>
+                        </div>
+                        <div class="bm-mec-card">
+                            <div class="bm-mec-ico">🏗️</div>
+                            <h4>Colesterol y Esteroides</h4>
+                            <p>Colesterol: 4 anillos fusionados (estructura esterol), cola isoprénica. Fuentes: dieta (20%) y síntesis endógena (80%, principalmente hígado). Síntesis: acetil-CoA → HMG-CoA → (HMG-CoA reductasa, paso limitante) → mevalonato → escualeno → colesterol. Funciones: rigidez de membrana, precursor de hormonas esteroideas (cortisol, testosterona, estrógeno, progesterona, aldosterona), ácidos biliares y vitamina D₃. LDL (lipoproteínas de baja densidad): transporte de colesterol a tejidos; receptor LDL (LDLR) endocita LDL (hipocolesterolemia familiar por mutación en LDLR).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-bm-reveal>
+                    <div class="bm-sh">Lipoproteínas — Transporte de Lípidos en Sangre</div>
+                    <div class="bm-tbl-wrap">
+                        <table class="bm-tbl">
+                            <thead>
+                                <tr><th>Lipoproteína</th><th>Densidad</th><th>Composición Lípidos</th><th>Apolipoproteína</th><th>Función</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Quilomicrones</td><td><span class="bm-tag bm-t-r">&lt;0.95 g/mL</span></td><td>85% TG, 7% Col, 2% Prot</td><td>ApoB-48, ApoC-II, ApoE</td><td>Transporte TG dietario: intestino → tejidos periféricos</td></tr>
+                                <tr><td>VLDL</td><td><span class="bm-tag bm-t-go">0.95–1.006</span></td><td>55% TG, 19% Col, 8% Prot</td><td>ApoB-100, ApoC-II, ApoE</td><td>Transporte TG endógeno: hígado → tejidos</td></tr>
+                                <tr><td>IDL</td><td><span class="bm-tag bm-t-go">1.006–1.019</span></td><td>31% TG, 34% Col, 18% Prot</td><td>ApoB-100, ApoE</td><td>Intermedio VLDL→LDL (puede aterogenizar)</td></tr>
+                                <tr><td>LDL</td><td><span class="bm-tag bm-t-r">1.019–1.063</span></td><td>10% TG, 46% Col, 22% Prot</td><td>ApoB-100</td><td>Transporte colesterol → tejidos. Aterogénico si elevado</td></tr>
+                                <tr><td>HDL</td><td><span class="bm-tag bm-t-g">1.063–1.210</span></td><td>5% TG, 18% Col, 45% Prot</td><td>ApoA-I, ApoA-II</td><td>Transporte reverso de colesterol: tejidos → hígado. Cardioprotector</td></tr>
+                                <tr><td>Lp(a)</td><td><span class="bm-tag bm-t-p">1.055–1.085</span></td><td>Similar a LDL + ApoA</td><td>ApoB-100 + Apo(a)</td><td>Riesgo cardiovascular independiente (inhibe fibrinólisis)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size:.78rem; color:rgba(255,255,255,.38); margin-top:10px; font-family:'JetBrains Mono',monospace;">Fuente: Lehninger 8th ed., Nelson & Cox. Valores de referencia: ATP III/ACC-AHA 2019. TG = triglicéridos, Col = colesterol.</p>
+                </div>
+
+                <div class="bm-norma" data-bm-reveal>
+                    <div class="bm-norma-ico">❤️</div>
+                    <div>
+                        <h4>Dislipidemia y Riesgo Cardiovascular en Chile — MINSAL</h4>
+                        <p>Chile presenta una alta prevalencia de dislipidemia: según la ENS 2016-2017, el 27.8% de adultos tiene hipercolesterolemia (colesterol total ≥240 mg/dL) y el 36.1% tiene colesterol LDL elevado (≥130 mg/dL). Las estatinas son los fármacos hipolipemiantes de primera línea según el Formulario Nacional MINSAL — atorvastatina, rosuvastatina y simvastatina son las más prescritas. Actúan inhibiendo competitivamente la HMG-CoA reductasa, reduciendo la síntesis hepática de colesterol y upregulando los receptores LDL (LDLR), con reducciones de LDL del 30–60%. Las metas terapéuticas según riesgo cardiovascular (Framingham): LDL &lt;70 mg/dL en riesgo muy alto (IAM previo, DM2 con órgano blanco), LDL &lt;100 mg/dL en riesgo alto. Los ácidos grasos omega-3 (EPA/DHA, 2–4 g/día) son coadyuvantes aprobados para hipertrigliceridemia severa (&gt;500 mg/dL).</p>
+                    </div>
+                </div>
+            </div><!-- /panel lípidos -->
+
+        </div><!-- /panels-wrap -->
+
+        <!-- NAV INFERIOR -->
+        <div class="bm-page-nav">
+            <a href="fundamentos.html"  class="bm-nbtn">← Unidad 1: Fundamentos</a>
+            <a href="../index.html"     class="bm-nbtn">Volver al índice</a>
+            <a href="metabolismo.html"  class="bm-nbtn pri">Siguiente: Unidad 3 — Metabolismo →</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>© 2026 PharmaLab Chile — Bioquímica · Unidad 2: Biomoléculas Esenciales</p>
+            <p class="footer-disclaimer">Contenido educacional universitario. Datos basados en Lehninger 8ª ed., Stryer 9ª ed., Berg-Tymoczko-Gatto 9ª ed. y bases de datos BRENDA/UniProt. No reemplaza asesoría profesional médica.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="../../script.js"></script>
+<script src="biomoleculas.js"></script>
+</body>
+</html>

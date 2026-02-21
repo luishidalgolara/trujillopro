@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virus del Ébola (EBOV) — Fiebre Hemorrágica, BSL-4 y Patogenia | PharmaLab Chile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ebola.css">
+</head>
+<body class="ebv-page">
+
+  <!-- NAVBAR -->
+  <nav class="ebv-navbar" id="ebv-navbar">
+    <div class="ebv-nav-inner">
+      <a href="../../index.html" class="ebv-nav-logo">
+        <svg viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        Pharma<span class="accent">Lab</span>
+      </a>
+      <div class="ebv-nav-links" id="ebvNavLinks">
+        <a href="../index.html">← Virología</a>
+        <a href="#estructura">Estructura 3D</a>
+        <a href="#patogenia">Patogenia</a>
+        <a href="#epidemiologia">Epidemiología</a>
+        <a href="#tratamiento">Tratamiento</a>
+        <a href="#" class="active">Ébola</a>
+      </div>
+      <button class="ebv-nav-toggle" id="ebvNavToggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="ebv-hero">
+    <div class="ebv-hero-bg"></div>
+    <canvas id="ebv-hero-canvas"></canvas>
+    <div class="ebv-hero-content">
+      <div class="ebv-badge">Virología · Patógeno 07/10 · BSL-4</div>
+      <h1 class="ebv-hero-title">
+        <span class="accent">Virus del Ébola</span><br>
+        EBOV — Filoviridae
+      </h1>
+      <p class="ebv-hero-desc">
+        Virus ARN de cadena negativa, filamentoso y pleomórfico, responsable de la 
+        <strong>Enfermedad por Virus del Ébola (EVE)</strong>, una fiebre hemorrágica viral 
+        con tasas de mortalidad de hasta <strong>90%</strong>. Requiere el nivel de bioseguridad más alto 
+        (BSL-4). Agente prioritario de bioterrorismo categoría A (CDC). Reservorio natural: 
+        murciélagos frugívoros del género <em>Pteropus</em> y <em>Rousettus</em>.
+      </p>
+      <div class="ebv-hero-meta">
+        <div class="ebv-meta-item">
+          <span class="ebv-meta-val">~19 kb</span>
+          <span class="ebv-meta-label">Genoma ARN (−)ssRNA lineal</span>
+        </div>
+        <div class="ebv-meta-item">
+          <span class="ebv-meta-val">25–90%</span>
+          <span class="ebv-meta-label">Tasa de letalidad por brote</span>
+        </div>
+        <div class="ebv-meta-item">
+          <span class="ebv-meta-val">BSL-4</span>
+          <span class="ebv-meta-label">Nivel máx. de bioseguridad</span>
+        </div>
+        <div class="ebv-meta-item">
+          <span class="ebv-meta-val">6</span>
+          <span class="ebv-meta-label">Especies del género Ebolavirus</span>
+        </div>
+      </div>
+    </div>
+    <div class="ebv-scroll-hint">
+      <span>Explorar</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- STATS ROW -->
+  <div class="ebv-container">
+    <div class="ebv-stats-row">
+      <div class="ebv-stat-card">
+        <span class="ebv-stat-val" data-target="28652" data-suffix="">0</span>
+        <span class="ebv-stat-label">Casos confirmados brote África Occ. 2014–2016</span>
+      </div>
+      <div class="ebv-stat-card">
+        <span class="ebv-stat-val" data-target="11325" data-suffix="">0</span>
+        <span class="ebv-stat-label">Fallecidos brote 2014–2016 (mayor en historia)</span>
+      </div>
+      <div class="ebv-stat-card">
+        <span class="ebv-stat-val" data-target="800" data-suffix=" nm">0</span>
+        <span class="ebv-stat-label">Longitud media del virión (hasta 14.000 nm)</span>
+      </div>
+      <div class="ebv-stat-card">
+        <span class="ebv-stat-val" data-target="7" data-suffix="">0</span>
+        <span class="ebv-stat-label">Proteínas codificadas en el genoma viral</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 1 — ESTRUCTURA 3D -->
+  <section class="ebv-section" id="estructura">
+    <div class="ebv-container">
+      <div class="ebv-section-tag tag-red">🔬 Estructura del Virión</div>
+      <h2 class="ebv-section-title">Anatomía del <span class="gradient">EBOV</span> en 3D</h2>
+      <p class="ebv-section-sub">El virión del Ébola es único: filamentoso, pleomórfico (recto, ramificado, en forma de "6" o herradura). Envuelto por una bicapa lipídica con glucoproteína de superficie (GP) formando trímeros. Arrastra para rotar, scroll para zoom.</p>
+
+      <div class="ebv-viewer-wrap">
+        <div>
+          <div class="ebv-canvas-box">
+            <canvas id="ebv-model-canvas"></canvas>
+            <div class="ebv-canvas-label">EBOV · Virión filamentoso (~800–1000 nm)</div>
+          </div>
+        </div>
+        <div class="ebv-struct-info">
+          <div class="ebv-struct-card" style="--stripe-color:#ef4444">
+            <h4><span class="dot" style="background:#ef4444"></span>Envoltura lipídica + GP trimers</h4>
+            <p>Bicapa lipídica derivada de la membrana plasmática del hospedero. La glicoproteína GP (trímeros) media la unión al receptor NPC1 (Niemann-Pick C1) en endosomas tardíos. GP es el único antígeno de superficie — diana principal de anticuerpos neutralizantes y de la vacuna rVSV-ZEBOV (Ervebo).</p>
+          </div>
+          <div class="ebv-struct-card" style="--stripe-color:#f97316">
+            <h4><span class="dot" style="background:#f97316"></span>Complejo de la nucleocápside (NC)</h4>
+            <p>El ARN genómico (~19 kb, ssRNA −) está encapsidado por la nucleoproteína NP formando una hélice rígida. VP35 y VP24 estabilizan la nucleocápside y antagonizan la respuesta de interferón. VP30 es el factor de transcripción viral. VP40 (matrix protein) conecta la NC con la envoltura y dirige la gemación.</p>
+          </div>
+          <div class="ebv-struct-card" style="--stripe-color:#fbbf24">
+            <h4><span class="dot" style="background:#fbbf24"></span>ARN polimerasa L + cofactor VP35</h4>
+            <p>La proteína L (~220 kDa) es la ARN polimerasa ARN-dependiente (RdRp), responsable de la replicación y transcripción del genoma. Actúa en complejo con VP35 (cofactor esencial). Diana terapéutica: Remdesivir (GS-5734) inhibe la RdRp del Ébola y otros filovirus.</p>
+          </div>
+          <div class="ebv-struct-card" style="--stripe-color:#a855f7">
+            <h4><span class="dot" style="background:#a855f7"></span>GP secretada (sGP) — inmunoevasión</h4>
+            <p>El gen GP produce también una forma secretada (sGP, ~97%) mediante edición transcripcional. sGP actúa como "señuelo": satura los anticuerpos anti-GP del hospedero antes de que puedan neutralizar el virión. Este mecanismo único explica parcialmente la inmunopatología masiva y la dificultad para generar inmunidad protectora suficiente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2 — PATOGENIA -->
+  <section class="ebv-section" id="patogenia">
+    <div class="ebv-container">
+      <div class="ebv-section-tag tag-red">⚠️ Patogenia y Fisiopatología</div>
+      <h2 class="ebv-section-title">¿Cómo destruye el <span class="gradient">Ébola</span> el organismo?</h2>
+      <p class="ebv-section-sub">La EVE no es una simple "fiebre hemorrágica" — es una tormenta de citocinas, colapso inmune, disfunción endotelial masiva y fallo multiorgánico. Comprender su patogenia es esencial para el diagnóstico y tratamiento.</p>
+
+      <!-- TIMELINE REPLICACIÓN -->
+      <div class="ebv-react-timeline">
+        <div class="ebv-rt-step">
+          <span class="ebv-rt-num" style="color:#ef4444">01</span>
+          <h4>Entrada Celular vía NPC1</h4>
+          <p>GP viral se une a receptores de superficie (TIM-1, Axl, DC-SIGN). La partícula es endocitada. En endosomas tardíos, catepsinas B/L escinden GP → exposición del dominio de fusión → unión a NPC1 → fusión de membranas → liberación del genoma al citoplasma.</p>
+        </div>
+        <div class="ebv-rt-arrow">→</div>
+        <div class="ebv-rt-step">
+          <span class="ebv-rt-num" style="color:#f97316">02</span>
+          <h4>Bloqueo del Interferón (VP35 + VP24)</h4>
+          <p>VP35 bloquea IRF-3/IRF-7 impidiendo la transcripción de IFN-α/β. VP24 bloquea la señalización STAT1/STAT2 rio abajo del receptor de IFN (JAK-STAT). Resultado: células infectadas no generan respuesta antiviral eficaz → replicación masiva sin control.</p>
+        </div>
+        <div class="ebv-rt-arrow">→</div>
+        <div class="ebv-rt-step">
+          <span class="ebv-rt-num" style="color:#fbbf24">03</span>
+          <h4>Infección de Macrófagos y DC</h4>
+          <p>Los macrófagos y células dendríticas son el primer blanco. Las DC infectadas no maduran correctamente → no activan linfocitos T. Los macrófagos hiperstimulan produciendo TNF-α, IL-6, IL-8, IL-10 → tormenta de citocinas. Esta disfunción inmune temprana determina el pronóstico.</p>
+        </div>
+        <div class="ebv-rt-arrow">→</div>
+        <div class="ebv-rt-step">
+          <span class="ebv-rt-num" style="color:#a855f7">04</span>
+          <h4>Disfunción Endotelial + Coagulopatía</h4>
+          <p>GP viral daña directamente las células endoteliales (pérdida de integridad vascular). La tormenta de citocinas activa el factor tisular → CID (coagulación intravascular diseminada): consumo de factores de coagulación + trombocitopenia → hemorragia. Paradójicamente, también trombosis microvascular → hipoxia tisular.</p>
+        </div>
+        <div class="ebv-rt-arrow">→</div>
+        <div class="ebv-rt-step">
+          <span class="ebv-rt-num" style="color:#ec4899">05</span>
+          <h4>Fallo Multiorgánico</h4>
+          <p>Necrosis hepática (AST/ALT ↑↑), IRA por hipotensión e infección de células tubulares renales, edema pulmonar, encefalopatía. La apoptosis masiva de linfocitos T y B (linfopenia profunda) colapsa la inmunidad adaptativa. La muerte ocurre por shock séptico-like, fallo orgánico múltiple y hemorragia terminal.</p>
+        </div>
+      </div>
+
+      <div class="ebv-content-grid" style="margin-top:40px">
+        <div class="ebv-content-card" style="--card-accent:#ef4444">
+          <div class="ebv-card-num">Células Diana</div>
+          <h3>Tropismo Celular del EBOV</h3>
+          <ul>
+            <li><span class="bullet" style="background:#ef4444"></span><strong style="color:var(--ebv-text)">Macrófagos y monocitos:</strong> Principal reservorio inicial de replicación. Su activación descontrolada (síndrome de activación macrofágica) genera la tormenta de citocinas. Expresan altos niveles de TIM-1, DC-SIGN y NPC1.</li>
+            <li><span class="bullet" style="background:#ef4444"></span><strong style="color:var(--ebv-text)">Células dendríticas (DC):</strong> Infectadas pero no activadas. No presentan antígeno eficientemente → falla de activación de LT → inmunosupresión adaptativa. Las DC "zombis" diseminan el virus por el organismo sin generar respuesta adecuada.</li>
+            <li><span class="bullet" style="background:#ef4444"></span><strong style="color:var(--ebv-text)">Células endoteliales:</strong> Infectadas en fases tardías → pérdida masiva de la barrera vascular → trasudación de plasma → shock hipovolémico. La disfunción endotelial es el evento crítico que determina la hemorragia clínica.</li>
+            <li><span class="bullet" style="background:#ef4444"></span><strong style="color:var(--ebv-text)">Hepatocitos y suprarrenales:</strong> Necrosis hepática → coagulopatía (↓ factores I, II, V, VII, VIII, X). Daño suprarrenal → insuficiencia corticosuprarrenal → hipotensión refractaria. Células de Kupffer hepáticas amplifican la inflamación sistémica.</li>
+          </ul>
+        </div>
+
+        <div class="ebv-content-card" style="--card-accent:#f97316">
+          <div class="ebv-card-num">Cuadro Clínico</div>
+          <h3>Evolución Clínica de la EVE — Fases</h3>
+          <ul>
+            <li><span class="bullet" style="background:#f97316"></span><strong style="color:var(--ebv-text)">Período de incubación (2–21 días, media 8–10 días):</strong> Asintomático. Exposición por contacto directo con fluidos corporales de persona infectada o animal muerto. No hay transmisión en este período — fundamental para el control epidémico.</li>
+            <li><span class="bullet" style="background:#f97316"></span><strong style="color:var(--ebv-text)">Fase seca / prodrómica (días 1–5):</strong> Fiebre abrupta ≥38.5°C, mialgia severa, cefalea intensa, fatiga profunda, odinofagia. Clínicamente indistinguible de malaria, fiebre tifoidea o meningitis. El diagnóstico diferencial en zona endémica es crítico.</li>
+            <li><span class="bullet" style="background:#f97316"></span><strong style="color:var(--ebv-text)">Fase gastrointestinal (días 5–7):</strong> Vómitos, diarrea profusa (hasta 10 L/día), dolor abdominal, hiporexia. La deshidratación severa y desequilibrio electrolítico (hiponatremia, hipopotasemia) son los principales determinantes de mortalidad en esta fase.</li>
+            <li><span class="bullet" style="background:#f97316"></span><strong style="color:var(--ebv-text)">Fase hemorrágica (días 7–10, ~50% de casos):</strong> Petequias, equimosis, sangrado en mucosas, hematemesis, melena, sangrado en sitios de venopunción. CID clínica. La hemorragia visible no es universal — muchos mueren por shock sin hemorragia externa notable.</li>
+            <li><span class="bullet" style="background:#f97316"></span><strong style="color:var(--ebv-text)">Resolución o muerte (días 7–12):</strong> Los sobrevivientes muestran defervescencia hacia el día 7–9. Los no sobrevivientes presentan shock séptico-like, IRA, SDRA y muerte. El factor predictor individual más robusto: carga viral en día 3–5 (RT-PCR Ct).</li>
+          </ul>
+        </div>
+
+        <div class="ebv-content-card" style="--card-accent:#fbbf24">
+          <div class="ebv-card-num">Laboratorio</div>
+          <h3>Hallazgos de Laboratorio Característicos</h3>
+          <ul>
+            <li><span class="bullet" style="background:#fbbf24"></span><strong style="color:var(--ebv-text)">Hemograma:</strong> Leucopenia inicial → leucocitosis neutrofílica en fases tardías. Linfopenia marcada y persistente (apoptosis masiva de linfocitos). Trombocitopenia severa (20.000–50.000/μL) por CID y disfunción megacariocítica. Anemia leve-moderada.</li>
+            <li><span class="bullet" style="background:#fbbf24"></span><strong style="color:var(--ebv-text)">Enzimas hepáticas:</strong> AST >> ALT (relación AST/ALT >1, sugiere necrosis hepatocitaria). AST puede superar 2.000 UI/L. Hiperbilirrubinemia en fases tardías. ↓ factores de coagulación hepáticos (TP prolongado, INR >1.5).</li>
+            <li><span class="bullet" style="background:#fbbf24"></span><strong style="color:var(--ebv-text)">Coagulación:</strong> CID: ↑TP, ↑TTPA, ↑dímero D, ↓fibrinógeno. Alargamiento progresivo de TP e INR como marcador de progresión. Los niveles de fibrinógeno <1 g/L se asocian a mortalidad extremadamente alta.</li>
+            <li><span class="bullet" style="background:#fbbf24"></span><strong style="color:var(--ebv-text)">Diagnóstico confirmatorio:</strong> RT-PCR tiempo real en sangre/suero — gold standard (Ct <30 correlaciona con viremia alta). El antígeno VP40 por ELISA/RDT permite diagnóstico rápido en campo. En BSL-4: aislamiento viral en Vero E6. IgM aparece en días 2–9; IgG en días 5–14 (valor pronóstico en sobrevivientes).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3 — EPIDEMIOLOGÍA -->
+  <section class="ebv-section" id="epidemiologia">
+    <div class="ebv-container">
+      <div class="ebv-section-tag tag-orange">🌍 Epidemiología Global</div>
+      <h2 class="ebv-section-title">Historia y <span class="gradient">Brotes</span> del Ébola</h2>
+      <p class="ebv-section-sub">Desde 1976 hasta 2024, el EBOV ha causado >30 brotes documentados, principalmente en África Subsahariana. El brote de 2014–2016 en África Occidental redefinió la respuesta global a emergencias virales.</p>
+
+      <div class="ebv-neuro-grid">
+        <div class="ebv-neuro-card" style="--neuro-color:#ef4444;--neuro-dim:rgba(239,68,68,.12)">
+          <span class="ebv-neuro-icon">🏥</span>
+          <h4>Primer Brote Documentado — 1976</h4>
+          <p>Simultáneamente en Yambuku (Zaire/RDC) y Nzara (Sudán). 318 casos en Zaire con 88% mortalidad. Virus aislado y nombrado por el río Ébola. Se identificaron 2 cepas distintas: EBOV (Zaire) y SUDV (Sudán). Dr. Peter Piot y equipo WHO lideran respuesta.</p>
+          <span class="ebv-neuro-detail">EBOV Zaire · CFR 88%</span>
+        </div>
+        <div class="ebv-neuro-card" style="--neuro-color:#f97316;--neuro-dim:rgba(249,115,22,.12)">
+          <span class="ebv-neuro-icon">🌍</span>
+          <h4>Brote África Occidental 2014–2016</h4>
+          <p>El mayor brote en historia: Guinea, Sierra Leona, Liberia. 28.652 casos, 11.325 muertes. Primera vez con transmisión urbana sostenida. Desbordó sistemas sanitarios. Generó la Emergencia de Salud Pública de Importancia Internacional (ESPII) de la OMS. Aceleró desarrollo de Ervebo y mAb114.</p>
+          <span class="ebv-neuro-detail">28.652 casos · ESPII OMS</span>
+        </div>
+        <div class="ebv-neuro-card" style="--neuro-color:#a855f7;--neuro-dim:rgba(168,85,247,.12)">
+          <span class="ebv-neuro-icon">🇨🇩</span>
+          <h4>Brote Kivu Norte, RDC — 2018–2020</h4>
+          <p>3.481 casos, 2.299 muertes (CFR 66%) en zona de conflicto armado. Segundo mayor brote histórico. Primera vez que se usó la vacuna Ervebo (rVSV-ZEBOV) en respuesta activa con protocolo "anillo de vacunación". Demostró >97% eficacia vacunal en contexto real.</p>
+          <span class="ebv-neuro-detail">Kivu Norte · Ervebo deployado</span>
+        </div>
+        <div class="ebv-neuro-card" style="--neuro-color:#34d399;--neuro-dim:rgba(52,211,153,.12)">
+          <span class="ebv-neuro-icon">🦇</span>
+          <h4>Reservorio y Transmisión Zoonótica</h4>
+          <p>Los murciélagos frugívoros (Hypsignathus monstrosus, Epomops franqueti, Myonycteris torquata) son el reservorio natural más probable, aunque no confirmado definitivamente. La transmisión a humanos ocurre por contacto con carne de animales silvestres ("bushmeat") infectada o contacto con murciélagos. Primates (gorilas, chimpancés) son hospederos accidentales como el humano.</p>
+          <span class="ebv-neuro-detail">Reservorio: murciélagos Pteropodidae</span>
+        </div>
+        <div class="ebv-neuro-card" style="--neuro-color:#ec4899;--neuro-dim:rgba(236,72,153,.12)">
+          <span class="ebv-neuro-icon">🔴</span>
+          <h4>Las 6 Especies del Género Ebolavirus</h4>
+          <p>Zaire ebolavirus (EBOV, más letal 60–90%), Sudan ebolavirus (SUDV, 40–60%), Bundibugyo ebolavirus (BDBV, ~25%), Taï Forest ebolavirus (TAFV, 1 caso humano), Reston ebolavirus (RESTV, solo primates/cerdos, no patogénico para humanos), Bombali ebolavirus (BOMV, 2018, murciélagos, sin casos humanos).</p>
+          <span class="ebv-neuro-detail">6 especies · EBOV más letal</span>
+        </div>
+        <div class="ebv-neuro-card" style="--neuro-color:#fbbf24;--neuro-dim:rgba(251,191,36,.12)">
+          <span class="ebv-neuro-icon">⚡</span>
+          <h4>Persistencia Viral en Sobrevivientes</h4>
+          <p>EBOV persiste en compartimentos inmunoprivilegiados post-recuperación: testículos (semen hasta 500+ días), humor acuoso del ojo, LCR. Casos de retransmisión sexual documentados hasta 18 meses post-recuperación. El "ébola tardío" (uveítis, encefalitis, artralgia) afecta hasta 70% de sobrevivientes — síndrome post-EVE.</p>
+          <span class="ebv-neuro-detail">Persistencia hasta 500+ días en semen</span>
+        </div>
+      </div>
+
+      <!-- TABLA DE BROTES HISTÓRICOS -->
+      <div class="ebv-section-tag tag-red" style="margin-top:48px">📊 Brotes Históricos Seleccionados</div>
+      <div class="ebv-vax-table-wrap" style="margin-top:16px">
+        <table class="ebv-vax-table">
+          <thead>
+            <tr>
+              <th>Año</th>
+              <th>País</th>
+              <th>Especie</th>
+              <th>Casos</th>
+              <th>Muertes</th>
+              <th>CFR</th>
+              <th>Hito</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="vax-name">1976</td>
+              <td>RDC (Zaire) / Sudán</td>
+              <td class="vax-tech">EBOV / SUDV</td>
+              <td>318 / 284</td>
+              <td>280 / 151</td>
+              <td>88% / 53%</td>
+              <td>Descubrimiento del virus. Primer aislamiento.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">1995</td>
+              <td>Kikwit, RDC</td>
+              <td class="vax-tech">EBOV</td>
+              <td>315</td>
+              <td>250</td>
+              <td>79%</td>
+              <td>Primer brote mayor post-1976. Respuesta OMS formalizada.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">2000–2001</td>
+              <td>Uganda</td>
+              <td class="vax-tech">SUDV</td>
+              <td>425</td>
+              <td>224</td>
+              <td>53%</td>
+              <td>Mayor brote SUDV. Gulu/Masindi. Introducción de EPP estructurado.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">2007</td>
+              <td>Bundibugyo, Uganda</td>
+              <td class="vax-tech">BDBV</td>
+              <td>149</td>
+              <td>37</td>
+              <td>25%</td>
+              <td>Descubrimiento de nueva especie: Bundibugyo ebolavirus.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">2014–2016</td>
+              <td>Guinea, Sierra Leona, Liberia</td>
+              <td class="vax-tech">EBOV</td>
+              <td>28.652</td>
+              <td>11.325</td>
+              <td>40%</td>
+              <td>Mayor brote histórico. ESPII OMS. Aceleró Ervebo y mAb114.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">2018–2020</td>
+              <td>Kivu Norte, RDC</td>
+              <td class="vax-tech">EBOV</td>
+              <td>3.481</td>
+              <td>2.299</td>
+              <td>66%</td>
+              <td>2° mayor brote. Primer uso masivo de Ervebo. Zona conflicto.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">2021</td>
+              <td>Guinea (Nzérékoré)</td>
+              <td class="vax-tech">EBOV</td>
+              <td>23</td>
+              <td>12</td>
+              <td>52%</td>
+              <td>Primer brote en África Occidental post-2016. Cepa genéticamente idéntica a 2014 — posible persistencia en sobreviviente.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">2022</td>
+              <td>Uganda</td>
+              <td class="vax-tech">SUDV</td>
+              <td>164</td>
+              <td>77</td>
+              <td>47%</td>
+              <td>Primer brote SUDV sin vacuna disponible — Ervebo solo activa vs EBOV. Urgencia de vacunas polivalentes.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4 — TRATAMIENTO Y VACUNAS -->
+  <section class="ebv-section" id="tratamiento">
+    <div class="ebv-container">
+      <div class="ebv-section-tag tag-green">💊 Tratamiento y Prevención</div>
+      <h2 class="ebv-section-title">Antivirales, Anticuerpos y <span class="gradient">Vacunas</span></h2>
+      <p class="ebv-section-sub">Hasta el brote 2014–2016 no existían tratamientos aprobados. Los últimos 10 años han producido los primeros antivirales y vacunas eficaces contra el Ébola. El manejo de soporte agresivo sigue siendo el pilar terapéutico.</p>
+
+      <div class="ebv-vax-table-wrap">
+        <table class="ebv-vax-table">
+          <thead>
+            <tr>
+              <th>Agente</th>
+              <th>Mecanismo / Clase</th>
+              <th>Estado Regulatorio</th>
+              <th>Eficacia / Evidencia</th>
+              <th>Notas Clínicas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="vax-name">Atoltivimab + Maftivimab + Odesivimab (Inmazeb)</td>
+              <td class="vax-tech">3 mAbs anti-GP (ZMapp mejorado): bloqueo de unión, fusión y postfusión</td>
+              <td>FDA aprobado octubre 2020 (1er tratamiento Ébola aprobado)</td>
+              <td>PALM RCT 2019 (RDC): CFR 24% vs 49% ZMapp (p&lt;0.001). Superior a todos los comparadores en el ensayo.</td>
+              <td>IV única dosis. Solo activo vs EBOV (Zaire). Requiere cadena de frío. Disponible en stock estratégico BARDA/OMS.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Ansuvimab (mAb114, Ebanga)</td>
+              <td class="vax-tech">mAb IgG1 anti-dominio receptor-binding de GP. Aislado de sobreviviente 1995.</td>
+              <td>FDA aprobado diciembre 2020 (2° tratamiento aprobado)</td>
+              <td>PALM RCT 2019: CFR 35% vs 49% ZMapp. Eficacia demostrada en contexto real brote Kivu Norte.</td>
+              <td>IV única dosis. Mayor estabilidad térmica que Inmazeb. Stock OMS para respuesta rápida. Solo EBOV.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Remdesivir (GS-5734)</td>
+              <td class="vax-tech">Análogo adenosina → inhibidor RdRp (ARN polimerasa). Incorporación y terminación de cadena ARN.</td>
+              <td>No aprobado para Ébola (aprobado FDA/EMA para COVID-19). Uso compasivo.</td>
+              <td>Brote 2014–2016: eficacia modesta en primates no humanos. No suficientemente eficaz en humanos vs mAbs — superado en PALM RCT. Activo in vitro.</td>
+              <td>Interesante por espectro antiviral amplio (filovirus, arenavirus, coronavirus). Investigación continua en combinación.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">rVSV-ZEBOV (Ervebo, Merck)</td>
+              <td class="vax-tech">Vacuna recombinante viva atenuada: VSV (virus estomatitis vesicular) con GP de EBOV en lugar de su propia glicoproteína G.</td>
+              <td>FDA/EMA aprobada 2019. Pre-calificada OMS. Incluida en Plan Estratégico CEPI.</td>
+              <td>Ensayo Guinea 2015 (anillo): 100% eficacia (0 casos en vacunados ≥10 días post-vacunación vs 16 casos en no vacunados). Uso real Kivu Norte: >97% eficacia.</td>
+              <td>Dosis única IM. Cadena de frío −60 a −80°C (limitante logístico en campo). Solo activo vs EBOV (Zaire). La cobertura contra SUDV es el principal gap actual.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Ad26.ZEBOV + MVA-BN-Filo (Zabdeno+Mvabea, J&J)</td>
+              <td class="vax-tech">Prime-boost: adenovirus 26 recombinante (Ad26) expresando GP EBOV, seguido de MVA (Modified Vaccinia Ankara) polivalente (GP EBOV, SUDV, MARV, NP TAFV).</td>
+              <td>EMA aprobada julio 2020. OMS pre-calificada. Stockpile ECOWAS.</td>
+              <td>Eficacia >82% (datos prelicencia). Esquema 2 dosis (día 0 + ~56 días). Menor eficacia que Ervebo pero polivalente — cubre SUDV y MARV.</td>
+              <td>Cadena de frío +2 a +8°C (logísticamente superior a Ervebo). Útil para vacunación preventiva no-emergencia. Brote Uganda 2022 SUDV: primer uso en campo.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Manejo de Soporte (Pilar principal)</td>
+              <td class="vax-tech">Reposición hidroelectrolítica IV/oral agresiva, corrección electrolitos (Na, K, Mg), tratamiento de coinfecciones (malaria, bacteriana), analgesia, antieméticos.</td>
+              <td>Estándar de cuidado en centros de tratamiento Ébola (CTE)</td>
+              <td>Brote 2014–2016 Liberia (ELWA-3, MSF): mortalidad reducida de ~70% a ~40% con soporte agresivo solo, antes de disponibilidad de antivirales/mAbs.</td>
+              <td>La deshidratación y desequilibrio electrolítico son la causa de muerte más prevenible. Monitoreo de K+, Na+, glucosa. Antimaláricos empíricos en zona endémica.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ebv-content-grid" style="margin-top:48px">
+        <div class="ebv-content-card" style="--card-accent:#ef4444">
+          <div class="ebv-card-num">BSL-4 — Bioseguridad Máxima</div>
+          <h3>¿Qué significa trabajar con EBOV?</h3>
+          <ul>
+            <li><span class="bullet" style="background:#ef4444"></span><strong style="color:var(--ebv-text)">Traje de presión positiva (PAPR):</strong> En BSL-4 estricto, los investigadores usan trajes aislantes completos con suministro de aire positivo (no respiradores). En CTE en campo, se usan EPP de 3 capas con dúo de observadores. El proceso de puesta/retirada del EPP es el momento de mayor riesgo.</li>
+            <li><span class="bullet" style="background:#ef4444"></span><strong style="color:var(--ebv-text)">Transmisión:</strong> EBOV se transmite exclusivamente por contacto directo con fluidos corporales (sangre, vómito, diarrea, semen, leche materna) de personas/animales sintomáticos. No es aerotransportado en condiciones naturales. Alta carga viral en fase sintomática avanzada.</li>
+            <li><span class="bullet" style="background:#ef4444"></span><strong style="color:var(--ebv-text)">Laboratorios BSL-4 mundiales:</strong> CDC Atlanta, USAMRIID (Fort Detrick), Instituto Pasteur (Lyon), CIDR (Winnipeg), Instituto Friedrich-Loeffler (Alemania), NIH/NIAID Rocky Mountain Labs. En Latinoamérica: no existe BSL-4 certificado actualmente.</li>
+            <li><span class="bullet" style="background:#ef4444"></span><strong style="color:var(--ebv-text)">Agente categoría A (CDC/USAMRIID):</strong> Clasificado como potencial agente de bioterrorismo categoría A — alta mortalidad, diseminación potencial, impacto en salud pública masivo. Requiere preparación específica en sistemas de respuesta de emergencias.</li>
+          </ul>
+        </div>
+
+        <div class="ebv-content-card" style="--card-accent:#34d399">
+          <div class="ebv-card-num">Investigación 2024–2025</div>
+          <h3>Fronteras de la Investigación Actual</h3>
+          <ul>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--ebv-text)">Vacunas anti-SUDV urgentes:</strong> El brote Uganda 2022 (SUDV) sin vacuna disponible demostró el gap crítico. Candidatos: ChAd3-SUDV (GSK, fase II), ADvac SUDV (J&J, incorporado en Mvabea), plataformas ARNm anti-SUDV (Moderna/BioNTech en preclínico 2024).</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--ebv-text)">Síndrome post-EVE:</strong> ≥70% de sobrevivientes desarrollan secuelas: uveítis herpetiforme, artralgia, encefalitis tardía, deterioro cognitivo, fatiga crónica. PREVAIL III (NIH) y estudios en RDC caracterizan el espectro. Mecanismo: persistencia viral en nicho inmunoprivilegiado + neuroinflamación crónica.</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--ebv-text)">Panmapivimab + torezolid:</strong> Nuevas combinaciones mAb + antiviral oral en estudio para mejorar portabilidad en entornos con recursos limitados. Torezolid (oxazolidinona) mostró actividad anti-EBOV in vitro inesperada — mecanismo bajo investigación.</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--ebv-text)">Modelos predictivos y IA:</strong> Machine learning para predicción de mortalidad individual (AUC 0.91) basado en Ct RT-PCR + electrolitos + edad (modelo DeepEbola 2023, Lancet Digital Health). Potencial para optimizar triaje en CTE de recursos limitados.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CALLOUT -->
+      <div class="ebv-callout">
+        <h3>🌐 El EBOV y la Preparación Global para Pandemias</h3>
+        <p>
+          El brote de 2014–2016 demostró que un filovirus con transmisión exclusivamente por contacto podía diezmar sistemas de salud en países de bajos recursos y generar pánico global. 
+          La respuesta aceleró la creación de la <strong>CEPI</strong> (Coalition for Epidemic Preparedness Innovations, 2017), que financia el desarrollo de vacunas en fase preclínica/clínica temprana para patógenos con potencial epidémico.
+          También impulsó el <strong>Tratado de Pandemia de la OMS</strong> y el fortalecimiento del <strong>RSI</strong> (Reglamento Sanitario Internacional).
+          La lección más importante: <strong>las vacunas y tratamientos deben estar listos antes del brote</strong> — el desarrollo en respuesta activa llega tarde y cuesta vidas. 
+          La arquitectura de respuesta global actual para el Ébola (stockpile Ervebo/Inmazeb/mAb114 coordinado por UNICEF/OPS) es el modelo más avanzado para cualquier patógeno emergente.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM NAV -->
+  <div class="ebv-container" style="padding-bottom:60px">
+    <div class="ebv-bottom-nav">
+      <a href="../index.html" class="ebv-nav-btn">← Volver a Virología</a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#estructura"    class="ebv-nav-btn">Estructura 3D ↑</a>
+        <a href="#patogenia"     class="ebv-nav-btn">Patogenia ↑</a>
+        <a href="#epidemiologia" class="ebv-nav-btn">Epidemiología ↑</a>
+        <a href="#tratamiento"   class="ebv-nav-btn">Tratamiento ↑</a>
+      </div>
+      <a href="../../index.html" class="ebv-nav-btn">Inicio →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="ebv-footer">
+    <div class="ebv-container">
+      <div class="ebv-footer-inner">
+        <p>© 2026 PharmaLab Chile · Contenido basado en OMS, CDC, NIH/NIAID, NEJM, Lancet, Nature Reviews Microbiology, J Virology, PALM Trial 2019</p>
+        <p class="disclaimer">Contenido educacional universitario. No reemplaza asesoría médica ni protocolos oficiales de bioseguridad.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="ebola.js"></script>
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería Celular 3D — PharmaLab Chile | Biología Celular</title>
+  <meta name="description" content="Galería interactiva 3D de la célula y sus componentes. Célula procariota, eucariota, animal, vegetal, orgánulos y estructuras celulares. Contenido universitario PharmaLab Chile.">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="galeria.css">
+</head>
+<body>
+
+<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#" class="nav-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+      <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+    </a>
+    <a href="../index.html" class="nav-back-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      Volver
+    </a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="gc-hero">
+  <div class="gc-hero-bg">
+    <div class="gc-hero-grid"></div>
+    <div class="gc-orb gc-orb-1"></div>
+    <div class="gc-orb gc-orb-2"></div>
+    <div class="gc-orb gc-orb-3"></div>
+    <canvas id="gc-hero-canvas"></canvas>
+  </div>
+  <div class="gc-hero-inner">
+    <div class="gc-wrap">
+      <div class="gc-hero-content">
+        <div class="gc-crumb">
+          <span>Inicio</span><span class="sep">/</span>
+          <span>Biología Celular</span><span class="sep">/</span>
+          <span style="color:#fff">Galería Celular 3D</span>
+        </div>
+        <div class="gc-hero-tag">
+          <span class="gc-dot"></span>
+          Galería Interactiva · Biología Celular
+        </div>
+        <h1 class="gc-hero-title">La <span class="gc-gr">Célula</span><br>en 3D</h1>
+        <p class="gc-hero-desc">Explora la unidad fundamental de la vida con visualizaciones tridimensionales interactivas. Desde la estructura procariota hasta los orgánulos más especializados — ciencia de precisión universitaria.</p>
+        <div class="gc-hero-stats">
+          <div class="gc-stat">
+            <span class="gc-stat-num">19</span>
+            <span class="gc-stat-label">Estructuras celulares</span>
+          </div>
+          <div class="gc-stat">
+            <span class="gc-stat-num">3D</span>
+            <span class="gc-stat-label">Visualización interactiva</span>
+          </div>
+          <div class="gc-stat">
+            <span class="gc-stat-num">37×10¹²</span>
+            <span class="gc-stat-label">Células en el cuerpo humano</span>
+          </div>
+        </div>
+        <div class="gc-hero-actions">
+          <button class="gc-btn-primary" onclick="document.getElementById('galeria').scrollIntoView({behavior:'smooth'})">
+            Explorar Galería →
+          </button>
+          <button class="gc-btn-secondary" onclick="document.getElementById('info').scrollIntoView({behavior:'smooth'})">
+            ¿Qué es una célula?
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ INFO RÁPIDA ═══════════════════════ -->
+<section class="gc-section" id="info">
+  <div class="gc-wrap">
+    <div class="gc-datos" data-gc-reveal>
+      <div class="gc-dato">
+        <span class="gc-dato-n">1665</span>
+        <span class="gc-dato-l">Año del descubrimiento celular por Robert Hooke con microscopio óptico</span>
+      </div>
+      <div class="gc-dato">
+        <span class="gc-dato-n">1–100 μm</span>
+        <span class="gc-dato-l">Rango de tamaño celular típico. Neuronas pueden superar 1 metro de longitud axonal</span>
+      </div>
+      <div class="gc-dato">
+        <span class="gc-dato-n">~2 m</span>
+        <span class="gc-dato-l">Longitud total del ADN en una célula humana si se estirara completamente</span>
+      </div>
+      <div class="gc-dato">
+        <span class="gc-dato-n">~20,000</span>
+        <span class="gc-dato-l">Genes codificantes de proteínas en el genoma humano haploide</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FILTROS ═══════════════════════ -->
+<section class="gc-section" id="galeria">
+  <div class="gc-wrap">
+    <div class="gc-section-hd" data-gc-reveal>
+      <div class="gc-sec-tag">🧬 Galería Interactiva 3D</div>
+      <h2 class="gc-sec-title">Explora cada <span class="gc-hl">Estructura Celular</span></h2>
+      <p class="gc-sec-sub">Haz clic en cualquier tarjeta para abrir la visualización 3D interactiva con descripción científica detallada</p>
+    </div>
+
+    <div class="gc-filters" data-gc-reveal>
+      <button class="gc-filter active" data-filter="all">Todos</button>
+      <button class="gc-filter" data-filter="celula">Tipos de Célula</button>
+      <button class="gc-filter" data-filter="membrana">Membrana</button>
+      <button class="gc-filter" data-filter="nucleo">Núcleo</button>
+      <button class="gc-filter" data-filter="organulo">Orgánulos</button>
+      <button class="gc-filter" data-filter="citoesqueleto">Citoesqueleto</button>
+    </div>
+
+    <!-- GRID GALERÍA -->
+    <div class="gc-grid" id="gcGrid" data-gc-reveal>
+
+      <div class="gc-card" data-category="celula" data-id="0" onclick="openModal(0)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="0"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Fundamento</div>
+          <h3 class="gc-card-title">Célula</h3>
+          <p class="gc-card-desc">Unidad estructural y funcional de todo ser vivo. Contiene la maquinaria molecular para metabolismo, reproducción y respuesta al entorno.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="celula" data-id="1" onclick="openModal(1)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="1"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Tipo celular</div>
+          <h3 class="gc-card-title">Célula Procariota</h3>
+          <p class="gc-card-desc">Sin núcleo definido ni orgánulos membranosos. ADN circular en nucleoide. Dominio Bacteria y Archaea. Tamaño: 0.1–10 μm.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="celula" data-id="2" onclick="openModal(2)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="2"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Tipo celular</div>
+          <h3 class="gc-card-title">Célula Eucariota</h3>
+          <p class="gc-card-desc">Núcleo verdadero delimitado por envoltura nuclear. Orgánulos especializados. Dominio Eukarya. Tamaño: 10–100 μm.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="celula" data-id="3" onclick="openModal(3)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="3"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Tipo celular</div>
+          <h3 class="gc-card-title">Célula Animal</h3>
+          <p class="gc-card-desc">Eucariota sin pared celular ni cloroplastos. Posee centriolos y lisosomas. Forma irregular. Vacuolas pequeñas o ausentes.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="celula" data-id="4" onclick="openModal(4)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="4"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Tipo celular</div>
+          <h3 class="gc-card-title">Célula Vegetal</h3>
+          <p class="gc-card-desc">Pared celular de celulosa, cloroplastos para fotosíntesis y vacuola central grande. Forma rectangular. Sin centriolos.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="membrana" data-id="5" onclick="openModal(5)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="5"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Membrana</div>
+          <h3 class="gc-card-title">Membrana Plasmática</h3>
+          <p class="gc-card-desc">Barrera semipermeable que delimita la célula. Modelo mosaico fluido. Proteínas integrales y periféricas embebidas en bicapa lipídica.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="membrana" data-id="6" onclick="openModal(6)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="6"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Membrana</div>
+          <h3 class="gc-card-title">Bicapa Lipídica</h3>
+          <p class="gc-card-desc">Doble capa de fosfolípidos anfipáticos. Cabezas polares hacia el agua, colas apolares al interior. Grosor ~7–8 nm. Base de todas las membranas.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="nucleo" data-id="7" onclick="openModal(7)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="7"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Núcleo</div>
+          <h3 class="gc-card-title">Núcleo</h3>
+          <p class="gc-card-desc">Centro de control genético. Doble envoltura nuclear con poros. Contiene ADN organizado en cromatina y cromosomas. Diámetro: 5–10 μm.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="nucleo" data-id="8" onclick="openModal(8)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="8"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Núcleo</div>
+          <h3 class="gc-card-title">Nucleolo</h3>
+          <p class="gc-card-desc">Subcompartimento nuclear sin membrana. Sitio de transcripción de ARNr y ensamblaje de subunidades ribosomales. Puede haber 1–4 por núcleo.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="organulo" data-id="9" onclick="openModal(9)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="9"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Compartimento</div>
+          <h3 class="gc-card-title">Citoplasma</h3>
+          <p class="gc-card-desc">Contenido celular excluido el núcleo. Citosol (solución acuosa coloidal) + orgánulos. pH ~7.2. Sede de glucólisis y traducción ribosómica.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="organulo" data-id="10" onclick="openModal(10)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="10"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Orgánulo</div>
+          <h3 class="gc-card-title">Ribosomas</h3>
+          <p class="gc-card-desc">Nanomáquinas de síntesis proteica. ARNr + proteínas. Eucariontes: 80S (60S+40S). Procariontes: 70S (50S+30S). Libres o unidos al RE rugoso.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="organulo" data-id="11" onclick="openModal(11)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="11"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Orgánulo</div>
+          <h3 class="gc-card-title">Mitocondrias</h3>
+          <p class="gc-card-desc">Central energética celular. Doble membrana con crestas. Ciclo de Krebs + fosforilación oxidativa → 30–32 ATP/glucosa. Genoma propio de 37 genes.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="organulo" data-id="12" onclick="openModal(12)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="12"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Orgánulo</div>
+          <h3 class="gc-card-title">Cloroplastos</h3>
+          <p class="gc-card-desc">Plastidios fotosintéticos. Triple membrana. Tilacoides apilados en grana. Estroma con enzimas del ciclo de Calvin. Clorofila a y b como pigmentos principales.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="organulo" data-id="13" onclick="openModal(13)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="13"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Orgánulo</div>
+          <h3 class="gc-card-title">Lisosomas</h3>
+          <p class="gc-card-desc">Compartimentos digestivos ácidos (pH ~4.5–5). +50 hidrolasas ácidas. Autofagia, fagocitosis y reciclaje molecular. Propios de células animales.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="organulo" data-id="14" onclick="openModal(14)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="14"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Orgánulo</div>
+          <h3 class="gc-card-title">Peroxisomas</h3>
+          <p class="gc-card-desc">Vesículas de una membrana. β-oxidación de ácidos grasos de cadena muy larga y detoxificación de H₂O₂ mediante catalasa. Biogénesis por fisión.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="organulo" data-id="15" onclick="openModal(15)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="15"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Orgánulo</div>
+          <h3 class="gc-card-title">Retículo Endoplasmático</h3>
+          <p class="gc-card-desc">Red de membranas continua con el núcleo. RE rugoso (ribosomas): síntesis y glicosilación proteica. RE liso: síntesis lipídica y detoxificación.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="organulo" data-id="16" onclick="openModal(16)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="16"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Orgánulo</div>
+          <h3 class="gc-card-title">Aparato de Golgi</h3>
+          <p class="gc-card-desc">Centro de procesamiento y distribución. Cisternas apiladas: cis, medial, trans. Glicosilación final, proteólisis, sulfatación y empaquetado en vesículas.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="citoesqueleto" data-id="17" onclick="openModal(17)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="17"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Citoesqueleto</div>
+          <h3 class="gc-card-title">Citoesqueleto</h3>
+          <p class="gc-card-desc">Andamiaje dinámico intracelular. Tres componentes: microtúbulos, microfilamentos y filamentos intermedios. Motilidad, división y morfología.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="citoesqueleto" data-id="18" onclick="openModal(18)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="18"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Citoesqueleto</div>
+          <h3 class="gc-card-title">Microtúbulos</h3>
+          <p class="gc-card-desc">Polímeros de α/β-tubulina. Diámetro: 25 nm. Pista para motores moleculares (cinesina/dineína). Forman huso mitótico, cilios y flagelos.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+      <div class="gc-card" data-category="citoesqueleto" data-id="19" onclick="openModal(19)">
+        <div class="gc-card-canvas-wrap"><canvas class="gc-mini-canvas" data-id="19"></canvas></div>
+        <div class="gc-card-body">
+          <div class="gc-card-tag">Citoesqueleto</div>
+          <h3 class="gc-card-title">Microfilamentos</h3>
+          <p class="gc-card-desc">Filamentos de actina-G polimerizada (F-actina). Diámetro: 7 nm. Motor: miosina II. Contracción muscular, citocinesis y migración celular.</p>
+          <div class="gc-card-footer"><span class="gc-card-badge">🔬 Ver en 3D</span><span class="gc-card-arrow">→</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ MODAL 3D ═══════════════════════ -->
+<div class="gc-modal-overlay" id="gcModal" onclick="closeModal(event)">
+  <div class="gc-modal" id="gcModalInner">
+    <button class="gc-modal-close" onclick="closeModal(null, true)" aria-label="Cerrar">✕</button>
+    <div class="gc-modal-layout">
+      <div class="gc-modal-canvas-wrap">
+        <canvas id="gcModalCanvas"></canvas>
+        <div class="gc-modal-canvas-label" id="gcModalCanvasLabel">⟳ Arrastra para rotar · Scroll para zoom</div>
+        <div class="gc-modal-controls">
+          <button class="gc-ctrl-btn" id="btnRotate" onclick="toggleAutoRotate()" title="Auto-rotación">⟳</button>
+          <button class="gc-ctrl-btn" id="btnReset" onclick="resetView()" title="Resetear vista">⌂</button>
+        </div>
+      </div>
+      <div class="gc-modal-info">
+        <div class="gc-modal-tag" id="gcModalTag">—</div>
+        <h2 class="gc-modal-title" id="gcModalTitle">—</h2>
+        <p class="gc-modal-desc" id="gcModalDesc">—</p>
+        <div class="gc-modal-section">
+          <div class="gc-modal-sh">📐 Datos Clave</div>
+          <div class="gc-modal-datos" id="gcModalDatos"></div>
+        </div>
+        <div class="gc-modal-section">
+          <div class="gc-modal-sh">🔬 Componentes</div>
+          <div class="gc-modal-comps" id="gcModalComps"></div>
+        </div>
+        <div class="gc-modal-section">
+          <div class="gc-modal-sh">⚗️ Función Molecular</div>
+          <p class="gc-modal-func" id="gcModalFunc">—</p>
+        </div>
+        <div class="gc-modal-nav">
+          <button class="gc-mnav-btn" id="btnPrev" onclick="navigateModal(-1)">← Anterior</button>
+          <span class="gc-mnav-counter" id="gcModalCounter">1 / 19</span>
+          <button class="gc-mnav-btn" id="btnNext" onclick="navigateModal(1)">Siguiente →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="gc-footer">
+  <div class="gc-wrap">
+    <div class="gc-footer-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+      <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+    </div>
+    <div class="gc-footer-bottom">
+      <p>© 2026 PharmaLab Chile — Biología Celular · Galería Interactiva 3D</p>
+      <p class="gc-footer-disc">Contenido educacional universitario. Información basada en Alberts et al. "Molecular Biology of the Cell" 7ª ed., Lodish et al. "Molecular Cell Biology" 9ª ed., y base de datos UniProt/NCBI. No reemplaza asesoría médica profesional.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/gc-data.js"></script>
+<script src="js/gc-state.js"></script>
+<script src="js/gc-renderers.js"></script>
+<script src="js/gc-modal.js"></script>
+<script src="js/gc-ui.js"></script>
+</body>
+</html>

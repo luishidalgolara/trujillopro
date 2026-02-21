@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Formulación — PharmaSim Lab</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="../../index.html" class="nav-back">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M5 12l7-7M5 12l7 7"/></svg>
+            PharmaLab
+        </a>
+        <div class="nav-center">
+            <span class="mod-badge">02</span>
+            <span class="nav-title-text">Simulador de Formulación Farmacéutica</span>
+        </div>
+        <div class="nav-right">
+            <div class="session-score">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <span id="scoreVal">0</span> pts
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- WORKFLOW STEPPER -->
+<div class="stepper-bar">
+    <div class="stepper-inner">
+        <div class="step active" data-step="1">
+            <div class="step-num">1</div>
+            <div class="step-info">
+                <span class="step-label">Principio Activo</span>
+                <span class="step-sub">Selecciona el fármaco</span>
+            </div>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step" data-step="2">
+            <div class="step-num">2</div>
+            <div class="step-info">
+                <span class="step-label">Excipientes</span>
+                <span class="step-sub">Arrastra al mezclador</span>
+            </div>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step" data-step="3">
+            <div class="step-num">3</div>
+            <div class="step-info">
+                <span class="step-label">Granulación</span>
+                <span class="step-sub">Ajusta temperatura</span>
+            </div>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step" data-step="4">
+            <div class="step-num">4</div>
+            <div class="step-info">
+                <span class="step-label">Compresión</span>
+                <span class="step-sub">Fuerza y dureza</span>
+            </div>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step" data-step="5">
+            <div class="step-num">5</div>
+            <div class="step-info">
+                <span class="step-label">Resultado</span>
+                <span class="step-sub">Perfil de disolución</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN -->
+<main class="sim-main">
+
+    <!-- ── STEP 1: PRINCIPIO ACTIVO ── -->
+    <section class="sim-step" id="step1">
+        <div class="step-header">
+            <div class="step-tag">Paso 1 / 5</div>
+            <h2>Selecciona el <span class="hl-green">Principio Activo</span></h2>
+            <p>El principio activo (API) es la sustancia que produce el efecto terapéutico. Sus propiedades fisicoquímicas determinan qué excipientes necesitarás.</p>
+        </div>
+
+        <div class="api-grid" id="apiGrid">
+            <!-- Populated by JS -->
+        </div>
+
+        <div class="api-info-card" id="apiInfoCard" style="display:none">
+            <div class="aic-header">
+                <div class="aic-name" id="aicName">—</div>
+                <div class="aic-badges" id="aicBadges"></div>
+            </div>
+            <div class="aic-props" id="aicProps"></div>
+            <div class="aic-challenges" id="aicChallenges"></div>
+        </div>
+
+        <button class="btn-next" id="btn1Next" disabled>
+            Continuar a Excipientes
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+    </section>
+
+    <!-- ── STEP 2: EXCIPIENTES ── -->
+    <section class="sim-step hidden" id="step2">
+        <div class="step-header">
+            <div class="step-tag">Paso 2 / 5</div>
+            <h2>Agrega <span class="hl-green">Excipientes</span> al Mezclador</h2>
+            <p>Arrastra los excipientes al mezclador. Observa las reacciones de incompatibilidad en tiempo real. La física de partículas muestra la mezcla real.</p>
+        </div>
+
+        <div class="formulation-workspace">
+            <!-- Excipient palette -->
+            <div class="excipient-palette" id="excipientPalette">
+                <div class="palette-header">
+                    <h3>Biblioteca de Excipientes</h3>
+                    <div class="palette-filter">
+                        <button class="pf-btn active" data-fcat="all">Todos</button>
+                        <button class="pf-btn" data-fcat="diluent">Diluyentes</button>
+                        <button class="pf-btn" data-fcat="binder">Aglutinantes</button>
+                        <button class="pf-btn" data-fcat="disintegrant">Disgregantes</button>
+                        <button class="pf-btn" data-fcat="lubricant">Lubricantes</button>
+                        <button class="pf-btn" data-fcat="coating">Recubrim.</button>
+                    </div>
+                </div>
+                <div class="excipient-list" id="excipientList">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Mixer canvas area -->
+            <div class="mixer-area">
+                <div class="mixer-header">
+                    <div class="mixer-title">
+                        <div class="mixer-icon">⚗️</div>
+                        <div>
+                            <h3>Mezclador</h3>
+                            <span id="mixerStatus">Arrastra excipientes aquí</span>
+                        </div>
+                    </div>
+                    <div class="mixer-controls">
+                        <button class="mc-btn" id="btnMixStart" title="Iniciar mezcla">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z"/></svg>
+                        </button>
+                        <button class="mc-btn" id="btnMixClear" title="Limpiar">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mixer-canvas-wrap" id="mixerWrap">
+                    <canvas id="mixerCanvas"></canvas>
+                    <div class="mixer-drop-hint" id="mixerDropHint">
+                        <div class="drop-icon">⬇</div>
+                        <span>Arrastra excipientes aquí</span>
+                    </div>
+                </div>
+
+                <!-- Added excipients list -->
+                <div class="added-excipients" id="addedExcipients">
+                    <div class="ae-header">
+                        <span>Composición actual</span>
+                        <span id="totalPct">0% / 100%</span>
+                    </div>
+                    <div class="ae-list" id="aeList"></div>
+                </div>
+            </div>
+
+            <!-- Compatibility panel -->
+            <div class="compat-panel" id="compatPanel">
+                <div class="cp-header">
+                    <h3>Monitor de Incompatibilidades</h3>
+                    <div class="cp-status ok" id="cpStatus">✓ Sin conflictos</div>
+                </div>
+                <div class="compat-log" id="compatLog">
+                    <div class="compat-idle">
+                        <div style="font-size:28px;margin-bottom:8px">🔬</div>
+                        <span>Agrega excipientes para ver análisis de compatibilidad</span>
+                    </div>
+                </div>
+
+                <div class="formulation-summary" id="formulationSummary" style="display:none">
+                    <h4>Resumen Formulación</h4>
+                    <div class="fs-chart">
+                        <canvas id="pieChart" width="140" height="140"></canvas>
+                        <div class="fs-legend" id="fsLegend"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step-nav">
+            <button class="btn-back" id="btn2Back">← Atrás</button>
+            <button class="btn-next" id="btn2Next" disabled>
+                Continuar a Granulación
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- ── STEP 3: GRANULACIÓN ── -->
+    <section class="sim-step hidden" id="step3">
+        <div class="step-header">
+            <div class="step-tag">Paso 3 / 5</div>
+            <h2>Proceso de <span class="hl-green">Granulación</span></h2>
+            <p>La granulación húmeda mejora la compresibilidad del polvo. La temperatura y el tiempo afectan el tamaño de gránulo y la uniformidad del contenido.</p>
+        </div>
+
+        <div class="granulation-workspace">
+            <div class="gran-controls-panel">
+                <div class="gran-param">
+                    <label>Temperatura de Granulación</label>
+                    <div class="slider-wrap">
+                        <input type="range" id="sldTemp" min="20" max="80" value="50" class="param-slider">
+                        <div class="slider-readout">
+                            <span id="tempVal">50</span>
+                            <span class="sld-unit">°C</span>
+                        </div>
+                    </div>
+                    <div class="param-hint" id="tempHint">Rango óptimo: 40-60°C</div>
+                </div>
+
+                <div class="gran-param">
+                    <label>Velocidad de Agitación</label>
+                    <div class="slider-wrap">
+                        <input type="range" id="sldSpeed" min="10" max="100" value="50" class="param-slider">
+                        <div class="slider-readout">
+                            <span id="speedVal">50</span>
+                            <span class="sld-unit">rpm</span>
+                        </div>
+                    </div>
+                    <div class="param-hint" id="speedHint">Rango óptimo: 30-70 rpm</div>
+                </div>
+
+                <div class="gran-param">
+                    <label>Tiempo de Granulación</label>
+                    <div class="slider-wrap">
+                        <input type="range" id="sldTime" min="5" max="60" value="20" class="param-slider">
+                        <div class="slider-readout">
+                            <span id="timeVal">20</span>
+                            <span class="sld-unit">min</span>
+                        </div>
+                    </div>
+                    <div class="param-hint" id="timeHint">Tiempo estándar: 15-30 min</div>
+                </div>
+
+                <div class="gran-param">
+                    <label>Solvente de Granulación</label>
+                    <div class="solvent-btns" id="solventBtns">
+                        <button class="solvent-btn active" data-solvent="water">💧 Agua</button>
+                        <button class="solvent-btn" data-solvent="ethanol">🧪 Etanol</button>
+                        <button class="solvent-btn" data-solvent="isopropanol">⚗️ IPA</button>
+                    </div>
+                </div>
+
+                <button class="btn-granulate" id="btnGranulate">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                    Iniciar Granulación
+                </button>
+            </div>
+
+            <!-- Granulation visualizer -->
+            <div class="gran-visualizer">
+                <div class="gran-canvas-wrap">
+                    <canvas id="granCanvas"></canvas>
+                    <div class="gran-overlay" id="granOverlay">
+                        <div class="gran-progress" id="granProgress" style="display:none">
+                            <div class="gp-bar-wrap">
+                                <div class="gp-bar" id="gpBar"></div>
+                            </div>
+                            <span id="gpLabel">Granulando...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gran-results" id="granResults" style="display:none">
+                    <div class="gr-metric">
+                        <span class="gr-label">Tamaño Gránulo</span>
+                        <span class="gr-val" id="grSize">—</span>
+                        <span class="gr-unit">μm</span>
+                    </div>
+                    <div class="gr-metric">
+                        <span class="gr-label">Uniformidad</span>
+                        <span class="gr-val" id="grUniform">—</span>
+                        <span class="gr-unit">%</span>
+                    </div>
+                    <div class="gr-metric">
+                        <span class="gr-label">Humedad Residual</span>
+                        <span class="gr-val" id="grMoist">—</span>
+                        <span class="gr-unit">%</span>
+                    </div>
+                    <div class="gr-metric">
+                        <span class="gr-label">Fluidez</span>
+                        <span class="gr-val" id="grFlow">—</span>
+                        <span class="gr-unit"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quality gauge -->
+            <div class="gran-quality-panel">
+                <h3>Calidad de Gránulo</h3>
+                <canvas id="gaugeCanvas" width="200" height="160"></canvas>
+                <div class="quality-verdict" id="qualityVerdict">Ajusta los parámetros y granula</div>
+                <div class="quality-tips" id="qualityTips"></div>
+            </div>
+        </div>
+
+        <div class="step-nav">
+            <button class="btn-back" id="btn3Back">← Atrás</button>
+            <button class="btn-next" id="btn3Next" disabled>
+                Continuar a Compresión
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- ── STEP 4: COMPRESIÓN ── -->
+    <section class="sim-step hidden" id="step4">
+        <div class="step-header">
+            <div class="step-tag">Paso 4 / 5</div>
+            <h2>Compresión y <span class="hl-green">Recubrimiento</span></h2>
+            <p>La fuerza de compresión determina la dureza, friabilidad y tiempo de desintegración. El recubrimiento protege al API y controla la liberación.</p>
+        </div>
+
+        <div class="compression-workspace">
+            <!-- Tablet 3D preview -->
+            <div class="tablet-preview-area">
+                <div class="tablet-canvas-wrap">
+                    <canvas id="tabletCanvas"></canvas>
+                </div>
+                <div class="tablet-dimensions" id="tabletDims">
+                    <div class="td-item">
+                        <span class="td-label">Diámetro</span>
+                        <span class="td-val" id="tdDiam">—</span>
+                        <span class="td-unit">mm</span>
+                    </div>
+                    <div class="td-item">
+                        <span class="td-label">Peso</span>
+                        <span class="td-val" id="tdWeight">—</span>
+                        <span class="td-unit">mg</span>
+                    </div>
+                    <div class="td-item">
+                        <span class="td-label">Dureza</span>
+                        <span class="td-val" id="tdHardness">—</span>
+                        <span class="td-unit">N</span>
+                    </div>
+                    <div class="td-item">
+                        <span class="td-label">Friabilidad</span>
+                        <span class="td-val" id="tdFriab">—</span>
+                        <span class="td-unit">%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compression controls -->
+            <div class="compression-controls">
+                <div class="comp-param">
+                    <label>Fuerza de Compresión</label>
+                    <div class="slider-wrap">
+                        <input type="range" id="sldForce" min="1" max="30" value="12" class="param-slider accent-force">
+                        <div class="slider-readout">
+                            <span id="forceVal">12</span>
+                            <span class="sld-unit">kN</span>
+                        </div>
+                    </div>
+                    <div class="force-alert" id="forceAlert" style="display:none"></div>
+                </div>
+
+                <div class="comp-param">
+                    <label>Velocidad de Punzón</label>
+                    <div class="slider-wrap">
+                        <input type="range" id="sldPunch" min="10" max="100" value="40" class="param-slider">
+                        <div class="slider-readout">
+                            <span id="punchVal">40</span>
+                            <span class="sld-unit">rpm</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comp-param">
+                    <label>Tipo de Recubrimiento</label>
+                    <div class="coating-options" id="coatingOptions">
+                        <button class="coating-btn active" data-coat="none">
+                            <span class="coat-icon">⬜</span>
+                            <span class="coat-name">Sin recubrir</span>
+                            <span class="coat-desc">Liberación inmediata</span>
+                        </button>
+                        <button class="coating-btn" data-coat="film">
+                            <span class="coat-icon">🎨</span>
+                            <span class="coat-name">Film coating</span>
+                            <span class="coat-desc">Protección, sabor</span>
+                        </button>
+                        <button class="coating-btn" data-coat="enteric">
+                            <span class="coat-icon">🛡️</span>
+                            <span class="coat-name">Entérico (HPMCP)</span>
+                            <span class="coat-desc">Liberación intestinal</span>
+                        </button>
+                        <button class="coating-btn" data-coat="extended">
+                            <span class="coat-icon">⏱️</span>
+                            <span class="coat-name">Liberación Ext.</span>
+                            <span class="coat-desc">Absorción prolongada</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="comp-param">
+                    <label>Color del Recubrimiento</label>
+                    <div class="color-picker-row">
+                        <div class="color-swatch selected" data-col="#e8e8e8" style="background:#e8e8e8"></div>
+                        <div class="color-swatch" data-col="#f87171" style="background:#f87171"></div>
+                        <div class="color-swatch" data-col="#60a5fa" style="background:#60a5fa"></div>
+                        <div class="color-swatch" data-col="#34d399" style="background:#34d399"></div>
+                        <div class="color-swatch" data-col="#fbbf24" style="background:#fbbf24"></div>
+                        <div class="color-swatch" data-col="#a78bfa" style="background:#a78bfa"></div>
+                        <div class="color-swatch" data-col="#f97316" style="background:#f97316"></div>
+                    </div>
+                </div>
+
+                <button class="btn-compress" id="btnCompress">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+                    Comprimir Tableta
+                </button>
+            </div>
+
+            <!-- QC Tests -->
+            <div class="qc-panel" id="qcPanel">
+                <h3>Tests de Control de Calidad</h3>
+                <div class="qc-tests" id="qcTests">
+                    <div class="qc-test pending" id="qcDesintegration">
+                        <div class="qct-icon">⏱</div>
+                        <div class="qct-info">
+                            <span class="qct-name">Desintegración (USP)</span>
+                            <span class="qct-result" id="qcDesResult">Pendiente</span>
+                        </div>
+                        <div class="qct-badge" id="qcDesBadge"></div>
+                    </div>
+                    <div class="qc-test pending" id="qcHardness">
+                        <div class="qct-icon">💪</div>
+                        <div class="qct-info">
+                            <span class="qct-name">Dureza (50-200N)</span>
+                            <span class="qct-result" id="qcHardResult">Pendiente</span>
+                        </div>
+                        <div class="qct-badge" id="qcHardBadge"></div>
+                    </div>
+                    <div class="qc-test pending" id="qcFriability">
+                        <div class="qct-icon">🔬</div>
+                        <div class="qct-info">
+                            <span class="qct-name">Friabilidad (&lt;1%)</span>
+                            <span class="qct-result" id="qcFriabResult">Pendiente</span>
+                        </div>
+                        <div class="qct-badge" id="qcFriabBadge"></div>
+                    </div>
+                    <div class="qc-test pending" id="qcWeight">
+                        <div class="qct-icon">⚖️</div>
+                        <div class="qct-info">
+                            <span class="qct-name">Uniformidad Peso (±5%)</span>
+                            <span class="qct-result" id="qcWeightResult">Pendiente</span>
+                        </div>
+                        <div class="qct-badge" id="qcWeightBadge"></div>
+                    </div>
+                </div>
+                <div class="qc-overall" id="qcOverall" style="display:none"></div>
+            </div>
+        </div>
+
+        <div class="step-nav">
+            <button class="btn-back" id="btn4Back">← Atrás</button>
+            <button class="btn-next" id="btn4Next" disabled>
+                Ver Resultados Finales
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- ── STEP 5: RESULTADOS ── -->
+    <section class="sim-step hidden" id="step5">
+        <div class="step-header">
+            <div class="step-tag">Resultado Final</div>
+            <h2>Perfil de <span class="hl-green">Disolución</span> y Evaluación</h2>
+            <p>La curva de disolución predice la biodisponibilidad in vivo. Se compara con el perfil de referencia innovador (línea punteada).</p>
+        </div>
+
+        <div class="results-workspace">
+            <!-- Final tablet display -->
+            <div class="final-tablet-panel">
+                <div class="ftp-title">Tu Tableta Formulada</div>
+                <canvas id="finalTabletCanvas" width="300" height="200"></canvas>
+                <div class="ftp-score">
+                    <div class="score-ring" id="scoreRing">
+                        <canvas id="scoreCanvas" width="120" height="120"></canvas>
+                        <div class="score-number" id="finalScore">—</div>
+                    </div>
+                    <div class="score-label">Puntuación Final</div>
+                </div>
+                <div class="ftp-badge" id="ftpBadge"></div>
+            </div>
+
+            <!-- Dissolution curve -->
+            <div class="dissolution-panel">
+                <div class="diss-header">
+                    <h3>Curva de Disolución USP <span style="opacity:.5">— Aparato II (Paleta)</span></h3>
+                    <div class="diss-legend">
+                        <span class="dl-item"><span style="background:var(--green)"></span>Tu formulación</span>
+                        <span class="dl-item"><span style="background:rgba(255,255,255,0.3);border-style:dashed"></span>Referencia</span>
+                    </div>
+                </div>
+                <canvas id="dissolutionCanvas" width="560" height="260"></canvas>
+                <div class="diss-params">
+                    <div class="dp-item">
+                        <span class="dp-label">T₅₀</span>
+                        <span class="dp-val" id="dpT50">—</span>
+                        <span class="dp-unit">min</span>
+                    </div>
+                    <div class="dp-item">
+                        <span class="dp-label">T₈₅</span>
+                        <span class="dp-val" id="dpT85">—</span>
+                        <span class="dp-unit">min</span>
+                    </div>
+                    <div class="dp-item">
+                        <span class="dp-label">Q₃₀</span>
+                        <span class="dp-val" id="dpQ30">—</span>
+                        <span class="dp-unit">%</span>
+                    </div>
+                    <div class="dp-item">
+                        <span class="dp-label">Factor f₂</span>
+                        <span class="dp-val" id="dpF2">—</span>
+                        <span class="dp-unit"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Report card -->
+            <div class="report-card" id="reportCard">
+                <h3>Informe de Formulación</h3>
+                <div class="rc-section">
+                    <h4>✅ Logros</h4>
+                    <div class="rc-list" id="rcAchievements"></div>
+                </div>
+                <div class="rc-section">
+                    <h4>⚠️ Observaciones</h4>
+                    <div class="rc-list" id="rcObservations"></div>
+                </div>
+                <div class="rc-section">
+                    <h4>📚 Concepto Aprendido</h4>
+                    <div class="rc-concept" id="rcConcept"></div>
+                </div>
+                <button class="btn-restart" id="btnRestart">
+                    🔄 Nueva Formulación
+                </button>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- INCOMPATIBILITY ALERT MODAL -->
+<div class="incompat-alert" id="incompatAlert" style="display:none">
+    <div class="ia-icon">⚠️</div>
+    <div class="ia-msg" id="iaMsg"></div>
+    <button class="ia-close" id="iaClose">Entendido</button>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div id="toastContainer" class="toast-container"></div>
+
+<script src="excipient-data.js"></script>
+<script src="particle-physics.js"></script>
+<script src="tablet-builder.js"></script>
+<script src="dissolution-curve.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

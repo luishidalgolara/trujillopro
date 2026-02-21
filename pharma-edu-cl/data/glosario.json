@@ -1,0 +1,20 @@
+{
+    "glosario": [
+        {"termino": "Principio Activo (API)", "definicion": "Sustancia responsable del efecto farmacológico de un medicamento."},
+        {"termino": "Excipiente", "definicion": "Sustancia inactiva que acompaña al principio activo en la formulación."},
+        {"termino": "Biodisponibilidad", "definicion": "Fracción de un fármaco que alcanza la circulación sistémica sin modificar."},
+        {"termino": "Bioequivalencia", "definicion": "Equivalencia terapéutica entre dos formulaciones del mismo principio activo."},
+        {"termino": "Farmacocinética", "definicion": "Estudio de absorción, distribución, metabolismo y excreción (ADME) de fármacos."},
+        {"termino": "Farmacodinamia", "definicion": "Estudio de los mecanismos de acción y efectos de los fármacos en el organismo."},
+        {"termino": "BPM", "definicion": "Buenas Prácticas de Manufactura: normas de calidad en la producción farmacéutica."},
+        {"termino": "ISP", "definicion": "Instituto de Salud Pública de Chile: organismo regulador de medicamentos."},
+        {"termino": "Registro Sanitario", "definicion": "Autorización del ISP para comercializar un medicamento en Chile."},
+        {"termino": "Farmacovigilancia", "definicion": "Detección, evaluación y prevención de efectos adversos de medicamentos."},
+        {"termino": "HPLC", "definicion": "Cromatografía Líquida de Alta Resolución: técnica analítica para control de calidad."},
+        {"termino": "Forma Farmacéutica", "definicion": "Presentación final del medicamento: comprimidos, cápsulas, inyectables, etc."},
+        {"termino": "SAR", "definicion": "Relación Estructura-Actividad: estudio de cómo la estructura molecular afecta la actividad biológica."},
+        {"termino": "Biofármaco", "definicion": "Medicamento producido mediante procesos biotecnológicos usando organismos vivos."},
+        {"termino": "Anticuerpo Monoclonal", "definicion": "Proteína producida en laboratorio que imita la capacidad del sistema inmune."},
+        {"termino": "CRISPR-Cas9", "definicion": "Herramienta de edición genética que permite modificar el ADN con precisión."}
+    ]
+}

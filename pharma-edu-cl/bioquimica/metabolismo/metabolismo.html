@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metabolismo y Bioenergética — PharmaLab Chile | Unidad 4</title>
+    <meta name="description" content="Glucólisis, ciclo de Krebs, cadena respiratoria, fosforilación oxidativa, metabolismo de lípidos y aminoácidos. Bioquímica universitaria Chile.">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../bioquimica.css">
+    <link rel="stylesheet" href="metabolismo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="module-bioquimica">
+
+<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+<nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+        <a href="../../index.html" class="nav-logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="../../quimica/index.html"              class="nav-link" data-module="quimica">⚗️ Química</a>
+            <a href="../../farmacia/index.html"             class="nav-link" data-module="farmacia">💊 Farmacia</a>
+            <a href="../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf">🧬 Q. Farmacéutica</a>
+            <a href="../../biotecnologia/index.html"        class="nav-link" data-module="biotech">🔬 Biotecnología</a>
+            <a href="../../virologia/index.html"            class="nav-link" data-module="virologia">🦠 Virología</a>
+            <a href="../index.html"                         class="nav-link active" data-module="bioquimica">🧪 Bioquímica</a>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="mb-hero">
+    <div class="mb-hero-bg">
+        <div class="mb-hero-grid"></div>
+        <div class="mb-orb mb-orb-1"></div>
+        <div class="mb-orb mb-orb-2"></div>
+        <div class="mb-orb mb-orb-3"></div>
+        <div class="mb-orb mb-orb-4"></div>
+    </div>
+    <div class="mb-hero-inner">
+        <div class="mb-wrap">
+            <div>
+                <div class="mb-crumb">
+                    <a href="../../index.html" style="color:inherit;text-decoration:none;">Inicio</a><span>/</span>
+                    <a href="../index.html"    style="color:inherit;text-decoration:none;">Bioquímica</a><span>/</span>
+                    <span style="color:#fff">Metabolismo y Bioenergética</span>
+                </div>
+                <div class="mb-hero-tag">Unidad 4 · Bioquímica</div>
+                <h1 class="mb-hero-title">Metabolismo y <span class="mb-gr">Bioenergética</span></h1>
+                <p class="mb-hero-desc">La célula como central energética: desde la degradación precisa de la glucosa hasta la síntesis majestuosa de ATP, pasando por el ciclo de Krebs, la cadena respiratoria mitocondrial y la integración metabólica que sostiene toda forma de vida conocida.</p>
+                <div class="mb-hero-stats">
+                    <div class="mb-stat">
+                        <span class="mb-stat-num" data-mb-count="38" data-mb-suf=" ATP">38</span>
+                        <span class="mb-stat-label">mol ATP / mol glucosa — vía aeróbica completa</span>
+                    </div>
+                    <div class="mb-stat">
+                        <span class="mb-stat-num" data-mb-count="700" data-mb-suf=" g">700</span>
+                        <span class="mb-stat-label">de ATP regenerado por el cuerpo humano por día</span>
+                    </div>
+                    <div class="mb-stat">
+                        <span class="mb-stat-num" data-mb-count="2.5" data-mb-suf=" kJ/mol" data-mb-dec="1">2.5</span>
+                        <span class="mb-stat-label">ΔG°' hidrólisis ATP por cada mol — energía libre liberada</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-hero-vis">
+                <canvas id="mb-hero-canvas" title="ATP sintasa F₀F₁ rotando — fosforilación oxidativa 3D"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ DATOS CLAVE ═══════════════════════ -->
+<section class="mb-section">
+    <div class="mb-wrap">
+        <div class="mb-datos" data-mb-reveal>
+            <div class="mb-dato">
+                <span class="mb-dato-n" data-mb-count="10" data-mb-suf=" pasos">10</span>
+                <span class="mb-dato-l">reacciones enzimáticas de la glucólisis — de glucosa a 2 piruvatos</span>
+            </div>
+            <div class="mb-dato">
+                <span class="mb-dato-n" data-mb-count="8" data-mb-suf=" reacciones">8</span>
+                <span class="mb-dato-l">del ciclo de Krebs — produce 3 NADH, 1 FADH₂, 1 GTP por vuelta</span>
+            </div>
+            <div class="mb-dato">
+                <span class="mb-dato-n" data-mb-count="4" data-mb-suf=" complejos">4</span>
+                <span class="mb-dato-l">de la cadena respiratoria + ATP sintasa (complejo V) en membrana interna</span>
+            </div>
+            <div class="mb-dato">
+                <span class="mb-dato-n" data-mb-count="129" data-mb-suf=" ATP">129</span>
+                <span class="mb-dato-l">mol ATP por mol de ácido palmítico (C16:0) — β-oxidación completa</span>
+            </div>
+        </div>
+
+        <!-- ═══ TABS NAV ═══ -->
+        <div class="mb-section-hd" data-mb-reveal>
+            <div class="mb-sec-tag">⚡ Rutas Metabólicas</div>
+            <h2 class="mb-sec-title">Las Cuatro Rutas que <span class="mb-hl">Alimentan la Vida</span></h2>
+            <p class="mb-sec-sub">Cada célula humana ejecuta simultáneamente miles de reacciones coordinadas. Explora las rutas maestras del metabolismo energético con visualizaciones 3D interactivas y datos extraídos de Stryer, Lehninger y bases BRENDA.</p>
+        </div>
+
+        <div class="mb-tabs-nav">
+            <button class="mb-tab-btn active">
+                <div class="mb-tab-icon">🍬</div>
+                <div class="mb-tab-num">Ruta 01</div>
+                <div class="mb-tab-name">Glucólisis</div>
+                <div class="mb-tab-hint">10 pasos, 2 ATP netos, regulación por PFK-1, desde glucosa a piruvato</div>
+                <div class="mb-tab-arrow">→</div>
+            </button>
+            <button class="mb-tab-btn">
+                <div class="mb-tab-icon">🔄</div>
+                <div class="mb-tab-num">Ruta 02</div>
+                <div class="mb-tab-name">Ciclo de Krebs</div>
+                <div class="mb-tab-hint">8 reacciones, matriz mitocondrial, 3 NADH + 1 FADH₂ + 1 GTP por vuelta</div>
+                <div class="mb-tab-arrow">→</div>
+            </button>
+            <button class="mb-tab-btn">
+                <div class="mb-tab-icon">⚡</div>
+                <div class="mb-tab-num">Ruta 03</div>
+                <div class="mb-tab-name">Fosforilación Oxidativa</div>
+                <div class="mb-tab-hint">Complejos I-IV, ATP sintasa F₀F₁, gradiente de protones, 34 ATP</div>
+                <div class="mb-tab-arrow">→</div>
+            </button>
+            <button class="mb-tab-btn">
+                <div class="mb-tab-icon">🧈</div>
+                <div class="mb-tab-num">Ruta 04</div>
+                <div class="mb-tab-name">Lípidos y Aminoácidos</div>
+                <div class="mb-tab-hint">β-oxidación, cuerpos cetónicos, ciclo de la urea, integración metabólica</div>
+                <div class="mb-tab-arrow">→</div>
+            </button>
+        </div>
+
+        <!-- ═══ PANELS ═══ -->
+        <div class="mb-panels-wrap">
+
+            <!-- ══ PANEL 1: GLUCÓLISIS ══ -->
+            <div class="mb-panel active">
+                <div class="mb-3d" data-mb-reveal>
+                    <canvas id="mb-canvas-glucolisis" title="Glucólisis 3D — 10 reacciones enzimáticas interactivas"></canvas>
+                    <div class="mb-3d-lbl">⟳ Arrastra para rotar — Glucólisis · 10 Pasos Enzimáticos · Citosol</div>
+                </div>
+
+                <div data-mb-reveal>
+                    <div class="mb-sh">Glucólisis: La Ruta Universal de la Glucosa</div>
+                    <div class="mb-mec">
+                        <div class="mb-mec-card">
+                            <div class="mb-mec-ico">🎯</div>
+                            <h4>Localización y Generalidades</h4>
+                            <p>La glucólisis ocurre en el <strong>citosol</strong> de todas las células eucariotas y procariotas — es la ruta metabólica más antigua evolutivamente. Convierte 1 mol de glucosa (C₆H₁₂O₆, 6 carbonos) en 2 mol de piruvato (C₃H₄O₃, 3 carbonos cada uno). La ruta tiene 10 pasos catalizados por enzimas específicas, con una energía libre neta de ΔG = −131 kJ/mol. No requiere oxígeno (anaerobia), aunque puede operar en condiciones aerobias.</p>
+                        </div>
+                        <div class="mb-mec-card">
+                            <div class="mb-mec-ico">💰</div>
+                            <h4>Balance Energético Neto</h4>
+                            <p>Fase de inversión (pasos 1-5): se consumen <strong>2 ATP</strong> para activar la glucosa → glucosa-6-P (hexocinasa, Km=0.1 mM) y fructosa-6-P → fructosa-1,6-bisfosfato (PFK-1, enzima reguladora maestro). Fase de recuperación (pasos 6-10): se producen <strong>4 ATP</strong> (2 por sustrato-nivel, ×2 por dos triosas) y <strong>2 NADH</strong>. Balance: +2 ATP, +2 NADH, +2 piruvato, −H₂O neto.</p>
+                        </div>
+                        <div class="mb-mec-card">
+                            <div class="mb-mec-ico">🔧</div>
+                            <h4>Regulación Maestro: PFK-1</h4>
+                            <p>La Fosfofructocinasa-1 (PFK-1) es la enzima regulatoria más importante de la glucólisis — cataliza el paso 3 (fructosa-6-P → fructosa-1,6-bisP), prácticamente irreversible (ΔG = −14.2 kJ/mol). Es alostérica: <strong>inhibida</strong> por ATP (alta energía), citrato y H⁺; <strong>activada</strong> por AMP, ADP y fructosa-2,6-bisfosfato (F-2,6-BP, el activador más potente en hígado, producido por PFK-2 cuando la insulina es alta). Este sistema integra el estado energético celular con la señalización hormonal.</p>
+                        </div>
+                        <div class="mb-mec-card">
+                            <div class="mb-mec-ico">🔀</div>
+                            <h4>Destinos del Piruvato</h4>
+                            <p>El piruvato generado tiene 3 destinos según disponibilidad de O₂ y estado celular: (1) <strong>Aeróbico</strong>: ingresa a la mitocondria → piruvato deshidrogenasa → acetil-CoA → ciclo de Krebs (rendimiento máximo). (2) <strong>Fermentación láctica</strong> (anaerobio en músculo/eritrocitos): piruvato → lactato (LDH), regenera NAD⁺ para continuar la glucólisis. (3) <strong>Fermentación alcohólica</strong> (levaduras): piruvato → acetaldehído → etanol. La elección depende de la disponibilidad de O₂ y la carga de NADH mitocondrial.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-mb-reveal>
+                    <div class="mb-sh">Los 10 Pasos de la Glucólisis — Enzimas y Regulación</div>
+                    <div class="mb-tbl-wrap">
+                        <table class="mb-tbl">
+                            <thead>
+                                <tr><th>Paso</th><th>Reacción</th><th>Enzima</th><th>ΔG°' (kJ/mol)</th><th>Regulación / Notas</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>Glucosa → Glucosa-6-P</td><td>Hexocinasa / Glucocinasa</td><td>−16.7</td><td><span class="mb-tag mb-t-r">Irreversible</span> Inhib. por G-6-P; glucocinasa en páncreas e hígado (sensor de glucosa)</td></tr>
+                                <tr><td>2</td><td>Glucosa-6-P → Fructosa-6-P</td><td>Fosfoglucosa isomerasa</td><td>+1.7</td><td><span class="mb-tag mb-t-c">Reversible</span> Isomerización aldosa↔cetosa</td></tr>
+                                <tr><td>3</td><td>Fructosa-6-P → F-1,6-bisP</td><td><strong>PFK-1</strong></td><td>−14.2</td><td><span class="mb-tag mb-t-r">Irreversible</span> <span class="mb-tag mb-t-go">Regulatoria</span> Activada por AMP, F-2,6-bisP; inhibida por ATP, citrato</td></tr>
+                                <tr><td>4</td><td>F-1,6-bisP → DHAP + G-3-P</td><td>Aldolasa (clase I en animales)</td><td>+23.8</td><td><span class="mb-tag mb-t-c">Reversible</span> El DHAP se interconvierte con G-3-P (TPI, paso 5)</td></tr>
+                                <tr><td>5</td><td>DHAP ↔ G-3-P</td><td>Triosafosfato isomerasa (TPI)</td><td>+7.5</td><td><span class="mb-tag mb-t-c">Reversible</span> Enzima "perfecta" kcat/Km ~ 10⁸ M⁻¹s⁻¹ (límite difusión)</td></tr>
+                                <tr><td>6</td><td>G-3-P → 1,3-bisfosfoglicerato</td><td>G-3-P deshidrogenasa</td><td>+6.3</td><td><span class="mb-tag mb-t-c">Reversible</span> Produce NADH; inhib. por arsenato (competitivo con Pi)</td></tr>
+                                <tr><td>7</td><td>1,3-bisP-glicerato → 3-P-glicerato</td><td>Fosfoglicerato cinasa</td><td>−18.8</td><td><span class="mb-tag mb-t-r">Irreversible</span> <strong>1ª fosforilación a nivel sustrato</strong> — produce 2 ATP (×2)</td></tr>
+                                <tr><td>8</td><td>3-P-glicerato → 2-P-glicerato</td><td>Fosfoglicerato mutasa</td><td>+4.4</td><td><span class="mb-tag mb-t-c">Reversible</span> Requiere Mg²⁺; 2,3-bisP-glicerato como intermediario</td></tr>
+                                <tr><td>9</td><td>2-P-glicerato → Fosfoenolpiruvato</td><td>Enolasa</td><td>+1.7</td><td><span class="mb-tag mb-t-c">Reversible</span> Inhib. por fluoruro (F⁻); produce H₂O; requiere Mg²⁺ o Mn²⁺</td></tr>
+                                <tr><td>10</td><td>Fosfoenolpiruvato → Piruvato</td><td><strong>Piruvato cinasa (PK)</strong></td><td>−31.4</td><td><span class="mb-tag mb-t-r">Irreversible</span> <span class="mb-tag mb-t-go">Regulatoria</span> <strong>2ª fosforilación sustrato</strong>; activada por F-1,6-bisP (feedforward); inhib. por ATP, alanina</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div data-mb-reveal>
+                    <div class="mb-sh">Enfermedades Relacionadas con la Glucólisis</div>
+                    <div class="mb-proc">
+                        <div class="mb-step">
+                            <div class="mb-step-n">PKU</div>
+                            <div class="mb-step-t">Déficit Piruvato Cinasa</div>
+                            <div class="mb-step-d">Anemia hemolítica hereditaria AR. Eritrocitos no pueden degradar glucosa eficientemente, acumulan 2,3-bisfosfoglicerato. Prevalencia: 1/20.000 en Europa. Tratamiento: mitapivat (activador alostérico de PK-R) aprobado FDA 2022.</div>
+                        </div>
+                        <div class="mb-step">
+                            <div class="mb-step-n">T2DM</div>
+                            <div class="mb-step-t">Diabetes Mellitus Tipo 2</div>
+                            <div class="mb-step-d">Resistencia a insulina → menor actividad de PFK-2 → menor F-2,6-bisP → menor glucólisis hepática. En Chile: prevalencia 12.3% en adultos (MINSAL 2021). Objetivo farmacológico: potenciar glucólisis en páncreas con glucocinasa activadores (dorzagliatin, aprobado 2022 en China).</div>
+                        </div>
+                        <div class="mb-step">
+                            <div class="mb-step-n">CA</div>
+                            <div class="mb-step-t">Efecto Warburg</div>
+                            <div class="mb-step-d">Las células cancerosas prefieren glucólisis aeróbica incluso con O₂ disponible (Warburg, 1924). Expresan isoenzima PKM2 que genera piruvato más lentamente → desvío de intermediarios a biosíntesis. Target terapéutico: inhibidores de PKM2 en investigación clínica.</div>
+                        </div>
+                        <div class="mb-step">
+                            <div class="mb-step-n">GSD</div>
+                            <div class="mb-step-t">Glucogenosis</div>
+                            <div class="mb-step-d">Glucogenosis tipo I (Von Gierke): déficit de glucosa-6-fosfatasa → glucosa-6-P no puede salir del hígado → hipoglucemia severa, hepatomegalia. Tratamiento: maicena cruda cada 4-6h; terapia génica AAV en ensayo clínico NCT04254289.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-norma" data-mb-reveal>
+                    <div class="mb-norma-ico">🏥</div>
+                    <div>
+                        <h4>Glucólisis y Diabetes en Chile — Contexto Epidemiológico MINSAL</h4>
+                        <p>Chile registra una de las mayores prevalencias de Diabetes Mellitus tipo 2 en Latinoamérica: 12.3% en adultos según la Encuesta Nacional de Salud 2016-2017 (ENS). La disregulación de la glucólisis hepática y muscular es central en la patogénesis. Los fármacos de primera línea — metformina (inhibe gluconeogénesis hepática y aumenta sensibilidad a insulina; mecanismo: activa AMPK → inhibe PFK-2/F-2,6-P lipidasa → aumenta glucólisis) y las sulfonilureas (glibenclamida) — actúan directa o indirectamente sobre enzimas de la glucólisis. El programa AUGE/GES de FONASA cubre tamizaje, tratamiento farmacológico y control glucémico para T2DM desde 2006. El laboratorio de Bioquímica Metabólica de la PUC (Dr. Mauricio Latorre) y el INTA de la U. de Chile investigan biomarcadores glucolíticos en plasma para detección temprana de prediabetes en comunidades mapuche — población con alto riesgo genético y ambiental de T2DM.</p>
+                    </div>
+                </div>
+            </div><!-- /panel glucólisis -->
+
+            <!-- ══ PANEL 2: CICLO DE KREBS ══ -->
+            <div class="mb-panel">
+                <div class="mb-3d" data-mb-reveal>
+                    <canvas id="mb-canvas-krebs" title="Ciclo de Krebs 3D — 8 reacciones orbitando en la matriz mitocondrial"></canvas>
+                    <div class="mb-3d-lbl">⟳ Arrastra para rotar — Ciclo de Krebs · Matriz Mitocondrial · 8 Reacciones</div>
+                </div>
+
+                <div data-mb-reveal>
+                    <div class="mb-sh">Ciclo de Krebs (Ciclo del Ácido Cítrico / TCA)</div>
+                    <div class="mb-mec">
+                        <div class="mb-mec-card">
+                            <div class="mb-mec-ico">🏭</div>
+                            <h4>Localización y Función Central</h4>
+                            <p>El ciclo de Krebs (descrito por Hans Krebs en 1937, Premio Nobel 1953) ocurre en la <strong>matriz mitocondrial</strong> de eucariotas y en el citoplasma de procariotas. Es el centro metabólico de la célula: oxida el acetil-CoA (2C) a CO₂, capturando energía en 3 NADH, 1 FADH₂ y 1 GTP por vuelta. El punto de entrada universal es el <strong>acetil-CoA</strong> (de glucosa, ácidos grasos y aminoácidos). El ciclo completo consume 1 oxaloacetato (4C) + 1 acetil-CoA (2C) → regenera oxaloacetato (4C) + 2 CO₂.</p>
+                        </div>
+                        <div class="mb-mec-card">
+                            <div class="mb-mec-ico">⚖️</div>
+                            <h4>Balance Energético por Vuelta</h4>
+                            <p>Por cada mol de acetil-CoA oxidado, el ciclo produce: <strong>3 NADH</strong> (pasos 3, 4, 8 — catalizados por isocitrato deshidrogenasa, α-cetoglutarato deshidrogenasa y malato deshidrogenasa), <strong>1 FADH₂</strong> (paso 6 — succinato deshidrogenasa, único paso con enzima de membrana), <strong>1 GTP</strong> (paso 5 — succinil-CoA sintetasa, única fosforilación a nivel sustrato) y <strong>2 CO₂</strong> (pasos 3 y 4). Si contamos desde piruvato: la piruvato deshidrogenasa (PDH) agrega 1 NADH extra → total desde piruvato: 4 NADH + 1 FADH₂ + 1 GTP.</p>
+                        </div>
+                        <div class="mb-mec-card">
+                            <div class="mb-mec-ico">🎛️</div>
+                            <h4>Regulación Alostérica del Ciclo</h4>
+                            <p>3 enzimas regulatorias clave: (1) <strong>Piruvato deshidrogenasa (PDH)</strong>: inhibida por acetil-CoA y NADH (productos); activada por CoA-SH, NAD⁺, AMP; regulada también por fosforilación/desfosforilación (PDH cinasa/fosfatasa). (2) <strong>Isocitrato deshidrogenasa</strong>: inhibida por NADH y ATP; activada por ADP, Ca²⁺ — sensor energético principal. (3) <strong>α-cetoglutarato deshidrogenasa</strong>: inhib. por succinil-CoA, NADH (productos). El Ca²⁺ activa las 3 enzimas en músculo cardíaco durante el ejercicio — acoplamiento entre demanda energética y producción.</p>
+                        </div>
+                        <div class="mb-mec-card">
+                            <div class="mb-mec-ico">🌐</div>
+                            <h4>Función Anfibólica — Biosíntesis</h4>
+                            <p>El ciclo de Krebs es <strong>anfibólico</strong>: sirve tanto para catabolismo (oxidar acetil-CoA) como para anabolismo (proveer precursores biosintéticos). Intermediarios que salen del ciclo (reacciones anapleróticas): oxaloacetato → gluconeogénesis, aspartato; α-cetoglutarato → glutamato, glutamina; succinil-CoA → hemoglobina (síntesis del anillo porfirina); citrato → síntesis de ácidos grasos (exportado al citosol). La reposición del oxaloacetato (reacciones anapleróticas) es esencial: principal: piruvato carboxilasa (activa. por acetil-CoA) → oxaloacetato.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-mb-reveal>
+                    <div class="mb-sh">Las 8 Reacciones del Ciclo de Krebs</div>
+                    <div class="mb-tbl-wrap">
+                        <table class="mb-tbl">
+                            <thead>
+                                <tr><th>Paso</th><th>Reacción</th><th>Enzima</th><th>Cofactor</th><th>Regulación / Notas</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>Oxaloacetato + Acetil-CoA → Citrato + CoA</td><td>Citrato sintasa</td><td>H₂O</td><td><span class="mb-tag mb-t-r">Irreversible</span> ΔG°'=−31.5 kJ/mol; inhib. por ATP, NADH, succinil-CoA; punto de entrada acetil-CoA</td></tr>
+                                <tr><td>2</td><td>Citrato ↔ Isocitrato</td><td>Aconitasa</td><td>Fe-S, H₂O</td><td><span class="mb-tag mb-t-c">Reversible</span> Centro Fe-S (4Fe-4S); target de fluorocitrato (toxina; inhib. suicida); inhib. en déficit de hierro</td></tr>
+                                <tr><td>3</td><td>Isocitrato → α-Cetoglutarato + CO₂</td><td><strong>Isocitrato deshidrogenasa</strong></td><td>NAD⁺ → NADH</td><td><span class="mb-tag mb-t-r">Irreversible</span> <span class="mb-tag mb-t-go">Regulatoria</span> 1ª decarboxilación; activada por ADP, Ca²⁺; inhib. por NADH, ATP</td></tr>
+                                <tr><td>4</td><td>α-Cetoglutarato → Succinil-CoA + CO₂</td><td>α-Cetoglutarato deshidrogenasa</td><td>NAD⁺, CoA-SH, TPP, lipoato, FAD → NADH</td><td><span class="mb-tag mb-t-r">Irreversible</span> 2ª decarboxilación; complejo multienzimático análogo a PDH; inhib. por succinil-CoA, NADH</td></tr>
+                                <tr><td>5</td><td>Succinil-CoA → Succinato + GTP</td><td>Succinil-CoA sintetasa</td><td>GDP + Pi → GTP</td><td><span class="mb-tag mb-t-c">Reversible</span> <strong>Única fosforilación a nivel sustrato en Krebs</strong>; en músculo produce ATP directamente</td></tr>
+                                <tr><td>6</td><td>Succinato → Fumarato</td><td><strong>Succinato deshidrogenasa</strong></td><td>FAD → FADH₂</td><td><span class="mb-tag mb-t-c">Reversible</span> = <strong>Complejo II</strong> de la cadena respiratoria; única enzima embebida en membrana interna mitocondrial</td></tr>
+                                <tr><td>7</td><td>Fumarato + H₂O → L-Malato</td><td>Fumarasa</td><td>H₂O</td><td><span class="mb-tag mb-t-c">Reversible</span> Mutaciones fumarasa → paraganglioma hereditario y cáncer de células renales papilares tipo 2</td></tr>
+                                <tr><td>8</td><td>L-Malato → Oxaloacetato</td><td>Malato deshidrogenasa</td><td>NAD⁺ → NADH</td><td><span class="mb-tag mb-t-c">Reversible</span> ΔG°'=+29.7 kJ/mol (endergónica — el ciclo continúa por consumo de OAA en paso 1)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="mb-norma" data-mb-reveal>
+                    <div class="mb-norma-ico">🔬</div>
+                    <div>
+                        <h4>Mutaciones del Ciclo de Krebs en Oncología — IDH1/IDH2 y Cáncer</h4>
+                        <p>Las mutaciones somáticas en <strong>isocitrato deshidrogenasa IDH1</strong> (citosólica) e <strong>IDH2</strong> (mitocondrial) son hallazgos frecuentes en gliomas de bajo grado (~80%), leucemia mieloide aguda (~20%) y colangiocarcinoma (~15%). La enzima mutada pierde su función normal y adquiere la capacidad de reducir α-cetoglutarato a 2-hidroxiglutarato (2-HG, "oncometabolito") usando NADPH. El 2-HG acumulado inhibe dioxigenasas TET (desmetilasas de ADN) y dioxigenasas de histonas (KDM), produciendo hipermetilación de ADN e impidiendo la diferenciación celular → fenotipo canceroso. <strong>Enasidenib</strong> (inhibidor IDH2, FDA 2017) e <strong>ivosidenib</strong> (inhibidor IDH1, FDA 2018) son fármacos aprobados para AML con mutaciones IDH. En Chile, el PANDA (Programa Nacional de Drogas Antineoplásicas) incluye ivosidenib para AML IDH1-mutado desde 2023.</p>
+                    </div>
+                </div>
+            </div><!-- /panel krebs -->
+
+            <!-- ══ PANEL 3: FOSFORILACIÓN OXIDATIVA ══ -->
+            <div class="mb-panel">
+                <div class="mb-3d" data-mb-reveal>
+                    <canvas id="mb-canvas-fosforilacion" title="Cadena respiratoria y ATP sintasa F₀F₁ en 3D interactivo"></canvas>
+                    <div class="mb-3d-lbl">⟳ Arrastra para rotar — ATP Sintasa F₀F₁ · Cadena Respiratoria · Membrana Interna Mitocondrial</div>
+                </div>
+
+                <div data-mb-reveal>
+                    <div class="mb-sh">Cadena Respiratoria y Fosforilación Oxidativa</div>
+                    <div class="mb-mec">
+                        <div class="mb-mec-card">
+                            <div class="mb-mec-ico">🔋</div>
+                            <h4>La Cadena de Transporte de Electrones</h4>
+                            <p>Los 4 complejos proteicos de la membrana interna mitocondrial transfieren electrones desde NADH/FADH₂ hasta el O₂ final (aceptor terminal): <strong>Complejo I</strong> (NADH deshidrogenasa, 45 subunidades): NADH → ubiquinona (CoQ), bombea 4H⁺. <strong>Complejo II</strong> (succinato deshidrogenasa, 4 subunidades): FADH₂ → CoQ, NO bombea H⁺. <strong>Complejo III</strong> (citocromo bc₁, 11 subunidades): CoQH₂ → citocromo c, bombea 4H⁺ (ciclo Q). <strong>Complejo IV</strong> (citocromo c oxidasa, 13 subunidades): citocromo c → ½O₂ → H₂O, bombea 2H⁺. Total: 10H⁺ bombeados al espacio intermembrana por mol NADH; 6H⁺ por mol FADH₂.</p>
+                        </div>
+                        <div class="mb-mec-card">
+                            <div class="mb-mec-ico">🌊</div>
+                            <h4>Quimioósmosis y Gradiente de Protones</h4>
+                            <p>Teoría de Mitchell (1961, Nobel 1978): el bombeo de H⁺ al espacio intermembrana crea un <strong>gradiente electroquímico</strong> (fuerza protomotriz, PMF = ΔΨ + ΔpH): ΔΨ ≈ −180 mV (interior negativo) y ΔpH ≈ 1 unidad (interior más alcalino). PMF total ≈ −220 mV a −240 mV. Este gradiente es la moneda energética que impulsa la ATP sintasa: los protones fluyen a favor del gradiente a través del canal F₀ → rotación del eje c-γ → cambios conformacionales en el dominio F₁ → síntesis de ATP desde ADP + Pi. Se requieren ~4H⁺ por ATP sintetizado (relación H⁺/ATP: 8H⁺/3 ATP según estructura cristalográfica).</p>
+                        </div>
+                        <div class="mb-mec-card">
+                            <div class="mb-mec-ico">🔩</div>
+                            <h4>ATP Sintasa F₀F₁ — Motor Molecular</h4>
+                            <p>La ATP sintasa (Complejo V) es el motor molecular más pequeño y eficiente conocido: convierte energía del gradiente en enlace químico con eficiencia >90%. Estructura: <strong>dominio F₀</strong> (anclado en membrana, subunidades a, b, c₈₋₁₅): canal de protones que rota. <strong>Dominio F₁</strong> (en matriz, subunidades α₃β₃γδε): sitio catalítico. Cada subunidad β alterna entre 3 estados (Boyer, Nobel 1997): vacío (O), con ADP+Pi (L, loose) y con ATP (T, tight). La rotación del eje γ (130 rpm en mitocondria activa) cambia secuencialmente los estados: T→O→L→T. Inhibido por oligomicina (anillo macrolido, bloquea canal F₀) — veneno mitocondrial clásico en bioquímica.</p>
+                        </div>
+                        <div class="mb-mec-card">
+                            <div class="mb-mec-ico">❌</div>
+                            <h4>Desacopladores y Toxinas Mitocondriales</h4>
+                            <p><strong>Desacopladores</strong>: proteínas/compuestos que permiten el retorno de H⁺ al interior mitocondrial sin síntesis de ATP → el gradiente se disipa como calor. (1) <strong>Termogenina (UCP1)</strong>: desacoplador fisiológico en tejido adiposo marrón (termogénesis en neonatos y animales hibernantes). (2) <strong>2,4-Dinitrofenol (DNP)</strong>: compuesto lipofílico, transporta H⁺; prohibido como adelgazante (muertes reportadas). <strong>Toxinas de la cadena</strong>: cianuro (inhibe Complejo IV, bloquea citocromoa a₃), antimicina A (Complejo III), rotenona (Complejo I, insecticida), azida de sodio (Complejo IV). <strong>Uso clínico</strong>: metformina inhibe levemente el Complejo I → reduce gluconeogénesis hepática sin causar desacoplamiento.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-mb-reveal>
+                    <div class="mb-sh">Balance ATP por Oxidación Completa de Glucosa</div>
+                    <div class="mb-tbl-wrap">
+                        <table class="mb-tbl">
+                            <thead>
+                                <tr><th>Etapa</th><th>NADH producido</th><th>FADH₂ producido</th><th>ATP directo</th><th>ATP equiv. (NADH×2.5 / FADH₂×1.5)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Glucólisis (citosol)</td><td>2 NADH (extramitocondriales)</td><td>—</td><td>2 ATP</td><td>3–5 ATP (según lanzadera: malato-aspartato +2.5; glicerol-3-P +1.5)</td></tr>
+                                <tr><td>Piruvato deshidrogenasa</td><td>2 NADH (×2 piruvatos)</td><td>—</td><td>—</td><td>5 ATP</td></tr>
+                                <tr><td>Ciclo de Krebs (×2 vueltas)</td><td>6 NADH</td><td>2 FADH₂</td><td>2 GTP</td><td>15 + 3 + 2 = 20 ATP</td></tr>
+                                <tr><td><strong>TOTAL</strong></td><td><strong>10 NADH</strong></td><td><strong>2 FADH₂</strong></td><td><strong>4 ATP/GTP</strong></td><td><strong>~30–32 ATP</strong> (teórico actual; 36-38 ATP es estimación clásica con ratio H⁺/ATP menos preciso)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size:.82rem;color:rgba(255,255,255,.45);margin-top:10px;">Nota: El rendimiento real en célula viva es ~29–30 ATP/glucosa por pérdidas en transporte de metabolitos (lanzaderas) y el costo energético de mantener el gradiente. La cifra de 38 ATP es histórica; valores actuales basados en razón estequiométrica H⁺/ATP = 8/3 y estructura cristalográfica de ATP sintasa (Walker, Nobel 1997) dan 30–32 ATP. [Fuente: Stryer 9ª ed., cap. 18; Berg-Tymoczko-Gatto 9ª ed., cap. 20]</p>
+                </div>
+
+                <div class="mb-norma" data-mb-reveal>
+                    <div class="mb-norma-ico">💊</div>
+                    <div>
+                        <h4>Toxinas Mitocondriales y Farmacología — De la Bioquímica a la Clínica</h4>
+                        <p>El conocimiento de la cadena respiratoria tiene implicaciones farmacológicas directas. <strong>Metformina</strong> (biguanida, primer línea T2DM): inhibe el Complejo I de la cadena respiratoria con potencia modesta → reduce producción de ATP hepático → activa AMPK → inhibe gluconeogénesis → reduce glucemia en ayuno. Prescrita a >200 millones de personas mundialmente; está en el PNAF (Plan Nacional de Fármacos) de Chile. <strong>Doxorrubicina</strong> (antraciclina antineoplásica): genera radicales libres de O₂ en mitocondria → daño a ADN mitocondrial → cardiotoxicidad limitante de dosis. <strong>Síndrome de MELAS</strong> (mitocondrial myopathy, encephalopathy, lactic acidosis): mutación m.3243A>G en ARNt mitocondrial para leucina → déficit de Complejo I → acumulación de lactato → encefalopatía. En Chile, el estudio de enfermedades mitocondriales lo lideran el Dr. Ricardo Verdugo (ICBM, U. de Chile) y el Centro de Genética y Genómica de la Clínica Las Condes, con diagnóstico por secuenciación del genoma mitocondrial completo (16,569 pb).</p>
+                    </div>
+                </div>
+            </div><!-- /panel fosforilación -->
+
+            <!-- ══ PANEL 4: LÍPIDOS Y AMINOÁCIDOS ══ -->
+            <div class="mb-panel">
+                <div class="mb-3d" data-mb-reveal>
+                    <canvas id="mb-canvas-lipidos" title="Red metabólica integrada 3D — β-oxidación, ciclo urea, cuerpos cetónicos"></canvas>
+                    <div class="mb-3d-lbl">⟳ Arrastra para rotar — Integración Metabólica · β-Oxidación · Ciclo de la Urea</div>
+                </div>
+
+                <div data-mb-reveal>
+                    <div class="mb-sh">Metabolismo de Lípidos y Aminoácidos</div>
+                    <div class="mb-mec">
+                        <div class="mb-mec-card">
+                            <div class="mb-mec-ico">🔥</div>
+                            <h4>β-Oxidación de Ácidos Grasos</h4>
+                            <p>Los ácidos grasos son el combustible de mayor densidad energética: ácido palmítico (C16:0) produce <strong>129 ATP</strong> netos. La β-oxidación ocurre en la <strong>matriz mitocondrial</strong> (peroxisomas para cadenas muy largas, VLCFA). Activación: ácido graso + CoA-SH + ATP → acil-CoA + AMP + PPi (acil-CoA sintetasa, en membrana externa). Transporte al interior: carnitina palmitoiltransferasa I (CPT-I) en membrana externa (paso limitante, inhibido por malonil-CoA — señal de síntesis). Ciclo β-oxidación (4 reacciones, repite N/2-1 veces para CnAG): oxidación (FAD → FADH₂) → hidratación → oxidación (NAD⁺ → NADH) → tiolisis → acil-CoA (n-2C) + acetil-CoA.</p>
+                        </div>
+                        <div class="mb-mec-card">
+                            <div class="mb-mec-ico">🍋</div>
+                            <h4>Cuerpos Cetónicos — Combustible de Emergencia</h4>
+                            <p>En ayuno prolongado, diabetes mal controlada o dieta cetogénica, el acetil-CoA hepático supera la capacidad del ciclo de Krebs (por déficit de oxaloacetato, desviado a gluconeogénesis). Exceso de acetil-CoA → <strong>cetogénesis</strong> hepática: 2 acetil-CoA → acetoacetil-CoA (tiolasa) → HMG-CoA (HMG-CoA sintasa) → acetoacetato + acetil-CoA (HMG-CoA liasa) → D-β-hidroxibutirato (reductasa). El acetoacetato también se decarboxila espontáneamente → acetona (olor "a manzanas" en cetoacidosis). Cerebro, corazón y músculo usan cuerpos cetónicos eficientemente (usan 3-oxoacil-CoA transferasa ausente en hígado). En cetoacidosis diabética grave: pH < 7.1, bicarbonato < 15 mEq/L → emergencia médica.</p>
+                        </div>
+                        <div class="mb-mec-card">
+                            <div class="mb-mec-ico">♻️</div>
+                            <h4>Ciclo de la Urea</h4>
+                            <p>Los aminoácidos en exceso no pueden almacenarse ni ser excretados como tales. El nitrógeno amino (-NH₂) se elimina vía: (1) <strong>Transaminación</strong>: aminoácido + α-cetoglutarato → α-cetoácido + glutamato (piridoxal-P como cofactor). (2) <strong>Desaminación oxidativa</strong>: glutamato + NAD⁺ → α-cetoglutarato + NH₄⁺ (glutamato deshidrogenasa mitocondrial). (3) <strong>Ciclo de la urea</strong> (hígado, 5 reacciones): 2 NH₄⁺ + HCO₃⁻ + 3 ATP → urea (CO(NH₂)₂) + H₂O. La urea se excreta por riñones (RFG normal: 12.5 mmol/min). El citrulino transporta nitrógeno desde mitocondria al citosol. Defectos enzimáticos → hiperamonemia (neurotóxico: NH₄⁺ > 200 µg/dL → encefalopatía hepática).</p>
+                        </div>
+                        <div class="mb-mec-card">
+                            <div class="mb-mec-ico">🕸️</div>
+                            <h4>Integración Metabólica — El Panorama Completo</h4>
+                            <p>El metabolismo es una red integrada gobernada por señales hormonales. <strong>Estado de ayuno</strong> (glucagón ↑, insulina ↓): glucogenolisis → glucemia → gluconeogénesis (OAA + PEP + piruvato); lipólisis adiposa → NEFA → β-oxidación hepática → cuerpos cetónicos → cerebro. <strong>Estado absortivo</strong> (insulina ↑, glucagón ↓): glucólisis → piruvato → acetil-CoA → síntesis ácidos grasos (malonil-CoA) → lipogénesis en tejido adiposo; glucogenogénesis hepática y muscular. <strong>Ejercicio intenso</strong> (AMPK ↑): CPT-I activa → β-oxidación en músculo; inhibición de síntesis de ácidos grasos; captación de glucosa por GLUT4 (independiente de insulina). La coordinación hormonal permite a un humano de 70 kg sobrevivir hasta 60-70 días de ayuno total con reservas de grasa ~15 kg.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-mb-reveal>
+                    <div class="mb-sh">Balance ATP — β-Oxidación de Ácido Palmítico (C16:0)</div>
+                    <div class="mb-tbl-wrap">
+                        <table class="mb-tbl">
+                            <thead>
+                                <tr><th>Etapa</th><th>Ciclos / Vueltas</th><th>NADH</th><th>FADH₂</th><th>Acetil-CoA</th><th>ATP equivalentes</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Activación (gasto)</td><td>—</td><td>—</td><td>—</td><td>—</td><td>−2 ATP (AMP+PPi)</td></tr>
+                                <tr><td>β-Oxidación (7 ciclos)</td><td>7</td><td>7 NADH → 17.5</td><td>7 FADH₂ → 10.5</td><td>8 acetil-CoA</td><td>28 ATP</td></tr>
+                                <tr><td>Ciclo de Krebs (8 vueltas)</td><td>8</td><td>24 NADH → 60</td><td>8 FADH₂ → 12</td><td>—</td><td>80 ATP (incl. 8 GTP)</td></tr>
+                                <tr><td><strong>TOTAL NETO</strong></td><td>—</td><td><strong>31 NADH</strong></td><td><strong>15 FADH₂</strong></td><td>—</td><td><strong>~129 ATP</strong></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div data-mb-reveal>
+                    <div class="mb-sh">Enfermedades del Metabolismo de Lípidos y Aminoácidos</div>
+                    <div class="mb-proc">
+                        <div class="mb-step">
+                            <div class="mb-step-n">PKU</div>
+                            <div class="mb-step-t">Fenilcetonuria</div>
+                            <div class="mb-step-d">Déficit de fenilalanina hidroxilasa → acumulación de fenilalanina → metabolitos tóxicos en SNC → retraso mental irreversible. Screening neonatal universal en Chile desde 1992. Tratamiento: dieta restringida en Phe + sapropterina (BH4, cofactor; aprobado en respondedores) o pegvaliasa (fenilalanina amoniaco-liasa PEGilada, FDA 2018).</div>
+                        </div>
+                        <div class="mb-step">
+                            <div class="mb-step-n">MCAD</div>
+                            <div class="mb-step-t">Déficit Acil-CoA Deshidrogenasa</div>
+                            <div class="mb-step-d">Defecto en β-oxidación de cadena media → hipoglucemia hipocetósica en ayuno → encefalopatía, muerte súbita. Variante más frecuente: c.985A>G (Lys329Glu). Detectable por tamizaje neonatal (acilcarnitinas en papel filtro por MS/MS). Tratamiento: evitar ayuno prolongado, L-carnitina suplementaria.</div>
+                        </div>
+                        <div class="mb-step">
+                            <div class="mb-step-n">HCY</div>
+                            <div class="mb-step-t">Homocistinuria</div>
+                            <div class="mb-step-d">Déficit de cistationina β-sintasa → acumulación de homocisteína → tromboembolismo, luxación de cristalino, retraso cognitivo. Tratamiento: piridoxina (cofactor, efectivo en respondedores), betaína, dieta baja en Met + Cys suplementaria.</div>
+                        </div>
+                        <div class="mb-step">
+                            <div class="mb-step-n">GSD-I</div>
+                            <div class="mb-step-t">Síndrome Metabólico</div>
+                            <div class="mb-step-d">En Chile: prevalencia 35% en adultos (ENS 2017). Resistencia a insulina → lipólisis exagerada → NEFA ↑ → β-oxidación hepática excesiva → producción de VLDL ↑ → hipertrigliceridemia. Target: fibratos (activadores PPARα → inducen β-oxidación), estatinas (HMG-CoA reductasa), ácidos grasos omega-3.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-norma" data-mb-reveal>
+                    <div class="mb-norma-ico">🇨🇱</div>
+                    <div>
+                        <h4>Metabolismo Lipídico, Obesidad y Salud en Chile — Perspectiva Epidemiológica</h4>
+                        <p>Chile enfrenta una epidemia de enfermedades metabólicas estrechamente ligadas a disregulación del metabolismo lipídico: la Encuesta Nacional de Salud 2016-2017 reporta <strong>74.2% de adultos con sobrepeso u obesidad</strong> (uno de los índices más altos de Latinoamérica), <strong>35% con síndrome metabólico</strong> y <strong>28.5% con dislipidemia aterogénica</strong>. La β-oxidación disminuida y la lipogénesis de novo aumentada son características centrales de la esteatohepatitis no alcohólica (NASH/MAFLD), presente en hasta 25% de adultos chilenos. El FONDECYT Regular 1211483 (2021-2025, Dr. Attilio Rigotti, PUC) estudia receptores nucleares PPARα y LXR en metabolismo lipídico hepático en población chilena. La Unidad de Metabolismo y Nutrición de la Clínica MEDS y el Centro de Nutrición Molecular y Enfermedades Crónicas de la PUC realizan investigación traslacional sobre biomarcadores lipidómicos para predicción cardiovascular en población chilena. El programa GES cubre 15 problemas de salud relacionados con dislipidemias, enfermedad coronaria y DM2, todos con base fisiopatológica en el metabolismo lipídico estudiado en esta unidad.</p>
+                    </div>
+                </div>
+            </div><!-- /panel lípidos -->
+
+        </div><!-- /panels-wrap -->
+
+        <!-- NAV INFERIOR -->
+        <div class="mb-page-nav">
+            <a href="../enzimologia/enzimologia-moderna.html" class="mb-nbtn">← Unidad 3: Enzimología Moderna</a>
+            <a href="../index.html"                           class="mb-nbtn">Volver al índice</a>
+            <a href="../genetica/genetica.html"               class="mb-nbtn pri">Siguiente: Unidad 5 — Genética Molecular →</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>© 2026 PharmaLab Chile — Bioquímica · Unidad 4: Metabolismo y Bioenergética</p>
+            <p class="footer-disclaimer">Contenido educacional universitario. Datos basados en Stryer 9ª ed., Lehninger 8ª ed., Berg-Tymoczko-Gatto 9ª ed., BRENDA/UniProtKB, MINSAL Chile y publicaciones FONDECYT. No reemplaza asesoría médica profesional.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="../../script.js"></script>
+<script src="metabolismo.js"></script>
+</body>
+</html>

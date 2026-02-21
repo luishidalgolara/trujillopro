@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos de Bioquímica Molecular — PharmaLab Chile | Unidad 1</title>
+    <meta name="description" content="Agua y pH biológico, termodinámica, buffers fisiológicos y cinética química. Contenido universitario verídico y actualizado 2025 para bioquímica en Chile.">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../bioquimica.css">
+    <link rel="stylesheet" href="fundamentos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="module-bioquimica">
+
+<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+<nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+        <a href="../../index.html" class="nav-logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="../../quimica/index.html"              class="nav-link" data-module="quimica">⚗️ Química</a>
+            <a href="../../farmacia/index.html"             class="nav-link" data-module="farmacia">💊 Farmacia</a>
+            <a href="../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf">🧬 Q. Farmacéutica</a>
+            <a href="../../biotecnologia/index.html"        class="nav-link" data-module="biotech">🔬 Biotecnología</a>
+            <a href="../../virologia/index.html"            class="nav-link" data-module="virologia">🦠 Virología</a>
+            <a href="../index.html"                         class="nav-link active" data-module="bioquimica">🧪 Bioquímica</a>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="fb-hero">
+    <div class="fb-hero-bg">
+        <div class="fb-hero-grid"></div>
+        <div class="fb-orb fb-orb-1"></div>
+        <div class="fb-orb fb-orb-2"></div>
+        <div class="fb-orb fb-orb-3"></div>
+    </div>
+    <div class="fb-hero-inner">
+        <div class="fb-wrap">
+            <div>
+                <div class="fb-crumb">
+                    <a href="../../index.html" style="color:inherit;text-decoration:none;">Inicio</a><span>/</span>
+                    <a href="../index.html"    style="color:inherit;text-decoration:none;">Bioquímica</a><span>/</span>
+                    <span style="color:#fff">Fundamentos Moleculares</span>
+                </div>
+                <div class="fb-hero-tag">Unidad 1 · Bioquímica</div>
+                <h1 class="fb-hero-title">Fundamentos de <span class="fb-gr">Bioquímica Molecular</span></h1>
+                <p class="fb-hero-desc">La base química de la vida: desde la estructura singular del agua y el control del pH biológico, hasta la termodinámica que rige cada reacción celular, los sistemas buffer que protegen la homeostasis y la cinética que determina la velocidad de cada proceso metabólico.</p>
+                <div class="fb-hero-stats">
+                    <div class="fb-stat">
+                        <span class="fb-stat-num" data-fb-count="7.4" data-fb-suf="" data-fb-dec="1">7.4</span>
+                        <span class="fb-stat-label">pH sangre arterial normal (7.35–7.45)</span>
+                    </div>
+                    <div class="fb-stat">
+                        <span class="fb-stat-num" data-fb-count="37" data-fb-suf="°C">37°C</span>
+                        <span class="fb-stat-label">T° fisiológica: máxima eficiencia enzimática</span>
+                    </div>
+                    <div class="fb-stat">
+                        <span class="fb-stat-num" data-fb-count="104.5" data-fb-suf="°" data-fb-dec="1">104.5°</span>
+                        <span class="fb-stat-label">Ángulo H–O–H del agua (puentes H responsables)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="fb-hero-vis">
+                <canvas id="fb-hero-canvas" title="Molécula de agua y red de puentes de hidrógeno 3D"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ DATOS CLAVE ═══════════════════════ -->
+<section class="fb-section">
+    <div class="fb-wrap">
+        <div class="fb-datos" data-fb-reveal>
+            <div class="fb-dato">
+                <span class="fb-dato-n" data-fb-count="14" data-fb-suf="">14</span>
+                <span class="fb-dato-l">pKw del agua a 25°C — producto iónico: [H⁺][OH⁻] = 10⁻¹⁴ M²</span>
+            </div>
+            <div class="fb-dato">
+                <span class="fb-dato-n" data-fb-count="6.1" data-fb-suf="" data-fb-dec="1">6.1</span>
+                <span class="fb-dato-l">pKa del bicarbonato (H₂CO₃/HCO₃⁻) — buffer fisiológico primario</span>
+            </div>
+            <div class="fb-dato">
+                <span class="fb-dato-n" data-fb-count="30.5" data-fb-suf=" kJ/mol" data-fb-dec="1">30.5</span>
+                <span class="fb-dato-l">ΔG°' de hidrólisis del ATP — moneda energética universal</span>
+            </div>
+            <div class="fb-dato">
+                <span class="fb-dato-n" data-fb-count="2.57" data-fb-suf=" Å" data-fb-dec="2">2.57</span>
+                <span class="fb-dato-l">Longitud puente de hidrógeno O···H en agua líquida</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ TABS ═══════════════════════ -->
+<section class="fb-section" style="padding-top:0">
+    <div class="fb-wrap">
+
+        <div class="fb-section-hd" data-fb-reveal>
+            <div class="fb-sec-tag">🧪 Contenidos</div>
+            <h2 class="fb-sec-title">Cuatro Pilares de los <span class="fb-hl">Fundamentos Moleculares</span></h2>
+            <p class="fb-sec-sub">Desde la termodinámica que dicta si una reacción ocurre espontáneamente, hasta los sistemas buffer que mantienen el pH constante en la sangre. Información actualizada con datos de libros de texto universitarios y fuentes primarias.</p>
+        </div>
+
+        <!-- TABS NAV -->
+        <div class="fb-tabs-nav" data-fb-reveal>
+            <div class="fb-tab-btn active">
+                <div class="fb-tab-icon">💧</div>
+                <span class="fb-tab-num">Tema 1.1</span>
+                <div class="fb-tab-name">Agua y pH</div>
+                <div class="fb-tab-hint">Estructura del agua, puentes de hidrógeno, propiedades coligativas, ionización, escala de pH, pH de soluciones biológicas.</div>
+                <div class="fb-tab-arrow">→</div>
+            </div>
+            <div class="fb-tab-btn">
+                <div class="fb-tab-icon">🔥</div>
+                <span class="fb-tab-num">Tema 1.2</span>
+                <div class="fb-tab-name">Termodinámica</div>
+                <div class="fb-tab-hint">Entalpía, entropía, energía libre de Gibbs, acoplamiento energético, ATP como moneda energética y bioenergética celular.</div>
+                <div class="fb-tab-arrow">→</div>
+            </div>
+            <div class="fb-tab-btn">
+                <div class="fb-tab-icon">⚖️</div>
+                <span class="fb-tab-num">Tema 1.3</span>
+                <div class="fb-tab-name">Buffers Fisiológicos</div>
+                <div class="fb-tab-hint">Henderson-Hasselbalch, sistemas buffer sanguíneos, tampones intracelulares, acidosis/alcalosis y compensación renal-pulmonar.</div>
+                <div class="fb-tab-arrow">→</div>
+            </div>
+            <div class="fb-tab-btn">
+                <div class="fb-tab-icon">⚡</div>
+                <span class="fb-tab-num">Tema 1.4</span>
+                <div class="fb-tab-name">Cinética Química</div>
+                <div class="fb-tab-hint">Velocidad de reacción, orden de reacción, energía de activación, catálisis enzimática, temperatura y constante de Arrhenius.</div>
+                <div class="fb-tab-arrow">→</div>
+            </div>
+        </div>
+
+        <!-- PANELS WRAPPER -->
+        <div class="fb-panels-wrap">
+
+            <!-- ── PANEL 1: AGUA Y pH ── -->
+            <div class="fb-panel active">
+                <!-- 3D Canvas -->
+                <div class="fb-3d" data-fb-reveal>
+                    <canvas id="fb-canvas-agua" title="Red de puentes de hidrógeno del agua 3D"></canvas>
+                    <div class="fb-3d-lbl">⟳ Arrastra para rotar — Red H₂O · Puentes de Hidrógeno</div>
+                </div>
+
+                <div data-fb-reveal>
+                    <div class="fb-sh">Estructura del Agua — La Molécula de la Vida</div>
+                    <div class="fb-mec">
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🔬</div>
+                            <h4>Geometría Molecular</h4>
+                            <p>El H₂O tiene geometría angular con ángulo H–O–H de 104.5° (VSEPR: 2 pares no enlazantes sobre O). El oxígeno es sp³ hibridado. La distancia O–H es 0.96 Å. La asimetría genera un momento dipolar neto de 1.85 D, convirtiendo al agua en el disolvente polar más importante de la bioquímica.</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🔗</div>
+                            <h4>Puentes de Hidrógeno</h4>
+                            <p>Cada molécula de agua puede formar hasta 4 puentes de hidrógeno (2 como donador, 2 como aceptor). Energía por puente: ~20 kJ/mol (5× mayor que fuerzas de Van der Waals, pero 20× menor que enlace covalente O–H = 460 kJ/mol). Esta red crea propiedades únicas: alta Tc, calor específico (4.18 J/g·K), tensión superficial (72.8 mN/m a 20°C).</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🧂</div>
+                            <h4>Agua como Disolvente Biológico</h4>
+                            <p>El efecto hidrofóbico impulsa el plegamiento proteico y la formación de membranas (ΔG < 0 por aumento de entropía del agua). Constante dieléctrica ε = 78.5 a 25°C — reduce interacciones electrostáticas entre iones. Kw = [H⁺][OH⁻] = 1.0 × 10⁻¹⁴ M² a 25°C.</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🌊</div>
+                            <h4>Propiedades Coligativas</h4>
+                            <p>La presión osmótica biológica depende directamente de la concentración de solutos (Ley de Van't Hoff: π = cRT). Osmolaridad plasmática normal: 285–295 mOsm/kg. La tonicidad celular se regula por acuaporinas (AQP1–AQP12), descubiertas por Peter Agre (Nobel 2003). Alteraciones osmóticas → crenación o lisis celular.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-fb-reveal>
+                    <div class="fb-sh">Escala de pH y Acidez Biológica</div>
+                    <div class="fb-mec">
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">📊</div>
+                            <h4>Definición de pH y pOH</h4>
+                            <p>pH = −log[H₃O⁺]. A 25°C: pH + pOH = 14. Concepto de Sorensen (1909). El pH no es lineal: diferencia de 1 unidad = 10× diferencia en [H⁺]. pH 7.0 → [H⁺] = 100 nM; pH 6.0 → 1 µM; pH 5.0 → 10 µM. Relevante farmacológicamente: el estado de ionización de fármacos (pKa) determina absorción y distribución tisular (Henderson-Hasselbalch).</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🩸</div>
+                            <h4>pH en Compartimentos Biológicos</h4>
+                            <p>Sangre arterial: 7.35–7.45 (acidosis/alcalosis si sale de rango). Citosol: 7.0–7.2. Lisosoma: 4.5–5.0 (digestión de macromoléculas). Estómago (jugo gástrico): 1.5–3.5 (HCl: activación pepsinógeno → pepsina). Orina: 4.5–8.0. Piel (manto ácido): 5.5. Estos gradientes son energéticamente utilizados (fuerza motriz de protones en mitocondria: pH ~0.75 a través de membrana interna).</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">⚗️</div>
+                            <h4>Ácidos y Bases Débiles — pKa</h4>
+                            <p>Ácido débil: HA ⇌ H⁺ + A⁻. Ka = [H⁺][A⁻]/[HA]. pKa = −log(Ka). Relevancia biológica: el ácido acético (pKa = 4.76) se usa en buffers de laboratorio. El ácido fosfórico (pKa₁=2.1, pKa₂=7.2, pKa₃=12.3) es tampón intracelular clave. Grupos ionizables de aminoácidos: carboxilo (pKa ~2), amino (pKa ~9), imidazol His (pKa ~6), tiol Cys (pKa ~8).</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🔬</div>
+                            <h4>Ionización del Agua y Kw</h4>
+                            <p>2H₂O ⇌ H₃O⁺ + OH⁻. Kw = 1.0 × 10⁻¹⁴ M² (25°C). Kw aumenta con temperatura (endotérmica): a 37°C, Kw = 2.4 × 10⁻¹⁴ → pH neutro = 6.8 (no 7.0). Este detalle es crucial en bioquímica fisiológica. La autoionización es fundamental para entender la acidez y basicidad intrínseca de los sistemas acuosos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline pH biológico -->
+                <div data-fb-reveal>
+                    <div class="fb-sh">pH Representativo en Sistemas Biológicos</div>
+                    <div class="fb-tbl-wrap">
+                        <table class="fb-tbl">
+                            <thead>
+                                <tr><th>Compartimento / Fluido</th><th>pH Normal</th><th>Función del pH</th><th>Consecuencia de alteración</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Sangre arterial</td><td><span class="fb-tag fb-t-c">7.35–7.45</span></td><td>Transporte O₂/CO₂, función enzimática sistémica</td><td>Acidosis (&lt;7.35) o alcalosis (&gt;7.45) → tetania, coma</td></tr>
+                                <tr><td>Jugo gástrico</td><td><span class="fb-tag fb-t-r">1.5–3.5</span></td><td>Activar pepsina, desnaturalizar proteínas dietarias</td><td>Hipoclorhidria → malabsorción de vitamina B12, Fe²⁺</td></tr>
+                                <tr><td>Citosol (célula)</td><td><span class="fb-tag fb-t-c">7.0–7.2</span></td><td>Metabolismo, actividad enzimática intracelular</td><td>pH &lt; 6.8 inhibe glicólisis (retroalimentación negativa)</td></tr>
+                                <tr><td>Lisosoma</td><td><span class="fb-tag fb-t-r">4.5–5.0</span></td><td>Activar hidrolasas ácidas (proteasas, lipasas, nucleasas)</td><td>pH alcalino → acumulación de lisosomas (enfermedad de Gaucher)</td></tr>
+                                <tr><td>Piel (manto ácido)</td><td><span class="fb-tag fb-t-go">4.5–5.5</span></td><td>Barrera antimicrobiana, mantenimiento microbioma</td><td>Elevación pH → dermatitis, susceptibilidad infecciones</td></tr>
+                                <tr><td>Orina</td><td><span class="fb-tag fb-t-g">4.5–8.0</span></td><td>Excreción de ácidos metabólicos (NH₄⁺, H₂PO₄⁻)</td><td>Cristalización de uratos (pH &lt;5.5) o fosfatos (pH &gt;7)</td></tr>
+                                <tr><td>Leche materna</td><td><span class="fb-tag fb-t-g">6.8–7.2</span></td><td>Favorece absorción de calcio y hierro neonatal</td><td>Variación → cambio en biodisponibilidad de minerales</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="fb-norma" data-fb-reveal>
+                    <div class="fb-norma-ico">🇨🇱</div>
+                    <div>
+                        <h4>Relevancia Clínica en Chile — Análisis de Gases en Sangre (AGA)</h4>
+                        <p>En Chile, el análisis de gases arteriales (AGA) es un examen estándar en UCI y urgencias. Los parámetros normales según el Manual de Medicina Interna de la PUC son: pH 7.35–7.45, PaCO₂ 35–45 mmHg, HCO₃⁻ 22–26 mEq/L. La interpretación sigue el algoritmo de compensación: acidosis metabólica → hiperventilación compensatoria (regla de Winter: PaCO₂ esperado = [1.5 × HCO₃⁻] + 8 ± 2). En alcalosis respiratoria por altura (Andinos a >3.500 m), el riñón excreta HCO₃⁻ para normalizar el pH en días. El MINSAL ha identificado la acidosis láctica como marcador de sepsis grave en sus protocolos de manejo hospitalario (Ord. 435/2020).</p>
+                    </div>
+                </div>
+            </div><!-- /panel 1 -->
+
+            <!-- ── PANEL 2: TERMODINÁMICA ── -->
+            <div class="fb-panel">
+                <div class="fb-3d" data-fb-reveal>
+                    <canvas id="fb-canvas-termo" title="Energía libre de Gibbs y acoplamiento energético ATP 3D"></canvas>
+                    <div class="fb-3d-lbl">⟳ Arrastra para rotar — Ciclo ATP / ADP · Acoplamiento Energético</div>
+                </div>
+
+                <div data-fb-reveal>
+                    <div class="fb-sh">Termodinámica Biológica — Leyes y Aplicaciones</div>
+                    <div class="fb-mec">
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🔥</div>
+                            <h4>Primera Ley — Conservación de Energía</h4>
+                            <p>ΔU = Q − W. En bioquímica, la energía de los nutrientes (glucosa: ΔG°' = −2840 kJ/mol de combustión) se convierte en ATP, calor y trabajo mecánico. Los organismos son sistemas abiertos que intercambian energía y materia con el entorno. La entalpía de combustión de la glucosa (ΔH°c = −2803 kJ/mol) se mide con bomba calorimétrica (método Berthelot).</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🌀</div>
+                            <h4>Segunda Ley — Entropía y Espontaneidad</h4>
+                            <p>ΔS_universo > 0 en procesos espontáneos. En biología: el plegamiento proteico (aparentemente ↓ entropía de la proteína) es impulsado por el aumento de entropía del agua (efecto hidrofóbico: liberación de agua ordenada alrededor de cadenas apolares). La creación de orden biológico se logra a expensas de un aumento mayor de desorden en el entorno (catabolismo de nutrientes).</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">⚡</div>
+                            <h4>Energía Libre de Gibbs (ΔG)</h4>
+                            <p>ΔG = ΔH − TΔS. Condición de espontaneidad: ΔG < 0. ΔG° vs ΔG°': el apostrofe (') indica condiciones estándar bioquímicas (pH 7.0, T = 25°C, [H₂O] = 55.5 M constante). Relación con equilibrio: ΔG°' = −RT ln K'eq. A 25°C: ΔG°' = −5.71 kJ/mol × log K'eq. Si ΔG°' < 0 → K'eq > 1 (productos favorecidos en equilibrio). Reacciones acopladas: ΔGtotal = ΔG₁ + ΔG₂ (ΔG aditivo).</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🔋</div>
+                            <h4>ATP — Moneda Energética Universal</h4>
+                            <p>ATP: adenosina-5'-trifosfato. Hidrólisis: ATP + H₂O → ADP + Pᵢ, ΔG°' = −30.5 kJ/mol. La alta energía de hidrólisis se debe a: repulsión electrostática entre fosfatos, resonancia del Pᵢ libre, diferencia de hidratación ADP vs ATP. Razón ATP/ADP intracelular: ~10 (mantiene ΔG real ≈ −50 kJ/mol). Producción diaria de ATP en humano adulto: ~40 kg (reusado ~500 veces/día). Síntesis por ATP sintasa (F₀F₁-ATPasa, rotación de subunidad γ, Premio Nobel 1997 Paul Boyer y John Walker).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-fb-reveal>
+                    <div class="fb-sh">Bioenergética — Potencial Redox y Cadena Respiratoria</div>
+                    <div class="fb-mec">
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">⚛️</div>
+                            <h4>Potencial de Reducción Estándar (E°')</h4>
+                            <p>Mide la tendencia a ganar electrones (vs electrodo de hidrógeno). Más positivo E°' → mayor afinidad por electrones. Pares biológicos clave: NAD⁺/NADH (E°' = −0.32 V), FAD/FADH₂ (E°' = −0.22 V), O₂/H₂O (E°' = +0.82 V). ΔE°' = E°'aceptor − E°'donador. Relación con ΔG°': ΔG°' = −nFΔE°' (n = e⁻ transferidos, F = 96.5 kJ/V·mol). NADH → O₂: ΔG°' = −220 kJ/mol.</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🏭</div>
+                            <h4>Fosforilación Oxidativa (OXPHOS)</h4>
+                            <p>La cadena respiratoria (Complejos I-IV) bombea H⁺ al espacio intermembrana mitocondrial generando un gradiente electroquímico (fuerza motriz de protones: ~220 mV). ATP sintasa (Complejo V) usa ese flujo de H⁺ para fosforilar ADP. Estequiometría: 1 NADH → 2.5 ATP; 1 FADH₂ → 1.5 ATP. Oxidación completa de glucosa: ~30–32 ATP/molécula (condiciones fisiológicas, Lehninger 6ª ed, 2017).</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🌡️</div>
+                            <h4>Termogénesis y Desacoplamiento</h4>
+                            <p>Proteína desacoplante UCP-1 (termogenina) en tejido adiposo marrón: permite flujo de H⁺ sin síntesis de ATP → calor (termogénesis no tiritante). Regulada por noradrenalina y ácidos grasos libres. Relevante en recién nacidos (hipotermia) y adaptación al frío. Desacopladores farmacológicos históricos: 2,4-dinitrofenol (DNP, usado ilegalmente para bajar de peso, tóxico: ↑ T° corporal → hipertermia fatal).</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">📐</div>
+                            <h4>Calores de Reacción — Ley de Hess</h4>
+                            <p>La entalpía es función de estado: ΔH de una reacción es independiente del camino. ΔH°rxn = Σ ΔH°f(productos) − Σ ΔH°f(reactivos). Aplicación: cálculo de calor de glucólisis a partir de reacciones elementales. Calorimetría de combustión (bomba calorimétrica): ΔU ≈ ΔH a presión constante biológica. Glicina ΔH°c = −973 kJ/mol; glucosa ΔH°c = −2803 kJ/mol.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabla de ΔG°' reacciones -->
+                <div data-fb-reveal>
+                    <div class="fb-sh">ΔG°' de Reacciones Bioquímicas Clave</div>
+                    <div class="fb-tbl-wrap">
+                        <table class="fb-tbl">
+                            <thead>
+                                <tr><th>Reacción</th><th>ΔG°' (kJ/mol)</th><th>Tipo</th><th>Significancia biológica</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>ATP + H₂O → ADP + Pᵢ</td><td><span class="fb-tag fb-t-r">−30.5</span></td><td>Exergónica</td><td>Moneda energética, impulsa reacciones desfavorables</td></tr>
+                                <tr><td>Glucosa-6-P → Fructosa-6-P</td><td><span class="fb-tag fb-t-g">+1.7</span></td><td>Endergónica (leve)</td><td>Isomérico — empujado por consumo de producto</td></tr>
+                                <tr><td>Fructosa-1,6-BP → DHAP + G3P</td><td><span class="fb-tag fb-t-r">+23.8</span></td><td>Endergónica</td><td>Aldolasa: impulsada por ΔG real ≈ −6 kJ/mol en célula</td></tr>
+                                <tr><td>Piruvato → Acetil-CoA + CO₂</td><td><span class="fb-tag fb-t-r">−33.4</span></td><td>Exergónica irreversible</td><td>Punto de no retorno glucólisis-CAC</td></tr>
+                                <tr><td>NADH + ½O₂ → NAD⁺ + H₂O</td><td><span class="fb-tag fb-t-r">−220.0</span></td><td>Exergónica fuerte</td><td>Motor de la cadena respiratoria → síntesis 2.5 ATP</td></tr>
+                                <tr><td>Glucosa + 6O₂ → 6CO₂ + 6H₂O</td><td><span class="fb-tag fb-t-r">−2840.0</span></td><td>Combustión completa</td><td>Base del metabolismo aeróbico</td></tr>
+                                <tr><td>Creatina-P + ADP → Creatina + ATP</td><td><span class="fb-tag fb-t-r">−12.5</span></td><td>Exergónica</td><td>Buffer de ATP en músculo (reserva inmediata ~10 s)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="fb-norma" data-fb-reveal>
+                    <div class="fb-norma-ico">📚</div>
+                    <div>
+                        <h4>Referencia Bibliográfica Estándar — Bioquímica en Chile</h4>
+                        <p>Los textos de referencia utilizados en las universidades chilenas (UCH, PUC, UACH, UCHILE, UDP) son: <strong>Lehninger Principios de Bioquímica</strong> (Nelson & Cox, 8ª ed. 2021), <strong>Stryer Bioquímica</strong> (Berg, Tymoczko & Gatto, 9ª ed. 2019) y <strong>Harper's Illustrated Biochemistry</strong> (Rodwell et al., 31ª ed. 2018). Los valores de ΔG°' en este módulo son los reportados por Lehninger a pH 7.0, 25°C y presión 1 atm, referenciados con el NIST Thermodynamic Database (NIST Standard Reference Database 69). ANID financia proyectos de bioenergética mitocondrial en Chile a través de Fondecyt.</p>
+                    </div>
+                </div>
+            </div><!-- /panel 2 -->
+
+            <!-- ── PANEL 3: BUFFERS ── -->
+            <div class="fb-panel">
+                <div class="fb-3d" data-fb-reveal>
+                    <canvas id="fb-canvas-buffer" title="Sistema buffer bicarbonato 3D — equilibrio ácido-base"></canvas>
+                    <div class="fb-3d-lbl">⟳ Arrastra para rotar — Sistema Buffer Bicarbonato / Fosfato</div>
+                </div>
+
+                <div data-fb-reveal>
+                    <div class="fb-sh">Buffers Biológicos — Ecuación de Henderson-Hasselbalch</div>
+                    <div class="fb-mec">
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🧮</div>
+                            <h4>Ecuación de Henderson-Hasselbalch</h4>
+                            <p>pH = pKa + log([A⁻]/[HA]). Derivada de la expresión de Ka. Permite calcular el pH de cualquier sistema buffer conociendo pKa y la relación [base conjugada]/[ácido]. Máxima capacidad buffer: cuando pH = pKa ([A⁻]/[HA] = 1). Rango efectivo de tamponamiento: pH = pKa ± 1. Ejemplo: buffer acetato (pKa = 4.76) es efectivo entre pH 3.76–5.76.</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🩸</div>
+                            <h4>Sistema Buffer Bicarbonato — Sangre</h4>
+                            <p>H₂CO₃ ⇌ H⁺ + HCO₃⁻ (pKa = 6.1). Aunque pKa = 6.1 está alejado del pH sanguíneo (7.4), es el buffer más eficaz porque es un sistema abierto: los pulmones regulan [CO₂] (∝ [H₂CO₃]) y los riñones regulan [HCO₃⁻] de forma independiente. pH = 6.1 + log([HCO₃⁻]/[H₂CO₃]) = 6.1 + log(24 mEq/L / 1.2 mEq/L) = 6.1 + 1.3 = 7.4. [CO₂]d = 0.03 × PaCO₂ (mmHg).</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🔬</div>
+                            <h4>Buffer Fosfato — Intracelular y Renal</h4>
+                            <p>H₂PO₄⁻ ⇌ H⁺ + HPO₄²⁻ (pKa = 7.2 a 25°C). Efectivo a pH 6.2–8.2 → tampón intracelular y urinario ideal. Concentración intracelular: ~5 mM. En orina: excreción de H₂PO₄⁻ (ácido tituláble) → importante en acidez urinaria. En laboratorio: tampón fosfato salino (PBS) a pH 7.4 replica condiciones fisiológicas. Preparación: 0.01 M Na₂HPO₄ + 0.01 M NaH₂PO₄, ajustado con NaOH/HCl.</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🧬</div>
+                            <h4>Histidina y Hemoglobina como Buffer</h4>
+                            <p>El imidazol de la histidina (pKa ~6.0 en proteínas libres, hasta 8.0 en ambiente proteico hidrofóbico) actúa como buffer intracelular a pH fisiológico. La hemoglobina (~150 g/L en sangre) tiene 38 residuos histidina por tetrámero → contribuye ~75% del poder buffer intracelular de eritrocitos. Efecto Bohr: la oxigenación de Hb libera H⁺ (Hb-O₂ + H⁺ ⇌ Hb·H⁺ + O₂), acoplando transporte de O₂ y regulación de pH.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proceso de compensación ácido-base -->
+                <div data-fb-reveal>
+                    <div class="fb-sh">Trastornos Ácido-Base y Compensación Fisiológica</div>
+                    <div class="fb-proc">
+                        <div class="fb-step">
+                            <div class="fb-step-n">😰</div>
+                            <div class="fb-step-t">Acidosis Metabólica</div>
+                            <div class="fb-step-d">↓ HCO₃⁻ (&lt;22 mEq/L). Causa: cetoacidosis diabética, insuficiencia renal, diarrea severa. Compensación: hiperventilación (↓ PaCO₂). Regla de Winter.</div>
+                        </div>
+                        <div class="fb-step">
+                            <div class="fb-step-n">💨</div>
+                            <div class="fb-step-t">Acidosis Respiratoria</div>
+                            <div class="fb-step-d">↑ PaCO₂ (&gt;45 mmHg). Causa: EPOC, depresión respiratoria, neumotórax. Compensación renal: ↑ retención de HCO₃⁻ (días). Crónica vs aguda.</div>
+                        </div>
+                        <div class="fb-step">
+                            <div class="fb-step-n">🔼</div>
+                            <div class="fb-step-t">Alcalosis Metabólica</div>
+                            <div class="fb-step-d">↑ HCO₃⁻ (&gt;26 mEq/L). Causa: vómitos, diuréticos de asa, síndrome de Cushing. Compensación: hipoventilación (↑ PaCO₂). Poco eficaz.</div>
+                        </div>
+                        <div class="fb-step">
+                            <div class="fb-step-n">🏔️</div>
+                            <div class="fb-step-t">Alcalosis Respiratoria</div>
+                            <div class="fb-step-d">↓ PaCO₂ (&lt;35 mmHg). Causa: hiperventilación ansiosa, altura. Compensación: riñón excreta HCO₃⁻. Parestesias por ↓ Ca²⁺ iónico.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-fb-reveal>
+                    <div class="fb-sh">Sistemas Buffer en Laboratorio Farmacéutico</div>
+                    <div class="fb-tbl-wrap">
+                        <table class="fb-tbl">
+                            <thead>
+                                <tr><th>Buffer</th><th>pKa</th><th>Rango pH</th><th>Uso</th><th>Interferencias</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Acetato (CH₃COO⁻/CH₃COOH)</td><td><span class="fb-tag fb-t-c">4.76</span></td><td>3.8–5.8</td><td>Cromatografía HPLC, electroforesis</td><td>Inhibe enzimas que usan CoA</td></tr>
+                                <tr><td>Fosfato (H₂PO₄⁻/HPO₄²⁻)</td><td><span class="fb-tag fb-t-c">7.20</span></td><td>6.2–8.2</td><td>Cultivo celular, ELISA, enzimología</td><td>Precipita Ca²⁺, Mg²⁺</td></tr>
+                                <tr><td>Tris (Tris/TrisH⁺)</td><td><span class="fb-tag fb-t-c">8.06</span></td><td>7.0–9.0</td><td>Electroforesis, biología molecular</td><td>Reacciona con aldehídos, sensible a T°</td></tr>
+                                <tr><td>HEPES</td><td><span class="fb-tag fb-t-c">7.55</span></td><td>6.8–8.2</td><td>Cultivo celular (CO₂-independiente)</td><td>Fotosensible, citotóxico a alta [C]</td></tr>
+                                <tr><td>Bicarbonato (HCO₃⁻/H₂CO₃)</td><td><span class="fb-tag fb-t-g">6.10</span></td><td>5.1–7.1</td><td>Tampón fisiológico, cultivo con 5% CO₂</td><td>Sistema abierto: requiere atmósfera controlada</td></tr>
+                                <tr><td>Citrato (ácido cítrico/citrato)</td><td><span class="fb-tag fb-t-go">3.13/4.76/6.40</span></td><td>3.0–6.2</td><td>Formulaciones farmacéuticas ácidas</td><td>Quela Ca²⁺, Fe³⁺, Al³⁺</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="fb-norma" data-fb-reveal>
+                    <div class="fb-norma-ico">⚗️</div>
+                    <div>
+                        <h4>Preparación de Buffers en el Laboratorio — Normas ISP Chile</h4>
+                        <p>El Instituto de Salud Pública (ISP) de Chile, como referente oficial, establece en sus procedimientos analíticos (basados en USP/BP) que los buffers para análisis farmacéutico deben prepararse con agua purificada grado HPLC (resistividad ≥ 18 MΩ·cm, según Farmacopea Chilena Res. Ex. 554/2013). El pH se calibra con soluciones estándar de referencia (NIST/NBS): pH 4.00 (ftalato ácido de potasio), pH 7.00 (fosfato), pH 10.00 (borato). La temperatura de calibración debe coincidir con la temperatura de uso (coeficiente de temperatura del electrodo: −0.03 pH/°C para Tris). El CENABAST y hospitales públicos chilenos utilizan protocolos del MINSAL para preparación de soluciones IV tamponadas (SF 0.9%, Ringer Lactato pH 6.5–7.5).</p>
+                    </div>
+                </div>
+            </div><!-- /panel 3 -->
+
+            <!-- ── PANEL 4: CINÉTICA ── -->
+            <div class="fb-panel">
+                <div class="fb-3d" data-fb-reveal>
+                    <canvas id="fb-canvas-cinetica" title="Diagrama de energía de activación y catálisis enzimática 3D"></canvas>
+                    <div class="fb-3d-lbl">⟳ Arrastra para rotar — Perfil de Energía · Catálisis y Barrera de Activación</div>
+                </div>
+
+                <div data-fb-reveal>
+                    <div class="fb-sh">Cinética Química — Velocidad y Orden de Reacción</div>
+                    <div class="fb-mec">
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">📈</div>
+                            <h4>Velocidad de Reacción y Orden</h4>
+                            <p>Para A → productos: v = k[A]ⁿ. Orden n: 0 (v constante, ej. reacciones saturadas), 1 (v ∝ [A], desintegración radiactiva, muchas reacciones farmacocinéticas), 2 (v ∝ [A]², colisión bimolecular). Unidades de k: orden 0: M/s; orden 1: s⁻¹; orden 2: M⁻¹s⁻¹. t½ orden 1 = ln2/k = 0.693/k (independiente de [A]₀ → relevancia farmacocinética). t½ orden 0 = [A]₀/2k.</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">⛰️</div>
+                            <h4>Energía de Activación — Teoría del Estado de Transición</h4>
+                            <p>Ecuación de Arrhenius: k = Ae^(−Ea/RT). Ea = energía de activación (J/mol). A = factor preexponencial (frecuencia de colisiones). Cada 10°C de aumento en T° duplica k (Q₁₀ ~2). Los catalizadores (enzimas) disminuyen Ea sin alterar el equilibrio. Ejemplo: hidrólisis de urea sin urease Ea = 146 kJ/mol; con urease: Ea = 43 kJ/mol → aceleración de 10¹⁴ veces. Estado de transición: el complejo activado [A‡] tiene la máxima energía libre en la coordenada de reacción.</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🧬</div>
+                            <h4>Cinética de Michaelis-Menten</h4>
+                            <p>E + S ⇌ ES → E + P. v₀ = Vmax[S]/(Km + [S]). Km = (k₋₁ + k₂)/k₁ ≈ afinidad enzima-sustrato (↓ Km = ↑ afinidad). Vmax = k₂[E]total = kcat[E]total. kcat (constante catalítica, número de recambio, turnover): moléculas producto/enzima/s. Triosa fosfato isomerasa: kcat = 4.3 × 10³ s⁻¹, casi al límite de difusión. Eficiencia catalítica: kcat/Km (M⁻¹s⁻¹), máximo biológico ~10⁸–10⁹ M⁻¹s⁻¹ (enzimas perfectas).</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🚫</div>
+                            <h4>Inhibición Enzimática — Bases de Fármacos</h4>
+                            <p>Competitiva: el inhibidor se une al sitio activo → ↑ Km aparente, Vmax sin cambio (ej. estatinas inhiben HMG-CoA reductasa; metotrexato inhibe DHFR). No competitiva: inhibidor se une fuera del sitio activo → ↓ Vmax, Km sin cambio (ej. cianuro en Complejo IV). Mixta: afecta Km y Vmax. Incompetitiva: solo se une a ES → ↓ Km y ↓ Vmax (rara, clínicamente relevante: litio en inositol monofosfatasa). Gráfica de Lineweaver-Burk (1/v vs 1/[S]) permite distinguir tipos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-fb-reveal>
+                    <div class="fb-sh">Factores que Afectan la Velocidad de Reacción Biológica</div>
+                    <div class="fb-mec">
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🌡️</div>
+                            <h4>Temperatura</h4>
+                            <p>En enzimas, el aumento de T° inicialmente incrementa v (Q₁₀ ≈ 2). Pero sobre la Tm (temperatura de desnaturalización), la actividad cae abruptamente (desnaturalización proteica). Enzimas termoestables (termofilos: Bacillus stearothermophilus, Thermus aquaticus Taq polimerasa) son estables a 95°C por adaptaciones de residuos hidrófobos extra y puentes disulfuro. Relevancia clínica: fiebre a 39°C → ligero aumento de actividad enzimática inmune pero riesgo de desnaturalización proteica a ≥42°C (golpe de calor).</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">⚗️</div>
+                            <h4>pH y Actividad Enzimática</h4>
+                            <p>Cada enzima tiene un pH óptimo (pHopt) relacionado con el estado de ionización de residuos del sitio activo. Pepsina: pHopt 1.5–2.5 (estómago). Quimotripsina: pHopt 7.8. Fosfatasa alcalina: pHopt 9.0–10.5. Glucosa-6-fosfatasa: pHopt 6.5. La catálisis ácido-base general más frecuente involucra His (pKa ~6–7) como donador/aceptor de protones en el sitio activo. Fuera del pHopt, la ionización de residuos críticos cambia → ↓ actividad.</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🔩</div>
+                            <h4>Cofactores y Coenzimas</h4>
+                            <p>Apoenzima (proteína sola, inactiva) + cofactor = holoenzima (activa). Cofactores inorgánicos: Zn²⁺ (carboxipeptidasa, anhidrasa carbónica), Mg²⁺ (hexocinasa, enolasa), Fe²⁺/Fe³⁺ (catalasa, citocromo P450), Cu²⁺ (citocromo c oxidasa). Coenzimas orgánicas: NAD⁺ (derivado de niacina B₃), FAD (riboflavina B₂), CoA (pantotenato B₅), TPP (tiamina B₁), PLP (piridoxina B₆). Deficiencias vitamínicas → pérdida de coenzimas → bloqueo de vías metabólicas.</p>
+                        </div>
+                        <div class="fb-mec-card">
+                            <div class="fb-mec-ico">🎛️</div>
+                            <h4>Regulación Alostérica</h4>
+                            <p>Las enzimas alostéricas tienen sitios reguladores distintos al activo (modelo MWC: conformación T/R). Moduladores alostéricos positivos (activadores): ↑ actividad. Negativos (inhibidores): ↓ actividad (retroalimentación). Ejemplos: CTP inhibe ATCasa (primer enzima de síntesis de pirimidinas). AMP activa fosforilasa glucogénica (señal de bajo ATP). ATP inhibe fosfofructocinasa-1 (glucólisis). Curva sigmoide (cooperatividad Hill) vs hiperbólica (Michaelis-Menten) distingue enzimas alostéricas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-fb-reveal>
+                    <div class="fb-sh">Parámetros Cinéticos de Enzimas Biológicas Importantes</div>
+                    <div class="fb-tbl-wrap">
+                        <table class="fb-tbl">
+                            <thead>
+                                <tr><th>Enzima</th><th>Sustrato</th><th>Km (µM)</th><th>kcat (s⁻¹)</th><th>kcat/Km (M⁻¹s⁻¹)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Acetilcolinesterasa</td><td>Acetilcolina</td><td><span class="fb-tag fb-t-c">95</span></td><td>1.4 × 10⁴</td><td><span class="fb-tag fb-t-g">1.5 × 10⁸</span></td></tr>
+                                <tr><td>Catalasa</td><td>H₂O₂</td><td><span class="fb-tag fb-t-c">25,000</span></td><td>4.0 × 10⁷</td><td><span class="fb-tag fb-t-g">1.6 × 10⁶</span></td></tr>
+                                <tr><td>Triosa fosfato isomerasa</td><td>D-Gliceraldehído-3-P</td><td><span class="fb-tag fb-t-c">470</span></td><td>4.3 × 10³</td><td><span class="fb-tag fb-t-g">9.1 × 10⁶</span></td></tr>
+                                <tr><td>Hexocinasa (músculo)</td><td>D-Glucosa</td><td><span class="fb-tag fb-t-go">80</span></td><td>650</td><td><span class="fb-tag fb-t-c">8.1 × 10⁶</span></td></tr>
+                                <tr><td>Quimotripsina</td><td>N-Ac-Trp-NH₂</td><td><span class="fb-tag fb-t-go">5,100</span></td><td>4.0 × 10¹</td><td><span class="fb-tag fb-t-c">7.8 × 10³</span></td></tr>
+                                <tr><td>Anhidrasa carbónica</td><td>CO₂</td><td><span class="fb-tag fb-t-c">12,000</span></td><td>1.0 × 10⁶</td><td><span class="fb-tag fb-t-g">8.3 × 10⁷</span></td></tr>
+                                <tr><td>Glutamato deshidrogenasa</td><td>Glutamato</td><td><span class="fb-tag fb-t-go">1,800</span></td><td>1.8 × 10²</td><td><span class="fb-tag fb-t-c">1.0 × 10⁵</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size:.78rem; color:rgba(255,255,255,.38); margin-top:10px; font-family:'JetBrains Mono',monospace;">Fuente: Stryer Biochemistry 9th ed., 2019; Berg, Tymoczko, Gatto. Tabla 8-1 y Lehninger 8th ed. Appendix B. Valores a 25°C, pH 7.</p>
+                </div>
+
+                <div class="fb-norma" data-fb-reveal>
+                    <div class="fb-norma-ico">💊</div>
+                    <div>
+                        <h4>Cinética y Diseño de Fármacos — Aplicación Farmacológica en Chile</h4>
+                        <p>La inhibición enzimática es el mecanismo de acción de ~40% de los fármacos aprobados. En Chile, el formulario nacional MINSAL (Resolución 1.154/2021) incluye inhibidores enzimáticos de uso frecuente: <strong>estatinas</strong> (atorvastatina, inhibidores competitivos de HMG-CoA reductasa, Km = 0.1 µM), <strong>IECA</strong> (enalapril, inhibidor competitivo de ECA), <strong>inhibidores de proteasa VIH</strong> (lopinavir/ritonavir, inhibición mixta). La determinación de IC₅₀ (concentración inhibidora media) y Ki se realiza en laboratorios como CIGES-UACh y el Centro de Bioinformática y Biología Integrativa (CBIB). El conocimiento de Km y Vmax es esencial para predecir interacciones farmacológicas a nivel del citocromo P450 (relevancia en polifarmacia).</p>
+                    </div>
+                </div>
+            </div><!-- /panel 4 -->
+
+        </div><!-- /panels-wrap -->
+
+        <!-- NAV INFERIOR -->
+        <div class="fb-page-nav">
+            <a href="../index.html"           class="fb-nbtn">← Módulo Bioquímica</a>
+            <a href="../index.html"           class="fb-nbtn">Volver al índice</a>
+            <a href="biomoleculas.html"       class="fb-nbtn pri">Siguiente: Unidad 2 — Biomoléculas →</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>© 2026 PharmaLab Chile — Bioquímica · Unidad 1: Fundamentos de Bioquímica Molecular</p>
+            <p class="footer-disclaimer">Contenido educacional universitario. Datos y valores termodinámicos basados en Lehninger 8ª ed., Stryer 9ª ed. y bases de datos NIST. No reemplaza asesoría profesional médica.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="../../script.js"></script>
+<script src="fundamentos.js"></script>
+</body>
+</html>

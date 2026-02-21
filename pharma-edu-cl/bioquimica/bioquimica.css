@@ -1,0 +1,96 @@
+/* Bioquímica Module Styles */
+
+/* ── Floating Hero Symbols ── */
+.module-hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-symbols {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.symbol {
+    position: absolute;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #00c9c8;
+    opacity: 0;
+    user-select: none;
+    animation: floatSymbol 12s ease-in-out infinite;
+}
+
+/* Individual positions & delays */
+.s1  { top: 12%; left: 5%;   animation-delay: 0s;    animation-duration: 14s; font-size: 1.2rem;  }
+.s2  { top: 70%; left: 8%;   animation-delay: 1.5s;  animation-duration: 16s; font-size: 1.5rem;  }
+.s3  { top: 30%; left: 14%;  animation-delay: 3s;    animation-duration: 11s; font-size: 2rem;    }
+.s4  { top: 80%; left: 20%;  animation-delay: 0.8s;  animation-duration: 13s; font-size: 1.1rem;  }
+.s5  { top: 15%; left: 28%;  animation-delay: 2.2s;  animation-duration: 15s; font-size: 1rem;    }
+.s6  { top: 55%; left: 3%;   animation-delay: 4s;    animation-duration: 18s; font-size: 2.4rem;  }
+.s7  { top: 40%; left: 88%;  animation-delay: 1s;    animation-duration: 14s; font-size: 1.2rem;  }
+.s8  { top: 20%; left: 78%;  animation-delay: 2.8s;  animation-duration: 12s; font-size: 1.3rem;  }
+.s9  { top: 75%; left: 85%;  animation-delay: 0.5s;  animation-duration: 17s; font-size: 1.8rem;  }
+.s10 { top: 60%; left: 92%;  animation-delay: 3.5s;  animation-duration: 13s; font-size: 1.1rem;  }
+.s11 { top: 85%; left: 70%;  animation-delay: 1.8s;  animation-duration: 15s; font-size: 1rem;    }
+.s12 { top: 10%; left: 92%;  animation-delay: 4.5s;  animation-duration: 20s; font-size: 2.6rem;  }
+.s13 { top: 45%; left: 96%;  animation-delay: 2s;    animation-duration: 11s; font-size: 1.2rem;  }
+.s14 { top: 90%; left: 45%;  animation-delay: 3.2s;  animation-duration: 16s; font-size: 1.1rem;  }
+.s15 { top: 5%;  left: 55%;  animation-delay: 0.3s;  animation-duration: 13s; font-size: 1.3rem;  }
+
+@keyframes floatSymbol {
+    0%   { opacity: 0;    transform: translateY(0px)   scale(1); }
+    15%  { opacity: 0.55; }
+    50%  { opacity: 0.75; transform: translateY(-28px) scale(1.1); }
+    85%  { opacity: 0.55; }
+    100% { opacity: 0;    transform: translateY(0px)   scale(1); }
+}
+
+.text-gradient-bioquimica {
+    background: linear-gradient(135deg, #00c9c8, #0099a8, #00e5e4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tag-bioquimica {
+    background: rgba(0, 201, 200, 0.12);
+    color: #00c9c8;
+}
+
+.module-bioquimica .content-card:hover {
+    border-color: rgba(0, 201, 200, 0.25);
+}
+
+.module-bioquimica .nav-link.active {
+    color: #00c9c8;
+    background: rgba(0, 201, 200, 0.08);
+}
+
+.card-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+}
+
+.card-topics span {
+    padding: 3px 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 50px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+.module-bioquimica .content-card:hover .card-topics span {
+    background: rgba(0, 201, 200, 0.08);
+    color: #00c9c8;
+}

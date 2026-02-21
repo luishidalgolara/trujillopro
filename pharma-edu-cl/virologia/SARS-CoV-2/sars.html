@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SARS-CoV-2 — COVID-19, Vacunas y Pandemia | PharmaLab Chile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="sars.css">
+</head>
+<body class="sars-page">
+
+  <!-- NAVBAR -->
+  <nav class="sars-navbar" id="sars-navbar">
+    <div class="sars-nav-inner">
+      <a href="../../index.html" class="sars-nav-logo">
+        <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/><circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/><line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/><line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/><line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/></svg>
+        Pharma<span class="accent">Lab</span>
+      </a>
+      <div class="sars-nav-links" id="sarsNavLinks">
+        <a href="../index.html">← Virología</a>
+        <a href="../../quimica/index.html">Química</a>
+        <a href="../../farmacia/index.html">Farmacia</a>
+        <a href="../../biotecnologia/index.html">Biotecnología</a>
+        <a href="#" class="active">SARS-CoV-2</a>
+      </div>
+      <button class="sars-nav-toggle" id="sarsNavToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="sars-hero">
+    <div class="sars-hero-bg"></div>
+    <canvas id="sars-hero-canvas"></canvas>
+    <div class="sars-hero-content">
+      <div class="sars-badge">Virología · Patógeno 02/10</div>
+      <h1 class="sars-hero-title">
+        <span class="accent">SARS-CoV-2</span><br>
+        y la pandemia de COVID-19
+      </h1>
+      <p class="sars-hero-desc">
+        Betacoronavirus con genoma ARN de ~30 kb que revolucionó la investigación biomédica mundial. 
+        Su estudio impulsó las vacunas de ARNm, la vigilancia genómica y redefinió la respuesta 
+        sanitaria global ante emergencias.
+      </p>
+      <div class="sars-hero-meta">
+        <div class="sars-meta-item">
+          <span class="sars-meta-val">~30 kb</span>
+          <span class="sars-meta-label">Genoma ARN (+) más grande</span>
+        </div>
+        <div class="sars-meta-item">
+          <span class="sars-meta-val">2019</span>
+          <span class="sars-meta-label">Wuhan, China (diciembre)</span>
+        </div>
+        <div class="sars-meta-item">
+          <span class="sars-meta-val">BSL-3</span>
+          <span class="sars-meta-label">Nivel de bioseguridad</span>
+        </div>
+      </div>
+    </div>
+    <div class="sars-scroll-hint">
+      <span>Explorar</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="sars-container">
+    <div class="sars-stats-row">
+      <div class="sars-stat-card">
+        <span class="sars-stat-val" data-target="29" data-suffix=",9 kb">0</span>
+        <span class="sars-stat-label">Genoma ARN (+) ssRNA</span>
+      </div>
+      <div class="sars-stat-card">
+        <span class="sars-stat-val" data-target="29" data-suffix=" proteínas">0</span>
+        <span class="sars-stat-label">Codificadas (4 struct + 16 NSP + acc)</span>
+      </div>
+      <div class="sars-stat-card">
+        <span class="sars-stat-val" data-target="13" data-suffix=" mil M">0</span>
+        <span class="sars-stat-label">Dosis vacunas administradas</span>
+      </div>
+      <div class="sars-stat-card">
+        <span class="sars-stat-val" data-target="100" data-suffix=" nm">0</span>
+        <span class="sars-stat-label">Diámetro del virión</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 1 — ESTRUCTURA 3D -->
+  <section class="sars-section" id="estructura">
+    <div class="sars-container">
+      <div class="sars-section-tag tag-cyan">🔬 Estructura del Virión</div>
+      <h2 class="sars-section-title">Anatomía del <span class="gradient">SARS-CoV-2</span> en 3D</h2>
+      <p class="sars-section-sub">Modelo 3D interactivo del virión completo. Arrastra para rotar, scroll para zoom.</p>
+
+      <div class="sars-viewer-wrap">
+        <div>
+          <div class="sars-canvas-box">
+            <canvas id="sars-model-canvas"></canvas>
+            <div class="sars-canvas-label">SARS-CoV-2 · Virión completo</div>
+          </div>
+          <p style="font-size:.78rem;color:#5a6478;margin-top:10px">🖱️ Arrastra para rotar · Scroll para zoom</p>
+        </div>
+        <div class="sars-struct-info">
+          <div class="sars-struct-card" style="--stripe-color:#ff4466">
+            <h4><span class="dot" style="background:#ff4466"></span> Proteína Spike (S)</h4>
+            <p>Trimero de ~180 kDa. Subunidad S1 (RBD: receptor-binding domain) se une a ACE2 humano. S2 media la fusión de membranas. Target de todas las vacunas COVID-19. La clivaje por furina en el sitio S1/S2 es exclusivo de SARS-CoV-2 (ausente en SARS-CoV-1).</p>
+          </div>
+          <div class="sars-struct-card" style="--stripe-color:#ffaa00">
+            <h4><span class="dot" style="background:#ffaa00"></span> Nucleocápside (N)</h4>
+            <p>Fosfoprotéina que empaqueta el ARN genómico en estructura helicoidal. Detectada en test de antígeno rápido. Altamente inmunogénica; genera respuesta de anticuerpos pero no neutralizantes.</p>
+          </div>
+          <div class="sars-struct-card" style="--stripe-color:#1a6b8a">
+            <h4><span class="dot" style="background:#1a6b8a"></span> Membrana (M) y Envoltura (E)</h4>
+            <p>M es la más abundante; estructura el virión. E forma canales iónicos (viroporina) esenciales para la liberación viral. La envoltura lipídica es sensible a jabón y etanol ≥60%.</p>
+          </div>
+          <div class="sars-struct-card" style="--stripe-color:#a855f7">
+            <h4><span class="dot" style="background:#a855f7"></span> Genoma y NSPs</h4>
+            <p>ARN (+) ssRNA ~29,9 kb. ORF1a/b codifica 16 proteínas no estructurales (NSP1–NSP16): RdRp (NSP12), helicasa (NSP13), exonucleasa proofreading (NSP14, única entre virus ARN). Esto explica la menor tasa de mutación vs Influenza.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2 — COVID-19 -->
+  <section class="sars-section" id="covid19">
+    <div class="sars-container">
+      <div class="sars-section-tag tag-red">🫁 Tema 1 · COVID-19</div>
+      <h2 class="sars-section-title">La enfermedad: <span class="gradient">COVID-19</span></h2>
+      <p class="sars-section-sub">Enfermedad respiratoria aguda causada por SARS-CoV-2. Espectro clínico desde asintomático hasta SDRA y falla multiorgánica.</p>
+
+      <div class="sars-content-grid">
+        <div class="sars-content-card" style="--card-accent:#ff3355">
+          <div class="sars-card-num">Patogenia</div>
+          <h3>Mecanismo de Infección</h3>
+          <ul>
+            <li><span class="bullet" style="background:#ff3355"></span><strong style="color:var(--sars-text)">Entrada:</strong> Spike RBD se une a ACE2 (expresado en neumocitos tipo II, endotelio, intestino, riñón). TMPRSS2 cliva S2 activando la fusión.</li>
+            <li><span class="bullet" style="background:#ff3355"></span><strong style="color:var(--sars-text)">Replicación:</strong> Ocurre en vesículas de doble membrana (DMV). RdRp (NSP12) sintetiza ARN (-) intermedio y luego ARN (+) genómico y subgenómico.</li>
+            <li><span class="bullet" style="background:#ff3355"></span><strong style="color:var(--sars-text)">Tormenta de citoquinas:</strong> Liberación masiva de IL-6, TNF-α, IL-1β. Causa daño pulmonar difuso, SDRA y coagulopatía (microtrombosis).</li>
+            <li><span class="bullet" style="background:#ff3355"></span><strong style="color:var(--sars-text)">Daño endotelial:</strong> Endotelitis sistémica. Explica manifestaciones extrapulmonares: cardiovascular, neurológica, renal.</li>
+          </ul>
+        </div>
+
+        <div class="sars-content-card" style="--card-accent:#00d4ff">
+          <div class="sars-card-num">Diagnóstico</div>
+          <h3>Métodos Diagnósticos</h3>
+          <ul>
+            <li><span class="bullet" style="background:#00d4ff"></span><strong style="color:var(--sars-text)">RT-qPCR:</strong> Gold standard. Detecta genes N, E, RdRp y ORF1ab. Sensibilidad ~95%. Resultados en 4-6 h. Ct &lt; 25 = alta carga viral.</li>
+            <li><span class="bullet" style="background:#00d4ff"></span><strong style="color:var(--sars-text)">Test de antígeno rápido:</strong> Detecta proteína N. Resultado en 15 min. Sensibilidad ~80-90% en sintomáticos. Ideal para screening masivo.</li>
+            <li><span class="bullet" style="background:#00d4ff"></span><strong style="color:var(--sars-text)">Serología (IgG/IgM):</strong> Detecta anticuerpos. No para diagnóstico agudo. Útil para seroprevalencia y verificar respuesta vacunal.</li>
+            <li><span class="bullet" style="background:#00d4ff"></span><strong style="color:var(--sars-text)">Secuenciación genómica:</strong> NGS para identificar variantes. Chile: red de vigilancia genómica ISP. Tecnologías: Illumina, Oxford Nanopore.</li>
+          </ul>
+        </div>
+
+        <div class="sars-content-card" style="--card-accent:#a855f7">
+          <div class="sars-card-num">Espectro Clínico</div>
+          <h3>Manifestaciones y Long COVID</h3>
+          <ul>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--sars-text)">Leve (80%):</strong> Fiebre, tos, anosmia/ageusia, mialgias, cefalea, odinofagia. Manejo ambulatorio.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--sars-text)">Grave (15%):</strong> Neumonía bilateral, hipoxemia (SpO₂ &lt; 94%), necesidad de O₂ suplementario. Imágenes: vidrio esmerilado bilateral.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--sars-text)">Crítico (5%):</strong> SDRA, shock séptico, falla multiorgánica. Mortalidad UCI: 20-40%. Tratamiento: dexametasona, tocilizumab, ventilación protectora.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--sars-text)">Long COVID:</strong> Síntomas &gt; 12 semanas post-infección. Fatiga crónica, niebla mental, disnea, palpitaciones. Prevalencia estimada: 10-30% de infectados. Mecanismos propuestos: persistencia viral, autoinmunidad, daño microvascular.</li>
+          </ul>
+        </div>
+
+        <div class="sars-content-card" style="--card-accent:#ffaa00">
+          <div class="sars-card-num">Tratamiento</div>
+          <h3>Terapias Antivirales Aprobadas</h3>
+          <ul>
+            <li><span class="bullet" style="background:#ffaa00"></span><strong style="color:var(--sars-text)">Nirmatrelvir/Ritonavir (Paxlovid):</strong> Inhibidor de proteasa Mpro (3CLpro). Reducción 89% hospitalización si se inicia &lt; 5 días síntomas. Oral, 5 días.</li>
+            <li><span class="bullet" style="background:#ffaa00"></span><strong style="color:var(--sars-text)">Remdesivir:</strong> Análogo de nucleótido. Inhibe RdRp (NSP12). IV, 3-5 días. Reduce tiempo de hospitalización.</li>
+            <li><span class="bullet" style="background:#ffaa00"></span><strong style="color:var(--sars-text)">Molnupiravir:</strong> Induce mutagénesis letal del ARN viral. Oral, 5 días. Eficacia menor que Paxlovid.</li>
+            <li><span class="bullet" style="background:#ffaa00"></span><strong style="color:var(--sars-text)">Dexametasona:</strong> Corticoide. Reduce mortalidad en pacientes con O₂ suplementario (ensayo RECOVERY). No indicado en leves.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Variantes -->
+      <h3 style="font-size:1.15rem;font-weight:700;margin:56px 0 24px">Variantes de Preocupación (VOC) — OMS</h3>
+      <div class="sars-variant-grid">
+        <div class="sars-variant-card" style="--card-color:rgba(255,51,85,0.3);--card-dim:rgba(255,51,85,0.12)">
+          <div class="sars-variant-letter" style="color:#ff3355">α</div>
+          <h4>Alpha</h4>
+          <p>~50% más transmisible. Mutación N501Y en RBD. Detectada UK sept 2020.</p>
+          <div class="sars-variant-lineage">B.1.1.7</div>
+        </div>
+        <div class="sars-variant-card" style="--card-color:rgba(168,85,247,0.3);--card-dim:rgba(168,85,247,0.12)">
+          <div class="sars-variant-letter" style="color:#a855f7">β</div>
+          <h4>Beta</h4>
+          <p>Escape parcial de inmunidad. Mutaciones E484K, K417N, N501Y. Sudáfrica.</p>
+          <div class="sars-variant-lineage">B.1.351</div>
+        </div>
+        <div class="sars-variant-card" style="--card-color:rgba(255,170,0,0.3);--card-dim:rgba(255,170,0,0.12)">
+          <div class="sars-variant-letter" style="color:#ffaa00">δ</div>
+          <h4>Delta</h4>
+          <p>Dominante global 2021. Mutación L452R, P681R. Alta carga viral. ~2× más transmisible que Alpha.</p>
+          <div class="sars-variant-lineage">B.1.617.2</div>
+        </div>
+        <div class="sars-variant-card" style="--card-color:rgba(0,212,255,0.3);--card-dim:rgba(0,212,255,0.12)">
+          <div class="sars-variant-letter" style="color:#00d4ff">ο</div>
+          <h4>Omicron</h4>
+          <p>~32 mutaciones en Spike. Máxima evasión inmune pero menor virulencia. Sublinajes: BA.1→BA.5→XBB→JN.1→KP.2.</p>
+          <div class="sars-variant-lineage">B.1.1.529</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3 — VACUNAS -->
+  <section class="sars-section" id="vacunas">
+    <div class="sars-container">
+      <div class="sars-section-tag tag-green">💉 Tema 2 · Vacunas ARNm y Plataformas</div>
+      <h2 class="sars-section-title">Vacunas contra <span class="gradient">COVID-19</span></h2>
+      <p class="sars-section-sub">La pandemia impulsó el desarrollo más rápido de vacunas en la historia (10 meses vs 10-15 años tradicional), con múltiples plataformas tecnológicas.</p>
+
+      <div class="sars-vax-table-wrap">
+        <table class="sars-vax-table">
+          <thead><tr><th>Vacuna</th><th>Plataforma</th><th>Mecanismo</th><th>Eficacia (Ensayo Fase III)</th><th>Esquema</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="vax-name">BNT162b2 (Pfizer-BioNTech)</td>
+              <td class="vax-tech">ARNm</td>
+              <td>ARNm modificado con N1-metilpseudouridina codifica Spike prefusión estabilizada (2P). Encapsulado en LNP (nanopartículas lipídicas). El ribosoma del hospedero traduce la proteína S → respuesta inmune.</td>
+              <td>95% contra enfermedad sintomática (ensayo C4591001). &gt;14.000 participantes por brazo.</td>
+              <td>2 dosis IM, 21 días. Almacenamiento: -70°C (ULT) → actualizado a -20°C/2-8°C (estable 10 semanas).</td>
+            </tr>
+            <tr>
+              <td class="vax-name">mRNA-1273 (Moderna)</td>
+              <td class="vax-tech">ARNm</td>
+              <td>Misma tecnología LNP-ARNm. Spike 2P-estabilizada. Mayor dosis de ARNm (100 µg vs 30 µg Pfizer). Secuencia optimizada por codones.</td>
+              <td>94,1% contra enfermedad sintomática (ensayo COVE). Eficacia robusta en &gt; 65 años.</td>
+              <td>2 dosis IM, 28 días. Almacenamiento: -20°C. Estable a 2-8°C por 30 días.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">CoronaVac (Sinovac)</td>
+              <td class="vax-tech">Virus inactivado</td>
+              <td>SARS-CoV-2 cultivado en células Vero, inactivado con β-propiolactona. Adyuvante: hidróxido de aluminio. Genera respuesta contra múltiples antígenos virales.</td>
+              <td>51-84% (variable según estudio/país). Chile: estudio real-world (10,2M): 65,9% enfermedad, 87,5% UCI, 86,3% muerte.</td>
+              <td>2 dosis IM, 14-28 días. Almacenamiento: 2-8°C (cadena de frío estándar). Vacuna principal en Chile 2021.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">ChAdOx1 (AstraZeneca/Oxford)</td>
+              <td class="vax-tech">Vector adenoviral (ChAdOx1)</td>
+              <td>Adenovirus de chimpancé no replicativo porta gen de Spike. Infecta células → expresan Spike → respuesta inmune. No integra genoma.</td>
+              <td>76% contra enfermedad sintomática (ensayo combinado). Riesgo muy raro de VITT (trombosis + trombocitopenia).</td>
+              <td>2 dosis IM, 8-12 semanas. Almacenamiento: 2-8°C. Retirada del mercado 2024 por baja demanda.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Ad26.COV2.S (Janssen/J&J)</td>
+              <td class="vax-tech">Vector adenoviral (Ad26)</td>
+              <td>Adenovirus humano serotipo 26 no replicativo. Dosis única. Spike estabilizada.</td>
+              <td>67% global, 85% enfermedad grave (ensayo ENSEMBLE). Dosis única facilitó logística en regiones remotas.</td>
+              <td>1 dosis IM. Almacenamiento: 2-8°C (3 meses). -20°C (2 años).</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Vacunas bivalentes (2022+)</td>
+              <td class="vax-tech">ARNm actualizado</td>
+              <td>Codifican Spike de cepa ancestral + variante Omicron (BA.1 o BA.4/5). Diseñadas como refuerzo para ampliar protección cruzada.</td>
+              <td>Mejoran títulos neutralizantes contra Omicron 2-4× vs booster monovalente. Vacunas 2024+: monovalentes XBB.1.5/JN.1.</td>
+              <td>Refuerzos anuales recomendados (similar a influenza). Chile: campaña anual de vacunación COVID.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sars-content-grid" style="margin-top:48px">
+        <div class="sars-content-card" style="--card-accent:#00d4ff">
+          <div class="sars-card-num">Tecnología Revolucionaria</div>
+          <h3>¿Cómo funciona una vacuna de ARNm?</h3>
+          <ul>
+            <li><span class="bullet" style="background:#00d4ff"></span><strong style="color:var(--sars-text)">1. Diseño in silico:</strong> Se diseña la secuencia de ARNm que codifica la Spike estabilizada en conformación prefusión (mutaciones 2P: K986P, V987P).</li>
+            <li><span class="bullet" style="background:#00d4ff"></span><strong style="color:var(--sars-text)">2. Modificación:</strong> Se reemplaza uridina por N1-metilpseudouridina (Ψ) para reducir inmunogenicidad innata y aumentar estabilidad/traducción.</li>
+            <li><span class="bullet" style="background:#00d4ff"></span><strong style="color:var(--sars-text)">3. Encapsulación:</strong> ARNm se envuelve en nanopartículas lipídicas (LNP) de 80-100 nm: lípido ionizable, colesterol, DSPC, PEG-lípido. Protege de degradación por RNasas.</li>
+            <li><span class="bullet" style="background:#00d4ff"></span><strong style="color:var(--sars-text)">4. Expresión:</strong> Tras inyección IM, LNP fusiona con células dendríticas/miocitos. Ribosomas traducen ARNm → proteína Spike se expresa en superficie celular.</li>
+            <li><span class="bullet" style="background:#00d4ff"></span><strong style="color:var(--sars-text)">5. Respuesta inmune:</strong> Spike es presentada por MHC-I y MHC-II → activación de LT CD8+ (citotóxicos) + LT CD4+ (helpers) + LB (anticuerpos neutralizantes anti-RBD).</li>
+          </ul>
+        </div>
+
+        <div class="sars-content-card" style="--card-accent:#a855f7">
+          <div class="sars-card-num">Inmunidad Vacunal</div>
+          <h3>Correlatos de Protección</h3>
+          <ul>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--sars-text)">Anticuerpos neutralizantes anti-RBD:</strong> Principal correlato. Títulos &gt; 100 UI/mL asociados a protección contra enfermedad sintomática.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--sars-text)">Inmunidad celular (T):</strong> LT CD8+ citotóxicos eliminan células infectadas. Más conservada frente a variantes que la inmunidad humoral. Persiste &gt; 6 meses.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--sars-text)">Inmunidad mucosa (IgA):</strong> Vacunas IM inducen pobre inmunidad mucosa. Vacunas intranasales en desarrollo buscan bloquear infección en punto de entrada.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--sars-text)">Inmunidad híbrida:</strong> Infección + vacunación genera la protección más robusta y duradera ("super immunity"). Títulos neutralizantes 10-50× mayores.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4 — PANDEMIA -->
+  <section class="sars-section" id="pandemia">
+    <div class="sars-container">
+      <div class="sars-section-tag tag-amber">🌍 Tema 3 · Pandemia</div>
+      <h2 class="sars-section-title">La Pandemia de <span class="gradient">COVID-19</span></h2>
+      <p class="sars-section-sub">La mayor emergencia sanitaria del siglo XXI. Redefinió la epidemiología, la salud pública y la cooperación científica global.</p>
+
+      <div class="sars-content-grid">
+        <div class="sars-content-card" style="--card-accent:#ffaa00">
+          <div class="sars-card-num">Epidemiología Global</div>
+          <h3>Números de la Pandemia</h3>
+          <ul>
+            <li><span class="bullet" style="background:#ffaa00"></span><strong style="color:var(--sars-text)">Casos confirmados:</strong> &gt; 770 millones (OMS, datos acumulados 2020-2024). Subregistro estimado: 2-3× mayor.</li>
+            <li><span class="bullet" style="background:#ffaa00"></span><strong style="color:var(--sars-text)">Defunciones reportadas:</strong> &gt; 7 millones (OMS). Exceso de mortalidad estimado: 15-18 millones (The Economist/IHME).</li>
+            <li><span class="bullet" style="background:#ffaa00"></span><strong style="color:var(--sars-text)">R₀ original:</strong> ~2,5 (cepa Wuhan). Delta: ~5-8. Omicron: ~10-18. Período de incubación: 2-14 días (mediana: 5 días Wuhan, 3 días Omicron).</li>
+            <li><span class="bullet" style="background:#ffaa00"></span><strong style="color:var(--sars-text)">IFR (infection fatality rate):</strong> ~0,5-1% cepa original (variable por edad: &lt;0,01% en &lt;20 años, &gt;10% en &gt;80 años). Disminuido con vacunación y Omicron.</li>
+          </ul>
+        </div>
+
+        <div class="sars-content-card" style="--card-accent:#00e87b">
+          <div class="sars-card-num">Vigilancia Genómica</div>
+          <h3>Secuenciación y Rastreo</h3>
+          <ul>
+            <li><span class="bullet" style="background:#00e87b"></span><strong style="color:var(--sars-text)">GISAID:</strong> Base de datos global con &gt; 16 millones de secuencias depositadas. Permitió rastreo en tiempo real de variantes emergentes.</li>
+            <li><span class="bullet" style="background:#00e87b"></span><strong style="color:var(--sars-text)">Nextstrain:</strong> Plataforma de filogeografía en tiempo real. Visualización de clados y dispersión geográfica.</li>
+            <li><span class="bullet" style="background:#00e87b"></span><strong style="color:var(--sars-text)">PCR específica de variante:</strong> RT-PCR con mutaciones marcadoras (ej. S:L452R para Delta, S:ins214EPE para Omicron BA.1).</li>
+            <li><span class="bullet" style="background:#00e87b"></span><strong style="color:var(--sars-text)">Vigilancia de aguas residuales:</strong> Detección de ARN viral en plantas de tratamiento como indicador epidemiológico temprano (~7-10 días antes de casos clínicos).</li>
+          </ul>
+        </div>
+
+        <div class="sars-content-card" style="--card-accent:#ec4899">
+          <div class="sars-card-num">Respuesta Sanitaria</div>
+          <h3>Medidas de Salud Pública</h3>
+          <ul>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--sars-text)">Medidas no farmacológicas:</strong> Mascarillas, distanciamiento, ventilación, higiene de manos. Cuarentenas y confinamientos (lockdowns) usados en fase temprana.</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--sars-text)">Test, Trace, Isolate (TTI):</strong> Estrategia de testeo masivo, trazabilidad de contactos y aislamiento. Apps de rastreo digital (ej. CoronApp en Chile).</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--sars-text)">COVAX:</strong> Mecanismo multilateral OMS/GAVI/CEPI para distribución equitativa de vacunas. Distribuyó &gt; 2.000 millones de dosis a 146 países.</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--sars-text)">Declaración de fin de ESPII:</strong> La OMS declaró el fin de la Emergencia de Salud Pública de Importancia Internacional (ESPII) el 5 de mayo de 2023.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Chile callout -->
+      <div class="sars-callout">
+        <h3>🇨🇱 Chile y la Pandemia COVID-19</h3>
+        <p>
+          Chile fue uno de los países con mayor velocidad de vacunación en el mundo (top 5 global en dosis/100 hab en 2021). 
+          La campaña masiva comenzó el 3 de febrero de 2021, utilizando principalmente <strong>CoronaVac (Sinovac)</strong> 
+          seguida de <strong>Pfizer-BioNTech</strong>. El <strong>ISP</strong> autorizó las vacunas mediante uso de emergencia 
+          y el <strong>MINSAL</strong> coordinó la logística a nivel nacional. Chile generó evidencia clave de efectividad 
+          de CoronaVac en vida real (publicación en NEJM, julio 2021, con datos de &gt; 10 millones de personas). 
+          La <strong>red de vigilancia genómica del ISP</strong> secuenció miles de muestras para monitorear la entrada 
+          y propagación de variantes. El <strong>Plan Paso a Paso</strong> fue la estrategia gradual de restricciones 
+          y reapertura basada en indicadores epidemiológicos locales.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM NAV -->
+  <div class="sars-container" style="padding-bottom:60px">
+    <div class="sars-bottom-nav">
+      <a href="../index.html" class="sars-nav-btn">← Volver a Virología</a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#estructura" class="sars-nav-btn">Estructura 3D ↑</a>
+        <a href="#covid19" class="sars-nav-btn">COVID-19 ↑</a>
+        <a href="#vacunas" class="sars-nav-btn">Vacunas ↑</a>
+        <a href="#pandemia" class="sars-nav-btn">Pandemia ↑</a>
+      </div>
+      <a href="../../index.html" class="sars-nav-btn">Inicio →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="sars-footer">
+    <div class="sars-container">
+      <div class="sars-footer-inner">
+        <p>© 2026 PharmaLab Chile · Contenido basado en OMS, CDC, EMA, ISP Chile, NEJM, Nature, Lancet</p>
+        <p class="disclaimer">Contenido educacional. No reemplaza asesoría médica profesional.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="sars.js"></script>
+</body>
+</html>

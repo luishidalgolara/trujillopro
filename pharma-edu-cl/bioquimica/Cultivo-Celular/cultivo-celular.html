@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultivo Celular — Fundamentos, Tipos y Células | PharmaLab Chile</title>
+    <meta name="description" content="Cultivo celular universitario: fundamentos, historia, tipos de cultivo 2D/3D y tipos de células cultivadas. Visualización 3D interactiva. PharmaLab Chile.">
+    <link rel="stylesheet" href="cultivo-celular.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav class="cc-navbar" id="cc-navbar">
+    <div class="cc-nav-inner">
+        <a href="../../index.html" class="cc-nav-logo">
+            <div class="cc-nav-logo-icon">
+                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <span class="cc-nav-logo-text">Pharma<span class="cc-nav-logo-accent">Lab</span></span>
+        </a>
+        <div class="cc-nav-links" id="navLinks">
+            <a href="../../quimica/index.html" class="cc-nav-link" data-module="quimica">
+                <span class="cc-nav-link-icon">⚗️</span> Química
+            </a>
+            <a href="../../farmacia/index.html" class="cc-nav-link" data-module="farmacia">
+                <span class="cc-nav-link-icon">💊</span> Farmacia
+            </a>
+            <a href="../../quimica-farmaceutica/index.html" class="cc-nav-link" data-module="qf">
+                <span class="cc-nav-link-icon">🧬</span> Q. Farmacéutica
+            </a>
+            <a href="../../biotecnologia/index.html" class="cc-nav-link" data-module="biotech">
+                <span class="cc-nav-link-icon">🔬</span> Biotecnología
+            </a>
+            <a href="../../virologia/index.html" class="cc-nav-link" data-module="virologia">
+                <span class="cc-nav-link-icon">🦠</span> Virología
+            </a>
+            <a href="../../bioquimica/index.html" class="cc-nav-link" data-module="bioquimica">
+                <span class="cc-nav-link-icon">🧪</span> Bioquímica
+            </a>
+            <a href="cultivo-celular.html" class="cc-nav-link active" data-module="cultivo-celular">
+                <span class="cc-nav-link-icon">🧫</span> Cultivo Celular
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="cc-hero">
+    <div class="cc-hero-grid"></div>
+    <div class="cc-orb cc-orb-1"></div>
+    <div class="cc-orb cc-orb-2"></div>
+    <div class="cc-orb cc-orb-3"></div>
+
+    <div class="cc-hero-inner">
+        <div class="cc-container">
+            <div class="cc-hero-left">
+                <div class="cc-breadcrumb">
+                    <a href="../../index.html">Inicio</a>
+                    <span class="sep">/</span>
+                    <a href="../../bioquimica/index.html">Bioquímica</a>
+                    <span class="sep">/</span>
+                    <span>Cultivo Celular</span>
+                </div>
+                <div class="cc-hero-tag">Unidad 6 · Bioquímica</div>
+                <h1 class="cc-hero-title">
+                    <span class="cc-grad">Cultivo</span><br>Celular
+                </h1>
+                <p class="cc-hero-desc">
+                    La tecnología que revolucionó la biología y la medicina moderna. Desde los primeros explantes del siglo XX hasta los organoides 3D de última generación — domina los fundamentos, técnicas y tipos celulares que impulsan la investigación biomédica, la producción de vacunas y el desarrollo de fármacos.
+                </p>
+                <div class="cc-hero-stats">
+                    <div class="cc-stat">
+                        <span class="cc-stat-num" data-cc-count="1907" id="sc1">1907</span>
+                        <span class="cc-stat-label">Primer cultivo celular exitoso (Ross Harrison)</span>
+                    </div>
+                    <div class="cc-stat">
+                        <span class="cc-stat-num" data-cc-count="1000" data-cc-suffix="+" id="sc2">1000+</span>
+                        <span class="cc-stat-label">Líneas celulares disponibles (ATCC)</span>
+                    </div>
+                    <div class="cc-stat">
+                        <span class="cc-stat-num" data-cc-count="37" data-cc-suffix="°C" id="sc3">37°C</span>
+                        <span class="cc-stat-label">Temperatura estándar células humanas</span>
+                    </div>
+                </div>
+            </div>
+            <div class="cc-hero-canvas-wrap">
+                <canvas id="cc-hero-canvas" title="Célula eucariótica 3D — Arrastra para rotar"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ DATOS CLAVE ═══════════ -->
+<div class="cc-datos-strip">
+    <div class="cc-container">
+        <div class="cc-datos-grid" data-cc-reveal>
+            <div class="cc-dato">
+                <span class="cc-dato-num" data-cc-count="5" data-cc-suffix="%" id="dc1">5%</span>
+                <span class="cc-dato-label">CO₂ en atmósfera del incubador para controlar pH del medio de cultivo</span>
+            </div>
+            <div class="cc-dato">
+                <span class="cc-dato-num" data-cc-count="70" data-cc-suffix="+" id="dc2">70+</span>
+                <span class="cc-dato-label">Años desde el establecimiento de la línea HeLa (1951, Henrietta Lacks)</span>
+            </div>
+            <div class="cc-dato">
+                <span class="cc-dato-num" data-cc-count="95" data-cc-suffix="%" id="dc3">95%</span>
+                <span class="cc-dato-label">Humedad relativa requerida en incubadores para evitar evaporación del medio</span>
+            </div>
+            <div class="cc-dato">
+                <span class="cc-dato-num" data-cc-count="10" data-cc-suffix="%" id="dc4">10%</span>
+                <span class="cc-dato-label">Concentración típica de suero fetal bovino (FBS) en medios de cultivo estándar</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════ CONTENIDO PRINCIPAL ═══════════ -->
+<section class="cc-section">
+    <div class="cc-container">
+
+        <div class="cc-section-header" data-cc-reveal>
+            <div class="cc-section-tag">🔬 Contenidos</div>
+            <h2 class="cc-section-title">Tres Pilares del <span class="cc-hl">Cultivo Celular</span></h2>
+            <p class="cc-section-sub">Selecciona un tema para explorar su contenido, fundamentos históricos, clasificaciones técnicas y visualización 3D interactiva del comportamiento celular.</p>
+        </div>
+
+        <!-- ── PILLS ── -->
+        <div class="cc-temas-grid" data-cc-reveal>
+            <div class="cc-tema-pill active" data-tab="0">
+                <div class="cc-tema-icon">🧫</div>
+                <span class="cc-tema-num">Tema 1.1</span>
+                <div class="cc-tema-name">Fundamentos del Cultivo Celular</div>
+                <div class="cc-tema-desc">Qué es el cultivo celular, su historia desde 1907, evolución técnica e importancia en investigación biomédica y farmacéutica.</div>
+                <div class="cc-tema-arrow">→</div>
+            </div>
+            <div class="cc-tema-pill" data-tab="1">
+                <div class="cc-tema-icon">🧪</div>
+                <span class="cc-tema-num">Tema 1.2</span>
+                <div class="cc-tema-name">Tipos de Cultivo Celular</div>
+                <div class="cc-tema-desc">Cultivo primario, líneas celulares, cultivo continuo, monocapas 2D y sistemas tridimensionales (esferoide, organoides, bioprinting).</div>
+                <div class="cc-tema-arrow">→</div>
+            </div>
+            <div class="cc-tema-pill" data-tab="2">
+                <div class="cc-tema-icon">🔬</div>
+                <span class="cc-tema-num">Tema 1.3</span>
+                <div class="cc-tema-name">Tipos de Células Cultivadas</div>
+                <div class="cc-tema-desc">Células animales, humanas, vegetales y células madre (embrionarias, adultas, iPSC). Características, aplicaciones y consideraciones éticas.</div>
+                <div class="cc-tema-arrow">→</div>
+            </div>
+        </div>
+
+        <!-- PANEL 1: FUNDAMENTOS -->
+        <div class="cc-panel active" id="panel-fund">
+            <div class="cc-panel-intro" data-cc-reveal>
+                <div class="cc-panel-text">
+                    <h2>¿Qué es el <span>Cultivo Celular</span>?</h2>
+                    <p>El <strong>cultivo celular</strong> es el proceso por el cual se extraen células de un organismo (animal, humano o vegetal) y se mantienen vivas y en crecimiento fuera de su entorno biológico natural, en condiciones controladas y estériles de laboratorio. Las células se mantienen en recipientes apropiados (frascos, placas multipocillo, biorreactores) con medios de cultivo que aportan los nutrientes, factores de crecimiento y condiciones fisicoquímicas necesarias para su supervivencia y proliferación.</p>
+                    <p>A diferencia de los estudios en animales completos (<em>in vivo</em>), el cultivo celular constituye un sistema <em>in vitro</em> (del latín, "en el vidrio") que permite estudiar el comportamiento celular de forma controlada, reproducible y aislada de variables sistémicas. Es la base de la biología celular moderna, la virología, la farmacología y la producción de biológicos.</p>
+                    <div class="cc-formula-box">
+                        <span class="cc-fl">Condiciones estándar de cultivo (células humanas)</span>
+                        <span class="cc-fe">T = 37°C &nbsp;|&nbsp; CO₂ = 5% &nbsp;|&nbsp; HR = 95%</span>
+                        <span class="cc-fe">pH = 7.2–7.4 &nbsp;|&nbsp; Osmolaridad ≈ 280–310 mOsm/kg</span>
+                        <span class="cc-fn">HR = Humedad Relativa · CO₂ regula el pH junto al buffer bicarbonato del medio</span>
+                    </div>
+                    <div class="cc-hbox">
+                        <strong>Importancia en investigación biomédica</strong>
+                        <p>El cultivo celular es imprescindible para: producción de vacunas virales (polio, sarampión, gripe, COVID-19), desarrollo y prueba de fármacos, producción de anticuerpos monoclonales, ingeniería de tejidos y medicina regenerativa, estudio de mecanismos de enfermedad y toxicología predictiva. Más del 80% de los ensayos de nuevos fármacos comenzan con cultivos celulares antes de pasar a modelos animales.</p>
+                    </div>
+                    <div class="cc-hbox lime">
+                        <strong>Regulación en Chile</strong>
+                        <p>El Instituto de Salud Pública (ISP) regula los laboratorios que trabajan con cultivos celulares de nivel de bioseguridad BSL-1 a BSL-3 según DS N°136/2005 del MINSAL. Los laboratorios que producen terapias celulares o biológicos para uso humano deben cumplir además con las GMP (DS N°08/2013) y contar con acreditación CENABAST cuando corresponda.</p>
+                    </div>
+                </div>
+                <div class="cc-3d-wrap">
+                    <canvas id="cc-c-fund" title="Célula con orgánulos 3D — Arrastra para rotar"></canvas>
+                    <div class="cc-3d-label">▸ Célula Eucariótica · Núcleo, Mitocondrias, RE · Interactivo 3D</div>
+                </div>
+            </div>
+
+            <div class="cc-table-section" data-cc-reveal>
+                <h3>Historia y Evolución del Cultivo Celular</h3>
+                <div class="cc-timeline">
+                    <div class="cc-tl-item">
+                        <div class="cc-tl-title">1907 — Primer cultivo celular exitoso</div>
+                        <div class="cc-tl-body"><strong>Ross Granville Harrison</strong> (Yale, EE.UU.) cultiva in vitro tejido nervioso de rana sobre linfa coagulada y demuestra que las fibras nerviosas crecen a partir de neuronas individuales. Es considerado el fundador del cultivo de tejidos.</div>
+                    </div>
+                    <div class="cc-tl-item">
+                        <div class="cc-tl-title">1912–1940 — Era de Carrel y los cultivos de larga duración</div>
+                        <div class="cc-tl-body"><strong>Alexis Carrel</strong> (Instituto Rockefeller) cultiva fragmentos de corazón de pollo embrionario durante más de 20 años. Desarrolla técnicas de cultivo estéril, medios de cultivo con extractos de embrión y las primeras cámaras de cultivo con control de temperatura. Premio Nobel de Medicina 1912.</div>
+                    </div>
+                    <div class="cc-tl-item">
+                        <div class="cc-tl-title">1951 — Línea HeLa: la primera línea celular inmortalizada humana</div>
+                        <div class="cc-tl-body"><strong>George Otto Gey</strong> (Johns Hopkins) establece la línea HeLa a partir de células de carcinoma cervical de <strong>Henrietta Lacks</strong>. HeLa fue fundamental para el desarrollo de la vacuna antipoliomielítica de Salk (1954) y cuenta con más de 110,000 publicaciones hasta 2024.</div>
+                    </div>
+                    <div class="cc-tl-item">
+                        <div class="cc-tl-title">1954–1960 — Vacunas y estandarización de medios</div>
+                        <div class="cc-tl-body"><strong>Jonas Salk</strong> usa cultivos de células renales de mono para producir la vacuna antipolio. <strong>Harry Eagle</strong> (NIH) desarrolla el Medio Mínimo Esencial (MEM) en 1959, base de los medios actuales DMEM, RPMI-1640 y MEM-α.</div>
+                    </div>
+                    <div class="cc-tl-item">
+                        <div class="cc-tl-title">1975 — Anticuerpos monoclonales (hibridomas)</div>
+                        <div class="cc-tl-body"><strong>Georges Köhler y César Milstein</strong> (Cambridge) desarrollan la tecnología de hibridomas. Premio Nobel de Medicina 1984. Revolucionó el diagnóstico y la terapia oncológica (trastuzumab, rituximab, adalimumab).</div>
+                    </div>
+                    <div class="cc-tl-item">
+                        <div class="cc-tl-title">2006 — Células madre pluripotentes inducidas (iPSC)</div>
+                        <div class="cc-tl-body"><strong>Shinya Yamanaka</strong> (Universidad de Kioto) reprograma células somáticas adultas mediante 4 factores de transcripción (Oct4, Sox2, Klf4, c-Myc). Premio Nobel de Medicina 2012.</div>
+                    </div>
+                    <div class="cc-tl-item">
+                        <div class="cc-tl-title">2010–presente — Organoides, bioprinting y cultivo 3D</div>
+                        <div class="cc-tl-body"><strong>Hans Clevers</strong> (Hubrecht Institute) desarrolla los primeros organoides intestinales (2009–2011). Hoy existen organoides de cerebro, riñón, pulmón, páncreas e hígado. Los órganos en chip (<em>organ-on-a-chip</em>) representan la frontera actual del campo.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cc-info-cards" data-cc-reveal>
+                <div class="cc-info-card">
+                    <div class="cc-info-card-icon">🧫</div>
+                    <h4>Medio de Cultivo</h4>
+                    <p>Solución acuosa que proporciona aminoácidos, glucosa, vitaminas, sales minerales y tampones. Generalmente suplementado con suero (FBS 5–20%). Los medios basales más comunes son DMEM, RPMI-1640, MEM, F-12 e IMDM, cada uno optimizado para distintos tipos celulares.</p>
+                    <span class="cc-badge">DMEM · RPMI · FBS · L-Glutamina</span>
+                </div>
+                <div class="cc-info-card">
+                    <div class="cc-info-card-icon">🌡️</div>
+                    <h4>Control Ambiental</h4>
+                    <p>Las células humanas y de mamífero requieren 37°C, 5% CO₂ y 95% de humedad relativa. Los incubadores modernos tienen control digital de los tres parámetros con alarmas automáticas.</p>
+                    <span class="cc-badge">Incubador CO₂ · pH 7.2–7.4</span>
+                </div>
+                <div class="cc-info-card">
+                    <div class="cc-info-card-icon">🛡️</div>
+                    <h4>Esterilidad y Asepsia</h4>
+                    <p>La contaminación microbiana es la principal causa de fracaso. Se trabaja en cabinas de flujo laminar BSC clase II con materiales autoclavados o estériles de uso único. Los micoplasmas son especialmente peligrosos por ser difíciles de detectar.</p>
+                    <span class="cc-badge">BSC Clase II · HEPA · Micoplasma</span>
+                </div>
+                <div class="cc-info-card">
+                    <div class="cc-info-card-icon">🔄</div>
+                    <h4>Pasaje y Subcultivo</h4>
+                    <p>Al alcanzar ~80% de confluencia, las células adherentes se tripsinizan (tripsina-EDTA 0.25%) para disociarlas y resiembrarlas. Las células diploides normales tienen una vida finita de ~50 pasajes (límite de Hayflick).</p>
+                    <span class="cc-badge">Tripsina-EDTA · Límite de Hayflick</span>
+                </div>
+            </div>
+
+            <div class="cc-table-section" data-cc-reveal>
+                <h3>Medios de Cultivo Más Utilizados en Biología Celular</h3>
+                <div class="cc-table-wrap">
+                    <table class="cc-table">
+                        <thead>
+                            <tr><th>Medio</th><th>Año / Autor</th><th>Características</th><th>Aplicaciones principales</th><th>FBS típico</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>DMEM</td><td class="mono">1959 · Dulbecco</td><td>Alta glucosa (4.5 g/L), rico en aminoácidos. Versiones LG y HG.</td><td>HeLa, HEK293, fibroblastos, stem cells</td><td class="lime">5–10%</td></tr>
+                            <tr><td>RPMI-1640</td><td class="mono">1966 · Moore</td><td>Diseñado para linfocitos humanos. Contiene glutatión y HEPES.</td><td>Leucocitos, líneas hematológicas (Jurkat, K562, HL-60)</td><td class="lime">10%</td></tr>
+                            <tr><td>MEM (Eagle)</td><td class="mono">1959 · Eagle</td><td>Primer medio mínimo definido. Versión α con nucleósidos para células primarias.</td><td>Cultivos primarios de fibroblastos, células epiteliales</td><td class="lime">10%</td></tr>
+                            <tr><td>F-12 (Ham)</td><td class="mono">1965 · Ham</td><td>Contiene trazas de metales (Cu, Fe, Zn). Optimizado para crecimiento clonal.</td><td>Células CHO, células epiteliales, fibroblastos</td><td class="lime">5%</td></tr>
+                            <tr><td>DMEM/F-12 (1:1)</td><td class="mono">1979 · Modificado</td><td>Mezcla equimolar. Propiedades intermedias para células madre.</td><td>iPSC, células madre neurales, organoides</td><td class="lime">0–10%</td></tr>
+                            <tr><td>Medio libre de suero (SFM)</td><td class="mono">1980s–presente</td><td>Sin FBS. Suplementado con insulina, transferrina, selenio (ITS), EGF.</td><td>Producción de biológicos GMP, terapias celulares</td><td class="lime">0%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="cc-norma-box" data-cc-reveal>
+                <div class="cc-norma-icon">🏛️</div>
+                <div class="cc-norma-content">
+                    <h4>Nivel de Bioseguridad (BSL) en Cultivo Celular — Norma MINSAL Chile</h4>
+                    <p>Los laboratorios de cultivo celular en Chile se clasifican según el nivel de bioseguridad (BSL) del material biológico utilizado, regulado por el DS N°136/2005 del MINSAL: <strong>BSL-1</strong> para líneas celulares bien caracterizadas y no patogénicas (ej: HEK293, CHO); <strong>BSL-2</strong> para células derivadas de tejido humano (ej: HeLa, células primarias humanas); <strong>BSL-3</strong> para agentes transmisibles graves (ej: células infectadas con VIH). Los laboratorios BSL-2 deben disponer de cabina de flujo laminar clase II, autoclave in situ y protocolos de descontaminación.</p>
+                </div>
+            </div>
+        </div><!-- /panel-fund -->
+
+
+        <!-- PANEL 2: TIPOS DE CULTIVO -->
+        <div class="cc-panel" id="panel-tipos">
+            <div class="cc-panel-intro reverse" data-cc-reveal>
+                <div class="cc-panel-text">
+                    <h2><span>Tipos</span> de Cultivo Celular</h2>
+                    <p>Los cultivos celulares se clasifican según su origen, comportamiento de crecimiento y dimensionalidad. La tendencia actual en investigación farmacéutica es migrar desde modelos 2D planos hacia sistemas 3D como <strong>esferoides</strong>, <strong>organoides</strong> y plataformas <strong>organ-on-a-chip</strong>, que reproducen mejor la arquitectura tisular y el microambiente celular real.</p>
+                    <div class="cc-formula-box">
+                        <span class="cc-fl">Clasificación general</span>
+                        <span class="cc-fe">Cultivo Primario → Subcultivo → Línea Celular</span>
+                        <span class="cc-fe">Cultivo 2D (monocapa) ←→ Cultivo 3D (esferoides / organoides)</span>
+                        <span class="cc-fn">Cultivo Continuo = línea inmortalizada que prolifera indefinidamente in vitro</span>
+                    </div>
+                    <div class="cc-hbox">
+                        <strong>Cultivo Primario</strong>
+                        <p>Se obtiene directamente del tejido de origen mediante disgregación mecánica y/o enzimática (colagenasa, tripsina, dispasa). Mantiene características fenotípicas cercanas al tejido original durante los primeros pasajes. Aplicaciones: farmacocinética hepática, estudios de toxicidad, desarrollo de terapias celulares autólogas.</p>
+                    </div>
+                    <div class="cc-hbox lime">
+                        <strong>Líneas Celulares Inmortalizadas</strong>
+                        <p>Células que han adquirido la capacidad de proliferar indefinidamente. Ejemplos: HeLa, HEK293 (riñón embrionario humano transformado con Adenovirus 5), CHO (ovario de hámster chino). Son reproducibles y homogéneas, pero difieren fenotípicamente del tejido original.</p>
+                    </div>
+                </div>
+                <div class="cc-3d-wrap">
+                    <canvas id="cc-c-tipos" title="Esferoide 3D con células animadas"></canvas>
+                    <div class="cc-3d-label">▸ Cultivo en Esferoide 3D · Gradiente de Oxígeno · Células en Proliferación</div>
+                </div>
+            </div>
+
+            <div class="cc-info-cards" data-cc-reveal>
+                <div class="cc-info-card">
+                    <div class="cc-info-card-icon">🧬</div>
+                    <h4>Cultivo Primario</h4>
+                    <p>Primera generación de células obtenidas directamente del tejido. Se inicia con disgregación mecánica (bisturí) o enzimática (colagenasa, tripsina). Son de vida limitada y alta relevancia biológica. Requieren consentimiento informado cuando son de origen humano (Ley 20.120, Chile).</p>
+                    <span class="cc-badge">Ex vivo · Pasajes limitados · Fisiológico</span>
+                </div>
+                <div class="cc-info-card">
+                    <div class="cc-info-card-icon">♾️</div>
+                    <h4>Líneas Celulares Continuas</h4>
+                    <p>Líneas inmortalizadas depositadas en biobancos certificados: ATCC, ECACC y DSMZ. Las más usadas en farmacología: Caco-2 (absorción oral), MDCK (barrera hematoencefálica), HepaRG (metabolismo hepático), MCF-7 (cáncer de mama).</p>
+                    <span class="cc-badge">ATCC · ECACC · Inmortalizada</span>
+                </div>
+                <div class="cc-info-card">
+                    <div class="cc-info-card-icon">📊</div>
+                    <h4>Cultivo en Monocapa (2D)</h4>
+                    <p>Células adherentes que crecen como una capa única sobre poliestireno tratado. Es el sistema más ampliamente usado por su simplicidad y bajo costo. Limitación: no replica la arquitectura 3D, las gradientes de oxígeno/nutrientes ni la comunicación célula-matriz in vivo.</p>
+                    <span class="cc-badge">Adherente · Placa 96 pocillos · Standard</span>
+                </div>
+                <div class="cc-info-card">
+                    <div class="cc-info-card-icon">🌐</div>
+                    <h4>Cultivo Tridimensional (3D)</h4>
+                    <p>Los sistemas 3D replican mejor el microambiente tisular. Incluyen: <strong>esferoides</strong> (baja adherencia), <strong>hidrogeles</strong> (Matrigel, alginato), <strong>organoides</strong> (células madre auto-organizadas) y <strong>organ-on-a-chip</strong> (microfluídica). Creciente relevancia en desarrollo farmacéutico.</p>
+                    <span class="cc-badge">Organoide · Esferoide · Matrigel · OoC</span>
+                </div>
+            </div>
+
+            <div class="cc-table-section" data-cc-reveal>
+                <h3>Comparación: Cultivo 2D vs Cultivo 3D</h3>
+                <div class="cc-table-wrap">
+                    <table class="cc-table">
+                        <thead>
+                            <tr><th>Parámetro</th><th>Cultivo 2D (Monocapa)</th><th>Cultivo 3D (Esferoide / Organoide)</th><th>Impacto en farmacología</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Arquitectura</td><td class="mono">Monocapa plana</td><td class="mono">Estructura tridimensional</td><td>Los modelos 3D predicen mejor la respuesta a fármacos en tumor sólido</td></tr>
+                            <tr><td>Gradiente O₂/Nutrientes</td><td><span class="cc-tag cc-tag-rose">Ausente</span></td><td><span class="cc-tag cc-tag-lime">Presente (hipoxia central)</span></td><td>La hipoxia central es clave en quimiorresistencia tumoral</td></tr>
+                            <tr><td>Matriz extracelular</td><td><span class="cc-tag cc-tag-rose">Mínima o ausente</span></td><td><span class="cc-tag cc-tag-lime">Secretada por las propias células</span></td><td>La MEC modula señalización, migración y respuesta a fármacos</td></tr>
+                            <tr><td>Morfología celular</td><td>Aplanada, polaridad alterada</td><td>Similar a tejido in vivo</td><td>Expresión génica más representativa en 3D</td></tr>
+                            <tr><td>Costo y complejidad</td><td><span class="cc-tag cc-tag-lime">Bajo · Estandarizado</span></td><td><span class="cc-tag cc-tag-amber">Alto · Mayor variabilidad</span></td><td>2D para cribado masivo; 3D para validación mecanística</td></tr>
+                            <tr><td>Predicción de toxicidad</td><td>~40–50% correlación con in vivo</td><td class="lime">~70–80% correlación con in vivo</td><td>ICH S2(R1): se recomienda 3D para genotoxicidad en tejidos complejos</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="cc-steps-section" data-cc-reveal>
+                <h3>Protocolo General: Formación de Esferoides Tumorales 3D</h3>
+                <div class="cc-steps">
+                    <div class="cc-step">
+                        <div class="cc-step-num">🧮</div>
+                        <div class="cc-step-title">1. Disgregación y Conteo</div>
+                        <div class="cc-step-desc">Tripsinizar monocapa 2D. Contar con hemocitómetro (Neubauer). Verificar viabilidad ≥ 90% (azul tripán).</div>
+                    </div>
+                    <div class="cc-step">
+                        <div class="cc-step-num">💧</div>
+                        <div class="cc-step-title">2. Siembra en Baja Adherencia</div>
+                        <div class="cc-step-desc">500–5000 células/pocillo en placa de 96 pocillos ultra-low attachment (Corning) o recubierta con poly-HEMA.</div>
+                    </div>
+                    <div class="cc-step">
+                        <div class="cc-step-num">🌐</div>
+                        <div class="cc-step-title">3. Agregación Espontánea</div>
+                        <div class="cc-step-desc">Incubar 24–72 h a 37°C, 5% CO₂. Las células forman esferoides compactos de 150–500 µm.</div>
+                    </div>
+                    <div class="cc-step">
+                        <div class="cc-step-num">🔬</div>
+                        <div class="cc-step-title">4. Maduración (3–7 días)</div>
+                        <div class="cc-step-desc">El esferoide desarrolla zona proliferativa externa y núcleo necrótico central. Cambio de medio cada 2–3 días.</div>
+                    </div>
+                    <div class="cc-step">
+                        <div class="cc-step-num">✅</div>
+                        <div class="cc-step-title">5. Ensayo y Análisis</div>
+                        <div class="cc-step-desc">Añadir fármaco, medir viabilidad (CellTiter-Glo 3D). Análisis por microscopía confocal. Calcular IC₅₀ y comparar con 2D.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cc-norma-box" data-cc-reveal>
+                <div class="cc-norma-icon">🔬</div>
+                <div class="cc-norma-content">
+                    <h4>Organoides: El Futuro del Cultivo Celular en Farmacología Traslacional</h4>
+                    <p>Los organoides son estructuras 3D cultivadas a partir de células madre que se auto-organizan en miniórganos funcionales. En 2024, bancos de organoides derivados de biopsias de pacientes están siendo utilizados para predicción personalizada de respuesta a quimioterapia en cáncer colorrectal y pancreático. La FDA y la EMA han comenzado a aceptar datos de organoides como evidencia complementaria en expedientes de nuevos fármacos. En Chile, el Instituto Milenio de Biología Integrativa (iBio) y el CECAN (Centro de Cáncer UC) trabajan con organoides de cáncer gástrico.</p>
+                </div>
+            </div>
+        </div><!-- /panel-tipos -->
+
+
+        <!-- PANEL 3: TIPOS DE CÉLULAS -->
+        <div class="cc-panel" id="panel-celulas">
+            <div class="cc-panel-intro" data-cc-reveal>
+                <div class="cc-panel-text">
+                    <h2>Tipos de <span>Células Cultivadas</span></h2>
+                    <p>La diversidad de tipos celulares cultivables es enorme. La clasificación más fundamental distingue entre <strong>células animales</strong>, <strong>células humanas</strong>, <strong>células vegetales</strong> y <strong>células madre</strong>. Cada categoría tiene implicaciones técnicas, éticas y regulatorias propias.</p>
+                    <div class="cc-hbox violet">
+                        <strong>Células Madre Pluripotentes Inducidas (iPSC) — Revolución en Medicina Personalizada</strong>
+                        <p>Las iPSC generadas por Yamanaka en 2006 son células somáticas adultas reprogramadas mediante Oct4, Sox2, Klf4 y c-Myc. Son éticamente menos controvertidas que las ESC y permiten generar líneas específicas del paciente para modelado de enfermedades, cribado de fármacos y terapias celulares autólogas.</p>
+                    </div>
+                    <div class="cc-hbox lime">
+                        <strong>Células CHO — Producción Industrial de Biológicos</strong>
+                        <p>Las células CHO (Chinese Hamster Ovary) producen hoy más del 70% de las proteínas biológicas terapéuticas aprobadas por la FDA, incluyendo anticuerpos monoclonales (adalimumab, trastuzumab, bevacizumab). Realizan glicosilación similar a la humana, crítica para la actividad e inmunogenicidad del producto final.</p>
+                    </div>
+                </div>
+                <div class="cc-3d-wrap">
+                    <canvas id="cc-c-celulas" title="Célula madre diferenciándose 3D"></canvas>
+                    <div class="cc-3d-label">▸ Diferenciación de Célula Madre · Linajes Celulares · Animación</div>
+                </div>
+            </div>
+
+            <div class="cc-info-cards" data-cc-reveal>
+                <div class="cc-info-card">
+                    <div class="cc-info-card-icon">🐀</div>
+                    <h4>Células Animales</h4>
+                    <p>Incluyen líneas de roedores (CHO, NIH 3T3, L929, RAW264.7, Vero de mono verde africano) e insecto (Sf9, Sf21 para baculovirus). Las células de insecto producen proteínas complejas a 27°C sin CO₂. No requieren manejo bajo normativa de tejido humano.</p>
+                    <span class="cc-badge">CHO · Vero · Sf9 · 3T3</span>
+                </div>
+                <div class="cc-info-card">
+                    <div class="cc-info-card-icon">🧑</div>
+                    <h4>Células Humanas</h4>
+                    <p>Mayor relevancia traslacional. Líneas establecidas: HeLa, HEK293, Caco-2 (modelo absorción oral), MCF-7, Jurkat, HepG2 (metabolismo hepático). Las células primarias humanas requieren consentimiento del donante y registro bioético (Ley 20.120, Chile).</p>
+                    <span class="cc-badge">HeLa · HEK293 · Caco-2 · HepG2</span>
+                </div>
+                <div class="cc-info-card">
+                    <div class="cc-info-card-icon">🌱</div>
+                    <h4>Células Vegetales</h4>
+                    <p>Cultivadas a 25–28°C en medios MS o B5. Son totipotentes: una sola célula puede regenerar una planta completa. Aplicaciones: producción de taxol (Taxus brevifolia), vinblastina (Catharanthus roseus), artemisinin (Artemisia annua) y pharming de anticuerpos (Nicotiana tabacum).</p>
+                    <span class="cc-badge">MS Medium · Totipotencia · Pharming</span>
+                </div>
+                <div class="cc-info-card">
+                    <div class="cc-info-card-icon">⭐</div>
+                    <h4>Células Madre</h4>
+                    <p>Definidas por autorrenovación y potencia diferenciativa. Clasificadas: totipotentes (cigoto), pluripotentes (ESC, iPSC), multipotentes (HSC hematopoyéticas, MSC mesenquimales). Las MSC de médula ósea y tejido adiposo son las más usadas en ensayos clínicos activos (&gt;1000 en ClinicalTrials.gov).</p>
+                    <span class="cc-badge">iPSC · ESC · MSC · HSC</span>
+                </div>
+            </div>
+
+            <div class="cc-table-section" data-cc-reveal>
+                <h3>Clasificación de Células Madre por Potencia y Origen</h3>
+                <div class="cc-table-wrap">
+                    <table class="cc-table">
+                        <thead>
+                            <tr><th>Tipo</th><th>Potencia</th><th>Origen</th><th>Marcadores</th><th>Aplicaciones Clínicas</th><th>Estatus Ético</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>ESC (Embrionarias)</td><td><span class="cc-tag cc-tag-violet">Pluripotente</span></td><td>Masa celular interna blastocisto</td><td class="mono">Oct4, Sox2, Nanog, SSEA-4</td><td>Medicina regenerativa, modelos de desarrollo</td><td><span class="cc-tag cc-tag-rose">Alta controversia</span></td></tr>
+                            <tr><td>iPSC (Inducidas)</td><td><span class="cc-tag cc-tag-violet">Pluripotente</span></td><td>Fibroblastos, células sanguíneas adultas</td><td class="mono">Oct4, Sox2, Klf4, c-Myc</td><td>Modelos de enfermedad paciente-específico</td><td><span class="cc-tag cc-tag-lime">Sin destrucción embrionaria</span></td></tr>
+                            <tr><td>HSC (Hematopoyéticas)</td><td><span class="cc-tag cc-tag-cyan">Multipotente</span></td><td>Médula ósea, sangre periférica, cordón</td><td class="mono">CD34⁺, CD38⁻, CD90⁺</td><td>Trasplante de médula ósea (leucemia, aplasia)</td><td><span class="cc-tag cc-tag-lime">Uso clínico estándar</span></td></tr>
+                            <tr><td>MSC (Mesenquimales)</td><td><span class="cc-tag cc-tag-cyan">Multipotente</span></td><td>Médula ósea, tejido adiposo, placenta</td><td class="mono">CD73⁺, CD90⁺, CD105⁺, CD45⁻</td><td>GvHD, artritis, Crohn</td><td><span class="cc-tag cc-tag-amber">&gt;1000 ensayos fase I–III</span></td></tr>
+                            <tr><td>NSC (Neurales)</td><td><span class="cc-tag cc-tag-cyan">Multipotente</span></td><td>Zona subventricular, hipocampo</td><td class="mono">Nestina⁺, Sox2⁺, GFAP⁺</td><td>Investigación en Parkinson, ELA</td><td><span class="cc-tag cc-tag-amber">Ensayos clínicos fase I–II</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="cc-norma-box" data-cc-reveal>
+                <div class="cc-norma-icon">⚖️</div>
+                <div class="cc-norma-content">
+                    <h4>Marco Ético y Regulatorio: Células de Origen Humano en Chile</h4>
+                    <p>El uso de células de origen humano en investigación está regulado por la <strong>Ley N°20.120 (2006)</strong> y el <strong>DS N°114/2011</strong>. Toda investigación con células humanas debe contar con aprobación de un Comité Ético Científico (CEC) reconocido por ANID y cumplir con los principios de la Declaración de Helsinki. La Ley N°21.545 (2023) regula el tratamiento de datos genéticos derivados de líneas celulares paciente-específicas, prohibiendo discriminación por perfil genético en seguros y empleos.</p>
+                </div>
+            </div>
+        </div><!-- /panel-celulas -->
+
+
+        <!-- CALLOUT FINAL -->
+        <div class="cc-callout" data-cc-reveal>
+            <h3>🧬 Cultivo Celular — La Base de la Biotecnología Moderna</h3>
+            <p>
+                Desde el primer cultivo nervioso de Harrison en 1907 hasta los organoides paciente-específicos de 2024, el cultivo celular ha transformado radicalmente la biología y la medicina. Comprender sus <strong>fundamentos</strong>, dominar los <strong>tipos de cultivo</strong> y conocer los <strong>tipos de células</strong> son los tres pilares esenciales para cualquier carrera en biotecnología, farmacología, biomedicina o ciencias farmacéuticas.
+            </p>
+        </div>
+
+        <!-- NAV INFERIOR -->
+        <div class="cc-panel-nav" data-cc-reveal>
+            <a href="../../bioquimica/index.html" class="cc-nav-btn">← Volver a Bioquímica</a>
+            <a href="#" class="cc-nav-btn primary">Siguiente: Técnicas de Cultivo Avanzado →</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="cc-footer">
+    <div class="cc-container">
+        <p>© 2026 PharmaLab Chile · Bioquímica Unidad 6: Cultivo Celular</p>
+        <p>Contenido universitario basado en: Freshney R.I. <em>Culture of Animal Cells</em> (7ª ed. 2016), Alberts B. et al. <em>Molecular Biology of the Cell</em> (7ª ed. 2022), WHO Laboratory Biosafety Manual (4ª ed. 2020), DS N°136/2005 MINSAL Chile, Ley N°20.120. No reemplaza bibliografía oficial ni protocolos institucionales.</p>
+    </div>
+</footer>
+
+<script src="cultivo-celular.js"></script>
+</body>
+</html>

@@ -1,0 +1,837 @@
+/* ===== VIROLOGÍA - PHARMALAB CHILE ===== */
+/* Módulo 05 — Patógenos, estructura viral y antivíricos */
+
+:root {
+  /* ── Virus palette ── */
+  --vir-green: #00e87b;
+  --vir-red: #ff3355;
+  --vir-cyan: #00d4ff;
+  --vir-purple: #a855f7;
+  --vir-amber: #ffaa00;
+  --vir-pink: #ec4899;
+  --vir-orange: #fb923c;
+  --vir-lime: #34d399;
+  --vir-yellow: #facc15;
+  --vir-crimson: #ff0044;
+
+  /* ── Backgrounds ── */
+  --vir-bg: #0a0e17;
+  --vir-bg2: #0f1420;
+  --vir-card: #141a2a;
+  --vir-card2: #1a2236;
+  --vir-elevated: #1c2438;
+
+  /* ── Text ── */
+  --vir-text: #e8edf5;
+  --vir-muted: #8892a8;
+  --vir-dim: #5a6478;
+
+  /* ── Borders ── */
+  --vir-border: rgba(255,255,255,0.06);
+  --vir-border-hover: rgba(255,255,255,0.12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body.virologia-page {
+  background: var(--vir-bg);
+  color: var(--vir-text);
+  font-family: 'Outfit', sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+
+::selection {
+  background: var(--vir-green);
+  color: var(--vir-bg);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: var(--vir-bg); }
+::-webkit-scrollbar-thumb { background: var(--vir-elevated); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--vir-green); }
+
+/* ══════════════════════════════════════════
+   NAVBAR (matches main site exactly)
+   ══════════════════════════════════════════ */
+.vir-navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 16px 0;
+  background: transparent;
+  transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+.vir-navbar.scrolled {
+  background: rgba(10,14,23,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--vir-border);
+  padding: 10px 0;
+}
+
+.vir-nav-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vir-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vir-logo-icon {
+  width: 40px;
+  height: 40px;
+  color: #00e5a0;
+}
+
+.vir-logo-text {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.vir-logo-accent { color: #00e5a0; }
+
+.vir-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vir-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--vir-muted);
+  transition: 0.3s ease;
+}
+
+.vir-nav-link:hover {
+  color: var(--vir-text);
+  background: rgba(255,255,255,0.05);
+}
+
+.vir-nav-link.active {
+  color: var(--vir-green);
+  background: rgba(0,232,123,0.08);
+}
+
+.vir-nav-link-icon { font-size: 1rem; }
+
+.vir-nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.vir-nav-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--vir-text);
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+
+/* ══════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════ */
+.vir-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.vir-hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 30% 40%, rgba(0,232,123,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 75% 70%, rgba(255,51,85,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 50% 20%, rgba(0,212,255,0.05) 0%, transparent 50%);
+}
+
+#vir-hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.vir-hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 120px 24px 80px;
+  max-width: 900px;
+}
+
+.vir-tag {
+  display: inline-block;
+  padding: 6px 18px;
+  background: rgba(0,232,123,0.1);
+  border: 1px solid rgba(0,232,123,0.25);
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vir-green);
+  margin-bottom: 28px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.vir-hero-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.8rem, 7vw, 5.2rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+}
+
+.vir-hero-title .accent-green {
+  background: linear-gradient(135deg, var(--vir-green), var(--vir-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.vir-hero-desc {
+  font-size: 1.15rem;
+  color: var(--vir-muted);
+  max-width: 650px;
+  margin: 0 auto 40px;
+  line-height: 1.8;
+}
+
+.vir-hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+}
+
+.vir-stat-num {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--vir-green);
+}
+
+.vir-stat-label {
+  font-size: 0.8rem;
+  color: var(--vir-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+.vir-scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--vir-dim);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  animation: vir-bounce 2s infinite;
+  z-index: 10;
+}
+
+@keyframes vir-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ══════════════════════════════════════════
+   SECTION COMMONS
+   ══════════════════════════════════════════ */
+.vir-section {
+  padding: 100px 0;
+  position: relative;
+}
+
+.vir-section + .vir-section {
+  border-top: 1px solid var(--vir-border);
+}
+
+.vir-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.vir-section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.tag-green { background: rgba(0,232,123,0.1); border: 1px solid rgba(0,232,123,0.25); color: var(--vir-green); }
+.tag-red { background: rgba(255,51,85,0.1); border: 1px solid rgba(255,51,85,0.25); color: var(--vir-red); }
+.tag-cyan { background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.25); color: var(--vir-cyan); }
+.tag-purple { background: rgba(168,85,247,0.1); border: 1px solid rgba(168,85,247,0.25); color: var(--vir-purple); }
+
+.vir-section-title {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.vir-section-title .gradient {
+  background: linear-gradient(135deg, var(--vir-green), var(--vir-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.vir-section-sub {
+  font-size: 1.05rem;
+  color: var(--vir-muted);
+  max-width: 600px;
+  line-height: 1.7;
+  margin-bottom: 56px;
+}
+
+.vir-section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.vir-section-header .vir-section-sub {
+  margin: 0 auto 0;
+}
+
+/* ══════════════════════════════════════════
+   CLASSIFICATION CARDS
+   ══════════════════════════════════════════ */
+.vir-class-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 80px;
+}
+
+.vir-class-card {
+  background: var(--vir-card);
+  border: 1px solid var(--vir-border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+  cursor: default;
+}
+
+.vir-class-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--vir-green);
+  box-shadow: 0 12px 40px -10px rgba(0,232,123,0.15);
+}
+
+.vir-class-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.vir-class-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.vir-class-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--vir-dim);
+}
+
+/* ══════════════════════════════════════════
+   3D VIRUS VIEWER
+   ══════════════════════════════════════════ */
+.vir-viewer-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+  margin-bottom: 80px;
+}
+
+.vir-canvas-box {
+  background: var(--vir-card);
+  border: 1px solid var(--vir-border);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  height: 420px;
+  animation: vir-glow-pulse 4s ease-in-out infinite;
+}
+
+@keyframes vir-glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0,232,123,0.1); }
+  50% { box-shadow: 0 0 40px rgba(0,232,123,0.2); }
+}
+
+.vir-canvas-box canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.vir-canvas-label {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--vir-border);
+  border-radius: 100px;
+  padding: 6px 18px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--vir-green);
+  white-space: nowrap;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.vir-model-controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.vir-model-btn {
+  padding: 8px 16px;
+  background: var(--vir-card2);
+  border: 1px solid var(--vir-border);
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--vir-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Outfit', sans-serif;
+}
+
+.vir-model-btn:hover,
+.vir-model-btn.active {
+  border-color: var(--vir-green);
+  color: var(--vir-green);
+  background: rgba(0,232,123,0.06);
+}
+
+.vir-model-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.vir-info-card {
+  background: var(--vir-card);
+  border: 1px solid var(--vir-border);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.vir-info-card:hover {
+  border-color: var(--vir-border-hover);
+}
+
+.vir-info-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--vir-green);
+}
+
+.vir-info-card p {
+  font-size: 0.9rem;
+  color: var(--vir-muted);
+  line-height: 1.7;
+}
+
+.vir-family-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--vir-text);
+  margin: 8px 0;
+  background: rgba(255,255,255,0.04);
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--vir-border);
+}
+
+/* ══════════════════════════════════════════
+   VIRUS CARDS GRID
+   ══════════════════════════════════════════ */
+.vir-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.vir-card {
+  position: relative;
+  padding: 36px 32px 32px;
+  background: var(--vir-card);
+  border: 1px solid var(--vir-border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: 0.5s cubic-bezier(0.23,1,0.32,1);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  cursor: default;
+  min-height: 280px;
+}
+
+/* Top glow line */
+.vir-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--card-color, var(--vir-green)), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+/* BG glow */
+.vir-card::after {
+  content: '';
+  position: absolute;
+  top: -50%; right: -30%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--card-color-dim, rgba(0,232,123,0.06)), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+.vir-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--card-color, var(--vir-green));
+  box-shadow: 0 16px 50px -12px var(--card-color-dim, rgba(0,232,123,0.15));
+}
+
+.vir-card:hover::before,
+.vir-card:hover::after { opacity: 1; }
+
+/* Card number */
+.vir-card-num {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--vir-dim);
+  letter-spacing: 1px;
+  z-index: 2;
+}
+
+/* Icon container */
+.vir-card-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-color-dim, rgba(0,232,123,0.08));
+  border: 1px solid var(--card-color-border, rgba(0,232,123,0.15));
+  transition: all 0.4s;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.vir-card:hover .vir-card-icon {
+  box-shadow: 0 8px 25px -5px var(--card-color-dim, rgba(0,232,123,0.2));
+  transform: scale(1.05);
+}
+
+.vir-card-icon svg {
+  width: 34px;
+  height: 34px;
+  color: var(--card-color, var(--vir-green));
+}
+
+/* Card body */
+.vir-card-body {
+  z-index: 2;
+  flex: 1;
+}
+
+.vir-card-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  transition: color 0.3s;
+}
+
+.vir-card:hover .vir-card-name {
+  color: var(--card-color, var(--vir-green));
+}
+
+.vir-card-sci {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--vir-dim);
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.vir-card-desc {
+  font-size: 0.92rem;
+  color: var(--vir-muted);
+  line-height: 1.65;
+}
+
+/* Tags */
+.vir-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  z-index: 2;
+}
+
+.vir-tag-pill {
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--vir-border);
+  color: var(--vir-muted);
+  transition: all 0.3s;
+}
+
+.vir-card:hover .vir-tag-pill {
+  border-color: var(--card-color-border, rgba(0,232,123,0.2));
+  background: var(--card-color-dim, rgba(0,232,123,0.06));
+  color: var(--vir-text);
+}
+
+/* BSL badge */
+.vir-bsl {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 50px;
+  border: 1px solid;
+  z-index: 2;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.vir-card:hover .vir-bsl { opacity: 1; }
+
+.bsl-1 { color: var(--vir-green); border-color: var(--vir-green); background: rgba(0,232,123,0.06); }
+.bsl-2 { color: var(--vir-amber); border-color: var(--vir-amber); background: rgba(255,170,0,0.06); }
+.bsl-3 { color: var(--vir-red); border-color: var(--vir-red); background: rgba(255,51,85,0.06); }
+.bsl-4 { color: var(--vir-crimson); border-color: var(--vir-crimson); background: rgba(255,0,68,0.08); }
+
+/* ── Per-virus colors ── */
+.vir-card[data-virus="vih"]         { --card-color: #ff3355; --card-color-dim: rgba(255,51,85,0.08); --card-color-border: rgba(255,51,85,0.2); }
+.vir-card[data-virus="sars"]        { --card-color: #00d4ff; --card-color-dim: rgba(0,212,255,0.08); --card-color-border: rgba(0,212,255,0.2); }
+.vir-card[data-virus="influenza"]   { --card-color: #ffaa00; --card-color-dim: rgba(255,170,0,0.08); --card-color-border: rgba(255,170,0,0.2); }
+.vir-card[data-virus="vph"]         { --card-color: #a855f7; --card-color-dim: rgba(168,85,247,0.08); --card-color-border: rgba(168,85,247,0.2); }
+.vir-card[data-virus="herpes"]      { --card-color: #ec4899; --card-color-dim: rgba(236,72,153,0.08); --card-color-border: rgba(236,72,153,0.2); }
+.vir-card[data-virus="hepatitis"]   { --card-color: #fb923c; --card-color-dim: rgba(251,146,60,0.08); --card-color-border: rgba(251,146,60,0.2); }
+.vir-card[data-virus="ebola"]       { --card-color: #ff0044; --card-color-dim: rgba(255,0,68,0.08); --card-color-border: rgba(255,0,68,0.2); }
+.vir-card[data-virus="zika"]        { --card-color: #34d399; --card-color-dim: rgba(52,211,153,0.08); --card-color-border: rgba(52,211,153,0.2); }
+.vir-card[data-virus="dengue"]      { --card-color: #facc15; --card-color-dim: rgba(250,204,21,0.08); --card-color-border: rgba(250,204,21,0.2); }
+.vir-card[data-virus="bacteriofago"]{ --card-color: #00e87b; --card-color-dim: rgba(0,232,123,0.08); --card-color-border: rgba(0,232,123,0.2); }
+
+/* ══════════════════════════════════════════
+   STATS ROW
+   ══════════════════════════════════════════ */
+.vir-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 0 0 80px;
+}
+
+.vir-stat-card {
+  background: var(--vir-card);
+  border: 1px solid var(--vir-border);
+  border-radius: 16px;
+  padding: 22px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.vir-stat-card:hover {
+  border-color: var(--vir-border-hover);
+  transform: translateY(-2px);
+}
+
+.vir-stat-val {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--vir-green), var(--vir-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
+
+.vir-stat-card-label {
+  font-size: 0.78rem;
+  color: var(--vir-dim);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* ══════════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════════ */
+.vir-footer {
+  padding: 80px 0 40px;
+  border-top: 1px solid var(--vir-border);
+  background: var(--vir-bg2);
+}
+
+.vir-footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.vir-footer-brand p {
+  color: var(--vir-dim);
+  font-size: 0.9rem;
+  margin-top: 16px;
+  max-width: 280px;
+}
+
+.vir-footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vir-footer-links h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--vir-muted);
+  margin-bottom: 8px;
+}
+
+.vir-footer-links a {
+  font-size: 0.9rem;
+  color: var(--vir-dim);
+  transition: 0.3s ease;
+}
+
+.vir-footer-links a:hover {
+  color: var(--vir-green);
+}
+
+.vir-footer-bottom {
+  padding-top: 32px;
+  border-top: 1px solid var(--vir-border);
+  text-align: center;
+}
+
+.vir-footer-bottom p {
+  font-size: 0.82rem;
+  color: var(--vir-dim);
+}
+
+.vir-footer-disclaimer {
+  margin-top: 8px;
+  font-size: 0.75rem !important;
+  opacity: 0.6;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .vir-grid { grid-template-columns: 1fr; }
+  .vir-class-grid { grid-template-columns: repeat(2, 1fr); }
+  .vir-viewer-wrap { grid-template-columns: 1fr; }
+  .vir-footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .vir-stats-row { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .vir-nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: rgba(10,14,23,0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 16px;
+    border-bottom: 1px solid var(--vir-border);
+  }
+  .vir-nav-links.active { display: flex; }
+  .vir-nav-toggle { display: flex; }
+  .vir-hero-stats { flex-direction: column; gap: 16px; }
+  .vir-section { padding: 64px 0; }
+  .vir-canvas-box { height: 300px; }
+  .vir-footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  .vir-class-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .vir-hero-title { letter-spacing: -1px; }
+  .vir-class-grid { grid-template-columns: 1fr; }
+  .vir-stats-row { grid-template-columns: 1fr; }
+}

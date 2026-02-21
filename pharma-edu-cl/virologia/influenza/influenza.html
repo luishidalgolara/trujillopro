@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virus de la Influenza A — Pandemias, Mutaciones y Vacunas | PharmaLab Chile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="influenza.css">
+</head>
+<body class="flu-page">
+
+  <!-- ════════════════════════════════
+       NAVBAR
+  ════════════════════════════════ -->
+  <nav class="flu-navbar" id="flu-navbar">
+    <div class="flu-nav-inner">
+      <a href="../../index.html" class="flu-nav-logo">
+        <svg viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        Pharma<span class="accent">Lab</span>
+      </a>
+      <div class="flu-nav-links" id="fluNavLinks">
+        <a href="../index.html">← Virología</a>
+        <a href="../../quimica/index.html">Química</a>
+        <a href="../../farmacia/index.html">Farmacia</a>
+        <a href="../../biotecnologia/index.html">Biotecnología</a>
+        <a href="#" class="active">Influenza A</a>
+      </div>
+      <button class="flu-nav-toggle" id="fluNavToggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════
+       HERO
+  ════════════════════════════════ -->
+  <section class="flu-hero">
+    <div class="flu-hero-bg"></div>
+    <canvas id="flu-hero-canvas"></canvas>
+    <div class="flu-hero-content">
+      <div class="flu-badge">Virología · Patógeno 03/10</div>
+      <h1 class="flu-hero-title">
+        <span class="accent">Influenza A</span><br>
+        Pandemias y Variabilidad Antigénica
+      </h1>
+      <p class="flu-hero-desc">
+        Orthomyxovirus con genoma ARN segmentado de 8 fragmentos (~13,5 kb total) que ha provocado 
+        las pandemias más mortales de la historia. Su alta tasa de mutación y la reasortación genética 
+        entre cepas animales y humanas lo convierten en la amenaza pandémica más vigilada del mundo.
+      </p>
+      <div class="flu-hero-meta">
+        <div class="flu-meta-item">
+          <span class="flu-meta-val">8 seg.</span>
+          <span class="flu-meta-label">Genoma ARN (−) segmentado</span>
+        </div>
+        <div class="flu-meta-item">
+          <span class="flu-meta-val">1918</span>
+          <span class="flu-meta-label">Pandemia más letal registrada</span>
+        </div>
+        <div class="flu-meta-item">
+          <span class="flu-meta-val">BSL-2</span>
+          <span class="flu-meta-label">Nivel de bioseguridad</span>
+        </div>
+      </div>
+    </div>
+    <div class="flu-scroll-hint">
+      <span>Explorar</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       STATS ROW
+  ════════════════════════════════ -->
+  <div class="flu-container">
+    <div class="flu-stats-row">
+      <div class="flu-stat-card">
+        <span class="flu-stat-val" data-target="8" data-suffix=" segmentos">0</span>
+        <span class="flu-stat-label">ARN genómico segmentado</span>
+      </div>
+      <div class="flu-stat-card">
+        <span class="flu-stat-val" data-target="18" data-suffix=" H">0</span>
+        <span class="flu-stat-label">Subtipos de Hemaglutinina</span>
+      </div>
+      <div class="flu-stat-card">
+        <span class="flu-stat-val" data-target="11" data-suffix=" N">0</span>
+        <span class="flu-stat-label">Subtipos de Neuraminidasa</span>
+      </div>
+      <div class="flu-stat-card">
+        <span class="flu-stat-val" data-target="290" data-suffix="–650 k">0</span>
+        <span class="flu-stat-label">Muertes anuales estimadas (OMS)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       SECCIÓN 1 — ESTRUCTURA 3D
+  ════════════════════════════════ -->
+  <section class="flu-section" id="estructura">
+    <div class="flu-container">
+      <div class="flu-section-tag tag-amber">🔬 Estructura del Virión</div>
+      <h2 class="flu-section-title">Anatomía del <span class="gradient">Virus Influenza A</span> en 3D</h2>
+      <p class="flu-section-sub">Modelo 3D interactivo del virión completo con sus 8 segmentos genómicos y proteínas de superficie. Arrastra para rotar, scroll para zoom.</p>
+
+      <div class="flu-viewer-wrap">
+        <div>
+          <div class="flu-canvas-box">
+            <canvas id="flu-model-canvas"></canvas>
+            <div class="flu-canvas-label">Influenza A · Virión completo (H1N1)</div>
+          </div>
+          <p style="font-size:.78rem;color:#5a6478;margin-top:10px">🖱️ Arrastra para rotar · Scroll para zoom</p>
+        </div>
+        <div class="flu-struct-info">
+          <div class="flu-struct-card" style="--stripe-color:#f59e0b">
+            <h4><span class="dot" style="background:#f59e0b"></span> Hemaglutinina (HA)</h4>
+            <p>Glicoproteína trimérica de 550 Å. Subunidad HA1 reconoce el receptor ácido siálico (α-2,6 en humanos; α-2,3 en aves). HA2 media la fusión endosomal. Principal target inmunológico: anticuerpos anti-HA son neutralizantes. 18 subtipos (H1–H18) definidos por estructura antigénica.</p>
+          </div>
+          <div class="flu-struct-card" style="--stripe-color:#34d399">
+            <h4><span class="dot" style="background:#34d399"></span> Neuraminidasa (NA)</h4>
+            <p>Homotetramero con actividad enzimática (sialidasa). Cleava el ácido siálico del virión y la célula huésped, facilitando la liberación de nuevas partículas y prevención de autoagregación. Target de oseltamivir (Tamiflu) y zanamivir (Relenza). 11 subtipos (N1–N11).</p>
+          </div>
+          <div class="flu-struct-card" style="--stripe-color:#818cf8">
+            <h4><span class="dot" style="background:#818cf8"></span> Canal M2 y Matriz M1</h4>
+            <p>M2 es una viroporina (canal protónico) esencial para la acidificación intraviriónica y liberación del genoma. Target de adamantanos (amantadina, rimantadina) — resistencia >95% en cepas H3N2 actuales. M1 forma la capa matricial interna que conecta envoltura con el genoma.</p>
+          </div>
+          <div class="flu-struct-card" style="--stripe-color:#f87171">
+            <h4><span class="dot" style="background:#f87171"></span> Genoma ARN (−) y RNP</h4>
+            <p>8 segmentos de ARN de sentido negativo (vRNA) envueltos con nucleoproteína (NP) y el complejo polimerasa PB1-PB2-PA formando ribonucleoprotéinas (RNPs). La replicación ocurre en núcleo celular (inusual para virus ARN). La segmentación permite la reasortación (génesis de pandemias).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       SECCIÓN 2 — GENÉTICA Y VARIABILIDAD
+  ════════════════════════════════ -->
+  <section class="flu-section" id="genetica">
+    <div class="flu-container">
+      <div class="flu-section-tag tag-green">🧬 Tema 1 · Genética Viral</div>
+      <h2 class="flu-section-title">Mecanismos de <span class="gradient">Variabilidad Antigénica</span></h2>
+      <p class="flu-section-sub">La capacidad del virus influenza de evadir la inmunidad preexistente radica en dos mecanismos distintos que operan a diferentes escalas temporales.</p>
+
+      <div class="flu-content-grid">
+
+        <div class="flu-content-card" style="--card-accent:#f59e0b">
+          <div class="flu-card-num">Mecanismo 01</div>
+          <h3>Drift Antigénico (Deriva)</h3>
+          <p>Acumulación gradual de mutaciones puntuales en HA y NA por presión selectiva inmunológica. Ocurre continuamente en cada ciclo replicativo debido a la ausencia de función proofreading de la ARN polimerasa viral (RdRp). Tasa de mutación: ~1,5–3 × 10⁻³ sustituciones/sitio/año.</p>
+          <ul>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--flu-text)">Consecuencia:</strong> Reformulación anual de vacunas estacionales. La OMS (WHO Global Influenza Surveillance Network) monitorea en 142 países para seleccionar cepas.</li>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--flu-text)">Sitios antigénicos:</strong> HA de H1N1 tiene 4 sitios antigénicos (Sa, Sb, Ca, Cb); H3N2 tiene 5 (A–E). Mutaciones en estos sitios anulan reconocimiento de anticuerpos previos.</li>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--flu-text)">Ciclo estacional:</strong> Cada año circulan variantes ligeramente distintas → epidemias estacionales con 3–5 millones de casos graves anuales (OMS).</li>
+          </ul>
+        </div>
+
+        <div class="flu-content-card" style="--card-accent:#34d399">
+          <div class="flu-card-num">Mecanismo 02</div>
+          <h3>Shift Antigénico (Reasortación)</h3>
+          <p>Intercambio brusco de segmentos genómicos enteros entre dos cepas de Influenza A que coinfectan simultáneamente una célula huésped. Genera un virus con una combinación novedosa de HA y/o NA a la que la población tiene nula o escasa inmunidad previa.</p>
+          <ul>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--flu-text)">Reservorio animal:</strong> Aves acuáticas (patos, gansos) son el reservorio natural con todos los subtipos H1–H18 y N1–N11. Cerdos actúan como "mixing vessels" (receptores de ácido siálico α-2,3 y α-2,6).</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--flu-text)">Pandemias resultantes:</strong> 1918 (H1N1 aviar/humano), 1957 (H2N2: reasortación H1N1 + cepa aviar), 1968 (H3N2: reasortación H2N2 + aviar H3), 2009 (H1N1 pdm09: triple reasortación humano+porcino+aviar).</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--flu-text)">Criterios OMS para pandemia:</strong> Nuevo subtipo HA, infección en humanos demostrada, transmisión sostenida persona-persona, ausencia de inmunidad poblacional.</li>
+          </ul>
+        </div>
+
+        <div class="flu-content-card" style="--card-accent:#818cf8">
+          <div class="flu-card-num">Genómica 03</div>
+          <h3>Los 8 Segmentos Genómicos</h3>
+          <p>Cada segmento de ARN codifica una o dos proteínas. La segmentación es la clave de la reasortación y la razón por la que influenza puede generar combinaciones génicas novedosas de forma eficiente.</p>
+          <ul>
+            <li><span class="bullet" style="background:#818cf8"></span><strong style="color:var(--flu-text)">Seg 1 (PB2, 2341 nt):</strong> Subunidad polimerasa. Residuo 627-K (humano) vs 627-E (aviar). Mutación K627E aumenta replicación en vías aéreas superiores humanas.</li>
+            <li><span class="bullet" style="background:#818cf8"></span><strong style="color:var(--flu-text)">Seg 2 (PB1, 2341 nt):</strong> Catalítico de la polimerasa (ARN-dependiente ARN polimerasa, RdRp). También codifica PB1-F2 (apoptosis mitocondrial) en la fase de lectura +1.</li>
+            <li><span class="bullet" style="background:#818cf8"></span><strong style="color:var(--flu-text)">Seg 3 (PA, 2233 nt):</strong> Endonucleasa. Cleava caps del ARNm del huésped (cap-snatching) para iniciar la transcripción viral. PA-X (frameshift) suprime respuesta inmune innata.</li>
+            <li><span class="bullet" style="background:#818cf8"></span><strong style="color:var(--flu-text)">Seg 4 (HA), Seg 6 (NA), Seg 7 (M1/M2), Seg 8 (NS1/NEP):</strong> NS1 bloquea la señalización de interferón tipo I, factor clave de virulencia.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       SECCIÓN 3 — PANDEMIAS HISTÓRICAS
+  ════════════════════════════════ -->
+  <section class="flu-section" id="pandemias">
+    <div class="flu-container">
+      <div class="flu-section-tag tag-red">🌍 Tema 2 · Historia Pandémica</div>
+      <h2 class="flu-section-title">Las 4 Pandemias de <span class="gradient">Influenza</span> del Siglo XX–XXI</h2>
+      <p class="flu-section-sub">Cada pandemia de Influenza A dejó millones de muertos y redefinió la virología moderna, la salud pública y los sistemas de vigilancia global.</p>
+
+      <div class="flu-variant-grid">
+        <div class="flu-variant-card" style="--card-color:rgba(239,68,68,0.3);--card-dim:rgba(239,68,68,0.12)">
+          <div class="flu-variant-letter" style="color:#ef4444">1918</div>
+          <h4>Gripe Española</h4>
+          <p>H1N1 aviar-like. 50–100 millones de muertos estimados (~3% de la población mundial). Mortalidad inusualmente alta en adultos 20–40 años (tormenta de citocinas). Primer genoma reconstruido en 2005 por Jeffery Taubenberger (AFIP, USA).</p>
+          <div class="flu-variant-lineage">A/H1N1 · Origen: aviar directo</div>
+        </div>
+
+        <div class="flu-variant-card" style="--card-color:rgba(245,158,11,0.3);--card-dim:rgba(245,158,11,0.12)">
+          <div class="flu-variant-letter" style="color:#f59e0b">1957</div>
+          <h4>Gripe Asiática</h4>
+          <p>H2N2. 1–4 millones de muertos. Reasortación entre cepa H1N1 humana endémica y un virus aviar H2N2 de Asia. HA (H2), NA (N2) y PB1 de origen aviar. Desapareció en 1968 reemplazado por H3N2. Solo individuos nacidos antes de 1957 tenían inmunidad.</p>
+          <div class="flu-variant-lineage">A/H2N2 · Reasortación hu+aviar</div>
+        </div>
+
+        <div class="flu-variant-card" style="--card-color:rgba(52,211,153,0.3);--card-dim:rgba(52,211,153,0.12)">
+          <div class="flu-variant-letter" style="color:#34d399">1968</div>
+          <h4>Gripe de Hong Kong</h4>
+          <p>H3N2. 1–4 millones de muertos. Reasortación entre H2N2 humano y un virus aviar que aportó HA (H3) y PB1. La NA (N2) se mantuvo de la cepa H2N2 preexistente → inmunidad parcial anti-N2 atenuó mortalidad. H3N2 sigue circulando como cepa estacional.</p>
+          <div class="flu-variant-lineage">A/H3N2 · Reasortación hu+aviar</div>
+        </div>
+
+        <div class="flu-variant-card" style="--card-color:rgba(129,140,248,0.3);--card-dim:rgba(129,140,248,0.12)">
+          <div class="flu-variant-letter" style="color:#818cf8">2009</div>
+          <h4>Gripe A (pdm09)</h4>
+          <p>H1N1pdm09. 151.700–575.400 muertes (estimación CDC). Triple reasortación: genes de cerdo norteamericano (HA, NP, NS), cerdo euroasiático (NA, M) y aves (PB2, PB1). Menor mortalidad en mayores >60 años por inmunidad cruzada con H1N1 pre-1957. OMS declaró pandemia el 11/06/2009.</p>
+          <div class="flu-variant-lineage">A/H1N1pdm09 · Triple reasortación</div>
+        </div>
+      </div>
+
+      <div class="flu-callout" style="margin-top:40px">
+        <h3>⚠️ Amenaza pandémica actual: H5N1 y H5N2</h3>
+        <p>
+          El virus <strong>A/H5N1 (gripe aviar altamente patógena, HPAI)</strong> circula activamente en aves desde 1997 con 
+          una tasa de mortalidad en humanos del <strong>~60% en casos confirmados</strong> (OMS, hasta 2024). En 2024 se 
+          detectaron los primeros casos de transmisión <strong>de vaca lechera a humano</strong> en EE.UU. (H5N1 clade 2.3.4.4b), 
+          incluyendo el primer caso de muerte confirmada en enero 2025 (Luisiana, CDC). La OMS y la OPS monitorean 
+          activamente el potencial de adaptación para transmisión sostenida humano-humano. El residuo 
+          <strong>Q226L en HA</strong> (cambio de preferencia α-2,3 → α-2,6) es el marcador de adaptación humana 
+          más vigilado globalmente.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       SECCIÓN 4 — CICLO REPLICATIVO
+  ════════════════════════════════ -->
+  <section class="flu-section" id="replicacion">
+    <div class="flu-container">
+      <div class="flu-section-tag tag-purple">⚙️ Tema 3 · Ciclo Replicativo</div>
+      <h2 class="flu-section-title">Ciclo de Infección <span class="gradient">Molecular</span></h2>
+      <p class="flu-section-sub">El ciclo replicativo del virus Influenza A es altamente regulado e involucra el núcleo celular — un rasgo inusual entre virus ARN.</p>
+
+      <div class="flu-content-grid">
+        <div class="flu-content-card" style="--card-accent:#f59e0b">
+          <div class="flu-card-num">Fase 01 — Entrada</div>
+          <h3>Adsorción, Fusión y Desnudamiento</h3>
+          <ul>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--flu-text)">Unión al receptor:</strong> HA1 se une a ácido siálico (Sia) en glucoproteínas epiteliales de vías respiratorias. Cepas H1N1 y H3N2 humanas prefieren Sia-α-2,6-Gal (abundante en tráquea/bronquios humanos). Cepas aviares prefieren Sia-α-2,3-Gal (alvéolos humanos).</li>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--flu-text)">Endocitosis:</strong> El virión se internaliza por endocitosis mediada por clatrina o macropinocitosis. El endosoma se acidifica (pH 5-6) activando la conformación de fusión de HA2 (péptido de fusión).</li>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--flu-text)">Canal M2:</strong> Los protones del endosoma entran al virión vía canal M2 → acidificación interna → disociación RNPs de M1 → liberación de los 8 segmentos al citoplasma.</li>
+          </ul>
+        </div>
+
+        <div class="flu-content-card" style="--card-accent:#34d399">
+          <div class="flu-card-num">Fase 02 — Replicación Nuclear</div>
+          <h3>Transcripción y Replicación del Genoma</h3>
+          <ul>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--flu-text)">Cap-snatching:</strong> La endonucleasa PA cleava caps 5' de ARNm celulares (~10–13 nt). Estos caps secuestrados se usan como cebadores para iniciar la síntesis de ARNm viral. Mecanismo único: el virus roba caps del propio huésped.</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--flu-text)">Síntesis de ARNm y cRNA:</strong> PB1 sintetiza ARNm (+) (traducción) y cRNA (+) (intermediario). Del cRNA se sintetiza vRNA (−) genómico para encapsulación en nuevas partículas.</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--flu-text)">Exportación nuclear:</strong> Las RNPs neosintetizadas se exportan al citoplasma vía NEP/NS2 interactuando con la vía CRM1/XPO1. Este paso es target del antiviral baloxavir marboxil.</li>
+          </ul>
+        </div>
+
+        <div class="flu-content-card" style="--card-accent:#818cf8">
+          <div class="flu-card-num">Fase 03 — Ensamblaje y Liberación</div>
+          <h3>Budding y Salida del Virión</h3>
+          <ul>
+            <li><span class="bullet" style="background:#818cf8"></span><strong style="color:var(--flu-text)">Ensamblaje apical:</strong> HA, NA y M2 se dirigen selectivamente a la membrana apical de células epiteliales respiratorias (polaridad celular). Las 8 RNPs deben empaquetarse en forma equimolar — señales de empaquetamiento en los extremos de cada segmento.</li>
+            <li><span class="bullet" style="background:#818cf8"></span><strong style="color:var(--flu-text)">Gemación (budding):</strong> M1 se acumula en la membrana interna. La protuberancia externa es cubierta por la envoltura lipídica del huésped con HA y NA insertadas. La morfología del virión (esférico 80-120 nm o filamentoso >1 µm) está determinada en parte por M1.</li>
+            <li><span class="bullet" style="background:#818cf8"></span><strong style="color:var(--flu-text)">Liberación por NA:</strong> La NA cleava el ácido siálico de la HA en la superficie del virión (previene autoagregación) y del mucus celular. Sin actividad NA, los viriones quedan atrapados. Oseltamivir inhibe NA → bloquea liberación → menor diseminación.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       SECCIÓN 5 — VACUNAS Y ANTIVIRALES
+  ════════════════════════════════ -->
+  <section class="flu-section" id="vacunas">
+    <div class="flu-container">
+      <div class="flu-section-tag tag-cyan">💉 Tema 4 · Vacunas y Antivirales</div>
+      <h2 class="flu-section-title">Estrategias de <span class="gradient">Control Farmacológico</span></h2>
+      <p class="flu-section-sub">Vacunas estacionales, antivirales de primera y segunda línea, y nuevas plataformas en desarrollo para la gripe universal.</p>
+
+      <!-- TABLA VACUNAS -->
+      <div class="flu-vax-table-wrap">
+        <table class="flu-vax-table">
+          <thead>
+            <tr>
+              <th>Vacuna / Antiviral</th>
+              <th>Tipo / Mecanismo</th>
+              <th>Eficacia</th>
+              <th>Indicación Principal</th>
+              <th>Observaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="vax-name">Vacuna Trivalente/Tetravalente</td>
+              <td class="vax-tech">Virus inactivado fraccionado (IIV)</td>
+              <td>40–60% (varía/temporada)</td>
+              <td>Adultos, embarazadas, inmunocomp.</td>
+              <td>Reformulada anualmente. OMS selecciona H1N1, H3N2 y 1-2 cepas B cada feb/sept.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">LAIV (FluMist)</td>
+              <td class="vax-tech">Virus atenuado intranasal</td>
+              <td>50–70% niños; mayor inmunidad mucosa</td>
+              <td>Niños 2–17 años</td>
+              <td>Contraindicada en inmunocomp. y embarazo. Genera IgA mucosa.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Vacuna de alta dosis (Fluzone HD)</td>
+              <td class="vax-tech">IIV cuádruple, 4× dosis antigénica</td>
+              <td>~24% más eficaz vs estándar en >65 años</td>
+              <td>Adultos mayores ≥65 años</td>
+              <td>Diseñada para compensar inmunosenescencia. Aprobada FDA/ISP.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Oseltamivir (Tamiflu)</td>
+              <td class="vax-tech">Inhibidor de Neuraminidasa (NAI)</td>
+              <td>Reduce duración ~1 día; hospitalización si &lt;48 h inicio sx</td>
+              <td>Tratamiento y profilaxis H1N1, H3N2, H5N1</td>
+              <td>Resistencia por mutación H275Y en NA (H1N1, ~1%). Indicación en embarazo y grupos de riesgo.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Zanamivir (Relenza)</td>
+              <td class="vax-tech">Inhibidor de Neuraminidasa (NAI)</td>
+              <td>Similar oseltamivir</td>
+              <td>Alternativa a oseltamivir; cepas resistentes H275Y</td>
+              <td>Vía inhalada; broncoespasmo posible. No indicado en EPOC.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Baloxavir marboxil (Xofluza)</td>
+              <td class="vax-tech">Inhibidor cap-dependiente endonucleasa (CEN)</td>
+              <td>Comparable a oseltamivir; dosis única</td>
+              <td>H1N1, H3N2 no complicado. Alternativa en resistencia a NAI</td>
+              <td>Bloquea PA (cap-snatching). Mutación I38T/F/M en PA confiere resistencia. Autorizado 2019.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Peramivir (Rapivab)</td>
+              <td class="vax-tech">Inhibidor de Neuraminidasa IV</td>
+              <td>Comparable oseltamivir</td>
+              <td>Influenza grave hospitalizada; vía IV única</td>
+              <td>Única formulación IV disponible. Útil en incapacidad de vía oral.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Vacunas de gripe universal (en desarrollo)</td>
+              <td class="vax-tech">ARNm / subunidad tallo-HA / T-cell</td>
+              <td>En evaluación clínica (fase I–III)</td>
+              <td>Protección amplia vs múltiples subtipos</td>
+              <td>Pfizer, Moderna, NIH desarrollan candidatos. Target: tallo conservado de HA + epítopes NP/M2e.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flu-content-grid" style="margin-top:48px">
+        <div class="flu-content-card" style="--card-accent:#f59e0b">
+          <div class="flu-card-num">Proceso de Reformulación</div>
+          <h3>¿Cómo se elige la vacuna anual?</h3>
+          <ul>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--flu-text)">Red GISRS (OMS):</strong> 148 Centros Nacionales de Influenza en 127 países analizan semanalmente miles de aislamientos de pacientes. Datos enviados a 6 WHO Collaborating Centres (Atlanta, Londres, Melbourne, Tokio, Beijing, Memphis).</li>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--flu-text)">Reunión de composición:</strong> OMS convoca en febrero (hemisferio norte) y septiembre (hemisferio sur). Se seleccionan 4 cepas: A/H1N1, A/H3N2, B/Victoria, B/Yamagata (aunque B/Yamagata se considera extinta tras COVID).</li>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--flu-text)">Producción en huevo:</strong> Proceso de 6 meses. Virus se adaptan en huevos embrionados SPF (specific pathogen free) → el virus adapta su HA con mutaciones que pueden reducir match antigénico ("egg-adapted mutations").</li>
+            <li><span class="bullet" style="background:#f59e0b"></span><strong style="color:var(--flu-text)">Plataformas alternativas:</strong> Producción en células MDCK (Flucelvax) y baculovirus recombinante (Flublok) evitan mutaciones por adaptación al huevo → mayor fidelidad antigénica.</li>
+          </ul>
+        </div>
+
+        <div class="flu-content-card" style="--card-accent:#818cf8">
+          <div class="flu-card-num">Resistencia Antiviral</div>
+          <h3>Mecanismos de Resistencia a Antivirales</h3>
+          <ul>
+            <li><span class="bullet" style="background:#818cf8"></span><strong style="color:var(--flu-text)">H275Y (His→Tyr en posición 275 NA H1N1):</strong> Mutación más frecuente en resistencia a oseltamivir. Rompe interacción hidrofóbica con el ring guanidinium de oseltamivir. No afecta zanamivir ni peramivir.</li>
+            <li><span class="bullet" style="background:#818cf8"></span><strong style="color:var(--flu-text)">Resistencia a adamantanos:</strong> Mutaciones S31N, V27A, L26F en M2. Prevalencia >99% en H3N2 circulante y >95% en H1N1pdm09. Adamantanos sin uso clínico recomendado desde ~2010 (CDC).</li>
+            <li><span class="bullet" style="background:#818cf8"></span><strong style="color:var(--flu-text)">Resistencia a baloxavir:</strong> I38T/F/M en PA (endonucleasa). Emergencia de resistencia durante el tratamiento más rápida que con NAI (~9% de pacientes pediátricos en estudios clínicos).</li>
+            <li><span class="bullet" style="background:#818cf8"></span><strong style="color:var(--flu-text)">Monitoreo ISP Chile:</strong> El ISP realiza vigilancia de resistencia en muestras centinela según recomendaciones PAHO/OPS. Reporte semanal en boletines epidemiológicos.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       SECCIÓN 6 — CHILE
+  ════════════════════════════════ -->
+  <section class="flu-section" id="chile">
+    <div class="flu-container">
+      <div class="flu-section-tag tag-amber">🇨🇱 Contexto Nacional</div>
+      <h2 class="flu-section-title">Influenza en <span class="gradient">Chile</span></h2>
+      <p class="flu-section-sub">Chile participa activamente en la vigilancia global y tiene uno de los programas de vacunación antigripal más robustos de América Latina.</p>
+
+      <div class="flu-callout">
+        <h3>🇨🇱 Programa Nacional de Inmunizaciones (PNI) — Influenza</h3>
+        <p>
+          El <strong>Ministerio de Salud (MINSAL)</strong> y el <strong>Instituto de Salud Pública de Chile (ISP)</strong> coordinan 
+          anualmente la campaña de vacunación antigripal, que comienza en <strong>abril</strong> (otoño del hemisferio sur) 
+          antes del peak de temporada (junio–agosto). La vacuna tetravalente es gratuita para grupos priorizados: 
+          <strong>mayores de 65 años, embarazadas, personal de salud, portadores de enfermedades crónicas, 
+          niños de 6 meses a 5 años e indígenas ≥60 años</strong>. En 2023 se administraron <strong>>9 millones de dosis</strong>. 
+          El <strong>ISP</strong> es el Centro Nacional de Influenza que reporta semanalmente a la OMS/GISRS. 
+          La <strong>Pandemia H1N1 de 2009</strong> afectó duramente a Chile (primera ola en el hemisferio sur con >12.000 
+          casos confirmados en semanas), acelerando la capacidad de respuesta del sistema de salud nacional. 
+          El ISP posee infraestructura BSL-3 para análisis de cepas de alto riesgo como H5N1.
+        </p>
+      </div>
+
+      <div class="flu-content-grid" style="margin-top:32px">
+        <div class="flu-content-card" style="--card-accent:#34d399">
+          <div class="flu-card-num">Epidemiología Nacional</div>
+          <h3>Temporadas de Influenza en Chile</h3>
+          <ul>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--flu-text)">Estacionalidad:</strong> Peak entre semanas epidemiológicas 22–33 (junio-agosto). Circulación de H1N1pdm09, H3N2 y línea B varía cada temporada según vigilancia GISRS.</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--flu-text)">Mortalidad:</strong> ~1.000–2.500 muertes anuales por influenza y neumonía asociada (DEIS, MINSAL). Exceso de mortalidad en temporadas de H3N2 intensas (mayor virulencia en adultos mayores).</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--flu-text)">Vigilancia centinela:</strong> Red de médicos centinela en atención primaria (APS) reporta casos de enfermedad tipo influenza (ETI) semanalmente. Muestras de hisopado faríngeo a laboratorios ISP-certificados para confirmación por RT-PCR.</li>
+          </ul>
+        </div>
+
+        <div class="flu-content-card" style="--card-accent:#f87171">
+          <div class="flu-card-num">Preparación Pandémica</div>
+          <h3>Plan Nacional de Pandemia de Influenza</h3>
+          <ul>
+            <li><span class="bullet" style="background:#f87171"></span><strong style="color:var(--flu-text)">PAHO/OPS Coordination:</strong> Chile participa en la red regional PAHO de respuesta a pandemia con protocolos de activación por fases (pre-pandemia, alerta, pandemia, transición). Simulacros regulares desde 2006.</li>
+            <li><span class="bullet" style="background:#f87171"></span><strong style="color:var(--flu-text)">Stockpile de antivirales:</strong> Reserva estratégica nacional de oseltamivir mantenida por MINSAL para activación en escenarios pandémicos, basada en recomendaciones OMS/OPS.</li>
+            <li><span class="bullet" style="background:#f87171"></span><strong style="color:var(--flu-text)">Capacidad diagnóstica:</strong> ISP y laboratorios regionales acreditados con capacidad de RT-PCR multiplex (influenza A subtipificación, influenza B, diferenciación H5N1, H7N9). Red expandida post-COVID-19.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       BOTTOM NAV
+  ════════════════════════════════ -->
+  <div class="flu-container" style="padding-bottom:60px">
+    <div class="flu-bottom-nav">
+      <a href="../index.html" class="flu-nav-btn">← Volver a Virología</a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#estructura" class="flu-nav-btn">Estructura 3D ↑</a>
+        <a href="#genetica" class="flu-nav-btn">Genética ↑</a>
+        <a href="#pandemias" class="flu-nav-btn">Pandemias ↑</a>
+        <a href="#vacunas" class="flu-nav-btn">Vacunas ↑</a>
+        <a href="#chile" class="flu-nav-btn">Chile ↑</a>
+      </div>
+      <a href="../../index.html" class="flu-nav-btn">Inicio →</a>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       FOOTER
+  ════════════════════════════════ -->
+  <footer class="flu-footer">
+    <div class="flu-container">
+      <div class="flu-footer-inner">
+        <p>© 2026 PharmaLab Chile · Contenido basado en OMS, CDC, PAHO, ISP Chile, NEJM, Nature, Lancet, Cell</p>
+        <p class="disclaimer">Contenido educacional. No reemplaza asesoría médica profesional.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="influenza.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propiedades Periódicas — PharmaLab Chile</title>
+    <link rel="stylesheet" href="../../../../styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="module-quimica">
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="../../../../index.html" class="nav-logo">
+                <div class="logo-icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/><circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/><line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/><line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/><line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/></svg></div>
+                <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../../../index.html" class="nav-link active" data-module="quimica">⚗️ Química</a>
+                <a href="../../../../farmacia/index.html" class="nav-link" data-module="farmacia">💊 Farmacia</a>
+                <a href="../../../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf">🧬 Q. Farmacéutica</a>
+                <a href="../../../../biotecnologia/index.html" class="nav-link" data-module="biotech">🔬 Biotecnología</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="module-hero" style="padding-bottom:30px;min-height:auto">
+        <div class="hero-content">
+            <span class="section-tag">Unidad 1 — Tema 4</span>
+            <h1 class="section-title">Propiedades <span style="background:linear-gradient(135deg,#00e5a0,#f0a030);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Periódicas</span></h1>
+            <p class="section-desc">Analiza las tendencias periódicas: radio atómico, electronegatividad, energía de ionización y afinidad electrónica con gráficos interactivos.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="../../../../index.html">Inicio</a> <span>›</span>
+            <a href="../../../index.html">Química</a> <span>›</span>
+            <a href="../index.html">Fundamentos</a> <span>›</span>
+            <span class="current">Propiedades Periódicas</span>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE CHART -->
+    <section class="chart-section">
+        <div class="container">
+            <div class="chart-wrapper">
+                <div class="chart-header">
+                    <h3>Gráfico Interactivo de Propiedades</h3>
+                    <div class="chart-tabs">
+                        <button class="chart-tab active" data-prop="radius">Radio Atómico</button>
+                        <button class="chart-tab" data-prop="en">Electronegatividad</button>
+                        <button class="chart-tab" data-prop="ie">E. Ionización</button>
+                        <button class="chart-tab" data-prop="ea">Afinidad Electr.</button>
+                    </div>
+                </div>
+                <canvas id="propChart" width="900" height="400"></canvas>
+                <p class="chart-caption" id="chartCaption">Radio atómico (pm) vs número atómico. Aumenta bajando en un grupo y disminuye avanzando en un período.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="lesson-content">
+        <div class="container">
+            <div class="content-body">
+                <article class="content-section">
+                    <h2>Radio Atómico</h2>
+                    <p>Es la distancia desde el núcleo hasta el electrón más externo. Se mide en picómetros (pm).</p>
+                    <div class="trend-box">
+                        <div class="trend-item"><span class="trend-arrow">→</span><strong>En un período (izq → der):</strong> DISMINUYE. Al aumentar Z con el mismo nivel de energía, la mayor carga nuclear atrae más a los electrones.</div>
+                        <div class="trend-item"><span class="trend-arrow">↓</span><strong>En un grupo (arriba → abajo):</strong> AUMENTA. Se agregan nuevos niveles de energía, alejando los electrones del núcleo.</div>
+                    </div>
+                    <div class="info-box"><div class="info-box-title">💊 En farmacia</div><p>El tamaño atómico determina el tamaño molecular del fármaco, lo cual afecta su capacidad de penetrar membranas biológicas, unirse a receptores y atravesar la barrera hematoencefálica. Los medicamentos deben cumplir las Reglas de Lipinski donde el peso molecular (relacionado con tamaño atómico) debe ser <500 Da.</p></div>
+                </article>
+
+                <article class="content-section">
+                    <h2>Electronegatividad</h2>
+                    <p>Capacidad de un átomo para atraer electrones compartidos en un enlace. Se mide en la escala de Pauling (F = 3.98 es el más electronegativo).</p>
+                    <div class="trend-box">
+                        <div class="trend-item"><span class="trend-arrow">→</span><strong>En un período:</strong> AUMENTA. Mayor carga nuclear efectiva atrae más los electrones de enlace.</div>
+                        <div class="trend-item"><span class="trend-arrow">↓</span><strong>En un grupo:</strong> DISMINUYE. Los electrones de valencia están más lejos del núcleo y son menos atraídos.</div>
+                    </div>
+                    <div class="info-box"><div class="info-box-title">💊 En farmacia</div><p>La electronegatividad determina la polaridad de los enlaces en el fármaco. Los enlaces polares C-O, C-N, O-H y N-H permiten la formación de enlaces de hidrógeno con targets biológicos. La diferencia de electronegatividad entre átomos define si un enlace es iónico, covalente polar o covalente apolar, determinando así las propiedades fisicoquímicas del medicamento.</p></div>
+                </article>
+
+                <article class="content-section">
+                    <h2>Energía de Ionización</h2>
+                    <p>Energía mínima necesaria para remover un electrón de un átomo gaseoso en su estado fundamental. Se mide en kJ/mol. La primera EI (EI₁) remueve el electrón más externo.</p>
+                    <div class="trend-box">
+                        <div class="trend-item"><span class="trend-arrow">→</span><strong>En un período:</strong> AUMENTA. Mayor Z efectiva sujeta más fuertemente a los electrones.</div>
+                        <div class="trend-item"><span class="trend-arrow">↓</span><strong>En un grupo:</strong> DISMINUYE. Electrones más alejados del núcleo requieren menos energía para ser removidos.</div>
+                    </div>
+                    <div class="info-box"><div class="info-box-title">💊 En farmacia</div><p>La EI está relacionada con la reactividad del fármaco. Los metales alcalinos (baja EI) forman fácilmente cationes, razón por la cual Na⁺ y K⁺ son críticos en electrolitos farmacéuticos. Los gases nobles (alta EI) son inertes y se usan como atmósferas protectoras en manufactura.</p></div>
+                </article>
+
+                <article class="content-section">
+                    <h2>Afinidad Electrónica</h2>
+                    <p>Energía liberada cuando un átomo gaseoso en estado fundamental captura un electrón. Valores más negativos indican mayor tendencia a ganar electrones.</p>
+                    <div class="trend-box">
+                        <div class="trend-item"><span class="trend-arrow">→</span><strong>En un período:</strong> Se hace más negativa (más favorable) hacia los halógenos.</div>
+                        <div class="trend-item"><span class="trend-arrow">↓</span><strong>En un grupo:</strong> Se hace menos negativa (menos favorable). Excepción: Cl > F en afinidad electrónica.</div>
+                    </div>
+                    <div class="info-box"><div class="info-box-title">💊 En farmacia</div><p>La afinidad electrónica de los halógenos explica por qué F, Cl y Br son tan comunes en fármacos. Átomos con alta afinidad electrónica en moléculas farmacéuticas crean centros electronegativos que participan en interacciones con proteínas diana del organismo.</p></div>
+                </article>
+
+                <div class="summary-table">
+                    <h3>Resumen de Tendencias</h3>
+                    <table>
+                        <thead><tr><th>Propiedad</th><th>→ En período</th><th>↓ En grupo</th></tr></thead>
+                        <tbody>
+                            <tr><td>Radio atómico</td><td class="decrease">↘ Disminuye</td><td class="increase">↗ Aumenta</td></tr>
+                            <tr><td>Electronegatividad</td><td class="increase">↗ Aumenta</td><td class="decrease">↘ Disminuye</td></tr>
+                            <tr><td>Energía de ionización</td><td class="increase">↗ Aumenta</td><td class="decrease">↘ Disminuye</td></tr>
+                            <tr><td>Afinidad electrónica</td><td class="increase">↗ Más negativa</td><td class="decrease">↘ Menos negativa</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="lesson-nav">
+                    <a href="../enlaces-quimicos/index.html">← Enlaces Químicos</a>
+                    <a href="../../../index.html">Volver a Química →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer"><div class="container"><div class="footer-bottom"><p>© 2026 PharmaLab Chile — Propiedades Periódicas</p></div></div></footer>
+    <script src="../../../../script.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

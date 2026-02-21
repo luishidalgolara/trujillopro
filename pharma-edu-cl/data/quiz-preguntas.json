@@ -1,0 +1,48 @@
+{
+    "quizzes": {
+        "quimica": [
+            {
+                "pregunta": "¿Cuál es el número atómico del Carbono?",
+                "opciones": ["4", "6", "8", "12"],
+                "respuesta": 1,
+                "explicacion": "El Carbono tiene número atómico 6, lo que significa que posee 6 protones en su núcleo."
+            },
+            {
+                "pregunta": "¿Qué tipo de enlace se forma entre Na y Cl?",
+                "opciones": ["Covalente", "Iónico", "Metálico", "Van der Waals"],
+                "respuesta": 1,
+                "explicacion": "El NaCl se forma por enlace iónico: el Na cede un electrón al Cl."
+            }
+        ],
+        "farmacia": [
+            {
+                "pregunta": "¿Qué organismo regula los medicamentos en Chile?",
+                "opciones": ["MINSAL", "ISP", "CENABAST", "FONASA"],
+                "respuesta": 1,
+                "explicacion": "El Instituto de Salud Pública (ISP) es el organismo encargado de regular y fiscalizar medicamentos en Chile."
+            },
+            {
+                "pregunta": "¿Qué ley chilena garantiza cobertura de medicamentos de alto costo?",
+                "opciones": ["Ley AUGE", "Ley Ricarte Soto", "Ley de Fármacos", "Código Sanitario"],
+                "respuesta": 1,
+                "explicacion": "La Ley Ricarte Soto (Ley 20.850) crea un sistema de protección financiera para tratamientos de alto costo."
+            }
+        ],
+        "quimica-farmaceutica": [
+            {
+                "pregunta": "¿Qué significa SAR en el diseño de fármacos?",
+                "opciones": ["Sistema de Acción Rápida", "Relación Estructura-Actividad", "Síntesis y Análisis Regulatorio", "Secuencia de Aminoácidos Reactivos"],
+                "respuesta": 1,
+                "explicacion": "SAR (Structure-Activity Relationship) estudia cómo los cambios en la estructura molecular afectan la actividad biológica del fármaco."
+            }
+        ],
+        "biotecnologia": [
+            {
+                "pregunta": "¿Qué tecnología permite la edición genética precisa?",
+                "opciones": ["PCR", "CRISPR-Cas9", "Western Blot", "ELISA"],
+                "respuesta": 1,
+                "explicacion": "CRISPR-Cas9 es una herramienta revolucionaria de edición genética que permite cortar y modificar secuencias específicas de ADN."
+            }
+        ]
+    }
+}

@@ -1,0 +1,121 @@
+{
+  "scoring_system": {
+    "version": "1.0",
+    "total_points": 100,
+    "grade_scale": {
+      "A": { "min": 90, "max": 100, "label": "Excelente", "color": "#22c55e", "desc": "Desempeño sobresaliente. Decisiones clínicas y farmacéuticas correctas con justificación adecuada." },
+      "B": { "min": 75, "max": 89, "label": "Bueno", "color": "#34d399", "desc": "Buen desempeño con errores menores que no comprometen la seguridad del paciente." },
+      "C": { "min": 60, "max": 74, "label": "Suficiente", "color": "#fbbf24", "desc": "Conocimiento básico pero con errores que podrían requerir supervisión adicional." },
+      "D": { "min": 40, "max": 59, "label": "Insuficiente", "color": "#f97316", "desc": "Errores significativos que podrían comprometer la seguridad del paciente." },
+      "F": { "min": 0, "max": 39, "label": "Reprobado", "color": "#ef4444", "desc": "Errores graves. Se recomienda revisión completa de la materia antes de continuar." }
+    },
+    "phases": {
+      "phase1": {
+        "name": "Selección del Principio Activo",
+        "weight": 25,
+        "criteria": {
+          "correct_drug": { "points": 15, "desc": "Seleccionó el fármaco correcto de primera línea" },
+          "valid_alternative": { "points": 10, "desc": "Seleccionó una alternativa clínicamente aceptable" },
+          "wrong_drug_same_area": { "points": 3, "desc": "Fármaco del área terapéutica correcta pero no el de primera línea" },
+          "wrong_drug": { "points": 0, "desc": "Fármaco incorrecto" },
+          "reasoning_bonus": { "points": 10, "desc": "Justificación farmacológica correcta (mecanismo de acción, evidencia)" }
+        }
+      },
+      "phase2": {
+        "name": "Forma Farmacéutica",
+        "weight_range": [10, 20],
+        "criteria": {
+          "correct_form": { "points_pct": 100, "desc": "Forma farmacéutica adecuada para el paciente" },
+          "acceptable_form": { "points_pct": 60, "desc": "Forma aceptable pero no la óptima" },
+          "wrong_form": { "points_pct": 0, "desc": "Forma inadecuada o contraindicada" }
+        },
+        "evaluation_factors": [
+          "Edad del paciente (pediátrico → suspensión; adulto → comprimido; adulto mayor con disfagia → solución)",
+          "Vía de administración indicada",
+          "Condiciones de almacenamiento (cadena de frío, estabilidad)",
+          "Adherencia y aceptabilidad del paciente"
+        ]
+      },
+      "phase3": {
+        "name": "Cálculo de Dosis",
+        "weight": 25,
+        "criteria": {
+          "correct_dose": { "points": 15, "desc": "Dosis correcta según peso/edad/función renal" },
+          "correct_frequency": { "points": 5, "desc": "Intervalo de dosificación correcto" },
+          "correct_duration": { "points": 5, "desc": "Duración del tratamiento adecuada" }
+        },
+        "penalties": {
+          "overdose": { "points": -15, "desc": "Sobredosis: riesgo de toxicidad", "severity": "critical" },
+          "underdose": { "points": -8, "desc": "Subdosis: riesgo de falla terapéutica", "severity": "warning" },
+          "no_renal_adjust": { "points": -10, "desc": "No ajustó dosis por función renal cuando era necesario", "severity": "critical" },
+          "wrong_frequency": { "points": -5, "desc": "Frecuencia inadecuada", "severity": "warning" }
+        }
+      },
+      "phase4": {
+        "name": "Receta Médica",
+        "weight_range": [15, 20],
+        "criteria": {
+          "correct_type": { "points": 5, "desc": "Tipo de receta correcto según normativa" },
+          "complete_fields": { "points": 10, "desc": "Todos los campos obligatorios completos" },
+          "legal_compliance": { "points": 5, "desc": "Cumple normativa D.S. 466/84" }
+        },
+        "required_fields": [
+          "Nombre completo del paciente",
+          "RUT del paciente",
+          "Fecha de emisión",
+          "Nombre del medicamento (DCI obligatoria en Chile)",
+          "Forma farmacéutica",
+          "Concentración/potencia",
+          "Cantidad total a dispensar",
+          "Posología (dosis, frecuencia, duración)",
+          "Nombre y firma del prescriptor",
+          "RUT del prescriptor",
+          "Dirección del establecimiento"
+        ]
+      },
+      "phase5": {
+        "name": "Dispensación y Educación",
+        "weight_range": [15, 20],
+        "criteria": {
+          "correct_verification": { "points": 5, "desc": "Verificó la receta antes de dispensar" },
+          "correct_instructions": { "points": 5, "desc": "Instrucciones de uso claras y correctas" },
+          "adverse_effects_mentioned": { "points": 3, "desc": "Informó sobre efectos adversos relevantes" },
+          "alarm_signs": { "points": 2, "desc": "Explicó signos de alarma" }
+        }
+      }
+    }
+  },
+  "prescription_types_chile": {
+    "receta_simple": {
+      "name": "Receta Simple",
+      "legal_ref": "D.S. 466/84 Art. 32",
+      "description": "Para medicamentos de venta bajo receta. Un original. Sin retención obligatoria.",
+      "validity_days": 30,
+      "refills": "No especificado (generalmente tratamiento indicado)",
+      "examples": ["IECA", "ARA-II", "Estatinas", "Metformina", "Antibióticos", "SABA"]
+    },
+    "receta_retenida": {
+      "name": "Receta Cheque (Retenida)",
+      "legal_ref": "D.S. 466/84 Art. 35, Reglamento de Psicotrópicos",
+      "description": "Para psicotrópicos (benzodiazepinas, anfetaminas, etc.). Original + copia. La farmacia retiene el original.",
+      "validity_days": 30,
+      "refills": "No permite refills. Nueva receta por cada dispensación.",
+      "examples": ["Alprazolam", "Clonazepam", "Metilfenidato", "Zolpidem"]
+    },
+    "receta_magistral": {
+      "name": "Receta Magistral",
+      "legal_ref": "D.S. 466/84 Art. 44",
+      "description": "Para preparaciones magistrales elaboradas en farmacia. Requiere fórmula detallada.",
+      "validity_days": 30,
+      "examples": ["Cremas dermatológicas personalizadas", "Cápsulas en dosis no comerciales"]
+    },
+    "receta_estupefacientes": {
+      "name": "Receta de Estupefacientes",
+      "legal_ref": "Ley 20.000, D.S. 404/83",
+      "description": "Para estupefacientes (opioides mayores). Recetario oficial ISP numerado. Triple copia.",
+      "validity_days": 10,
+      "refills": "No permite refills.",
+      "examples": ["Morfina", "Fentanilo", "Oxicodona", "Metadona"]
+    }
+  }
+}

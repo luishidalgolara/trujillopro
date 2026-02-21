@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producción Biotecnológica — PharmaLab Chile | Unidad 3</title>
+    <meta name="description" content="Bioprocesos, fermentación, cultivo celular, purificación de proteínas, escalamiento y control de calidad GMP. Contenido universitario para biotecnología farmacéutica en Chile.">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../biotech.css">
+    <link rel="stylesheet" href="produccion.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="module-biotech">
+
+<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+<nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+        <a href="../../index.html" class="nav-logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+                    <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+                    <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <span class="logo-text">Pharma<span class="logo-accent">Lab</span></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="../../quimica/index.html"              class="nav-link" data-module="quimica"><span class="nav-link-icon">⚗️</span> Química</a>
+            <a href="../../farmacia/index.html"             class="nav-link" data-module="farmacia"><span class="nav-link-icon">💊</span> Farmacia</a>
+            <a href="../../quimica-farmaceutica/index.html" class="nav-link" data-module="qf"><span class="nav-link-icon">🧬</span> Q. Farmacéutica</a>
+            <a href="../../biotecnologia/index.html"        class="nav-link active" data-module="biotech"><span class="nav-link-icon">🔬</span> Biotecnología</a>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="pb-hero">
+    <div class="pb-hero-bg">
+        <div class="pb-hero-grid"></div>
+        <div class="pb-orb pb-orb-1"></div>
+        <div class="pb-orb pb-orb-2"></div>
+        <div class="pb-orb pb-orb-3"></div>
+    </div>
+    <div class="pb-hero-inner">
+        <div class="pb-wrap">
+            <div class="pb-hero-left">
+                <div class="pb-crumb">
+                    <a href="../../index.html"     style="color:inherit;text-decoration:none;">Inicio</a><span>/</span>
+                    <a href="../index.html"         style="color:inherit;text-decoration:none;">Biotecnología</a><span>/</span>
+                    <span style="color:#fff">Producción Biotecnológica</span>
+                </div>
+                <div class="pb-hero-tag">Unidad 3 · Biotecnología</div>
+                <h1 class="pb-hero-title">Producción <span class="pb-gr">Biotecnológica</span></h1>
+                <p class="pb-hero-desc">Del gen al fármaco: cómo los bioprocesos industriales transforman células modificadas genéticamente en proteínas terapéuticas de alta pureza, siguiendo estrictos estándares GMP para garantizar calidad, seguridad y eficacia.</p>
+                <div class="pb-hero-stats">
+                    <div class="pb-stat">
+                        <span class="pb-stat-num" data-pb-count="20000" data-pb-suf=" L">20.000 L</span>
+                        <span class="pb-stat-label">Volumen máximo biorreactor CHO industrial</span>
+                    </div>
+                    <div class="pb-stat">
+                        <span class="pb-stat-num" data-pb-count="99" data-pb-suf=".9%">99.9%</span>
+                        <span class="pb-stat-label">Pureza IgG después de 3 pasos cromatografía</span>
+                    </div>
+                    <div class="pb-stat">
+                        <span class="pb-stat-num" data-pb-count="10" data-pb-suf="+ años">10+ años</span>
+                        <span class="pb-stat-label">Tiempo desarrollo proceso GMP completo</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pb-hero-vis">
+                <canvas id="pb-hero-canvas" title="Biorreactor industrial 3D — Rotar con mouse"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ DATOS CLAVE ═══════════════════════ -->
+<section class="pb-section">
+    <div class="pb-wrap">
+        <div class="pb-datos" data-pb-reveal>
+            <div class="pb-dato">
+                <span class="pb-dato-n" data-pb-count="25" data-pb-suf=" g/L">25 g/L</span>
+                <span class="pb-dato-l">Título máximo de IgG en biorreactor CHO fed-batch 2024</span>
+            </div>
+            <div class="pb-dato">
+                <span class="pb-dato-n" data-pb-count="1000" data-pb-suf="x">1.000x</span>
+                <span class="pb-dato-l">Escalamiento lineal desde laboratorio a producción industrial</span>
+            </div>
+            <div class="pb-dato">
+                <span class="pb-dato-n" data-pb-count="3" data-pb-suf=" pasos">3 pasos</span>
+                <span class="pb-dato-l">Cromatografía mínima para IgG: Prot.A + CEX + AEX</span>
+            </div>
+            <div class="pb-dato">
+                <span class="pb-dato-n" data-pb-count="21" data-pb-suf=" días">21 días</span>
+                <span class="pb-dato-l">Duración típica cultivo fed-batch para AcM en CHO</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════ TABS ═══════════════════════ -->
+<section class="pb-section" style="padding-top:0">
+    <div class="pb-wrap">
+
+        <div class="pb-section-hd" data-pb-reveal>
+            <div class="pb-sec-tag">⚗️ Contenidos</div>
+            <h2 class="pb-sec-title">Cuatro Pilares de la <span class="pb-hl">Producción Biotecnológica</span></h2>
+            <p class="pb-sec-sub">Desde los bioprocesos microbianos hasta el escalamiento industrial GMP: cada etapa con modelos 3D interactivos, parámetros reales y normativa chilena actualizada.</p>
+        </div>
+
+        <!-- TABS NAV -->
+        <div class="pb-tabs-nav" data-pb-reveal>
+            <div class="pb-tab-btn active">
+                <div class="pb-tab-icon">🧫</div>
+                <span class="pb-tab-num">Tema 3.1</span>
+                <div class="pb-tab-name">Fermentación</div>
+                <div class="pb-tab-hint">Biorreactores, modos de operación (batch, fed-batch, continuo), cinética microbiana y sistemas de expresión E. coli, Pichia, Bacillus.</div>
+                <div class="pb-tab-arrow">→</div>
+            </div>
+            <div class="pb-tab-btn">
+                <div class="pb-tab-icon">🔬</div>
+                <span class="pb-tab-num">Tema 3.2</span>
+                <div class="pb-tab-name">Cultivo Celular</div>
+                <div class="pb-tab-hint">Células CHO, HEK293, NS0. Medios sin suero, fed-batch, perfusión. Variables críticas (pO₂, pH, temperatura, osmolalidad).</div>
+                <div class="pb-tab-arrow">→</div>
+            </div>
+            <div class="pb-tab-btn">
+                <div class="pb-tab-icon">🧲</div>
+                <span class="pb-tab-num">Tema 3.3</span>
+                <div class="pb-tab-name">Purificación</div>
+                <div class="pb-tab-hint">Cromatografía de afinidad (Proteína A), intercambio iónico, filtración viral, ultrafiltración/diafiltración y validación.</div>
+                <div class="pb-tab-arrow">→</div>
+            </div>
+            <div class="pb-tab-btn">
+                <div class="pb-tab-icon">📈</div>
+                <span class="pb-tab-num">Tema 3.4</span>
+                <div class="pb-tab-name">Escalamiento</div>
+                <div class="pb-tab-hint">Scale-up y scale-down. Criterios de similaridad, kLa, mixing time, shear stress. Control de calidad GMP e ICH Q8-Q10.</div>
+                <div class="pb-tab-arrow">→</div>
+            </div>
+        </div>
+
+        <!-- ═══ PANEL 1: FERMENTACIÓN ═══ -->
+        <div class="pb-panel active" id="pb-p0">
+
+            <div class="pb-intro" data-pb-reveal>
+                <div class="pb-intro-text">
+                    <h2><span>Fermentación</span> Microbiana</h2>
+                    <p>En biotecnología farmacéutica, "fermentación" se usa en sentido amplio para referirse al cultivo de microorganismos (bacterias, levaduras, hongos filamentosos) en biorreactores para producción de proteínas recombinantes, metabolitos secundarios y otras moléculas de interés. Los microorganismos más usados son <em>Escherichia coli</em> (proteínas intracelulares sin glicosilación), <em>Pichia pastoris</em> (proteínas secretadas con glicosilación simple) y <em>Bacillus subtilis</em> (secreción al medio).</p>
+                    <p>Los biorreactores modernos son recipientes de acero inoxidable 316L con control automático de pH (usando ácido/base), temperatura, agitación (rpm), aireación (vvm) y presión. Los sistemas <strong>SCADA</strong> registran todos los parámetros en tiempo real y los archivan en cumplimiento GMP.</p>
+                    <div class="pb-hbox">
+                        <strong>Modos de Operación</strong>
+                        <p><strong>Batch:</strong> inóculo + medio inicial, sin adición. Curva sigmoide (lag→exponencial→estacionaria→declive). <strong>Fed-batch:</strong> alimentación continua de sustrato limitante (glucosa). Permite alta densidad celular. Estándar para producción de AcM e insulina. <strong>Continuo (quimiostato):</strong> entrada y salida continua. Estado estacionario, mayor productividad volumétrica. Complejo de operar bajo GMP.</p>
+                    </div>
+                    <div class="pb-hbox green">
+                        <strong>Parámetros Cinéticos Clave</strong>
+                        <p><strong>μ (tasa de crecimiento específica):</strong> h⁻¹. <strong>Ks:</strong> constante de saturación Michaelis. <strong>Yx/s:</strong> rendimiento biomasa/sustrato. <strong>qp:</strong> productividad específica de producto. Modelo de Monod: μ = μmax × S / (Ks + S). Optimización de μ en fed-batch para maximizar productividad y minimizar acetato en E. coli.</p>
+                    </div>
+                </div>
+                <div class="pb-3d">
+                    <canvas id="pb-canvas-ferm" title="E. coli en biorreactor 3D — Rotar con mouse"></canvas>
+                    <div class="pb-3d-lbl">▸ E. coli en Biorreactor · División · Glucosa · Proteína Recombinante</div>
+                </div>
+            </div>
+
+            <!-- Sistemas de expresión -->
+            <div data-pb-reveal>
+                <div class="pb-sh">Sistemas de Expresión para Fermentación</div>
+                <div class="pb-tbl-wrap">
+                    <table class="pb-tbl">
+                        <thead>
+                            <tr><th>Organismo</th><th>Tipo</th><th>Glicosilación</th><th>Ventajas</th><th>Limitaciones</th><th>Producto ejemplo</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>E. coli BL21(DE3)</td>
+                                <td><span class="pb-tag pb-t-g">Bacteria</span></td>
+                                <td>No</td>
+                                <td>Muy rápido (6-8 h), barato, genética bien conocida, alta densidad</td>
+                                <td>Cuerpos de inclusión, sin glicosilación, replegamiento costoso</td>
+                                <td>Insulina, somatropina, interferón β, Factor VIII dominio</td>
+                            </tr>
+                            <tr>
+                                <td>Pichia pastoris (Komagataella)</td>
+                                <td><span class="pb-tag pb-t-g">Levadura</span></td>
+                                <td>Simple (alta manosa)</td>
+                                <td>Secreción eficiente, promotor AOX1 fuerte, alta densidad (&gt;100 g/L)</td>
+                                <td>Hipermanosilación puede ser inmunogénica; glicosilación no humana</td>
+                                <td>Hepatitis B VLP (Recombivax HB®), albúmina recombinante</td>
+                            </tr>
+                            <tr>
+                                <td>Saccharomyces cerevisiae</td>
+                                <td><span class="pb-tag pb-t-g">Levadura</span></td>
+                                <td>Simple</td>
+                                <td>Historia de uso seguro (GRAS), bien regulada, secreción</td>
+                                <td>Hipermanosilación; rendimientos menores que Pichia</td>
+                                <td>Insulina (Novolog®/NovoRapid®), Humulin® cadena B</td>
+                            </tr>
+                            <tr>
+                                <td>Bacillus subtilis</td>
+                                <td><span class="pb-tag pb-t-g">Bacteria</span></td>
+                                <td>No</td>
+                                <td>Secreción directa al medio, GRAS, sin endotoxinas (gram +)</td>
+                                <td>Proteasas endógenas degradan producto; menos desarrollado</td>
+                                <td>Amilasas industriales, algunas enzimas terapéuticas</td>
+                            </tr>
+                            <tr>
+                                <td>Aspergillus niger / A. oryzae</td>
+                                <td><span class="pb-tag pb-t-go">Hongo</span></td>
+                                <td>Compleja (no humana)</td>
+                                <td>Muy alta secreción de proteínas, capacidad de fermentación en sólido</td>
+                                <td>Regulación más compleja; glicosilación no humana</td>
+                                <td>Enzimas digestivas (amilasa, lipasa, proteasa) — uso industrial</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Biorreactores -->
+            <div data-pb-reveal>
+                <div class="pb-sh">Tipos de Biorreactores en Uso Industrial</div>
+                <div class="pb-mec">
+                    <div class="pb-mec-card">
+                        <div class="pb-mec-ico">🌀</div>
+                        <h4>STR — Stirred Tank Reactor</h4>
+                        <p>Tanque agitado mecánicamente. Impelidor Rushton (turbinas de disco) o Pitched blade. El más usado industrialmente. Volúmenes hasta 20.000 L. Control preciso de kLa mediante agitación + aireación. Estándar GMP.</p>
+                    </div>
+                    <div class="pb-mec-card">
+                        <div class="pb-mec-ico">💨</div>
+                        <h4>Airlift Reactor</h4>
+                        <p>Mezcla por burbujas de aire, sin agitación mecánica. Menor esfuerzo cortante (shear stress). Ideal para células de insecto o plantas. Usado en producción de vacunas virales. Volúmenes hasta 2.000 L.</p>
+                    </div>
+                    <div class="pb-mec-card">
+                        <div class="pb-mec-ico">💼</div>
+                        <h4>Biorreactor de Bolsa (SUB)</h4>
+                        <p>Single Use Bioreactor: bolsa estéril descartable. Elimina limpieza/esterilización entre lotes. Volúmenes 50-2.000 L. Cada vez más usado para producción GMP de AcM. Ej: Cellbag Biowave® (GE), BIOSTAT STR® (Sartorius).</p>
+                    </div>
+                    <div class="pb-mec-card">
+                        <div class="pb-mec-ico">🔄</div>
+                        <h4>Perfusión (continuo)</h4>
+                        <p>Medio fresco entra continuamente; células se retienen (ATF, TFF). Productividades 5-10x mayores que fed-batch. Volúmenes menores (50-500 L). Proceso continuo de fabricación (Continuous Biomanufacturing). FDA impulsa adopción.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pb-norma" data-pb-reveal>
+                <div class="pb-norma-ico">🏭</div>
+                <div>
+                    <h4>GMP en Fermentación: ICH Q7 y Normativa ISP</h4>
+                    <p>La producción de APIs (Active Pharmaceutical Ingredients) biológicos en Chile debe cumplir las Buenas Prácticas de Fabricación (BPF) según el D.S. Nº 03/2010 del MINSAL, armonizado con ICH Q7 (GMP para APIs). Los biorreactores deben estar calificados (IQ/OQ/PQ), los sensores calibrados con trazabilidad ENAC/SAG, y todos los parámetros CQAs (Critical Quality Attributes) y CPPs (Critical Process Parameters) identificados en el PQS (Pharmaceutical Quality System). El banco de células maestro (MCB) y banco de trabajo (WCB) deben estar caracterizados y estabilizados según la guía ICH Q5D. Las instalaciones son inspeccionadas por el ISP cada 2-4 años.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ PANEL 2: CULTIVO CELULAR ═══ -->
+        <div class="pb-panel" id="pb-p1">
+
+            <div class="pb-intro rev" data-pb-reveal>
+                <div class="pb-intro-text">
+                    <h2>Cultivo <span>Celular</span></h2>
+                    <p>El cultivo de células de mamífero es indispensable para producir biofármacos con glicosilación humana compleja: anticuerpos monoclonales, proteínas de fusión Fc, factores de coagulación y eritropoyetina. Las células CHO (<em>Chinese Hamster Ovary</em>) dominan el 70% de la producción industrial por su historial de seguridad, alta productividad y compatibilidad con reguladores (FDA/EMA las consideran líneas celulares establecidas).</p>
+                    <p>A diferencia de la fermentación bacteriana, el cultivo de mamífero requiere condiciones más delicadas: temperatura 37°C ± 0.2°C, pH 7.0–7.4 (CO₂/bicarbonato), pO₂ 30–50% de saturación, osmolalidad 280–350 mOsm/kg y medios libres de suero animal (desde ~2005 por riesgo TSE/BSE y variabilidad de lote).</p>
+                    <div class="pb-hbox">
+                        <strong>Células CHO — Historia y Características</strong>
+                        <p>Desarrolladas por Theodore Puck en 1957 en la Universidad de Colorado. Cariotipo altamente mutable (~21 cromosomas variables), lo que permite integración estable de transgenes. Deficiente en DHFR (dihidrofolato reductasa): permite selección y amplificación génica con metotrexato. Alta capacidad de secreción (hasta 10-25 g/L en fed-batch moderno). Patrón de glicosilación ~85% similar al humano.</p>
+                    </div>
+                    <div class="pb-hbox cyan">
+                        <strong>Líneas Celulares Alternativas</strong>
+                        <p><strong>HEK293 (Human Embryonic Kidney):</strong> glicosilación más humana, usada para proteínas de investigación y terapia génica (AAV). <strong>NS0/Sp2/0:</strong> células de mieloma murino, usadas históricamente para algunos AcM (Synagis®, Aranesp®). <strong>Per.C6 (Crucell/J&amp;J):</strong> retinoblastoma humano, alta productividad.</p>
+                    </div>
+                </div>
+                <div class="pb-3d">
+                    <canvas id="pb-canvas-cell" title="Células CHO 3D — Arrastrar para rotar"></canvas>
+                    <div class="pb-3d-lbl">▸ CHO · Núcleo · Mitocondria · Vesícula secretora · IgG</div>
+                </div>
+            </div>
+
+            <!-- Variables críticas -->
+            <div data-pb-reveal>
+                <div class="pb-sh">Variables Críticas de Proceso (CPPs) en Cultivo CHO</div>
+                <div class="pb-tbl-wrap">
+                    <table class="pb-tbl">
+                        <thead>
+                            <tr><th>Variable (CPP)</th><th>Rango típico</th><th>Efecto si fuera de rango</th><th>Control</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Temperatura</td>
+                                <td>36.5 – 37.2 °C</td>
+                                <td>&gt;38°C: estrés, apoptosis, baja viabilidad. &lt;35°C: ralentización metabólica, menor productividad</td>
+                                <td>Termostato agua + sensor Pt100 calibrado</td>
+                            </tr>
+                            <tr>
+                                <td>pH</td>
+                                <td>7.00 – 7.40</td>
+                                <td>&lt;6.8: acumulación láctica, apoptosis. &gt;7.6: agregación celular, glicosilación alterada</td>
+                                <td>CO₂ gaseoso + NaHCO₃/NaOH; sensor pH en línea</td>
+                            </tr>
+                            <tr>
+                                <td>pO₂ (oxígeno disuelto)</td>
+                                <td>30 – 50% saturación</td>
+                                <td>&lt;20%: anaerobiosis, metabolismo lactato. &gt;80%: estrés oxidativo, ROS, daño lipídico</td>
+                                <td>Sparger O₂ puro + agitación; sensor DO polarográfico</td>
+                            </tr>
+                            <tr>
+                                <td>Osmolalidad</td>
+                                <td>280 – 350 mOsm/kg</td>
+                                <td>Alta: estrés osmótico, baja velocidad crecimiento pero puede aumentar producción. Baja: lisis celular</td>
+                                <td>Formulación del medio; control de adición glucosa/glutamina</td>
+                            </tr>
+                            <tr>
+                                <td>Glucosa</td>
+                                <td>1 – 5 g/L</td>
+                                <td>&gt;10 g/L: Efecto Crabtree, acumulación lactato y amonio. &lt;0.5 g/L: inanición, caída viabilidad</td>
+                                <td>Sonda en línea (YSI Biochemistry Analyzer) + feed automático</td>
+                            </tr>
+                            <tr>
+                                <td>Lactato</td>
+                                <td>&lt; 2 g/L (fase producción)</td>
+                                <td>&gt;4 g/L: inhibición metabólica, acidificación, cambio en glicosilación (menor sialilación)</td>
+                                <td>Monitoreo YSI; optimizar relación glucosa/glutamina del feed</td>
+                            </tr>
+                            <tr>
+                                <td>Densidad celular viable (VCD)</td>
+                                <td>10–60 × 10⁶ células/mL</td>
+                                <td>Muy alta (&gt;80M/mL): limitación O₂, estrés de mezcla, fragmentos celulares</td>
+                                <td>Contador de células (Vi-CELL® BioProfile) + feed estratégico</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Estrategia de medios -->
+            <div data-pb-reveal>
+                <div class="pb-sh">Medios de Cultivo: Estrategia CDM (Chemically Defined Media)</div>
+                <div class="pb-cards">
+                    <div class="pb-card">
+                        <div class="pb-card-ico">🔬</div>
+                        <h4>Medio Basal CDM</h4>
+                        <p>Fórmula completamente definida: aminoácidos (20 esenciales + condicionales), vitaminas, sales minerales, fuentes de carbono (glucosa). Sin proteínas animales (libre de suero) desde regulación EMEA/ICH Q5A. Ejemplos: CD CHO Medium (Thermo Fisher), EX-CELL® Advanced (Sigma/Merck).</p>
+                        <span class="pb-badge">Sin suero · ICH Q5A</span>
+                    </div>
+                    <div class="pb-card">
+                        <div class="pb-card-ico">🍶</div>
+                        <h4>Feed Concentrado (10–20x)</h4>
+                        <p>Solución concentrada de nutrientes (aminoácidos, glucosa, vitaminas, lípidos) adicionada diariamente. El fed-batch optimizado puede mantener glucosa 1-3 g/L y aminoácidos en rango óptimo durante 14-21 días. Estrategia de feed: modelo predictivo o basado en metabolómica en línea.</p>
+                        <span class="pb-badge">Fed-batch · 14-21 días</span>
+                    </div>
+                    <div class="pb-card">
+                        <div class="pb-card-ico">📊</div>
+                        <h4>PAT — Analytical Technology</h4>
+                        <p>Tecnología Analítica de Proceso: sensores en línea para glucosa, lactato, amonio, oxígeno, pH. Espectroscopía Raman para cuantificar metabolitos sin muestreo. NIR para biomasa. Permite feedback control en tiempo real. Requisito ICH Q8(R2) para procesos QbD.</p>
+                        <span class="pb-badge">Raman · NIR · QbD</span>
+                    </div>
+                    <div class="pb-card">
+                        <div class="pb-card-ico">🎯</div>
+                        <h4>Control de Glicosilación</h4>
+                        <p>Temperatura, pH, concentración de manganeso, galactosa y amonio afectan el patrón de glicosilación de IgG (afectando ADCC y half-life). Galactosilación controlada es un CQA para biosimilares. Manganese supplementation aumenta galactosilación y sialilación.</p>
+                        <span class="pb-badge">CQA · Galactosa · Mn²⁺</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pb-norma" data-pb-reveal>
+                <div class="pb-norma-ico">🧪</div>
+                <div>
+                    <h4>Caracterización del Banco de Células: ICH Q5D y Guía OMS</h4>
+                    <p>Antes de producción GMP, la línea celular debe ser caracterizada exhaustivamente mediante un banco de células maestro (MCB) y un banco de trabajo (WCB), según ICH Q5D y la guía OMS TRS 978 Annex 3. Los ensayos incluyen: identidad celular (STR, cariotipo), ausencia de virus adventicios (virus específicos de especie, retroviruses endógenos, virus modelo), micoplasmas (cultivo + PCR), espiroplasmas y agentes transmisibles poco convencionales. En Chile, el ISP requiere que este dossier esté disponible en el expediente de registro sanitario de todo biofármaco producido en células de mamífero.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ PANEL 3: PURIFICACIÓN ═══ -->
+        <div class="pb-panel" id="pb-p2">
+
+            <div class="pb-intro" data-pb-reveal>
+                <div class="pb-intro-text">
+                    <h2><span>Purificación</span> de Proteínas</h2>
+                    <p>La purificación downstream (DSP) es el proceso de separación y concentración del producto biológico a partir del caldo de cultivo (cosecha). Para un anticuerpo monoclonal típico producido en CHO, la cosecha contiene ~95% de impurezas: proteínas de la célula huésped (HCPs), ADN celular, virus potenciales, agregados, variantes de carga y el medio de cultivo.</p>
+                    <p>Un tren de purificación típico para IgG comprende 3 pasos cromatográficos + filtración viral + ultrafiltración/diafiltración (UF/DF). La secuencia estándar de la industria es: <strong>Proteína A</strong> (captura por afinidad) → <strong>CEX</strong> (intercambio catiónico, eliminación HCPs/agregados) → <strong>AEX</strong> (intercambio aniónico, eliminación DNA/endotoxinas/virus). La eficiencia total es &gt;99.9% de pureza.</p>
+                    <div class="pb-hbox">
+                        <strong>Cromatografía Proteína A — El paso clave</strong>
+                        <p>La Proteína A es una proteína de superficie de <em>Staphylococcus aureus</em> que une la región Fc de IgG con alta afinidad (Kd ~10 nM). Inmovilizada en resinas (Sepharose®, Capto™ A): permite captura selectiva de IgG en carga (pH 7-8) y elución con tampón ácido (pH 3.0-3.5, que desnatura la interacción). El bajo pH también inactiva virus de envoltura (paso de inactivación viral ICH Q5A).</p>
+                    </div>
+                    <div class="pb-hbox cyan">
+                        <strong>Agregados y Variantes</strong>
+                        <p>Los anticuerpos pueden formar dímeros, oligómeros y agregados de alto peso molecular, que reducen actividad y aumentan inmunogenicidad. La SEC-HPLC es el método analítico de referencia para cuantificarlos. Las resinas CEX (ej. SP Sepharose HP®) y columnas de intercambio iónico separan variantes de carga (isoformas de glicosilación, desamidación, oxidación Met).</p>
+                    </div>
+                </div>
+                <div class="pb-3d">
+                    <canvas id="pb-canvas-puri" title="Cromatografía Proteína A 3D — Rotar"></canvas>
+                    <div class="pb-3d-lbl">▸ Resina Prot.A · IgG Capturado · Impurezas (lavado) · IgG Eluido (puro)</div>
+                </div>
+            </div>
+
+            <!-- Proceso purificación -->
+            <div data-pb-reveal>
+                <div class="pb-sh">Proceso de Purificación IgG — Flujo Completo</div>
+                <div class="pb-proc">
+                    <div class="pb-step">
+                        <div class="pb-step-n">🧺</div>
+                        <div class="pb-step-t">Cosecha</div>
+                        <div class="pb-step-d">Centrifugación + filtración de profundidad (0.2 µm). Eliminación de células y detritos.</div>
+                    </div>
+                    <div class="pb-step">
+                        <div class="pb-step-n">🔴</div>
+                        <div class="pb-step-t">Prot. A Afinidad</div>
+                        <div class="pb-step-d">Captura IgG. Rendimiento &gt;98%. Elución pH 3.2-3.5. Inactivación viral ácida (1h).</div>
+                    </div>
+                    <div class="pb-step">
+                        <div class="pb-step-n">➕</div>
+                        <div class="pb-step-t">CEX</div>
+                        <div class="pb-step-d">Intercambio catiónico. Elimina HCPs, agregados, variantes básicas. Gradiente NaCl.</div>
+                    </div>
+                    <div class="pb-step">
+                        <div class="pb-step-n">➖</div>
+                        <div class="pb-step-t">AEX</div>
+                        <div class="pb-step-d">Aniónico en flujo continuo (flow-through). El IgG no une; impurezas ácidas (DNA, endotoxinas, virus) quedan en columna.</div>
+                    </div>
+                    <div class="pb-step">
+                        <div class="pb-step-n">🦠</div>
+                        <div class="pb-step-t">Filtración Viral</div>
+                        <div class="pb-step-d">Nanofiltración 20 nm (Planova 20N® o Viresolve Pro®). LRV &gt;4 log₁₀ para virus pequeños no-enveloped (ICH Q5A).</div>
+                    </div>
+                    <div class="pb-step">
+                        <div class="pb-step-n">💧</div>
+                        <div class="pb-step-t">UF/DF</div>
+                        <div class="pb-step-d">Ultrafiltración/Diafiltración (30 kDa MWCO). Concentración y cambio de tampón a formulación final.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Métodos analíticos -->
+            <div data-pb-reveal>
+                <div class="pb-sh">Métodos Analíticos de Control en Purificación</div>
+                <div class="pb-tbl-wrap">
+                    <table class="pb-tbl">
+                        <thead>
+                            <tr><th>Método</th><th>Parámetro medido</th><th>Límite de aceptación típico</th><th>Norma referencia</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>SEC-HPLC</td>
+                                <td>Monómero, dímero, oligómero (%)</td>
+                                <td>Monómero ≥ 99%; Agregados ≤ 1%</td>
+                                <td>USP &lt;1087&gt; / ICH Q6B</td>
+                            </tr>
+                            <tr>
+                                <td>HCP ELISA (Host Cell Protein)</td>
+                                <td>Proteínas de célula huésped (ppm)</td>
+                                <td>≤ 100 ppm (típico AcM final)</td>
+                                <td>ICH Q6B / USP &lt;1132&gt;</td>
+                            </tr>
+                            <tr>
+                                <td>qPCR (Residual CHO DNA)</td>
+                                <td>ADN residual de CHO (pg/dosis)</td>
+                                <td>≤ 10 ng/dosis o ≤ 10 pg/mL</td>
+                                <td>ICH Q5A / OMS TRS 978</td>
+                            </tr>
+                            <tr>
+                                <td>LAL (Limulus Amebocyte Lysate)</td>
+                                <td>Endotoxinas (EU/mL)</td>
+                                <td>≤ 0.5 EU/kg peso/h (IV) o ≤ 5 EU/mL</td>
+                                <td>USP &lt;161&gt; / Ph.Eur. 2.6.14</td>
+                            </tr>
+                            <tr>
+                                <td>Proteína A por ELISA</td>
+                                <td>Proteína A residual (ppm)</td>
+                                <td>≤ 2 ppm (lixiviado de Prot.A)</td>
+                                <td>ICH Q6B</td>
+                            </tr>
+                            <tr>
+                                <td>SDS-PAGE / CE-SDS</td>
+                                <td>Integridad, cadenas reducidas/no-red.</td>
+                                <td>Conforme perfil referencia; sin bandas atípicas</td>
+                                <td>ICH Q6B / USP &lt;1056&gt;</td>
+                            </tr>
+                            <tr>
+                                <td>IEF / icIEF</td>
+                                <td>Variantes de carga (pI)</td>
+                                <td>% isoformas principales según especificación</td>
+                                <td>ICH Q6B</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="pb-norma" data-pb-reveal>
+                <div class="pb-norma-ico">🧲</div>
+                <div>
+                    <h4>Validación de Clearance Viral: ICH Q5A y OMS TRS 978 en Chile</h4>
+                    <p>Todo biofármaco producido en líneas celulares continuas debe demostrar, mediante estudios de clearance viral a escala reducida, que el proceso de purificación elimina o inactiva virus adventicios. La guía ICH Q5A(R1) establece que se deben estudiar al menos dos virus modelo de envoltura y dos sin envoltura, y que la suma de LRV (Log Reduction Values) debe ser ≥ 12 log₁₀. Los pasos orthogonales requeridos típicamente son: inactivación viral a pH ácido (post Proteína A), nanofiltración 20 nm y calentamiento pasterización si aplica. En Chile, el ISP exige que el dossier de clearance viral forme parte del expediente de Registro Sanitario de biofármacos, evaluado bajo los criterios de ICH Q5A en su versión más reciente.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ PANEL 4: ESCALAMIENTO ═══ -->
+        <div class="pb-panel" id="pb-p3">
+
+            <div class="pb-intro rev" data-pb-reveal>
+                <div class="pb-intro-text">
+                    <h2><span>Escalamiento</span> Industrial</h2>
+                    <p>El scale-up (escalamiento ascendente) es el proceso de transferir un proceso de producción desde escala de laboratorio (2-5 L) a escala piloto (50-200 L) y finalmente a escala de producción industrial (500-20.000 L). Es uno de los desafíos más complejos en bioingeniería porque los biorreactores no son geométricamente similares al aumentar de escala, y los parámetros de mezcla, transferencia de oxígeno y esfuerzo cortante cambian de forma no lineal.</p>
+                    <p>El proceso inverso, <strong>scale-down</strong>, crea modelos a escala reducida (representativos del proceso industrial) para realizar experimentos de optimización y caracterización de proceso (Design of Experiments, DoE) sin el costo de operar biorreactores grandes.</p>
+                    <div class="pb-hbox">
+                        <strong>Criterios de Escalamiento</strong>
+                        <p><strong>P/V constante</strong> (potencia por volumen, W/m³): conserva la tasa de disipación de energía, buen predictor de kLa. <strong>kLa constante</strong> (coeficiente de transferencia de O₂): garantiza misma disponibilidad de oxígeno. <strong>Tip speed constante</strong> (velocidad de punta de impelidor, m/s): minimiza daño celular por shear. En la práctica se usa combinación de criterios según producto.</p>
+                    </div>
+                    <div class="pb-hbox green">
+                        <strong>Mixing Time (tm) — El problema del escalamiento</strong>
+                        <p>El tiempo de homogenización aumenta ~V⁰·⁴ al escalar. A 10.000 L, tm puede ser 100-200 s vs 10-15 s en 2 L. Esto genera gradientes de pH, glucosa y CO₂ que afectan el metabolismo celular y la glicosilación. Solución: multi-impelidor, sparger de micro-burbujas, CFD (Computational Fluid Dynamics) para diseño optimizado.</p>
+                    </div>
+                </div>
+                <div class="pb-3d">
+                    <canvas id="pb-canvas-scale" title="Biorreactores 2L, 50L, 2000L 3D — Rotar"></canvas>
+                    <div class="pb-3d-lbl">▸ Escalamiento: Lab (2 L) → Piloto (50 L) → Producción (2.000 L)</div>
+                </div>
+            </div>
+
+            <!-- Criterios de escalamiento -->
+            <div data-pb-reveal>
+                <div class="pb-sh">Parámetros de Ingeniería en el Escalamiento</div>
+                <div class="pb-tbl-wrap">
+                    <table class="pb-tbl">
+                        <thead>
+                            <tr><th>Parámetro</th><th>Símbolo</th><th>Unidad</th><th>Valor típico 2L</th><th>Valor típico 2000L</th><th>Importancia</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Potencia por volumen</td>
+                                <td>P/V</td>
+                                <td>W/m³</td>
+                                <td>50–200</td>
+                                <td>20–80</td>
+                                <td>Predictor de kLa y shear; disminuye al escalar</td>
+                            </tr>
+                            <tr>
+                                <td>Coef. transferencia O₂</td>
+                                <td>kLa</td>
+                                <td>h⁻¹</td>
+                                <td>5–20</td>
+                                <td>2–10</td>
+                                <td>Oxigenación celular; más difícil a gran escala</td>
+                            </tr>
+                            <tr>
+                                <td>Tiempo de mezcla</td>
+                                <td>tm</td>
+                                <td>s</td>
+                                <td>5–15</td>
+                                <td>60–200</td>
+                                <td>Gradientes de nutrientes; problema mayor a escala</td>
+                            </tr>
+                            <tr>
+                                <td>Velocidad punta impelidor</td>
+                                <td>Vtip</td>
+                                <td>m/s</td>
+                                <td>1.5–2.5</td>
+                                <td>1.0–2.0</td>
+                                <td>Daño celular por shear; se mantiene constante</td>
+                            </tr>
+                            <tr>
+                                <td>Relación altura/diámetro</td>
+                                <td>H/D</td>
+                                <td>—</td>
+                                <td>1.5–2.0</td>
+                                <td>2.0–3.5</td>
+                                <td>Aumenta con escala; afecta gradiente de presión hidrostática</td>
+                            </tr>
+                            <tr>
+                                <td>Tasa de aireación</td>
+                                <td>vvm</td>
+                                <td>L/L·min</td>
+                                <td>0.05–0.2</td>
+                                <td>0.01–0.05</td>
+                                <td>Formación de espuma; menor vvm para minimizar daño celular</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Estrategia GMP -->
+            <div data-pb-reveal>
+                <div class="pb-sh">Ciclo de Calidad GMP: ICH Q8-Q10 — Quality by Design</div>
+                <div class="pb-cards">
+                    <div class="pb-card">
+                        <div class="pb-card-ico">🎯</div>
+                        <h4>QTPP — Perfil de Calidad</h4>
+                        <p>Quality Target Product Profile: define atributos de calidad del producto final (pureza, potencia, glicosilación, ausencia contaminantes). Base de todo el desarrollo de proceso QbD (Quality by Design). ICH Q8(R2).</p>
+                        <span class="pb-badge">ICH Q8(R2)</span>
+                    </div>
+                    <div class="pb-card">
+                        <div class="pb-card-ico">🔑</div>
+                        <h4>CQAs — Atributos Críticos</h4>
+                        <p>Critical Quality Attributes: características del producto que impactan seguridad/eficacia. Para IgG: agregación, glicosilación (G0F, G1F, G2F), desamidación Asn, oxidación Met, carga de cadenas. Se monitorean rutinariamente.</p>
+                        <span class="pb-badge">Glicosilación · Agregados</span>
+                    </div>
+                    <div class="pb-card">
+                        <div class="pb-card-ico">⚙️</div>
+                        <h4>CPPs — Parámetros Críticos</h4>
+                        <p>Critical Process Parameters: temperatura, pH, pO₂, velocidad de agitación, concentración glucosa. Su variación afecta CQAs. Identificados por DoE (Design of Experiments): OVAT, factorial, Box-Behnken, RSM.</p>
+                        <span class="pb-badge">DoE · OVAT · RSM</span>
+                    </div>
+                    <div class="pb-card">
+                        <div class="pb-card-ico">📐</div>
+                        <h4>Design Space</h4>
+                        <p>Espacio de diseño multidimensional de CPPs dentro del cual el proceso garantiza calidad. Permite flexibilidad operacional sin necesidad de aprobación regulatoria de cambios (ICH Q8). Validado mediante 3 lotes de validación de proceso (PPQ).</p>
+                        <span class="pb-badge">PPQ · 3 lotes validación</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline proceso completo -->
+            <div data-pb-reveal>
+                <div class="pb-sh">Timeline de Desarrollo de Proceso hasta Registro ISP</div>
+                <div class="pb-tl">
+                    <div class="pb-tl-item">
+                        <div class="pb-tl-yr">Año 1–2: Investigación (Fase Pre-IND)</div>
+                        <div class="pb-tl-tx"><strong>Generación de línea celular estable (MCB/WCB).</strong> Desarrollo de proceso upstream en matraz y biorreactor 2 L. Proceso downstream preliminar. Caracterización inicial de CQAs. Ensayos no clínicos de seguridad (in vitro e in vivo).</div>
+                    </div>
+                    <div class="pb-tl-item">
+                        <div class="pb-tl-yr">Año 2–4: Desarrollo Clínico Fase I/II (IND/CTRI)</div>
+                        <div class="pb-tl-tx"><strong>Escala piloto 50–200 L.</strong> Primeros 3 lotes GMP para ensayo Fase I. Estudios de clearance viral a escala reducida. Caracterización analítica completa (MS peptide mapping, glicanálisis). Solicitud IND a FDA o CTRI al ISP Chile.</div>
+                    </div>
+                    <div class="pb-tl-item">
+                        <div class="pb-tl-yr">Año 4–7: Desarrollo Fase II/III</div>
+                        <div class="pb-tl-tx"><strong>Escalamiento a producción (500–2.000 L).</strong> Optimización de proceso (DoE, QbD). Validación de limpieza (cleaning validation). Transferencia tecnológica a sitio CMO si aplica. Lotes de consistencia. Inicio ensayo pivotal Fase III.</div>
+                    </div>
+                    <div class="pb-tl-item">
+                        <div class="pb-tl-yr">Año 7–10: BLA/NDA y Aprobación</div>
+                        <div class="pb-tl-tx"><strong>BLA (Biologics License Application)</strong> en FDA o MAA en EMA. <strong>Registro Sanitario ISP Chile</strong>: solicitud con dossier CTD (Common Technical Document) Módulo 3 completo (calidad). Inspección GMP por ISP al sitio de fabricación. Aprobación y lanzamiento.</div>
+                    </div>
+                    <div class="pb-tl-item">
+                        <div class="pb-tl-yr">Posaprobación: Life Cycle Management</div>
+                        <div class="pb-tl-tx"><strong>Cambios post-aprobación</strong> evaluados según variación Tipo I/II (EMA) o PAS/CBE/Annual Report (FDA). <strong>Lote release:</strong> cada lote comercial debe ser liberado por QP (Qualified Person) tras análisis completo. Farmacovigilancia continua.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pb-norma" data-pb-reveal>
+                <div class="pb-norma-ico">📋</div>
+                <div>
+                    <h4>GMP en Chile: ISP, CENABAST y Fabricación por Contrato (CMO)</h4>
+                    <p>Chile no cuenta con capacidad de producción industrial de biofármacos GMP propia a escala de anticuerpos monoclonales. El 100% de los biofármacos usados en Chile son importados de sitios fabricantes en Europa (Alemania, Irlanda, Suiza), EE.UU. y Corea del Sur. El ISP acepta certificados GMP emitidos por agencias de referencia reconocidas (FDA-CDER/CBER, EMA, TGA, PMDA, Health Canada, Anvisa/Brasil, INVIMA/Colombia) para la aprobación del sitio de fabricación, sin necesidad de inspección local, bajo el esquema de equivalencia regulatoria. CENABAST negocia precios con fabricantes para el sector público y supervisa condiciones de transporte y almacenamiento en cadena de frío. El Plan de Gestión de Riesgos (PGR) y el Plan de Farmacovigilancia son requisitos obligatorios del Registro Sanitario para biofármacos bajo Res. ISP Nº 9.256 exenta de 2019.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- NAV INFERIOR -->
+        <div class="pb-page-nav">
+            <a href="ingenieria-genetica.html" class="pb-nbtn">← Unidad 2: Ingeniería Genética</a>
+            <a href="../index.html"            class="pb-nbtn">Módulo Biotecnología</a>
+            <a href="terapias-avanzadas.html"  class="pb-nbtn pri">Siguiente: Terapias Avanzadas →</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>© 2026 PharmaLab Chile — Biotecnología · Unidad 3: Producción Biotecnológica</p>
+            <p class="footer-disclaimer">Contenido educacional universitario. Basado en ICH Q5A, Q5D, Q7, Q8, Q10, normativa ISP/MINSAL vigente. No reemplaza asesoría profesional.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="../../script.js"></script>
+<script src="produccion.js"></script>
+</body>
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virus del Herpes Simple (HSV) — Latencia, Reactivación y Neurología | PharmaLab Chile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="herpes.css">
+</head>
+<body class="hsv-page">
+
+  <!-- NAVBAR -->
+  <nav class="hsv-navbar" id="hsv-navbar">
+    <div class="hsv-nav-inner">
+      <a href="../../index.html" class="hsv-nav-logo">
+        <svg viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="12" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="28" cy="26" r="4" stroke="currentColor" stroke-width="2"/>
+          <line x1="17" y1="14" x2="14" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="23" y1="14" x2="26" y2="23" stroke="currentColor" stroke-width="2"/>
+          <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        Pharma<span class="accent">Lab</span>
+      </a>
+      <div class="hsv-nav-links" id="hsvNavLinks">
+        <a href="../index.html">← Virología</a>
+        <a href="../../quimica/index.html">Química</a>
+        <a href="../../farmacia/index.html">Farmacia</a>
+        <a href="../../biotecnologia/index.html">Biotecnología</a>
+        <a href="#" class="active">Herpes Simple</a>
+      </div>
+      <button class="hsv-nav-toggle" id="hsvNavToggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hsv-hero">
+    <div class="hsv-hero-bg"></div>
+    <canvas id="hsv-hero-canvas"></canvas>
+    <div class="hsv-hero-content">
+      <div class="hsv-badge">Virología · Patógeno 05/10</div>
+      <h1 class="hsv-hero-title">
+        <span class="accent">Virus del Herpes Simple</span><br>
+        HSV-1 / HSV-2 — Herpesviridae
+      </h1>
+      <p class="hsv-hero-desc">
+        Virus ADN de doble cadena con la capacidad única de establecer 
+        <strong>latencia de por vida</strong> en neuronas del sistema nervioso. 
+        Infecta a más del <strong>67% de la población mundial</strong> (HSV-1, OMS 2016). 
+        Es el modelo virológico fundamental para comprender la latencia viral, 
+        la reactivación neuronal y el neurotropismo en patología humana.
+      </p>
+      <div class="hsv-hero-meta">
+        <div class="hsv-meta-item">
+          <span class="hsv-meta-val">~152 kb</span>
+          <span class="hsv-meta-label">Genoma ADN dsDNA lineal</span>
+        </div>
+        <div class="hsv-meta-item">
+          <span class="hsv-meta-val">3,7 mil M</span>
+          <span class="hsv-meta-label">Infectados con HSV-1 (OMS 2016)</span>
+        </div>
+        <div class="hsv-meta-item">
+          <span class="hsv-meta-val">BSL-2</span>
+          <span class="hsv-meta-label">Nivel de bioseguridad</span>
+        </div>
+      </div>
+    </div>
+    <div class="hsv-scroll-hint">
+      <span>Explorar</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- STATS ROW -->
+  <div class="hsv-container">
+    <div class="hsv-stats-row">
+      <div class="hsv-stat-card">
+        <span class="hsv-stat-val" data-target="67" data-suffix="%">0</span>
+        <span class="hsv-stat-label">Prevalencia HSV-1 global (&lt;50 años)</span>
+      </div>
+      <div class="hsv-stat-card">
+        <span class="hsv-stat-val" data-target="491" data-suffix=" M">0</span>
+        <span class="hsv-stat-label">Infectados con HSV-2 (15–49 años)</span>
+      </div>
+      <div class="hsv-stat-card">
+        <span class="hsv-stat-val" data-target="90" data-suffix="%">0</span>
+        <span class="hsv-stat-label">Infectados asintomáticos / ignoran su dx</span>
+      </div>
+      <div class="hsv-stat-card">
+        <span class="hsv-stat-val" data-target="100" data-suffix="+">0</span>
+        <span class="hsv-stat-label">Proteínas codificadas en el genoma</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 1 — ESTRUCTURA 3D -->
+  <section class="hsv-section" id="estructura">
+    <div class="hsv-container">
+      <div class="hsv-section-tag tag-pink">🔬 Estructura del Virión</div>
+      <h2 class="hsv-section-title">Anatomía del <span class="gradient">HSV</span> en 3D</h2>
+      <p class="hsv-section-sub">El virión del HSV es de los más complejos entre los virus animales — 4 capas concéntricas bien definidas y más de 30 glicoproteínas de envoltura. Arrastra para rotar, scroll para zoom.</p>
+
+      <div class="hsv-viewer-wrap">
+        <div>
+          <div class="hsv-canvas-box">
+            <canvas id="hsv-model-canvas"></canvas>
+            <div class="hsv-canvas-label">HSV-1 · Virión completo (~200 nm)</div>
+          </div>
+          <p style="font-size:.78rem;color:#5a6478;margin-top:10px">🖱️ Arrastra para rotar · Scroll para zoom</p>
+        </div>
+        <div class="hsv-struct-info">
+          <div class="hsv-struct-card" style="--stripe-color:#ec4899">
+            <h4><span class="dot" style="background:#ec4899"></span> Envoltura Lipídica y Glicoproteínas</h4>
+            <p>Membrana lipídica derivada del aparato de Golgi celular con >12 glicoproteínas de superficie. Las principales: gB (fusión de membranas, obligatoria), gC (unión inicial a heparán sulfato), gD (unión a receptor de entrada: nectin-1/2, HVEM, 3-O-HS), gH/gL (complejo de fusión). Las glicoproteínas son los principales targets de anticuerpos neutralizantes y de los antivirales en desarrollo.</p>
+          </div>
+          <div class="hsv-struct-card" style="--stripe-color:#f472b6">
+            <h4><span class="dot" style="background:#f472b6"></span> Tegumento — La Capa Exclusiva del HSV</h4>
+            <p>Capa proteica amorfa entre envoltura y cápside, única en herpesviridae. Contiene >20 proteínas viralesque se inyectan directamente al citoplasma al entrar: VP16 (trans-activador del genoma, esencial para el inicio del ciclo lítico), VHS (virion host shutoff, RNasa que degrada ARNm celulares), ICP0 (ubicuitin ligasa E3, deshabilita restricciones celulares antiviral)</p>
+          </div>
+          <div class="hsv-struct-card" style="--stripe-color:#a855f7">
+            <h4><span class="dot" style="background:#a855f7"></span> Cápside Icosaédrica (T=16)</h4>
+            <p>162 capsómeros: 150 hexámeros + 12 pentámeros en los vértices. Diámetro ~125 nm. Proteína mayor de cápside: VP5 (UL19). La cápside del HSV es una de las más grandes y complejas entre virus animales. Las proteínas VP23, VP24, VP26 forman la estructura. El portal de 12 subunidades (UL6) es el punto de entrada/salida del ADN genómico.</p>
+          </div>
+          <div class="hsv-struct-card" style="--stripe-color:#34d399">
+            <h4><span class="dot" style="background:#34d399"></span> Genoma ADN — ~152 kb dsDNA</h4>
+            <p>Genoma lineal de doble cadena más grande entre herpesvirus humanos (~152 kb, ~74 genes). Organizado en 2 regiones únicas (UL y US) flanqueadas por repeticiones invertidas (TRL/IRL, TRS/IRS). Empaquetado a ~500 Mg/mL (presión osmótica enorme). En el núcleo se circulariza y durante la latencia persiste como episoma circular unido a nucleosomas celulares — no se integra al cromosoma del huésped.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2 — LATENCIA NEURONAL -->
+  <section class="hsv-section" id="latencia">
+    <div class="hsv-container">
+      <div class="hsv-section-tag tag-pink">🧠 Tema 1 · Latencia Neuronal</div>
+      <h2 class="hsv-section-title">La <span class="gradient">Latencia</span> — Un Estado de Inmortalidad Viral</h2>
+      <p class="hsv-section-sub">La latencia es la capacidad del HSV de persistir indefinidamente en neuronas sensoriales en un estado transcripcionalmente silencioso, invisible al sistema inmune y resistente a todos los antivirales actuales.</p>
+
+      <div class="hsv-content-grid">
+
+        <div class="hsv-content-card" style="--card-accent:#ec4899">
+          <div class="hsv-card-num">Establecimiento 01</div>
+          <h3>Cómo el HSV Alcanza el Ganglio</h3>
+          <ul>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--hsv-text)">Infección primaria en epitelio:</strong> HSV-1 infecta queratinocitos de mucosa oral/labial (o cornea). HSV-2 infecta epitelio genital. Tras replicación lítica local (con vesículas características), el virus accede a las terminaciones nerviosas libres de las neuronas sensoriales en la dermis.</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--hsv-text)">Transporte axonal retrógrado:</strong> La cápside viral (sin envoltura) es transportada a lo largo del axón en dirección retrógrada hacia el cuerpo neuronal a ~1–4 µm/segundo utilizando los motores moleculares dineína/dinactina en microtúbulos. Este viaje puede durar horas (nervios largos).</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--hsv-text)">Destino según serotipo:</strong> HSV-1 establece latencia preferentemente en el ganglio trigémino (GG, V par craneal) — explica el herpes labial y la queratitis herpética. HSV-2 prefiere los ganglios de raíces dorsales sacros (S2-S4) → herpes genital recurrente. Puede ocurrir inversión: HSV-2 oral (contacto), HSV-1 genital (transmisión orogenital).</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--hsv-text)">Circularización y silenciamiento:</strong> El genoma lineal se circulariza en el núcleo neuronal y se envuelve de nucleosomas con marcas represivas de cromatina (H3K9me2/3, H3K27me3). La proteína VP16 — el trans-activador del ciclo lítico — no es transportada al núcleo neuronal → el ciclo lítico no se inicia → el virus "duerme".</li>
+          </ul>
+        </div>
+
+        <div class="hsv-content-card" style="--card-accent:#f472b6">
+          <div class="hsv-card-num">Biología Molecular 02</div>
+          <h3>LATs — Los ARNs de la Latencia</h3>
+          <ul>
+            <li><span class="bullet" style="background:#f472b6"></span><strong style="color:var(--hsv-text)">LATs (Latency-Associated Transcripts):</strong> Los únicos transcritos virales abundantes durante la latencia. No codifican proteínas (son ARN no codificantes). LAT primario: ARNs nuclear de ~8,3 kb. LAT maduro: intrones estables de ~2,0 kb y 1,5 kb acumulados en el núcleo neuronal. Detectables por RT-PCR en ganglios trigeminos humanos post-mortem en >90% de adultos.</li>
+            <li><span class="bullet" style="background:#f472b6"></span><strong style="color:var(--hsv-text)">Funciones de los LATs:</strong> (1) Anti-apoptóticos: LATs inhiben la apoptosis neuronal manteniendo la célula viva (expresan miRNAs que suprimen expresión de ICP0, ICP4 y bloquean la vía apoptótica). (2) Mantenimiento de la cromatina represiva: favorecen marcas H3K27me3 sobre los promotores de genes IE (immediate-early). (3) Regulación de la reactivación: LATs suprimen la reactivación espontánea, paradójicamente protegiendo al huésped de enfermedad frecuente.</li>
+            <li><span class="bullet" style="background:#f472b6"></span><strong style="color:var(--hsv-text)">miRNAs virales en latencia:</strong> El HSV-1 codifica al menos 27 miRNAs. Durante la latencia, miR-H2 reprime directamente el ARNm de ICP0 (activador del ciclo lítico). miR-H6 reprime ICP4 (factor de transcripción IE esencial). Este silenciamiento post-transcripcional refuerza el mantenimiento de la latencia junto con el silenciamiento epigenético.</li>
+            <li><span class="bullet" style="background:#f472b6"></span><strong style="color:var(--hsv-text)">Estado de "cromatina dinámica":</strong> Durante la latencia, el genoma viral no está completamente inactivo — existe un "respiración" de la cromatina con cambios estocásticos en marcas epigenéticas. Esto explica la reactivación esporádica sin un estímulo externo claro (reactivación subclínica → excreción viral asintomática, principal vector de transmisión).</li>
+          </ul>
+        </div>
+
+        <div class="hsv-content-card" style="--card-accent:#a855f7">
+          <div class="hsv-card-num">Silenciamiento Inmune 03</div>
+          <h3>Evasión Inmune Durante la Latencia</h3>
+          <ul>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--hsv-text)">Privilegio neuronal:</strong> Las neuronas expresan niveles bajos de MHC-I → dificultan la presentación de antígenos virales a LT CD8+. Además, el SNC es un sitio de "inmunoprivilegio relativo" con barrera hematoencefálica que limita el tráfico de células inmunitarias.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--hsv-text)">Ausencia de proteínas líticas:</strong> Durante la latencia el HSV no expresa las proteínas inmunogénicas de las fases IE/E/L del ciclo lítico → los LT CD8+ residentes en el ganglio (llamados "guardianes de la latencia") no tienen antígenos que reconocer. Esta vigilancia en equilibrio es lo que previene la reactivación frecuente.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--hsv-text)">LT CD8+ "centinelas" en el ganglio:</strong> Estudios en humanos y ratones demuestran que LT CD8+ HSV-específicos residen permanentemente en el ganglio trigémino latentemente infectado (Knickelbein et al., Nature 2008). Estos CD8+ reconocen epítopes de gB presentados por MHC-I y producen IFN-γ y granzima B → suprimen reactivación. Cuando disminuyen (inmunosupresión) → reactivación más frecuente.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--hsv-text)">ICP47 — escape de MHC-I:</strong> Durante la fase lítica (reactivación), ICP47 bloquea TAP (transporter associated with antigen processing) → impide el cargamiento de péptidos virales en MHC-I → el virus escapa de LT CD8+ en células epiteliales. La célula NK entonces reconoce la ausencia de MHC-I y ataca, pero el HSV también expresa gC que bloquea C3b del complemento y gE/gI que capturan la región Fc de IgG.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3 — REACTIVACIÓN -->
+  <section class="hsv-section" id="reactivacion">
+    <div class="hsv-container">
+      <div class="hsv-section-tag tag-red">⚡ Tema 2 · Reactivación</div>
+      <h2 class="hsv-section-title">Reactivación — Del <span class="gradient">Silencio al Brote</span></h2>
+      <p class="hsv-section-sub">La reactivación es el proceso por el cual el genoma viral latente reinicia el ciclo lítico completo, genera nuevos viriones que viajan por el axón en dirección anterógrada y causan lesión tisular recurrente.</p>
+
+      <div class="hsv-react-timeline">
+        <div class="hsv-rt-step">
+          <div class="hsv-rt-num" style="color:#ec4899">01</div>
+          <h4>Estímulo Desencadenante</h4>
+          <p>Estrés, UV, fiebre, inmunosupresión, trauma, menstruación, fatiga crónica</p>
+        </div>
+        <div class="hsv-rt-arrow">→</div>
+        <div class="hsv-rt-step">
+          <div class="hsv-rt-num" style="color:#f472b6">02</div>
+          <h4>Cambio Epigenético</h4>
+          <p>Remodelación de cromatina: H3K9me3→H3K4me3 en promotores IE. Reclutamiento de CBP/p300</p>
+        </div>
+        <div class="hsv-rt-arrow">→</div>
+        <div class="hsv-rt-step">
+          <div class="hsv-rt-num" style="color:#a855f7">03</div>
+          <h4>Expresión IE (ICP0/ICP4)</h4>
+          <p>ICP0 deshabilita represiones celulares. ICP4 activa la cascada transcripcional E→L</p>
+        </div>
+        <div class="hsv-rt-arrow">→</div>
+        <div class="hsv-rt-step">
+          <div class="hsv-rt-num" style="color:#34d399">04</div>
+          <h4>Replicación y Transporte</h4>
+          <p>Nuevos viriones. Transporte axonal anterógrado a terminaciones nerviosas en epitelio</p>
+        </div>
+        <div class="hsv-rt-arrow">→</div>
+        <div class="hsv-rt-step">
+          <div class="hsv-rt-num" style="color:#22d3ee">05</div>
+          <h4>Lesión Clínica</h4>
+          <p>Vesículas, úlceras. O excreción viral asintomática (80% de los episodios de reactivación)</p>
+        </div>
+      </div>
+
+      <div class="hsv-content-grid" style="margin-top:48px">
+
+        <div class="hsv-content-card" style="--card-accent:#ec4899">
+          <div class="hsv-card-num">Desencadenantes</div>
+          <h3>Factores que Inducen la Reactivación</h3>
+          <ul>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--hsv-text)">Radiación UV solar:</strong> El estímulo mejor documentado para HSV-1 labial. La luz UV activa la vía NFκB y SAPK/JNK en neuronas, que activan la transcripción de genes IE del HSV. Ensayos clínicos con fotoprotección labial (SPF 30+) reducen significativamente episodios de herpes labial en personas con antecedentes.</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--hsv-text)">Estrés psicológico:</strong> El estrés activa el eje HPA (hipotálamo-pituitaria-adrenal) → liberación de glucocorticoides → inmunosupresión relativa (reducción de LT CD8+ en ganglio, disminución de IFN-γ). Estudios longitudinales muestran correlación entre estrés percibido y frecuencia de reactivación de HSV-2 (Levenson et al.).</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--hsv-text)">Procedimientos neurológicos/dentales:</strong> Cualquier trauma o manipulación del nervio trigémino (extracciones dentales, cirugía de cráneo base, inyecciones anestésicas locales) puede desencadenar reactivación de HSV-1 por estimulación directa del ganglio trigémino. Relevante en planificación de procedimientos odontológicos en pacientes con herpes oral frecuente.</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--hsv-text)">Inmunosupresión iatrogénica:</strong> Quimioterapia, trasplante de órganos sólidos o de precursores hematopoyéticos (TCPH), terapia con anti-CD20 (rituximab), corticosteroides sistémicos, anti-TNF. En TCPH: profilaxis con aciclovir/valaciclovir es mandatoria (Categoría 1A, ECIL guidelines) por riesgo de herpes severo diseminado.</li>
+          </ul>
+        </div>
+
+        <div class="hsv-content-card" style="--card-accent:#f472b6">
+          <div class="hsv-card-num">Mecanismo Molecular</div>
+          <h3>El Interruptor Epigenético de la Reactivación</h3>
+          <ul>
+            <li><span class="bullet" style="background:#f472b6"></span><strong style="color:var(--hsv-text)">Remodelación de cromatina:</strong> Durante la reactivación, se produce un "cambio de estado" en la cromatina del genoma viral: la histona demetilasa LSD1 (también llamada KDM1A) elimina la marca represiva H3K9me2 de los promotores IE, particularmente del promotor de ICP0. Esto permite la unión de factores de transcripción activadores.</li>
+            <li><span class="bullet" style="background:#f472b6"></span><strong style="color:var(--hsv-text)">Rol central de ICP0:</strong> ICP0 es una ubiquitina-ligasa E3 RING que degrada múltiples represores antivirales celulares: PML (promyelocytic leukemia protein, componente de los PML nuclear bodies/ND10), SP100, ATRX, DAXX. Sin ICP0, el genoma viral permanece silenciado por estos represores celulares. ICP0 actúa como "llave maestra" del ciclo lítico.</li>
+            <li><span class="bullet" style="background:#f472b6"></span><strong style="color:var(--hsv-text)">Cascada transcripcional IE→E→L:</strong> Tras activación de ICP0/ICP4/ICP27 (genes IE, expresados sin síntesis proteica nueva), se activan genes tempranos (E, Early): timidina quinasa (TK, target de aciclovir), ADN polimerasa viral (UL30, target de foscarnet). Luego genes tardíos (L, Late): proteínas estructurales de cápside, tegumento, glicoproteínas de envoltura.</li>
+            <li><span class="bullet" style="background:#f472b6"></span><strong style="color:var(--hsv-text)">Excreción viral asintomática:</strong> El 80% de los episodios de reactivación de HSV-2 son subclínicos — el paciente no tiene síntomas pero excreta virus infecciosos desde mucosas genitales. Herramienta diagnóstica: PCR de hisopado en múltiples días consecutivos ("diario de excreción"). Esta excreción asintomática es la causa principal de transmisión sexual del HSV-2 a parejas seronegativas.</li>
+          </ul>
+        </div>
+
+        <div class="hsv-content-card" style="--card-accent:#a855f7">
+          <div class="hsv-card-num">Transporte Axonal 03</div>
+          <h3>Viaje del Virus a lo Largo del Axón</h3>
+          <ul>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--hsv-text)">Transporte anterógrado (reactivación):</strong> Los nuevos viriones ensamblados en el núcleo neuronal son transportados desde el cuerpo celular neuronal hacia las terminaciones axonales periféricas. Utilizan motores kinesina (KIF1A, KIF5B) sobre microtúbulos. Velocidad: ~1-3 µm/s. El transporte selectivo al axón vs. a las dendritas determina el sitio de recurrencia.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--hsv-text)">Modelo de transporte "married" vs "separate":</strong> Debate activo en el campo: (1) Modelo "married": cápside + envoltura viajan juntos como virión completo en vesícula. (2) Modelo "separate": cápside viaja sola en microtúbulo y se re-envuelve en las terminaciones nerviosas. Evidencia actual favorece el modelo "separate" para axones largos, con re-envoltura en terminaciones pre-sinápticas.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--hsv-text)">Especificidad del sitio de recurrencia:</strong> El herpes genital recidiva consistentemente en la misma zona anatómica porque el ganglio sacro tiene innervación dermatomal fija. Esto refleja que el transporte anterógrado del virus sigue siempre el mismo tracto axonal desde el mismo cuerpo neuronal. La "memoria" de la recurrencia es en realidad neuroanatómica.</li>
+            <li><span class="bullet" style="background:#a855f7"></span><strong style="color:var(--hsv-text)">Propagación neurona a neurona:</strong> En infecciones graves (encefalitis, meningitis) el virus puede propagarse célula a célula entre neuronas a través de sinapsis, sin pasar por el espacio extracelular. Esta vía de propagación sináptica es especialmente resistente a los anticuerpos neutralizantes (el virus nunca queda expuesto).</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4 — NEUROLOGÍA -->
+  <section class="hsv-section" id="neurologia">
+    <div class="hsv-container">
+      <div class="hsv-section-tag tag-purple">🧬 Tema 3 · Neurología y Manifestaciones</div>
+      <h2 class="hsv-section-title">HSV y el <span class="gradient">Sistema Nervioso</span></h2>
+      <p class="hsv-section-sub">El HSV es el virus más importante en neurología infecciosa. Su capacidad de invadir el SNC produce desde meningitis benigna hasta encefalitis necrotizante con mortalidad >70% sin tratamiento.</p>
+
+      <div class="hsv-neuro-grid">
+
+        <div class="hsv-neuro-card" style="--neuro-color:#ec4899;--neuro-dim:rgba(236,72,153,0.12)">
+          <div class="hsv-neuro-icon">💋</div>
+          <h4>Herpes Labial (HSV-1)</h4>
+          <p>70–90% de los casos de herpes oral recurrente. Vesículas en el borde bermellón labial, precedidas por pródromos (ardor, hormigueo 6–24h antes). 1–2 episodios/año en promedio. Cicatriz no habitual. Diagnóstico clínico en mayoría de casos; PCR si hay duda. Tratamiento: aciclovir/valaciclovir tópico u oral reduce duración 1–2 días si se inicia en pródromo.</p>
+          <div class="hsv-neuro-detail">HSV-1 · Ganglio Trigémino (V2)</div>
+        </div>
+
+        <div class="hsv-neuro-card" style="--neuro-color:#f472b6;--neuro-dim:rgba(244,114,182,0.12)">
+          <div class="hsv-neuro-icon">🦠</div>
+          <h4>Herpes Genital (HSV-2)</h4>
+          <p>HSV-2 causa 70–80% del herpes genital aunque HSV-1 va en aumento (hasta 30–40% en adultos jóvenes por transmisión orogenital). Primoinfección: úlceras dolorosas múltiples, adenopatía inguinal, disuria. Recurrencias: 80–90% de HSV-2 vs 20–30% de HSV-1 genital. ITS más prevalente en el mundo (491 millones de infectados con HSV-2). Estigma social relevante: afecta calidad de vida y relaciones.</p>
+          <div class="hsv-neuro-detail">HSV-2 · Ganglios Sacros S2-S4</div>
+        </div>
+
+        <div class="hsv-neuro-card" style="--neuro-color:#a855f7;--neuro-dim:rgba(168,85,247,0.12)">
+          <div class="hsv-neuro-icon">👁️</div>
+          <h4>Queratoconjuntivitis Herpética</h4>
+          <p>Primera causa infecciosa de ceguera corneal en países desarrollados. HSV-1 afecta el nervio oftálmico (V1). Ulcera corneal dendrítica (patognomónica, visible con fluoresceína bajo lámpara de hendidura). Recurrencias repetidas → cicatrices estromales → opacidad corneal permanente (queratitis disciforme estromal). Tratamiento: aciclovir tópico (gel oftálmico 3%); anti-inflamatorios contraindicados en fase epitelial activa. Profilaxis: aciclovir oral 400 mg/d en recurrentes frecuentes.</p>
+          <div class="hsv-neuro-detail">HSV-1 · Nervio Oftálmico (V1)</div>
+        </div>
+
+        <div class="hsv-neuro-card" style="--neuro-color:#ef4444;--neuro-dim:rgba(239,68,68,0.12)">
+          <div class="hsv-neuro-icon">🧠</div>
+          <h4>Encefalitis Herpética (HSE)</h4>
+          <p>La encefalitis viral más grave y más frecuente en países desarrollados. 1–3 casos/millón/año. Mortalidad sin tratamiento: >70%. Con aciclovir IV: mortalidad ~15–20%, pero secuelas neurológicas graves en 50–70% sobrevivientes. Fisiopatología: el virus alcanza el lóbulo temporal (hipocampo, amígdala) por el bulbo olfatorio o por reactivación desde el ganglio trigémino con extensión intracraneal por la rama meníngea del V par. RM: hiperintensidad T2/FLAIR en lóbulo temporal (medial) = hallazgo clásico. Diagnóstico: PCR de LCR (sensibilidad >96%, especificidad ~99%). Tratamiento: aciclovir IV 10 mg/kg/8h × 14–21 días. Iniciar INMEDIATAMENTE ante sospecha clínica, antes de confirmar PCR.</p>
+          <div class="hsv-neuro-detail">HSV-1 (90% de casos) · Lóbulo Temporal</div>
+        </div>
+
+        <div class="hsv-neuro-card" style="--neuro-color:#f97316;--neuro-dim:rgba(249,115,22,0.12)">
+          <div class="hsv-neuro-icon">🩺</div>
+          <h4>Meningitis de Mollaret (HSV-2)</h4>
+          <p>Meningitis aséptica recurrente benigna. HSV-2 es la causa en hasta 85% de los casos. Episodios de meningitis (cefalea intensa, rigidez de nuca, fotofobia, fiebre) que duran 3–7 días y se autolimitan, con recurrencia. LCR: pleocitosis linfocitaria + células de Mollaret (monocitos grandes irregulares, patognomónicas). PCR HSV-2 en LCR confirma diagnóstico. Tratamiento: aciclovir IV agudo; profilaxis con valaciclovir oral reduce recurrencias. No deja secuelas neurológicas permanentes.</p>
+          <div class="hsv-neuro-detail">HSV-2 · Meninges, Autolimitada</div>
+        </div>
+
+        <div class="hsv-neuro-card" style="--neuro-color:#34d399;--neuro-dim:rgba(52,211,153,0.12)">
+          <div class="hsv-neuro-icon">👶</div>
+          <h4>Herpes Neonatal</h4>
+          <p>Infección devastadora del recién nacido adquirida en el parto (85%) o intraútero (5%) o postnatal (10%). Incidencia: 1 en 3.200–10.000 nacimientos. HSV-2 predomina (hasta 75%). 3 formas: localizada (piel/ojos/boca, pronóstico bueno), sistema nervioso central (mortalidad 15% con tx, secuelas en 70% si no se trata) y diseminada (sepsis viral, afectación multiorgánica, mortalidad >30% aún con tratamiento). Prevención: aciclovir supresivo en madre desde semana 36 si antecedente de herpes genital. Cesárea si lesiones activas en el parto.</p>
+          <div class="hsv-neuro-detail">HSV-2 (mayoritario) · SNC Neonatal</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 5 — TRATAMIENTO Y ANTIVIRALES -->
+  <section class="hsv-section" id="tratamiento">
+    <div class="hsv-container">
+      <div class="hsv-section-tag tag-green">💊 Tema 4 · Antivirales y Tratamiento</div>
+      <h2 class="hsv-section-title">Antivirales contra el <span class="gradient">HSV</span> — Mecanismos y Resistencia</h2>
+      <p class="hsv-section-sub">Los análogos de nucleósidos (aciclovir y sus derivados) son el pilar del tratamiento desde 1982. Todos inhiben la ADN polimerasa viral pero NO eliminan el virus latente en los ganglios.</p>
+
+      <div class="hsv-vax-table-wrap">
+        <table class="hsv-vax-table">
+          <thead>
+            <tr>
+              <th>Antiviral</th>
+              <th>Mecanismo</th>
+              <th>Vía / BD oral</th>
+              <th>Indicación Principal</th>
+              <th>Observaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="vax-name">Aciclovir (ACV)</td>
+              <td class="vax-tech">Análogo guanosina → inhibe ADN-pol viral (terminador de cadena)</td>
+              <td>IV / oral / tópico · BD oral: ~15–30%</td>
+              <td>Herpes labial, genital, encef. herpética, herpes neonatal, queratitis</td>
+              <td>Activación selectiva por TK viral (thymidine kinase) — baja toxicidad celular. Nefrotoxicidad IV si infusión rápida o hipohidratación. Gold standard histórico.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Valaciclovir (VACV)</td>
+              <td class="vax-tech">Profármaco (L-valil éster) de aciclovir</td>
+              <td>Oral · BD: ~55% (3–5× ACV oral)</td>
+              <td>Herpes genital recurrente, supresivo crónico, herpes labial, profilaxis en inmunocomp.</td>
+              <td>Mejor biodisponibilidad oral que ACV → mayor comodidad posológica. Equivalente IV a dosis altas en trasplante. Estándar actual para HSV oral/genital.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Famciclovir (FCV)</td>
+              <td class="vax-tech">Profármaco de penciclovir → inhibe ADN-pol viral</td>
+              <td>Oral · BD: ~77% (penciclovir)</td>
+              <td>Herpes genital recurrente, herpes zóster, HSV en inmunodeprimidos</td>
+              <td>Semivida intracelular de penciclovir más larga que ACV → posología menos frecuente. No disponible IV.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Foscarnet (PFA)</td>
+              <td class="vax-tech">Análogo del pirofosfato → inhibe ADN-pol directamente (sin activación por TK)</td>
+              <td>IV exclusivamente</td>
+              <td>HSV/CMV resistente a ACV (mutaciones TK o ADN-pol). VIH con coinfección HSV/CMV grave</td>
+              <td>Nefrotoxicidad significativa (obligatorio hidratación IV). Hipomagnesemia, hipofosfatemia. Reservado para resistencia a ACV o pacientes gravemente inmunodeprimidos.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Cidofovir</td>
+              <td class="vax-tech">Análogo deoxicitidina monofosfato → inhibe ADN-pol (sin activación por TK)</td>
+              <td>IV o tópico (intralesional)</td>
+              <td>HSV/CMV resistente a ACV y foscarnet. Condilomas (VPH) coadyuvante</td>
+              <td>Alta nefrotoxicidad (requiere probenecid + SF IV). Uso limitado a casos refractarios.</td>
+            </tr>
+            <tr>
+              <td class="vax-name">Pritelivir (experimental)</td>
+              <td class="vax-tech">Inhibidor de la helicasa-primasa viral (UL5/UL52/UL8) — mecanismo distinto a ACV</td>
+              <td>Oral · BD alta</td>
+              <td>HSV genital resistente a ACV/foscarnet. Mayor reducción de excreción viral asintomática que valaciclovir</td>
+              <td>Fase III en curso (2023-2025). Activo contra cepas TK-negativas resistentes a ACV. Primer inhibidor de helicasa-primasa en desarrollo avanzado.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="hsv-content-grid" style="margin-top:48px">
+
+        <div class="hsv-content-card" style="--card-accent:#ec4899">
+          <div class="hsv-card-num">Mecanismo ACV</div>
+          <h3>Activación Selectiva del Aciclovir — Por Qué es Seguro</h3>
+          <ul>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--hsv-text)">Paso 1 — Timidina kinasa viral (TK):</strong> El aciclovir (ACV) es un profármaco inactivo. La TK viral (UL23) lo fosforila a ACV-monofosfato con eficiencia 3.000 veces mayor que la TK celular. Esta especificidad enzimática explica la selectividad del fármaco hacia células infectadas.</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--hsv-text)">Paso 2 — Kinasas celulares:</strong> ACV-monofosfato es fosforilado a ACV-difosfato y ACV-trifosfato (ACV-TP) por kinasas celulares (timidilato kinasa, guanilato kinasa). ACV-TP es el metabolito activo.</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--hsv-text)">Paso 3 — Incorporación y terminación:</strong> ACV-TP compite con dGTP para incorporarse en la cadena de ADN en síntesis por la ADN polimerasa viral (UL30). Al incorporarse, ACV-TP carece del grupo 3'-OH necesario para continuar la elongación → terminación irreversible de la cadena. Además, ACV-TP queda "atrapado" en la polimerasa, inhibiéndola competitivamente.</li>
+            <li><span class="bullet" style="background:#ec4899"></span><strong style="color:var(--hsv-text)">Limitación fundamental:</strong> El ACV inhibe la replicación del ADN viral pero NO afecta el genoma viral latente (episoma circular) que existe sin replicarse en el núcleo neuronal. Por eso, el tratamiento supresivo indefinido (ej. valaciclovir 500 mg/día) controla las reactivaciones pero nunca elimina el virus del ganglio. No existe cura para la infección por HSV.</li>
+          </ul>
+        </div>
+
+        <div class="hsv-content-card" style="--card-accent:#f472b6">
+          <div class="hsv-card-num">Resistencia</div>
+          <h3>Mecanismos de Resistencia al Aciclovir</h3>
+          <ul>
+            <li><span class="bullet" style="background:#f472b6"></span><strong style="color:var(--hsv-text)">Mutaciones en TK (95% de los casos):</strong> Mutaciones frameshift o missense en UL23 que reducen o eliminan la actividad de TK → ACV no es fosforilado → no hay ACV-TP activo. Cepas TK-negativas son las más resistentes. Menos virulentas en inmunocompetentes pero graves en inmunodeprimidos.</li>
+            <li><span class="bullet" style="background:#f472b6"></span><strong style="color:var(--hsv-text)">Mutaciones en ADN polimerasa UL30 (~5%):</strong> Mutaciones en los dominios de unión a ACV-TP de la polimerasa → menor afinidad por ACV-TP o menor incorporación. Estas cepas mantienen la TK funcional → sensibles a la activación por TK pero la polimerasa no es inhibida eficientemente.</li>
+            <li><span class="bullet" style="background:#f472b6"></span><strong style="color:var(--hsv-text)">Epidemiología de la resistencia:</strong> En inmunocompetentes: resistencia <0,5% (TK no es bajo presión selectiva suficiente). En inmunodeprimidos con tratamiento prolongado (SIDA, TCPH, trasplante): resistencia hasta 5–7% (alta replicación + presión selectiva mantenida). Screening de resistencia: fenotípico (IC50 en placa) o genotípico (secuenciación UL23/UL30).</li>
+            <li><span class="bullet" style="background:#f472b6"></span><strong style="color:var(--hsv-text)">Manejo de la resistencia:</strong> Foscarnet IV (no requiere TK) es la alternativa de primera línea ante resistencia a ACV. Cidofovir IV en segunda línea. Pritelivir (inhibidor helicasa-primasa) activo contra cepas TK-negativas — en fase III de aprobación (2024-2025). Brincidofovir (CMX001, oral, profármaco de cidofovir) también en estudio.</li>
+          </ul>
+        </div>
+
+        <div class="hsv-content-card" style="--card-accent:#34d399">
+          <div class="hsv-card-num">Vacuna — El Santo Grial</div>
+          <h3>¿Por Qué No Existe Aún una Vacuna contra el HSV?</h3>
+          <ul>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--hsv-text)">El problema de la latencia:</strong> Una vacuna profiláctica ideal induciría anticuerpos neutralizantes + LT CD8+ que prevengan la infección. Sin embargo, el HSV establece latencia rápidamente (en días) y puede diseminarse neurona a neurona sin ser visible al sistema inmune. Ningún nivel de anticuerpos puede "limpiar" el virus ya latente en el ganglio.</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--hsv-text)">Historia de fracasos:</strong> La vacuna Herpevac (glicoproteína D subunidad + AS04) — el ensayo más avanzado — fue eficaz en mujeres HSV-1/HSV-2 seronegativas (76% eficacia contra HSV-1 genital) pero no eficaz en otras poblaciones. No avanzó a aprobación. Al menos 7 vacunas candidatas fallaron en ensayos de fase II/III entre 1994 y 2022.</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--hsv-text)">Candidatos actuales más prometedores (2023–2025):</strong> mRNA-1608 (Moderna): vacuna ARNm de poliantígeno (gD2 + UL19 + UL25 + UL47) — ensayo fase I iniciado 2023. GEN-003 (Genocea): vacuna T-cell (ICP4 + gD2 + saponina Matrix-M) — reducción de excreción viral en fase II. BNT163a: BioNTech — plataforma ARNm anti-HSV-2, preclínico/fase I 2024.</li>
+            <li><span class="bullet" style="background:#34d399"></span><strong style="color:var(--hsv-text)">Vacuna terapéutica vs profiláctica:</strong> La investigación también busca una vacuna terapéutica que reduzca recurrencias en infectados. Objetivo: inducir LT CD8+ HSV-específicos de alta calidad que "refuercen" los CD8+ centinelas del ganglio. El éxito de las plataformas ARNm (COVID) ha revitalizado la investigación vacunal contra el HSV con nuevas esperanzas.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CALLOUT CHILE -->
+  <section class="hsv-section" id="chile">
+    <div class="hsv-container">
+      <div class="hsv-section-tag tag-pink">🇨🇱 Contexto Nacional</div>
+      <h2 class="hsv-section-title">Herpes Simple en <span class="gradient">Chile</span></h2>
+      <p class="hsv-section-sub">El HSV es una infección extremadamente prevalente en Chile, con impacto especial en salud sexual, oftalmología y neonatología.</p>
+
+      <div class="hsv-callout">
+        <h3>🇨🇱 Relevancia Clínica y Epidemiológica en Chile</h3>
+        <p>
+          El HSV-2 es la principal ITS ulcerativa en Chile. El <strong>MINSAL</strong> la incluye en la vigilancia epidemiológica de ITS aunque sin notificación obligatoria individual. 
+          La coinfección <strong>HSV-2/VIH</strong> es especialmente relevante: el HSV-2 aumenta 3× el riesgo de adquirir VIH por vía sexual (las úlceras genitales son puerta de entrada) y el VIH acelera la reactivación del HSV-2. 
+          En <strong>queratología</strong>, el Hospital Barros Luco, el Hospital del Salvador y la Clínica Las Condes son centros de referencia para queratitis herpética con protocolos de aciclovir tópico y oral supresor.
+          El <strong>herpes neonatal</strong> es una emergencia pediátrica reconocida por las guías del <strong>Ministerio de Salud y la Sociedad Chilena de Infectología Pediátrica</strong> — protocolos de aciclovir neonatal IV disponibles en todos los hospitales terciarios del país.
+          La <strong>encefalitis herpética</strong> es la encefalitis viral más frecuente diagnosticada en Chile — el Hospital Clínico de la Universidad de Chile y el Hospital Dr. Sótero del Río cuentan con PCR HSV en LCR disponible 24/7 para diagnóstico de urgencia.
+          En el sistema <strong>FONASA</strong>, aciclovir y valaciclovir están disponibles en el formulario nacional.
+          No existe programa de vacunación nacional contra el HSV dado que no hay vacuna aprobada globalmente.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM NAV -->
+  <div class="hsv-container" style="padding-bottom:60px">
+    <div class="hsv-bottom-nav">
+      <a href="../index.html" class="hsv-nav-btn">← Volver a Virología</a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#estructura"   class="hsv-nav-btn">Estructura 3D ↑</a>
+        <a href="#latencia"     class="hsv-nav-btn">Latencia ↑</a>
+        <a href="#reactivacion" class="hsv-nav-btn">Reactivación ↑</a>
+        <a href="#neurologia"   class="hsv-nav-btn">Neurología ↑</a>
+        <a href="#tratamiento"  class="hsv-nav-btn">Antivirales ↑</a>
+        <a href="#chile"        class="hsv-nav-btn">Chile ↑</a>
+      </div>
+      <a href="../../index.html" class="hsv-nav-btn">Inicio →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="hsv-footer">
+    <div class="hsv-container">
+      <div class="hsv-footer-inner">
+        <p>© 2026 PharmaLab Chile · Contenido basado en OMS, CDC, IHMF, ISP Chile, NEJM, Lancet, Nature Reviews Microbiology, J Virology</p>
+        <p class="disclaimer">Contenido educacional. No reemplaza asesoría médica profesional.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="herpes.js"></script>
+</body>
+</html>

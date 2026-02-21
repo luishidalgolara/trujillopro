@@ -1,0 +1,41 @@
+/* Química Module Styles */
+.text-gradient-quimica {
+    background: linear-gradient(135deg, #00e5a0, #00c98a, #33ffbb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tag-quimica {
+    background: rgba(0, 229, 160, 0.12);
+    color: #00e5a0;
+}
+
+.module-quimica .content-card:hover {
+    border-color: rgba(0, 229, 160, 0.25);
+}
+
+.module-quimica .nav-link.active {
+    color: #00e5a0;
+    background: rgba(0, 229, 160, 0.08);
+}
+
+.card-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+}
+
+.card-topics span {
+    padding: 3px 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 50px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+.module-quimica .content-card:hover .card-topics span {
+    background: rgba(0, 229, 160, 0.08);
+    color: #00e5a0;
+}

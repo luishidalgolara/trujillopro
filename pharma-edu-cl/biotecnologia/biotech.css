@@ -1,0 +1,41 @@
+/* Biotecnología Module Styles */
+.text-gradient-biotech {
+    background: linear-gradient(135deg, #f0a030, #d08820, #ffb848);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tag-biotech {
+    background: rgba(240, 160, 48, 0.12);
+    color: #f0a030;
+}
+
+.module-biotech .content-card:hover {
+    border-color: rgba(240, 160, 48, 0.25);
+}
+
+.module-biotech .nav-link.active {
+    color: #f0a030;
+    background: rgba(240, 160, 48, 0.08);
+}
+
+.card-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+}
+
+.card-topics span {
+    padding: 3px 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 50px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+.module-biotech .content-card:hover .card-topics span {
+    background: rgba(240, 160, 48, 0.08);
+    color: #f0a030;
+}

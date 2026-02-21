@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lowpoly Street Scene 3D — Plataforma de Diseño Urbano</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🏙️</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando calle lowpoly...</div>
+    </div>
+
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:12px">
+            <span style="font-size:1.5rem">🏘️</span>
+            <div>
+                <h1>Plataforma de Diseño Urbano 3D</h1>
+                <span>Lowpoly Street Scene — Escena de Calle Estilizada — Análisis de Capas</span>
+            </div>
+        </div>
+        <div class="header-r">
+            <div class="fps" id="fps">-- FPS</div>
+            <div class="sdot"></div>
+        </div>
+    </div>
+
+    <canvas id="mainCanvas"></canvas>
+
+    <div class="hl-panel">
+        <div class="hl-title">🔷 Elementos de la Escena</div>
+        <button class="hl-btn active" data-part="all">
+            <span class="hl-dot" style="background:#a8ff00"></span>Escena completa
+        </button>
+
+        <div class="hl-sep">— Infraestructura Vial —</div>
+        <button class="hl-btn" data-part="road">
+            <span class="hl-dot" style="background:#141414"></span>Calzada y asfalto
+        </button>
+        <button class="hl-btn" data-part="sidewalk">
+            <span class="hl-dot" style="background:#cfcfcf"></span>Aceras y bordillos
+        </button>
+
+        <div class="hl-sep">— Entorno Urbano —</div>
+        <button class="hl-btn" data-part="vegetation">
+            <span class="hl-dot" style="background:#a8ff00"></span>Vegetación y zonas verdes
+        </button>
+        <button class="hl-btn" data-part="buildings">
+            <span class="hl-dot" style="background:#404040"></span>Edificios y fachadas
+        </button>
+        <button class="hl-btn" data-part="details">
+            <span class="hl-dot" style="background:#181818"></span>Mobiliario y detalles
+        </button>
+    </div>
+
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">🔷 Especificaciones Técnicas</div>
+        <div class="ip-name" id="ipN">Lowpoly Street Scene</div>
+        <div class="ip-sys" id="ipS">Escena de Calle Estilizada — Diseño Lowpoly</div>
+        <div class="ip-desc" id="ipD">Modelo 3D de escena de calle urbana en estilo lowpoly, del mismo autor que la intersección. Representa un tramo de calle con edificios de fachada, aceras, vegetación y mobiliario urbano. Geometría poligonal simplificada y 8 materiales de color sólido sin texturas para máxima eficiencia. El formato compacto (36KB de geometría) lo hace ideal para visualización web en tiempo real.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Meshes</div><div class="st-val">11 objetos</div></div>
+            <div class="st-card"><div class="st-label">Materiales</div><div class="st-val">8 colores</div></div>
+            <div class="st-card"><div class="st-label">Tamaño</div><div class="st-val">36KB geo.</div></div>
+            <div class="st-card"><div class="st-label">Estilo</div><div class="st-val">Lowpoly puro</div></div>
+        </div>
+    </div>
+
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Vista frontal">👁️</button>
+        <button class="cb" id="bTo" title="Vista superior">⬆️</button>
+        <button class="cb" id="bSi" title="Vista lateral">👈</button>
+        <button class="cb" id="bIso" title="Vista isométrica">🔍</button>
+        <div class="cd"></div>
+        <button class="cb" id="bExp" title="Vista explosionada">💥</button>
+        <button class="cb" id="bPP" title="Efectos visuales">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Efectos Visuales</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="20"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="130"></div>
+        <div class="pp-row"><label>Saturación</label><input type="range" id="ppM" min="0" max="100" value="55"></div>
+        <div class="pp-row"><label>Viñeta</label><input type="range" id="ppV" min="0" max="100" value="22"></div>
+    </div>
+
+    <div class="explode-slider" id="expSlider">
+        <label>Explosionar</label>
+        <input type="range" id="expRange" min="0" max="100" value="0" orient="vertical">
+    </div>
+
+    <div class="credit">
+        Modelo 3D: <a href="https://sketchfab.com/3d-models/lowpoly-street-scene-2fa7418bb1b94e29a9be1307148a97ee" target="_blank">"lowpoly street scene"</a><br>
+        Por <a href="https://sketchfab.com/_Tymon" target="_blank">_Tymon</a> — Licencia CC-BY-4.0
+    </div>
+
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>

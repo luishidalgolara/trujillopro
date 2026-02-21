@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escena Urbana 3D — Plataforma de Visualización Arquitectónica</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🏙️</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando escena urbana 3D...</div>
+    </div>
+
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:12px">
+            <span style="font-size:1.5rem">🌆</span>
+            <div>
+                <h1>Plataforma de Visualización Arquitectónica 3D</h1>
+                <span>Escena Urbana — Acera y Paso de Peatones — Análisis de Materiales</span>
+            </div>
+        </div>
+        <div class="header-r">
+            <div class="fps" id="fps">-- FPS</div>
+            <div class="sdot"></div>
+        </div>
+    </div>
+
+    <canvas id="mainCanvas"></canvas>
+
+    <div class="hl-panel">
+        <div class="hl-title">🏙️ Elementos de la Escena</div>
+        <button class="hl-btn active" data-part="all">
+            <span class="hl-dot" style="background:#00d9ff"></span>Escena completa
+        </button>
+
+        <div class="hl-sep">— Superficies Urbanas —</div>
+        <button class="hl-btn" data-part="pavement">
+            <span class="hl-dot" style="background:#555e6b"></span>Pavimento y asfalto
+        </button>
+        <button class="hl-btn" data-part="concrete">
+            <span class="hl-dot" style="background:#b8c5d6"></span>Concreto y aceras
+        </button>
+        <button class="hl-btn" data-part="markings">
+            <span class="hl-dot" style="background:#e85050"></span>Señalización vial
+        </button>
+        <button class="hl-btn" data-part="ground">
+            <span class="hl-dot" style="background:#5a7a4a"></span>Suelo y vegetación
+        </button>
+
+        <div class="hl-sep">— Elementos Complementarios —</div>
+        <button class="hl-btn" data-part="pedestrians">
+            <span class="hl-dot" style="background:#ff9966"></span>Peatones y figuras
+        </button>
+        <button class="hl-btn" data-part="details">
+            <span class="hl-dot" style="background:#ffd700"></span>Elementos de detalle
+        </button>
+    </div>
+
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">🏙️ Especificaciones Técnicas</div>
+        <div class="ip-name" id="ipN">Acera y Paso de Peatones</div>
+        <div class="ip-sys" id="ipS">Escena Urbana 3D — Entorno Arquitectónico</div>
+        <div class="ip-desc" id="ipD">Modelo 3D de alta fidelidad de una escena urbana contemporánea que incluye aceras, paso de peatones (cruce de cebra), pavimento asfaltado, vegetación y elementos peatonales. El modelo presenta múltiples materiales PBR con texturas reales de alta resolución para pavimento, concreto, terrazo y superficies pulidas, logrando una representación realista del entorno urbano.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Meshes</div><div class="st-val">151 objetos</div></div>
+            <div class="st-card"><div class="st-label">Materiales</div><div class="st-val">17 PBR</div></div>
+            <div class="st-card"><div class="st-label">Texturas</div><div class="st-val">5 HD</div></div>
+            <div class="st-card"><div class="st-label">Licencia</div><div class="st-val">CC-BY-4.0</div></div>
+        </div>
+    </div>
+
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Vista frontal">👁️</button>
+        <button class="cb" id="bTo" title="Vista superior">⬆️</button>
+        <button class="cb" id="bSi" title="Vista lateral">👈</button>
+        <button class="cb" id="bIso" title="Vista isométrica">🔍</button>
+        <div class="cd"></div>
+        <button class="cb" id="bExp" title="Vista explosionada">💥</button>
+        <button class="cb" id="bPP" title="Efectos visuales">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Efectos Visuales</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="15"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="130"></div>
+        <div class="pp-row"><label>Ambiente</label><input type="range" id="ppM" min="0" max="100" value="35"></div>
+        <div class="pp-row"><label>Viñeta</label><input type="range" id="ppV" min="0" max="100" value="20"></div>
+    </div>
+
+    <div class="explode-slider" id="expSlider">
+        <label>Explosionar</label>
+        <input type="range" id="expRange" min="0" max="100" value="0" orient="vertical">
+    </div>
+
+    <div class="credit">
+        Modelo 3D: <a href="https://sketchfab.com/3d-models/31bad475158f4825b2bdf18e0c055036" target="_blank">"人行道和斑马线"</a><br>
+        Por <a href="https://sketchfab.com/mrdt.club" target="_blank">MrdT</a> — Licencia CC-BY-4.0
+    </div>
+
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>

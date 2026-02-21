@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guard Rail 3D — Plataforma Técnica de Seguridad Vial</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🛡️</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando guardarraíl 3D...</div>
+    </div>
+
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:12px">
+            <span style="font-size:1.5rem">🛡️</span>
+            <div>
+                <h1>Plataforma Técnica de Seguridad Vial 3D</h1>
+                <span>Guard Rail — Barrera de Contención — Análisis de Componentes PBR</span>
+            </div>
+        </div>
+        <div class="header-r">
+            <div class="fps" id="fps">-- FPS</div>
+            <div class="sdot"></div>
+        </div>
+    </div>
+
+    <canvas id="mainCanvas"></canvas>
+
+    <div class="hl-panel">
+        <div class="hl-title">🛡️ Componentes del Guard Rail</div>
+        <button class="hl-btn active" data-part="all">
+            <span class="hl-dot" style="background:#c8d8e8"></span>Estructura completa
+        </button>
+
+        <div class="hl-sep">— Elementos Estructurales —</div>
+        <button class="hl-btn" data-part="rail">
+            <span class="hl-dot" style="background:#d0dce8"></span>Viga de contención (W-beam)
+        </button>
+        <button class="hl-btn" data-part="posts">
+            <span class="hl-dot" style="background:#8899aa"></span>Postes de anclaje
+        </button>
+        <button class="hl-btn" data-part="spacers">
+            <span class="hl-dot" style="background:#aabbcc"></span>Separadores y bloques
+        </button>
+
+        <div class="hl-sep">— Materiales PBR —</div>
+        <button class="hl-btn" data-part="metal">
+            <span class="hl-dot" style="background:#c8d8e8"></span>Acero galvanizado
+        </button>
+        <button class="hl-btn" data-part="bolts">
+            <span class="hl-dot" style="background:#778899"></span>Tornillería y uniones
+        </button>
+    </div>
+
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">🛡️ Especificaciones Técnicas</div>
+        <div class="ip-name" id="ipN">Guard Rail</div>
+        <div class="ip-sys" id="ipS">Barrera de Contención Metálica — Seguridad Vial</div>
+        <div class="ip-desc" id="ipD">Modelo 3D técnico de alta fidelidad de un guardarraíl vial estándar. Incluye mapas PBR completos: color base, metallicRoughness (metalicidad y rugosidad) y mapa de normales para máximo detalle superficial. El guardarraíl es un elemento de seguridad vial diseñado para contener y redirigir vehículos que se salen de la calzada, minimizando los daños en accidentes de tráfico. Fabricado en acero galvanizado de alta resistencia.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Meshes</div><div class="st-val">17 piezas</div></div>
+            <div class="st-card"><div class="st-label">Material</div><div class="st-val">1 PBR completo</div></div>
+            <div class="st-card"><div class="st-label">Mapas</div><div class="st-val">Color + MR + N</div></div>
+            <div class="st-card"><div class="st-label">Metal</div><div class="st-val">Acero galv.</div></div>
+        </div>
+    </div>
+
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Vista frontal">👁️</button>
+        <button class="cb" id="bTo" title="Vista superior">⬆️</button>
+        <button class="cb" id="bSi" title="Vista lateral">👈</button>
+        <button class="cb" id="bIso" title="Vista isométrica">🔍</button>
+        <div class="cd"></div>
+        <button class="cb" id="bExp" title="Vista explosionada">💥</button>
+        <button class="cb" id="bPP" title="Efectos visuales">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Efectos Visuales</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="20"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="120"></div>
+        <div class="pp-row"><label>Metalizado</label><input type="range" id="ppM" min="0" max="100" value="55"></div>
+        <div class="pp-row"><label>Viñeta</label><input type="range" id="ppV" min="0" max="100" value="22"></div>
+    </div>
+
+    <div class="explode-slider" id="expSlider">
+        <label>Explosionar</label>
+        <input type="range" id="expRange" min="0" max="100" value="0" orient="vertical">
+    </div>
+
+    <div class="credit">
+        Modelo 3D: <a href="https://sketchfab.com/3d-models/guard-rail-a3998ee806264420b00c245df7c46f2f" target="_blank">"Guard Rail"</a><br>
+        Por <a href="https://sketchfab.com/evan.hiltz" target="_blank">Evan Hiltz</a> — Licencia CC-BY-4.0
+    </div>
+
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>

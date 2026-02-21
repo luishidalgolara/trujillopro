@@ -5,7 +5,7 @@
     box-shadow: var(--shadow-lg);
     position: relative;
     overflow: hidden;
-    height: 600px;
+    height: 820px;
 }
 
 #viewer3d {

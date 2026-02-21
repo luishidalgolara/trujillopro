@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Road Map 3D — Plataforma de Planificación Urbana</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🗺️</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando mapa urbano 3D...</div>
+    </div>
+
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:12px">
+            <span style="font-size:1.5rem">🏙️</span>
+            <div>
+                <h1>Plataforma de Planificación Urbana 3D</h1>
+                <span>City Road Map — Infraestructura Vial — Análisis de Capas</span>
+            </div>
+        </div>
+        <div class="header-r">
+            <div class="fps" id="fps">-- FPS</div>
+            <div class="sdot"></div>
+        </div>
+    </div>
+
+    <canvas id="mainCanvas"></canvas>
+
+    <div class="hl-panel">
+        <div class="hl-title">🗺️ Capas del Mapa Urbano</div>
+        <button class="hl-btn active" data-part="all">
+            <span class="hl-dot" style="background:#f5c400"></span>Mapa completo
+        </button>
+
+        <div class="hl-sep">— Red Vial —</div>
+        <button class="hl-btn" data-part="roads">
+            <span class="hl-dot" style="background:#222222"></span>Calzadas y vías
+        </button>
+        <button class="hl-btn" data-part="markings">
+            <span class="hl-dot" style="background:#f5c400"></span>Marcas viales
+        </button>
+        <button class="hl-btn" data-part="sidewalks">
+            <span class="hl-dot" style="background:#cccccc"></span>Aceras y andenes
+        </button>
+
+        <div class="hl-sep">— Manzanas Urbanas —</div>
+        <button class="hl-btn" data-part="blocks">
+            <span class="hl-dot" style="background:#7a9bbf"></span>Manzanas y lotes
+        </button>
+        <button class="hl-btn" data-part="base">
+            <span class="hl-dot" style="background:#1a2a1a"></span>Plano base / terreno
+        </button>
+    </div>
+
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">🗺️ Especificaciones Técnicas</div>
+        <div class="ip-name" id="ipN">City Road Map</div>
+        <div class="ip-sys" id="ipS">Mapa Urbano 3D — Planificación de Infraestructura</div>
+        <div class="ip-desc" id="ipD">Modelo 3D de mapa urbano con red vial completa. Representa un entorno de ciudad con calzadas asfaltadas, marcas viales amarillas, aceras perimetrales, manzanas de edificación y plano base de terreno. Ideal para planificación urbana, visualización arquitectónica y análisis de infraestructura vial. Incluye texturas PBR de alta resolución para pavimento, edificios y suelo.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Meshes</div><div class="st-val">6 capas</div></div>
+            <div class="st-card"><div class="st-label">Materiales</div><div class="st-val">6 PBR</div></div>
+            <div class="st-card"><div class="st-label">Texturas</div><div class="st-val">3 HD</div></div>
+            <div class="st-card"><div class="st-label">Licencia</div><div class="st-val">CC-BY-4.0</div></div>
+        </div>
+    </div>
+
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Vista frontal">👁️</button>
+        <button class="cb" id="bTo" title="Vista superior">⬆️</button>
+        <button class="cb" id="bSi" title="Vista lateral">👈</button>
+        <button class="cb" id="bIso" title="Vista isométrica">🔍</button>
+        <div class="cd"></div>
+        <button class="cb" id="bExp" title="Vista explosionada">💥</button>
+        <button class="cb" id="bPP" title="Efectos visuales">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Efectos Visuales</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="18"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="125"></div>
+        <div class="pp-row"><label>Metalizado</label><input type="range" id="ppM" min="0" max="100" value="40"></div>
+        <div class="pp-row"><label>Viñeta</label><input type="range" id="ppV" min="0" max="100" value="22"></div>
+    </div>
+
+    <div class="explode-slider" id="expSlider">
+        <label>Explosionar</label>
+        <input type="range" id="expRange" min="0" max="100" value="0" orient="vertical">
+    </div>
+
+    <div class="credit">
+        Modelo 3D: <a href="https://sketchfab.com/3d-models/city-road-map-817d821529a14cd8a3dc7fdf57818863" target="_blank">"City Road Map"</a><br>
+        Por <a href="https://sketchfab.com/syedabbas0815" target="_blank">PropShop™</a> — Licencia CC-BY-4.0
+    </div>
+
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>

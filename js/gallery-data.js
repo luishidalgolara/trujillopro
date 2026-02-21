@@ -86,6 +86,18 @@ const galleryContent = {
         { title: 'Medical 3D - Vista 10', image: 'MEDICAL-3D/MED10.png' }
     ],
     
+    pavimento: [
+        { title: 'Pavimentación - Vista 1', image: 'PAVIMENTO/1PAV.png' },
+        { title: 'Pavimentación - Vista 2', image: 'PAVIMENTO/2PAV.png' },
+        { title: 'Pavimentación - Vista 3', image: 'PAVIMENTO/3PAV.png' },
+        { title: 'Pavimentación - Vista 4', image: 'PAVIMENTO/4PAV.png' },
+        { title: 'Pavimentación - Vista 5', image: 'PAVIMENTO/5PAV.png' },
+        { title: 'Pavimentación - Vista 6', image: 'PAVIMENTO/6PAV.png' },
+        { title: 'Pavimentación - Vista 7', image: 'PAVIMENTO/7PAV.png' },
+        { title: 'Pavimentación - Vista 8', image: 'PAVIMENTO/8PAV.png' },
+        { title: 'Pavimentación - Vista 9', image: 'PAVIMENTO/9PAV.png' }
+    ],
+    
     videos: [        
         { 
             title: 'Medical 3D - Sistema Médico Interactivo', 

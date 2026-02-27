@@ -74,74 +74,6 @@
 .nav-menu:hover span {
     background: var(--accent);
 }
-/* ========================================
-   NAVIGATION
-======================================== */
-.navbar {
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-height: 80px;
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 0 40px;
-background: rgba(10, 14, 39, 0.8);
-backdrop-filter: blur(20px);
-border-bottom: 1px solid var(--border);
-z-index: 1000;
-transition: all 0.3s var(--ease);
-}
-.navbar.scrolled {
-height: 60px;
-background: rgba(10, 14, 39, 0.95);
-}
-.nav-logo {
-font-family: var(--font-display);
-font-size: 24px;
-font-weight: 800;
-letter-spacing: -0.02em;
-background: linear-gradient(135deg, var(--primary), var(--accent));
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-cursor: pointer;
-}
-.nav-progress {
-position: absolute;
-bottom: 0;
-left: 0;
-right: 0;
-height: 2px;
-background: rgba(255, 255, 255, 0.05);
-}
-.progress-bar {
-height: 100%;
-background: linear-gradient(90deg, var(--primary), var(--accent));
-width: 0%;
-transition: width 0.1s linear;
-}
-.nav-menu {
-width: 40px;
-height: 40px;
-background: transparent;
-border: none;
-cursor: pointer;
-display: flex;
-flex-direction: column;
-justify-content: center;
-gap: 6px;
-}
-.nav-menu span {
-width: 100%;
-height: 2px;
-background: var(--text);
-transition: all 0.3s var(--ease);
-}
-.nav-menu:hover span {
-background: var(--accent);
-}
 
 /* ========================================
    BOTÓN IR A MEDICAL 3D
@@ -151,8 +83,7 @@ background: var(--accent);
     align-items: center;
     gap: 10px;
     padding: 12px 24px;
-    margin-right: 15px;
-    margin-right: 10px;  /* ESTO LO EMPUJA A LA DERECHA */
+    margin-right: 10px;
     background: linear-gradient(135deg, #dc2626, #991b1b);
     border: 2px solid rgba(239, 68, 68, 0.6);
     border-radius: 12px;
@@ -236,26 +167,15 @@ background: var(--accent);
     }
 }
 
-/* RESPONSIVE */
 @media (max-width: 768px) {
     .btn-medical3d-new {
         padding: 10px 16px;
         gap: 8px;
         margin-right: 15px;
     }
-    
-    .med-icon {
-        font-size: 20px;
-    }
-    
-    .med-text {
-        font-size: 12px;
-    }
-    
-    .med-badge {
-        font-size: 8px;
-        padding: 2px 6px;
-    }
+    .med-icon { font-size: 20px; }
+    .med-text { font-size: 12px; }
+    .med-badge { font-size: 8px; padding: 2px 6px; }
 }
 
 @media (max-width: 480px) {
@@ -264,26 +184,19 @@ background: var(--accent);
         gap: 6px;
         margin-right: 10px;
     }
-    
-    .med-icon {
-        font-size: 18px;
-    }
-    
-    .med-text {
-        font-size: 11px;
-    }
+    .med-icon { font-size: 18px; }
+    .med-text { font-size: 11px; }
 }
-/* ========================================
-   BOTÓN PHARMA EDU — PharmaLab Style
-   Agregar al final de navigation.css
-======================================== */
 
+/* ========================================
+   BOTÓN PHARMA EDU
+======================================== */
 .btn-pharmalab-new {
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 12px 24px;
-    margin-right: 0;
+    margin-right: 10px;
     margin-left: auto;
     background: linear-gradient(135deg, #00e5a0, #5b8dee, #e056a0, #00e5a0);
     background-size: 300% 300%;
@@ -312,7 +225,6 @@ background: var(--accent);
                 0 4px 16px rgba(91, 141, 238, 0.3);
 }
 
-/* Shimmer sweep — igual al Medical 3D */
 .btn-pharmalab-new::before {
     content: '';
     position: absolute;
@@ -378,25 +290,15 @@ background: var(--accent);
         box-shadow: 0 0 20px rgba(0, 229, 160, 1);
     }
 }
-/* RESPONSIVE */
+
 @media (max-width: 768px) {
     .btn-pharmalab-new {
         padding: 10px 16px;
         gap: 8px;
     }
-
-    .pharma-icon {
-        font-size: 20px;
-    }
-
-    .pharma-text {
-        font-size: 12px;
-    }
-
-    .pharma-badge {
-        font-size: 8px;
-        padding: 2px 6px;
-    }
+    .pharma-icon { font-size: 20px; }
+    .pharma-text { font-size: 12px; }
+    .pharma-badge { font-size: 8px; padding: 2px 6px; }
 }
 
 @media (max-width: 480px) {
@@ -404,12 +306,131 @@ background: var(--accent);
         padding: 8px 12px;
         gap: 6px;
     }
+    .pharma-icon { font-size: 18px; }
+    .pharma-text { font-size: 11px; }
+}
 
-    .pharma-icon {
-        font-size: 18px;
-    }
+/* ========================================
+   BOTÓN MEDVISION
+======================================== */
+.btn-medvision-new {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    margin-right: 10px;
+    margin-left: 0;
+    background: linear-gradient(135deg, #7c3aed, #4f46e5, #7c3aed);
+    background-size: 300% 300%;
+    animation: medvisionGradientShift 4s ease infinite;
+    border: 2px solid rgba(124, 58, 237, 0.6);
+    border-radius: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.45);
+    z-index: 100;
+}
 
-    .pharma-text {
-        font-size: 11px;
+@keyframes medvisionGradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.btn-medvision-new:hover {
+    transform: translateY(-3px);
+    border-color: rgba(167, 139, 250, 0.9);
+    box-shadow: 0 8px 32px rgba(124, 58, 237, 0.7),
+                0 4px 16px rgba(79, 70, 229, 0.4);
+    background: linear-gradient(135deg, #8b5cf6, #6366f1, #8b5cf6);
+}
+
+.btn-medvision-new::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -150%;
+    width: 80%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+}
+
+.btn-medvision-new:hover::before {
+    left: 150%;
+}
+
+.medv-icon {
+    font-size: 22px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    animation: medvIconFloat 3s ease-in-out infinite;
+}
+
+@keyframes medvIconFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50%       { transform: translateY(-3px) scale(1.1); }
+}
+
+.medv-text {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-shadow: 0 0 12px rgba(167, 139, 250, 0.8);
+}
+
+.medv-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    padding: 3px 8px;
+    background: #a78bfa;
+    color: #1e0a4a;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    border-radius: 4px;
+    animation: medvBadgePulse 2.5s infinite;
+    box-shadow: 0 0 12px rgba(167, 139, 250, 0.9);
+}
+
+@keyframes medvBadgePulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow: 0 0 12px rgba(167, 139, 250, 0.9);
     }
+    50% {
+        opacity: 0.85;
+        transform: scale(1.06);
+        box-shadow: 0 0 22px rgba(167, 139, 250, 1);
+    }
+}
+
+@media (max-width: 768px) {
+    .btn-medvision-new {
+        padding: 10px 16px;
+        gap: 8px;
+        margin-right: 8px;
+    }
+    .medv-icon { font-size: 20px; }
+    .medv-text { font-size: 12px; }
+    .medv-badge { font-size: 8px; padding: 2px 6px; }
+}
+
+@media (max-width: 480px) {
+    .btn-medvision-new {
+        padding: 8px 12px;
+        gap: 6px;
+        margin-right: 6px;
+    }
+    .medv-icon { font-size: 18px; }
+    .medv-text { font-size: 11px; }
 }

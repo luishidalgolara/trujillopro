@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedVision — Plataforma Educativa de Imagenología</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- BACKGROUND GRID -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="18" stroke="var(--accent)" stroke-width="1.5"/>
+            <circle cx="20" cy="20" r="8" fill="var(--accent)" opacity="0.2"/>
+            <circle cx="20" cy="20" r="3" fill="var(--accent)"/>
+            <line x1="20" y1="2" x2="20" y2="10" stroke="var(--accent)" stroke-width="1.5"/>
+            <line x1="20" y1="30" x2="20" y2="38" stroke="var(--accent)" stroke-width="1.5"/>
+            <line x1="2" y1="20" x2="10" y2="20" stroke="var(--accent)" stroke-width="1.5"/>
+            <line x1="30" y1="20" x2="38" y2="20" stroke="var(--accent)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <span class="logo-text">Med<span class="logo-accent">Vision</span></span>
+      </div>
+      <nav class="nav">
+        <button class="nav-btn active" onclick="showSection('library')">Biblioteca</button>
+        <button class="nav-btn" onclick="window.location.href='dicom-viewer.html'">Visor DICOM Real</button>
+        <button class="nav-btn" onclick="showSection('anatomy')">Anatomía</button>
+        <button class="nav-btn" onclick="showSection('quiz')">Quiz</button>
+      </nav>
+      <div class="header-badge">
+        <span class="badge-dot"></span>
+        <span>TCIA Dataset</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== SECTION: LIBRARY ===== -->
+  <section id="section-library" class="section active">
+    <div class="library-hero">
+      <div class="hero-content">
+        <div class="hero-tag">Plataforma Educativa · Imagenología Médica</div>
+        <h1 class="hero-title">Visor DICOM<br><span class="gradient-text">educativo</span></h1>
+        <p class="hero-subtitle">Selecciona tu carpeta de estudios DICOM y visualiza las imágenes directamente en el visor con reproducción en tiempo real.</p>
+        <div class="hero-actions">
+          <button class="btn-primary btn-large" onclick="openFolderExplorer()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+              <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/>
+            </svg>
+            Explorar mis carpetas DICOM
+          </button>
+          <button class="btn-secondary" onclick="window.location.href='dicom-viewer.html'">
+            Ir al Visor →
+          </button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="scan-preview">
+          <img src="imagen/IMAGEN1.jpg" class="scan-img" alt="MRI Scan">
+          <div class="scan-overlay"></div>
+          <div class="scan-scanline"></div>
+          <div class="scan-corner tl"></div>
+          <div class="scan-corner tr"></div>
+          <div class="scan-corner bl"></div>
+          <div class="scan-corner br"></div>
+          <div class="scan-crosshair h"></div>
+          <div class="scan-crosshair v"></div>
+          <div class="scan-label tl">R</div>
+          <div class="scan-label tr">L</div>
+          <div class="scan-label bl">A</div>
+          <div class="scan-label br">P</div>
+          <div class="scan-data">
+            <span>MRI · Sagital</span>
+            <span>1.5T · 4mm</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MODAL EXPLORADOR ===== -->
+  <div class="modal-overlay" id="folder-explorer-overlay" onclick="closeFolderExplorer()">
+    <div class="modal folder-explorer-modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeFolderExplorer()">×</button>
+      <div class="explorer-header">
+        <div class="explorer-icon">🗂️</div>
+        <div>
+          <h2 class="explorer-title">Explorador de estudios</h2>
+          <p class="explorer-subtitle">Selecciona una serie para abrirla en el visor DICOM</p>
+        </div>
+      </div>
+      <div class="explorer-breadcrumb" id="explorer-breadcrumb"></div>
+      <div class="explorer-folders" id="explorer-folders"></div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION: VIEWER ===== -->
+  <section id="section-viewer" class="section">
+    <div class="viewer-layout">
+      <!-- LEFT PANEL -->
+      <div class="viewer-sidebar">
+        <div class="sidebar-header">
+          <h3>Estudio actual</h3>
+          <div class="study-info" id="current-study-info">
+            <div class="study-tag" id="study-collection">4D-Lung</div>
+            <div class="study-patient" id="study-patient">P100 · 100_HM10395</div>
+            <div class="study-modality">CT · Tórax</div>
+          </div>
+        </div>
+
+        <!-- Series selector -->
+        <div class="series-panel">
+          <h4>Series disponibles</h4>
+          <div class="series-list" id="series-list">
+            <div class="series-item active" onclick="selectPhase(0)">
+              <div class="series-thumb">CT</div>
+              <div class="series-info"><span class="series-name">Fase 0%</span><span class="series-count">50 imgs</span></div>
+            </div>
+            <div class="series-item" onclick="selectPhase(1)">
+              <div class="series-thumb">CT</div>
+              <div class="series-info"><span class="series-name">Fase 10%</span><span class="series-count">50 imgs</span></div>
+            </div>
+            <div class="series-item" onclick="selectPhase(2)">
+              <div class="series-thumb">CT</div>
+              <div class="series-info"><span class="series-name">Fase 20%</span><span class="series-count">50 imgs</span></div>
+            </div>
+            <div class="series-item" onclick="selectPhase(3)">
+              <div class="series-thumb">CT</div>
+              <div class="series-info"><span class="series-name">Fase 30%</span><span class="series-count">50 imgs</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Window presets -->
+        <div class="window-panel">
+          <h4>Ventanas de visualización</h4>
+          <div class="window-presets">
+            <button class="window-btn active" onclick="setWindow('lung', this)">
+              <span class="window-icon">🫁</span>Pulmón<br><small>C:-600 W:1500</small>
+            </button>
+            <button class="window-btn" onclick="setWindow('mediastinum', this)">
+              <span class="window-icon">❤️</span>Mediastino<br><small>C:40 W:400</small>
+            </button>
+            <button class="window-btn" onclick="setWindow('bone', this)">
+              <span class="window-icon">🦴</span>Hueso<br><small>C:350 W:1500</small>
+            </button>
+            <button class="window-btn" onclick="setWindow('abdomen', this)">
+              <span class="window-icon">🫀</span>Abdomen<br><small>C:60 W:350</small>
+            </button>
+          </div>
+        </div>
+
+        <!-- Local file loader -->
+        <div class="local-loader">
+          <h4>Cargar imagen local</h4>
+          <p class="loader-hint">Arrastra un archivo DICOM (.dcm) o selecciónalo</p>
+          <label class="file-drop-zone" id="drop-zone">
+            <input type="file" id="dicom-file-input" accept=".dcm,.DCM" onchange="loadLocalDICOM(event)" style="display:none">
+            <div class="drop-content">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+              </svg>
+              <span>Seleccionar .dcm</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- CENTER: VIEWER -->
+      <div class="viewer-center">
+        <div class="viewer-toolbar">
+          <div class="tool-group">
+            <button class="tool-btn active" id="tool-pan" onclick="setTool('pan', this)" title="Mover">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M12 12v.01"/></svg>
+            </button>
+            <button class="tool-btn" id="tool-zoom" onclick="setTool('zoom', this)" title="Zoom">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </button>
+            <button class="tool-btn" id="tool-window" onclick="setTool('window', this)" title="Ventana/Nivel">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg>
+            </button>
+            <button class="tool-btn" id="tool-measure" onclick="setTool('measure', this)" title="Medir">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 6H3M21 12H3M21 18H3"/></svg>
+            </button>
+          </div>
+          <div class="tool-group">
+            <button class="tool-btn" onclick="toggleAnnotations()" title="Anotaciones" id="btn-annotations">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </button>
+            <button class="tool-btn" onclick="toggleInfo()" title="Info técnica" id="btn-info">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </button>
+            <button class="tool-btn" onclick="resetView()" title="Resetear vista">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+            </button>
+          </div>
+          <div class="slice-control">
+            <span class="slice-label">Corte</span>
+            <input type="range" id="slice-slider" min="0" max="49" value="25" oninput="updateSlice(this.value)">
+            <span class="slice-value" id="slice-value">25/50</span>
+          </div>
+        </div>
+
+        <!-- MAIN VIEWER CANVAS -->
+        <div class="viewer-canvas-container" id="viewer-canvas-container">
+          <canvas id="main-canvas" class="viewer-canvas"></canvas>
+          
+          <!-- Overlay info -->
+          <div class="overlay-tl" id="overlay-tl">
+            <div>P100 · 100_HM10395</div>
+            <div>2003-07-02 · M</div>
+          </div>
+          <div class="overlay-tr" id="overlay-tr">
+            <div id="overlay-series">4D-Lung · Fase 0%</div>
+            <div id="overlay-window">W:1500 C:-600</div>
+          </div>
+          <div class="overlay-bl" id="overlay-bl">
+            <div id="overlay-slice">Corte: 25/50</div>
+            <div>CT · 1.25mm</div>
+          </div>
+          <div class="overlay-br" id="overlay-br">
+            <div id="overlay-zoom">Zoom: 1.0x</div>
+            <div id="overlay-tool">Herramienta: Mover</div>
+          </div>
+
+          <!-- Orientation markers -->
+          <div class="orient-marker top">S</div>
+          <div class="orient-marker bottom">I</div>
+          <div class="orient-marker left">R</div>
+          <div class="orient-marker right">L</div>
+
+          <!-- Annotations overlay -->
+          <div class="annotations-overlay" id="annotations-overlay"></div>
+
+          <!-- Demo notice -->
+          <div class="demo-notice" id="demo-notice">
+            <div class="demo-icon">🎓</div>
+            <div class="demo-text">
+              <strong>Modo demostración</strong>
+              <span>Carga un archivo .dcm local o inicia el servidor Python para ver imágenes reales</span>
+            </div>
+            <button class="demo-close" onclick="this.parentElement.style.display='none'">×</button>
+          </div>
+        </div>
+
+        <!-- TECHNICAL INFO PANEL -->
+        <div class="tech-info-panel" id="tech-info-panel" style="display:none">
+          <div class="tech-grid" id="tech-grid"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT PANEL: ANATOMY -->
+      <div class="viewer-right">
+        <div class="anatomy-panel">
+          <h3>Estructuras anatómicas</h3>
+          <p class="anatomy-hint">Haz clic en una estructura para ver su descripción</p>
+          <div class="structures-list" id="structures-list"></div>
+        </div>
+
+        <div class="clinical-panel" id="clinical-panel">
+          <h3>Información clínica</h3>
+          <div class="clinical-text" id="clinical-text"></div>
+        </div>
+
+        <div class="phases-panel" id="phases-panel">
+          <h3>Fases de adquisición</h3>
+          <div class="phases-list" id="phases-list"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION: ANATOMY ===== -->
+  <section id="section-anatomy" class="section">
+    <div class="anatomy-layout">
+      <div class="anatomy-header">
+        <h2>Atlas de Anatomía Radiológica</h2>
+        <p>Selecciona un sistema anatómico para explorar sus estructuras en imagen</p>
+      </div>
+      <div class="anatomy-systems" id="anatomy-systems"></div>
+      <div class="anatomy-detail" id="anatomy-detail"></div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION: QUIZ ===== -->
+  <section id="section-quiz" class="section">
+    <div class="quiz-layout">
+      <div class="quiz-header">
+        <h2>Quiz de Imagenología</h2>
+        <p>Pon a prueba tu conocimiento identificando estructuras en imágenes reales</p>
+        <div class="quiz-score-bar">
+          <div class="score-item"><span class="score-val" id="score-correct">0</span><span class="score-lbl">Correctas</span></div>
+          <div class="score-item"><span class="score-val" id="score-total">0</span><span class="score-lbl">Total</span></div>
+          <div class="score-item"><span class="score-val" id="score-pct">—</span><span class="score-lbl">%</span></div>
+        </div>
+      </div>
+      <div class="quiz-card" id="quiz-card">
+        <div class="quiz-image-area">
+          <canvas id="quiz-canvas" class="quiz-canvas"></canvas>
+          <div class="quiz-pointer" id="quiz-pointer"></div>
+        </div>
+        <div class="quiz-question-area">
+          <div class="quiz-question" id="quiz-question">¿Qué estructura señala la flecha?</div>
+          <div class="quiz-options" id="quiz-options"></div>
+          <div class="quiz-feedback" id="quiz-feedback"></div>
+          <button class="btn-primary" id="quiz-next" onclick="nextQuestion()" style="display:none">Siguiente pregunta →</button>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="startQuiz()">Comenzar Quiz</button>
+    </div>
+  </section>
+
+  <script src="js/app/main.js"></script>
+  <script src="js/app/library.js"></script>
+  <script src="js/app/viewer-demo.js"></script>
+  <script src="js/app/anatomy.js"></script>
+  <script src="js/app/quiz.js"></script>
+</body>
+</html>

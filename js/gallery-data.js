@@ -86,6 +86,13 @@ const galleryContent = {
         { title: 'Medical 3D - Vista 10', image: 'MEDICAL-3D/MED10.png' }
     ],
     
+    medvision: [
+        { title: 'MedVision - Vista 1', image: 'MEDVISION/1MEDV.png' },
+        { title: 'MedVision - Vista 2', image: 'MEDVISION/2MEDV.png' },
+        { title: 'MedVision - Vista 3', image: 'MEDVISION/3MEDV.png' },
+        { title: 'MedVision - Vista 4', image: 'MEDVISION/4MEDV.png' }
+    ],
+
     pavimento: [
         { title: 'Pavimentación - Vista 1', image: 'PAVIMENTO/1PAV.png' },
         { title: 'Pavimentación - Vista 2', image: 'PAVIMENTO/2PAV.png' },
@@ -103,6 +110,12 @@ const galleryContent = {
             title: 'Medical 3D - Sistema Médico Interactivo', 
             video: 'VIDEOS/6-MEDICAL.mp4',
             description: 'Sistema interactivo de visualización médica en 3D',
+            duration: 'Video demostrativo'
+        },
+        { 
+            title: 'MedVision - Sistema de Visualización Médica', 
+            video: 'VIDEOS/7-Medvision.mp4',
+            description: 'Sistema interactivo de visualización médica MedVision',
             duration: 'Video demostrativo'
         },
         { 

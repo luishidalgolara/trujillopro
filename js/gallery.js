@@ -19,7 +19,7 @@ function initGalleryTabs() {
             // Remove active class from all tabs
             tabs.forEach(t => t.classList.remove('active'));
             
-            // Add active class to clicked tabPROCEDE
+            // Add active class to clicked tab
             tab.classList.add('active');
             
             // Get module type
@@ -59,12 +59,9 @@ function updateGalleryContent(container, items) {
             galleryItem.style.animationDelay = `${index * 0.1}s`;
             
             galleryItem.innerHTML = `
-                <div class="video-thumbnail" onclick="openVideoModal(${index})">
-                    <video preload="metadata" muted>
-                        <source src="${item.video}#t=0.1" type="video/mp4">
-                    </video>
-                    <div class="video-thumbnail-overlay">
-                        <div class="video-play-button">▶</div>
+                <div class="video-thumbnail" onclick="openVideoModal(${index})" style="cursor:pointer;">
+                    <div style="width:100%;height:100%;min-height:200px;background:#1a1a2e;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:8px;position:relative;">
+                        <div class="video-play-button" style="font-size:48px;color:#fff;margin-bottom:10px;">▶</div>
                     </div>
                     <div class="video-duration">${item.duration}</div>
                     <div class="video-thumbnail-info">
@@ -235,7 +232,6 @@ function openVideoModal(index) {
     const currentVideo = videos[currentVideoIndex];
     
     videoModal.style.display = 'block';
-    videoPlayer.src = currentVideo.video;
     videoTitle.textContent = currentVideo.title;
     videoInfoTitle.textContent = currentVideo.title;
     videoInfoDesc.textContent = currentVideo.description;
@@ -244,8 +240,9 @@ function openVideoModal(index) {
     // Prevent body scroll when modal is open
     document.body.style.overflow = 'hidden';
     
-    // Auto play video
-    videoPlayer.play();
+    // Cargar video (el usuario presiona play manualmente)
+    videoPlayer.src = currentVideo.video;
+    videoPlayer.load();
 }
 
 function closeVideoModal() {
@@ -254,8 +251,8 @@ function closeVideoModal() {
     
     videoModal.style.display = 'none';
     videoPlayer.pause();
-    videoPlayer.currentTime = 0;
-    videoPlayer.src = '';
+    videoPlayer.removeAttribute('src');
+    videoPlayer.load();
     document.body.style.overflow = 'auto';
 }
 
@@ -277,15 +274,18 @@ function changeVideo(direction) {
     const videoCounter = document.querySelector('.video-counter');
     const currentVideo = videos[currentVideoIndex];
     
+    // Pausar video actual primero
+    videoPlayer.pause();
+    
     // Fade effect
     videoPlayer.style.opacity = 0;
     setTimeout(() => {
         videoPlayer.src = currentVideo.video;
+        videoPlayer.load();
         videoTitle.textContent = currentVideo.title;
         videoInfoTitle.textContent = currentVideo.title;
         videoInfoDesc.textContent = currentVideo.description;
         videoCounter.textContent = `${currentVideoIndex + 1} / ${videos.length}`;
-        videoPlayer.play();
         videoPlayer.style.opacity = 1;
     }, 150);
 }
@@ -293,7 +293,12 @@ function changeVideo(direction) {
 function toggleVideoPlayPause() {
     const videoPlayer = document.getElementById('videoPlayer');
     if (videoPlayer.paused) {
-        videoPlayer.play();
+        var playPromise = videoPlayer.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(function(error) {
+                console.log('Play prevenido:', error.message);
+            });
+        }
     } else {
         videoPlayer.pause();
     }

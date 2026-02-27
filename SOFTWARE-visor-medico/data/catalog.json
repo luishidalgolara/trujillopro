@@ -1,0 +1,157 @@
+{
+  "collections": [
+    {
+      "id": "4d-lung",
+      "name": "4D-Lung",
+      "organ": "Pulmón",
+      "modality": "CT",
+      "description": "Tomografía computarizada 4D de pulmón. Imágenes adquiridas en diferentes fases respiratorias para estudio del movimiento pulmonar.",
+      "color": "#00d4ff",
+      "icon": "🫁",
+      "path": "4D-Lung/100_HM10395",
+      "structures": [
+        { "name": "Parénquima pulmonar", "description": "Tejido funcional del pulmón compuesto por alvéolos. En CT aparece hipodenso (oscuro) por el contenido aéreo." },
+        { "name": "Bronquios principales", "description": "Vías aéreas principales que conducen el aire hacia los lóbulos pulmonares. Se visualizan como estructuras tubulares aéreas." },
+        { "name": "Vasos pulmonares", "description": "Arterias y venas pulmonares que perfunden el pulmón. Aparecen hiperdensos (blancos) tras contraste." },
+        { "name": "Pleura", "description": "Membrana serosa que recubre el pulmón y la cavidad torácica. En condiciones normales no es visible." },
+        { "name": "Mediastino", "description": "Espacio central del tórax que contiene corazón, grandes vasos, tráquea y esófago." },
+        { "name": "Costillas", "description": "Estructuras óseas del tórax. Aparecen muy hiperdensas (blancas) en CT por su contenido mineral." }
+      ],
+      "technicalInfo": {
+        "technique": "TC Helicoidal 4D con sincronización respiratoria",
+        "kVp": "120 kVp",
+        "mAs": "Variable - modulación automática",
+        "sliceThickness": "2.5 mm",
+        "reconstruction": "Algoritmo B31f (estándar pulmón)",
+        "window": "Ventana pulmón: C:-600 W:1500 / Ventana mediastino: C:40 W:400"
+      },
+      "clinicalInfo": "Estudio 4D utilizado para planificación de radioterapia estereotáctica en tumores pulmonares. Permite evaluar el movimiento del tumor durante el ciclo respiratorio.",
+      "phases": ["0%", "10%", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "90%"],
+      "patients": 1,
+      "series": 350,
+      "images": 17930
+    },
+    {
+      "id": "cptac-pda",
+      "name": "CPTAC-PDA",
+      "organ": "Páncreas",
+      "modality": "CT",
+      "description": "TC de abdomen en pacientes con adenocarcinoma ductal pancreático. Estudio del Clinical Proteomic Tumor Analysis Consortium.",
+      "color": "#ff6b35",
+      "icon": "🫀",
+      "path": "CPTAC-PDA",
+      "structures": [
+        { "name": "Cabeza del páncreas", "description": "Porción más voluminosa del páncreas, localizada en el marco duodenal. Sede más frecuente del adenocarcinoma ductal." },
+        { "name": "Cuerpo pancreático", "description": "Porción media del páncreas, anterior a la columna vertebral y aorta." },
+        { "name": "Cola pancreática", "description": "Porción distal del páncreas que llega hasta el hilio esplénico." },
+        { "name": "Conducto de Wirsung", "description": "Conducto pancreático principal. Dilatación >3mm sugiere obstrucción neoplásica." },
+        { "name": "Vena porta", "description": "Gran vena formada por la confluencia de la mesentérica superior y esplénica. Su invasión determina irresecabilidad." },
+        { "name": "Arteria mesentérica superior", "description": "Arteria visceral mayor. Su encasamiento por tumor >180° define irresecabilidad." }
+      ],
+      "technicalInfo": {
+        "technique": "TC Multidetector trifásico (arterial, portal, tardío)",
+        "kVp": "120 kVp",
+        "mAs": "200-300 mAs",
+        "sliceThickness": "1.25 mm",
+        "reconstruction": "Algoritmo estándar + reconstrucciones MPR",
+        "window": "Ventana abdominal: C:60 W:350"
+      },
+      "clinicalInfo": "El adenocarcinoma ductal pancreático tiene pronóstico sombrío. La TC permite estadificación y evaluación de resecabilidad según criterios vasculares.",
+      "phases": ["Arterial", "Portal", "Tardío"],
+      "patients": 387,
+      "series": 2800,
+      "images": 145000
+    },
+    {
+      "id": "cptac-luad",
+      "name": "CPTAC-LUAD",
+      "organ": "Pulmón (LUAD)",
+      "modality": "CT",
+      "description": "TC de tórax en adenocarcinoma pulmonar. Subtipo histológico más frecuente del cáncer de pulmón no microcítico.",
+      "color": "#4ecdc4",
+      "icon": "🫁",
+      "path": "CPTAC-LUAD",
+      "structures": [
+        { "name": "Masa tumoral", "description": "Nódulo o masa pulmonar con características malignas: espiculación, lobulación, densidad heterogénea." },
+        { "name": "Adenopatías mediastínicas", "description": "Ganglios linfáticos aumentados de tamaño en mediastino. Criterio TC: >1cm en eje corto." },
+        { "name": "Lóbulos pulmonares", "description": "El pulmón derecho tiene 3 lóbulos (sup, med, inf) y el izquierdo 2 (sup, inf). La localización tumoral determina la resección." },
+        { "name": "Cisuras pulmonares", "description": "Pliegues pleurales que separan los lóbulos. La cisura mayor es oblicua; la menor es horizontal (pulmón derecho)." },
+        { "name": "Hilio pulmonar", "description": "Zona de entrada de bronquios, arterias y venas. Adenopatías hiliares indican N1." }
+      ],
+      "technicalInfo": {
+        "technique": "TC Helicoidal de tórax con y sin contraste",
+        "kVp": "120 kVp",
+        "mAs": "150-250 mAs",
+        "sliceThickness": "1 mm",
+        "reconstruction": "Alta resolución (HRCT) + estándar",
+        "window": "Pulmón: C:-600 W:1500 / Mediastino: C:40 W:350"
+      },
+      "clinicalInfo": "El adenocarcinoma pulmonar es el subtipo más frecuente. Asociado a mutaciones EGFR, ALK, ROS1 que determinan tratamiento diana.",
+      "phases": ["Sin contraste", "Con contraste"],
+      "patients": 87,
+      "series": 520,
+      "images": 28000
+    },
+    {
+      "id": "cptac-ccrcc",
+      "name": "CPTAC-CCRCC",
+      "organ": "Riñón",
+      "modality": "CT",
+      "description": "TC abdominal en carcinoma de células renales claras. Neoplasia renal maligna más frecuente en adultos.",
+      "color": "#a29bfe",
+      "icon": "🫘",
+      "path": "CPTAC-CCRCC",
+      "structures": [
+        { "name": "Corteza renal", "description": "Capa externa del riñón donde se localizan los glomérulos. Realce intenso en fase corticomedular." },
+        { "name": "Médula renal", "description": "Zona interna con pirámides renales. Menor realce que la corteza en fase corticomedular." },
+        { "name": "Seno renal", "description": "Espacio central con pelvis renal, cálices, grasa y vasos. Invasión del seno determina pT3a." },
+        { "name": "Vena renal", "description": "Drena la sangre renal hacia la vena cava. El trombo tumoral en vena renal es característico del CCR." },
+        { "name": "Glándula suprarrenal", "description": "Glándula endocrina superior al riñón. Su afectación determina estadio avanzado." },
+        { "name": "Fascia de Gerota", "description": "Fascia perirrenal. Su penetración define pT3a en estadificación TNM." }
+      ],
+      "technicalInfo": {
+        "technique": "TC Multidetector cuatrifásico renal (sin contraste, corticomedular, nefrográfico, excretor)",
+        "kVp": "120 kVp",
+        "mAs": "250-350 mAs",
+        "sliceThickness": "1 mm",
+        "reconstruction": "MPR + reconstrucciones 3D vasculares",
+        "window": "Abdominal: C:60 W:350 / Ósea: C:350 W:1500"
+      },
+      "clinicalInfo": "El CCR de células claras representa 75% de los CCR. La TC cuatrifásica evalúa realce tumoral, extensión local y vasculatura para planificación quirúrgica.",
+      "phases": ["Sin contraste", "Corticomedular", "Nefrográfico", "Excretor"],
+      "patients": 103,
+      "series": 620,
+      "images": 35000
+    },
+    {
+      "id": "covid-19",
+      "name": "COVID-19",
+      "organ": "Pulmón (COVID)",
+      "modality": "CT",
+      "description": "TC de tórax en pacientes con COVID-19. Hallazgos característicos del SARS-CoV-2 en imagen.",
+      "color": "#fd79a8",
+      "icon": "🦠",
+      "path": "COVID-19",
+      "structures": [
+        { "name": "Vidrio deslustrado", "description": "Aumento de densidad pulmonar que no borra los vasos. Hallazgo principal en COVID-19, distribución periférica y bilateral." },
+        { "name": "Consolidación", "description": "Aumento de densidad que borra los vasos. Indica estadio más avanzado o sobreinfección bacteriana." },
+        { "name": "Patrón en crazy-paving", "description": "Vidrio deslustrado con engrosamiento de septos interlobulillares. Aspecto en 'empedrado'." },
+        { "name": "Banda subpleural", "description": "Línea de consolidación paralela a la pleura. Hallazgo frecuente en COVID-19." },
+        { "name": "Signo del halo inverso", "description": "Área central de vidrio deslustrado rodeada de consolidación periférica en anillo. Asociado a COVID-19 grave." }
+      ],
+      "technicalInfo": {
+        "technique": "TC Helicoidal de tórax sin contraste, técnica COVID",
+        "kVp": "100-120 kVp",
+        "mAs": "Dosis reducida (LDCT)",
+        "sliceThickness": "1-1.5 mm",
+        "reconstruction": "Algoritmo pulmón HR",
+        "window": "Pulmón: C:-600 W:1500"
+      },
+      "clinicalInfo": "El CO-RADS clasifica la probabilidad de COVID-19 en TC del 1 (muy improbable) al 6 (muy probable). La extensión del vidrio deslustrado correlaciona con gravedad clínica.",
+      "phases": ["Sin contraste"],
+      "patients": 2077,
+      "series": 4154,
+      "images": 250000
+    }
+  ]
+}

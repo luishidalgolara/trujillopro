@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedVision — Visor DICOM Real</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/viewer.css">
+
+  <!-- Cornerstone.js CDN -->
+  <script src="https://unpkg.com/cornerstone-core@2.6.1/dist/cornerstone.js"></script>
+  <script src="https://unpkg.com/cornerstone-math@0.1.10/dist/cornerstoneMath.js"></script>
+  <script src="https://unpkg.com/cornerstone-tools@6.0.10/dist/cornerstoneTools.js"></script>
+  <script src="https://unpkg.com/cornerstone-wado-image-loader@4.13.2/dist/cornerstoneWADOImageLoader.bundle.min.js"></script>
+  <script src="https://unpkg.com/dicom-parser@1.8.21/dist/dicomParser.js"></script>
+</head>
+<body>
+
+<header class="header">
+  <a href="index.html" class="logo">Med<span>Vision</span></a>
+  <div class="header-sep"></div>
+  <span class="header-title">Visor DICOM — Cornerstone.js</span>
+  <span class="series-badge" id="series-badge">0 cortes cargados</span>
+  <a href="index.html" class="back-btn">← Volver a Biblioteca</a>
+</header>
+
+<div class="main">
+
+  <!-- ===== PANEL IZQUIERDO ===== -->
+  <div class="left-panel">
+
+    <!-- Carga de archivos -->
+    <div class="panel-section">
+      <div class="panel-title">📁 Cargar imágenes DICOM</div>
+      <div class="drop-tabs">
+        <div class="drop-tab active" id="tab-folder" onclick="switchTab('folder')">📂 Carpeta</div>
+        <div class="drop-tab" id="tab-files"  onclick="switchTab('files')">🗂️ Archivos</div>
+      </div>
+      <label class="drop-zone" id="drop-zone" for="folder-input">
+        <input type="file" id="folder-input" webkitdirectory multiple accept=".dcm,.DCM" onchange="loadFiles(event)">
+        <div class="drop-icon">📂</div>
+        <div class="drop-text">
+          <strong>Arrastra la CARPETA completa aquí</strong>
+          o haz clic para seleccionar carpeta
+        </div>
+        <div class="drop-hint">Carga toda la serie → efecto cine 3D</div>
+      </label>
+      <label class="drop-zone" id="drop-zone-files" style="display:none" for="file-input">
+        <input type="file" id="file-input" multiple accept=".dcm,.DCM" onchange="loadFiles(event)">
+        <div class="drop-icon">🗂️</div>
+        <div class="drop-text">
+          <strong>Selecciona archivos .dcm</strong>
+          múltiples archivos a la vez
+        </div>
+      </label>
+      <div class="file-list" id="file-list"></div>
+    </div>
+
+    <!-- Modo Cine -->
+    <div class="panel-section">
+      <div class="panel-title">🎬 Modo Cine</div>
+      <div class="cine-panel">
+        <div class="cine-row">
+          <button class="cine-btn" onclick="stepSlice(-10)" title="Retroceder 10">⏮</button>
+          <button class="cine-btn" onclick="stepSlice(-1)"  title="Anterior">◀</button>
+          <button class="cine-btn" id="play-btn" onclick="togglePlay()" title="Play/Pause">▶</button>
+          <button class="cine-btn" onclick="stepSlice(1)"   title="Siguiente">▶</button>
+          <button class="cine-btn" onclick="stepSlice(10)"  title="Avanzar 10">⏭</button>
+        </div>
+        <div class="slider-row">
+          <span class="slider-label">Velocidad</span>
+          <input type="range" id="speed-slider" min="1" max="30" value="10" oninput="updateSpeed()">
+          <span class="slider-val" id="speed-val">10 fps</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Herramientas -->
+    <div class="panel-section">
+      <div class="panel-title">🔧 Herramientas</div>
+      <div class="tools-grid">
+        <button class="tool-btn active" onclick="activateTool('Wwwc', this)"><span class="tool-icon">☀️</span>Ventana/Nivel</button>
+        <button class="tool-btn" onclick="activateTool('Zoom', this)"><span class="tool-icon">🔍</span>Zoom</button>
+        <button class="tool-btn" onclick="activateTool('Pan', this)"><span class="tool-icon">✋</span>Mover</button>
+        <button class="tool-btn" onclick="activateTool('Length', this)"><span class="tool-icon">📏</span>Medir</button>
+        <button class="tool-btn" onclick="activateTool('Angle', this)"><span class="tool-icon">📐</span>Ángulo</button>
+        <button class="tool-btn" onclick="activateTool('Probe', this)"><span class="tool-icon">💉</span>Unidades HU</button>
+        <button class="tool-btn" onclick="activateTool('EllipticalRoi', this)"><span class="tool-icon">⭕</span>ROI Elipse</button>
+        <button class="tool-btn" onclick="activateTool('RectangleRoi', this)"><span class="tool-icon">⬜</span>ROI Rect.</button>
+      </div>
+    </div>
+
+    <!-- Ventanas de visualización -->
+    <div class="panel-section">
+      <div class="panel-title">🪟 Ventanas</div>
+      <div class="window-list">
+        <div class="window-item active" onclick="applyWindow(-600, 1500, this)"><span class="window-name">🫁 Pulmón</span><span class="window-vals">C:-600 W:1500</span></div>
+        <div class="window-item" onclick="applyWindow(40, 400, this)"><span class="window-name">❤️ Mediastino</span><span class="window-vals">C:40 W:400</span></div>
+        <div class="window-item" onclick="applyWindow(350, 1500, this)"><span class="window-name">🦴 Hueso</span><span class="window-vals">C:350 W:1500</span></div>
+        <div class="window-item" onclick="applyWindow(60, 350, this)"><span class="window-name">🫀 Abdomen</span><span class="window-vals">C:60 W:350</span></div>
+        <div class="window-item" onclick="applyWindow(35, 80, this)"><span class="window-name">🧠 Cerebro</span><span class="window-vals">C:35 W:80</span></div>
+        <div class="window-item" onclick="applyWindow(80, 200, this)"><span class="window-name">🩸 Hígado</span><span class="window-vals">C:80 W:200</span></div>
+      </div>
+    </div>
+
+    <!-- Ajuste manual W/L -->
+    <div class="panel-section">
+      <div class="panel-title">⚙️ Ajuste manual W/L</div>
+      <div class="slider-row">
+        <span class="slider-label">Window</span>
+        <input type="range" id="ww-slider" min="1" max="4000" value="1500" oninput="manualWindow()">
+        <span class="slider-val" id="ww-val">1500</span>
+      </div>
+      <div class="slider-row">
+        <span class="slider-label">Level</span>
+        <input type="range" id="wl-slider" min="-1000" max="1000" value="-600" oninput="manualWindow()">
+        <span class="slider-val" id="wl-val">-600</span>
+      </div>
+      <div class="slider-row">
+        <span class="slider-label">Zoom</span>
+        <input type="range" id="zoom-slider" min="50" max="500" value="100" oninput="manualZoom()">
+        <span class="slider-val" id="zoom-val">1.0x</span>
+      </div>
+    </div>
+
+    <!-- Acciones -->
+    <div class="panel-section">
+      <div class="panel-title">⚡ Acciones</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <button class="action-btn" onclick="resetView()">🔄 Resetear vista</button>
+        <button class="action-btn" onclick="invertImage()">🔲 Invertir imagen</button>
+        <button class="action-btn" onclick="clearAnnotations()">🗑️ Limpiar medidas</button>
+      </div>
+    </div>
+
+  </div><!-- end left-panel -->
+
+  <!-- ===== PANEL CENTRAL ===== -->
+  <div class="center-panel">
+
+    <!-- Barra de herramientas -->
+    <div class="viewer-toolbar">
+      <button class="tb-btn active" onclick="activateTool('Wwwc',this)" title="Ventana/Nivel">☀️</button>
+      <button class="tb-btn" onclick="activateTool('Zoom',this)" title="Zoom">🔍</button>
+      <button class="tb-btn" onclick="activateTool('Pan',this)" title="Mover">✋</button>
+      <div class="tb-sep"></div>
+      <button class="tb-btn" onclick="activateTool('Length',this)" title="Medir">📏</button>
+      <button class="tb-btn" onclick="activateTool('Probe',this)" title="Medir HU">💉</button>
+      <button class="tb-btn" onclick="activateTool('EllipticalRoi',this)" title="ROI">⭕</button>
+      <div class="tb-sep"></div>
+      <button class="tb-btn" onclick="resetView()" title="Resetear">🔄</button>
+      <button class="tb-btn" onclick="invertImage()" title="Invertir">🔲</button>
+      <button class="tb-btn" id="tb-play" onclick="togglePlay()" title="Cine">▶</button>
+      <div class="tb-info">
+        <div>W: <span id="tb-ww">1500</span></div>
+        <div>L: <span id="tb-wl">-600</span></div>
+        <div>Zoom: <span id="tb-zoom">1.0x</span></div>
+        <div>HU: <span id="tb-hu">—</span></div>
+      </div>
+    </div>
+
+    <div class="dicom-container">
+
+      <!-- Indicador de posición corporal -->
+      <div class="body-sidebar" id="body-sidebar">
+        <div class="body-label">NIVEL<br>ANATÓMICO</div>
+        <div class="body-figure-wrap" id="body-figure-wrap">
+          <div class="body-figure">
+            <svg class="body-svg" viewBox="0 0 28 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="14" cy="12" rx="8" ry="10" fill="none" stroke="#1e2d45" stroke-width="1.5"/>
+              <rect x="11" y="21" width="6" height="6" rx="1" fill="none" stroke="#1e2d45" stroke-width="1.5"/>
+              <rect x="6" y="27" width="16" height="28" rx="3" fill="none" stroke="#1e2d45" stroke-width="1.5"/>
+              <rect x="1" y="27" width="5" height="22" rx="2" fill="none" stroke="#1e2d45" stroke-width="1.5"/>
+              <rect x="22" y="27" width="5" height="22" rx="2" fill="none" stroke="#1e2d45" stroke-width="1.5"/>
+              <rect x="7" y="55" width="14" height="20" rx="2" fill="none" stroke="#1e2d45" stroke-width="1.5"/>
+              <rect x="5" y="75" width="18" height="14" rx="3" fill="none" stroke="#1e2d45" stroke-width="1.5"/>
+              <rect x="6" y="89" width="7" height="38" rx="2" fill="none" stroke="#1e2d45" stroke-width="1.5"/>
+              <rect x="15" y="89" width="7" height="38" rx="2" fill="none" stroke="#1e2d45" stroke-width="1.5"/>
+              <rect x="7" y="127" width="5" height="28" rx="2" fill="none" stroke="#1e2d45" stroke-width="1.5"/>
+              <rect x="16" y="127" width="5" height="28" rx="2" fill="none" stroke="#1e2d45" stroke-width="1.5"/>
+              <ellipse cx="10" cy="158" rx="5" ry="4" fill="none" stroke="#1e2d45" stroke-width="1.5"/>
+              <ellipse cx="18" cy="158" rx="5" ry="4" fill="none" stroke="#1e2d45" stroke-width="1.5"/>
+            </svg>
+            <div class="scan-line" id="scan-line" style="top:50%"></div>
+          </div>
+        </div>
+        <div class="body-pos-label" id="body-pos-label">—</div>
+      </div>
+
+      <!-- Elemento DICOM principal -->
+      <div id="dicom-element" onmousemove="updatePixelInfo(event)"></div>
+
+      <!-- Marcadores de orientación -->
+      <div class="orient top">S</div>
+      <div class="orient bot">I</div>
+      <div class="orient lft">R</div>
+      <div class="orient rgt">L</div>
+
+      <!-- Overlays de información -->
+      <div class="overlay tl">
+        <div id="ov-patient">—</div>
+        <div id="ov-dob">—</div>
+        <div id="ov-sex">—</div>
+      </div>
+      <div class="overlay tr">
+        <div id="ov-series">—</div>
+        <div id="ov-date">—</div>
+        <div id="ov-institution">—</div>
+      </div>
+      <div class="overlay bl">
+        <div id="ov-slice">Corte: —/—</div>
+        <div id="ov-thickness">—</div>
+        <div id="ov-sliceLoc">—</div>
+      </div>
+      <div class="overlay br">
+        <div id="ov-ww">W:1500 L:-600</div>
+        <div id="ov-zoom-ov">Zoom: 1.0x</div>
+      </div>
+
+      <!-- Loading overlay -->
+      <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+        <div class="loading-text" id="loading-text">Cargando DICOM...</div>
+        <div class="loading-bar-wrap"><div class="loading-bar" id="loading-bar"></div></div>
+      </div>
+
+      <!-- Estado vacío -->
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">🏥</div>
+        <div class="empty-title">MedVision DICOM Viewer</div>
+        <div class="empty-sub">Arrastra una carpeta completa de archivos .dcm para ver la serie con efecto cine</div>
+        <div class="empty-steps">
+          <div class="empty-step"><div class="empty-step-icon">📂</div><div class="empty-step-text">Arrastra<br>la carpeta</div></div>
+          <div class="empty-step"><div class="empty-step-icon">⚡</div><div class="empty-step-text">Carga<br>automática</div></div>
+          <div class="empty-step"><div class="empty-step-icon">🖱️</div><div class="empty-step-text">Scroll para<br>navegar</div></div>
+          <div class="empty-step"><div class="empty-step-icon">▶</div><div class="empty-step-text">Play para<br>cine 3D</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barra de navegación de cortes -->
+    <div class="slice-bar">
+      <button class="cine-btn" style="width:28px;height:28px;font-size:12px" onclick="togglePlay()" id="play-btn-bar">▶</button>
+      <label>Corte:</label>
+      <input type="range" id="slice-slider" min="0" max="0" value="0" oninput="goToSlice(parseInt(this.value))">
+      <span class="slice-counter" id="slice-counter">0 / 0</span>
+      <span class="slice-loc" id="slice-loc-bar">z: — mm</span>
+    </div>
+  </div><!-- end center-panel -->
+
+  <!-- ===== PANEL DERECHO ===== -->
+  <div class="right-panel">
+
+    <!-- Instrucciones (cuando no hay archivo) -->
+    <div id="instructions-panel">
+      <div style="padding:16px">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px">
+          <div style="font-family:var(--font-display);font-size:14px;font-weight:700;margin-bottom:10px;color:var(--accent)">📖 Cómo usar el visor</div>
+          <div style="font-size:12px;color:var(--text2);line-height:1.8">
+            <div style="margin-bottom:6px">1. Abre la carpeta de tu serie DICOM en el explorador</div>
+            <div style="margin-bottom:6px">2. Arrastra la <strong style="color:var(--accent)">carpeta completa</strong> al panel izquierdo</div>
+            <div style="margin-bottom:6px">3. Todos los cortes cargan automáticamente ordenados por posición</div>
+            <div style="margin-bottom:6px">4. Usa <strong style="color:var(--accent)">scroll</strong> para navegar corte a corte</div>
+            <div>5. Presiona <strong style="color:var(--accent)">▶ Play</strong> para el efecto cine automático</div>
+          </div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;margin-top:12px">
+          <div style="font-family:var(--font-display);font-size:14px;font-weight:700;margin-bottom:10px;color:var(--accent)">⌨️ Atajos de teclado</div>
+          <div style="font-size:12px;color:var(--text2);line-height:1.8">
+            <div style="margin-bottom:4px"><strong style="color:var(--text)">↑ ↓ o ← →</strong> Navegar cortes</div>
+            <div style="margin-bottom:4px"><strong style="color:var(--text)">Espacio</strong> Play / Pause</div>
+            <div style="margin-bottom:4px"><strong style="color:var(--text)">RePág / AvPág</strong> Saltar 10 cortes</div>
+            <div><strong style="color:var(--text)">Inicio / Fin</strong> Primer / Último corte</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Información de serie -->
+    <div id="series-info-panel" style="display:none">
+      <div class="panel-section">
+        <div class="panel-title">📊 Información de serie</div>
+        <div class="series-info">
+          <div class="series-stat"><span class="series-stat-label">Total cortes</span><span class="series-stat-val" id="si-total">—</span></div>
+          <div class="series-stat"><span class="series-stat-label">Corte actual</span><span class="series-stat-val" id="si-current">—</span></div>
+          <div class="series-stat"><span class="series-stat-label">Grosor corte</span><span class="series-stat-val" id="si-thickness">—</span></div>
+          <div class="series-stat"><span class="series-stat-label">Pixel Spacing</span><span class="series-stat-val" id="si-spacing">—</span></div>
+          <div class="series-stat"><span class="series-stat-label">Dimensiones</span><span class="series-stat-val" id="si-dims">—</span></div>
+          <div class="series-stat"><span class="series-stat-label">Posición Z</span><span class="series-stat-val" id="si-pos">—</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Metadatos DICOM -->
+    <div id="metadata-panel" style="display:none">
+      <div class="panel-section">
+        <div class="panel-title">🗂️ Metadatos DICOM</div>
+        <div class="meta-grid" id="meta-grid"></div>
+      </div>
+    </div>
+
+    <!-- Estructuras anatómicas -->
+    <div class="panel-section" id="annotations-guide" style="display:none">
+      <div class="panel-title">🔬 Estructuras anatómicas</div>
+      <div class="annotation-list" id="annotation-list"></div>
+    </div>
+
+    <!-- Información del píxel -->
+    <div class="panel-section" id="pixel-panel" style="display:none">
+      <div class="panel-title">📊 Información del píxel</div>
+      <div class="pixel-info">
+        <div class="pixel-row"><span class="pixel-key">Posición X:</span><span class="pixel-val" id="px-x">—</span></div>
+        <div class="pixel-row"><span class="pixel-key">Posición Y:</span><span class="pixel-val" id="px-y">—</span></div>
+        <div class="pixel-row"><span class="pixel-key">Valor HU:</span><span class="pixel-val" id="px-hu">—</span></div>
+        <div class="pixel-row"><span class="pixel-key">Tejido:</span><span class="pixel-val" id="px-tissue">—</span></div>
+      </div>
+      <div class="hu-bar-wrap" style="margin-top:10px">
+        <div class="panel-title" style="margin-bottom:6px">Escala Hounsfield</div>
+        <div class="hu-bar"><div class="hu-marker" id="hu-marker" style="left:50%"></div></div>
+        <div class="hu-bar-labels"><span>-1000</span><span>-500</span><span>0</span><span>+500</span><span>+1000</span></div>
+      </div>
+      <div style="margin-top:12px;display:flex;flex-direction:column;gap:3px;font-size:10px">
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--text3)">Aire</span><span style="font-family:var(--font-mono);color:var(--accent)">-1000 HU</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--text3)">Grasa / Pulmón</span><span style="font-family:var(--font-mono);color:var(--accent)">-100 a -700 HU</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--text3)">Agua / LCR</span><span style="font-family:var(--font-mono);color:var(--accent)">0 HU</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--text3)">Músculo / Hígado</span><span style="font-family:var(--font-mono);color:var(--accent)">+40-80 HU</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--text3)">Contraste IV</span><span style="font-family:var(--font-mono);color:var(--accent)">+200-300 HU</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--text3)">Hueso</span><span style="font-family:var(--font-mono);color:var(--accent)">+400-1000 HU</span></div>
+      </div>
+    </div>
+
+  </div><!-- end right-panel -->
+</div><!-- end main -->
+
+<!-- JS del visor DICOM (orden importante) -->
+<script src="js/dicom/cornerstone-init.js"></script>
+<script src="js/dicom/ui.js"></script>
+<script src="js/dicom/tools.js"></script>
+<script src="js/dicom/file-loader.js"></script>
+<script src="js/dicom/display.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bazo Humano 3D — Plataforma Médica In Silico</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🫀</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:1.3rem">🧬</span>
+            <div>
+                <h1>Plataforma Médica In Silico</h1>
+                <span>Modelo Anatómico 3D — Bazo &amp; Sistema Linfoide Humano</span>
+            </div>
+        </div>
+        <div class="header-r">
+            <div class="fps" id="fps">-- FPS</div>
+            <div class="sdot"></div>
+        </div>
+    </div>
+
+    <canvas id="mainCanvas"></canvas>
+
+    <div class="hl-panel">
+        <div class="hl-title">Estructuras</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#a06080"></span>Bazo completo</button>
+
+        <div class="hl-sep">— Cápsula y Estroma —</div>
+        <button class="hl-btn" data-part="capsula"><span class="hl-dot" style="background:#c898a8"></span>Cápsula esplénica</button>
+        <button class="hl-btn" data-part="trabeculas"><span class="hl-dot" style="background:#b88898"></span>Trabéculas</button>
+        <button class="hl-btn" data-part="hilio"><span class="hl-dot" style="background:#884455"></span>Hilio esplénico</button>
+
+        <div class="hl-sep">— Pulpa Esplénica —</div>
+        <button class="hl-btn" data-part="pulpablanca"><span class="hl-dot" style="background:#8899cc"></span>Pulpa blanca (PALS)</button>
+        <button class="hl-btn" data-part="pulparoja"><span class="hl-dot" style="background:#cc4455"></span>Pulpa roja</button>
+        <button class="hl-btn" data-part="zonamarginal"><span class="hl-dot" style="background:#aa6677"></span>Zona marginal</button>
+        <button class="hl-btn" data-part="sinusoides"><span class="hl-dot" style="background:#cc3344"></span>Sinusoides esplénicos</button>
+
+        <div class="hl-sep">— Componentes Inmunes —</div>
+        <button class="hl-btn" data-part="linfocitosT"><span class="hl-dot" style="background:#5577cc"></span>Linfocitos T (PALS)</button>
+        <button class="hl-btn" data-part="linfocitosB"><span class="hl-dot" style="background:#4499aa"></span>Linfocitos B (folículos)</button>
+        <button class="hl-btn" data-part="macrofagos"><span class="hl-dot" style="background:#aa7733"></span>Macrófagos esplénicos</button>
+        <button class="hl-btn" data-part="celulasPlasmaticas"><span class="hl-dot" style="background:#7755aa"></span>Células plasmáticas</button>
+
+        <div class="hl-sep">— Vascularización —</div>
+        <button class="hl-btn" data-part="arteriaEsplenica"><span class="hl-dot" style="background:#dd3333"></span>Arteria esplénica</button>
+        <button class="hl-btn" data-part="venaEsplenica"><span class="hl-dot" style="background:#3344aa"></span>Vena esplénica</button>
+        <button class="hl-btn" data-part="arteriasTrabeculares"><span class="hl-dot" style="background:#cc4444"></span>Arterias trabeculares</button>
+
+        <div class="hl-sep">— Función —</div>
+        <button class="hl-btn" data-part="filtracion"><span class="hl-dot" style="background:#cc7722"></span>Filtración sanguínea</button>
+        <button class="hl-btn" data-part="hemopoyesis"><span class="hl-dot" style="background:#dd5544"></span>Hematopoyesis extramedular</button>
+        <button class="hl-btn" data-part="inmunidad"><span class="hl-dot" style="background:#5588cc"></span>Respuesta inmune</button>
+        <button class="hl-btn" data-part="reservorio"><span class="hl-dot" style="background:#aa3355"></span>Reservorio sanguíneo</button>
+    </div>
+
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Bazo Humano</div>
+        <div class="ip-sys" id="ipS">Sistema Linfoide — Órgano Linfoide Secundario</div>
+        <div class="ip-desc" id="ipD">El bazo es el órgano linfoide secundario más grande del cuerpo humano (~150 g, 12 cm). Ubicado en el hipocondrio izquierdo bajo las costillas 9-11, actúa como filtro sanguíneo, reservorio de eritrocitos y plaquetas, órgano inmune y centro de hematopoyesis extramedular. Su ausencia (esplenectomía) incrementa el riesgo de infecciones bacterianas encapsuladas.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Peso adulto</div><div class="st-val">~150 g</div></div>
+            <div class="st-card"><div class="st-label">Dimensiones</div><div class="st-val">12×7×4 cm</div></div>
+            <div class="st-card"><div class="st-label">Flujo sanguíneo</div><div class="st-val">~350 mL/min</div></div>
+            <div class="st-card"><div class="st-label">Localización</div><div class="st-val">Hipocondrio izq.</div></div>
+        </div>
+    </div>
+
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Frontal">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Posterior">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="10"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="95"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="40"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="82"></div>
+    </div>
+
+    <div class="credit">
+        Modelo: <a href="https://sketchfab.com" target="_blank">"Bazo 3D"</a><br>
+        Sketchfab Standard License
+    </div>
+
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

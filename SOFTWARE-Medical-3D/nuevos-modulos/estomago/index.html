@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estómago 3D — Plataforma Médica In Silico</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- LOADING SCREEN -->
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🫃</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:1.3rem">🧬</span>
+            <div>
+                <h1>Plataforma Médica In Silico</h1>
+                <span>Modelo Anatómico 3D — Estómago &amp; Sistema Digestivo Superior</span>
+            </div>
+        </div>
+        <div class="header-r">
+            <div class="fps" id="fps">-- FPS</div>
+            <div class="sdot"></div>
+        </div>
+    </div>
+
+    <!-- 3D CANVAS -->
+    <canvas id="mainCanvas"></canvas>
+
+    <!-- LEFT PANEL -->
+    <div class="hl-panel">
+        <div class="hl-title">Estructuras</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#7eb8d4"></span>Estómago completo</button>
+
+        <div class="hl-sep">— Regiones del Estómago —</div>
+        <button class="hl-btn" data-part="cardias"><span class="hl-dot" style="background:#e87878"></span>Cardias</button>
+        <button class="hl-btn" data-part="fundus"><span class="hl-dot" style="background:#dc6868"></span>Fundus (fondo gástrico)</button>
+        <button class="hl-btn" data-part="cuerpo"><span class="hl-dot" style="background:#c85858"></span>Cuerpo gástrico</button>
+        <button class="hl-btn" data-part="antro"><span class="hl-dot" style="background:#b84848"></span>Antro pilórico</button>
+        <button class="hl-btn" data-part="piloro"><span class="hl-dot" style="background:#a03838"></span>Píloro</button>
+
+        <div class="hl-sep">— Curvaturas y Paredes —</div>
+        <button class="hl-btn" data-part="curvatura_mayor"><span class="hl-dot" style="background:#f0a070"></span>Curvatura mayor</button>
+        <button class="hl-btn" data-part="curvatura_menor"><span class="hl-dot" style="background:#e08050"></span>Curvatura menor</button>
+        <button class="hl-btn" data-part="pared_anterior"><span class="hl-dot" style="background:#d07040"></span>Pared anterior</button>
+        <button class="hl-btn" data-part="pared_posterior"><span class="hl-dot" style="background:#c06030"></span>Pared posterior</button>
+        <button class="hl-btn" data-part="incisura"><span class="hl-dot" style="background:#b05020"></span>Incisura angularis</button>
+
+        <div class="hl-sep">— Capas de la Pared —</div>
+        <button class="hl-btn" data-part="mucosa"><span class="hl-dot" style="background:#e07070"></span>Mucosa gástrica</button>
+        <button class="hl-btn" data-part="submucosa"><span class="hl-dot" style="background:#d06060"></span>Submucosa</button>
+        <button class="hl-btn" data-part="muscular"><span class="hl-dot" style="background:#c05050"></span>Capa muscular (3 capas)</button>
+        <button class="hl-btn" data-part="serosa"><span class="hl-dot" style="background:#b04040"></span>Serosa (peritoneo visceral)</button>
+        <button class="hl-btn" data-part="rugosidades"><span class="hl-dot" style="background:#d08080"></span>Rugosidades gástricas</button>
+
+        <div class="hl-sep">— Estructuras Especiales —</div>
+        <button class="hl-btn" data-part="esfinter_cardial"><span class="hl-dot" style="background:#88aadd"></span>Esfínter esofagogástrico</button>
+        <button class="hl-btn" data-part="esfinter_pilorico"><span class="hl-dot" style="background:#6688cc"></span>Esfínter pilórico</button>
+        <button class="hl-btn" data-part="glándulas"><span class="hl-dot" style="background:#c47888"></span>Glándulas gástricas</button>
+        <button class="hl-btn" data-part="celulas_parietales"><span class="hl-dot" style="background:#a85868"></span>Células parietales (HCl)</button>
+
+        <div class="hl-sep">— Inervación y Vascularización —</div>
+        <button class="hl-btn" data-part="nervio_vago"><span class="hl-dot" style="background:#88cc55"></span>Nervio vago (NC X)</button>
+        <button class="hl-btn" data-part="plexo_mioenterico"><span class="hl-dot" style="background:#66aa33"></span>Plexo mientérico (Auerbach)</button>
+        <button class="hl-btn" data-part="arteria_gastrica"><span class="hl-dot" style="background:#cc4444"></span>Arterias gástricas</button>
+        <button class="hl-btn" data-part="vena_porta"><span class="hl-dot" style="background:#4444cc"></span>Drenaje venoso (porta)</button>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Estómago Humano</div>
+        <div class="ip-sys" id="ipS">Sistema Digestivo — Órgano de Digestión Química y Mecánica</div>
+        <div class="ip-desc" id="ipD">El estómago es un órgano muscular hueco situado en el hipocondrio izquierdo y epigastrio, entre el esófago y el duodeno. Actúa como reservorio y procesador del alimento ingerido, produciendo ácido clorhídrico (pH 1.5–3.5) y pepsina para la digestión proteica. Tiene una capacidad de ~1–1.5 litros en reposo y hasta 4 litros tras una comida copiosa.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Capacidad</div><div class="st-val">1–4 litros</div></div>
+            <div class="st-card"><div class="st-label">pH gástrico</div><div class="st-val">1.5 – 3.5</div></div>
+            <div class="st-card"><div class="st-label">Capas musculares</div><div class="st-val">3 (oblicua, circular, longitudinal)</div></div>
+            <div class="st-card"><div class="st-label">Vaciamiento</div><div class="st-val">2–4 horas (mixto)</div></div>
+        </div>
+    </div>
+
+    <!-- BOTTOM CONTROL BAR -->
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Frontal">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Posterior">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <!-- POST-PROCESS PANEL -->
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="10"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="95"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="25"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="82"></div>
+    </div>
+
+    <!-- CREDIT -->
+    <div class="credit">
+        Modelo: <a href="https://sketchfab.com" target="_blank">"Estómago 3D"</a><br>
+        Sketchfab Standard License
+    </div>
+
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Lingual 3D — Plataforma Médica In Silico</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- LOADING SCREEN -->
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">👅</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:1.3rem">🧬</span>
+            <div>
+                <h1>Plataforma Médica In Silico</h1>
+                <span>Modelo Anatómico 3D — Lengua &amp; Sistema Gustativo Humano</span>
+            </div>
+        </div>
+        <div class="header-r">
+            <div class="fps" id="fps">-- FPS</div>
+            <div class="sdot"></div>
+        </div>
+    </div>
+
+    <!-- 3D CANVAS -->
+    <canvas id="mainCanvas"></canvas>
+
+    <!-- LEFT PANEL: Structures -->
+    <div class="hl-panel">
+        <div class="hl-title">Estructuras</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#7eb8d4"></span>Lengua completa</button>
+
+        <div class="hl-sep">— Regiones de la Lengua —</div>
+        <button class="hl-btn" data-part="apex"><span class="hl-dot" style="background:#e87878"></span>Ápex (punta)</button>
+        <button class="hl-btn" data-part="cuerpo"><span class="hl-dot" style="background:#dc6868"></span>Cuerpo lingual</button>
+        <button class="hl-btn" data-part="base"><span class="hl-dot" style="background:#c85858"></span>Base de la lengua</button>
+        <button class="hl-btn" data-part="dorso"><span class="hl-dot" style="background:#e07070"></span>Dorso lingual</button>
+        <button class="hl-btn" data-part="vientre"><span class="hl-dot" style="background:#d06060"></span>Vientre (cara inferior)</button>
+
+        <div class="hl-sep">— Papilas Linguales —</div>
+        <button class="hl-btn" data-part="filiformes"><span class="hl-dot" style="background:#f0c890"></span>Papilas filiformes</button>
+        <button class="hl-btn" data-part="fungiformes"><span class="hl-dot" style="background:#e89060"></span>Papilas fungiformes</button>
+        <button class="hl-btn" data-part="caliciformes"><span class="hl-dot" style="background:#d07040"></span>Papilas caliciformes (circunvaladas)</button>
+        <button class="hl-btn" data-part="foliadas"><span class="hl-dot" style="background:#c06030"></span>Papilas foliadas</button>
+
+        <div class="hl-sep">— Surcos y Límites —</div>
+        <button class="hl-btn" data-part="surco_medio"><span class="hl-dot" style="background:#8ec870"></span>Surco medio longitudinal</button>
+        <button class="hl-btn" data-part="surco_terminal"><span class="hl-dot" style="background:#70b850"></span>Surco terminal (V lingual)</button>
+        <button class="hl-btn" data-part="foramen_caecum"><span class="hl-dot" style="background:#58a038"></span>Foramen caecum</button>
+        <button class="hl-btn" data-part="amigdala_lingual"><span class="hl-dot" style="background:#c47888"></span>Amígdala lingual</button>
+
+        <div class="hl-sep">— Musculatura Intrínseca —</div>
+        <button class="hl-btn" data-part="longitudinal_sup"><span class="hl-dot" style="background:#f0a0a0"></span>Músculo longitudinal superior</button>
+        <button class="hl-btn" data-part="longitudinal_inf"><span class="hl-dot" style="background:#e08080"></span>Músculo longitudinal inferior</button>
+        <button class="hl-btn" data-part="transverso"><span class="hl-dot" style="background:#d06060"></span>Músculo transverso</button>
+        <button class="hl-btn" data-part="vertical"><span class="hl-dot" style="background:#c05050"></span>Músculo vertical</button>
+
+        <div class="hl-sep">— Musculatura Extrínseca —</div>
+        <button class="hl-btn" data-part="geniogloso"><span class="hl-dot" style="background:#88aadd"></span>Músculo geniogloso</button>
+        <button class="hl-btn" data-part="hiogloso"><span class="hl-dot" style="background:#6688cc"></span>Músculo hiogloso</button>
+        <button class="hl-btn" data-part="estilogloso"><span class="hl-dot" style="background:#4466bb"></span>Músculo estilogloso</button>
+        <button class="hl-btn" data-part="palatogloso"><span class="hl-dot" style="background:#3355aa"></span>Músculo palatogloso</button>
+
+        <div class="hl-sep">— Inervación y Vascularización —</div>
+        <button class="hl-btn" data-part="nervio_lingual"><span class="hl-dot" style="background:#88cc55"></span>Nervio lingual (NC V3)</button>
+        <button class="hl-btn" data-part="cuerda_timpano"><span class="hl-dot" style="background:#66aa33"></span>Cuerda del tímpano (NC VII)</button>
+        <button class="hl-btn" data-part="glosofaringeo"><span class="hl-dot" style="background:#558822"></span>Nervio glosofaríngeo (NC IX)</button>
+        <button class="hl-btn" data-part="hipogloso"><span class="hl-dot" style="background:#9955cc"></span>Nervio hipogloso (NC XII)</button>
+        <button class="hl-btn" data-part="arteria_lingual"><span class="hl-dot" style="background:#cc4444"></span>Arteria lingual</button>
+    </div>
+
+    <!-- RIGHT PANEL: Info -->
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Lengua Humana</div>
+        <div class="ip-sys" id="ipS">Sistema Digestivo y Gustativo — Órgano Muscular Multifuncional</div>
+        <div class="ip-desc" id="ipD">La lengua es un órgano muscular móvil situado en el suelo de la cavidad oral, recubierto por mucosa especializada con papilas gustativas. Interviene en la masticación, deglución, fonación y gusto. Está formada por 8 músculos (4 intrínsecos y 4 extrínsecos) y recibe inervación de 4 pares craneales distintos. El rango gustativo humano comprende 5 sabores primarios: dulce, salado, ácido, amargo y umami.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Músculos totales</div><div class="st-val">8 (4 int + 4 ext)</div></div>
+            <div class="st-card"><div class="st-label">Papilas gustativas</div><div class="st-val">~10,000 por lengua</div></div>
+            <div class="st-card"><div class="st-label">Pares craneales</div><div class="st-val">4 (V, VII, IX, XII)</div></div>
+            <div class="st-card"><div class="st-label">Sabores primarios</div><div class="st-val">5 (dulce, sal, ácido, amargo, umami)</div></div>
+        </div>
+    </div>
+
+    <!-- BOTTOM CONTROL BAR -->
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Frontal">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Posterior">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <!-- POST-PROCESS PANEL -->
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="10"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="95"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="25"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="82"></div>
+    </div>
+
+    <!-- CREDIT -->
+    <div class="credit">
+        Modelo: <a href="https://sketchfab.com" target="_blank">"Lengua 3D"</a><br>
+        Sketchfab Standard License
+    </div>
+
+    <!-- THREE.JS IMPORT MAP -->
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+
+    <!-- MAIN SCRIPT -->
+    <script type="module" src="js/main.js"></script>
+
+</body>
+</html>

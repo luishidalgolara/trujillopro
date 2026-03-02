@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Útero 3D — Plataforma Médica In Silico</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- LOADING SCREEN -->
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🫀</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:1.3rem">🧬</span>
+            <div>
+                <h1>Plataforma Médica In Silico</h1>
+                <span>Modelo Anatómico 3D — Útero &amp; Sistema Reproductor Femenino</span>
+            </div>
+        </div>
+        <div class="header-r">
+            <div class="fps" id="fps">-- FPS</div>
+            <div class="sdot"></div>
+        </div>
+    </div>
+
+    <!-- 3D CANVAS -->
+    <canvas id="mainCanvas"></canvas>
+
+    <!-- LEFT PANEL -->
+    <div class="hl-panel">
+        <div class="hl-title">Estructuras</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#7eb8d4"></span>Sistema reproductor completo</button>
+
+        <div class="hl-sep">— Regiones del Útero —</div>
+        <button class="hl-btn" data-part="fondo"><span class="hl-dot" style="background:#e87878"></span>Fondo uterino</button>
+        <button class="hl-btn" data-part="cuerpo"><span class="hl-dot" style="background:#dc6868"></span>Cuerpo uterino</button>
+        <button class="hl-btn" data-part="istmo"><span class="hl-dot" style="background:#c85858"></span>Istmo uterino</button>
+        <button class="hl-btn" data-part="cervix"><span class="hl-dot" style="background:#b84848"></span>Cérvix (cuello uterino)</button>
+        <button class="hl-btn" data-part="canal_cervical"><span class="hl-dot" style="background:#a03838"></span>Canal cervical</button>
+
+        <div class="hl-sep">— Capas de la Pared —</div>
+        <button class="hl-btn" data-part="endometrio"><span class="hl-dot" style="background:#e07070"></span>Endometrio</button>
+        <button class="hl-btn" data-part="miometrio"><span class="hl-dot" style="background:#c05050"></span>Miometrio</button>
+        <button class="hl-btn" data-part="perimetrio"><span class="hl-dot" style="background:#a03030"></span>Perimetrio (serosa)</button>
+        <button class="hl-btn" data-part="cavidad"><span class="hl-dot" style="background:#f09090"></span>Cavidad uterina</button>
+        <button class="hl-btn" data-part="orificio_int"><span class="hl-dot" style="background:#d07070"></span>Orificio cervical interno</button>
+        <button class="hl-btn" data-part="orificio_ext"><span class="hl-dot" style="background:#b05050"></span>Orificio cervical externo</button>
+
+        <div class="hl-sep">— Trompas de Falopio —</div>
+        <button class="hl-btn" data-part="trompa_ist"><span class="hl-dot" style="background:#f0a070"></span>Porción ístmica</button>
+        <button class="hl-btn" data-part="trompa_amp"><span class="hl-dot" style="background:#e08050"></span>Ampolla tubárica</button>
+        <button class="hl-btn" data-part="infundibulo"><span class="hl-dot" style="background:#d07040"></span>Infundíbulo y fimbrias</button>
+        <button class="hl-btn" data-part="trompa_int"><span class="hl-dot" style="background:#c06030"></span>Porción intramural</button>
+
+        <div class="hl-sep">— Ovarios —</div>
+        <button class="hl-btn" data-part="ovario"><span class="hl-dot" style="background:#c4a040"></span>Ovario</button>
+        <button class="hl-btn" data-part="corteza_ov"><span class="hl-dot" style="background:#b08030"></span>Corteza ovárica</button>
+        <button class="hl-btn" data-part="medula_ov"><span class="hl-dot" style="background:#a07020"></span>Médula ovárica</button>
+        <button class="hl-btn" data-part="foliculos"><span class="hl-dot" style="background:#c8b060"></span>Folículos ováricos</button>
+
+        <div class="hl-sep">— Ligamentos y Soporte —</div>
+        <button class="hl-btn" data-part="lig_ancho"><span class="hl-dot" style="background:#88aadd"></span>Ligamento ancho</button>
+        <button class="hl-btn" data-part="lig_redondo"><span class="hl-dot" style="background:#6688cc"></span>Ligamento redondo</button>
+        <button class="hl-btn" data-part="lig_uteroovario"><span class="hl-dot" style="background:#4466bb"></span>Ligamento útero-ovárico</button>
+        <button class="hl-btn" data-part="lig_cardinal"><span class="hl-dot" style="background:#3355aa"></span>Ligamento cardinal (Mackenrodt)</button>
+
+        <div class="hl-sep">— Inervación y Vascularización —</div>
+        <button class="hl-btn" data-part="arteria_uterina"><span class="hl-dot" style="background:#cc4444"></span>Arteria uterina</button>
+        <button class="hl-btn" data-part="arteria_ovarica"><span class="hl-dot" style="background:#bb3333"></span>Arteria ovárica</button>
+        <button class="hl-btn" data-part="plexo_utero"><span class="hl-dot" style="background:#88cc55"></span>Plexo uterovaginal</button>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Útero Humano</div>
+        <div class="ip-sys" id="ipS">Sistema Reproductor Femenino — Órgano de Gestación</div>
+        <div class="ip-desc" id="ipD">El útero es un órgano muscular hueco en forma de pera invertida situado en la pelvis menor, entre la vejiga (anterior) y el recto (posterior). Mide ~7.5 cm de largo, 5 cm de ancho y 3 cm de grosor en la mujer nulípara. Es el sitio de implantación del blastocisto, desarrollo fetal y expulsión del feto durante el parto. Se divide en fondo, cuerpo, istmo y cérvix, con tres capas concéntricas: endometrio, miometrio y perimetrio.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Dimensiones (nulípara)</div><div class="st-val">7.5 × 5 × 3 cm</div></div>
+            <div class="st-card"><div class="st-label">Peso</div><div class="st-val">~60–80 g</div></div>
+            <div class="st-card"><div class="st-label">Capas</div><div class="st-val">3 (endometrio, miometrio, perimetrio)</div></div>
+            <div class="st-card"><div class="st-label">Posición normal</div><div class="st-val">Anteversión + Anteflexión</div></div>
+        </div>
+    </div>
+
+    <!-- BOTTOM CONTROL BAR -->
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Frontal">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Posterior">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <!-- POST-PROCESS PANEL -->
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="10"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="95"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="25"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="82"></div>
+    </div>
+
+    <!-- CREDIT -->
+    <div class="credit">
+        Modelo: <a href="https://sketchfab.com" target="_blank">"Útero 3D"</a><br>
+        Sketchfab Standard License
+    </div>
+
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

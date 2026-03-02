@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ojo Humano 3D — Plataforma Médica In Silico</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- LOADING SCREEN -->
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">👁️</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:1.3rem">🧬</span>
+            <div>
+                <h1>Plataforma Médica In Silico</h1>
+                <span>Modelo Anatómico 3D — Globo Ocular &amp; Sistema Visual Humano</span>
+            </div>
+        </div>
+        <div class="header-r">
+            <div class="fps" id="fps">-- FPS</div>
+            <div class="sdot"></div>
+        </div>
+    </div>
+
+    <!-- 3D CANVAS -->
+    <canvas id="mainCanvas"></canvas>
+
+    <!-- LEFT PANEL: Structures -->
+    <div class="hl-panel">
+        <div class="hl-title">Estructuras</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#7eb8d4"></span>Globo ocular completo</button>
+
+        <div class="hl-sep">— Túnicas del Ojo —</div>
+        <button class="hl-btn" data-part="esclera"><span class="hl-dot" style="background:#e8eef4"></span>Esclera</button>
+        <button class="hl-btn" data-part="cornea"><span class="hl-dot" style="background:#aaddee"></span>Córnea</button>
+        <button class="hl-btn" data-part="coroides"><span class="hl-dot" style="background:#884444"></span>Coroides</button>
+        <button class="hl-btn" data-part="retina"><span class="hl-dot" style="background:#cc7744"></span>Retina</button>
+
+        <div class="hl-sep">— Segmento Anterior —</div>
+        <button class="hl-btn" data-part="iris"><span class="hl-dot" style="background:#4488aa"></span>Iris</button>
+        <button class="hl-btn" data-part="pupila"><span class="hl-dot" style="background:#111827"></span>Pupila</button>
+        <button class="hl-btn" data-part="cristalino"><span class="hl-dot" style="background:#c8dde8"></span>Cristalino (lens)</button>
+        <button class="hl-btn" data-part="camaras"><span class="hl-dot" style="background:#58c8d8"></span>Cámaras ocular (humor)</button>
+
+        <div class="hl-sep">— Segmento Posterior —</div>
+        <button class="hl-btn" data-part="vitreo"><span class="hl-dot" style="background:#88ccdd"></span>Humor vítreo</button>
+        <button class="hl-btn" data-part="fovea"><span class="hl-dot" style="background:#ffaa44"></span>Fóvea &amp; mácula</button>
+        <button class="hl-btn" data-part="nervio"><span class="hl-dot" style="background:#88aa55"></span>Nervio óptico</button>
+        <button class="hl-btn" data-part="papila"><span class="hl-dot" style="background:#ffcc66"></span>Papila óptica (punto ciego)</button>
+
+        <div class="hl-sep">— Fotorreceptores —</div>
+        <button class="hl-btn" data-part="conos"><span class="hl-dot" style="background:#e8aa44"></span>Conos (visión color)</button>
+        <button class="hl-btn" data-part="bastones"><span class="hl-dot" style="background:#6688aa"></span>Bastones (visión escotópica)</button>
+
+        <div class="hl-sep">— Estructuras Anexas —</div>
+        <button class="hl-btn" data-part="conjuntiva"><span class="hl-dot" style="background:#ffbbcc"></span>Conjuntiva</button>
+        <button class="hl-btn" data-part="musculos"><span class="hl-dot" style="background:#cc8855"></span>Músculos extraoculares</button>
+        <button class="hl-btn" data-part="lagrimal"><span class="hl-dot" style="background:#55bbcc"></span>Aparato lagrimal</button>
+
+        <div class="hl-sep">— Función Visual —</div>
+        <button class="hl-btn" data-part="acomodacion"><span class="hl-dot" style="background:#aabb55"></span>Acomodación &amp; refracción</button>
+        <button class="hl-btn" data-part="vascular"><span class="hl-dot" style="background:#cc5555"></span>Vascularización ocular</button>
+        <button class="hl-btn" data-part="inervacion"><span class="hl-dot" style="background:#6655aa"></span>Inervación ocular</button>
+    </div>
+
+    <!-- RIGHT PANEL: Info -->
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Globo Ocular Humano</div>
+        <div class="ip-sys" id="ipS">Sistema Visual — Órgano Receptor Primario</div>
+        <div class="ip-desc" id="ipD">El globo ocular es el órgano receptor de la visión, con un diámetro aproximado de 24 mm. Consta de tres túnicas concéntricas (fibrosa, vascular y nerviosa), dos segmentos (anterior y posterior) y un sistema dióptrico (córnea + cristalino) que enfoca la luz sobre la retina. Contiene aproximadamente 120 millones de bastones y 6-7 millones de conos.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Diámetro</div><div class="st-val">~24 mm</div></div>
+            <div class="st-card"><div class="st-label">Fotorreceptores</div><div class="st-val">~126 millones</div></div>
+            <div class="st-card"><div class="st-label">Poder dióptrico</div><div class="st-val">~60 D total</div></div>
+            <div class="st-card"><div class="st-label">Campo visual</div><div class="st-val">~200° binocular</div></div>
+        </div>
+    </div>
+
+    <!-- BOTTOM CONTROL BAR -->
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Frontal">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Posterior">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <!-- POST-PROCESS PANEL -->
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="10"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="95"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="25"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="82"></div>
+    </div>
+
+    <!-- CREDIT -->
+    <div class="credit">
+        Modelo: <a href="https://sketchfab.com" target="_blank">"Eye Textured"</a><br>
+        Sketchfab Standard License
+    </div>
+
+    <!-- THREE.JS IMPORT MAP -->
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+
+    <!-- MAIN SCRIPT -->
+    <script type="module" src="js/main.js"></script>
+
+</body>
+</html>

@@ -7,7 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
         *{margin:0;padding:0;box-sizing:border-box}
-        :root{--bg:#0a0810;--panel:rgba(14,12,24,0.88);--card:rgba(22,18,38,0.75);--accent:#e05050;--accent-glow:rgba(224,80,80,0.25);--cyan:#5cc8d4;--cyan-glow:rgba(92,200,212,0.2);--text:#e8ecf4;--text2:#8a94a8;--dim:#555f73;--border:rgba(255,255,255,0.06);--glass:rgba(255,255,255,0.03)}
+        :root{--bg:#b0b4bc;--panel:rgba(200,203,210,0.85);--card:rgba(190,193,200,0.75);--accent:#c0312a;--accent-glow:rgba(192,49,42,0.25);--cyan:#2a7a8a;--cyan-glow:rgba(42,122,138,0.2);--text:#1a1e28;--text2:#3a4050;--dim:#6a7080;--border:rgba(0,0,0,0.10);--glass:rgba(255,255,255,0.15)}
         body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow:hidden;height:100vh}
 
         .header{position:fixed;top:0;left:0;right:0;height:52px;background:var(--panel);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px;z-index:100}
@@ -80,6 +80,45 @@
         .back-btn svg{width:14px;height:14px;opacity:.6;transition:all .25s ease}
         .back-btn:hover svg{opacity:1;transform:translateX(-2px)}
         .cb.lbl-active{background:var(--accent-glow) !important;border-color:var(--accent) !important;color:var(--accent) !important}
+        /* Vignette overlay para enfoque en el corazón */
+        #vignetteOverlay{position:fixed;top:52px;left:0;width:100%;height:calc(100vh - 52px);pointer-events:none;z-index:10;background:radial-gradient(ellipse 55% 55% at 50% 50%, transparent 30%, rgba(100,103,110,0.45) 75%, rgba(80,83,90,0.75) 100%)}
+
+        /* ── Vista Interior ── */
+        .cb.interior-active{background:rgba(168,85,247,0.2) !important;border-color:#a855f7 !important;color:#a855f7 !important}
+
+        /* ── Toast de cambio de vista ── */
+        #viewToast{
+            position:fixed;top:66px;left:50%;transform:translateX(-50%) translateY(-8px);
+            background:rgba(10,9,20,0.92);backdrop-filter:blur(20px);
+            border:1px solid rgba(255,255,255,0.08);border-radius:10px;
+            padding:8px 18px;z-index:300;
+            font-family:'Space Mono',monospace;font-size:.65rem;color:#e8ecf4;
+            display:flex;align-items:center;gap:8px;
+            opacity:0;transition:opacity .3s ease, transform .3s ease;
+            pointer-events:none;
+        }
+        #viewToast.vis{opacity:1;transform:translateX(-50%) translateY(0);}
+        #viewToast .vt-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+
+        /* ── Overlay de transición entre modelos ── */
+        #modelTransition{
+            position:fixed;inset:0;background:var(--bg);
+            z-index:500;opacity:0;pointer-events:none;
+            transition:opacity .4s ease;
+        }
+        #modelTransition.fade-in{opacity:1;pointer-events:all;}
+
+        /* ── Badge modo interior en header ── */
+        #interiorBadge{
+            display:none;align-items:center;gap:5px;
+            padding:3px 10px;border-radius:6px;
+            background:rgba(168,85,247,0.15);
+            border:1px solid rgba(168,85,247,0.3);
+            font-family:'Space Mono',monospace;font-size:.58rem;
+            color:#a855f7;letter-spacing:.06em;
+        }
+        #interiorBadge.vis{display:flex;}
+
     </style>
 </head>
 <body>
@@ -95,10 +134,13 @@
             <span style="font-size:1.3rem" class="hb">🫀</span>
             <div><h1>Plataforma Médica In Silico</h1><span>Modelo Anatómico 3D — Corazón Humano</span></div>
         </div>
-        <div class="header-r"><div class="fps" id="fps">-- FPS</div><div class="sdot"></div></div>
+        <div class="header-r"><div class="fps" id="fps">-- FPS</div><div id="interiorBadge">✂️ VISTA INTERIOR</div><div class="sdot"></div></div>
     </div>
 
     <canvas id="mainCanvas"></canvas>
+    <div id="vignetteOverlay"></div>
+    <div id="viewToast"><span class="vt-dot" id="vtDot"></span><span id="vtText"></span></div>
+    <div id="modelTransition"></div>
 
     <div class="bpm-indicator">
         <div class="bpm-pulse"></div>
@@ -154,6 +196,8 @@
         <button class="cb" id="bIn" title="Info">📋</button>
         <div class="cd"></div>
         <button class="cb lbl-active" id="bLbl" title="Etiquetas numéricas">🏷️</button>
+        <div class="cd"></div>
+        <button class="cb" id="bInt" title="Vista Interior — Anatomía Interna">✂️</button>
     </div>
 
     <div class="pp-panel" id="ppP">
@@ -186,8 +230,8 @@ const setLoad=(p,t)=>{lbFill.style.width=p+'%';lbTxt.textContent=t};
 setLoad(10,'Configurando escena...');
 const canvas=$('mainCanvas');
 const scene=new THREE.Scene();
-scene.background=new THREE.Color(0x0a0810);
-scene.fog=new THREE.FogExp2(0x0a0810, 0.045);
+scene.background=new THREE.Color(0xb2b6be);
+scene.fog=new THREE.FogExp2(0xb2b6be, 0.06);
 
 const camera=new THREE.PerspectiveCamera(45, innerWidth/(innerHeight-52), 0.01, 100);
 camera.position.set(3, 1.5, 4);
@@ -220,9 +264,9 @@ envSc.add(new THREE.Mesh(
         vertexShader:`varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
         fragmentShader:`varying vec3 vP;void main(){
             vec3 d=normalize(vP);float y=d.y*.5+.5;
-            vec3 c=mix(vec3(.05,.03,.06),mix(vec3(.08,.05,.1),vec3(.12,.08,.15),smoothstep(.4,1.,y)),smoothstep(0.,.4,y));
-            c+=vec3(.35,.12,.1)*pow(max(0.,dot(d,normalize(vec3(1.,.4,.5)))),7.)*.3;
-            c+=vec3(.15,.08,.15)*pow(max(0.,dot(d,normalize(vec3(-.7,.3,-.6)))),5.)*.2;
+            vec3 c=mix(vec3(.60,.62,.65),mix(vec3(.70,.72,.75),vec3(.78,.80,.83),smoothstep(.4,1.,y)),smoothstep(0.,.4,y));
+            c+=vec3(.85,.82,.80)*pow(max(0.,dot(d,normalize(vec3(1.,.6,.5)))),6.)*.15;
+            c+=vec3(.75,.76,.78)*pow(max(0.,dot(d,normalize(vec3(-.5,.4,-.6)))),4.)*.10;
             gl_FragColor=vec4(c,1.);}`
     })
 ));
@@ -278,58 +322,165 @@ composer.addPass(new SMAAPass(innerWidth, innerHeight));
 setLoad(50,'Cargando corazón...');
 let heartModel=null;
 let heartScale=1.0;
+let interiorModel=null;
+let interiorScale=1.0;
+let isInteriorView=false;
+let interiorLoaded=false;
+let interiorLoading=false;
 
-new GLTFLoader().load('heart.glb',
+// ── Pre-cargar modelo interior en segundo plano ──
+function preloadInterior(){
+    if(interiorLoaded||interiorLoading) return;
+    interiorLoading=true;
+    new GLTFLoader().load('anatomia-corazon.glb',
+        (gltf)=>{
+            interiorModel=gltf.scene;
+            interiorModel.visible=false;
+            interiorModel.traverse(c=>{c.visible=false;});
+
+            const box=new THREE.Box3().setFromObject(interiorModel);
+            const size=box.getSize(new THREE.Vector3());
+            const maxDim=Math.max(size.x,size.y,size.z);
+            interiorScale=(maxDim>0.001)?(3.2/maxDim):1.0;
+            interiorModel.scale.setScalar(interiorScale);
+
+            const sBox=new THREE.Box3().setFromObject(interiorModel);
+            const sCenter=sBox.getCenter(new THREE.Vector3());
+            interiorModel.position.sub(sCenter);
+
+            interiorModel.traverse((child)=>{
+                if(!child.isMesh) return;
+                child.castShadow=true;
+                child.receiveShadow=true;
+                child.frustumCulled=false;
+                const mats=Array.isArray(child.material)?child.material:[child.material];
+                mats.forEach(m=>{
+                    if(!m) return;
+                    m.roughness=0.5;
+                    m.metalness=0.0;
+                    m.envMapIntensity=0.9;
+                    m.needsUpdate=true;
+                });
+            });
+
+            scene.add(interiorModel);
+            interiorLoaded=true;
+            interiorLoading=false;
+            console.log('✅ Modelo interior pre-cargado');
+        },
+        null,
+        (e)=>{ console.warn('⚠️ No se pudo pre-cargar anatomia-corazon.glb:', e); interiorLoading=false; }
+    );
+}
+
+// ── Función de transición entre modelos ──
+function switchToInterior(){
+    if(!interiorLoaded){ showToast('⏳ Cargando vista interior...','#a855f7'); return; }
+    const tr=document.getElementById('modelTransition');
+    tr.classList.add('fade-in');
+    setTimeout(()=>{
+        heartModel.visible=false;
+        heartModel.traverse(c=>c.visible=false);
+        interiorModel.visible=true;
+        interiorModel.traverse(c=>{ c.visible=true; });
+        isInteriorView=true;
+        document.getElementById('bInt').classList.add('interior-active');
+        document.getElementById('interiorBadge').classList.add('vis');
+        // Notificar a heart_labels
+        window.dispatchEvent(new CustomEvent('heartViewChanged',{detail:{view:'interior'}}));
+        showToast('✂️ Vista Interior Activada','#a855f7');
+        setTimeout(()=>tr.classList.remove('fade-in'),400);
+    },350);
+}
+
+function switchToExterior(){
+    const tr=document.getElementById('modelTransition');
+    tr.classList.add('fade-in');
+    setTimeout(()=>{
+        interiorModel.visible=false;
+        interiorModel.traverse(c=>c.visible=false);
+        heartModel.visible=true;
+        heartModel.traverse(c=>{ c.visible=true; });
+        isInteriorView=false;
+        document.getElementById('bInt').classList.remove('interior-active');
+        document.getElementById('interiorBadge').classList.remove('vis');
+        window.dispatchEvent(new CustomEvent('heartViewChanged',{detail:{view:'exterior'}}));
+        showToast('🫀 Vista Exterior Restaurada','#cc3333');
+        setTimeout(()=>tr.classList.remove('fade-in'),400);
+    },350);
+}
+
+// ── Toast helper ──
+let toastTimer=null;
+function showToast(text,color){
+    const toast=document.getElementById('viewToast');
+    const dot=document.getElementById('vtDot');
+    const txt=document.getElementById('vtText');
+    dot.style.background=color;
+    txt.textContent=text;
+    toast.classList.add('vis');
+    clearTimeout(toastTimer);
+    toastTimer=setTimeout(()=>toast.classList.remove('vis'),2500);
+}
+
+new GLTFLoader().load('corazon2.glb',
     (gltf) => {
         setLoad(80,'Mejorando materiales...');
         heartModel = gltf.scene;
+
+        // Asegurar visibilidad completa
+        heartModel.visible = true;
+        heartModel.traverse(c => { c.visible = true; });
+
+        // Calcular tamaño y escalar
         const box = new THREE.Box3().setFromObject(heartModel);
-        const center = box.getCenter(new THREE.Vector3());
         const size = box.getSize(new THREE.Vector3());
-        const sc = 3.2 / Math.max(size.x, size.y, size.z);
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const sc = (maxDim > 0.001) ? (3.2 / maxDim) : 1.0;
         heartModel.scale.setScalar(sc);
         heartScale = sc;
+
+        // Centrar modelo
         const scaledBox = new THREE.Box3().setFromObject(heartModel);
         const scaledCenter = scaledBox.getCenter(new THREE.Vector3());
-        heartModel.position.x -= scaledCenter.x;
-        heartModel.position.y -= scaledCenter.y;
-        heartModel.position.z -= scaledCenter.z;
+        heartModel.position.sub(scaledCenter);
+
+        // Conservar materiales originales (tienen texturas), solo ajustar params
         heartModel.traverse((child) => {
             if (!child.isMesh) return;
-            child.castShadow = true; child.receiveShadow = true;
-            const mat = child.material;
-            if (mat) {
-                const pm = new THREE.MeshPhysicalMaterial();
-                if (mat.map) pm.map = mat.map;
-                if (mat.normalMap) { pm.normalMap = mat.normalMap; pm.normalScale = new THREE.Vector2(2.0, 2.0); }
-                if (mat.roughnessMap) pm.roughnessMap = mat.roughnessMap;
-                if (mat.metalnessMap) pm.metalnessMap = mat.metalnessMap;
-                pm.roughness = 0.6; pm.metalness = 0.0;
-                pm.clearcoat = 0.12; pm.clearcoatRoughness = 0.45;
-                pm.thickness = 1.0;
-                pm.attenuationColor = new THREE.Color(0.85, 0.25, 0.2);
-                pm.attenuationDistance = 1.5;
-                pm.sheen = 0.3; pm.sheenRoughness = 0.5;
-                pm.sheenColor = new THREE.Color(0.85, 0.4, 0.35);
-                pm.emissive = new THREE.Color(0.2, 0.05, 0.04);
-                pm.emissiveIntensity = 0.1; pm.envMapIntensity = 0.5;
-                child.material = pm;
-            }
+            child.castShadow = true;
+            child.receiveShadow = true;
+            child.frustumCulled = false;
+            const mats = Array.isArray(child.material) ? child.material : [child.material];
+            mats.forEach(m => {
+                if (!m) return;
+                m.roughness = 0.55;
+                m.metalness = 0.0;
+                m.envMapIntensity = 0.8;
+                m.needsUpdate = true;
+            });
         });
         scene.add(heartModel);
+
+        // Suelo
+        const scaledBox2 = new THREE.Box3().setFromObject(heartModel);
         const gnd = new THREE.Mesh(
             new THREE.PlaneGeometry(15, 15),
-            new THREE.MeshStandardMaterial({color:0x0a0810, roughness:0.95, transparent:true, opacity:0.4})
+            new THREE.MeshStandardMaterial({color:0xa8acb4, roughness:0.95, transparent:true, opacity:0.5})
         );
         gnd.rotation.x = -Math.PI / 2;
-        gnd.position.y = scaledBox.min.y - 0.1;
+        gnd.position.y = scaledBox2.min.y - 0.1;
         gnd.receiveShadow = true;
         scene.add(gnd);
+
+        console.log('✅ Modelo cargado OK. Tamaño:', size, '| Escala:', sc);
         setLoad(100, '¡Listo!');
         setTimeout(() => ls.classList.add('hidden'), 500);
+        // Pre-cargar modelo interior en segundo plano
+        setTimeout(preloadInterior, 1500);
     },
     (p) => { if(p.total) setLoad(50 + (p.loaded / p.total) * 30, 'Descargando... ' + (p.loaded / 1024 | 0) + 'KB') },
-    (e) => { console.error(e); setLoad(0, 'Error al cargar. Verifica que heart.glb esté en la misma carpeta.') }
+    (e) => { console.error('❌ Error GLB:', e); setLoad(0, 'Error al cargar corazon2.glb — verifica que está en modulos-3D/') }
 );
 
 // ===== EXPOSE FOR EXTERNAL MODULES =====
@@ -337,12 +488,14 @@ window.__HEART3D = { scene, camera, renderer, ctrl };
 
 // ===== HEARTBEAT ANIMATION =====
 function heartbeatPulse(t) {
-    if (!heartModel) return;
+    const activeModel = isInteriorView ? interiorModel : heartModel;
+    const activeScale = isInteriorView ? interiorScale : heartScale;
+    if (!activeModel) return;
     const cycle = (t * 0.001 * 1.2) % (Math.PI * 2);
     const beat1 = Math.max(0, Math.sin(cycle * 2) * 0.5) * Math.exp(-((cycle % Math.PI) - 0.5) * 2);
     const beat2 = Math.max(0, Math.sin((cycle - 0.3) * 2) * 0.3) * Math.exp(-(((cycle - 0.3) % Math.PI) - 0.5) * 2);
     const pulse = 1.0 + (beat1 + beat2) * 0.018;
-    heartModel.scale.setScalar(heartScale * pulse);
+    activeModel.scale.setScalar(activeScale * pulse);
     const bpm = 72 + Math.round(Math.sin(t * 0.0003) * 4);
     $('bpmVal').textContent = bpm;
 }
@@ -376,6 +529,27 @@ $('bBk').onclick = () => { camera.position.set(0, 0, -5); ctrl.target.set(0, 0, 
 let ipVis = true;
 $('bIn').onclick = () => { ipVis = !ipVis; $('ip').classList.toggle('hide', !ipVis); };
 $('bPP').onclick = e => { $('ppP').classList.toggle('vis'); e.currentTarget.classList.toggle('active'); };
+
+// ── Botón Vista Interior ──
+$('bInt').onclick = () => {
+    if(!isInteriorView){
+        if(!interiorLoaded && !interiorLoading){
+            showToast('⏳ Cargando modelo interior...','#a855f7');
+            preloadInterior();
+            // Reintentar tras carga
+            const check = setInterval(()=>{
+                if(interiorLoaded){ clearInterval(check); switchToInterior(); }
+            }, 300);
+            setTimeout(()=>clearInterval(check), 15000);
+        } else if(interiorLoaded){
+            switchToInterior();
+        } else {
+            showToast('⏳ Espera, cargando...','#a855f7');
+        }
+    } else {
+        switchToExterior();
+    }
+};
 $('ppB').oninput = e => bloom.strength = e.target.value / 100 * 0.5;
 $('ppE').oninput = e => renderer.toneMappingExposure = e.target.value / 100;
 $('ppS').oninput = e => cgPass.uniforms.sss.value = e.target.value / 100;
@@ -414,6 +588,7 @@ document.querySelectorAll('.hl-btn').forEach(btn => {
     </script>
     <!-- ═══ MÓDULO: Etiquetas Anatómicas Numeradas ═══ -->
     <script type="module" src="../js/labels/heart/heart_labels.js"></script>
+    <script type="module" src="../js/labels/heart/heart_labels-corte.js"></script>
     <script type="module" src="../js/labels/heart/heart_patologias.js"></script>
     <script type="module" src="../js/labels/heart/heart_nutricion.js"></script>
     <script type="module" src="../js/labels/heart/heart_habitos.js"></script>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hígado Humano 3D — Plataforma Médica In Silico</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- LOADING SCREEN -->
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🫀</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:1.3rem">🧬</span>
+            <div>
+                <h1>Plataforma Médica In Silico</h1>
+                <span>Modelo Anatómico 3D — Hígado Humano &amp; Sistema Hepatobiliar</span>
+            </div>
+        </div>
+        <div class="header-r">
+            <div class="fps" id="fps">-- FPS</div>
+            <div class="sdot"></div>
+        </div>
+    </div>
+
+    <!-- 3D CANVAS -->
+    <canvas id="mainCanvas"></canvas>
+
+    <!-- LEFT PANEL: Structures -->
+    <div class="hl-panel">
+        <div class="hl-title">Estructuras</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#c47040"></span>Hígado completo</button>
+
+        <div class="hl-sep">— Lóbulos Principales —</div>
+        <button class="hl-btn" data-part="lobulo_derecho"><span class="hl-dot" style="background:#c86040"></span>Lóbulo derecho</button>
+        <button class="hl-btn" data-part="lobulo_izquierdo"><span class="hl-dot" style="background:#b85840"></span>Lóbulo izquierdo</button>
+        <button class="hl-btn" data-part="lobulo_caudado"><span class="hl-dot" style="background:#a85030"></span>Lóbulo caudado (Spiegel)</button>
+        <button class="hl-btn" data-part="lobulo_cuadrado"><span class="hl-dot" style="background:#984830"></span>Lóbulo cuadrado</button>
+
+        <div class="hl-sep">— Segmentos de Couinaud —</div>
+        <button class="hl-btn" data-part="segmentos"><span class="hl-dot" style="background:#d87840"></span>Segmentos I–VIII</button>
+        <button class="hl-btn" data-part="hilum"><span class="hl-dot" style="background:#c06838"></span>Hilio hepático (porta hepatis)</button>
+
+        <div class="hl-sep">— Microestructura —</div>
+        <button class="hl-btn" data-part="lobulillo"><span class="hl-dot" style="background:#e09050"></span>Lobulillo hepático</button>
+        <button class="hl-btn" data-part="hepatocito"><span class="hl-dot" style="background:#d08040"></span>Hepatocitos</button>
+        <button class="hl-btn" data-part="sinusoide"><span class="hl-dot" style="background:#c07030"></span>Sinusoides hepáticos</button>
+        <button class="hl-btn" data-part="espacio_porta"><span class="hl-dot" style="background:#b06028"></span>Espacio porta (tríada)</button>
+
+        <div class="hl-sep">— Sistema Biliar —</div>
+        <button class="hl-btn" data-part="vesicula"><span class="hl-dot" style="background:#78b840"></span>Vesícula biliar</button>
+        <button class="hl-btn" data-part="coledoco"><span class="hl-dot" style="background:#68a830"></span>Colédoco (conducto biliar común)</button>
+        <button class="hl-btn" data-part="bilis"><span class="hl-dot" style="background:#58a020"></span>Producción de bilis</button>
+
+        <div class="hl-sep">— Vascularización —</div>
+        <button class="hl-btn" data-part="vena_porta"><span class="hl-dot" style="background:#5878c8"></span>Vena porta</button>
+        <button class="hl-btn" data-part="arteria_hepatica"><span class="hl-dot" style="background:#cc4040"></span>Arteria hepática</button>
+        <button class="hl-btn" data-part="venas_hepaticas"><span class="hl-dot" style="background:#4060b8"></span>Venas hepáticas (suprahepáticas)</button>
+
+        <div class="hl-sep">— Función —</div>
+        <button class="hl-btn" data-part="metabolismo"><span class="hl-dot" style="background:#c4b455"></span>Metabolismo &amp; biotransformación</button>
+        <button class="hl-btn" data-part="inervacion_h"><span class="hl-dot" style="background:#88aa55"></span>Inervación hepática</button>
+        <button class="hl-btn" data-part="capsula"><span class="hl-dot" style="background:#98b8c8"></span>Cápsula de Glisson</button>
+    </div>
+
+    <!-- RIGHT PANEL: Info -->
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Hígado Humano</div>
+        <div class="ip-sys" id="ipS">Sistema Digestivo — Glándula Más Grande del Cuerpo</div>
+        <div class="ip-desc" id="ipD">El hígado es la glándula más grande del cuerpo humano y el órgano interno más pesado (~1.5 kg en adulto). Ocupa el hipocondrio derecho y el epigastrio. Realiza más de 500 funciones metabólicas: síntesis de proteínas plasmáticas, metabolismo de carbohidratos, lípidos y proteínas, detoxificación, producción de bilis y almacenamiento de glucógeno.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Peso adulto</div><div class="st-val">1.2–1.8 kg</div></div>
+            <div class="st-card"><div class="st-label">Bilis/día</div><div class="st-val">600–1200 mL</div></div>
+            <div class="st-card"><div class="st-label">Flujo sanguíneo</div><div class="st-val">~1.5 L/min</div></div>
+            <div class="st-card"><div class="st-label">Segmentos</div><div class="st-val">8 (Couinaud)</div></div>
+        </div>
+    </div>
+
+    <!-- BOTTOM CONTROL BAR -->
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Frontal">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Posterior">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <!-- POST-PROCESS PANEL -->
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="10"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="95"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="25"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="82"></div>
+    </div>
+
+    <!-- CREDIT -->
+    <div class="credit">
+        Modelo: <a href="https://sketchfab.com" target="_blank">"Igado 3D"</a><br>
+        Sketchfab Standard License
+    </div>
+
+    <!-- THREE.JS IMPORT MAP -->
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+
+    <!-- MAIN SCRIPT -->
+    <script type="module" src="js/main.js"></script>
+
+</body>
+</html>

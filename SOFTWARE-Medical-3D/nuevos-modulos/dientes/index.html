@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Dental 3D — Plataforma Médica In Silico</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- LOADING SCREEN -->
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🦷</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:1.3rem">🧬</span>
+            <div>
+                <h1>Plataforma Médica In Silico</h1>
+                <span>Modelo Anatómico 3D — Sistema Dental &amp; Periodontal Humano</span>
+            </div>
+        </div>
+        <div class="header-r">
+            <div class="fps" id="fps">-- FPS</div>
+            <div class="sdot"></div>
+        </div>
+    </div>
+
+    <!-- 3D CANVAS -->
+    <canvas id="mainCanvas"></canvas>
+
+    <!-- LEFT PANEL: Structures -->
+    <div class="hl-panel">
+        <div class="hl-title">Estructuras</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#7eb8d4"></span>Dentadura completa</button>
+
+        <div class="hl-sep">— Dientes Superiores —</div>
+        <button class="hl-btn" data-part="incisivos_sup"><span class="hl-dot" style="background:#e8f0f8"></span>Incisivos superiores</button>
+        <button class="hl-btn" data-part="caninos_sup"><span class="hl-dot" style="background:#d4e4f4"></span>Caninos superiores</button>
+        <button class="hl-btn" data-part="premolares_sup"><span class="hl-dot" style="background:#b8d0ec"></span>Premolares superiores</button>
+        <button class="hl-btn" data-part="molares_sup"><span class="hl-dot" style="background:#8cb8e0"></span>Molares superiores</button>
+        <button class="hl-btn" data-part="terceros_sup"><span class="hl-dot" style="background:#6aa0cc"></span>Terceros molares sup.</button>
+
+        <div class="hl-sep">— Dientes Inferiores —</div>
+        <button class="hl-btn" data-part="incisivos_inf"><span class="hl-dot" style="background:#e0eef8"></span>Incisivos inferiores</button>
+        <button class="hl-btn" data-part="caninos_inf"><span class="hl-dot" style="background:#cce0f0"></span>Caninos inferiores</button>
+        <button class="hl-btn" data-part="premolares_inf"><span class="hl-dot" style="background:#aacce8"></span>Premolares inferiores</button>
+        <button class="hl-btn" data-part="molares_inf"><span class="hl-dot" style="background:#88b8e0"></span>Molares inferiores</button>
+        <button class="hl-btn" data-part="terceros_inf"><span class="hl-dot" style="background:#66a0cc"></span>Terceros molares inf.</button>
+
+        <div class="hl-sep">— Tejidos del Diente —</div>
+        <button class="hl-btn" data-part="esmalte"><span class="hl-dot" style="background:#f4f4f8"></span>Esmalte dental</button>
+        <button class="hl-btn" data-part="dentina"><span class="hl-dot" style="background:#f0d890"></span>Dentina</button>
+        <button class="hl-btn" data-part="pulpa"><span class="hl-dot" style="background:#e07080"></span>Pulpa dental</button>
+        <button class="hl-btn" data-part="cemento"><span class="hl-dot" style="background:#c8b070"></span>Cemento radicular</button>
+
+        <div class="hl-sep">— Tejidos de Soporte —</div>
+        <button class="hl-btn" data-part="encia"><span class="hl-dot" style="background:#e87878"></span>Encía (gingiva)</button>
+        <button class="hl-btn" data-part="periodonto"><span class="hl-dot" style="background:#d06060"></span>Ligamento periodontal</button>
+        <button class="hl-btn" data-part="hueso_alveolar"><span class="hl-dot" style="background:#d4c898"></span>Hueso alveolar</button>
+
+        <div class="hl-sep">— Estructuras Óseas —</div>
+        <button class="hl-btn" data-part="maxilar"><span class="hl-dot" style="background:#c8b888"></span>Maxilar superior</button>
+        <button class="hl-btn" data-part="mandibula"><span class="hl-dot" style="background:#b8a878"></span>Mandíbula</button>
+        <button class="hl-btn" data-part="raices"><span class="hl-dot" style="background:#a8c090"></span>Raíces dentales</button>
+    </div>
+
+    <!-- RIGHT PANEL: Info -->
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Sistema Dental Humano</div>
+        <div class="ip-sys" id="ipS">Sistema Estomatognático — Masticación y Oclusión</div>
+        <div class="ip-desc" id="ipD">La dentadura humana adulta consta de 32 dientes permanentes distribuidos en dos arcos (maxilar y mandibular). Cada diente es una estructura mineralizada compuesta por esmalte, dentina, pulpa y cemento, sostenida por el aparato de inserción periodontal. El sistema dental participa en la masticación, deglución, fonación y estética facial.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Dientes permanentes</div><div class="st-val">32 (16 + 16)</div></div>
+            <div class="st-card"><div class="st-label">Dureza esmalte</div><div class="st-val">5 Mohs (más duro)</div></div>
+            <div class="st-card"><div class="st-label">Tipos dentales</div><div class="st-val">4 (inc, can, pre, mol)</div></div>
+            <div class="st-card"><div class="st-label">Fuerza masticación</div><div class="st-val">~700 N (molares)</div></div>
+        </div>
+    </div>
+
+    <!-- BOTTOM CONTROL BAR -->
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Frontal">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Posterior">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <!-- POST-PROCESS PANEL -->
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="10"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="95"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="25"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="82"></div>
+    </div>
+
+    <!-- CREDIT -->
+    <div class="credit">
+        Modelo: <a href="https://sketchfab.com" target="_blank">"Nueva Dentadura"</a><br>
+        Sketchfab Standard License
+    </div>
+
+    <!-- THREE.JS IMPORT MAP -->
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+
+    <!-- MAIN SCRIPT -->
+    <script type="module" src="js/main.js"></script>
+
+</body>
+</html>

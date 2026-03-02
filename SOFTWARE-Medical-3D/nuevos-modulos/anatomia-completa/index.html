@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anatomía Humana 3D — Plataforma Médica In Silico</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🧍</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:1.3rem">🧬</span>
+            <div>
+                <h1>Plataforma Médica In Silico</h1>
+                <span>Modelo Anatómico 3D — Cuerpo Humano Completo</span>
+            </div>
+        </div>
+        <div class="header-r">
+            <div class="fps" id="fps">-- FPS</div>
+            <div class="sdot"></div>
+        </div>
+    </div>
+
+    <canvas id="mainCanvas"></canvas>
+
+    <div class="hl-panel">
+        <div class="hl-title">Sistemas</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#c09080"></span>Cuerpo completo</button>
+
+        <div class="hl-sep">— Sistema Locomotor —</div>
+        <button class="hl-btn" data-part="esqueleto"><span class="hl-dot" style="background:#e8dcc8"></span>Esqueleto (206 huesos)</button>
+        <button class="hl-btn" data-part="muscular"><span class="hl-dot" style="background:#cc6655"></span>Sistema muscular</button>
+        <button class="hl-btn" data-part="articulaciones"><span class="hl-dot" style="background:#aabbcc"></span>Articulaciones</button>
+        <button class="hl-btn" data-part="cartilago"><span class="hl-dot" style="background:#88ccbb"></span>Tejido cartilaginoso</button>
+
+        <div class="hl-sep">— Sistema Cardiovascular —</div>
+        <button class="hl-btn" data-part="corazon"><span class="hl-dot" style="background:#dd3344"></span>Corazón</button>
+        <button class="hl-btn" data-part="arterias"><span class="hl-dot" style="background:#cc2233"></span>Arterias</button>
+        <button class="hl-btn" data-part="venas"><span class="hl-dot" style="background:#3344aa"></span>Venas</button>
+        <button class="hl-btn" data-part="linfatico"><span class="hl-dot" style="background:#44aa77"></span>Sistema linfático</button>
+
+        <div class="hl-sep">— Sistema Respiratorio —</div>
+        <button class="hl-btn" data-part="pulmones"><span class="hl-dot" style="background:#ee9988"></span>Pulmones</button>
+        <button class="hl-btn" data-part="traquea"><span class="hl-dot" style="background:#aaccdd"></span>Tráquea &amp; bronquios</button>
+        <button class="hl-btn" data-part="diafragma"><span class="hl-dot" style="background:#cc8866"></span>Diafragma</button>
+
+        <div class="hl-sep">— Sistema Digestivo —</div>
+        <button class="hl-btn" data-part="esofago"><span class="hl-dot" style="background:#bb8877"></span>Esófago &amp; estómago</button>
+        <button class="hl-btn" data-part="intestinos"><span class="hl-dot" style="background:#cc9966"></span>Intestinos</button>
+        <button class="hl-btn" data-part="higado"><span class="hl-dot" style="background:#aa6633"></span>Hígado &amp; vesícula</button>
+        <button class="hl-btn" data-part="pancreas"><span class="hl-dot" style="background:#ddaa55"></span>Páncreas</button>
+
+        <div class="hl-sep">— Sistema Nervioso —</div>
+        <button class="hl-btn" data-part="encefalo"><span class="hl-dot" style="background:#ddbbaa"></span>Encéfalo</button>
+        <button class="hl-btn" data-part="medulaEspinal"><span class="hl-dot" style="background:#ccaa99"></span>Médula espinal</button>
+        <button class="hl-btn" data-part="nerviosPerifericos"><span class="hl-dot" style="background:#ffcc55"></span>Nervios periféricos</button>
+
+        <div class="hl-sep">— Sistema Urinario —</div>
+        <button class="hl-btn" data-part="rinones"><span class="hl-dot" style="background:#aa4422"></span>Riñones</button>
+        <button class="hl-btn" data-part="vejiga"><span class="hl-dot" style="background:#cc8844"></span>Vejiga urinaria</button>
+
+        <div class="hl-sep">— Sistema Endocrino —</div>
+        <button class="hl-btn" data-part="hipofisis"><span class="hl-dot" style="background:#cc88bb"></span>Hipófisis &amp; hipotálamo</button>
+        <button class="hl-btn" data-part="tiroidea"><span class="hl-dot" style="background:#88bbcc"></span>Tiroides &amp; paratiroides</button>
+        <button class="hl-btn" data-part="suprarrenales"><span class="hl-dot" style="background:#ccaa33"></span>Glándulas suprarrenales</button>
+
+        <div class="hl-sep">— Tegumento —</div>
+        <button class="hl-btn" data-part="piel"><span class="hl-dot" style="background:#e8b898"></span>Piel &amp; faneras</button>
+    </div>
+
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Cuerpo Humano</div>
+        <div class="ip-sys" id="ipS">Anatomía Sistémica — Visión General</div>
+        <div class="ip-desc" id="ipD">El cuerpo humano adulto está compuesto por ~37 trillones de células organizadas en 4 tipos de tejidos básicos (epitelial, conjuntivo, muscular y nervioso), formando 11 sistemas orgánicos interconectados. Mide en promedio 1.70 m, pesa ~70 kg y contiene ~60% de agua. Su homeostasis es mantenida por la integración funcional de todos sus sistemas.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Células totales</div><div class="st-val">~37 billones</div></div>
+            <div class="st-card"><div class="st-label">Genes codif.</div><div class="st-val">~20,000</div></div>
+            <div class="st-card"><div class="st-label">Huesos adulto</div><div class="st-val">206</div></div>
+            <div class="st-card"><div class="st-label">Músculos</div><div class="st-val">~600–650</div></div>
+        </div>
+    </div>
+
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Frontal">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Posterior">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="8"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="95"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="30"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="82"></div>
+    </div>
+
+    <div class="credit">
+        Modelo: <a href="https://sketchfab.com" target="_blank">"Anatomía Humana 3D"</a><br>
+        Sketchfab Standard License
+    </div>
+
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

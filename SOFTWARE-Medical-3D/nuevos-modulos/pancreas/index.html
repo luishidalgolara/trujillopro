@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Páncreas Humano 3D — Plataforma Médica In Silico</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- LOADING SCREEN -->
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🫁</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:1.3rem">🧬</span>
+            <div>
+                <h1>Plataforma Médica In Silico</h1>
+                <span>Modelo Anatómico 3D — Páncreas Humano &amp; Sistema Endocrino-Exocrino</span>
+            </div>
+        </div>
+        <div class="header-r">
+            <div class="fps" id="fps">-- FPS</div>
+            <div class="sdot"></div>
+        </div>
+    </div>
+
+    <!-- 3D CANVAS -->
+    <canvas id="mainCanvas"></canvas>
+
+    <!-- LEFT PANEL: Structures -->
+    <div class="hl-panel">
+        <div class="hl-title">Estructuras</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#e8a060"></span>Páncreas completo</button>
+
+        <div class="hl-sep">— Regiones Anatómicas —</div>
+        <button class="hl-btn" data-part="cabeza"><span class="hl-dot" style="background:#e09050"></span>Cabeza pancreática</button>
+        <button class="hl-btn" data-part="cuello"><span class="hl-dot" style="background:#d08040"></span>Cuello pancreático</button>
+        <button class="hl-btn" data-part="cuerpo"><span class="hl-dot" style="background:#c07030"></span>Cuerpo pancreático</button>
+        <button class="hl-btn" data-part="cola"><span class="hl-dot" style="background:#b06020"></span>Cola pancreática</button>
+        <button class="hl-btn" data-part="proceso_uncinado"><span class="hl-dot" style="background:#a05020"></span>Proceso uncinado</button>
+
+        <div class="hl-sep">— Sistema Exocrino —</div>
+        <button class="hl-btn" data-part="acinos"><span class="hl-dot" style="background:#f0b070"></span>Células acinares</button>
+        <button class="hl-btn" data-part="conducto_wirsung"><span class="hl-dot" style="background:#d8a060"></span>Conducto de Wirsung (principal)</button>
+        <button class="hl-btn" data-part="conducto_santorini"><span class="hl-dot" style="background:#c89050"></span>Conducto de Santorini (accesorio)</button>
+        <button class="hl-btn" data-part="ampolla_vater"><span class="hl-dot" style="background:#b88040"></span>Ampolla de Vater</button>
+        <button class="hl-btn" data-part="jugo_pancreatico"><span class="hl-dot" style="background:#a87030"></span>Jugo pancreático</button>
+
+        <div class="hl-sep">— Sistema Endocrino —</div>
+        <button class="hl-btn" data-part="islotes"><span class="hl-dot" style="background:#c060a0"></span>Islotes de Langerhans</button>
+        <button class="hl-btn" data-part="celulas_beta"><span class="hl-dot" style="background:#b05090"></span>Células β (insulina)</button>
+        <button class="hl-btn" data-part="celulas_alfa"><span class="hl-dot" style="background:#d07080"></span>Células α (glucagón)</button>
+        <button class="hl-btn" data-part="celulas_delta"><span class="hl-dot" style="background:#a04070"></span>Células δ (somatostatina)</button>
+
+        <div class="hl-sep">— Vascularización —</div>
+        <button class="hl-btn" data-part="arteria_pancreatica"><span class="hl-dot" style="background:#cc4040"></span>Arterias pancreáticas</button>
+        <button class="hl-btn" data-part="vena_mesenterica"><span class="hl-dot" style="background:#4060b8"></span>Vena mesentérica superior</button>
+        <button class="hl-btn" data-part="vena_esplenica"><span class="hl-dot" style="background:#5070c8"></span>Vena esplénica</button>
+
+        <div class="hl-sep">— Función —</div>
+        <button class="hl-btn" data-part="inervacion_p"><span class="hl-dot" style="background:#88aa55"></span>Inervación pancreática</button>
+        <button class="hl-btn" data-part="regulacion"><span class="hl-dot" style="background:#c4b455"></span>Regulación glucémica</button>
+    </div>
+
+    <!-- RIGHT PANEL: Info -->
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Páncreas Humano</div>
+        <div class="ip-sys" id="ipS">Sistema Digestivo y Endocrino — Glándula Mixta</div>
+        <div class="ip-desc" id="ipD">El páncreas es una glándula mixta (exocrina y endocrina) situada en el retroperitoneo, a nivel de L1-L2. Mide 12-20 cm y pesa 60-100 g. Su función exocrina produce jugo pancreático (1-2 L/día) con enzimas digestivas; su función endocrina, a través de los islotes de Langerhans, regula la glucemia secretando insulina, glucagón y somatostatina.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Longitud</div><div class="st-val">12–20 cm</div></div>
+            <div class="st-card"><div class="st-label">Peso</div><div class="st-val">60–100 g</div></div>
+            <div class="st-card"><div class="st-label">Jugo pancreático</div><div class="st-val">1–2 L/día</div></div>
+            <div class="st-card"><div class="st-label">Islotes</div><div class="st-val">~1 millón</div></div>
+        </div>
+    </div>
+
+    <!-- BOTTOM CONTROL BAR -->
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Frontal">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Posterior">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <!-- POST-PROCESS PANEL -->
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="10"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="95"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="25"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="82"></div>
+    </div>
+
+    <!-- CREDIT -->
+    <div class="credit">
+        Modelo: <a href="https://sketchfab.com" target="_blank">"Pancreas 3D"</a><br>
+        Sketchfab Standard License
+    </div>
+
+    <!-- THREE.JS IMPORT MAP -->
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+
+    <!-- MAIN SCRIPT -->
+    <script type="module" src="js/main.js"></script>
+
+</body>
+</html>

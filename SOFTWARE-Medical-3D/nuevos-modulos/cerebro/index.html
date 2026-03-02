@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerebro Humano 3D — Plataforma Médica In Silico</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- LOADING SCREEN -->
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🧠</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:1.3rem">🧬</span>
+            <div>
+                <h1>Plataforma Médica In Silico</h1>
+                <span>Modelo Anatómico 3D — Cerebro Humano &amp; Sistema Nervioso Central</span>
+            </div>
+        </div>
+        <div class="header-r">
+            <div class="model-badge" id="modelBadge">COMPLETO</div>
+            <div class="fps" id="fps">-- FPS</div>
+            <div class="sdot"></div>
+        </div>
+    </div>
+
+    <!-- 3D CANVAS -->
+    <canvas id="mainCanvas"></canvas>
+
+    <!-- LEFT PANEL: Structures -->
+    <div class="hl-panel">
+        <div class="hl-title">Estructuras</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#7eb8d4"></span>Cerebro completo</button>
+
+        <div class="hl-sep">— Lóbulos Cerebrales —</div>
+        <button class="hl-btn" data-part="frontal"><span class="hl-dot" style="background:#5b9bd5"></span>Lóbulo Frontal</button>
+        <button class="hl-btn" data-part="parietal"><span class="hl-dot" style="background:#70ad47"></span>Lóbulo Parietal</button>
+        <button class="hl-btn" data-part="temporal"><span class="hl-dot" style="background:#ed7d31"></span>Lóbulo Temporal</button>
+        <button class="hl-btn" data-part="occipital"><span class="hl-dot" style="background:#ffc000"></span>Lóbulo Occipital</button>
+        <button class="hl-btn" data-part="insula"><span class="hl-dot" style="background:#9e5cd9"></span>Ínsula (5° lóbulo)</button>
+
+        <div class="hl-sep">— Estructuras Subcorticales —</div>
+        <button class="hl-btn" data-part="gangbasales"><span class="hl-dot" style="background:#c04040"></span>Ganglios Basales</button>
+        <button class="hl-btn" data-part="tálamo"><span class="hl-dot" style="background:#d4a020"></span>Tálamo</button>
+        <button class="hl-btn" data-part="hipocampo"><span class="hl-dot" style="background:#2ea08a"></span>Hipocampo</button>
+        <button class="hl-btn" data-part="amígdala"><span class="hl-dot" style="background:#b04080"></span>Amígdala</button>
+        <button class="hl-btn" data-part="hipotálamo"><span class="hl-dot" style="background:#40a0c0"></span>Hipotálamo</button>
+
+        <div class="hl-sep">— Tronco y Cerebelo —</div>
+        <button class="hl-btn" data-part="cerebelo"><span class="hl-dot" style="background:#90b860"></span>Cerebelo</button>
+        <button class="hl-btn" data-part="tronco"><span class="hl-dot" style="background:#b07840"></span>Tronco Encefálico</button>
+        <button class="hl-btn" data-part="cuerpocalloso"><span class="hl-dot" style="background:#6888c8"></span>Cuerpo Calloso</button>
+
+        <div class="hl-sep">— Sistema Vascular —</div>
+        <button class="hl-btn" data-part="arterias"><span class="hl-dot" style="background:#cc4444"></span>Arterias cerebrales</button>
+        <button class="hl-btn" data-part="venas"><span class="hl-dot" style="background:#4468cc"></span>Venas cerebrales</button>
+        <button class="hl-btn" data-part="lcr"><span class="hl-dot" style="background:#44c8cc"></span>Líquido Cefalorraquídeo</button>
+
+        <div class="hl-sep">— Función —</div>
+        <button class="hl-btn" data-part="cortezamotora"><span class="hl-dot" style="background:#c84444"></span>Corteza Motora</button>
+        <button class="hl-btn" data-part="cortezasensorial"><span class="hl-dot" style="background:#44c844"></span>Corteza Sensorial</button>
+        <button class="hl-btn" data-part="broca"><span class="hl-dot" style="background:#c8a844"></span>Área de Broca &amp; Wernicke</button>
+    </div>
+
+    <!-- RIGHT PANEL: Info -->
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Cerebro Humano</div>
+        <div class="ip-sys" id="ipS">Sistema Nervioso Central — Encéfalo</div>
+        <div class="ip-desc" id="ipD">El cerebro humano es el órgano más complejo del cuerpo. Pesa ~1,400 g y contiene aproximadamente 86,000 millones de neuronas interconectadas. Dividido en dos hemisferios (derecho e izquierdo) unidos por el cuerpo calloso, controla todas las funciones cognitivas, motoras, sensoriales, autónomas y emocionales del organismo.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Peso promedio</div><div class="st-val">~1,400 g</div></div>
+            <div class="st-card"><div class="st-label">Neuronas</div><div class="st-val">~86 mil mill.</div></div>
+            <div class="st-card"><div class="st-label">Sinapsis</div><div class="st-val">~100 billones</div></div>
+            <div class="st-card"><div class="st-label">Consumo O₂</div><div class="st-val">20% corporal</div></div>
+        </div>
+    </div>
+
+    <!-- BOTTOM CONTROL BAR -->
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Frontal">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Posterior">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bCut" title="Corte sagital — ver interior">✂️</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <!-- POST-PROCESS PANEL -->
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="10"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="95"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="25"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="82"></div>
+    </div>
+
+    <!-- CREDIT -->
+    <div class="credit">
+        Modelos: CEREBRO-COMPLETO.glb + encefalo_humano.glb (26 estructuras)<br>
+        Plataforma Médica In Silico © 2025
+    </div>
+
+    <!-- THREE.JS IMPORT MAP -->
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+
+    <!-- MAIN SCRIPT -->
+    <script type="module" src="js/main.js"></script>
+
+</body>
+</html>

@@ -36,7 +36,7 @@ const MODULES = [
         systemLabel: 'S. Nervioso',
         icon: '👁️',
         desc: 'Órgano sensorial de la visión. Capta la luz y la convierte en impulsos eléctricos interpretados por el cerebro.',
-        file: 'modulos-3D/eye_index.html',
+        file: 'nuevos-modulos/ojo/index.html',
         complexity: 'Media',
         vertices: '67K'
     },
@@ -60,7 +60,7 @@ const MODULES = [
         systemLabel: 'Digestivo',
         icon: '🫘',
         desc: 'Glándula más grande del cuerpo. Metaboliza nutrientes, desintoxica, produce bilis y almacena glucógeno.',
-        file: 'modulos-3D/liver_index.html',
+        file: 'nuevos-modulos/higado/index.html',
         complexity: 'Media',
         vertices: '72K'
     },
@@ -72,7 +72,7 @@ const MODULES = [
         systemLabel: 'Digestivo',
         icon: '🫗',
         desc: 'Órgano digestivo que descompone alimentos mediante ácidos y enzimas. Conecta esófago con intestino delgado.',
-        file: 'modulos-3D/stomach_index.html',
+        file: 'nuevos-modulos/estomago/index.html',
         complexity: 'Media',
         vertices: '58K'
     },
@@ -132,7 +132,7 @@ const MODULES = [
         systemLabel: 'Linfático',
         icon: '🟤',
         desc: 'Órgano linfoide que filtra sangre, recicla glóbulos rojos y participa en la respuesta inmunitaria.',
-        file: 'modulos-3D/spleen_index.html',
+        file: 'nuevos-modulos/bazo/index.html',
         complexity: 'Baja',
         vertices: '42K'
     },
@@ -144,7 +144,7 @@ const MODULES = [
         systemLabel: 'Digestivo',
         icon: '🟡',
         desc: 'Glándula mixta. Función exocrina: enzimas digestivas. Función endocrina: insulina y glucagón para regular la glucemia.',
-        file: 'modulos-3D/pancreas_index.html',
+        file: 'nuevos-modulos/pancreas/index.html',
         complexity: 'Media',
         vertices: '52K'
     },
@@ -183,6 +183,66 @@ const MODULES = [
         file: 'modulos-3D/ecorche_index.html',
         complexity: 'Muy Alta',
         vertices: '220K'
+    },
+    {
+        id: 'útero',
+        name: 'Útero',
+        latin: 'Uterus',
+        system: 'anatomia',
+        systemLabel: 'Anatomía',
+        icon: '🫀',
+        desc: 'Modelo anatómico del útero, órgano muscular hueco del sistema reproductor femenino. Muestra el cuerpo uterino, cuello uterino (cérvix), trompas de Falopio y ovarios con sus capas: endometrio, miometrio y perimetrio.',
+        file: 'nuevos-modulos/utero/index.html',
+        complexity: 'Muy Alta',
+        vertices: '220K'
+    },
+    {
+        id: 'lengua',
+        name: 'Lengua',
+        latin: 'Lingua',
+        system: 'anatomia',
+        systemLabel: 'Anatomía',
+        icon: '👅',
+        desc: 'Modelo anatómico de la lengua, órgano muscular del sistema digestivo y fonatorio. Muestra la superficie dorsal con papilas gustativas (filiformes, fungiformes, circunvaladas y foliadas), frenillo lingual, musculatura intrínseca y extrínseca, y distribución de las zonas del gusto.',
+        file: 'nuevos-modulos/lengua/index.html',
+        complexity: 'Alta',
+        vertices: '180K'
+    },
+    {
+        id: 'sistema auditivo',
+        name: 'Sistema auditivo',
+        latin: 'Auris',
+        system: 'anatomia',
+        systemLabel: 'Anatomía',
+        icon: '👂',
+        desc: 'Modelo anatómico del oído, órgano sensorial del sistema auditivo y vestibular. Muestra las tres regiones: oído externo (pabellón auricular y conducto auditivo), oído medio (tímpano, martillo, yunque y estribo) y oído interno (cóclea, canales semicirculares y nervio auditivo).',
+        file: 'nuevos-modulos/oidos/index.html',
+        complexity: 'Muy Alta',
+        vertices: '195K'
+    },
+    {
+        id: 'dientes',
+        name: 'Dientes',
+        latin: 'Dentes',
+        system: 'anatomia',
+        systemLabel: 'Anatomía',
+        icon: '🦷',
+        desc: 'Modelo anatómico de la dentición humana, parte del sistema digestivo y masticatorio. Muestra la dentición permanente completa (32 piezas): incisivos, caninos, premolares y molares, con corte transversal que detalla las capas del diente: esmalte, dentina, pulpa dental, cemento y ligamento periodontal.',
+        file: 'nuevos-modulos/dientes/index.html',
+        complexity: 'Alta',
+        vertices: '210K'
+    },
+    {
+        id: 'rinon',
+        name: 'Riñón',
+        latin: 'Ren',
+        system: 'urinario',
+        systemLabel: 'Sistema Urinario',
+        icon: '🫘',
+        desc: 'Modelo anatómico del riñón humano, órgano principal del sistema urinario. Muestra la estructura interna completa con corte transversal que detalla las capas: cápsula renal, corteza renal, médula renal, pirámides de Malpighi, pelvis renal, cálices mayores y menores, arteria y vena renal, y el uréter.',
+        file: 'nuevos-modulos/riñon/index.html',
+        complexity: 'Alta',
+        vertices: '185K'
     }
 ];
 

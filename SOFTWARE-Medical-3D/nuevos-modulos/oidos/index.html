@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Auditivo 3D — Plataforma Médica In Silico</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- LOADING SCREEN -->
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🦻</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando...</div>
+    </div>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:1.3rem">🧬</span>
+            <div>
+                <h1>Plataforma Médica In Silico</h1>
+                <span>Modelo Anatómico 3D — Sistema Auditivo &amp; Vestibular Humano</span>
+            </div>
+        </div>
+        <div class="header-r">
+            <div class="fps" id="fps">-- FPS</div>
+            <div class="sdot"></div>
+        </div>
+    </div>
+
+    <!-- 3D CANVAS -->
+    <canvas id="mainCanvas"></canvas>
+
+    <!-- LEFT PANEL: Structures -->
+    <div class="hl-panel">
+        <div class="hl-title">Estructuras</div>
+        <button class="hl-btn active" data-part="all"><span class="hl-dot" style="background:#7eb8d4"></span>Sistema auditivo completo</button>
+
+        <div class="hl-sep">— Oído Externo —</div>
+        <button class="hl-btn" data-part="pabellon"><span class="hl-dot" style="background:#a8d8ee"></span>Pabellón auricular</button>
+        <button class="hl-btn" data-part="conducto"><span class="hl-dot" style="background:#8ec4dc"></span>Conducto auditivo externo</button>
+        <button class="hl-btn" data-part="timpano"><span class="hl-dot" style="background:#6aacc8"></span>Membrana timpánica</button>
+
+        <div class="hl-sep">— Oído Medio —</div>
+        <button class="hl-btn" data-part="martillo"><span class="hl-dot" style="background:#f0b070"></span>Martillo (malleus)</button>
+        <button class="hl-btn" data-part="yunque"><span class="hl-dot" style="background:#e09050"></span>Yunque (incus)</button>
+        <button class="hl-btn" data-part="estribo"><span class="hl-dot" style="background:#d07030"></span>Estribo (stapes)</button>
+        <button class="hl-btn" data-part="trompa"><span class="hl-dot" style="background:#c86828"></span>Trompa de Eustaquio</button>
+        <button class="hl-btn" data-part="caja"><span class="hl-dot" style="background:#b85818"></span>Caja timpánica</button>
+
+        <div class="hl-sep">— Oído Interno —</div>
+        <button class="hl-btn" data-part="coclea"><span class="hl-dot" style="background:#c47888"></span>Cóclea (caracol)</button>
+        <button class="hl-btn" data-part="canales"><span class="hl-dot" style="background:#4a90b4"></span>Canales semicirculares</button>
+        <button class="hl-btn" data-part="utriculo"><span class="hl-dot" style="background:#3a7a9c"></span>Utrículo y sáculo</button>
+        <button class="hl-btn" data-part="ventanas"><span class="hl-dot" style="background:#58a8c8"></span>Ventanas oval y redonda</button>
+
+        <div class="hl-sep">— Estructuras Internas —</div>
+        <button class="hl-btn" data-part="organo"><span class="hl-dot" style="background:#8ec870"></span>Órgano de Corti</button>
+        <button class="hl-btn" data-part="endolinfa"><span class="hl-dot" style="background:#58c8b8"></span>Endolinfa y perilinfa</button>
+        <button class="hl-btn" data-part="membrana"><span class="hl-dot" style="background:#70b8a8"></span>Membrana basilar</button>
+
+        <div class="hl-sep">— Inervación —</div>
+        <button class="hl-btn" data-part="nervio"><span class="hl-dot" style="background:#88aa55"></span>Nervio vestibulococlear (NC VIII)</button>
+        <button class="hl-btn" data-part="vascular"><span class="hl-dot" style="background:#cc5555"></span>Vascularización del oído</button>
+        <button class="hl-btn" data-part="musculillos"><span class="hl-dot" style="background:#c4b455"></span>Músculos del oído medio</button>
+    </div>
+
+    <!-- RIGHT PANEL: Info -->
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">Información Anatómica</div>
+        <div class="ip-name" id="ipN">Sistema Auditivo Humano</div>
+        <div class="ip-sys" id="ipS">Sistema Sensorial — Audición y Equilibrio</div>
+        <div class="ip-desc" id="ipD">El sistema auditivo humano transforma las ondas sonoras del ambiente en señales nerviosas interpretadas por el cerebro. Se divide en oído externo (pabellón auricular y conducto auditivo externo), oído medio (membrana timpánica y cadena osicular) y oído interno (cóclea y aparato vestibular). El rango de audición normal en humanos adultos es de 20 Hz a 20,000 Hz.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Rango frecuencial</div><div class="st-val">20–20,000 Hz</div></div>
+            <div class="st-card"><div class="st-label">Umbral auditivo</div><div class="st-val">0 dB SPL</div></div>
+            <div class="st-card"><div class="st-label">Huesecillos oído</div><div class="st-val">3 (los más pequeños)</div></div>
+            <div class="st-card"><div class="st-label">Células ciliadas</div><div class="st-val">~15,500 por oído</div></div>
+        </div>
+    </div>
+
+    <!-- BOTTOM CONTROL BAR -->
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot" title="Auto-rotación">🔄</button>
+        <button class="cb" id="bRst" title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi" title="Zoom +">➕</button>
+        <button class="cb" id="bZo" title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr" title="Frontal">👤</button>
+        <button class="cb" id="bTo" title="Superior">⬆️</button>
+        <button class="cb" id="bSi" title="Lateral">👈</button>
+        <button class="cb" id="bBk" title="Posterior">🔙</button>
+        <div class="cd"></div>
+        <button class="cb" id="bPP" title="Efectos">✨</button>
+        <button class="cb" id="bIn" title="Info">📋</button>
+    </div>
+
+    <!-- POST-PROCESS PANEL -->
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Post-Processing</div>
+        <div class="pp-row"><label>Bloom</label><input type="range" id="ppB" min="0" max="100" value="10"></div>
+        <div class="pp-row"><label>Exposición</label><input type="range" id="ppE" min="50" max="200" value="95"></div>
+        <div class="pp-row"><label>SSS</label><input type="range" id="ppS" min="0" max="100" value="25"></div>
+        <div class="pp-row"><label>Vignette</label><input type="range" id="ppV" min="0" max="100" value="82"></div>
+    </div>
+
+    <!-- CREDIT -->
+    <div class="credit">
+        Modelo: <a href="https://sketchfab.com" target="_blank">"Oídos — Anatomía"</a><br>
+        Sketchfab Standard License
+    </div>
+
+    <!-- THREE.JS IMPORT MAP -->
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+
+    <!-- MAIN SCRIPT -->
+    <script type="module" src="js/main.js"></script>
+
+</body>
+</html>

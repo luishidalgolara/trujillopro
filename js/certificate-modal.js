@@ -89,6 +89,11 @@
         openModal('CERTIFICADOS/Certificado-2026-A-256.pdf', 'Certificado Nº 2026-A-256 - TRUJILLO ELÉCTRICO');
     };
 
+    window.openCertificate3 = function() {
+        console.log('CLICK en Certificado 3');
+        openModal('CERTIFICADOS/Certificado-2026-A-1519.pdf', 'Certificado Nº 2026-A-1519 - TRUJILLO Medical 3D');
+    };
+
     // Inicializar cuando el DOM esté listo
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', createModal);

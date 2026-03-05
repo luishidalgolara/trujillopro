@@ -125,6 +125,7 @@ const E = [
 [102,"No","Nobelio",259,"actinide",10,16,"[Rn]5f¹⁴7s²","Sin uso."],
 [103,"Lr","Lawrencio",262,"actinide",10,17,"[Rn]5f¹⁴7s²7p¹","Sin uso."]
 ];
+window.E = E;
 
 // Build table
 document.addEventListener('DOMContentLoaded', () => {
@@ -154,11 +155,37 @@ function buildTable() {
                 // Spacer row
                 const spacer = document.createElement('div');
                 spacer.className = 'element-cell empty';
-                if (col === 3) {
-                    spacer.className = 'element-cell spacer';
-                    spacer.innerHTML = row === 8 ? '' : '';
-                }
                 grid.appendChild(spacer);
+                continue;
+            }
+
+            // Lanthanide row labels
+            if (row === 9 && col === 1) {
+                const cell = document.createElement('div');
+                cell.className = 'element-cell spacer';
+                cell.innerHTML = '<span class="el-sym" style="font-size:.55rem;color:#cc8866">★ Lantánidos</span>';
+                grid.appendChild(cell);
+                continue;
+            }
+            if (row === 9 && col === 2) {
+                const cell = document.createElement('div');
+                cell.className = 'element-cell empty';
+                grid.appendChild(cell);
+                continue;
+            }
+
+            // Actinide row labels
+            if (row === 10 && col === 1) {
+                const cell = document.createElement('div');
+                cell.className = 'element-cell spacer';
+                cell.innerHTML = '<span class="el-sym" style="font-size:.55rem;color:#aa9966">★ Actínidos</span>';
+                grid.appendChild(cell);
+                continue;
+            }
+            if (row === 10 && col === 2) {
+                const cell = document.createElement('div');
+                cell.className = 'element-cell empty';
+                grid.appendChild(cell);
                 continue;
             }
 

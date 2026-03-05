@@ -1,0 +1,166 @@
+/* ============================================
+   FILTERS & SEARCH — Styles
+   ============================================ */
+
+.table-filters {
+  max-width: 1280px;
+  margin: 0 auto 16px;
+  padding: 0 16px;
+}
+
+.filters-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+/* Search input */
+.filter-search {
+  position: relative;
+  flex: 0 0 240px;
+}
+.filter-search input {
+  width: 100%;
+  padding: 9px 14px 9px 36px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-size: .85rem;
+  font-family: 'Outfit', sans-serif;
+  outline: none;
+  transition: all .25s;
+}
+.filter-search input::placeholder { color: rgba(255,255,255,.25); }
+.filter-search input:focus {
+  border-color: rgba(0,229,160,.35);
+  background: rgba(0,229,160,.04);
+  box-shadow: 0 0 0 3px rgba(0,229,160,.08);
+}
+.filter-search-icon {
+  position: absolute; left: 11px; top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255,255,255,.25);
+  font-size: .9rem;
+  pointer-events: none;
+}
+
+/* Divider */
+.filter-divider {
+  width: 1px; height: 28px;
+  background: rgba(255,255,255,.08);
+  flex-shrink: 0;
+}
+
+/* Filter group label */
+.filter-label {
+  font-size: .72rem;
+  color: rgba(255,255,255,.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* Filter buttons */
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.filter-btn {
+  padding: 5px 12px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 8px;
+  font-size: .75rem;
+  color: rgba(255,255,255,.5);
+  cursor: pointer;
+  transition: all .25s;
+  font-family: 'Outfit', sans-serif;
+  white-space: nowrap;
+}
+.filter-btn:hover {
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.12);
+  color: rgba(255,255,255,.7);
+}
+.filter-btn.active {
+  background: rgba(0,229,160,.1);
+  border-color: rgba(0,229,160,.3);
+  color: #00e5a0;
+}
+
+/* State filter buttons with specific colors */
+.filter-btn[data-state="Sólido"].active {
+  background: rgba(204,102,68,.12);
+  border-color: rgba(204,102,68,.35);
+  color: #cc8866;
+}
+.filter-btn[data-state="Líquido"].active {
+  background: rgba(91,141,238,.12);
+  border-color: rgba(91,141,238,.35);
+  color: #5b8dee;
+}
+.filter-btn[data-state="Gas"].active {
+  background: rgba(136,102,204,.12);
+  border-color: rgba(136,102,204,.35);
+  color: #aa88ee;
+}
+
+/* Block filter colors */
+.filter-btn[data-block="s"].active { background:rgba(0,229,160,.1); border-color:rgba(0,229,160,.3); color:#00e5a0; }
+.filter-btn[data-block="p"].active { background:rgba(91,141,238,.1); border-color:rgba(91,141,238,.3); color:#5b8dee; }
+.filter-btn[data-block="d"].active { background:rgba(240,160,48,.1); border-color:rgba(240,160,48,.3); color:#f0a030; }
+.filter-btn[data-block="f"].active { background:rgba(224,86,160,.1); border-color:rgba(224,86,160,.3); color:#e056a0; }
+
+/* Clear button */
+.filter-clear {
+  margin-left: auto;
+  padding: 5px 14px;
+  background: rgba(255,80,80,.06);
+  border: 1px solid rgba(255,80,80,.12);
+  border-radius: 8px;
+  font-size: .75rem;
+  color: rgba(255,80,80,.6);
+  cursor: pointer;
+  transition: all .25s;
+  font-family: 'Outfit', sans-serif;
+}
+.filter-clear:hover {
+  background: rgba(255,80,80,.12);
+  border-color: rgba(255,80,80,.25);
+  color: #ff6b6b;
+}
+
+/* Highlighted / dimmed states on elements */
+.element-cell.dimmed {
+  opacity: 0.12 !important;
+  transform: none !important;
+  pointer-events: none;
+}
+.element-cell.highlighted {
+  box-shadow: 0 0 12px rgba(0,229,160,.3);
+  border-color: rgba(0,229,160,.4) !important;
+  z-index: 5;
+}
+
+/* Results count */
+.filter-results {
+  font-size: .72rem;
+  color: rgba(255,255,255,.3);
+  padding: 4px 0 0;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .filters-bar { padding: 12px 14px; gap: 8px; }
+  .filter-search { flex: 1 1 100%; }
+  .filter-divider { display: none; }
+  .filter-label { flex: 1 1 100%; margin-top: 4px; }
+}

@@ -1,0 +1,181 @@
+/* ============================================
+   ELECTRON 3D VISUALIZATION — Styles
+   ============================================ */
+
+/* Modal overlay */
+.electron-modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.75);
+  z-index: 2000;
+  opacity: 0; pointer-events: none;
+  transition: opacity .35s;
+}
+.electron-modal-backdrop.visible { opacity: 1; pointer-events: auto; }
+
+/* Modal container */
+.electron-modal {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%) scale(0.92);
+  width: 720px; max-width: 94vw;
+  height: 580px; max-height: 88vh;
+  background: #0a0e1a;
+  border: 1px solid rgba(0,229,160,.2);
+  border-radius: 20px;
+  z-index: 2001;
+  opacity: 0; pointer-events: none;
+  transition: all .35s cubic-bezier(.4,0,.2,1);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 30px 100px rgba(0,0,0,.7);
+}
+.electron-modal.visible {
+  opacity: 1; pointer-events: auto;
+  transform: translate(-50%,-50%) scale(1);
+}
+
+/* Modal header */
+.electron-modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  flex-shrink: 0;
+}
+.electron-modal-title {
+  display: flex; align-items: center; gap: 12px;
+}
+.electron-modal-title .em-symbol {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; font-weight: 800;
+  color: #00e5a0;
+}
+.electron-modal-title .em-info {
+  display: flex; flex-direction: column;
+}
+.electron-modal-title .em-name {
+  font-size: 1rem; font-weight: 600; color: #e0e0e0;
+}
+.electron-modal-title .em-config {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .75rem; color: rgba(255,255,255,.4);
+}
+.electron-modal-close {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.08);
+  color: rgba(255,255,255,.5);
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all .25s;
+  display: flex; align-items: center; justify-content: center;
+}
+.electron-modal-close:hover {
+  background: rgba(255,80,80,.15);
+  border-color: rgba(255,80,80,.3);
+  color: #ff6b6b;
+}
+
+/* 3D canvas area */
+.electron-canvas-wrap {
+  flex: 1; position: relative;
+  min-height: 0;
+}
+.electron-canvas-wrap canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* Shell info panel (bottom) */
+.electron-shell-info {
+  padding: 14px 24px;
+  border-top: 1px solid rgba(255,255,255,.06);
+  display: flex; gap: 10px; flex-wrap: wrap;
+  align-items: center;
+  flex-shrink: 0;
+  background: rgba(0,0,0,.3);
+}
+.shell-badge {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 14px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .78rem;
+  color: rgba(255,255,255,.7);
+  transition: all .25s;
+}
+.shell-badge .shell-label {
+  color: rgba(255,255,255,.35);
+  font-size: .68rem;
+}
+.shell-badge .shell-count {
+  font-weight: 700;
+  min-width: 16px; text-align: center;
+}
+
+/* View toggle buttons */
+.electron-view-toggle {
+  display: flex; gap: 6px;
+  margin-left: auto;
+}
+.electron-view-btn {
+  padding: 6px 14px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 8px;
+  font-size: .78rem;
+  color: rgba(255,255,255,.5);
+  cursor: pointer;
+  transition: all .25s;
+  font-family: 'Outfit', sans-serif;
+}
+.electron-view-btn:hover {
+  background: rgba(0,229,160,.08);
+  border-color: rgba(0,229,160,.2);
+  color: rgba(255,255,255,.8);
+}
+.electron-view-btn.active {
+  background: rgba(0,229,160,.12);
+  border-color: rgba(0,229,160,.35);
+  color: #00e5a0;
+}
+
+/* Button inside detail panel to open 3D */
+.btn-3d-electron {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px;
+  background: linear-gradient(135deg, rgba(0,229,160,.08), rgba(91,141,238,.08));
+  border: 1px solid rgba(0,229,160,.2);
+  border-radius: 12px;
+  color: #00e5a0;
+  font-size: .88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .3s;
+  font-family: 'Outfit', sans-serif;
+}
+.btn-3d-electron:hover {
+  background: linear-gradient(135deg, rgba(0,229,160,.15), rgba(91,141,238,.15));
+  border-color: rgba(0,229,160,.4);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(0,229,160,.15);
+}
+.btn-3d-electron svg {
+  width: 18px; height: 18px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .electron-modal {
+    width: 98vw; height: 80vh;
+    border-radius: 14px;
+  }
+  .electron-modal-header { padding: 12px 16px; }
+  .electron-shell-info { padding: 10px 16px; gap: 6px; }
+  .shell-badge { padding: 4px 10px; font-size: .7rem; }
+}

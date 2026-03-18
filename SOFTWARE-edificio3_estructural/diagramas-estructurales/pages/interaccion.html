@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DI — Diagrama Interacción M-N | IngeLAB 3D</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Bebas+Neue&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg:#080c10;--bg2:#0d1117;--card:#0f1520;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.14);--accent:#ff4757;--accent2:#00e5ff;--green:#00ff9d;--orange:#ff8c00;--blue:#0077ff;--text:#e8edf5;--text2:#8b95a8;--text3:#3d4758;--mono:'Space Mono',monospace;--display:'Bebas Neue',sans-serif;--orb:'Orbitron',sans-serif;--body:'DM Sans',sans-serif;--r:10px;--r2:6px;}
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+        html,body{height:100%;overflow:hidden;}
+        body{background:var(--bg);color:var(--text);font-family:var(--body);display:flex;flex-direction:column;}
+        .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;border-bottom:1px solid var(--border);background:rgba(8,12,16,.95);backdrop-filter:blur(10px);flex-shrink:0;}
+        .topbar-left{display:flex;align-items:center;gap:14px;}
+        .back-btn{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r2);padding:7px 12px;color:var(--text2);font-family:var(--mono);font-size:11px;cursor:pointer;transition:all .2s;text-decoration:none;}
+        .back-btn:hover{border-color:var(--accent2);color:var(--accent2);}
+        .page-badge{background:rgba(255,71,87,.12);border:1px solid rgba(255,71,87,.3);border-radius:var(--r2);padding:5px 12px;font-family:var(--orb);font-size:11px;color:var(--accent);letter-spacing:.08em;}
+        .page-title{font-family:var(--display);font-size:22px;letter-spacing:.04em;}
+        .topbar-right{display:flex;align-items:center;gap:10px;}
+        .calc-btn{background:var(--accent);border:none;border-radius:var(--r2);padding:8px 18px;color:#fff;font-family:var(--mono);font-size:12px;cursor:pointer;transition:all .2s;}
+        .calc-btn:hover{background:#ff6070;transform:translateY(-1px);box-shadow:0 4px 16px rgba(255,71,87,.4);}
+        .reset-btn{background:transparent;border:1px solid var(--border2);border-radius:var(--r2);padding:8px 14px;color:var(--text2);font-family:var(--mono);font-size:11px;cursor:pointer;transition:all .2s;}
+        .reset-btn:hover{border-color:var(--text2);color:var(--text);}
+        .layout{display:grid;grid-template-columns:280px 1fr 265px;flex:1;overflow:hidden;}
+        .panel-left{background:var(--bg2);border-right:1px solid var(--border);overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;}
+        .panel-left::-webkit-scrollbar{width:4px;}
+        .panel-left::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+        .pgroup{display:flex;flex-direction:column;gap:8px;}
+        .pgroup-title{font-family:var(--orb);font-size:10px;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid var(--border);}
+        .field{display:flex;flex-direction:column;gap:4px;}
+        .field label{font-size:11px;color:var(--text2);font-family:var(--mono);}
+        .field input,.field select{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:7px 10px;color:var(--text);font-family:var(--mono);font-size:12px;transition:border-color .2s;width:100%;}
+        .field input:focus,.field select:focus{outline:none;border-color:var(--accent);}
+        .field-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+        .rho-display{background:var(--card);border:1px solid rgba(255,71,87,.2);border-radius:var(--r2);padding:8px 10px;display:flex;justify-content:space-between;align-items:center;}
+        .rho-label{font-family:var(--mono);font-size:10px;color:var(--text2);}
+        .rho-val{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:700;}
+        .caso-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+        .caso-btn{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:8px 6px;text-align:center;cursor:pointer;transition:all .2s;font-size:9px;font-family:var(--mono);color:var(--text2);}
+        .caso-btn:hover{border-color:var(--accent);color:var(--accent);background:rgba(255,71,87,.05);}
+        .demanda-box{background:rgba(255,71,87,.06);border:1px solid rgba(255,71,87,.2);border-radius:var(--r);padding:12px;display:flex;flex-direction:column;gap:8px;}
+        .demanda-title{font-family:var(--orb);font-size:10px;color:var(--accent);letter-spacing:.1em;}
+        .panel-center{display:flex;flex-direction:column;overflow:hidden;background:var(--bg);}
+        .canvas-area{flex:1;display:flex;flex-direction:column;padding:16px;gap:10px;overflow:hidden;}
+        .canvas-lbl{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:8px;flex-shrink:0;}
+        .canvas-lbl::before{content:'';display:block;width:3px;height:12px;background:var(--accent);border-radius:2px;}
+        .canvas-row{display:grid;grid-template-columns:1fr 280px;gap:12px;flex:1;overflow:hidden;}
+        .canvas-main{position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+        .canvas-main canvas{display:block;width:100%;height:100%;}
+        .canvas-sec{position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+        .canvas-sec canvas{width:100%;height:100%;display:block;}
+        .sec-lbl{position:absolute;top:8px;left:10px;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.08em;}
+        .ov{position:absolute;bottom:10px;left:10px;display:flex;gap:6px;flex-wrap:wrap;}
+        .ovb{background:rgba(8,12,16,.85);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-family:var(--mono);font-size:9px;color:var(--text2);}
+        .ovb span{color:var(--accent);font-weight:700;}
+        .panel-right{background:var(--bg2);border-left:1px solid var(--border);overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;}
+        .panel-right::-webkit-scrollbar{width:4px;}
+        .panel-right::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+        .res-group{display:flex;flex-direction:column;gap:6px;}
+        .res-title{font-family:var(--orb);font-size:10px;color:var(--accent2);letter-spacing:.15em;padding-bottom:6px;border-bottom:1px solid var(--border);}
+        .res-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+        .res-key{font-size:11px;color:var(--text2);font-family:var(--mono);flex-shrink:0;}
+        .res-val{font-size:12px;color:var(--text);font-family:var(--mono);font-weight:700;text-align:right;}
+        .res-val.ok{color:var(--green);}.res-val.fail{color:var(--accent);}.res-val.acc{color:var(--orange);}
+        .punto-row{display:flex;align-items:center;gap:8px;padding:5px 8px;background:var(--card);border-radius:var(--r2);border:1px solid var(--border);}
+        .punto-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+        .punto-label{font-family:var(--mono);font-size:10px;color:var(--text2);flex:1;}
+        .punto-val{font-family:var(--mono);font-size:10px;color:var(--text);text-align:right;}
+        .dcr-wrap{height:10px;background:var(--card);border-radius:5px;overflow:hidden;margin-top:2px;}
+        .dcr-fill{height:100%;border-radius:5px;transition:width .4s;}
+        .verif-box{border-radius:var(--r);padding:14px;border:1px solid;text-align:center;}
+        .verif-box.ok{background:rgba(0,255,157,.07);border-color:rgba(0,255,157,.3);}
+        .verif-box.fail{background:rgba(255,71,87,.07);border-color:rgba(255,71,87,.3);}
+        .verif-title{font-family:var(--orb);font-size:13px;font-weight:700;margin-bottom:6px;}
+        .verif-sub{font-family:var(--mono);font-size:10px;color:var(--text2);}
+        .zona-pill{display:inline-block;font-family:var(--mono);font-size:10px;padding:3px 10px;border-radius:10px;border:1px solid;margin-top:6px;}
+        .teoria-box{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px;}
+        .teoria-title{font-family:var(--orb);font-size:10px;color:var(--text2);letter-spacing:.1em;margin-bottom:8px;}
+        .formula{background:rgba(0,0,0,.4);border:1px solid rgba(255,71,87,.15);border-radius:var(--r2);padding:6px 10px;margin:4px 0;font-family:var(--mono);font-size:11px;color:var(--accent);}
+        .norma-chips{display:flex;flex-wrap:wrap;gap:5px;}
+        .norma-chip{font-family:var(--mono);font-size:9px;padding:3px 7px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:3px;color:var(--text3);}
+        .panel-left,.panel-center,.panel-right{animation:fi .4s ease both;}
+        .panel-center{animation-delay:.05s;}.panel-right{animation-delay:.1s;}
+        @keyframes fi{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+    </style>
+</head>
+<body>
+<div class="topbar">
+    <div class="topbar-left">
+        <a href="../index.html" class="back-btn">← Volver</a>
+        <div class="page-badge">DI</div>
+        <div class="page-title">DIAGRAMA DE INTERACCIÓN M-N</div>
+    </div>
+    <div class="topbar-right">
+        <button class="reset-btn" id="btnReset">↺ Reset</button>
+        <button class="calc-btn" id="btnCalc">⚡ Calcular</button>
+    </div>
+</div>
+<div class="layout">
+<!-- IZQUIERDA -->
+<div class="panel-left">
+    <div class="pgroup">
+        <div class="pgroup-title">Casos predefinidos</div>
+        <div class="caso-grid">
+            <div class="caso-btn" data-caso="c1">40×40<br>8Ø20mm</div>
+            <div class="caso-btn" data-caso="c2">50×50<br>12Ø22mm</div>
+            <div class="caso-btn" data-caso="c3">35×60<br>Esbelta</div>
+            <div class="caso-btn" data-caso="c4">60×60<br>f'c=35MPa</div>
+        </div>
+    </div>
+    <div class="pgroup">
+        <div class="pgroup-title">Geometría sección</div>
+        <div class="field-row">
+            <div class="field"><label>b [m]</label><input type="number" id="inp_b" value="0.40" step="0.05" min="0.1" max="3"></div>
+            <div class="field"><label>h [m]</label><input type="number" id="inp_h" value="0.50" step="0.05" min="0.1" max="3"></div>
+        </div>
+        <div class="field"><label>Recubrimiento a CG barra [m]</label><input type="number" id="inp_recub" value="0.05" step="0.005" min="0.02" max="0.15"></div>
+        <div class="rho-display">
+            <span class="rho-label">ρ calculada</span>
+            <span class="rho-val" id="rhoDisplay">—</span>
+        </div>
+    </div>
+    <div class="pgroup">
+        <div class="pgroup-title">Armadura longitudinal</div>
+        <div class="field"><label>N° de barras total</label>
+            <select id="inp_nbarras">
+                <option value="4">4 barras</option><option value="6">6 barras</option>
+                <option value="8" selected>8 barras</option><option value="10">10 barras</option>
+                <option value="12">12 barras</option><option value="16">16 barras</option><option value="20">20 barras</option>
+            </select>
+        </div>
+        <div class="field"><label>Diámetro de barra</label>
+            <select id="inp_diam">
+                <option value="0.012">Ø12 mm</option><option value="0.016">Ø16 mm</option>
+                <option value="0.020">Ø20 mm</option><option value="0.022" selected>Ø22 mm</option>
+                <option value="0.025">Ø25 mm</option><option value="0.028">Ø28 mm</option>
+                <option value="0.032">Ø32 mm</option>
+            </select>
+        </div>
+        <div class="field"><label>As total</label>
+            <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:7px 10px;font-family:var(--mono);font-size:12px;color:var(--accent)" id="asDisplay">— cm²</div>
+        </div>
+    </div>
+    <div class="pgroup">
+        <div class="pgroup-title">Material</div>
+        <div class="field-row">
+            <div class="field"><label>f'c [MPa]</label><input type="number" id="inp_fc" value="25" min="17" max="60" step="1"></div>
+            <div class="field"><label>fy [MPa]</label>
+                <select id="inp_fy"><option value="280">280</option><option value="420" selected>420</option><option value="500">500</option></select>
+            </div>
+        </div>
+        <div class="field"><label>εcu (deform. última)</label>
+            <select id="inp_ecu"><option value="0.003" selected>0.003 (ACI 318)</option><option value="0.0035">0.0035 (EC2)</option></select>
+        </div>
+        <div class="field"><label>Refuerzo transversal</label>
+            <select id="inp_estribos"><option value="rect" selected>Estribos rect. (φ=0.65)</option><option value="espiral">Espiral (φ=0.75)</option></select>
+        </div>
+    </div>
+    <div class="demanda-box">
+        <div class="demanda-title">PUNTO DE DEMANDA</div>
+        <div class="field"><label>Mu [kN·m] (momento de diseño)</label><input type="number" id="inp_Mu" value="150" step="10"></div>
+        <div class="field"><label>Nu [kN] (+compresión / −tracción)</label><input type="number" id="inp_Nu" value="800" step="50"></div>
+    </div>
+</div>
+
+<!-- CENTRO -->
+<div class="panel-center">
+    <div class="canvas-area">
+        <div class="canvas-lbl">Diagrama de Interacción φPn − φMn (ACI 318-19)</div>
+        <div class="canvas-row">
+            <div class="canvas-main" id="wMain">
+                <canvas id="cMain"></canvas>
+                <div class="ov">
+                    <div class="ovb">φP₀ = <span id="ovP0">—</span> kN</div>
+                    <div class="ovb">φMn_bal = <span id="ovMbal">—</span> kN·m</div>
+                    <div class="ovb">DCR = <span id="ovDCR">—</span></div>
+                </div>
+            </div>
+            <div class="canvas-sec" id="wSec">
+                <canvas id="cSec"></canvas>
+                <div class="sec-lbl">SECCIÓN + ARMADURA</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- DERECHA -->
+<div class="panel-right">
+    <div class="res-group">
+        <div class="res-title">Sección</div>
+        <div class="res-row"><span class="res-key">b × h</span><span class="res-val" id="rBH">—</span></div>
+        <div class="res-row"><span class="res-key">Ag</span><span class="res-val" id="rAg">—</span></div>
+        <div class="res-row"><span class="res-key">As</span><span class="res-val" id="rAs">—</span></div>
+        <div class="res-row"><span class="res-key">ρ</span><span class="res-val" id="rRho">—</span></div>
+        <div class="res-row"><span class="res-key">β₁</span><span class="res-val" id="rBeta1">—</span></div>
+    </div>
+    <div class="res-group">
+        <div class="res-title">Puntos clave de la curva</div>
+        <div class="punto-row">
+            <div class="punto-dot" style="background:#00e5ff"></div>
+            <span class="punto-label">A — Comp. pura φP₀</span>
+            <span class="punto-val" id="pA">—</span>
+        </div>
+        <div class="punto-row">
+            <div class="punto-dot" style="background:#ff8c00"></div>
+            <span class="punto-label">B — Falla balanceada</span>
+            <span class="punto-val" id="pB">—</span>
+        </div>
+        <div class="punto-row">
+            <div class="punto-dot" style="background:#00ff9d"></div>
+            <span class="punto-label">D — Flexión pura φMn₀</span>
+            <span class="punto-val" id="pD">—</span>
+        </div>
+        <div class="res-row"><span class="res-key">c balanceada</span><span class="res-val" id="rCbal">—</span></div>
+    </div>
+    <div class="res-group">
+        <div class="res-title">Verificación demanda</div>
+        <div class="res-row"><span class="res-key">(Mu, Nu)</span><span class="res-val" id="rDemanda">—</span></div>
+        <div class="res-row"><span class="res-key">DCR</span><span class="res-val" id="rDCR">—</span></div>
+        <div class="dcr-wrap"><div class="dcr-fill" id="dcrFill" style="width:0%;background:var(--green)"></div></div>
+        <div class="res-row"><span class="res-key">φ aplicado</span><span class="res-val" id="rPhi">—</span></div>
+        <div id="zonaContainer" style="margin-top:4px"></div>
+    </div>
+    <div class="verif-box ok" id="verifBox">
+        <div class="verif-title" id="verifTitle">—</div>
+        <div class="verif-sub" id="verifSub">Calcule para verificar</div>
+    </div>
+    <div class="teoria-box">
+        <div class="teoria-title">COMPATIBILIDAD Y EQUILIBRIO</div>
+        <div class="formula">εs = εcu·(c−d)/c</div>
+        <div class="formula">a = β₁·c  (bloque Whitney)</div>
+        <div class="formula">Cc = 0.85·f'c·a·b</div>
+        <div class="formula">φ: 0.65→0.90 (εt: 0.002→0.005)</div>
+        <div class="formula">c_bal = εcu/(εcu+εy)·d</div>
+    </div>
+    <div class="res-group">
+        <div class="res-title">Normativa</div>
+        <div class="norma-chips">
+            <span class="norma-chip">ACI 318-19 §22.4</span><span class="norma-chip">NCh 430</span>
+            <span class="norma-chip">EC2 §5.8</span>
+        </div>
+    </div>
+</div>
+</div>
+<script src="../js/diag_interaccion.js"></script>
+<script>
+'use strict';
+let cM, cS;
+
+const CASOS={
+    c1:{b:0.40,h:0.40,recub:0.05,n_barras:8, diam_b:0.020,fc:25,fy:420},
+    c2:{b:0.50,h:0.50,recub:0.05,n_barras:12,diam_b:0.022,fc:25,fy:420},
+    c3:{b:0.35,h:0.60,recub:0.05,n_barras:8, diam_b:0.020,fc:25,fy:420},
+    c4:{b:0.60,h:0.60,recub:0.06,n_barras:12,diam_b:0.025,fc:35,fy:420},
+};
+
+function initC(){
+    cM=document.getElementById('cMain');
+    cS=document.getElementById('cSec');
+    const ro=new ResizeObserver(()=>{
+        const wm=document.getElementById('wMain'),ws=document.getElementById('wSec');
+        cM.width=wm.clientWidth;cM.height=wm.clientHeight;
+        cS.width=ws.clientWidth;cS.height=ws.clientHeight;
+        if(window.DI_MODULE?.state?.result) renderAll();
+    });
+    ro.observe(document.getElementById('wMain'));
+    ro.observe(document.getElementById('wSec'));
+    setTimeout(()=>{
+        const wm=document.getElementById('wMain'),ws=document.getElementById('wSec');
+        cM.width=wm.clientWidth;cM.height=wm.clientHeight;
+        cS.width=ws.clientWidth;cS.height=ws.clientHeight;
+    },100);
+}
+
+function updateRhoDisplay(){
+    const nb=parseInt(document.getElementById('inp_nbarras').value)||8;
+    const db=parseFloat(document.getElementById('inp_diam').value)||0.022;
+    const b=parseFloat(document.getElementById('inp_b').value)||0.40;
+    const h=parseFloat(document.getElementById('inp_h').value)||0.50;
+    const As=nb*Math.PI*Math.pow(db/2,2)*1e4; // cm²
+    const rho=As/(b*h*1e4)*100;
+    document.getElementById('rhoDisplay').textContent=`${rho.toFixed(2)}%`;
+    document.getElementById('asDisplay').textContent=`${As.toFixed(2)} cm²`;
+    const ok=rho>=1&&rho<=8;
+    document.getElementById('rhoDisplay').style.color=ok?'var(--accent)':'var(--red)';
+}
+
+function sync(){
+    const m=window.DI_MODULE;
+    m.setParam('b',       parseFloat(document.getElementById('inp_b').value)||0.40);
+    m.setParam('h',       parseFloat(document.getElementById('inp_h').value)||0.50);
+    m.setParam('recub',   parseFloat(document.getElementById('inp_recub').value)||0.05);
+    m.setParam('n_barras',parseInt(document.getElementById('inp_nbarras').value)||8);
+    m.setParam('diam_b',  parseFloat(document.getElementById('inp_diam').value)||0.022);
+    m.setParam('fc',      parseFloat(document.getElementById('inp_fc').value)||25);
+    m.setParam('fy',      parseFloat(document.getElementById('inp_fy').value)||420);
+    m.setParam('ecu',     parseFloat(document.getElementById('inp_ecu').value)||0.003);
+    m.setParam('estribos',document.getElementById('inp_estribos').value);
+    m.setParam('Mu',      parseFloat(document.getElementById('inp_Mu').value)||150);
+    m.setParam('Nu',      parseFloat(document.getElementById('inp_Nu').value)||800);
+}
+
+function calc(){sync();const r=window.DI_MODULE.calcular();renderAll(r);updateRes(r);}
+
+function renderAll(r){
+    r=r||window.DI_MODULE.state.result;if(!r)return;
+    window.DI_MODULE.draw(cM,r);
+    window.DI_MODULE.drawSeccion(cS,r);
+}
+
+function updateRes(r){
+    if(!r)return;
+    const f=(v,d=2,u='')=>v!=null?`${v.toFixed(d)} ${u}`.trim():'—';
+    const m=window.DI_MODULE.state;
+    document.getElementById('rBH').textContent=`${(m.b*100).toFixed(0)}×${(m.h*100).toFixed(0)} cm`;
+    document.getElementById('rAg').textContent=f(m.b*m.h*1e4,1,'cm²');
+    document.getElementById('rAs').textContent=f(r.As_total*1e4,2,'cm²');
+    document.getElementById('rRho').textContent=`${(r.rho*100).toFixed(2)}%`;
+    document.getElementById('rBeta1').textContent=r.beta1?.toFixed(3);
+    document.getElementById('pA').textContent=f(r.phiP0,0,'kN');
+    document.getElementById('pB').textContent=`${r.ptBal?.phiMn.toFixed(0)} kN·m / ${r.ptBal?.phiPn.toFixed(0)} kN`;
+    document.getElementById('pD').textContent=f(r.ptFlexPura?.phiMn,1,'kN·m');
+    document.getElementById('rCbal').textContent=f(r.c_bal*100,2,'cm');
+    document.getElementById('ovP0').textContent=r.phiP0?.toFixed(0);
+    document.getElementById('ovMbal').textContent=r.ptBal?.phiMn.toFixed(0);
+    document.getElementById('rDemanda').textContent=`(${m.Mu}, ${m.Nu})`;
+    const v=r.verif;
+    if(v){
+        const DCR=v.DCR;
+        document.getElementById('rDCR').textContent=DCR.toFixed(4);
+        document.getElementById('rDCR').className='res-val '+(DCR<=1?'ok':'fail');
+        document.getElementById('ovDCR').textContent=DCR.toFixed(3);
+        const fill=document.getElementById('dcrFill');
+        fill.style.width=Math.min(DCR*100,100)+'%';
+        fill.style.background=DCR<=0.7?'var(--green)':DCR<=1?'var(--orange)':'var(--accent)';
+        document.getElementById('rPhi').textContent=v.zona_demanda?.includes('comp')?'0.65':'0.90';
+        // Zona pill
+        const zc=document.getElementById('zonaContainer');
+        const col=v.zona_demanda?.includes('comp')?'#0077ff':v.zona_demanda?.includes('trans')?'#ff8c00':'#00ff9d';
+        zc.innerHTML=`<span class="zona-pill" style="color:${col};border-color:${col}44;background:${col}11">${v.zona_demanda||'—'}</span>`;
+        const ok=v.dentro;
+        document.getElementById('verifBox').className='verif-box '+(ok?'ok':'fail');
+        document.getElementById('verifTitle').textContent=ok?'✅ DENTRO DEL DOMINIO':'❌ FUERA DEL DOMINIO';
+        document.getElementById('verifTitle').style.color=ok?'var(--green)':'var(--accent)';
+        document.getElementById('verifSub').textContent=`DCR=${DCR.toFixed(3)} | ρ=${(r.rho*100).toFixed(2)}% | f'c=${m.fc}MPa fy=${m.fy}MPa`;
+    }
+}
+
+/* Casos predefinidos */
+document.querySelectorAll('.caso-btn').forEach(b=>b.addEventListener('click',()=>{
+    const c=CASOS[b.dataset.caso];if(!c)return;
+    document.getElementById('inp_b').value=c.b;
+    document.getElementById('inp_h').value=c.h;
+    document.getElementById('inp_recub').value=c.recub;
+    document.getElementById('inp_nbarras').value=c.n_barras;
+    document.getElementById('inp_diam').value=c.diam_b;
+    document.getElementById('inp_fc').value=c.fc;
+    document.getElementById('inp_fy').value=c.fy;
+    updateRhoDisplay();calc();
+}));
+
+/* Live ρ update */
+['inp_b','inp_h','inp_nbarras','inp_diam'].forEach(id=>{
+    document.getElementById(id).addEventListener('input',updateRhoDisplay);
+});
+
+document.getElementById('btnCalc').addEventListener('click',calc);
+document.getElementById('btnReset').addEventListener('click',()=>{
+    document.getElementById('inp_b').value='0.40';document.getElementById('inp_h').value='0.50';
+    document.getElementById('inp_recub').value='0.05';document.getElementById('inp_nbarras').value='8';
+    document.getElementById('inp_diam').value='0.022';document.getElementById('inp_fc').value='25';
+    document.getElementById('inp_fy').value='420';document.getElementById('inp_ecu').value='0.003';
+    document.getElementById('inp_Mu').value='150';document.getElementById('inp_Nu').value='800';
+    updateRhoDisplay();calc();
+});
+
+updateRhoDisplay();initC();setTimeout(calc,200);
+</script>
+</body>
+</html>

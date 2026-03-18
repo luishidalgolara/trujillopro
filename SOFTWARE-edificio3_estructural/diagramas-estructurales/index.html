@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IngeLAB 3D — Diagramas Estructurales</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Space+Mono:wght@400;700&family=Bebas+Neue&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/diagramas.css">
+</head>
+<body>
+
+    <!-- Background layers -->
+    <canvas id="bgCanvas"></canvas>
+    <div class="noise"></div>
+    <div class="vignette"></div>
+    <div class="scanlines"></div>
+    <div class="grid-overlay"></div>
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+
+    <!-- Floating particles -->
+    <div class="particles" id="particles"></div>
+
+    <div class="wrapper">
+
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-left">
+                <a href="../index.html" class="back-btn" title="Volver al selector">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <div class="header-logo">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                        <rect x="2" y="14" width="4" height="12" fill="var(--accent)"/>
+                        <rect x="8" y="8" width="4" height="18" fill="var(--accent)" opacity="0.7"/>
+                        <rect x="14" y="4" width="4" height="22" fill="var(--accent)" opacity="0.5"/>
+                        <rect x="20" y="10" width="4" height="16" fill="var(--accent)" opacity="0.6"/>
+                        <line x1="2" y1="14" x2="24" y2="14" stroke="var(--accent-2)" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="header-title">IngeLAB 3D</div>
+                    <div class="header-sub">Diagramas Estructurales</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="header-badge">
+                    <span class="pulse-dot"></span>
+                    Módulo Educativo
+                </div>
+                <span class="header-tag">v1.0</span>
+            </div>
+        </header>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-eyebrow">
+                <span class="eyebrow-line"></span>
+                Herramienta de Aprendizaje Estructural
+                <span class="eyebrow-line"></span>
+            </div>
+            <h1 class="hero-title">DIAGRAMAS<br><span class="accent-word">ESTRUCTURALES</span></h1>
+            <p class="hero-sub">
+                Visualiza, calcula e interactúa con los diagramas fundamentales del análisis estructural.
+                Diseñado para estudiantes de <strong>Ing. Civil</strong>, <strong>Construcción</strong> y <strong>Arquitectura</strong>.
+            </p>
+            <div class="hero-tags">
+                <span class="htag">Cálculo en tiempo real</span>
+                <span class="htag">Vistas 3D interactivas</span>
+                <span class="htag">Perfiles reales</span>
+                <span class="htag">Teoría integrada</span>
+            </div>
+        </section>
+
+        <!-- STATS BAR -->
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-icon">📐</div>
+                <div class="stat-val">8</div>
+                <div class="stat-label">Tipos de<br>Diagrama</div>
+            </div>
+            <div class="stat-div"></div>
+            <div class="stat">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-val">RT</div>
+                <div class="stat-label">Cálculo<br>en vivo</div>
+            </div>
+            <div class="stat-div"></div>
+            <div class="stat">
+                <div class="stat-icon">🧊</div>
+                <div class="stat-val">3D</div>
+                <div class="stat-label">Visualización<br>interactiva</div>
+            </div>
+            <div class="stat-div"></div>
+            <div class="stat">
+                <div class="stat-icon">📚</div>
+                <div class="stat-val">NCh</div>
+                <div class="stat-label">Normativa<br>vigente</div>
+            </div>
+            <div class="stat-div"></div>
+            <div class="stat">
+                <div class="stat-icon">🏗️</div>
+                <div class="stat-val">H.A.</div>
+                <div class="stat-label">Hormigón<br>+ Acero</div>
+            </div>
+        </div>
+
+        <!-- SECTION LABEL -->
+        <div class="section-header">
+            <div class="section-label">
+                <span class="label-dot">◆</span>
+                Los 3 diagramas esenciales en cálculo estructural
+                <span class="label-dot">◆</span>
+            </div>
+            <p class="section-desc">Estos tres diagramas son la base de todo análisis estructural. Dominarlos es obligatorio.</p>
+        </div>
+
+        <!-- CARDS PRINCIPALES (3 esenciales) -->
+        <div class="cards-grid essential">
+
+            <!-- MOMENTO FLECTOR -->
+            <div class="dcard essential-card" data-id="momento" data-page="pages/momento.html">
+                <div class="dcard-rank">#1</div>
+                <div class="dcard-essential-badge">ESENCIAL</div>
+                <div class="dcard-preview">
+                    <canvas id="prev_momento" width="280" height="120"></canvas>
+                </div>
+                <div class="dcard-body">
+                    <div class="dcard-code">DMF</div>
+                    <div class="dcard-name">Diagrama de<br>Momento Flector</div>
+                    <div class="dcard-desc">
+                        Muestra la distribución del momento interno a lo largo de vigas y columnas. 
+                        Fundamental para el dimensionamiento de secciones de hormigón armado y acero.
+                    </div>
+                    <div class="dcard-formula">
+                        <span class="formula-label">Ecuación base</span>
+                        <span class="formula-val">M(x) = R·x − q·x²/2</span>
+                    </div>
+                    <div class="dcard-tags">
+                        <span class="dtag dtag-red">Momento</span>
+                        <span class="dtag">Vigas</span>
+                        <span class="dtag">Marcos</span>
+                        <span class="dtag">Flexión</span>
+                    </div>
+                </div>
+                <button class="dcard-cta">
+                    <span>Explorar diagrama</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- FUERZA CORTANTE -->
+            <div class="dcard essential-card" data-id="cortante" data-page="pages/cortante.html">
+                <div class="dcard-rank">#2</div>
+                <div class="dcard-essential-badge">ESENCIAL</div>
+                <div class="dcard-preview">
+                    <canvas id="prev_cortante" width="280" height="120"></canvas>
+                </div>
+                <div class="dcard-body">
+                    <div class="dcard-code">DFC</div>
+                    <div class="dcard-name">Diagrama de<br>Fuerza Cortante</div>
+                    <div class="dcard-desc">
+                        Representa las fuerzas de corte transversal en cada sección del elemento. 
+                        Determina la necesidad de estribos y refuerzo transversal en vigas de H.A.
+                    </div>
+                    <div class="dcard-formula">
+                        <span class="formula-label">Relación fundamental</span>
+                        <span class="formula-val">V(x) = dM/dx</span>
+                    </div>
+                    <div class="dcard-tags">
+                        <span class="dtag dtag-blue">Cortante</span>
+                        <span class="dtag">Estribos</span>
+                        <span class="dtag">Corte</span>
+                        <span class="dtag">Transversal</span>
+                    </div>
+                </div>
+                <button class="dcard-cta">
+                    <span>Explorar diagrama</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- FUERZA AXIAL -->
+            <div class="dcard essential-card" data-id="axial" data-page="pages/axial.html">
+                <div class="dcard-rank">#3</div>
+                <div class="dcard-essential-badge">ESENCIAL</div>
+                <div class="dcard-preview">
+                    <canvas id="prev_axial" width="280" height="120"></canvas>
+                </div>
+                <div class="dcard-body">
+                    <div class="dcard-code">DFA</div>
+                    <div class="dcard-name">Diagrama de<br>Fuerza Axial</div>
+                    <div class="dcard-desc">
+                        Muestra las fuerzas normales de compresión y tracción a lo largo del elemento. 
+                        Esencial para el diseño de columnas, pilares y elementos de celosía.
+                    </div>
+                    <div class="dcard-formula">
+                        <span class="formula-label">Tensión normal</span>
+                        <span class="formula-val">σ = N / A</span>
+                    </div>
+                    <div class="dcard-tags">
+                        <span class="dtag dtag-green">Axial</span>
+                        <span class="dtag">Columnas</span>
+                        <span class="dtag">Compresión</span>
+                        <span class="dtag">Tracción</span>
+                    </div>
+                </div>
+                <button class="dcard-cta">
+                    <span>Explorar diagrama</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- SECTION LABEL 2 -->
+        <div class="section-header" style="margin-top: 60px;">
+            <div class="section-label">
+                <span class="label-dot">◆</span>
+                Diagramas complementarios
+                <span class="label-dot">◆</span>
+            </div>
+            <p class="section-desc">Herramientas adicionales para análisis estructural completo.</p>
+        </div>
+
+        <!-- CARDS SECUNDARIAS -->
+        <div class="cards-grid secondary">
+
+            <!-- CARGAS -->
+            <div class="dcard secondary-card" data-id="cargas" data-page="pages/cargas.html">
+                <div class="dcard-preview small">
+                    <canvas id="prev_cargas" width="220" height="90"></canvas>
+                </div>
+                <div class="dcard-body">
+                    <div class="dcard-code-sm">DC</div>
+                    <div class="dcard-name-sm">Diagramas de Carga</div>
+                    <div class="dcard-desc-sm">Carga puntual, distribuida uniforme y triangular. Base para calcular reacciones y diagramas de esfuerzo.</div>
+                    <div class="dcard-tags">
+                        <span class="dtag dtag-orange">Cargas</span>
+                        <span class="dtag">Puntual</span>
+                        <span class="dtag">Distribuida</span>
+                    </div>
+                </div>
+                <button class="dcard-cta-sm">Ver diagrama →</button>
+            </div>
+
+            <!-- DEFORMACIÓN -->
+            <div class="dcard secondary-card" data-id="deformacion" data-page="pages/deformacion.html">
+                <div class="dcard-preview small">
+                    <canvas id="prev_deform" width="220" height="90"></canvas>
+                </div>
+                <div class="dcard-body">
+                    <div class="dcard-code-sm">DD</div>
+                    <div class="dcard-name-sm">Diagrama de Deformación</div>
+                    <div class="dcard-desc-sm">Flecha máxima y línea elástica. Verifica estados límite de servicio (ELS) según NCh 430/ACI 318.</div>
+                    <div class="dcard-tags">
+                        <span class="dtag dtag-purple">Flecha</span>
+                        <span class="dtag">ELS</span>
+                        <span class="dtag">Elástica</span>
+                    </div>
+                </div>
+                <button class="dcard-cta-sm">Ver diagrama →</button>
+            </div>
+
+            <!-- INTERACCIÓN M-N -->
+            <div class="dcard secondary-card" data-id="interaccion" data-page="pages/interaccion.html">
+                <div class="dcard-preview small">
+                    <canvas id="prev_interac" width="220" height="90"></canvas>
+                </div>
+                <div class="dcard-body">
+                    <div class="dcard-code-sm">DI</div>
+                    <div class="dcard-name-sm">Diagrama de Interacción M-N</div>
+                    <div class="dcard-desc-sm">Curva de capacidad para columnas de H.A. Verifica si la combinación M+N está dentro del dominio resistente.</div>
+                    <div class="dcard-tags">
+                        <span class="dtag dtag-red">M-N</span>
+                        <span class="dtag">Columnas</span>
+                        <span class="dtag">H.A.</span>
+                    </div>
+                </div>
+                <button class="dcard-cta-sm">Ver diagrama →</button>
+            </div>
+
+            <!-- CUERPO LIBRE -->
+            <div class="dcard secondary-card" data-id="cuerpo_libre" data-page="pages/cuerpo_libre.html">
+                <div class="dcard-preview small">
+                    <canvas id="prev_dcl" width="220" height="90"></canvas>
+                </div>
+                <div class="dcard-body">
+                    <div class="dcard-code-sm">DCL</div>
+                    <div class="dcard-name-sm">Diagrama de Cuerpo Libre</div>
+                    <div class="dcard-desc-sm">Aísla elementos estructurales para análisis de equilibrio. Identifica todas las fuerzas y momentos actuantes.</div>
+                    <div class="dcard-tags">
+                        <span class="dtag dtag-blue">Equilibrio</span>
+                        <span class="dtag">Reacciones</span>
+                        <span class="dtag">Aislamiento</span>
+                    </div>
+                </div>
+                <button class="dcard-cta-sm">Ver diagrama →</button>
+            </div>
+
+            <!-- CAMINO DE CARGAS -->
+            <div class="dcard secondary-card wide" data-id="camino" data-page="pages/camino_cargas.html">
+                <div class="dcard-preview small">
+                    <canvas id="prev_camino" width="220" height="90"></canvas>
+                </div>
+                <div class="dcard-body">
+                    <div class="dcard-code-sm">CC</div>
+                    <div class="dcard-name-sm">Camino de Cargas</div>
+                    <div class="dcard-desc-sm">
+                        Visualiza el flujo de cargas desde la losa hasta la fundación: 
+                        <strong>Losa → Viga → Pilar/Muro → Fundación</strong>. 
+                        Comprende cómo se distribuyen las cargas gravitacionales y sísmicas en toda la estructura.
+                    </div>
+                    <div class="dcard-tags">
+                        <span class="dtag dtag-green">Flujo</span>
+                        <span class="dtag">Losa</span>
+                        <span class="dtag">Viga</span>
+                        <span class="dtag">Pilar</span>
+                        <span class="dtag">Fundación</span>
+                    </div>
+                </div>
+                <button class="dcard-cta-sm">Ver diagrama →</button>
+            </div>
+
+        </div>
+
+        <!-- REFERENCIA RÁPIDA -->
+        <div class="quick-ref">
+            <div class="qr-header">
+                <span class="qr-icon">⚡</span>
+                <span class="qr-title">Referencia Rápida — Relaciones entre Diagramas</span>
+            </div>
+            <div class="qr-grid">
+                <div class="qr-item">
+                    <div class="qr-label">Carga distribuida q →</div>
+                    <div class="qr-arrow">
+                        <div class="qr-rel">V(x) = −∫q·dx</div>
+                        <div class="qr-rel">M(x) = ∫V·dx</div>
+                    </div>
+                </div>
+                <div class="qr-div"></div>
+                <div class="qr-item">
+                    <div class="qr-label">Pendiente del diagrama M</div>
+                    <div class="qr-arrow">
+                        <div class="qr-rel">dM/dx = V(x)</div>
+                        <div class="qr-rel">d²M/dx² = −q(x)</div>
+                    </div>
+                </div>
+                <div class="qr-div"></div>
+                <div class="qr-item">
+                    <div class="qr-label">Flecha máxima (viga simple)</div>
+                    <div class="qr-arrow">
+                        <div class="qr-rel">δ_max = 5qL⁴/384EI</div>
+                        <div class="qr-rel">L/300 ≤ δ_adm (NCh)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NORMATIVA -->
+        <div class="normas-bar">
+            <div class="norma-label">Normativa referenciada:</div>
+            <div class="normas-list">
+                <span class="norma-tag">NCh 433 — Sísmica</span>
+                <span class="norma-tag">NCh 430 — H.A.</span>
+                <span class="norma-tag">ACI 318-19</span>
+                <span class="norma-tag">AISC 360</span>
+                <span class="norma-tag">Eurocódigo 2</span>
+                <span class="norma-tag">Eurocódigo 8</span>
+                <span class="norma-tag">ASCE 7-22</span>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-left">IngeLAB 3D — Módulo Diagramas Estructurales</div>
+            <div class="footer-right">Ing. Civil · Construcción · Arquitectura</div>
+        </footer>
+
+    </div>
+
+    <!-- TRANSITION OVERLAY -->
+    <div class="transition-overlay" id="transOverlay">
+        <div class="tr-icon" id="trIcon">📐</div>
+        <div class="tr-name" id="trName">Cargando diagrama...</div>
+        <div class="tr-bar"><div class="tr-fill" id="trFill"></div></div>
+        <div class="tr-txt" id="trTxt">Inicializando módulo...</div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

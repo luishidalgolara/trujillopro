@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IngeLAB 3D — Selección de Proyecto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/selector.css">
+
+    <style>
+        /* ── MÓDULOS NAV BAR ── */
+        .modules-nav {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 11px 32px;
+            border-bottom: 1px solid var(--border);
+            background: var(--panel);
+            backdrop-filter: blur(20px);
+            flex-shrink: 0;
+            animation: fade-down 0.6s 0.1s cubic-bezier(.16,1,.3,1) both;
+        }
+
+        .modules-nav-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.58rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--dim);
+            white-space: nowrap;
+            padding-right: 4px;
+        }
+
+        .modules-sep {
+            width: 1px;
+            height: 24px;
+            background: var(--border);
+            flex-shrink: 0;
+        }
+
+        /* ── BOTÓN BASE ── */
+        .mod-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 22px;
+            border-radius: 10px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.28s cubic-bezier(.16,1,.3,1);
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mod-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.28s;
+            border-radius: 10px;
+        }
+
+        /* ── DIAGRAMAS — cyan sólido con glow ── */
+        .mod-btn.cyan {
+            background: linear-gradient(135deg, rgba(0,201,255,0.18), rgba(0,130,200,0.12));
+            border: 1px solid rgba(0,201,255,0.55);
+            color: var(--accent);
+            box-shadow: 0 0 16px rgba(0,201,255,0.2), inset 0 1px 0 rgba(0,201,255,0.15);
+        }
+        .mod-btn.cyan::after {
+            background: linear-gradient(135deg, rgba(0,201,255,0.28), rgba(0,130,200,0.18));
+        }
+        .mod-btn.cyan:hover {
+            background: linear-gradient(135deg, rgba(0,201,255,0.30), rgba(0,130,200,0.22));
+            border-color: var(--accent);
+            color: #fff;
+            box-shadow: 0 0 28px rgba(0,201,255,0.45), 0 4px 18px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+        .mod-btn.cyan:hover::after { opacity: 1; }
+
+        /* ── FUNDAMENTOS — naranja/steel sólido con glow ── */
+        .mod-btn.steel {
+            background: linear-gradient(135deg, rgba(255,149,0,0.18), rgba(200,90,0,0.10));
+            border: 1px solid rgba(255,149,0,0.55);
+            color: var(--steel);
+            box-shadow: 0 0 16px rgba(255,149,0,0.18), inset 0 1px 0 rgba(255,149,0,0.15);
+        }
+        .mod-btn.steel::after {
+            background: linear-gradient(135deg, rgba(255,149,0,0.26), rgba(200,90,0,0.16));
+        }
+        .mod-btn.steel:hover {
+            background: linear-gradient(135deg, rgba(255,149,0,0.30), rgba(200,90,0,0.20));
+            border-color: var(--steel);
+            color: #fff;
+            box-shadow: 0 0 28px rgba(255,149,0,0.42), 0 4px 18px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+        .mod-btn.steel:hover::after { opacity: 1; }
+
+        .mod-btn-icon {
+            font-size: 1rem;
+            line-height: 1;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 0 6px currentColor);
+        }
+
+        .mod-btn-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        .mod-btn-arrow {
+            font-size: 0.72rem;
+            opacity: 0.5;
+            transition: opacity 0.2s, transform 0.2s;
+            position: relative;
+            z-index: 1;
+        }
+        .mod-btn:hover .mod-btn-arrow {
+            opacity: 1;
+            transform: translateX(4px);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="bgCanvas"></canvas>
+    <div class="noise"></div><div class="vignette"></div>
+    <div class="scanlines"></div><div class="grid-overlay"></div>
+    <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+
+    <div class="wrapper">
+        <header class="header">
+            <div class="header-left">
+                <div class="header-logo">🏗️</div>
+                <div>
+                    <div class="header-title">IngeLAB 3D</div>
+                    <div class="header-sub">Análisis Estructural</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <span class="header-tag">v3.1</span>
+                <div class="status-dot"></div>
+            </div>
+        </header>
+
+        <!-- ── BARRA DE MÓDULOS ── -->
+        <nav class="modules-nav">
+            <span class="modules-nav-label">Módulos</span>
+            <div class="modules-sep"></div>
+            <a href="diagramas-estructurales/index.html" class="mod-btn cyan">
+                <span class="mod-btn-icon">📊</span>
+                <span class="mod-btn-text">Diagramas Estructurales</span>
+                <span class="mod-btn-arrow">→</span>
+            </a>
+            <a href="diagramas-estructurales/fundamentos/index.html" class="mod-btn steel">
+                <span class="mod-btn-icon">📚</span>
+                <span class="mod-btn-text">Fundamentos Estructurales</span>
+                <span class="mod-btn-arrow">→</span>
+            </a>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-eyebrow">Selección de Proyecto Estructural</div>
+            <h1 class="hero-title">ELIGE TU <span>EDIFICIO</span></h1>
+            <p class="hero-sub">Explora maquetas estructurales 3D con análisis sísmico, visualización de componentes y simulaciones en tiempo real.</p>
+        </section>
+
+        <div class="metrics-bar">
+            <div class="metric"><div><div class="metric-val">6</div><div class="metric-label">Proyectos<br>disponibles</div></div></div>
+            <div class="metric"><div><div class="metric-val">HC-30</div><div class="metric-label">Resistencia<br>f'c MPa</div></div></div>
+            <div class="metric"><div><div class="metric-val">M9.0</div><div class="metric-label">Sim. sísmica<br>máx. Richter</div></div></div>
+            <div class="metric"><div><div class="metric-val">RT</div><div class="metric-label">Análisis<br>tiempo real</div></div></div>
+        </div>
+
+        <div class="cards-section">
+            <div class="cards-label">Selecciona un proyecto para visualizar</div>
+            <div class="cards-grid">
+
+                <div class="bcard selected" data-id="edificio3" data-file="viewer.html" data-name="Edificio 3 — Maqueta Estructural">
+                    <div class="bcard-num">01</div>
+                    <div class="bcard-status live">● Activo</div>
+                    <div class="bcard-viz"><canvas id="c1"></canvas></div>
+                    <div class="bcard-body">
+                        <div class="bcard-type">Hormigón Armado — Pórticos</div>
+                        <div class="bcard-name">Edificio 3<br>Maqueta Estructural</div>
+                        <div class="bcard-desc">Sistema porticado de columnas y vigas con muros de corte. Análisis completo de caminos de carga y simulación sísmica integrada.</div>
+                        <div class="bcard-specs">
+                            <div class="bcard-spec"><div class="bcard-spec-label">Sistema</div><div class="bcard-spec-val">Pórticos + Muros</div></div>
+                            <div class="bcard-spec"><div class="bcard-spec-label">Material</div><div class="bcard-spec-val">H.A. f'c 25 MPa</div></div>
+                            <div class="bcard-spec"><div class="bcard-spec-label">Modelo</div><div class="bcard-spec-val">GLTF / GLB</div></div>
+                            <div class="bcard-spec"><div class="bcard-spec-label">Autor</div><div class="bcard-spec-val">angiebelen99</div></div>
+                        </div>
+                    </div>
+                    <button class="bcard-cta">Abrir visor <span class="arrow">→</span></button>
+                    <div class="bcard-check"></div>
+                </div>
+
+                <div class="bcard" data-id="campoDourique" data-file="viewer_campo.html" data-name="Edificio Campo Dourique">
+                    <div class="bcard-num">02</div>
+                    <div class="bcard-status new">● Nuevo</div>
+                    <div class="bcard-viz"><canvas id="c2"></canvas></div>
+                    <div class="bcard-body">
+                        <div class="bcard-type">Hormigón Armado — Losas</div>
+                        <div class="bcard-name">Edificio<br>Campo Dourique</div>
+                        <div class="bcard-desc">Estructura con sistema de losas planas y núcleo central. Diseño optimizado para cargas sísmicas con muros de rigidización perimetral.</div>
+                        <div class="bcard-specs">
+                            <div class="bcard-spec"><div class="bcard-spec-label">Sistema</div><div class="bcard-spec-val">Losas + Núcleo</div></div>
+                            <div class="bcard-spec"><div class="bcard-spec-label">Material</div><div class="bcard-spec-val">H.A. f'c 30 MPa</div></div>
+                            <div class="bcard-spec"><div class="bcard-spec-label">Modelo</div><div class="bcard-spec-val">GLB</div></div>
+                            <div class="bcard-spec"><div class="bcard-spec-label">Norma</div><div class="bcard-spec-val">NCh 433 / ACI</div></div>
+                        </div>
+                    </div>
+                    <button class="bcard-cta">Abrir visor <span class="arrow">→</span></button>
+                    <div class="bcard-check"></div>
+                </div>
+
+                <div class="bcard" data-id="ribeiro" data-file="viewer_ribeiro.html" data-name="Edificio Proyecto Ribeiro">
+                    <div class="bcard-num">03</div>
+                    <div class="bcard-status new">● Nuevo</div>
+                    <div class="bcard-viz"><canvas id="c3"></canvas></div>
+                    <div class="bcard-body">
+                        <div class="bcard-type">Hormigón Armado — Mixto</div>
+                        <div class="bcard-name">Edificio<br>Proyecto Ribeiro</div>
+                        <div class="bcard-desc">Sistema estructural mixto con pórticos resistentes y muros de corte en L. Cimentación profunda con pilotes y losa de cimentación.</div>
+                        <div class="bcard-specs">
+                            <div class="bcard-spec"><div class="bcard-spec-label">Sistema</div><div class="bcard-spec-val">Mixto + Pilotes</div></div>
+                            <div class="bcard-spec"><div class="bcard-spec-label">Material</div><div class="bcard-spec-val">H.A. f'c 28 MPa</div></div>
+                            <div class="bcard-spec"><div class="bcard-spec-label">Modelo</div><div class="bcard-spec-val">GLB</div></div>
+                            <div class="bcard-spec"><div class="bcard-spec-label">Norma</div><div class="bcard-spec-val">Eurocódigo 8</div></div>
+                        </div>
+                    </div>
+                    <button class="bcard-cta">Abrir visor <span class="arrow">→</span></button>
+                    <div class="bcard-check"></div>
+                </div>
+
+                <div class="bcard" data-id="faerac" data-file="viewer_faerac.html" data-name="FAERAC — Estructura de Acero">
+                    <div class="bcard-num">04</div>
+                    <div class="bcard-status new">● Nuevo</div>
+                    <div class="bcard-viz"><canvas id="c4"></canvas></div>
+                    <div class="bcard-body">
+                        <div class="bcard-type">Acero Estructural — Pórticos MRF</div>
+                        <div class="bcard-name">FAERAC<br>Estructura de Acero</div>
+                        <div class="bcard-desc">Sistema de pórticos metálicos resistentes a momento con arriostramientos concéntricos. Perfiles laminados IPE/HEA/HEB con losas colaborantes acero-hormigón.</div>
+                        <div class="bcard-specs">
+                            <div class="bcard-spec"><div class="bcard-spec-label">Sistema</div><div class="bcard-spec-val">MRF + Arriostr.</div></div>
+                            <div class="bcard-spec"><div class="bcard-spec-label">Material</div><div class="bcard-spec-val">Acero S275/S355</div></div>
+                            <div class="bcard-spec"><div class="bcard-spec-label">Modelo</div><div class="bcard-spec-val">GLB</div></div>
+                            <div class="bcard-spec"><div class="bcard-spec-label">Norma</div><div class="bcard-spec-val">EC3 / EC8 / AISC</div></div>
+                        </div>
+                    </div>
+                    <button class="bcard-cta">Abrir visor <span class="arrow">→</span></button>
+                    <div class="bcard-check"></div>
+                </div>
+
+                <div class="bcard" data-id="golden" data-file="viewer_golden.html" data-name="Edificio Golden — Torre 16 Pisos">
+                    <div class="bcard-num">05</div>
+                    <div class="bcard-status new">● Nuevo</div>
+                    <div class="bcard-viz"><canvas id="c5"></canvas></div>
+                    <div class="bcard-body">
+                        <div class="bcard-type">H.A. Alta Resistencia — Torre</div>
+                        <div class="bcard-name">Edificio<br>Golden</div>
+                        <div class="bcard-desc">Torre residencial de hormigón armado de 16 pisos. Sistema mixto de núcleo rígido central con muros de corte y pórticos perimetrales. Cimentación profunda con pilotes.</div>
+                        <div class="bcard-specs">
+                            <div class="bcard-spec"><div class="bcard-spec-label">Sistema</div><div class="bcard-spec-val">Núcleo + Pórticos</div></div>
+                            <div class="bcard-spec"><div class="bcard-spec-label">Material</div><div class="bcard-spec-val">H.A. f'c 35-50 MPa</div></div>
+                            <div class="bcard-spec"><div class="bcard-spec-label">Niveles</div><div class="bcard-spec-val">16 plantas</div></div>
+                            <div class="bcard-spec"><div class="bcard-spec-label">Norma</div><div class="bcard-spec-val">ACI 318 / ASCE 7</div></div>
+                        </div>
+                    </div>
+                    <button class="bcard-cta">Abrir visor <span class="arrow">→</span></button>
+                    <div class="bcard-check"></div>
+                </div>
+
+                <div class="bcard" data-id="casaMG" data-file="viewer_casa_mg.html" data-name="Casa MG — Vivienda Unifamiliar">
+                    <div class="bcard-num">06</div>
+                    <div class="bcard-status new">● Nuevo</div>
+                    <div class="bcard-viz"><canvas id="c6"></canvas></div>
+                    <div class="bcard-body">
+                        <div class="bcard-type">🏠 Vivienda Unifamiliar — Muros Portantes</div>
+                        <div class="bcard-name">Casa MG<br>Vivienda Unifamiliar</div>
+                        <div class="bcard-desc">Vivienda unifamiliar de hormigón armado con sistema de muros portantes y losas de entrepiso. Cimentación superficial con zapatas corridas y radier. Análisis sísmico conforme NCh 433.</div>
+                        <div class="bcard-specs">
+                            <div class="bcard-spec"><div class="bcard-spec-label">Tipo</div><div class="bcard-spec-val">Vivienda unifamiliar</div></div>
+                            <div class="bcard-spec"><div class="bcard-spec-label">Sistema</div><div class="bcard-spec-val">Muros + Losas</div></div>
+                            <div class="bcard-spec"><div class="bcard-spec-label">Material</div><div class="bcard-spec-val">H.A. f'c 25 MPa</div></div>
+                            <div class="bcard-spec"><div class="bcard-spec-label">Norma</div><div class="bcard-spec-val">NCh 433 / ACI 318</div></div>
+                        </div>
+                    </div>
+                    <button class="bcard-cta">Abrir visor <span class="arrow">→</span></button>
+                    <div class="bcard-check"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Elementos requeridos por selector.js — no visibles -->
+        <div style="display:none">
+            <div id="selectedName"></div>
+            <button id="launchBtn"></button>
+        </div>
+
+    </div>
+
+    <div class="transition-overlay" id="transOverlay">
+        <div class="tr-icon" id="trIcon">🏗️</div>
+        <div class="tr-name" id="trName">Cargando edificio...</div>
+        <div class="tr-bar"><div class="tr-fill"></div></div>
+        <div class="tr-txt" id="trTxt">Inicializando modelo 3D...</div>
+    </div>
+
+    <script src="js/selector.js"></script>
+</body>
+</html>

@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMF — Diagrama de Momento Flector | IngeLAB 3D</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Bebas+Neue&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg:        #080c10;
+            --bg2:       #0d1117;
+            --bg3:       #111820;
+            --card:      #0f1520;
+            --card2:     #141c2a;
+            --border:    rgba(255,255,255,0.07);
+            --border2:   rgba(255,255,255,0.14);
+            --accent:    #ff4757;
+            --accent2:   #ff6b35;
+            --cyan:      #00e5ff;
+            --green:     #00ff9d;
+            --text:      #e8edf5;
+            --text2:     #8b95a8;
+            --text3:     #3d4758;
+            --mono:      'Space Mono', monospace;
+            --display:   'Bebas Neue', sans-serif;
+            --orb:       'Orbitron', sans-serif;
+            --body:      'DM Sans', sans-serif;
+            --r:         10px;
+            --r2:        6px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { height: 100%; overflow: hidden; }
+        body { background: var(--bg); color: var(--text); font-family: var(--body); display: flex; flex-direction: column; }
+
+        /* ── HEADER ── */
+        .topbar {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 24px; border-bottom: 1px solid var(--border);
+            background: rgba(8,12,16,0.95); backdrop-filter: blur(10px);
+            flex-shrink: 0; z-index: 100;
+        }
+        .topbar-left { display: flex; align-items: center; gap: 14px; }
+        .back-btn {
+            display: flex; align-items: center; gap: 6px;
+            background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+            border-radius: var(--r2); padding: 7px 12px; color: var(--text2);
+            font-family: var(--mono); font-size: 11px; cursor: pointer;
+            transition: all .2s; text-decoration: none;
+        }
+        .back-btn:hover { border-color: var(--cyan); color: var(--cyan); background: rgba(0,229,255,.05); }
+        .page-badge {
+            background: rgba(255,71,87,.12); border: 1px solid rgba(255,71,87,.3);
+            border-radius: var(--r2); padding: 5px 12px;
+            font-family: var(--orb); font-size: 11px; color: var(--accent); letter-spacing: .08em;
+        }
+        .page-title { font-family: var(--display); font-size: 22px; letter-spacing: .04em; color: var(--text); }
+        .topbar-right { display: flex; align-items: center; gap: 10px; }
+        .calc-btn {
+            background: var(--accent); border: none; border-radius: var(--r2);
+            padding: 8px 18px; color: #fff; font-family: var(--mono); font-size: 12px;
+            cursor: pointer; transition: all .2s; letter-spacing: .05em;
+        }
+        .calc-btn:hover { background: #ff6070; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(255,71,87,.4); }
+        .reset-btn {
+            background: transparent; border: 1px solid var(--border2); border-radius: var(--r2);
+            padding: 8px 14px; color: var(--text2); font-family: var(--mono); font-size: 11px; cursor: pointer; transition: all .2s;
+        }
+        .reset-btn:hover { border-color: var(--text2); color: var(--text); }
+
+        /* ── LAYOUT ── */
+        .layout {
+            display: grid;
+            grid-template-columns: 280px 1fr 260px;
+            grid-template-rows: 1fr;
+            flex: 1; overflow: hidden;
+        }
+
+        /* ── PANEL IZQUIERDO — INPUTS ── */
+        .panel-left {
+            background: var(--bg2); border-right: 1px solid var(--border);
+            overflow-y: auto; padding: 16px;
+            display: flex; flex-direction: column; gap: 14px;
+        }
+        .panel-left::-webkit-scrollbar { width: 4px; }
+        .panel-left::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+        .pgroup { display: flex; flex-direction: column; gap: 8px; }
+        .pgroup-title {
+            font-family: var(--orb); font-size: 10px; color: var(--accent);
+            letter-spacing: .15em; text-transform: uppercase;
+            padding-bottom: 6px; border-bottom: 1px solid var(--border);
+        }
+        .field { display: flex; flex-direction: column; gap: 4px; }
+        .field label { font-size: 11px; color: var(--text2); font-family: var(--mono); }
+        .field input, .field select {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: var(--r2); padding: 8px 10px;
+            color: var(--text); font-family: var(--mono); font-size: 12px;
+            transition: border-color .2s; width: 100%;
+        }
+        .field input:focus, .field select:focus { outline: none; border-color: var(--accent); }
+        .field input:hover, .field select:hover { border-color: var(--border2); }
+        .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .field-unit { font-size: 10px; color: var(--text3); font-family: var(--mono); margin-top: 2px; text-align: right; }
+
+        /* Carga item */
+        .carga-item {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: var(--r2); padding: 10px;
+            display: flex; flex-direction: column; gap: 6px;
+            position: relative;
+        }
+        .carga-item-header { display: flex; align-items: center; justify-content: space-between; }
+        .carga-tipo-badge {
+            font-family: var(--mono); font-size: 9px; padding: 2px 7px;
+            border-radius: 3px; background: rgba(255,71,87,.1); color: var(--accent);
+            border: 1px solid rgba(255,71,87,.2);
+        }
+        .carga-del { background: none; border: none; color: var(--text3); cursor: pointer; font-size: 14px; line-height: 1; padding: 2px; transition: color .2s; }
+        .carga-del:hover { color: var(--accent); }
+        .add-carga-btn {
+            background: rgba(255,71,87,.06); border: 1px dashed rgba(255,71,87,.25);
+            border-radius: var(--r2); padding: 9px; color: var(--accent);
+            font-family: var(--mono); font-size: 11px; cursor: pointer;
+            transition: all .2s; text-align: center; letter-spacing: .05em;
+        }
+        .add-carga-btn:hover { background: rgba(255,71,87,.12); border-color: var(--accent); }
+
+        /* Toggle switch */
+        .toggle-row { display: flex; align-items: center; justify-content: space-between; }
+        .toggle-label { font-size: 11px; color: var(--text2); font-family: var(--mono); }
+        .toggle { position: relative; width: 36px; height: 20px; }
+        .toggle input { opacity: 0; width: 0; height: 0; }
+        .toggle-slider {
+            position: absolute; inset: 0; background: var(--card);
+            border: 1px solid var(--border); border-radius: 20px; cursor: pointer; transition: .2s;
+        }
+        .toggle-slider::before {
+            content: ''; position: absolute; width: 14px; height: 14px;
+            background: var(--text3); border-radius: 50%; top: 2px; left: 2px; transition: .2s;
+        }
+        .toggle input:checked + .toggle-slider { background: rgba(255,71,87,.2); border-color: var(--accent); }
+        .toggle input:checked + .toggle-slider::before { background: var(--accent); transform: translateX(16px); }
+
+        /* ── CENTRO — CANVAS ── */
+        .panel-center {
+            display: flex; flex-direction: column; overflow: hidden; background: var(--bg);
+            position: relative;
+        }
+        .canvas-area {
+            flex: 1; display: flex; flex-direction: column;
+            padding: 16px; gap: 12px; overflow: hidden;
+        }
+        .canvas-label {
+            font-family: var(--mono); font-size: 10px; color: var(--text3);
+            letter-spacing: .12em; text-transform: uppercase;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .canvas-label::before { content: ''; display: block; width: 3px; height: 12px; background: var(--accent); border-radius: 2px; }
+        .canvas-wrap {
+            flex: 1; position: relative; background: var(--bg2);
+            border: 1px solid var(--border); border-radius: var(--r);
+            overflow: hidden;
+        }
+        .canvas-wrap canvas { display: block; width: 100%; height: 100%; }
+        .canvas-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; height: 160px; }
+        .canvas-sec-wrap {
+            background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r);
+            position: relative; overflow: hidden;
+        }
+        .canvas-sec-wrap canvas { width: 100%; height: 100%; display: block; }
+        .canvas-sec-label {
+            position: absolute; top: 8px; left: 10px;
+            font-family: var(--mono); font-size: 9px; color: var(--text3); letter-spacing: .1em;
+        }
+
+        /* Overlay info */
+        .canvas-overlay {
+            position: absolute; bottom: 10px; left: 10px;
+            display: flex; gap: 6px; flex-wrap: wrap;
+        }
+        .overlay-badge {
+            background: rgba(8,12,16,.85); border: 1px solid var(--border);
+            border-radius: 4px; padding: 3px 8px;
+            font-family: var(--mono); font-size: 9px; color: var(--text2);
+        }
+        .overlay-badge span { color: var(--accent); font-weight: 700; }
+
+        /* ── PANEL DERECHO — RESULTADOS ── */
+        .panel-right {
+            background: var(--bg2); border-left: 1px solid var(--border);
+            overflow-y: auto; padding: 16px;
+            display: flex; flex-direction: column; gap: 14px;
+        }
+        .panel-right::-webkit-scrollbar { width: 4px; }
+        .panel-right::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+        .res-group { display: flex; flex-direction: column; gap: 6px; }
+        .res-title {
+            font-family: var(--orb); font-size: 10px; color: var(--cyan);
+            letter-spacing: .15em; padding-bottom: 6px; border-bottom: 1px solid var(--border);
+        }
+        .res-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+        .res-key { font-size: 11px; color: var(--text2); font-family: var(--mono); flex-shrink: 0; }
+        .res-val { font-size: 12px; color: var(--text); font-family: var(--mono); font-weight: 700; text-align: right; }
+        .res-val.ok  { color: var(--green); }
+        .res-val.fail { color: var(--accent); }
+        .res-val.warn { color: #ff8c00; }
+
+        .verif-box {
+            border-radius: var(--r); padding: 12px;
+            border: 1px solid; text-align: center;
+        }
+        .verif-box.ok   { background: rgba(0,255,157,.07); border-color: rgba(0,255,157,.3); }
+        .verif-box.fail { background: rgba(255,71,87,.07); border-color: rgba(255,71,87,.3); }
+        .verif-title { font-family: var(--orb); font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+        .verif-sub   { font-family: var(--mono); font-size: 10px; color: var(--text2); }
+
+        /* Teoría */
+        .teoria-box {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: var(--r); padding: 12px;
+        }
+        .teoria-title { font-family: var(--orb); font-size: 10px; color: var(--text2); letter-spacing: .1em; margin-bottom: 8px; }
+        .teoria-text { font-size: 11px; color: var(--text2); line-height: 1.7; }
+        .formula {
+            background: rgba(0,0,0,.4); border: 1px solid rgba(255,71,87,.15);
+            border-radius: var(--r2); padding: 8px 10px; margin: 6px 0;
+            font-family: var(--mono); font-size: 12px; color: var(--accent);
+        }
+
+        /* Casos rápidos */
+        .casos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+        .caso-btn {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: var(--r2); padding: 8px 6px; text-align: center;
+            cursor: pointer; transition: all .2s; font-size: 10px;
+            font-family: var(--mono); color: var(--text2);
+        }
+        .caso-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(255,71,87,.05); }
+        .caso-btn .caso-icon { font-size: 16px; display: block; margin-bottom: 3px; }
+
+        /* Normativa chips */
+        .norma-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+        .norma-chip {
+            font-family: var(--mono); font-size: 9px; padding: 3px 7px;
+            background: rgba(255,255,255,.04); border: 1px solid var(--border);
+            border-radius: 3px; color: var(--text3);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .layout { grid-template-columns: 1fr; grid-template-rows: auto 1fr auto; overflow-y: auto; }
+            .panel-left, .panel-right { max-height: 280px; }
+            html, body { overflow: auto; height: auto; }
+        }
+
+        /* Animación entrada */
+        .panel-left, .panel-center, .panel-right { animation: fadeIn .4s ease both; }
+        .panel-center { animation-delay: .05s; }
+        .panel-right  { animation-delay: .1s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+    <div class="topbar-left">
+        <a href="../index.html" class="back-btn">← Volver</a>
+        <div class="page-badge">DMF</div>
+        <div class="page-title">DIAGRAMA DE MOMENTO FLECTOR</div>
+    </div>
+    <div class="topbar-right">
+        <button class="reset-btn" id="btnReset">↺ Reset</button>
+        <button class="calc-btn" id="btnCalc">⚡ Calcular</button>
+    </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+    <!-- PANEL IZQUIERDO -->
+    <div class="panel-left">
+
+        <!-- Casos rápidos -->
+        <div class="pgroup">
+            <div class="pgroup-title">Casos típicos</div>
+            <div class="casos-grid">
+                <div class="caso-btn" data-caso="sa_dist">
+                    <span class="caso-icon">▬</span>S.A. + q unif.
+                </div>
+                <div class="caso-btn" data-caso="sa_puntual">
+                    <span class="caso-icon">↓</span>S.A. + P central
+                </div>
+                <div class="caso-btn" data-caso="voladizo_dist">
+                    <span class="caso-icon">▭</span>Voladizo + q
+                </div>
+                <div class="caso-btn" data-caso="voladizo_punt">
+                    <span class="caso-icon">⬇</span>Voladizo + P
+                </div>
+            </div>
+        </div>
+
+        <!-- Geometría -->
+        <div class="pgroup">
+            <div class="pgroup-title">Geometría de viga</div>
+            <div class="field">
+                <label>Tipo de viga</label>
+                <select id="inp_tipo">
+                    <option value="simple">Simplemente apoyada</option>
+                    <option value="voladizo">Voladizo (cantilever)</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Longitud L</label>
+                <input type="number" id="inp_L" value="6.0" min="0.5" max="30" step="0.5">
+                <div class="field-unit">metros [m]</div>
+            </div>
+        </div>
+
+        <!-- Sección transversal -->
+        <div class="pgroup">
+            <div class="pgroup-title">Sección transversal</div>
+            <div class="field">
+                <label>Tipo de sección</label>
+                <select id="inp_seccion">
+                    <option value="rect">Rectangular H.A.</option>
+                    <option value="T">T-Beam H.A.</option>
+                    <option value="IPE">Perfil IPE (Acero)</option>
+                </select>
+            </div>
+            <div id="sec_rect">
+                <div class="field-row">
+                    <div class="field">
+                        <label>Ancho b</label>
+                        <input type="number" id="inp_b" value="0.30" min="0.1" max="2" step="0.05">
+                        <div class="field-unit">m</div>
+                    </div>
+                    <div class="field">
+                        <label>Alto h</label>
+                        <input type="number" id="inp_h" value="0.55" min="0.1" max="3" step="0.05">
+                        <div class="field-unit">m</div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>f'c hormigón</label>
+                    <input type="number" id="inp_fc" value="25" min="17" max="60" step="1">
+                    <div class="field-unit">MPa</div>
+                </div>
+            </div>
+            <div id="sec_ipe" style="display:none">
+                <div class="field">
+                    <label>Perfil acero</label>
+                    <select id="inp_ipe">
+                        <option value="IPE200">IPE 200</option>
+                        <option value="IPE240">IPE 240</option>
+                        <option value="IPE270">IPE 270</option>
+                        <option value="IPE300" selected>IPE 300</option>
+                        <option value="IPE330">IPE 330</option>
+                        <option value="IPE360">IPE 360</option>
+                        <option value="IPE400">IPE 400</option>
+                        <option value="IPE450">IPE 450</option>
+                        <option value="IPE500">IPE 500</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cargas -->
+        <div class="pgroup">
+            <div class="pgroup-title">Cargas aplicadas</div>
+            <div id="cargas-list"></div>
+            <div class="add-carga-btn" id="btnAddCarga">+ Agregar carga</div>
+        </div>
+
+    </div>
+
+    <!-- CENTRO -->
+    <div class="panel-center">
+        <div class="canvas-area">
+            <div class="canvas-label">Diagrama de Momento Flector M(x)</div>
+            <div class="canvas-wrap" id="mainWrap">
+                <canvas id="canvasMain"></canvas>
+                <div class="canvas-overlay">
+                    <div class="overlay-badge">M_max = <span id="ovMmax">—</span> kN·m</div>
+                    <div class="overlay-badge">x = <span id="ovXmax">—</span> m</div>
+                    <div class="overlay-badge">EI = <span id="ovEI">—</span> kN·m²</div>
+                </div>
+            </div>
+            <div class="canvas-bottom">
+                <div class="canvas-sec-wrap">
+                    <div class="canvas-sec-label">SECCIÓN TRANSVERSAL</div>
+                    <canvas id="canvasSeccion"></canvas>
+                </div>
+                <div class="canvas-sec-wrap">
+                    <div class="canvas-sec-label">DEFORMADA (amplif.)</div>
+                    <canvas id="canvasDeform"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANEL DERECHO -->
+    <div class="panel-right">
+
+        <!-- Reacciones -->
+        <div class="res-group">
+            <div class="res-title">Reacciones</div>
+            <div class="res-row"><span class="res-key">R_A</span><span class="res-val" id="res_RA">—</span></div>
+            <div class="res-row"><span class="res-key">R_B</span><span class="res-val" id="res_RB">—</span></div>
+        </div>
+
+        <!-- Momento -->
+        <div class="res-group">
+            <div class="res-title">Momento Flector</div>
+            <div class="res-row"><span class="res-key">M_max (+)</span><span class="res-val" id="res_Mmax">—</span></div>
+            <div class="res-row"><span class="res-key">@ x =</span><span class="res-val" id="res_xMmax">—</span></div>
+            <div class="res-row"><span class="res-key">M_min (−)</span><span class="res-val" id="res_Mmin">—</span></div>
+            <div class="res-row"><span class="res-key">Ceros M(x)</span><span class="res-val" id="res_ceros">—</span></div>
+        </div>
+
+        <!-- Sección -->
+        <div class="res-group">
+            <div class="res-title">Propiedades de Sección</div>
+            <div class="res-row"><span class="res-key">I (inercia)</span><span class="res-val" id="res_I">—</span></div>
+            <div class="res-row"><span class="res-key">W (módulo)</span><span class="res-val" id="res_W">—</span></div>
+            <div class="res-row"><span class="res-key">E</span><span class="res-val" id="res_E">—</span></div>
+            <div class="res-row"><span class="res-key">EI</span><span class="res-val" id="res_EI">—</span></div>
+        </div>
+
+        <!-- Tensiones -->
+        <div class="res-group">
+            <div class="res-title">Tensiones</div>
+            <div class="res-row"><span class="res-key">σ_max</span><span class="res-val" id="res_sigma">—</span></div>
+            <div class="res-row"><span class="res-key">σ_adm</span><span class="res-val" id="res_sigma_adm">—</span></div>
+            <div class="res-row"><span class="res-key">DCR</span><span class="res-val" id="res_DCR">—</span></div>
+        </div>
+
+        <!-- Deformación -->
+        <div class="res-group">
+            <div class="res-title">Deformación</div>
+            <div class="res-row"><span class="res-key">δ_max</span><span class="res-val" id="res_delta">—</span></div>
+            <div class="res-row"><span class="res-key">@ x =</span><span class="res-val" id="res_xdelta">—</span></div>
+            <div class="res-row"><span class="res-key">L/δ</span><span class="res-val" id="res_Ldelta">—</span></div>
+        </div>
+
+        <!-- Verificación -->
+        <div class="verif-box ok" id="verifBox">
+            <div class="verif-title" id="verifTitle">—</div>
+            <div class="verif-sub" id="verifSub">Calcule para verificar</div>
+        </div>
+
+        <!-- Teoría -->
+        <div class="teoria-box">
+            <div class="teoria-title">TEORÍA — RELACIONES FUNDAMENTALES</div>
+            <div class="teoria-text">
+                La ecuación diferencial de la viga relaciona el momento con la carga distribuida:
+            </div>
+            <div class="formula">d²M/dx² = −q(x)</div>
+            <div class="formula">V(x) = dM/dx</div>
+            <div class="formula">EI·y'' = M(x)</div>
+            <div class="teoria-text">
+                El momento flector es máximo donde V(x) = 0. El signo del momento indica cuál fibra está comprimida (convención ACI: M(+) comprime fibra superior).
+            </div>
+        </div>
+
+        <!-- Normativa -->
+        <div class="res-group">
+            <div class="res-title">Normativa referenciada</div>
+            <div class="norma-chips">
+                <span class="norma-chip">NCh 430</span>
+                <span class="norma-chip">ACI 318-19</span>
+                <span class="norma-chip">AISC 360</span>
+                <span class="norma-chip">NCh 1537</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="../js/diag_momento.js"></script>
+<script>
+'use strict';
+
+/* ── Estado local de cargas ── */
+let cargasUI = [
+    { id: 1, tipo: 'dist', q: 15, a: 0, b_end: 1.0, label: 'q₁' }
+];
+let nextId = 2;
+
+/* ── Canvas ── */
+let canvasMain, canvasSeccion, canvasDeform;
+
+function initCanvases() {
+    canvasMain    = document.getElementById('canvasMain');
+    canvasSeccion = document.getElementById('canvasSeccion');
+    canvasDeform  = document.getElementById('canvasDeform');
+
+    const resizeAll = () => {
+        const wrap = document.getElementById('mainWrap');
+        canvasMain.width  = wrap.clientWidth;
+        canvasMain.height = wrap.clientHeight;
+        canvasSeccion.width  = canvasSeccion.parentElement.clientWidth;
+        canvasSeccion.height = canvasSeccion.parentElement.clientHeight;
+        canvasDeform.width  = canvasDeform.parentElement.clientWidth;
+        canvasDeform.height = canvasDeform.parentElement.clientHeight;
+        if (window.DMF_MODULE?.state?.result) renderAll();
+    };
+
+    const ro = new ResizeObserver(resizeAll);
+    ro.observe(document.getElementById('mainWrap'));
+    ro.observe(canvasSeccion.parentElement);
+    ro.observe(canvasDeform.parentElement);
+    setTimeout(resizeAll, 100);
+}
+
+/* ── Leer inputs → state ── */
+function syncState() {
+    const mod = window.DMF_MODULE;
+    mod.setParam('tipo',    document.getElementById('inp_tipo').value);
+    mod.setParam('L',       parseFloat(document.getElementById('inp_L').value) || 6);
+    mod.setParam('seccion', document.getElementById('inp_seccion').value);
+    mod.setParam('b',       parseFloat(document.getElementById('inp_b').value)  || 0.30);
+    mod.setParam('h_sec',   parseFloat(document.getElementById('inp_h').value)  || 0.55);
+    mod.setParam('fc',      parseFloat(document.getElementById('inp_fc').value) || 25);
+    mod.setParam('ipe',     document.getElementById('inp_ipe').value);
+    mod.clearCargas();
+    cargasUI.forEach(c => mod.addCarga({ ...c }));
+}
+
+/* ── Calcular y renderizar ── */
+function calcularYRenderizar() {
+    syncState();
+    const result = window.DMF_MODULE.calcular();
+    renderAll(result);
+    updateResults(result);
+}
+
+function renderAll(result) {
+    result = result || window.DMF_MODULE.state.result;
+    if (!result) return;
+    result.cargas = cargasUI;
+    window.DMF_MODULE.draw(canvasMain, result);
+    window.DMF_MODULE.drawSeccion(canvasSeccion, window.DMF_MODULE.state.seccion, window.DMF_MODULE.state);
+    drawDeformadaMini(canvasDeform, result);
+}
+
+function drawDeformadaMini(canvas, result) {
+    if (!canvas || !result?.flecha) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+    const pad = 24;
+    const cw = W - pad * 2, ch = H - pad * 2;
+    const { y, xs } = result.flecha.y ? result.flecha : { y: null, xs: null };
+    if (!result.flecha.y) return;
+
+    const yArr = result.flecha.y, xArr = result.xs;
+    const L = xArr[xArr.length - 1];
+    const yMax = Math.max(...yArr.map(Math.abs)) || 1;
+    const sx = cw / L, sy = (ch * 0.4) / yMax;
+    const y0 = pad + ch * 0.4;
+
+    // Original line
+    ctx.strokeStyle = 'rgba(255,255,255,0.15)'; ctx.lineWidth = 1; ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(pad, y0); ctx.lineTo(pad + cw, y0); ctx.stroke(); ctx.setLineDash([]);
+
+    // Deformed
+    ctx.beginPath();
+    xArr.forEach((x, i) => {
+        const px = pad + x * sx, py = y0 + yArr[i] * 50 * sy;
+        i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+    });
+    ctx.strokeStyle = '#c084fc'; ctx.lineWidth = 2; ctx.stroke();
+
+    ctx.fillStyle = 'rgba(192,132,252,0.2)';
+    ctx.beginPath(); ctx.moveTo(pad, y0);
+    xArr.forEach((x, i) => ctx.lineTo(pad + x * sx, y0 + yArr[i] * 50 * sy));
+    ctx.lineTo(pad + cw, y0); ctx.closePath(); ctx.fill();
+
+    ctx.fillStyle = '#c084fc'; ctx.font = 'bold 10px Space Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText(`δ_max = ${(result.flecha.yMax * 1000).toFixed(2)} mm`, W / 2, pad + ch * 0.85);
+}
+
+/* ── Actualizar panel resultados ── */
+function updateResults(r) {
+    if (!r) return;
+
+    const fmt = (v, dec = 2, unit = '') => v !== undefined ? `${v.toFixed(dec)} ${unit}`.trim() : '—';
+
+    document.getElementById('res_RA').textContent = fmt(r.reacciones?.RA, 2, 'kN');
+    document.getElementById('res_RB').textContent = fmt(r.reacciones?.RB, 2, 'kN');
+    document.getElementById('res_Mmax').textContent = fmt(r.Mmax, 2, 'kN·m');
+    document.getElementById('res_xMmax').textContent = fmt(r.xMmax, 2, 'm');
+    document.getElementById('res_Mmin').textContent = fmt(r.Mmin, 2, 'kN·m');
+    document.getElementById('res_ceros').textContent = r.ceros?.length ? r.ceros.map(x => x.toFixed(2) + 'm').join(', ') : 'ninguno';
+
+    const sp = r.secProps;
+    document.getElementById('res_I').textContent  = sp ? fmt(sp.I * 1e8, 2, 'cm⁴') : '—';
+    document.getElementById('res_W').textContent  = sp ? fmt(sp.W * 1e6, 2, 'cm³') : '—';
+    document.getElementById('res_E').textContent  = sp ? `${(sp.E / 1000).toFixed(0)} GPa` : '—';
+    document.getElementById('res_EI').textContent = sp ? fmt(sp.EI / 1000, 1, 'MN·m²') : '—';
+
+    document.getElementById('res_sigma').textContent     = fmt(r.sigma_max, 2, 'MPa');
+    document.getElementById('res_sigma_adm').textContent = fmt(r.sigma_adm, 2, 'MPa');
+    const DCR = r.sigma_max / r.sigma_adm;
+    const dcrEl = document.getElementById('res_DCR');
+    dcrEl.textContent = DCR.toFixed(3);
+    dcrEl.className   = 'res-val ' + (DCR <= 1 ? 'ok' : 'fail');
+
+    document.getElementById('res_delta').textContent  = fmt(r.flecha?.yMax * 1000, 3, 'mm');
+    document.getElementById('res_xdelta').textContent = fmt(r.flecha?.xMax, 2, 'm');
+    const Ldelta = window.DMF_MODULE.state.L / Math.max(r.flecha?.yMax, 1e-9);
+    document.getElementById('res_Ldelta').textContent = `L/${Ldelta.toFixed(0)}`;
+
+    // Overlay
+    document.getElementById('ovMmax').textContent = r.Mmax?.toFixed(2);
+    document.getElementById('ovXmax').textContent = r.xMmax?.toFixed(2);
+    document.getElementById('ovEI').textContent   = sp ? (sp.EI / 1000).toFixed(0) : '—';
+
+    // Verificación
+    const box = document.getElementById('verifBox');
+    box.className = 'verif-box ' + (r.ok ? 'ok' : 'fail');
+    document.getElementById('verifTitle').textContent = r.ok ? '✅ SECCIÓN CUMPLE' : '❌ SECCIÓN NO CUMPLE';
+    document.getElementById('verifTitle').style.color = r.ok ? 'var(--green)' : 'var(--accent)';
+    document.getElementById('verifSub').textContent =
+        `σ_max=${r.sigma_max?.toFixed(2)} MPa  |  σ_adm=${r.sigma_adm?.toFixed(2)} MPa`;
+}
+
+/* ── UI de cargas ── */
+function renderCargasUI() {
+    const list = document.getElementById('cargas-list');
+    list.innerHTML = '';
+    cargasUI.forEach(c => {
+        const el = document.createElement('div');
+        el.className = 'carga-item';
+        el.innerHTML = `
+            <div class="carga-item-header">
+                <select class="carga-tipo" data-id="${c.id}" style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:4px 6px;color:var(--text);font-family:var(--mono);font-size:10px;flex:1;margin-right:6px">
+                    <option value="puntual"   ${c.tipo==='puntual'?'selected':''}>Puntual P [kN]</option>
+                    <option value="dist"      ${c.tipo==='dist'?'selected':''}>Distribuida q [kN/m]</option>
+                    <option value="triangular"${c.tipo==='triangular'?'selected':''}>Triangular [kN/m]</option>
+                </select>
+                <button class="carga-del" data-id="${c.id}">✕</button>
+            </div>
+            ${c.tipo === 'puntual' ? `
+                <div class="field-row">
+                    <div class="field"><label>P [kN]</label><input type="number" class="ci" data-id="${c.id}" data-field="P" value="${c.P||50}" step="5"></div>
+                    <div class="field"><label>x = a [m]</label><input type="number" class="ci" data-id="${c.id}" data-field="a" value="${c.a||3}" step="0.1" min="0"></div>
+                </div>` : `
+                <div class="field-row">
+                    <div class="field"><label>q [kN/m]</label><input type="number" class="ci" data-id="${c.id}" data-field="q" value="${c.q||15}" step="1"></div>
+                    <div class="field"><label>a [m]</label><input type="number" class="ci" data-id="${c.id}" data-field="a" value="${c.a||0}" step="0.1" min="0"></div>
+                </div>
+                <div class="field">
+                    <label>b (fin) [m]</label>
+                    <input type="number" class="ci" data-id="${c.id}" data-field="b_end" value="${c.b_end||6}" step="0.1" min="0">
+                </div>`}
+        `;
+        list.appendChild(el);
+    });
+
+    list.querySelectorAll('.carga-del').forEach(btn => {
+        btn.addEventListener('click', () => {
+            cargasUI = cargasUI.filter(c => c.id !== +btn.dataset.id);
+            renderCargasUI();
+        });
+    });
+
+    list.querySelectorAll('.carga-tipo').forEach(sel => {
+        sel.addEventListener('change', () => {
+            const c = cargasUI.find(c => c.id === +sel.dataset.id);
+            if (!c) return;
+            c.tipo = sel.value;
+            if (c.tipo === 'puntual') { c.P = 50; c.a = 3; delete c.q; delete c.b_end; }
+            else { c.q = 15; c.a = 0; c.b_end = 6; delete c.P; }
+            renderCargasUI();
+        });
+    });
+
+    list.querySelectorAll('.ci').forEach(inp => {
+        inp.addEventListener('input', () => {
+            const c = cargasUI.find(c => c.id === +inp.dataset.id);
+            if (c) c[inp.dataset.field] = parseFloat(inp.value) || 0;
+        });
+    });
+}
+
+/* ── Casos rápidos ── */
+const CASOS = {
+    sa_dist:       { tipo: 'simple', L: 6, cargas: [{ tipo: 'dist', q: 20, a: 0, b_end: 1.0 }] },
+    sa_puntual:    { tipo: 'simple', L: 6, cargas: [{ tipo: 'puntual', P: 100, a: 3 }] },
+    voladizo_dist: { tipo: 'voladizo', L: 4, cargas: [{ tipo: 'dist', q: 15, a: 0, b_end: 1.0 }] },
+    voladizo_punt: { tipo: 'voladizo', L: 4, cargas: [{ tipo: 'puntual', P: 80, a: 4 }] },
+};
+
+document.querySelectorAll('.caso-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const caso = CASOS[btn.dataset.caso];
+        if (!caso) return;
+        document.getElementById('inp_tipo').value = caso.tipo;
+        document.getElementById('inp_L').value    = caso.L;
+        cargasUI = caso.cargas.map((c, i) => ({ ...c, id: i + 1, label: `q${i+1}`, b_end: c.b_end !== undefined ? c.b_end : caso.L }));
+        nextId = cargasUI.length + 1;
+        renderCargasUI();
+        calcularYRenderizar();
+    });
+});
+
+/* ── Sección toggle ── */
+document.getElementById('inp_seccion').addEventListener('change', function () {
+    document.getElementById('sec_rect').style.display = this.value !== 'IPE' ? 'block' : 'none';
+    document.getElementById('sec_ipe').style.display  = this.value === 'IPE' ? 'block' : 'none';
+});
+
+/* ── Botones ── */
+document.getElementById('btnCalc').addEventListener('click', calcularYRenderizar);
+document.getElementById('btnReset').addEventListener('click', () => {
+    document.getElementById('inp_tipo').value    = 'simple';
+    document.getElementById('inp_L').value       = '6.0';
+    document.getElementById('inp_seccion').value = 'rect';
+    document.getElementById('inp_b').value       = '0.30';
+    document.getElementById('inp_h').value       = '0.55';
+    document.getElementById('inp_fc').value      = '25';
+    cargasUI = [{ id: 1, tipo: 'dist', q: 15, a: 0, b_end: 6, label: 'q₁' }];
+    nextId = 2;
+    renderCargasUI();
+    calcularYRenderizar();
+});
+
+document.getElementById('btnAddCarga').addEventListener('click', () => {
+    cargasUI.push({ id: nextId++, tipo: 'puntual', P: 50, a: 3, label: `P${nextId}` });
+    renderCargasUI();
+});
+
+/* ── INIT ── */
+renderCargasUI();
+initCanvases();
+setTimeout(calcularYRenderizar, 200);
+</script>
+</body>
+</html>

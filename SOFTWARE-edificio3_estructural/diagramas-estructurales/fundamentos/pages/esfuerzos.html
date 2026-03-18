@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esfuerzos Estructurales | Fundamentos Estructurales</title>
+    <link rel="stylesheet" href="../css/fundamentos.css">
+    <style>
+        :root { --accent: var(--esfuerzos); }
+        .concepto-num { color: var(--esfuerzos) !important; }
+        .formula-main { color: var(--esfuerzos) !important; }
+        .formula-block::before { background: var(--esfuerzos) !important; }
+        .sidebar-item.active { border-left-color: var(--esfuerzos) !important; }
+        .sidebar-progress-fill { background: var(--esfuerzos) !important; }
+        .topbar-badge { color:#ff4757 !important; border-color:rgba(255,71,87,.3) !important; background:rgba(255,71,87,.08) !important; }
+        .esfuerzo-svg { width:100%; height:200px; display:block; }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="topbar-left">
+        <a href="../index.html" class="back-btn">← Fundamentos</a>
+        <div class="topbar-badge">CAT 02</div>
+        <div class="topbar-title">ESFUERZOS ESTRUCTURALES</div>
+    </div>
+    <div class="topbar-right">
+        <span style="font-family:var(--mono);font-size:10px;color:var(--text3)">10 conceptos</span>
+    </div>
+</div>
+
+<div class="page-layout">
+    <nav class="sidebar">
+        <div class="sidebar-title">Esfuerzos</div>
+        <div class="sidebar-progress"><div class="sidebar-progress-fill" style="width:10%"></div></div>
+        <div class="sidebar-item active"><span class="item-num">01</span><span class="item-dot"></span>Tracción</div>
+        <div class="sidebar-item"><span class="item-num">02</span><span class="item-dot"></span>Compresión</div>
+        <div class="sidebar-item"><span class="item-num">03</span><span class="item-dot"></span>Flexión</div>
+        <div class="sidebar-item"><span class="item-num">04</span><span class="item-dot"></span>Corte / Cizalle</div>
+        <div class="sidebar-item"><span class="item-num">05</span><span class="item-dot"></span>Torsión</div>
+        <div class="sidebar-item"><span class="item-num">06</span><span class="item-dot"></span>Esfuerzo Normal</div>
+        <div class="sidebar-item"><span class="item-num">07</span><span class="item-dot"></span>Esfuerzo Cortante</div>
+        <div class="sidebar-item"><span class="item-num">08</span><span class="item-dot"></span>Momento Flector</div>
+        <div class="sidebar-item"><span class="item-num">09</span><span class="item-dot"></span>Momento Torsor</div>
+        <div class="sidebar-item"><span class="item-num">10</span><span class="item-dot"></span>Esfuerzo Combinado</div>
+    </nav>
+
+    <div class="main-content">
+
+        <!-- 01 TRACCIÓN -->
+        <div class="concepto active" id="c01">
+            <div class="concepto-header">
+                <div class="concepto-num">01</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Esfuerzos Estructurales</div>
+                    <div class="concepto-titulo">TRACCIÓN</div>
+                    <div class="concepto-subtitulo">Tension — El elemento es jalado desde sus extremos</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>tracción</strong> es un esfuerzo axial que tiende a <em>alargar</em> el elemento. Las fibras internas están siendo separadas. El acero resiste muy bien la tracción; el hormigón no (por eso se arma). Elementos típicos: tirantes, barras de celosía en tracción, cables.</p>
+            <div class="canvas-block">
+                <svg class="esfuerzo-svg" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="arrT" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#ff4757"/></marker>
+                        <marker id="arrTL" markerWidth="7" markerHeight="7" refX="1" refY="3.5" orient="auto-start-reverse"><path d="M0,0 L7,3.5 L0,7 Z" fill="#ff4757"/></marker>
+                    </defs>
+                    <!-- Barra -->
+                    <rect x="160" y="88" width="280" height="24" rx="3" fill="rgba(255,71,87,0.15)" stroke="rgba(255,71,87,0.7)" stroke-width="2"/>
+                    <!-- Flechas tracción -->
+                    <line x1="80" y1="100" x2="156" y2="100" stroke="#ff4757" stroke-width="3" marker-end="url(#arrTL)"/>
+                    <line x1="520" y1="100" x2="444" y2="100" stroke="#ff4757" stroke-width="3" marker-end="url(#arrT)"/>
+                    <text x="55" y="95" fill="#ff4757" font-family="Space Mono" font-size="12" font-weight="bold">N</text>
+                    <text x="530" y="95" fill="#ff4757" font-family="Space Mono" font-size="12" font-weight="bold">N</text>
+                    <!-- Deformación elongación -->
+                    <line x1="160" y1="125" x2="160" y2="145" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                    <line x1="440" y1="125" x2="440" y2="145" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                    <line x1="160" y1="138" x2="440" y2="138" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                    <text x="300" y="155" fill="rgba(255,255,255,0.35)" font-family="Space Mono" font-size="9" text-anchor="middle">L  →  L + ΔL  (elongación)</text>
+                    <!-- Flechas internas -->
+                    <line x1="245" y1="100" x2="225" y2="100" stroke="rgba(255,71,87,0.5)" stroke-width="1.5" marker-end="url(#arrTL)"/>
+                    <line x1="355" y1="100" x2="375" y2="100" stroke="rgba(255,71,87,0.5)" stroke-width="1.5" marker-end="url(#arrT)"/>
+                    <text x="300" y="78" fill="rgba(255,71,87,0.7)" font-family="Space Mono" font-size="9" text-anchor="middle">σ = N/A  (esfuerzo uniforme)</text>
+                </svg>
+            </div>
+            <div class="formula-block">
+                <div class="formula-label">ESFUERZO NORMAL DE TRACCIÓN</div>
+                <div class="formula-main">σ = N / A    [MPa]</div>
+                <div class="formula-vars">
+                    <span class="formula-var">σ</span> = esfuerzo normal [MPa = N/mm²]  → positivo en tracción<br>
+                    <span class="formula-var">N</span> = fuerza axial de tracción [kN]<br>
+                    <span class="formula-var">A</span> = área de la sección transversal [mm²]<br>
+                    Deformación: <span class="formula-var">ΔL = σ·L/E = N·L/(E·A)</span>
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">SIGNO</div><div class="prop-val">Positivo (+)</div></div>
+                <div class="prop-chip"><div class="prop-label">EFECTO</div><div class="prop-val">Alargamiento</div></div>
+                <div class="prop-chip"><div class="prop-label">ACERO</div><div class="prop-val">Resiste muy bien</div></div>
+                <div class="prop-chip"><div class="prop-label">HORMIGÓN</div><div class="prop-val">Resiste mal → armar</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev" style="display:none"></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Compresión</span></button>
+            </div>
+        </div>
+
+        <!-- 02 COMPRESIÓN -->
+        <div class="concepto" id="c02">
+            <div class="concepto-header">
+                <div class="concepto-num">02</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Esfuerzos Estructurales</div>
+                    <div class="concepto-titulo">COMPRESIÓN</div>
+                    <div class="concepto-subtitulo">Compression — El elemento es empujado desde sus extremos</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>compresión</strong> es un esfuerzo axial que tiende a <em>acortar</em> el elemento. Las fibras internas están siendo comprimidas entre sí. El hormigón resiste bien la compresión; el acero puede pandear si es esbelto. Elementos típicos: columnas, pilares, barras comprimidas de celosía.</p>
+            <div class="formula-block">
+                <div class="formula-label">ESFUERZO NORMAL DE COMPRESIÓN</div>
+                <div class="formula-main">σ = -N / A    [MPa]  (negativo por convención)</div>
+                <div class="formula-vars">
+                    <span class="formula-var">σ</span> = esfuerzo normal de compresión [MPa]  → negativo<br>
+                    <span class="formula-var">N</span> = fuerza axial de compresión [kN]<br>
+                    <span class="formula-var">A</span> = área de la sección transversal [mm²]<br>
+                    Límite H.A.: <span class="formula-var">σ_adm = 0.45·f'c</span> (compresión simple)
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">SIGNO</div><div class="prop-val">Negativo (−)</div></div>
+                <div class="prop-chip"><div class="prop-label">EFECTO</div><div class="prop-val">Acortamiento</div></div>
+                <div class="prop-chip"><div class="prop-label">HORMIGÓN</div><div class="prop-val">Resiste bien</div></div>
+                <div class="prop-chip"><div class="prop-label">RIESGO</div><div class="prop-val">Pandeo (esbeltez)</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Tracción</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Flexión</span></button>
+            </div>
+        </div>
+
+        <!-- 03 FLEXIÓN -->
+        <div class="concepto" id="c03">
+            <div class="concepto-header">
+                <div class="concepto-num">03</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Esfuerzos Estructurales</div>
+                    <div class="concepto-titulo">FLEXIÓN</div>
+                    <div class="concepto-subtitulo">Bending — Combinación de tracción y compresión</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>flexión</strong> es el esfuerzo que se produce cuando una fuerza transversal actúa sobre un elemento, generando un momento flector. Produce tracción en las fibras inferiores y compresión en las superiores (para momento positivo). Es el esfuerzo dominante en vigas.</p>
+            <div class="canvas-block">
+                <svg class="esfuerzo-svg" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Viga deformada -->
+                    <path d="M80,90 Q300,140 520,90" fill="none" stroke="rgba(255,71,87,0.5)" stroke-width="2" stroke-dasharray="6,4"/>
+                    <!-- Viga original -->
+                    <rect x="80" y="78" width="440" height="24" rx="2" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+                    <!-- Diagrama distribución esfuerzos en sección -->
+                    <rect x="520" y="60" width="55" height="80" rx="2" fill="rgba(255,71,87,0.08)" stroke="rgba(255,71,87,0.3)" stroke-width="1"/>
+                    <line x1="547" y1="60" x2="547" y2="140" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-dasharray="3,3"/>
+                    <!-- Compresión arriba -->
+                    <line x1="547" y1="68" x2="522" y2="68" stroke="#0077ff" stroke-width="2"/>
+                    <line x1="547" y1="78" x2="524" y2="78" stroke="#0077ff" stroke-width="1.5"/>
+                    <line x1="547" y1="88" x2="530" y2="88" stroke="#0077ff" stroke-width="1"/>
+                    <text x="515" y="72" fill="#0077ff" font-family="Space Mono" font-size="8" text-anchor="end">C</text>
+                    <!-- Tracción abajo -->
+                    <line x1="547" y1="102" x2="570" y2="102" stroke="#ff4757" stroke-width="1"/>
+                    <line x1="547" y1="112" x2="572" y2="112" stroke="#ff4757" stroke-width="1.5"/>
+                    <line x1="547" y1="122" x2="574" y2="122" stroke="#ff4757" stroke-width="2"/>
+                    <text x="578" y="118" fill="#ff4757" font-family="Space Mono" font-size="8">T</text>
+                    <!-- Eje neutro -->
+                    <line x1="520" y1="95" x2="575" y2="95" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-dasharray="3,3"/>
+                    <text x="510" y="98" fill="rgba(255,255,255,0.4)" font-family="Space Mono" font-size="7" text-anchor="end">e.n.</text>
+                    <!-- Etiquetas -->
+                    <text x="300" y="168" fill="rgba(255,255,255,0.35)" font-family="Space Mono" font-size="9" text-anchor="middle">La viga flecta → compresión arriba, tracción abajo (M positivo)</text>
+                </svg>
+            </div>
+            <div class="formula-block">
+                <div class="formula-label">FÓRMULA DE FLEXIÓN (EULER-BERNOULLI)</div>
+                <div class="formula-main">σ = M · y / I    →    σ_max = M / W</div>
+                <div class="formula-vars">
+                    <span class="formula-var">σ</span> = esfuerzo en la fibra a distancia y del eje neutro [MPa]<br>
+                    <span class="formula-var">M</span> = momento flector en la sección [kN·m]<br>
+                    <span class="formula-var">I</span> = momento de inercia de la sección [m⁴ o cm⁴]<br>
+                    <span class="formula-var">y</span> = distancia de la fibra al eje neutro [m]<br>
+                    <span class="formula-var">W = I/y_max</span> = módulo resistente [m³ o cm³]
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">SECCIÓN</div><div class="prop-val">Tracción + Compresión</div></div>
+                <div class="prop-chip"><div class="prop-label">EJE NEUTRO</div><div class="prop-val">σ = 0 (centro gravedad)</div></div>
+                <div class="prop-chip"><div class="prop-label">σ_max</div><div class="prop-val">En fibras extremas</div></div>
+                <div class="prop-chip"><div class="prop-label">DISEÑO</div><div class="prop-val">σ_max ≤ f_adm</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Compresión</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Corte / Cizalle</span></button>
+            </div>
+        </div>
+
+        <!-- 04 CORTE -->
+        <div class="concepto" id="c04">
+            <div class="concepto-header">
+                <div class="concepto-num">04</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Esfuerzos Estructurales</div>
+                    <div class="concepto-titulo">CORTE / CIZALLE</div>
+                    <div class="concepto-subtitulo">Shear — Fuerzas paralelas que tienden a deslizar planos</div>
+                </div>
+            </div>
+            <p class="concepto-desc">El <strong>corte o cizalle</strong> se produce cuando fuerzas paralelas opuestas actúan sobre planos adyacentes del elemento, tendiendo a deslizarlos. En vigas, el corte transversal genera esfuerzos cortantes distribuidos parabólicamente en la sección. Determina el diseño de estribos en H.A.</p>
+            <div class="formula-block">
+                <div class="formula-label">ESFUERZO CORTANTE MEDIO Y MÁXIMO</div>
+                <div class="formula-main">τ_medio = V / A    τ_max = 1.5 · V/A  (rect.)</div>
+                <div class="formula-vars">
+                    <span class="formula-var">τ</span> = esfuerzo cortante [MPa]<br>
+                    <span class="formula-var">V</span> = fuerza cortante en la sección [kN]<br>
+                    <span class="formula-var">A</span> = área de la sección transversal [mm²]<br>
+                    Distribución parabólica: <span class="formula-var">τ(y) = V·Q / (I·b)</span>  (fórmula de Jourawski)
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">DISTRIBUCIÓN</div><div class="prop-val">Parabólica (rect.)</div></div>
+                <div class="prop-chip"><div class="prop-label">τ_max</div><div class="prop-val">En el eje neutro</div></div>
+                <div class="prop-chip"><div class="prop-label">DISEÑO H.A.</div><div class="prop-val">Estribos (ACI §22.5)</div></div>
+                <div class="prop-chip"><div class="prop-label">τ_adm</div><div class="prop-val">≈ 0.17√f'c [MPa]</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Flexión</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Torsión</span></button>
+            </div>
+        </div>
+
+        <!-- 05 TORSIÓN -->
+        <div class="concepto" id="c05">
+            <div class="concepto-header">
+                <div class="concepto-num">05</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Esfuerzos Estructurales</div>
+                    <div class="concepto-titulo">TORSIÓN</div>
+                    <div class="concepto-subtitulo">Torsion — El elemento gira sobre su propio eje</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>torsión</strong> es el esfuerzo que se produce cuando un momento actúa alrededor del eje longitudinal del elemento, haciendo que las secciones giren entre sí. Genera esfuerzos cortantes que varían con la distancia al centro. Ocurre en vigas de borde, vigas curvas y elementos sometidos a carga excéntrica.</p>
+            <div class="formula-block">
+                <div class="formula-label">ESFUERZO TORSIONAL (SAINT-VENANT)</div>
+                <div class="formula-main">τ = T · r / J    θ = T · L / (G · J)</div>
+                <div class="formula-vars">
+                    <span class="formula-var">τ</span> = esfuerzo cortante por torsión [MPa]<br>
+                    <span class="formula-var">T</span> = momento torsor [kN·m]<br>
+                    <span class="formula-var">r</span> = distancia al centro de la sección [m]<br>
+                    <span class="formula-var">J</span> = momento polar de inercia [m⁴]  (circular: J = πd⁴/32)<br>
+                    <span class="formula-var">θ</span> = ángulo de giro [rad] · <span class="formula-var">G</span> = módulo de corte [MPa]
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">MOMENTO</div><div class="prop-val">Torsor (alrededor del eje)</div></div>
+                <div class="prop-chip"><div class="prop-chip"></div><div class="prop-val">Esfuerzo cortante</div></div>
+                <div class="prop-chip"><div class="prop-label">J circular</div><div class="prop-val">πd⁴/32</div></div>
+                <div class="prop-chip"><div class="prop-label">DISEÑO H.A.</div><div class="prop-val">Estribos cerrados</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Corte / Cizalle</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Esfuerzo Normal</span></button>
+            </div>
+        </div>
+
+        <!-- 06 ESFUERZO NORMAL -->
+        <div class="concepto" id="c06">
+            <div class="concepto-header">
+                <div class="concepto-num">06</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Esfuerzos Estructurales</div>
+                    <div class="concepto-titulo">ESFUERZO NORMAL</div>
+                    <div class="concepto-subtitulo">Normal Stress σ — Actúa perpendicular al plano de la sección</div>
+                </div>
+            </div>
+            <p class="concepto-desc">El <strong>esfuerzo normal</strong> actúa perpendicular al plano de la sección transversal. Puede ser de tracción (positivo) o compresión (negativo). Se genera por fuerzas axiales y por flexión. Es el esfuerzo fundamental en el análisis de barras y vigas.</p>
+            <div class="formula-block">
+                <div class="formula-label">ESFUERZO NORMAL GENERAL (AXIAL + FLEXIÓN)</div>
+                <div class="formula-main">σ = N/A ± M·y/I</div>
+                <div class="formula-vars">
+                    <span class="formula-var">N/A</span> = componente axial uniforme en toda la sección<br>
+                    <span class="formula-var">M·y/I</span> = componente de flexión, varía linealmente con y<br>
+                    <span class="formula-var">y</span> = distancia a la fibra desde el eje neutro<br>
+                    Ley de Hooke: <span class="formula-var">σ = E · ε</span>  (régimen elástico)
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Torsión</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Esfuerzo Cortante</span></button>
+            </div>
+        </div>
+
+        <!-- 07 ESFUERZO CORTANTE -->
+        <div class="concepto" id="c07">
+            <div class="concepto-header">
+                <div class="concepto-num">07</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Esfuerzos Estructurales</div>
+                    <div class="concepto-titulo">ESFUERZO CORTANTE</div>
+                    <div class="concepto-subtitulo">Shear Stress τ — Actúa paralelo al plano de la sección</div>
+                </div>
+            </div>
+            <p class="concepto-desc">El <strong>esfuerzo cortante</strong> actúa paralelo al plano de la sección transversal. Se genera por fuerzas cortantes (corte directo) y por torsión. Su distribución en la sección no es uniforme: en secciones rectangulares es parabólica con máximo en el eje neutro.</p>
+            <div class="formula-block">
+                <div class="formula-label">FÓRMULA DE JOURAWSKI</div>
+                <div class="formula-main">τ(y) = V · Q(y) / (I · b(y))</div>
+                <div class="formula-vars">
+                    <span class="formula-var">τ(y)</span> = esfuerzo cortante a la distancia y del eje neutro [MPa]<br>
+                    <span class="formula-var">V</span> = fuerza cortante en la sección [kN]<br>
+                    <span class="formula-var">Q(y)</span> = momento estático del área sobre y [m³]<br>
+                    <span class="formula-var">b(y)</span> = ancho de la sección a la altura y [m]<br>
+                    Ley de Hooke: <span class="formula-var">τ = G · γ</span>  (G = módulo de corte)
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Esfuerzo Normal</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Momento Flector</span></button>
+            </div>
+        </div>
+
+        <!-- 08 MOMENTO FLECTOR -->
+        <div class="concepto" id="c08">
+            <div class="concepto-header">
+                <div class="concepto-num">08</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Esfuerzos Estructurales</div>
+                    <div class="concepto-titulo">MOMENTO FLECTOR</div>
+                    <div class="concepto-subtitulo">Bending Moment M — Par de fuerzas que doblan el elemento</div>
+                </div>
+            </div>
+            <p class="concepto-desc">El <strong>momento flector</strong> es la fuerza interna que tiende a doblar el elemento. Se representa en el Diagrama de Momento Flector (DMF). El momento máximo ocurre donde la fuerza cortante cambia de signo (V=0). Es la solicitación de diseño principal de vigas y losas.</p>
+            <div class="formula-block">
+                <div class="formula-label">RELACIÓN DIFERENCIAL V-M-q</div>
+                <div class="formula-main">dV/dx = −q(x)    dM/dx = V(x)</div>
+                <div class="formula-vars">
+                    La pendiente del diagrama M es igual al valor de V en ese punto.<br>
+                    La pendiente del diagrama V es igual a −q (carga distribuida).<br>
+                    Bajo carga distribuida: M es parabólico. Bajo carga puntual: M es lineal.<br>
+                    <span class="formula-var">M_max</span> ocurre donde <span class="formula-var">V = 0</span>
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Esfuerzo Cortante</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Momento Torsor</span></button>
+            </div>
+        </div>
+
+        <!-- 09 MOMENTO TORSOR -->
+        <div class="concepto" id="c09">
+            <div class="concepto-header">
+                <div class="concepto-num">09</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Esfuerzos Estructurales</div>
+                    <div class="concepto-titulo">MOMENTO TORSOR</div>
+                    <div class="concepto-subtitulo">Torsional Moment T — Par que gira la sección sobre el eje longitudinal</div>
+                </div>
+            </div>
+            <p class="concepto-desc">El <strong>momento torsor</strong> actúa alrededor del eje longitudinal del elemento, produciendo torsión. Es el par de fuerzas que hace girar las secciones relativas entre sí. En H.A., si supera cierto límite, requiere refuerzo torsional (estribos cerrados y barras longitudinales).</p>
+            <div class="formula-block">
+                <div class="formula-label">TORSIÓN MÍNIMA (ACI 318-19)</div>
+                <div class="formula-main">T_min = φ · λ · √f'c · (Acp²/pcp)</div>
+                <div class="formula-vars">
+                    <span class="formula-var">T_min</span> = umbral de diseño torsional [kN·m]<br>
+                    <span class="formula-var">Acp</span> = área encerrada por el perímetro exterior [mm²]<br>
+                    <span class="formula-var">pcp</span> = perímetro exterior de la sección [mm]<br>
+                    Si <span class="formula-var">T_u ≤ T_min</span> → se puede ignorar la torsión en el diseño
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Momento Flector</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Esfuerzo Combinado</span></button>
+            </div>
+        </div>
+
+        <!-- 10 ESFUERZO COMBINADO -->
+        <div class="concepto" id="c10">
+            <div class="concepto-header">
+                <div class="concepto-num">10</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Esfuerzos Estructurales</div>
+                    <div class="concepto-titulo">ESFUERZO COMBINADO</div>
+                    <div class="concepto-subtitulo">Combined Stress — Superposición de múltiples esfuerzos</div>
+                </div>
+            </div>
+            <p class="concepto-desc">El <strong>esfuerzo combinado</strong> ocurre cuando un elemento está sometido simultáneamente a varios tipos de solicitación: axial + flexión, flexión + corte, etc. Se analizan mediante el principio de superposición (régimen elástico) o con criterios de plastificación.</p>
+            <div class="formula-block">
+                <div class="formula-label">ESFUERZO COMBINADO N + M (SUPERPOSICIÓN)</div>
+                <div class="formula-main">σ(y) = N/A + M·y/I    τ = V·Q/(I·b)</div>
+                <div class="formula-vars">
+                    La tensión total en un punto es la suma algebraica de todas las contribuciones.<br>
+                    Criterio de Von Mises (acero): <span class="formula-var">σ_eq = √(σ² + 3τ²) ≤ fy</span><br>
+                    Columna con excentricidad: <span class="formula-var">N/φPn + M/φMn ≤ 1.0</span>  (diagrama de interacción)
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">PRINCIPIO</div><div class="prop-val">Superposición (elástico)</div></div>
+                <div class="prop-chip"><div class="prop-label">CRITERIO</div><div class="prop-val">Von Mises (acero)</div></div>
+                <div class="prop-chip"><div class="prop-label">COLUMNAS</div><div class="prop-val">Diagrama M-N</div></div>
+                <div class="prop-chip"><div class="prop-label">NORMA</div><div class="prop-val">ACI 318 / EC2</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Momento Torsor</span></button>
+                <button class="nav-btn next" data-dir="next" style="display:none"></button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="../js/fundamentos.js"></script>
+<script>FND_NAV.initNav('--esfuerzos');</script>
+</body>
+</html>

@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Cargas | Fundamentos Estructurales</title>
+    <link rel="stylesheet" href="../css/fundamentos.css">
+    <style>
+        :root { --accent: var(--cargas); }
+        .concepto-num, .formula-main, .cat-cta { color: var(--cargas) !important; }
+        .formula-block::before { background: var(--cargas) !important; }
+        .sidebar-item.active { border-left-color: var(--cargas) !important; }
+        .sidebar-progress-fill { background: var(--cargas) !important; }
+        .topbar-badge { color:var(--cargas) !important; border-color:rgba(0,229,255,.3) !important; background:rgba(0,229,255,.08) !important; }
+        .carga-svg { width:100%; height:220px; display:block; }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="topbar-left">
+        <a href="../index.html" class="back-btn">← Fundamentos</a>
+        <div class="topbar-badge">CAT 01</div>
+        <div class="topbar-title">TIPOS DE CARGAS</div>
+    </div>
+    <div class="topbar-right">
+        <span style="font-family:var(--mono);font-size:10px;color:var(--text3)">18 conceptos</span>
+    </div>
+</div>
+
+<div class="page-layout">
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar">
+        <div class="sidebar-title">Tipos de Cargas</div>
+        <div class="sidebar-progress"><div class="sidebar-progress-fill" style="width:5.5%"></div></div>
+        <div class="sidebar-item active"><span class="item-num">01</span><span class="item-dot"></span>Carga Muerta</div>
+        <div class="sidebar-item"><span class="item-num">02</span><span class="item-dot"></span>Carga Viva</div>
+        <div class="sidebar-item"><span class="item-num">03</span><span class="item-dot"></span>Carga Accidental</div>
+        <div class="sidebar-item"><span class="item-num">04</span><span class="item-dot"></span>Carga Sísmica</div>
+        <div class="sidebar-item"><span class="item-num">05</span><span class="item-dot"></span>Carga de Viento</div>
+        <div class="sidebar-item"><span class="item-num">06</span><span class="item-dot"></span>Carga de Nieve</div>
+        <div class="sidebar-item"><span class="item-num">07</span><span class="item-dot"></span>Carga de Lluvia</div>
+        <div class="sidebar-item"><span class="item-num">08</span><span class="item-dot"></span>Carga Térmica</div>
+        <div class="sidebar-item"><span class="item-num">09</span><span class="item-dot"></span>Carga Dinámica</div>
+        <div class="sidebar-item"><span class="item-num">10</span><span class="item-dot"></span>Carga Estática</div>
+        <div class="sidebar-item"><span class="item-num">11</span><span class="item-dot"></span>Carga Puntual</div>
+        <div class="sidebar-item"><span class="item-num">12</span><span class="item-dot"></span>Carga Distribuida</div>
+        <div class="sidebar-item"><span class="item-num">13</span><span class="item-dot"></span>Carga Uniforme</div>
+        <div class="sidebar-item"><span class="item-num">14</span><span class="item-dot"></span>Carga Triangular</div>
+        <div class="sidebar-item"><span class="item-num">15</span><span class="item-dot"></span>Carga Variable</div>
+        <div class="sidebar-item"><span class="item-num">16</span><span class="item-dot"></span>Carga Permanente</div>
+        <div class="sidebar-item"><span class="item-num">17</span><span class="item-dot"></span>Sobrecarga</div>
+        <div class="sidebar-item"><span class="item-num">18</span><span class="item-dot"></span>Carga Gravitacional</div>
+    </nav>
+
+    <!-- CONTENIDO -->
+    <div class="main-content">
+
+        <!-- 01 CARGA MUERTA -->
+        <div class="concepto active" id="c01">
+            <div class="concepto-header">
+                <div class="concepto-num">01</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Tipos de Cargas</div>
+                    <div class="concepto-titulo">CARGA MUERTA</div>
+                    <div class="concepto-subtitulo">Dead Load (DL) — Peso propio permanente</div>
+                </div>
+            </div>
+            <p class="concepto-desc">
+                La <strong>carga muerta</strong> es el peso de todos los elementos permanentes de la estructura: losas, vigas, columnas, muros, cubiertas, revestimientos y cualquier elemento fijo que no varía con el tiempo. Es la carga más predecible ya que puede calcularse con precisión a partir de las dimensiones y los pesos específicos de los materiales.
+            </p>
+            <div class="canvas-block">
+                <svg class="carga-svg" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Viga -->
+                    <rect x="60" y="130" width="480" height="20" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+                    <!-- Apoyos -->
+                    <polygon points="60,150 40,180 80,180" fill="rgba(0,229,255,0.2)" stroke="#00e5ff" stroke-width="1.5"/>
+                    <polygon points="540,150 520,180 560,180" fill="rgba(0,229,255,0.2)" stroke="#00e5ff" stroke-width="1.5"/>
+                    <line x1="30" y1="180" x2="90" y2="180" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+                    <line x1="510" y1="180" x2="570" y2="180" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+                    <!-- Flechas carga muerta distribuida -->
+                    <line x1="100" y1="80" x2="100" y2="128" stroke="#00e5ff" stroke-width="1.5" marker-end="url(#arr)"/>
+                    <line x1="160" y1="80" x2="160" y2="128" stroke="#00e5ff" stroke-width="1.5" marker-end="url(#arr)"/>
+                    <line x1="220" y1="80" x2="220" y2="128" stroke="#00e5ff" stroke-width="1.5" marker-end="url(#arr)"/>
+                    <line x1="280" y1="80" x2="280" y2="128" stroke="#00e5ff" stroke-width="1.5" marker-end="url(#arr)"/>
+                    <line x1="340" y1="80" x2="340" y2="128" stroke="#00e5ff" stroke-width="1.5" marker-end="url(#arr)"/>
+                    <line x1="400" y1="80" x2="400" y2="128" stroke="#00e5ff" stroke-width="1.5" marker-end="url(#arr)"/>
+                    <line x1="460" y1="80" x2="460" y2="128" stroke="#00e5ff" stroke-width="1.5" marker-end="url(#arr)"/>
+                    <line x1="500" y1="80" x2="500" y2="128" stroke="#00e5ff" stroke-width="1.5" marker-end="url(#arr)"/>
+                    <!-- Línea superior -->
+                    <line x1="100" y1="80" x2="500" y2="80" stroke="#00e5ff" stroke-width="1.5"/>
+                    <!-- Label -->
+                    <text x="300" y="60" fill="#00e5ff" font-family="Space Mono" font-size="12" text-anchor="middle">g = γ · V  [kN]</text>
+                    <text x="300" y="205" fill="rgba(255,255,255,0.35)" font-family="Space Mono" font-size="10" text-anchor="middle">Carga muerta uniforme sobre viga</text>
+                    <!-- Marker -->
+                    <defs>
+                        <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                            <path d="M0,0 L6,3 L0,6 Z" fill="#00e5ff"/>
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+            <div class="formula-block">
+                <div class="formula-label">FÓRMULA PRINCIPAL</div>
+                <div class="formula-main">g = γ · V = γ · A · L</div>
+                <div class="formula-vars">
+                    <span class="formula-var">g</span> = peso propio del elemento [kN]<br>
+                    <span class="formula-var">γ</span> = peso específico del material [kN/m³]  (H.A. ≈ 25 kN/m³, acero ≈ 78.5 kN/m³)<br>
+                    <span class="formula-var">V</span> = volumen del elemento [m³]<br>
+                    <span class="formula-var">A</span> = área de la sección transversal [m²] · <span class="formula-var">L</span> = longitud [m]
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">TIPO</div><div class="prop-val">Permanente / Gravitat.</div></div>
+                <div class="prop-chip"><div class="prop-label">NORMA</div><div class="prop-val">NCh 1537 / ASCE 7</div></div>
+                <div class="prop-chip"><div class="prop-label">FACTOR ACI</div><div class="prop-val">1.2 · D</div></div>
+                <div class="prop-chip"><div class="prop-label">VARIABILIDAD</div><div class="prop-val">Baja — determinista</div></div>
+            </div>
+            <div class="highlight-box">
+                <strong>Componentes típicas:</strong> peso propio de losa (γ·e), vigas, columnas, muros, revestimientos de piso, cielos falsos, instalaciones fijas, impermeabilización.
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev" style="display:none"><span class="nav-label"></span><span class="nav-name"></span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Carga Viva</span></button>
+            </div>
+        </div>
+
+        <!-- 02 CARGA VIVA -->
+        <div class="concepto" id="c02">
+            <div class="concepto-header">
+                <div class="concepto-num">02</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Tipos de Cargas</div>
+                    <div class="concepto-titulo">CARGA VIVA</div>
+                    <div class="concepto-subtitulo">Live Load (LL) — Uso y ocupación</div>
+                </div>
+            </div>
+            <p class="concepto-desc">
+                La <strong>carga viva</strong> es la carga debida al uso y ocupación de la estructura: personas, muebles, equipos móviles y materiales almacenados temporalmente. A diferencia de la carga muerta, varía con el tiempo y su magnitud es probabilística. La normativa establece valores mínimos según el tipo de uso.
+            </p>
+            <div class="canvas-block">
+                <svg class="carga-svg" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+                    <defs><marker id="arr2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#00e5ff"/></marker></defs>
+                    <!-- Losa -->
+                    <rect x="60" y="120" width="480" height="18" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+                    <!-- Personas (íconos simples) -->
+                    <circle cx="150" cy="90" r="10" fill="rgba(0,229,255,0.3)" stroke="#00e5ff" stroke-width="1.5"/>
+                    <line x1="150" y1="100" x2="150" y2="118" stroke="#00e5ff" stroke-width="2"/>
+                    <circle cx="280" cy="85" r="10" fill="rgba(0,229,255,0.3)" stroke="#00e5ff" stroke-width="1.5"/>
+                    <line x1="280" y1="95" x2="280" y2="118" stroke="#00e5ff" stroke-width="2"/>
+                    <circle cx="420" cy="92" r="10" fill="rgba(0,229,255,0.3)" stroke="#00e5ff" stroke-width="1.5"/>
+                    <line x1="420" y1="102" x2="420" y2="118" stroke="#00e5ff" stroke-width="2"/>
+                    <!-- Flechas carga -->
+                    <line x1="150" y1="50" x2="150" y2="72" stroke="rgba(0,229,255,0.6)" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr2)"/>
+                    <line x1="280" y1="50" x2="280" y2="72" stroke="rgba(0,229,255,0.6)" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr2)"/>
+                    <line x1="420" y1="50" x2="420" y2="72" stroke="rgba(0,229,255,0.6)" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr2)"/>
+                    <text x="300" y="38" fill="#00e5ff" font-family="Space Mono" font-size="11" text-anchor="middle">q_L variable en el tiempo</text>
+                    <!-- Tabla NCh -->
+                    <rect x="60" y="148" width="480" height="55" rx="4" fill="rgba(0,229,255,0.04)" stroke="rgba(0,229,255,0.15)" stroke-width="1"/>
+                    <text x="80" y="165" fill="rgba(255,255,255,0.5)" font-family="Space Mono" font-size="9">Vivienda: 2.0 kN/m²</text>
+                    <text x="80" y="178" fill="rgba(255,255,255,0.5)" font-family="Space Mono" font-size="9">Oficina: 2.5 kN/m²</text>
+                    <text x="80" y="191" fill="rgba(255,255,255,0.5)" font-family="Space Mono" font-size="9">Comercio: 5.0 kN/m²</text>
+                    <text x="300" y="165" fill="rgba(255,255,255,0.5)" font-family="Space Mono" font-size="9">Industrial: 7.5 kN/m²</text>
+                    <text x="300" y="178" fill="rgba(255,255,255,0.5)" font-family="Space Mono" font-size="9">Cubierta: 1.0 kN/m²</text>
+                    <text x="300" y="191" fill="rgba(255,255,255,0.5)" font-family="Space Mono" font-size="9">Estac.: 2.5 kN/m²</text>
+                </svg>
+            </div>
+            <div class="formula-block">
+                <div class="formula-label">FÓRMULA — COMBINACIÓN NCh 1537 / ACI</div>
+                <div class="formula-main">q_u = 1.2 · D + 1.6 · L</div>
+                <div class="formula-vars">
+                    <span class="formula-var">q_u</span> = carga última de diseño [kN/m²]<br>
+                    <span class="formula-var">D</span> = carga muerta total [kN/m²]<br>
+                    <span class="formula-var">L</span> = carga viva según NCh 1537 Tabla 1 [kN/m²]<br>
+                    Los factores 1.2 y 1.6 son <strong>factores de amplificación</strong> que cubren la incertidumbre.
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">TIPO</div><div class="prop-val">Variable / Uso</div></div>
+                <div class="prop-chip"><div class="prop-label">NORMA</div><div class="prop-val">NCh 1537 Tabla 1</div></div>
+                <div class="prop-chip"><div class="prop-label">FACTOR ACI</div><div class="prop-val">1.6 · L</div></div>
+                <div class="prop-chip"><div class="prop-label">VARIABILIDAD</div><div class="prop-val">Alta — probabilística</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Carga Muerta</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Carga Accidental</span></button>
+            </div>
+        </div>
+
+        <!-- 03 CARGA ACCIDENTAL -->
+        <div class="concepto" id="c03">
+            <div class="concepto-header">
+                <div class="concepto-num">03</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Tipos de Cargas</div>
+                    <div class="concepto-titulo">CARGA ACCIDENTAL</div>
+                    <div class="concepto-subtitulo">Accidental Load — Impacto, explosión, incendio</div>
+                </div>
+            </div>
+            <p class="concepto-desc">
+                Las <strong>cargas accidentales</strong> son de naturaleza excepcional y baja probabilidad de ocurrencia: impactos de vehículos, explosiones, incendios, derrumbes parciales. Su característica principal es su corta duración y alta magnitud. Se diseñan con combinaciones especiales que reducen los factores de otras cargas.
+            </p>
+            <div class="formula-block">
+                <div class="formula-label">COMBINACIÓN ACCIDENTAL (EC1)</div>
+                <div class="formula-main">E_d = G_k + A_d + ψ₁·Q_k</div>
+                <div class="formula-vars">
+                    <span class="formula-var">G_k</span> = valor característico carga permanente<br>
+                    <span class="formula-var">A_d</span> = valor de diseño de la acción accidental<br>
+                    <span class="formula-var">ψ₁</span> = factor de combinación (0.5–0.9)<br>
+                    <span class="formula-var">Q_k</span> = valor característico carga variable principal
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">TIPO</div><div class="prop-val">Excepcional</div></div>
+                <div class="prop-chip"><div class="prop-label">NORMA</div><div class="prop-val">EC1-1-7 / ASCE 7</div></div>
+                <div class="prop-chip"><div class="prop-label">DURACIÓN</div><div class="prop-val">Corta — impulsiva</div></div>
+                <div class="prop-chip"><div class="prop-label">PROBABILIDAD</div><div class="prop-val">Muy baja</div></div>
+            </div>
+            <div class="highlight-box accent-box">
+                <strong>Principio de diseño robusto:</strong> una estructura no debe colapsar de manera desproporcionada ante una carga accidental localizada. Se diseña para que el daño sea local y controlado.
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Carga Viva</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Carga Sísmica</span></button>
+            </div>
+        </div>
+
+        <!-- 04 CARGA SÍSMICA -->
+        <div class="concepto" id="c04">
+            <div class="concepto-header">
+                <div class="concepto-num">04</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Tipos de Cargas</div>
+                    <div class="concepto-titulo">CARGA SÍSMICA</div>
+                    <div class="concepto-subtitulo">Seismic Load — Fuerza inercial horizontal</div>
+                </div>
+            </div>
+            <p class="concepto-desc">
+                La <strong>carga sísmica</strong> es una fuerza horizontal equivalente que representa la acción del terremoto sobre la estructura. Se origina en la inercia de las masas del edificio al ser aceleradas por el movimiento del suelo. En países como Chile, con alta sismicidad, domina el diseño estructural.
+            </p>
+            <div class="canvas-block">
+                <svg class="carga-svg" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+                    <defs><marker id="arrH" markerWidth="7" markerHeight="7" refX="3" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#00e5ff"/></marker></defs>
+                    <!-- Edificio esquemático -->
+                    <rect x="220" y="160" width="160" height="12" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+                    <rect x="230" y="130" width="140" height="32" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                    <rect x="240" y="100" width="120" height="32" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                    <rect x="250" y="70" width="100" height="32" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                    <!-- Fuerza sísmica horizontal creciente -->
+                    <line x1="390" y1="86" x2="460" y2="86" stroke="#00e5ff" stroke-width="2.5" marker-end="url(#arrH)"/>
+                    <text x="465" y="90" fill="#00e5ff" font-family="Space Mono" font-size="10">F₃ (mayor)</text>
+                    <line x1="370" y1="116" x2="430" y2="116" stroke="#00e5ff" stroke-width="2" marker-end="url(#arrH)"/>
+                    <text x="435" y="120" fill="#00e5ff" font-family="Space Mono" font-size="10">F₂</text>
+                    <line x1="350" y1="146" x2="400" y2="146" stroke="#00e5ff" stroke-width="1.5" marker-end="url(#arrH)"/>
+                    <text x="405" y="150" fill="#00e5ff" font-family="Space Mono" font-size="10">F₁ (menor)</text>
+                    <!-- Suelo vibrando -->
+                    <path d="M60,175 Q90,168 120,175 Q150,182 180,175 Q210,168 240,175" stroke="rgba(255,71,87,0.7)" stroke-width="2" fill="none"/>
+                    <text x="300" y="200" fill="rgba(255,255,255,0.3)" font-family="Space Mono" font-size="9" text-anchor="middle">Las fuerzas sísmicas aumentan con la altura (distribución triangular)</text>
+                </svg>
+            </div>
+            <div class="formula-block">
+                <div class="formula-label">CORTE BASAL — NCh 433 / ASCE 7</div>
+                <div class="formula-main">V = S · A · I / R · W</div>
+                <div class="formula-vars">
+                    <span class="formula-var">V</span> = corte basal sísmico [kN]<br>
+                    <span class="formula-var">S</span> = coeficiente de suelo (tipo de suelo)<br>
+                    <span class="formula-var">A</span> = aceleración efectiva del suelo [g]<br>
+                    <span class="formula-var">I</span> = factor de importancia (1.0–1.5)<br>
+                    <span class="formula-var">R</span> = factor de reducción (ductilidad del sistema)<br>
+                    <span class="formula-var">W</span> = peso sísmico total de la estructura [kN]
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">TIPO</div><div class="prop-val">Dinámica / Horizontal</div></div>
+                <div class="prop-chip"><div class="prop-label">NORMA CHILE</div><div class="prop-val">NCh 433 Of.2009</div></div>
+                <div class="prop-chip"><div class="prop-label">ZONA CHILE</div><div class="prop-val">Zona 2 y 3 (alta)</div></div>
+                <div class="prop-chip"><div class="prop-label">DISTRIBUCIÓN</div><div class="prop-val">Triangular en altura</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Carga Accidental</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Carga de Viento</span></button>
+            </div>
+        </div>
+
+        <!-- 05 CARGA DE VIENTO -->
+        <div class="concepto" id="c05">
+            <div class="concepto-header">
+                <div class="concepto-num">05</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Tipos de Cargas</div>
+                    <div class="concepto-titulo">CARGA DE VIENTO</div>
+                    <div class="concepto-subtitulo">Wind Load — Presión dinámica del flujo de aire</div>
+                </div>
+            </div>
+            <p class="concepto-desc">
+                La <strong>carga de viento</strong> resulta de la presión que ejerce el flujo de aire sobre las superficies de la estructura. Actúa de forma lateral (horizontal) y también puede generar succión en techos y fachadas. Su magnitud depende de la velocidad del viento, la exposición del terreno, la altura y la forma del edificio.
+            </p>
+            <div class="formula-block">
+                <div class="formula-label">PRESIÓN DE DISEÑO</div>
+                <div class="formula-main">p = q_z · G · C_p</div>
+                <div class="formula-vars">
+                    <span class="formula-var">p</span> = presión de diseño del viento [kN/m²]<br>
+                    <span class="formula-var">q_z</span> = presión dinámica = 0.5 · ρ · V²  (ρ = densidad del aire ≈ 1.25 kg/m³)<br>
+                    <span class="formula-var">G</span> = factor de ráfaga (0.85 para estructuras rígidas)<br>
+                    <span class="formula-var">C_p</span> = coeficiente de presión exterior (depende de la geometría)
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">TIPO</div><div class="prop-val">Dinámica / Lateral</div></div>
+                <div class="prop-chip"><div class="prop-label">NORMA</div><div class="prop-val">NCh 432 / ASCE 7-22</div></div>
+                <div class="prop-chip"><div class="prop-label">DIRECCIÓN</div><div class="prop-val">Horizontal + succión</div></div>
+                <div class="prop-chip"><div class="prop-label">VARÍA CON</div><div class="prop-val">Altura y exposición</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Carga Sísmica</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Carga de Nieve</span></button>
+            </div>
+        </div>
+
+        <!-- 06 CARGA DE NIEVE -->
+        <div class="concepto" id="c06">
+            <div class="concepto-header">
+                <div class="concepto-num">06</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Tipos de Cargas</div>
+                    <div class="concepto-titulo">CARGA DE NIEVE</div>
+                    <div class="concepto-subtitulo">Snow Load — Acumulación sobre cubiertas</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>carga de nieve</strong> es el peso de la nieve acumulada sobre cubiertas y superficies horizontales. Depende de la zona geográfica, altitud, pendiente del techo y exposición al viento. En zonas de cordillera puede ser la carga dominante.</p>
+            <div class="formula-block">
+                <div class="formula-label">CARGA DE NIEVE EN CUBIERTA</div>
+                <div class="formula-main">S = μ · C_e · C_t · S_k</div>
+                <div class="formula-vars">
+                    <span class="formula-var">S</span> = carga de nieve en cubierta [kN/m²]<br>
+                    <span class="formula-var">μ</span> = coeficiente de forma (según pendiente)<br>
+                    <span class="formula-var">C_e</span> = coeficiente de exposición (0.8–1.2)<br>
+                    <span class="formula-var">C_t</span> = coeficiente térmico (1.0 normal)<br>
+                    <span class="formula-var">S_k</span> = valor característico en el suelo [kN/m²]
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">TIPO</div><div class="prop-val">Gravitacional / Vertical</div></div>
+                <div class="prop-chip"><div class="prop-label">NORMA</div><div class="prop-val">EC1-1-3 / ASCE 7</div></div>
+                <div class="prop-chip"><div class="prop-label">VARÍA CON</div><div class="prop-val">Altitud y pendiente</div></div>
+                <div class="prop-chip"><div class="prop-label">γ_nieve</div><div class="prop-val">≈ 2.0–4.0 kN/m³</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Carga de Viento</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Carga de Lluvia</span></button>
+            </div>
+        </div>
+
+        <!-- 07 CARGA DE LLUVIA -->
+        <div class="concepto" id="c07">
+            <div class="concepto-header">
+                <div class="concepto-num">07</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Tipos de Cargas</div>
+                    <div class="concepto-titulo">CARGA DE LLUVIA</div>
+                    <div class="concepto-subtitulo">Rain Load — Acumulación de agua en cubierta</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>carga de lluvia</strong> considera el peso del agua acumulada en cubiertas planas o de baja pendiente cuando los desagües son insuficientes. Puede producir el fenómeno de <em>ponding</em> (deflexión progresiva que acumula más agua).</p>
+            <div class="formula-block">
+                <div class="formula-label">CARGA POR ACUMULACIÓN DE AGUA</div>
+                <div class="formula-main">R = γ_agua · h_agua = 9.81 · h  [kN/m²]</div>
+                <div class="formula-vars">
+                    <span class="formula-var">R</span> = carga de lluvia [kN/m²]<br>
+                    <span class="formula-var">γ_agua</span> = 9.81 kN/m³ (peso específico del agua)<br>
+                    <span class="formula-var">h</span> = altura de acumulación sobre la cubierta [m]<br>
+                    En cubiertas planas: h depende de la altura del rebosadero.
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">TIPO</div><div class="prop-val">Gravitacional / Variable</div></div>
+                <div class="prop-chip"><div class="prop-label">RIESGO</div><div class="prop-val">Ponding (colapso)</div></div>
+                <div class="prop-chip"><div class="prop-label">NORMA</div><div class="prop-val">ASCE 7 §8</div></div>
+                <div class="prop-chip"><div class="prop-label">γ_agua</div><div class="prop-val">9.81 kN/m³</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Carga de Nieve</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Carga Térmica</span></button>
+            </div>
+        </div>
+
+        <!-- 08 CARGA TÉRMICA -->
+        <div class="concepto" id="c08">
+            <div class="concepto-header">
+                <div class="concepto-num">08</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Tipos de Cargas</div>
+                    <div class="concepto-titulo">CARGA TÉRMICA</div>
+                    <div class="concepto-subtitulo">Thermal Action — Dilatación y contracción</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>carga térmica</strong> surge de los cambios de temperatura que producen dilataciones o contracciones en los elementos. Si el movimiento está restringido, se generan esfuerzos internos. Es relevante en puentes, losas de gran longitud y estructuras expuestas a ciclos térmicos extremos.</p>
+            <div class="formula-block">
+                <div class="formula-label">DEFORMACIÓN Y FUERZA TÉRMICA</div>
+                <div class="formula-main">ΔL = α · ΔT · L    →    F_T = E · A · α · ΔT</div>
+                <div class="formula-vars">
+                    <span class="formula-var">ΔL</span> = elongación libre [m]<br>
+                    <span class="formula-var">α</span> = coeficiente de dilatación térmica (acero: 12×10⁻⁶/°C; H.A.: 10×10⁻⁶/°C)<br>
+                    <span class="formula-var">ΔT</span> = variación de temperatura [°C]<br>
+                    <span class="formula-var">F_T</span> = fuerza axial si el movimiento está restringido [kN]
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">TIPO</div><div class="prop-val">Indirecta / Impuesta</div></div>
+                <div class="prop-chip"><div class="prop-label">NORMA</div><div class="prop-val">EC1-1-5</div></div>
+                <div class="prop-chip"><div class="prop-label">α acero</div><div class="prop-val">12 × 10⁻⁶ /°C</div></div>
+                <div class="prop-chip"><div class="prop-label">α H.A.</div><div class="prop-val">10 × 10⁻⁶ /°C</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Carga de Lluvia</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Carga Dinámica</span></button>
+            </div>
+        </div>
+
+        <!-- 09 CARGA DINÁMICA -->
+        <div class="concepto" id="c09">
+            <div class="concepto-header">
+                <div class="concepto-num">09</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Tipos de Cargas</div>
+                    <div class="concepto-titulo">CARGA DINÁMICA</div>
+                    <div class="concepto-subtitulo">Dynamic Load — Varía con el tiempo</div>
+                </div>
+            </div>
+            <p class="concepto-desc">Una <strong>carga dinámica</strong> varía en magnitud, dirección o posición con el tiempo, generando efectos de inercia y amortiguamiento en la estructura. Los ejemplos incluyen maquinaria rotatoria, impacto de vehículos, cargas sísmicas y cargas de viento en estructuras esbeltas.</p>
+            <div class="formula-block">
+                <div class="formula-label">ECUACIÓN DE MOVIMIENTO (1 GDL)</div>
+                <div class="formula-main">m·ẍ + c·ẋ + k·x = F(t)</div>
+                <div class="formula-vars">
+                    <span class="formula-var">m</span> = masa [kg] · <span class="formula-var">ẍ</span> = aceleración [m/s²]<br>
+                    <span class="formula-var">c</span> = amortiguamiento [N·s/m] · <span class="formula-var">ẋ</span> = velocidad [m/s]<br>
+                    <span class="formula-var">k</span> = rigidez [N/m] · <span class="formula-var">x</span> = desplazamiento [m]<br>
+                    <span class="formula-var">F(t)</span> = fuerza excitadora que varía con el tiempo
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">TIPO</div><div class="prop-val">Variable en el tiempo</div></div>
+                <div class="prop-chip"><div class="prop-label">EFECTOS</div><div class="prop-val">Inercia + amortiguam.</div></div>
+                <div class="prop-chip"><div class="prop-label">ANÁLISIS</div><div class="prop-val">Modal / Tiempo-Historia</div></div>
+                <div class="prop-chip"><div class="prop-label">FACTOR DIN.</div><div class="prop-val">DAF > 1.0</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Carga Térmica</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Carga Estática</span></button>
+            </div>
+        </div>
+
+        <!-- 10 CARGA ESTÁTICA -->
+        <div class="concepto" id="c10">
+            <div class="concepto-header">
+                <div class="concepto-num">10</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Tipos de Cargas</div>
+                    <div class="concepto-titulo">CARGA ESTÁTICA</div>
+                    <div class="concepto-subtitulo">Static Load — Aplicación lenta y constante</div>
+                </div>
+            </div>
+            <p class="concepto-desc">Una <strong>carga estática</strong> se aplica lentamente y permanece constante, sin generar efectos de inercia significativos. La estructura alcanza el equilibrio sin vibrar. Es la condición más simple y el punto de partida del análisis estructural.</p>
+            <div class="formula-block">
+                <div class="formula-label">EQUILIBRIO ESTÁTICO</div>
+                <div class="formula-main">ΣFx = 0 · ΣFy = 0 · ΣM = 0</div>
+                <div class="formula-vars">
+                    Las tres ecuaciones de equilibrio estático determinan las reacciones.<br>
+                    En cargas estáticas: la <strong>fuerza inercial m·ẍ = 0</strong> (aceleración nula).<br>
+                    El factor de amplificación dinámica DAF = 1.0 (sin amplificación).
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">TIPO</div><div class="prop-val">Constante / Invariable</div></div>
+                <div class="prop-chip"><div class="prop-label">INERCIA</div><div class="prop-val">Nula (m·ẍ = 0)</div></div>
+                <div class="prop-chip"><div class="prop-label">DAF</div><div class="prop-val">= 1.0</div></div>
+                <div class="prop-chip"><div class="prop-label">ANÁLISIS</div><div class="prop-val">Equilibrio simple</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Carga Dinámica</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Carga Puntual</span></button>
+            </div>
+        </div>
+
+        <!-- 11 CARGA PUNTUAL -->
+        <div class="concepto" id="c11">
+            <div class="concepto-header">
+                <div class="concepto-num">11</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Tipos de Cargas</div>
+                    <div class="concepto-titulo">CARGA PUNTUAL</div>
+                    <div class="concepto-subtitulo">Point Load — Concentrada en un punto</div>
+                </div>
+            </div>
+            <p class="concepto-desc">Una <strong>carga puntual</strong> (o concentrada) actúa en un solo punto del elemento. Produce un salto brusco en el diagrama de fuerza cortante y un quiebre en el diagrama de momento flector. Ejemplos: reacciones de vigas sobre columnas, pilares sobre vigas, cargas de maquinaria.</p>
+            <div class="canvas-block">
+                <svg class="carga-svg" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+                    <defs><marker id="arrP" markerWidth="7" markerHeight="7" refX="3" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#00e5ff"/></marker></defs>
+                    <!-- Viga -->
+                    <rect x="80" y="120" width="440" height="18" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+                    <!-- Apoyos -->
+                    <polygon points="80,138 60,165 100,165" fill="rgba(0,229,255,0.15)" stroke="#00e5ff" stroke-width="1.5"/>
+                    <polygon points="520,138 500,165 540,165" fill="rgba(0,229,255,0.15)" stroke="#00e5ff" stroke-width="1.5"/>
+                    <!-- Carga puntual en a=L/3 -->
+                    <line x1="227" y1="60" x2="227" y2="118" stroke="#00e5ff" stroke-width="3" marker-end="url(#arrP)"/>
+                    <text x="227" y="52" fill="#00e5ff" font-family="Space Mono" font-size="13" text-anchor="middle" font-weight="bold">P</text>
+                    <!-- Cota a -->
+                    <line x1="80" y1="175" x2="227" y2="175" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                    <line x1="80" y1="171" x2="80" y2="179" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                    <line x1="227" y1="171" x2="227" y2="179" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                    <text x="153" y="189" fill="rgba(255,255,255,0.4)" font-family="Space Mono" font-size="9" text-anchor="middle">a</text>
+                    <!-- Cota b -->
+                    <line x1="227" y1="175" x2="520" y2="175" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                    <line x1="520" y1="171" x2="520" y2="179" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                    <text x="373" y="189" fill="rgba(255,255,255,0.4)" font-family="Space Mono" font-size="9" text-anchor="middle">b</text>
+                    <!-- Reacciones -->
+                    <line x1="80" y1="165" x2="80" y2="138" stroke="#00ff9d" stroke-width="2" marker-end="url(#arrP)"/>
+                    <text x="45" y="155" fill="#00ff9d" font-family="Space Mono" font-size="9">RA</text>
+                    <line x1="520" y1="165" x2="520" y2="138" stroke="#00ff9d" stroke-width="2" marker-end="url(#arrP)"/>
+                    <text x="525" y="155" fill="#00ff9d" font-family="Space Mono" font-size="9">RB</text>
+                    <text x="300" y="208" fill="rgba(255,255,255,0.3)" font-family="Space Mono" font-size="9" text-anchor="middle">RA = P·b/L  ·  RB = P·a/L</text>
+                </svg>
+            </div>
+            <div class="formula-block">
+                <div class="formula-label">REACCIONES Y MOMENTO MÁXIMO</div>
+                <div class="formula-main">RA = P·b/L    RB = P·a/L    M_max = P·a·b/L</div>
+                <div class="formula-vars">
+                    <span class="formula-var">P</span> = carga puntual [kN]<br>
+                    <span class="formula-var">a</span> = distancia desde apoyo A a la carga [m]<br>
+                    <span class="formula-var">b</span> = distancia desde la carga al apoyo B [m]  (a + b = L)<br>
+                    <span class="formula-var">M_max</span> = momento flector máximo bajo la carga [kN·m]
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Carga Estática</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Carga Distribuida</span></button>
+            </div>
+        </div>
+
+        <!-- 12 CARGA DISTRIBUIDA -->
+        <div class="concepto" id="c12">
+            <div class="concepto-header">
+                <div class="concepto-num">12</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Tipos de Cargas</div>
+                    <div class="concepto-titulo">CARGA DISTRIBUIDA</div>
+                    <div class="concepto-subtitulo">Distributed Load — Repartida en longitud o superficie</div>
+                </div>
+            </div>
+            <p class="concepto-desc">Una <strong>carga distribuida</strong> se reparte sobre una longitud (lineal) o una superficie (superficial). Para el análisis, se convierte en su resultante: una fuerza puntual equivalente que actúa en el centroide de la distribución.</p>
+            <div class="formula-block">
+                <div class="formula-label">RESULTANTE Y POSICIÓN</div>
+                <div class="formula-main">R = ∫q(x)·dx    x_R = ∫x·q(x)dx / R</div>
+                <div class="formula-vars">
+                    <span class="formula-var">R</span> = resultante de la carga distribuida [kN]<br>
+                    <span class="formula-var">q(x)</span> = intensidad de la carga [kN/m]<br>
+                    <span class="formula-var">x_R</span> = posición de la resultante (centroide)<br>
+                    Para q uniforme: R = q·L  y  x_R = L/2
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">TIPOS</div><div class="prop-val">Uniforme / Triangular / Trapez.</div></div>
+                <div class="prop-chip"><div class="prop-label">UNIDAD</div><div class="prop-val">kN/m (lineal) · kN/m² (superf.)</div></div>
+                <div class="prop-chip"><div class="prop-label">RESULTANTE</div><div class="prop-val">Fuerza puntual equiv.</div></div>
+                <div class="prop-chip"><div class="prop-label">POSICIÓN</div><div class="prop-val">Centroide de la carga</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Carga Puntual</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Carga Uniforme</span></button>
+            </div>
+        </div>
+
+        <!-- 13 CARGA UNIFORME -->
+        <div class="concepto" id="c13">
+            <div class="concepto-header">
+                <div class="concepto-num">13</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Tipos de Cargas</div>
+                    <div class="concepto-titulo">CARGA UNIFORME</div>
+                    <div class="concepto-subtitulo">Uniform Load — Intensidad constante en toda la longitud</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>carga uniformemente distribuida</strong> tiene la misma intensidad en todos los puntos. Es el caso más común en el análisis de vigas: peso propio, losa sobre viga, etc. Genera un diagrama de momento parabólico y cortante lineal.</p>
+            <div class="formula-block">
+                <div class="formula-label">VIGA SIMPLEMENTE APOYADA CON CARGA UNIFORME</div>
+                <div class="formula-main">M_max = q·L²/8    V_max = q·L/2    δ_max = 5qL⁴/384EI</div>
+                <div class="formula-vars">
+                    <span class="formula-var">q</span> = intensidad de carga uniforme [kN/m]<br>
+                    <span class="formula-var">L</span> = luz de la viga [m]<br>
+                    <span class="formula-var">M_max</span> = momento máximo en el centro [kN·m]<br>
+                    <span class="formula-var">δ_max</span> = flecha máxima en el centro [m]
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">MOMENTO</div><div class="prop-val">Parabólico (2° grado)</div></div>
+                <div class="prop-chip"><div class="prop-label">CORTANTE</div><div class="prop-val">Lineal (1° grado)</div></div>
+                <div class="prop-chip"><div class="prop-label">M_max</div><div class="prop-val">En el centro del vano</div></div>
+                <div class="prop-chip"><div class="prop-label">RESULTANTE</div><div class="prop-val">R = q·L en L/2</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Carga Distribuida</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Carga Triangular</span></button>
+            </div>
+        </div>
+
+        <!-- 14 CARGA TRIANGULAR -->
+        <div class="concepto" id="c14">
+            <div class="concepto-header">
+                <div class="concepto-num">14</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Tipos de Cargas</div>
+                    <div class="concepto-titulo">CARGA TRIANGULAR</div>
+                    <div class="concepto-subtitulo">Triangular Load — Intensidad variable linealmente</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>carga triangular</strong> varía linealmente de cero en un extremo hasta un máximo q_max en el otro. Es característica de la presión hidrostática, presión de tierra contra muros de contención y distribución de cargas sísmicas en altura.</p>
+            <div class="formula-block">
+                <div class="formula-label">RESULTANTE Y REACCIONES</div>
+                <div class="formula-main">R = q_max·L/2    x_R = 2L/3 (desde el extremo nulo)</div>
+                <div class="formula-vars">
+                    <span class="formula-var">R</span> = resultante [kN] — actúa a 2/3 del extremo donde q=0<br>
+                    <span class="formula-var">q(x)</span> = q_max · x/L — intensidad en posición x<br>
+                    <span class="formula-var">RA</span> = q_max·L/6  (extremo q=0)<br>
+                    <span class="formula-var">RB</span> = q_max·L/3  (extremo q=q_max)
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">APLICACIÓN</div><div class="prop-val">Presión hidrost./tierra</div></div>
+                <div class="prop-chip"><div class="prop-label">RESULTANTE</div><div class="prop-val">q_max·L/2 en 2L/3</div></div>
+                <div class="prop-chip"><div class="prop-label">CORTANTE</div><div class="prop-val">Parabólico</div></div>
+                <div class="prop-chip"><div class="prop-label">MOMENTO</div><div class="prop-val">Cúbico (3° grado)</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Carga Uniforme</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Carga Variable</span></button>
+            </div>
+        </div>
+
+        <!-- 15 CARGA VARIABLE -->
+        <div class="concepto" id="c15">
+            <div class="concepto-header">
+                <div class="concepto-num">15</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Tipos de Cargas</div>
+                    <div class="concepto-titulo">CARGA VARIABLE</div>
+                    <div class="concepto-subtitulo">Variable Action — Varía en magnitud o posición</div>
+                </div>
+            </div>
+            <p class="concepto-desc">Las <strong>cargas variables</strong> no son permanentes: su magnitud, posición o dirección cambian durante la vida útil de la estructura. Incluyen cargas de uso, viento, nieve y sismo. Se caracteriza por valores representativos: valor característico, frecuente y casi-permanente.</p>
+            <div class="formula-block">
+                <div class="formula-label">VALORES REPRESENTATIVOS (EC0)</div>
+                <div class="formula-main">Q_k  ·  ψ₀·Q_k  ·  ψ₁·Q_k  ·  ψ₂·Q_k</div>
+                <div class="formula-vars">
+                    <span class="formula-var">Q_k</span> = valor característico (5% excedencia en 50 años)<br>
+                    <span class="formula-var">ψ₀·Q_k</span> = valor de combinación (simultaneidad)<br>
+                    <span class="formula-var">ψ₁·Q_k</span> = valor frecuente (excedido 1% del tiempo)<br>
+                    <span class="formula-var">ψ₂·Q_k</span> = valor casi-permanente (valor medio)
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Carga Triangular</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Carga Permanente</span></button>
+            </div>
+        </div>
+
+        <!-- 16 CARGA PERMANENTE -->
+        <div class="concepto" id="c16">
+            <div class="concepto-header">
+                <div class="concepto-num">16</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Tipos de Cargas</div>
+                    <div class="concepto-titulo">CARGA PERMANENTE</div>
+                    <div class="concepto-subtitulo">Permanent Action — Constante durante la vida útil</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>carga permanente</strong> actúa durante toda la vida útil de la estructura con magnitud prácticamente constante. Incluye el peso propio, peso del suelo sobre fundaciones y pretensado. Se caracteriza por su baja variabilidad estadística.</p>
+            <div class="formula-block">
+                <div class="formula-label">COMBINACIÓN ELU (EC0)</div>
+                <div class="formula-main">E_d = γ_G · G_k + γ_Q · Q_k</div>
+                <div class="formula-vars">
+                    <span class="formula-var">γ_G</span> = factor carga permanente (1.35 desfavorable / 1.0 favorable)<br>
+                    <span class="formula-var">G_k</span> = valor característico carga permanente<br>
+                    <span class="formula-var">γ_Q</span> = factor carga variable (1.5)<br>
+                    <span class="formula-var">Q_k</span> = valor característico carga variable
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Carga Variable</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Sobrecarga</span></button>
+            </div>
+        </div>
+
+        <!-- 17 SOBRECARGA -->
+        <div class="concepto" id="c17">
+            <div class="concepto-header">
+                <div class="concepto-num">17</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Tipos de Cargas</div>
+                    <div class="concepto-titulo">SOBRECARGA</div>
+                    <div class="concepto-subtitulo">Superimposed Load — Carga adicional sobre el peso propio</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>sobrecarga</strong> es cualquier carga adicional al peso propio del elemento estructural. En losas y vigas, incluye el peso del piso terminado, tabiques, instalaciones y la carga viva de uso. La sobrecarga de uso es el valor normativo mínimo para el diseño según el tipo de ocupación.</p>
+            <div class="formula-block">
+                <div class="formula-label">CARGA TOTAL SOBRE LOSA</div>
+                <div class="formula-main">q_total = q_pp + q_sc = γ·e + (q_D_adic + q_L)</div>
+                <div class="formula-vars">
+                    <span class="formula-var">q_pp</span> = peso propio losa = γ_HA · e [kN/m²]<br>
+                    <span class="formula-var">q_D_adic</span> = piso terminado + tabiques ≈ 1.5–2.0 kN/m²<br>
+                    <span class="formula-var">q_L</span> = sobrecarga de uso según NCh 1537 [kN/m²]<br>
+                    <span class="formula-var">q_total</span> = carga total para diseño de la losa
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Carga Permanente</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Carga Gravitacional</span></button>
+            </div>
+        </div>
+
+        <!-- 18 CARGA GRAVITACIONAL -->
+        <div class="concepto" id="c18">
+            <div class="concepto-header">
+                <div class="concepto-num">18</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Tipos de Cargas</div>
+                    <div class="concepto-titulo">CARGA GRAVITACIONAL</div>
+                    <div class="concepto-subtitulo">Gravity Load — Peso actuando verticalmente hacia abajo</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>carga gravitacional</strong> es toda carga que actúa verticalmente hacia abajo debido a la gravedad. Incluye la carga muerta y la carga viva. Es la carga dominante en edificios convencionales y define el camino de cargas desde la losa hasta la fundación.</p>
+            <div class="formula-block">
+                <div class="formula-label">PESO Y FUERZA GRAVITACIONAL</div>
+                <div class="formula-main">W = m · g    [kN]  (g = 9.81 m/s²)</div>
+                <div class="formula-vars">
+                    <span class="formula-var">W</span> = peso (fuerza gravitacional) [kN]<br>
+                    <span class="formula-var">m</span> = masa [toneladas]  → W = m × 9.81 kN<br>
+                    <span class="formula-var">g</span> = aceleración de la gravedad = 9.81 m/s²<br>
+                    Camino de cargas: Losa → Viga → Pilar/Muro → Fundación → Suelo
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">DIRECCIÓN</div><div class="prop-val">Vertical ↓</div></div>
+                <div class="prop-chip"><div class="prop-label">g</div><div class="prop-val">9.81 m/s²</div></div>
+                <div class="prop-chip"><div class="prop-label">INCLUYE</div><div class="prop-val">DL + LL</div></div>
+                <div class="prop-chip"><div class="prop-label">CAMINO</div><div class="prop-val">Losa→Viga→Pilar→Fund.</div></div>
+            </div>
+            <div class="highlight-box accent-box">
+                <strong>Camino de cargas gravitacional:</strong> las cargas fluyen desde los elementos más ligeros (losa) hacia los más pesados (fundación), acumulándose a lo largo del camino estructural.
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Sobrecarga</span></button>
+                <button class="nav-btn next" data-dir="next" style="display:none"></button>
+            </div>
+        </div>
+
+    </div><!-- /main-content -->
+</div><!-- /page-layout -->
+
+<script src="../js/fundamentos.js"></script>
+<script>
+    FND_NAV.initNav('--cargas');
+</script>
+</body>
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DFC — Fuerza Cortante | IngeLAB 3D</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Bebas+Neue&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg:#080c10;--bg2:#0d1117;--bg3:#111820;--card:#0f1520;--card2:#141c2a;
+            --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.14);
+            --accent:#0077ff;--accent2:#00e5ff;--red:#ff4757;--green:#00ff9d;--orange:#ff8c00;
+            --text:#e8edf5;--text2:#8b95a8;--text3:#3d4758;
+            --mono:'Space Mono',monospace;--display:'Bebas Neue',sans-serif;
+            --orb:'Orbitron',sans-serif;--body:'DM Sans',sans-serif;
+            --r:10px;--r2:6px;
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+        html,body{height:100%;overflow:hidden;}
+        body{background:var(--bg);color:var(--text);font-family:var(--body);display:flex;flex-direction:column;}
+
+        .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;border-bottom:1px solid var(--border);background:rgba(8,12,16,.95);backdrop-filter:blur(10px);flex-shrink:0;z-index:100;}
+        .topbar-left{display:flex;align-items:center;gap:14px;}
+        .back-btn{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r2);padding:7px 12px;color:var(--text2);font-family:var(--mono);font-size:11px;cursor:pointer;transition:all .2s;text-decoration:none;}
+        .back-btn:hover{border-color:var(--accent2);color:var(--accent2);}
+        .page-badge{background:rgba(0,119,255,.12);border:1px solid rgba(0,119,255,.3);border-radius:var(--r2);padding:5px 12px;font-family:var(--orb);font-size:11px;color:var(--accent);letter-spacing:.08em;}
+        .page-title{font-family:var(--display);font-size:22px;letter-spacing:.04em;color:var(--text);}
+        .topbar-right{display:flex;align-items:center;gap:10px;}
+        .calc-btn{background:var(--accent);border:none;border-radius:var(--r2);padding:8px 18px;color:#fff;font-family:var(--mono);font-size:12px;cursor:pointer;transition:all .2s;letter-spacing:.05em;}
+        .calc-btn:hover{background:#1a8aff;transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,119,255,.4);}
+        .reset-btn{background:transparent;border:1px solid var(--border2);border-radius:var(--r2);padding:8px 14px;color:var(--text2);font-family:var(--mono);font-size:11px;cursor:pointer;transition:all .2s;}
+        .reset-btn:hover{border-color:var(--text2);color:var(--text);}
+
+        .layout{display:grid;grid-template-columns:280px 1fr 260px;flex:1;overflow:hidden;}
+
+        .panel-left{background:var(--bg2);border-right:1px solid var(--border);overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:14px;}
+        .panel-left::-webkit-scrollbar{width:4px;}
+        .panel-left::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+
+        .pgroup{display:flex;flex-direction:column;gap:8px;}
+        .pgroup-title{font-family:var(--orb);font-size:10px;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid var(--border);}
+        .field{display:flex;flex-direction:column;gap:4px;}
+        .field label{font-size:11px;color:var(--text2);font-family:var(--mono);}
+        .field input,.field select{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:8px 10px;color:var(--text);font-family:var(--mono);font-size:12px;transition:border-color .2s;width:100%;}
+        .field input:focus,.field select:focus{outline:none;border-color:var(--accent);}
+        .field-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+        .field-unit{font-size:10px;color:var(--text3);font-family:var(--mono);margin-top:2px;text-align:right;}
+
+        .carga-item{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:10px;display:flex;flex-direction:column;gap:6px;}
+        .carga-item-header{display:flex;align-items:center;justify-content:space-between;}
+        .carga-del{background:none;border:none;color:var(--text3);cursor:pointer;font-size:14px;line-height:1;padding:2px;transition:color .2s;}
+        .carga-del:hover{color:var(--red);}
+        .add-carga-btn{background:rgba(0,119,255,.06);border:1px dashed rgba(0,119,255,.25);border-radius:var(--r2);padding:9px;color:var(--accent);font-family:var(--mono);font-size:11px;cursor:pointer;transition:all .2s;text-align:center;}
+        .add-carga-btn:hover{background:rgba(0,119,255,.12);border-color:var(--accent);}
+
+        /* Slider para diámetro estribo */
+        .slider-wrap{display:flex;align-items:center;gap:8px;}
+        .slider-wrap input[type=range]{flex:1;accent-color:var(--accent);}
+        .slider-val{font-family:var(--mono);font-size:12px;color:var(--accent);min-width:40px;text-align:right;}
+
+        .panel-center{display:flex;flex-direction:column;overflow:hidden;background:var(--bg);}
+        .canvas-area{flex:1;display:flex;flex-direction:column;padding:16px;gap:12px;overflow:hidden;}
+        .canvas-label{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+        .canvas-label::before{content:'';display:block;width:3px;height:12px;background:var(--accent);border-radius:2px;}
+        .canvas-wrap{flex:1;position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+        .canvas-wrap canvas{display:block;width:100%;height:100%;}
+        .canvas-bottom{display:grid;grid-template-columns:1fr 1fr;gap:12px;height:155px;}
+        .canvas-sec-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);position:relative;overflow:hidden;}
+        .canvas-sec-wrap canvas{width:100%;height:100%;display:block;}
+        .canvas-sec-label{position:absolute;top:8px;left:10px;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.1em;}
+        .canvas-overlay{position:absolute;bottom:10px;left:10px;display:flex;gap:6px;flex-wrap:wrap;}
+        .overlay-badge{background:rgba(8,12,16,.85);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-family:var(--mono);font-size:9px;color:var(--text2);}
+        .overlay-badge span{color:var(--accent);font-weight:700;}
+
+        .panel-right{background:var(--bg2);border-left:1px solid var(--border);overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:14px;}
+        .panel-right::-webkit-scrollbar{width:4px;}
+        .panel-right::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+
+        .res-group{display:flex;flex-direction:column;gap:6px;}
+        .res-title{font-family:var(--orb);font-size:10px;color:var(--accent2);letter-spacing:.15em;padding-bottom:6px;border-bottom:1px solid var(--border);}
+        .res-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+        .res-key{font-size:11px;color:var(--text2);font-family:var(--mono);flex-shrink:0;}
+        .res-val{font-size:12px;color:var(--text);font-family:var(--mono);font-weight:700;text-align:right;}
+        .res-val.ok{color:var(--green);}
+        .res-val.fail{color:var(--red);}
+        .res-val.warn{color:var(--orange);}
+
+        .verif-box{border-radius:var(--r);padding:12px;border:1px solid;text-align:center;}
+        .verif-box.ok{background:rgba(0,255,157,.07);border-color:rgba(0,255,157,.3);}
+        .verif-box.fail{background:rgba(255,71,87,.07);border-color:rgba(255,71,87,.3);}
+        .verif-box.warn{background:rgba(255,140,0,.07);border-color:rgba(255,140,0,.3);}
+        .verif-title{font-family:var(--orb);font-size:12px;font-weight:700;margin-bottom:4px;}
+        .verif-sub{font-family:var(--mono);font-size:10px;color:var(--text2);}
+
+        .teoria-box{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px;}
+        .teoria-title{font-family:var(--orb);font-size:10px;color:var(--text2);letter-spacing:.1em;margin-bottom:8px;}
+        .teoria-text{font-size:11px;color:var(--text2);line-height:1.7;}
+        .formula{background:rgba(0,0,0,.4);border:1px solid rgba(0,119,255,.15);border-radius:var(--r2);padding:8px 10px;margin:6px 0;font-family:var(--mono);font-size:12px;color:var(--accent);}
+
+        .zona-indicator{border-radius:var(--r2);padding:8px 10px;font-family:var(--mono);font-size:10px;display:flex;align-items:center;gap:8px;}
+        .zona-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+
+        .casos-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+        .caso-btn{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:8px 6px;text-align:center;cursor:pointer;transition:all .2s;font-size:10px;font-family:var(--mono);color:var(--text2);}
+        .caso-btn:hover{border-color:var(--accent);color:var(--accent);background:rgba(0,119,255,.05);}
+        .caso-btn .caso-icon{font-size:16px;display:block;margin-bottom:3px;}
+
+        .norma-chips{display:flex;flex-wrap:wrap;gap:5px;}
+        .norma-chip{font-family:var(--mono);font-size:9px;padding:3px 7px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:3px;color:var(--text3);}
+
+        .panel-left,.panel-center,.panel-right{animation:fadeIn .4s ease both;}
+        .panel-center{animation-delay:.05s;}.panel-right{animation-delay:.1s;}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="topbar-left">
+        <a href="../index.html" class="back-btn">← Volver</a>
+        <div class="page-badge">DFC</div>
+        <div class="page-title">DIAGRAMA DE FUERZA CORTANTE</div>
+    </div>
+    <div class="topbar-right">
+        <button class="reset-btn" id="btnReset">↺ Reset</button>
+        <button class="calc-btn" id="btnCalc">⚡ Calcular</button>
+    </div>
+</div>
+
+<div class="layout">
+
+    <!-- IZQUIERDA -->
+    <div class="panel-left">
+
+        <div class="pgroup">
+            <div class="pgroup-title">Casos típicos</div>
+            <div class="casos-grid">
+                <div class="caso-btn" data-caso="sa_dist"><span class="caso-icon">▬</span>S.A. + q</div>
+                <div class="caso-btn" data-caso="sa_punt"><span class="caso-icon">↓</span>S.A. + P</div>
+                <div class="caso-btn" data-caso="vol_dist"><span class="caso-icon">▭</span>Voladizo+q</div>
+                <div class="caso-btn" data-caso="cont2"><span class="caso-icon">⚌</span>Continua 2T</div>
+            </div>
+        </div>
+
+        <div class="pgroup">
+            <div class="pgroup-title">Geometría</div>
+            <div class="field">
+                <label>Tipo de viga</label>
+                <select id="inp_tipo">
+                    <option value="simple">Simplemente apoyada</option>
+                    <option value="voladizo">Voladizo</option>
+                    <option value="continua2">Continua 2 tramos</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Longitud L total</label>
+                <input type="number" id="inp_L" value="6" min="1" max="30" step="0.5">
+                <div class="field-unit">m</div>
+            </div>
+            <div id="tramos_wrap" style="display:none">
+                <div class="field-row">
+                    <div class="field"><label>L₁ tramo 1</label><input type="number" id="inp_L1" value="3" min="0.5" step="0.5"><div class="field-unit">m</div></div>
+                    <div class="field"><label>L₂ tramo 2</label><input type="number" id="inp_L2" value="3" min="0.5" step="0.5"><div class="field-unit">m</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pgroup">
+            <div class="pgroup-title">Sección H.A.</div>
+            <div class="field-row">
+                <div class="field"><label>bw [m]</label><input type="number" id="inp_bw" value="0.30" min="0.1" max="2" step="0.05"></div>
+                <div class="field"><label>h [m]</label><input type="number" id="inp_h" value="0.55" min="0.1" max="3" step="0.05"></div>
+            </div>
+            <div class="field-row">
+                <div class="field"><label>recub. [m]</label><input type="number" id="inp_recub" value="0.04" min="0.02" max="0.1" step="0.005"></div>
+                <div class="field"><label>f'c [MPa]</label><input type="number" id="inp_fc" value="25" min="17" max="60" step="1"></div>
+            </div>
+            <div class="field"><label>fy acero estribos [MPa]</label><input type="number" id="inp_fy" value="420" min="200" max="600" step="20"></div>
+            <div class="field">
+                <label>Diámetro estribo</label>
+                <div class="slider-wrap">
+                    <input type="range" id="inp_diam_e" min="6" max="16" step="2" value="8">
+                    <span class="slider-val" id="diam_e_val">Ø8mm</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="pgroup">
+            <div class="pgroup-title">Cargas</div>
+            <div id="cargas-list"></div>
+            <div class="add-carga-btn" id="btnAddCarga">+ Agregar carga</div>
+        </div>
+
+    </div>
+
+    <!-- CENTRO -->
+    <div class="panel-center">
+        <div class="canvas-area">
+            <div class="canvas-label">Diagrama de Fuerza Cortante V(x)</div>
+            <div class="canvas-wrap" id="mainWrap">
+                <canvas id="canvasMain"></canvas>
+                <div class="canvas-overlay">
+                    <div class="overlay-badge">V_max = <span id="ovVmax">—</span> kN</div>
+                    <div class="overlay-badge">V_min = <span id="ovVmin">—</span> kN</div>
+                    <div class="overlay-badge">Vc = <span id="ovVc">—</span> kN</div>
+                </div>
+            </div>
+            <div class="canvas-bottom">
+                <div class="canvas-sec-wrap">
+                    <div class="canvas-sec-label">SECCIÓN — ESTRIBO Ø<span id="lbl_diam">8</span>mm</div>
+                    <canvas id="canvasSeccion"></canvas>
+                </div>
+                <div class="canvas-sec-wrap">
+                    <div class="canvas-sec-label">SEPARACIÓN ESTRIBOS s(x)</div>
+                    <canvas id="canvasEstribos"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DERECHA -->
+    <div class="panel-right">
+
+        <div class="res-group">
+            <div class="res-title">Reacciones</div>
+            <div class="res-row"><span class="res-key">R_A</span><span class="res-val" id="res_RA">—</span></div>
+            <div class="res-row"><span class="res-key">R_B</span><span class="res-val" id="res_RB">—</span></div>
+        </div>
+
+        <div class="res-group">
+            <div class="res-title">Fuerza Cortante</div>
+            <div class="res-row"><span class="res-key">V_max (+)</span><span class="res-val" id="res_Vmax">—</span></div>
+            <div class="res-row"><span class="res-key">@ x =</span><span class="res-val" id="res_xVmax">—</span></div>
+            <div class="res-row"><span class="res-key">V_min (−)</span><span class="res-val" id="res_Vmin">—</span></div>
+            <div class="res-row"><span class="res-key">V = 0 @ x =</span><span class="res-val" id="res_cerosV">—</span></div>
+        </div>
+
+        <div class="res-group">
+            <div class="res-title">Diseño a Corte (ACI 318-19)</div>
+            <div class="res-row"><span class="res-key">d efectivo</span><span class="res-val" id="res_d">—</span></div>
+            <div class="res-row"><span class="res-key">Vc (hormigón)</span><span class="res-val" id="res_Vc">—</span></div>
+            <div class="res-row"><span class="res-key">Vs requerido</span><span class="res-val" id="res_Vs">—</span></div>
+            <div class="res-row"><span class="res-key">φVn total</span><span class="res-val" id="res_phiVn">—</span></div>
+        </div>
+
+        <div class="res-group">
+            <div class="res-title">Estribos requeridos</div>
+            <div class="res-row"><span class="res-key">Av (2 ramas)</span><span class="res-val" id="res_Av">—</span></div>
+            <div class="res-row"><span class="res-key">s diseño</span><span class="res-val" id="res_s">—</span></div>
+            <div class="res-row"><span class="res-key">s máx</span><span class="res-val" id="res_smax">—</span></div>
+            <div class="zona-indicator" id="zonaInd">
+                <div class="zona-dot" id="zonaDot"></div>
+                <span id="zonaText">—</span>
+            </div>
+        </div>
+
+        <div class="verif-box ok" id="verifBox">
+            <div class="verif-title" id="verifTitle">—</div>
+            <div class="verif-sub" id="verifSub">Calcule para verificar</div>
+        </div>
+
+        <div class="teoria-box">
+            <div class="teoria-title">TEORÍA — CORTE EN H.A.</div>
+            <div class="teoria-text">La resistencia a corte se divide en dos componentes:</div>
+            <div class="formula">φVn = φ(Vc + Vs)</div>
+            <div class="formula">Vc = 0.17·λ·√f'c·bw·d</div>
+            <div class="formula">Vs = Av·fy·d / s</div>
+            <div class="teoria-text">La separación de estribos se obtiene despejando s. El límite de sección es Vs ≤ 0.66·√f'c·bw·d.</div>
+        </div>
+
+        <div class="res-group">
+            <div class="res-title">Normativa</div>
+            <div class="norma-chips">
+                <span class="norma-chip">ACI 318-19 §22.5</span>
+                <span class="norma-chip">NCh 430</span>
+                <span class="norma-chip">Clapeyron</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="../js/diag_cortante.js"></script>
+<script>
+'use strict';
+
+let cargasUI = [{ id: 1, tipo: 'dist', q: 20, a: 0, b_end: 1.0, label: 'q₁' }];
+let nextId = 2;
+let canvasMain, canvasSeccion, canvasEstribos;
+
+function initCanvases() {
+    canvasMain     = document.getElementById('canvasMain');
+    canvasSeccion  = document.getElementById('canvasSeccion');
+    canvasEstribos = document.getElementById('canvasEstribos');
+    const ro = new ResizeObserver(() => {
+        resizeCanvas(canvasMain,     document.getElementById('mainWrap'));
+        resizeCanvas(canvasSeccion,  canvasSeccion.parentElement);
+        resizeCanvas(canvasEstribos, canvasEstribos.parentElement);
+        if (window.DFC_MODULE?.state?.result) renderAll();
+    });
+    ro.observe(document.getElementById('mainWrap'));
+    ro.observe(canvasSeccion.parentElement);
+    ro.observe(canvasEstribos.parentElement);
+    setTimeout(() => {
+        resizeCanvas(canvasMain, document.getElementById('mainWrap'));
+        resizeCanvas(canvasSeccion, canvasSeccion.parentElement);
+        resizeCanvas(canvasEstribos, canvasEstribos.parentElement);
+    }, 100);
+}
+
+function resizeCanvas(c, wrap) {
+    c.width  = wrap.clientWidth;
+    c.height = wrap.clientHeight;
+}
+
+function syncState() {
+    const mod = window.DFC_MODULE;
+    const tipo = document.getElementById('inp_tipo').value;
+    mod.setParam('tipo',    tipo);
+    mod.setParam('L',       parseFloat(document.getElementById('inp_L').value)    || 6);
+    mod.setParam('bw',      parseFloat(document.getElementById('inp_bw').value)   || 0.30);
+    mod.setParam('h_sec',   parseFloat(document.getElementById('inp_h').value)    || 0.55);
+    mod.setParam('recub',   parseFloat(document.getElementById('inp_recub').value)|| 0.04);
+    mod.setParam('fc',      parseFloat(document.getElementById('inp_fc').value)   || 25);
+    mod.setParam('fy',      parseFloat(document.getElementById('inp_fy').value)   || 420);
+    mod.setParam('diam_e',  parseFloat(document.getElementById('inp_diam_e').value) / 1000);
+    if (tipo === 'continua2') {
+        mod.setParam('tramos', [
+            parseFloat(document.getElementById('inp_L1').value) || 3,
+            parseFloat(document.getElementById('inp_L2').value) || 3,
+        ]);
+    }
+    mod.clearCargas();
+    const L = mod.state.L;
+    cargasUI.forEach(c => mod.addCarga({ ...c, b_end: c.b_end || L }));
+}
+
+function calcularYRenderizar() {
+    syncState();
+    const result = window.DFC_MODULE.calcular();
+    renderAll(result);
+    updateResults(result);
+}
+
+function renderAll(result) {
+    result = result || window.DFC_MODULE.state.result;
+    if (!result) return;
+    window.DFC_MODULE.draw(canvasMain, result);
+    drawSeccionCortante(canvasSeccion, result);
+    window.DFC_MODULE.drawEstribos(canvasEstribos, result);
+}
+
+function drawSeccionCortante(canvas, result) {
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+    const mod = window.DFC_MODULE.state;
+    const bw = mod.bw, h = mod.h_sec, d = result.d || (h - mod.recub - 0.02);
+    const scale = Math.min(W * 0.55 / bw, H * 0.7 / h);
+    const bpx = bw * scale, hpx = h * scale;
+    const cx = W / 2, cy = H / 2;
+    const x0 = cx - bpx / 2, y0 = cy - hpx / 2;
+
+    // Sección
+    ctx.fillStyle = 'rgba(100,130,180,0.2)';
+    ctx.strokeStyle = 'rgba(0,119,255,0.7)'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.rect(x0, y0, bpx, hpx); ctx.fill(); ctx.stroke();
+
+    // d efectivo
+    const dpx = d * scale;
+    ctx.strokeStyle = 'rgba(0,255,157,0.6)'; ctx.lineWidth = 1; ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(x0 - 10, y0 + hpx - dpx); ctx.lineTo(x0 + bpx + 10, y0 + hpx - dpx); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = 'rgba(0,255,157,0.7)'; ctx.font = '9px Space Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText(`d=${(d*100).toFixed(1)}cm`, x0 + bpx + 4, y0 + hpx - dpx + 3);
+
+    // Estribo (rectángulo interior)
+    const recPx = mod.recub * scale;
+    ctx.strokeStyle = 'rgba(255,140,0,0.7)'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.rect(x0 + recPx, y0 + recPx, bpx - 2*recPx, hpx - 2*recPx); ctx.stroke();
+
+    // Dims
+    ctx.fillStyle = 'rgba(255,255,255,0.4)'; ctx.font = '9px Space Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText(`bw=${(bw*100).toFixed(0)}cm`, cx, y0 + hpx + 16);
+    ctx.save(); ctx.translate(x0 - 16, cy); ctx.rotate(-Math.PI/2); ctx.fillText(`h=${(h*100).toFixed(0)}cm`, 0, 0); ctx.restore();
+}
+
+function updateResults(r) {
+    if (!r) return;
+    const fmt = (v, d=2, u='') => v !== undefined ? `${v.toFixed(d)} ${u}`.trim() : '—';
+    document.getElementById('res_RA').textContent  = fmt(r.reacciones?.RA, 2, 'kN');
+    document.getElementById('res_RB').textContent  = fmt(r.reacciones?.RB, 2, 'kN');
+    document.getElementById('res_Vmax').textContent = fmt(r.notables?.Vmax, 2, 'kN');
+    document.getElementById('res_xVmax').textContent= fmt(r.notables?.xVmax, 2, 'm');
+    document.getElementById('res_Vmin').textContent = fmt(r.notables?.Vmin, 2, 'kN');
+    document.getElementById('res_cerosV').textContent = r.notables?.cerosV?.length
+        ? r.notables.cerosV.map(x=>x.toFixed(2)+'m').join(', ') : '—';
+
+    document.getElementById('res_d').textContent   = fmt(r.d * 100, 1, 'cm');
+    document.getElementById('res_Vc').textContent  = fmt(r.Vc, 2, 'kN');
+    const e = r.estribos_crit;
+    document.getElementById('res_Vs').textContent  = fmt(e?.Vs, 2, 'kN');
+    document.getElementById('res_phiVn').textContent= e ? `${(e.phi*(e.Vc+e.Vs)).toFixed(2)} kN` : '—';
+    document.getElementById('res_Av').textContent  = e ? `${e.Av_cm2.toFixed(2)} cm²` : '—';
+    document.getElementById('res_s').textContent   = e ? `${e.s_diseño} mm` : '—';
+    document.getElementById('res_smax').textContent= e ? `${e.s_max} mm` : '—';
+
+    // Zona
+    const zi = document.getElementById('zonaInd');
+    const zd = document.getElementById('zonaDot');
+    const zt = document.getElementById('zonaText');
+    if (e) {
+        const col = e.zona.includes('alta') ? '#ff4757' : e.zona.includes('moder') ? '#ff8c00' : '#00ff9d';
+        zi.style.background = col + '11'; zi.style.border = `1px solid ${col}44`;
+        zd.style.background = col; zt.textContent = e.zona; zt.style.color = col;
+    }
+
+    // Overlays
+    document.getElementById('ovVmax').textContent = r.notables?.Vmax?.toFixed(2);
+    document.getElementById('ovVmin').textContent = r.notables?.Vmin?.toFixed(2);
+    document.getElementById('ovVc').textContent   = r.Vc?.toFixed(2);
+
+    // Verificación
+    const ok = e?.ok_seccion;
+    const box = document.getElementById('verifBox');
+    box.className = `verif-box ${ok === false ? 'fail' : 'ok'}`;
+    document.getElementById('verifTitle').textContent = ok === false ? '❌ AUMENTAR SECCIÓN' : '✅ SECCIÓN OK';
+    document.getElementById('verifTitle').style.color = ok === false ? 'var(--red)' : 'var(--green)';
+    document.getElementById('verifSub').textContent = e
+        ? `Estribos Ø${(window.DFC_MODULE.state.diam_e*1000).toFixed(0)}mm @ s=${e.s_diseño}mm`
+        : 'Calcule para verificar';
+}
+
+/* Cargas UI */
+function renderCargasUI() {
+    const list = document.getElementById('cargas-list');
+    list.innerHTML = '';
+    const L = parseFloat(document.getElementById('inp_L').value) || 6;
+    cargasUI.forEach(c => {
+        const el = document.createElement('div');
+        el.className = 'carga-item';
+        el.innerHTML = `
+            <div class="carga-item-header">
+                <select class="carga-tipo" data-id="${c.id}" style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:4px 6px;color:var(--text);font-family:var(--mono);font-size:10px;flex:1;margin-right:6px">
+                    <option value="puntual"    ${c.tipo==='puntual'?'selected':''}>Puntual [kN]</option>
+                    <option value="dist"       ${c.tipo==='dist'?'selected':''}>Distribuida [kN/m]</option>
+                    <option value="triangular" ${c.tipo==='triangular'?'selected':''}>Triangular [kN/m]</option>
+                </select>
+                <button class="carga-del" data-id="${c.id}">✕</button>
+            </div>
+            ${c.tipo==='puntual'?`
+                <div class="field-row">
+                    <div class="field"><label>P [kN]</label><input type="number" class="ci" data-id="${c.id}" data-field="P" value="${c.P||50}" step="5"></div>
+                    <div class="field"><label>a [m]</label><input type="number" class="ci" data-id="${c.id}" data-field="a" value="${c.a||3}" step="0.1" min="0"></div>
+                </div>`:
+            `<div class="field-row">
+                <div class="field"><label>q [kN/m]</label><input type="number" class="ci" data-id="${c.id}" data-field="q" value="${c.q||20}" step="1"></div>
+                <div class="field"><label>a [m]</label><input type="number" class="ci" data-id="${c.id}" data-field="a" value="${c.a||0}" step="0.1" min="0"></div>
+            </div>
+            <div class="field"><label>b fin [m]</label><input type="number" class="ci" data-id="${c.id}" data-field="b_end" value="${c.b_end||L}" step="0.1" min="0"></div>`}
+        `;
+        list.appendChild(el);
+    });
+    list.querySelectorAll('.carga-del').forEach(b => b.addEventListener('click', () => { cargasUI=cargasUI.filter(c=>c.id!==+b.dataset.id); renderCargasUI(); }));
+    list.querySelectorAll('.carga-tipo').forEach(s => s.addEventListener('change', () => {
+        const c=cargasUI.find(c=>c.id===+s.dataset.id); if(!c) return;
+        c.tipo=s.value;
+        if(c.tipo==='puntual'){c.P=50;c.a=3;delete c.q;delete c.b_end;}
+        else{c.q=20;c.a=0;c.b_end=L;delete c.P;}
+        renderCargasUI();
+    }));
+    list.querySelectorAll('.ci').forEach(i => i.addEventListener('input', () => { const c=cargasUI.find(c=>c.id===+i.dataset.id); if(c) c[i.dataset.field]=parseFloat(i.value)||0; }));
+}
+
+const CASOS = {
+    sa_dist: { tipo:'simple', L:6, cargas:[{tipo:'dist',q:20,a:0,b_end:1.0}] },
+    sa_punt: { tipo:'simple', L:6, cargas:[{tipo:'puntual',P:100,a:3}] },
+    vol_dist:{ tipo:'voladizo',L:4, cargas:[{tipo:'dist',q:15,a:0,b_end:1.0}] },
+    cont2:   { tipo:'continua2',L:8, cargas:[{tipo:'dist',q:18,a:0,b_end:1.0}] },
+};
+document.querySelectorAll('.caso-btn').forEach(b=>b.addEventListener('click',()=>{
+    const c=CASOS[b.dataset.caso]; if(!c) return;
+    document.getElementById('inp_tipo').value=c.tipo;
+    document.getElementById('inp_L').value=c.L;
+    document.getElementById('tramos_wrap').style.display=c.tipo==='continua2'?'block':'none';
+    if(c.tipo==='continua2'){document.getElementById('inp_L1').value=c.L/2;document.getElementById('inp_L2').value=c.L/2;}
+    cargasUI=c.cargas.map((x,i)=>({...x,id:i+1,label:`q${i+1}`,b_end:x.b_end||c.L}));
+    nextId=cargasUI.length+1; renderCargasUI(); calcularYRenderizar();
+}));
+
+document.getElementById('inp_tipo').addEventListener('change', function(){
+    document.getElementById('tramos_wrap').style.display = this.value==='continua2'?'block':'none';
+});
+document.getElementById('inp_diam_e').addEventListener('input', function(){
+    document.getElementById('diam_e_val').textContent=`Ø${this.value}mm`;
+    document.getElementById('lbl_diam').textContent=this.value;
+});
+document.getElementById('btnCalc').addEventListener('click', calcularYRenderizar);
+document.getElementById('btnReset').addEventListener('click',()=>{
+    document.getElementById('inp_tipo').value='simple';
+    document.getElementById('inp_L').value='6';
+    document.getElementById('inp_bw').value='0.30';
+    document.getElementById('inp_h').value='0.55';
+    document.getElementById('inp_recub').value='0.04';
+    document.getElementById('inp_fc').value='25';
+    document.getElementById('inp_fy').value='420';
+    document.getElementById('inp_diam_e').value='8';
+    document.getElementById('diam_e_val').textContent='Ø8mm';
+    cargasUI=[{id:1,tipo:'dist',q:20,a:0,b_end:6,label:'q₁'}]; nextId=2;
+    renderCargasUI(); calcularYRenderizar();
+});
+document.getElementById('btnAddCarga').addEventListener('click',()=>{
+    const L=parseFloat(document.getElementById('inp_L').value)||6;
+    cargasUI.push({id:nextId++,tipo:'puntual',P:50,a:L/2,label:`P${nextId}`});
+    renderCargasUI();
+});
+
+renderCargasUI();
+initCanvases();
+setTimeout(calcularYRenderizar, 200);
+</script>
+</body>
+</html>

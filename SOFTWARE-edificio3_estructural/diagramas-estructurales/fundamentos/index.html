@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos Estructurales | IngeLAB 3D</title>
+    <link rel="stylesheet" href="css/fundamentos.css">
+    <style>
+        .hero-accent { color: #00ff9d; }
+        .hero-tags { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-bottom:48px; }
+        .hero-tag { font-family:var(--mono); font-size:10px; padding:4px 12px; border:1px solid var(--border2); border-radius:3px; color:var(--text3); }
+
+        /* Fondo animado */
+        .bg-grid {
+            position: fixed; inset: 0; z-index: -1;
+            background-image:
+                linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+        }
+        .bg-glow {
+            position: fixed; z-index: -1;
+            width: 600px; height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: .06;
+            pointer-events: none;
+        }
+        .glow1 { top: -200px; left: -100px; background: #00ff9d; }
+        .glow2 { bottom: -200px; right: -100px; background: #00e5ff; }
+
+        /* Stats bar */
+        .stats-bar {
+            display: flex; align-items: center; justify-content: center;
+            gap: 0; flex-wrap: wrap;
+            background: var(--bg2);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 18px 28px;
+            margin-bottom: 60px;
+        }
+        .stat { display:flex; flex-direction:column; align-items:center; gap:4px; padding:0 32px; }
+        .stat-val { font-family:var(--display); font-size:32px; color:#00ff9d; letter-spacing:.04em; }
+        .stat-label { font-family:var(--mono); font-size:9px; color:var(--text3); letter-spacing:.12em; text-align:center; }
+        .stat-div { width:1px; height:40px; background:var(--border); }
+
+        /* Section label */
+        .section-label {
+            display:flex; align-items:center; justify-content:center; gap:12px;
+            font-family:var(--mono); font-size:10px; color:var(--text3); letter-spacing:.15em;
+            text-transform:uppercase; margin-bottom:8px;
+        }
+        .section-desc { text-align:center; color:var(--text2); font-size:13px; margin-bottom:36px; }
+
+        /* Footer */
+        .footer {
+            border-top:1px solid var(--border);
+            padding:24px 28px;
+            display:flex; justify-content:space-between; align-items:center;
+            font-family:var(--mono); font-size:10px; color:var(--text3);
+            margin-top:60px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-glow glow1"></div>
+<div class="bg-glow glow2"></div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+    <div class="topbar-left">
+        <a href="../index.html" class="back-btn">← IngeLAB 3D</a>
+        <div class="topbar-badge" style="color:#00ff9d;border-color:rgba(0,255,157,.3);background:rgba(0,255,157,.08)">FUNDAMENTOS</div>
+        <div class="topbar-title">ESTRUCTURALES</div>
+    </div>
+    <div class="topbar-right">
+        <span style="font-family:var(--mono);font-size:10px;color:var(--text3)">70 conceptos · 6 categorías</span>
+    </div>
+</div>
+
+<!-- HERO -->
+<section class="hero fade-in">
+    <div class="hero-eyebrow">Módulo educativo — Universidad</div>
+    <h1 class="hero-title">
+        FUNDAMENTOS<br><span class="hero-accent">ESTRUCTURALES</span>
+    </h1>
+    <p class="hero-sub">
+        Teoría, fórmulas y modelos 3D interactivos de los conceptos esenciales
+        del análisis estructural. Diseñado para estudiantes de
+        <strong>Ingeniería Civil</strong>, <strong>Construcción</strong> y <strong>Arquitectura</strong>.
+    </p>
+    <div class="hero-tags">
+        <span class="hero-tag">Modelos 3D interactivos</span>
+        <span class="hero-tag">Fórmulas comentadas</span>
+        <span class="hero-tag">Sin cálculo numérico</span>
+        <span class="hero-tag">NCh · ACI · EC</span>
+        <span class="hero-tag">70 conceptos</span>
+    </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar fade-in">
+    <div class="stat"><div class="stat-val">6</div><div class="stat-label">Categorías</div></div>
+    <div class="stat-div"></div>
+    <div class="stat"><div class="stat-val">70</div><div class="stat-label">Conceptos</div></div>
+    <div class="stat-div"></div>
+    <div class="stat"><div class="stat-val">3D</div><div class="stat-label">Modelos<br>interactivos</div></div>
+    <div class="stat-div"></div>
+    <div class="stat"><div class="stat-val">∞</div><div class="stat-label">Fórmulas<br>explicadas</div></div>
+</div>
+
+<!-- SECTION LABEL -->
+<div class="section-label">◆ Selecciona una categoría para comenzar ◆</div>
+<p class="section-desc">Cada categoría contiene todos sus conceptos con descripción, fórmula y modelo visual.</p>
+
+<!-- GRID CATEGORÍAS -->
+<div class="cat-grid">
+
+    <!-- 1. CARGAS -->
+    <a href="pages/cargas.html" class="cat-card" style="--cat-color:#00e5ff">
+        <div class="cat-number">01</div>
+        <div class="cat-icon">⬇</div>
+        <div class="cat-code">CAT 01</div>
+        <div class="cat-name">TIPOS DE<br>CARGAS</div>
+        <div class="cat-desc">Fuerzas que actúan sobre una estructura. Desde cargas gravitacionales hasta sísmicas y dinámicas.</div>
+        <div class="cat-terms">
+            <span class="cat-term">Carga muerta</span>
+            <span class="cat-term">Carga viva</span>
+            <span class="cat-term">Sísmica</span>
+            <span class="cat-term">Viento</span>
+            <span class="cat-term">Puntual</span>
+            <span class="cat-term">Distribuida</span>
+            <span class="cat-term">+12 más</span>
+        </div>
+        <div class="cat-cta">Explorar 18 conceptos →</div>
+    </a>
+
+    <!-- 2. ESFUERZOS -->
+    <a href="pages/esfuerzos.html" class="cat-card" style="--cat-color:#ff4757">
+        <div class="cat-number">02</div>
+        <div class="cat-icon">⚡</div>
+        <div class="cat-code">CAT 02</div>
+        <div class="cat-name">ESFUERZOS<br>ESTRUCTURALES</div>
+        <div class="cat-desc">Fuerzas internas que se generan en los elementos. Base del dimensionamiento estructural.</div>
+        <div class="cat-terms">
+            <span class="cat-term">Tracción</span>
+            <span class="cat-term">Compresión</span>
+            <span class="cat-term">Flexión</span>
+            <span class="cat-term">Corte</span>
+            <span class="cat-term">Torsión</span>
+            <span class="cat-term">+5 más</span>
+        </div>
+        <div class="cat-cta">Explorar 10 conceptos →</div>
+    </a>
+
+    <!-- 3. ELEMENTOS -->
+    <a href="pages/elementos.html" class="cat-card" style="--cat-color:#ff8c00">
+        <div class="cat-number">03</div>
+        <div class="cat-icon">🏗</div>
+        <div class="cat-code">CAT 03</div>
+        <div class="cat-name">ELEMENTOS<br>ESTRUCTURALES</div>
+        <div class="cat-desc">Partes que componen la estructura. Desde vigas y columnas hasta fundaciones y cerchas.</div>
+        <div class="cat-terms">
+            <span class="cat-term">Viga</span>
+            <span class="cat-term">Columna</span>
+            <span class="cat-term">Losa</span>
+            <span class="cat-term">Fundación</span>
+            <span class="cat-term">Cercha</span>
+            <span class="cat-term">+9 más</span>
+        </div>
+        <div class="cat-cta">Explorar 14 conceptos →</div>
+    </a>
+
+    <!-- 4. ANÁLISIS -->
+    <a href="pages/analisis.html" class="cat-card" style="--cat-color:#c084fc">
+        <div class="cat-number">04</div>
+        <div class="cat-icon">📐</div>
+        <div class="cat-code">CAT 04</div>
+        <div class="cat-name">CONCEPTOS DE<br>ANÁLISIS</div>
+        <div class="cat-desc">Propiedades y fenómenos clave en el comportamiento estructural. Rigidez, ductilidad, pandeo y más.</div>
+        <div class="cat-terms">
+            <span class="cat-term">Deformación</span>
+            <span class="cat-term">Rigidez</span>
+            <span class="cat-term">Pandeo</span>
+            <span class="cat-term">Ductilidad</span>
+            <span class="cat-term">Fatiga</span>
+            <span class="cat-term">+9 más</span>
+        </div>
+        <div class="cat-cta">Explorar 14 conceptos →</div>
+    </a>
+
+    <!-- 5. DIAGRAMAS -->
+    <a href="pages/diagramas.html" class="cat-card" style="--cat-color:#00ff9d">
+        <div class="cat-number">05</div>
+        <div class="cat-icon">📊</div>
+        <div class="cat-code">CAT 05</div>
+        <div class="cat-name">DIAGRAMAS<br>ESTRUCTURALES</div>
+        <div class="cat-desc">Herramientas gráficas fundamentales del cálculo. Representación visual de esfuerzos internos.</div>
+        <div class="cat-terms">
+            <span class="cat-term">Momento flector</span>
+            <span class="cat-term">Fuerza cortante</span>
+            <span class="cat-term">Deformación</span>
+            <span class="cat-term">Interacción</span>
+            <span class="cat-term">+2 más</span>
+        </div>
+        <div class="cat-cta">Explorar 6 conceptos →</div>
+    </a>
+
+    <!-- 6. MÉTODOS -->
+    <a href="pages/metodos.html" class="cat-card" style="--cat-color:#ffd700">
+        <div class="cat-number">06</div>
+        <div class="cat-icon">⚙</div>
+        <div class="cat-code">CAT 06</div>
+        <div class="cat-name">MÉTODOS DE<br>ANÁLISIS</div>
+        <div class="cat-desc">Procedimientos para resolver estructuras. Del análisis elástico al sísmico y matricial.</div>
+        <div class="cat-terms">
+            <span class="cat-term">Elástico</span>
+            <span class="cat-term">Dinámico</span>
+            <span class="cat-term">Modal</span>
+            <span class="cat-term">Matricial</span>
+            <span class="cat-term">+4 más</span>
+        </div>
+        <div class="cat-cta">Explorar 8 conceptos →</div>
+    </a>
+
+</div>
+
+<footer class="footer">
+    <span>IngeLAB 3D — Fundamentos Estructurales</span>
+    <span>Ing. Civil · Construcción · Arquitectura</span>
+</footer>
+
+</body>
+</html>

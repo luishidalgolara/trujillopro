@@ -1,47 +1,46 @@
 // ========================================
 // TRUJILLO - Gallery Content Data
 // ========================================
-// Gallery content for each module - TODAS las imágenes
 const galleryContent = {
     electric: [
-        { title: 'Interface Principal', image: 'ELECTRICO/ELE1.png' },
-        { title: 'Trazado Automático', image: 'ELECTRICO/ELE2.png' },
-        { title: 'Cuadro de Cargas', image: 'ELECTRICO/ELE3.png' },
-        { title: 'Cálculos Automáticos', image: 'ELECTRICO/ELE4.png' },
-        { title: 'Planos Generados', image: 'ELECTRICO/ELE5.png' },
-        { title: 'Memoria Técnica', image: 'ELECTRICO/ELE6.png' },
-        { title: 'Vista Adicional 1', image: 'ELECTRICO/ELE7.png' },
-        { title: 'Vista Adicional 2', image: 'ELECTRICO/ELE8.png' }
+        { title: 'Interface Principal',   image: 'ELECTRICO/ELE1.png' },
+        { title: 'Trazado Automático',    image: 'ELECTRICO/ELE2.png' },
+        { title: 'Cuadro de Cargas',      image: 'ELECTRICO/ELE3.png' },
+        { title: 'Cálculos Automáticos',  image: 'ELECTRICO/ELE4.png' },
+        { title: 'Planos Generados',      image: 'ELECTRICO/ELE5.png' },
+        { title: 'Memoria Técnica',       image: 'ELECTRICO/ELE6.png' },
+        { title: 'Vista Adicional 1',     image: 'ELECTRICO/ELE7.png' },
+        { title: 'Vista Adicional 2',     image: 'ELECTRICO/ELE8.png' }
     ],
     water: [
-        { title: 'Interface Principal', image: 'AGUA%20POTABLE/AP1.png' },
-        { title: 'Trazado Automático', image: 'AGUA%20POTABLE/AP2.png' },
-        { title: 'Isométricos', image: 'AGUA%20POTABLE/AP3.png' },
-        { title: 'Cuadros de Gastos', image: 'AGUA%20POTABLE/AP4.png' },
-        { title: 'Detalles Constructivos', image: 'AGUA%20POTABLE/AP5.png' },
-        { title: 'Memoria Técnica', image: 'AGUA%20POTABLE/AP6.png' },
-        { title: 'Vista Adicional 1', image: 'AGUA%20POTABLE/AP7.png' },
-        { title: 'Vista Adicional 2', image: 'AGUA%20POTABLE/AP8.png' }
+        { title: 'Interface Principal',   image: 'AGUA%20POTABLE/AP1.png' },
+        { title: 'Trazado Automático',    image: 'AGUA%20POTABLE/AP2.png' },
+        { title: 'Isométricos',           image: 'AGUA%20POTABLE/AP3.png' },
+        { title: 'Cuadros de Gastos',     image: 'AGUA%20POTABLE/AP4.png' },
+        { title: 'Detalles Constructivos',image: 'AGUA%20POTABLE/AP5.png' },
+        { title: 'Memoria Técnica',       image: 'AGUA%20POTABLE/AP6.png' },
+        { title: 'Vista Adicional 1',     image: 'AGUA%20POTABLE/AP7.png' },
+        { title: 'Vista Adicional 2',     image: 'AGUA%20POTABLE/AP8.png' }
     ],
     sewer: [
-        { title: 'Interface Principal', image: 'ALCANTARILLADO/AC1.png' },
-        { title: 'Trazado Automático', image: 'ALCANTARILLADO/AC2.png' },
-        { title: 'Isométricos', image: 'ALCANTARILLADO/AC3.png' },
-        { title: 'Cálculos UEH', image: 'ALCANTARILLADO/AC4.png' },
-        { title: 'Detalles RIDAA', image: 'ALCANTARILLADO/AC5.png' },
-        { title: 'EETT Automáticas', image: 'ALCANTARILLADO/AC6.png' },
-        { title: 'Vista Adicional', image: 'ALCANTARILLADO/AC7.png' }
+        { title: 'Interface Principal',   image: 'ALCANTARILLADO/AC1.png' },
+        { title: 'Trazado Automático',    image: 'ALCANTARILLADO/AC2.png' },
+        { title: 'Isométricos',           image: 'ALCANTARILLADO/AC3.png' },
+        { title: 'Cálculos UEH',          image: 'ALCANTARILLADO/AC4.png' },
+        { title: 'Detalles RIDAA',        image: 'ALCANTARILLADO/AC5.png' },
+        { title: 'EETT Automáticas',      image: 'ALCANTARILLADO/AC6.png' },
+        { title: 'Vista Adicional',       image: 'ALCANTARILLADO/AC7.png' }
     ],
     structure: [
         { title: 'Formularios Inteligentes', image: 'ESTRUCTURAL/EST1.png' },
-        { title: 'Visor 3D', image: 'ESTRUCTURAL/EST2.png' },
-        { title: 'Enfierradura', image: 'ESTRUCTURAL/EST3.png' },
-        { title: 'Cortes Transversales', image: 'ESTRUCTURAL/EST4.png' },
-        { title: 'Cálculos Estructurales', image: 'ESTRUCTURAL/EST5.png' },
-        { title: 'Exportación PDF', image: 'ESTRUCTURAL/EST6.png' },
-        { title: 'Vista Adicional 1', image: 'ESTRUCTURAL/EST7.png' },
-        { title: 'Vista Adicional 2', image: 'ESTRUCTURAL/EST8.png' },
-        { title: 'Vista Adicional 3', image: 'ESTRUCTURAL/EST9.png' }
+        { title: 'Visor 3D',                 image: 'ESTRUCTURAL/EST2.png' },
+        { title: 'Enfierradura',             image: 'ESTRUCTURAL/EST3.png' },
+        { title: 'Cortes Transversales',     image: 'ESTRUCTURAL/EST4.png' },
+        { title: 'Cálculos Estructurales',   image: 'ESTRUCTURAL/EST5.png' },
+        { title: 'Exportación PDF',          image: 'ESTRUCTURAL/EST6.png' },
+        { title: 'Vista Adicional 1',        image: 'ESTRUCTURAL/EST7.png' },
+        { title: 'Vista Adicional 2',        image: 'ESTRUCTURAL/EST8.png' },
+        { title: 'Vista Adicional 3',        image: 'ESTRUCTURAL/EST9.png' }
     ],
     ingelab: [
         { title: 'ingeLAB - Vista 1', image: 'INGELAB/1LAB.png' },
@@ -53,6 +52,21 @@ const galleryContent = {
         { title: 'ingeLAB - Vista 7', image: 'INGELAB/7LAB.png' },
         { title: 'ingeLAB - Vista 8', image: 'INGELAB/8LAB.png' },
         { title: 'ingeLAB - Vista 9', image: 'INGELAB/9LAB.png' }
+    ],
+    // ── NUEVO: ingeLAB 2.0 ──
+    ingelab2: [
+        { title: 'ingeLAB 2.0 - Vista 1',  image: 'EDIFICIO-ESTRUCTURAL/1.png' },
+        { title: 'ingeLAB 2.0 - Vista 2',  image: 'EDIFICIO-ESTRUCTURAL/2.png' },
+        { title: 'ingeLAB 2.0 - Vista 3',  image: 'EDIFICIO-ESTRUCTURAL/3.png' },
+        { title: 'ingeLAB 2.0 - Vista 4',  image: 'EDIFICIO-ESTRUCTURAL/4.png' },
+        { title: 'ingeLAB 2.0 - Vista 5',  image: 'EDIFICIO-ESTRUCTURAL/5.png' },
+        { title: 'ingeLAB 2.0 - Vista 6',  image: 'EDIFICIO-ESTRUCTURAL/6.png' },
+        { title: 'ingeLAB 2.0 - Vista 7',  image: 'EDIFICIO-ESTRUCTURAL/7.png' },
+        { title: 'ingeLAB 2.0 - Vista 8',  image: 'EDIFICIO-ESTRUCTURAL/8.png' },
+        { title: 'ingeLAB 2.0 - Vista 9',  image: 'EDIFICIO-ESTRUCTURAL/9.png' },
+        { title: 'ingeLAB 2.0 - Vista 10', image: 'EDIFICIO-ESTRUCTURAL/10.png' },
+        { title: 'ingeLAB 2.0 - Vista 11', image: 'EDIFICIO-ESTRUCTURAL/11.png' },
+        { title: 'ingeLAB 2.0 - Vista 12', image: 'EDIFICIO-ESTRUCTURAL/12.png' }
     ],
     tank: [
         { title: 'Estanque - Vista 1', image: 'ESTANQUE-AP/ESTANQUE-1.png' },
@@ -74,25 +88,23 @@ const galleryContent = {
         { title: 'Cubicación - Vista 7', image: 'CUBICACION-TR/CUBICA-7.png' }
     ],
     medical3d: [
-        { title: 'Medical 3D - Vista 1', image: 'MEDICAL-3D/MED1.png' },
-        { title: 'Medical 3D - Vista 2', image: 'MEDICAL-3D/MED2.png' },
-        { title: 'Medical 3D - Vista 3', image: 'MEDICAL-3D/MED3.png' },
-        { title: 'Medical 3D - Vista 4', image: 'MEDICAL-3D/MED4.png' },
-        { title: 'Medical 3D - Vista 5', image: 'MEDICAL-3D/MED5.png' },
-        { title: 'Medical 3D - Vista 6', image: 'MEDICAL-3D/MED6.png' },
-        { title: 'Medical 3D - Vista 7', image: 'MEDICAL-3D/MED7.png' },
-        { title: 'Medical 3D - Vista 8', image: 'MEDICAL-3D/MED8.png' },
-        { title: 'Medical 3D - Vista 9', image: 'MEDICAL-3D/MED9.png' },
+        { title: 'Medical 3D - Vista 1',  image: 'MEDICAL-3D/MED1.png' },
+        { title: 'Medical 3D - Vista 2',  image: 'MEDICAL-3D/MED2.png' },
+        { title: 'Medical 3D - Vista 3',  image: 'MEDICAL-3D/MED3.png' },
+        { title: 'Medical 3D - Vista 4',  image: 'MEDICAL-3D/MED4.png' },
+        { title: 'Medical 3D - Vista 5',  image: 'MEDICAL-3D/MED5.png' },
+        { title: 'Medical 3D - Vista 6',  image: 'MEDICAL-3D/MED6.png' },
+        { title: 'Medical 3D - Vista 7',  image: 'MEDICAL-3D/MED7.png' },
+        { title: 'Medical 3D - Vista 8',  image: 'MEDICAL-3D/MED8.png' },
+        { title: 'Medical 3D - Vista 9',  image: 'MEDICAL-3D/MED9.png' },
         { title: 'Medical 3D - Vista 10', image: 'MEDICAL-3D/MED10.png' }
     ],
-    
     medvision: [
         { title: 'MedVision - Vista 1', image: 'MEDVISION/1MEDV.png' },
         { title: 'MedVision - Vista 2', image: 'MEDVISION/2MEDV.png' },
         { title: 'MedVision - Vista 3', image: 'MEDVISION/3MEDV.png' },
         { title: 'MedVision - Vista 4', image: 'MEDVISION/4MEDV.png' }
     ],
-
     pavimento: [
         { title: 'Pavimentación - Vista 1', image: 'PAVIMENTO/1PAV.png' },
         { title: 'Pavimentación - Vista 2', image: 'PAVIMENTO/2PAV.png' },
@@ -104,7 +116,6 @@ const galleryContent = {
         { title: 'Pavimentación - Vista 8', image: 'PAVIMENTO/8PAV.png' },
         { title: 'Pavimentación - Vista 9', image: 'PAVIMENTO/9PAV.png' }
     ],
-    
     videos: [        
         { 
             title: 'Medical 3D - Sistema Médico Interactivo', 

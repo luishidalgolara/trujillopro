@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DD — Deformaciones | IngeLAB 3D</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Bebas+Neue&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg:#080c10;--bg2:#0d1117;--card:#0f1520;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.14);--accent:#c084fc;--accent2:#00e5ff;--green:#00ff9d;--red:#ff4757;--orange:#ff8c00;--text:#e8edf5;--text2:#8b95a8;--text3:#3d4758;--mono:'Space Mono',monospace;--display:'Bebas Neue',sans-serif;--orb:'Orbitron',sans-serif;--body:'DM Sans',sans-serif;--r:10px;--r2:6px;}
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+        html,body{height:100%;overflow:hidden;}
+        body{background:var(--bg);color:var(--text);font-family:var(--body);display:flex;flex-direction:column;}
+        .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;border-bottom:1px solid var(--border);background:rgba(8,12,16,.95);backdrop-filter:blur(10px);flex-shrink:0;}
+        .topbar-left{display:flex;align-items:center;gap:14px;}
+        .back-btn{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r2);padding:7px 12px;color:var(--text2);font-family:var(--mono);font-size:11px;cursor:pointer;transition:all .2s;text-decoration:none;}
+        .back-btn:hover{border-color:var(--accent2);color:var(--accent2);}
+        .page-badge{background:rgba(192,132,252,.12);border:1px solid rgba(192,132,252,.3);border-radius:var(--r2);padding:5px 12px;font-family:var(--orb);font-size:11px;color:var(--accent);letter-spacing:.08em;}
+        .page-title{font-family:var(--display);font-size:22px;letter-spacing:.04em;}
+        .topbar-right{display:flex;align-items:center;gap:10px;}
+        .calc-btn{background:var(--accent);border:none;border-radius:var(--r2);padding:8px 18px;color:#fff;font-family:var(--mono);font-size:12px;cursor:pointer;transition:all .2s;}
+        .calc-btn:hover{background:#d09aff;transform:translateY(-1px);box-shadow:0 4px 16px rgba(192,132,252,.4);}
+        .reset-btn{background:transparent;border:1px solid var(--border2);border-radius:var(--r2);padding:8px 14px;color:var(--text2);font-family:var(--mono);font-size:11px;cursor:pointer;transition:all .2s;}
+        .reset-btn:hover{border-color:var(--text2);color:var(--text);}
+        .layout{display:grid;grid-template-columns:280px 1fr 265px;flex:1;overflow:hidden;}
+        .panel-left{background:var(--bg2);border-right:1px solid var(--border);overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;}
+        .panel-left::-webkit-scrollbar{width:4px;}
+        .panel-left::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+        .pgroup{display:flex;flex-direction:column;gap:8px;}
+        .pgroup-title{font-family:var(--orb);font-size:10px;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid var(--border);}
+        .field{display:flex;flex-direction:column;gap:4px;}
+        .field label{font-size:11px;color:var(--text2);font-family:var(--mono);}
+        .field input,.field select{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:7px 10px;color:var(--text);font-family:var(--mono);font-size:12px;transition:border-color .2s;width:100%;}
+        .field input:focus,.field select:focus{outline:none;border-color:var(--accent);}
+        .field-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+        .slider-row{display:flex;align-items:center;gap:8px;}
+        .slider-row input[type=range]{flex:1;accent-color:var(--accent);}
+        .slider-val{font-family:var(--mono);font-size:12px;color:var(--accent);min-width:36px;text-align:right;}
+        .carga-item{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:8px 10px;display:flex;align-items:center;justify-content:space-between;}
+        .carga-vals{font-family:var(--mono);font-size:10px;color:var(--text2);}
+        .carga-del{background:none;border:none;color:var(--text3);cursor:pointer;font-size:13px;padding:3px;transition:color .2s;}
+        .carga-del:hover{color:var(--red);}
+        .add-btn{background:rgba(192,132,252,.05);border:1px dashed rgba(192,132,252,.2);border-radius:var(--r2);padding:8px;color:var(--accent);font-family:var(--mono);font-size:11px;cursor:pointer;transition:all .2s;text-align:center;}
+        .add-btn:hover{background:rgba(192,132,252,.12);border-color:var(--accent);}
+        .panel-center{display:flex;flex-direction:column;overflow:hidden;background:var(--bg);}
+        .canvas-area{flex:1;display:flex;flex-direction:column;padding:16px;gap:10px;overflow:hidden;}
+        .canvas-lbl{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:8px;flex-shrink:0;}
+        .canvas-lbl::before{content:'';display:block;width:3px;height:12px;background:var(--accent);border-radius:2px;}
+        .canvas-main{flex:1;position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+        .canvas-main canvas{display:block;width:100%;height:100%;}
+        .canvas-bottom{display:grid;grid-template-columns:1fr 1fr;gap:10px;height:150px;}
+        .canvas-sub{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);position:relative;overflow:hidden;}
+        .canvas-sub canvas{width:100%;height:100%;display:block;}
+        .sub-lbl{position:absolute;top:7px;left:10px;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.08em;}
+        .ov{position:absolute;bottom:10px;left:10px;display:flex;gap:6px;flex-wrap:wrap;}
+        .ovb{background:rgba(8,12,16,.85);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-family:var(--mono);font-size:9px;color:var(--text2);}
+        .ovb span{color:var(--accent);font-weight:700;}
+        .panel-right{background:var(--bg2);border-left:1px solid var(--border);overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;}
+        .panel-right::-webkit-scrollbar{width:4px;}
+        .panel-right::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+        .res-group{display:flex;flex-direction:column;gap:6px;}
+        .res-title{font-family:var(--orb);font-size:10px;color:var(--accent2);letter-spacing:.15em;padding-bottom:6px;border-bottom:1px solid var(--border);}
+        .res-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+        .res-key{font-size:11px;color:var(--text2);font-family:var(--mono);flex-shrink:0;}
+        .res-val{font-size:12px;color:var(--text);font-family:var(--mono);font-weight:700;text-align:right;}
+        .res-val.ok{color:var(--green);}.res-val.fail{color:var(--red);}.res-val.acc{color:var(--accent);}
+        .verif-row{display:flex;align-items:center;justify-content:space-between;padding:6px 10px;border-radius:var(--r2);border:1px solid;}
+        .verif-row.ok{background:rgba(0,255,157,.06);border-color:rgba(0,255,157,.25);}
+        .verif-row.fail{background:rgba(255,71,87,.06);border-color:rgba(255,71,87,.25);}
+        .verif-label{font-family:var(--mono);font-size:10px;color:var(--text2);}
+        .verif-result{font-family:var(--mono);font-size:11px;font-weight:700;}
+        .verif-row.ok .verif-result{color:var(--green);}.verif-row.fail .verif-result{color:var(--red);}
+        .verif-box{border-radius:var(--r);padding:12px;border:1px solid;text-align:center;}
+        .verif-box.ok{background:rgba(0,255,157,.07);border-color:rgba(0,255,157,.3);}
+        .verif-box.fail{background:rgba(255,71,87,.07);border-color:rgba(255,71,87,.3);}
+        .verif-title{font-family:var(--orb);font-size:12px;font-weight:700;margin-bottom:4px;}
+        .verif-sub{font-family:var(--mono);font-size:10px;color:var(--text2);}
+        .analitico-box{background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.2);border-radius:var(--r2);padding:10px;}
+        .analitico-formula{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:4px;}
+        .analitico-val{font-family:var(--mono);font-size:13px;color:var(--text);font-weight:700;}
+        .teoria-box{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px;}
+        .teoria-title{font-family:var(--orb);font-size:10px;color:var(--text2);letter-spacing:.1em;margin-bottom:8px;}
+        .formula{background:rgba(0,0,0,.4);border:1px solid rgba(192,132,252,.15);border-radius:var(--r2);padding:6px 10px;margin:4px 0;font-family:var(--mono);font-size:11px;color:var(--accent);}
+        .norma-chips{display:flex;flex-wrap:wrap;gap:5px;}
+        .norma-chip{font-family:var(--mono);font-size:9px;padding:3px 7px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:3px;color:var(--text3);}
+        .panel-left,.panel-center,.panel-right{animation:fi .4s ease both;}
+        .panel-center{animation-delay:.05s;}.panel-right{animation-delay:.1s;}
+        @keyframes fi{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+    </style>
+</head>
+<body>
+<div class="topbar">
+    <div class="topbar-left">
+        <a href="../index.html" class="back-btn">← Volver</a>
+        <div class="page-badge">DD</div>
+        <div class="page-title">DIAGRAMA DE DEFORMACIONES</div>
+    </div>
+    <div class="topbar-right">
+        <button class="reset-btn" id="btnReset">↺ Reset</button>
+        <button class="calc-btn" id="btnCalc">⚡ Calcular</button>
+    </div>
+</div>
+<div class="layout">
+<!-- IZQUIERDA -->
+<div class="panel-left">
+    <div class="pgroup">
+        <div class="pgroup-title">Geometría de viga</div>
+        <div class="field"><label>Tipo de viga</label>
+            <select id="inp_tipo"><option value="simple">Simplemente apoyada</option><option value="voladizo">Voladizo</option></select>
+        </div>
+        <div class="field"><label>Longitud L [m]</label><input type="number" id="inp_L" value="6" min="0.5" max="30" step="0.5"></div>
+    </div>
+    <div class="pgroup">
+        <div class="pgroup-title">Sección transversal</div>
+        <div class="field"><label>Tipo de sección</label>
+            <select id="inp_sec"><option value="rect">Rectangular H.A.</option><option value="T">T-Beam H.A.</option><option value="IPE">Perfil IPE</option><option value="HEA">Perfil HEA</option></select>
+        </div>
+        <div id="sec_rect">
+            <div class="field-row" style="margin-top:6px">
+                <div class="field"><label>b [m]</label><input type="number" id="inp_b" value="0.30" step="0.05"></div>
+                <div class="field"><label>h [m]</label><input type="number" id="inp_h" value="0.55" step="0.05"></div>
+            </div>
+            <div class="field" style="margin-top:6px"><label>f'c [MPa]</label><input type="number" id="inp_fc" value="25" step="1"></div>
+        </div>
+        <div id="sec_T" style="display:none">
+            <div class="field-row" style="margin-top:6px">
+                <div class="field"><label>bw [m]</label><input type="number" id="inp_bw" value="0.25" step="0.05"></div>
+                <div class="field"><label>bf [m]</label><input type="number" id="inp_bf" value="0.80" step="0.05"></div>
+            </div>
+            <div class="field-row" style="margin-top:6px">
+                <div class="field"><label>hf [m]</label><input type="number" id="inp_hf" value="0.12" step="0.02"></div>
+                <div class="field"><label>h total [m]</label><input type="number" id="inp_hT" value="0.55" step="0.05"></div>
+            </div>
+        </div>
+        <div id="sec_IPE" style="display:none">
+            <div class="field" style="margin-top:6px"><label>Perfil IPE</label>
+                <select id="inp_ipe"><option>IPE200</option><option>IPE240</option><option>IPE270</option><option selected>IPE300</option><option>IPE330</option><option>IPE360</option><option>IPE400</option><option>IPE450</option><option>IPE500</option></select>
+            </div>
+        </div>
+        <div id="sec_HEA" style="display:none">
+            <div class="field" style="margin-top:6px"><label>Perfil HEA</label>
+                <select id="inp_hea"><option>HEA160</option><option>HEA200</option><option selected>HEA240</option><option>HEA280</option><option>HEA300</option></select>
+            </div>
+        </div>
+    </div>
+    <div class="pgroup">
+        <div class="pgroup-title">Cargas</div>
+        <div id="cargas-list"></div>
+        <div class="add-btn" id="btnAddCarga">+ Agregar carga</div>
+    </div>
+    <div class="pgroup">
+        <div class="pgroup-title">Visualización</div>
+        <div class="field">
+            <label>Amplificación deformada</label>
+            <div class="slider-row">
+                <input type="range" id="inp_amp" min="1" max="500" step="1" value="50">
+                <span class="slider-val" id="ampVal">×50</span>
+            </div>
+        </div>
+    </div>
+    <div class="pgroup">
+        <div class="pgroup-title">Verificación</div>
+        <div class="field"><label>Normativa</label>
+            <select id="inp_norma"><option value="NCh">NCh 430</option><option value="AISC">AISC 360</option><option value="EC">Eurocódigo 2</option></select>
+        </div>
+        <div class="field"><label>Tipo de uso</label>
+            <select id="inp_uso"><option value="viv">Vivienda</option><option value="ofic">Oficina</option><option value="ind">Industrial</option><option value="aut">Sensible (acabados)</option></select>
+        </div>
+    </div>
+</div>
+
+<!-- CENTRO -->
+<div class="panel-center">
+    <div class="canvas-area">
+        <div class="canvas-lbl">Línea elástica y(x) — Deformada amplificada</div>
+        <div class="canvas-main" id="wMain">
+            <canvas id="cMain"></canvas>
+            <div class="ov">
+                <div class="ovb">δ_max = <span id="ovD">—</span> mm</div>
+                <div class="ovb">@ x = <span id="ovX">—</span> m</div>
+                <div class="ovb">L/δ = <span id="ovLD">—</span></div>
+                <div class="ovb">EI = <span id="ovEI">—</span> MN·m²</div>
+            </div>
+        </div>
+        <div class="canvas-bottom">
+            <div class="canvas-sub">
+                <div class="sub-lbl">CURVATURA κ(x) = M/EI</div>
+                <canvas id="cCurv"></canvas>
+            </div>
+            <div class="canvas-sub">
+                <div class="sub-lbl">GIRO θ(x) = dy/dx</div>
+                <canvas id="cGiro"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- DERECHA -->
+<div class="panel-right">
+    <div class="res-group">
+        <div class="res-title">Rigidez EI</div>
+        <div class="res-row"><span class="res-key">EI</span><span class="res-val acc" id="rEI">—</span></div>
+        <div class="res-row"><span class="res-key">I</span><span class="res-val" id="rI">—</span></div>
+        <div class="res-row"><span class="res-key">E</span><span class="res-val" id="rE">—</span></div>
+    </div>
+    <div class="res-group">
+        <div class="res-title">Deformaciones</div>
+        <div class="res-row"><span class="res-key">δ_max</span><span class="res-val acc" id="rD">—</span></div>
+        <div class="res-row"><span class="res-key">@ x =</span><span class="res-val" id="rXD">—</span></div>
+        <div class="res-row"><span class="res-key">L/δ ratio</span><span class="res-val" id="rLD">—</span></div>
+        <div class="res-row"><span class="res-key">θ_A</span><span class="res-val" id="rTA">—</span></div>
+        <div class="res-row"><span class="res-key">θ_B</span><span class="res-val" id="rTB">—</span></div>
+        <div class="res-row"><span class="res-key">ρ_min (curv.)</span><span class="res-val" id="rRho">—</span></div>
+    </div>
+    <div class="res-group">
+        <div class="res-title">Fórmula analítica</div>
+        <div class="analitico-box">
+            <div class="analitico-formula" id="aFormula">—</div>
+            <div class="analitico-val" id="aVal">—</div>
+        </div>
+    </div>
+    <div class="res-group">
+        <div class="res-title">Verificación de flecha</div>
+        <div class="verif-row ok" id="vRowL">
+            <span class="verif-label" id="vLblL">L/360 (solo L)</span>
+            <span class="verif-result" id="vResL">—</span>
+        </div>
+        <div class="verif-row ok" id="vRowDL">
+            <span class="verif-label" id="vLblDL">L/240 (D+L)</span>
+            <span class="verif-result" id="vResDL">—</span>
+        </div>
+        <div class="res-row" style="margin-top:4px"><span class="res-key">DCR (L)</span><span class="res-val" id="rDCRL">—</span></div>
+        <div class="res-row"><span class="res-key">DCR (D+L)</span><span class="res-val" id="rDCRDL">—</span></div>
+    </div>
+    <div class="verif-box ok" id="verifBox">
+        <div class="verif-title" id="verifTitle">—</div>
+        <div class="verif-sub" id="verifSub">Calcule para verificar</div>
+    </div>
+    <div class="teoria-box">
+        <div class="teoria-title">EULER-BERNOULLI</div>
+        <div class="formula">EI·y'' = M(x)</div>
+        <div class="formula">δ_q = 5qL⁴/384EI</div>
+        <div class="formula">δ_P = PL³/48EI (centro)</div>
+        <div class="formula">δ_vol = qL⁴/8EI</div>
+        <div class="formula">θ = ∫M/EI dx</div>
+    </div>
+    <div class="res-group">
+        <div class="res-title">Normativa</div>
+        <div class="norma-chips">
+            <span class="norma-chip">NCh 430 L/240</span><span class="norma-chip">AISC L/360</span>
+            <span class="norma-chip">EC2 L/250</span><span class="norma-chip">ACI 318-19</span>
+        </div>
+    </div>
+</div>
+</div>
+<script src="../js/diag_deformacion.js"></script>
+<script>
+'use strict';
+let nextId=2,cargasUI=[{id:1,tipo:'dist',q:15,a:0,b_end:6}];
+let cM,cCu,cGi;
+
+function initC(){
+    cM=document.getElementById('cMain');
+    cCu=document.getElementById('cCurv');
+    cGi=document.getElementById('cGiro');
+    const ro=new ResizeObserver(()=>{
+        const w=document.getElementById('wMain');cM.width=w.clientWidth;cM.height=w.clientHeight;
+        cCu.width=cCu.parentElement.clientWidth;cCu.height=cCu.parentElement.clientHeight;
+        cGi.width=cGi.parentElement.clientWidth;cGi.height=cGi.parentElement.clientHeight;
+        if(window.DD_MODULE?.state?.result) renderAll();
+    });
+    ro.observe(document.getElementById('wMain'));
+    ro.observe(cCu.parentElement);ro.observe(cGi.parentElement);
+    setTimeout(()=>{
+        const w=document.getElementById('wMain');cM.width=w.clientWidth;cM.height=w.clientHeight;
+        cCu.width=cCu.parentElement.clientWidth;cCu.height=cCu.parentElement.clientHeight;
+        cGi.width=cGi.parentElement.clientWidth;cGi.height=cGi.parentElement.clientHeight;
+    },100);
+}
+
+function sync(){
+    const m=window.DD_MODULE;
+    m.setParam('tipo',   document.getElementById('inp_tipo').value);
+    m.setParam('L',      parseFloat(document.getElementById('inp_L').value)||6);
+    m.setParam('seccion',document.getElementById('inp_sec').value);
+    m.setParam('b',      parseFloat(document.getElementById('inp_b').value)||0.30);
+    m.setParam('h_sec',  parseFloat(document.getElementById('inp_h').value)||0.55);
+    m.setParam('fc',     parseFloat(document.getElementById('inp_fc').value)||25);
+    m.setParam('bw',     parseFloat(document.getElementById('inp_bw').value)||0.25);
+    m.setParam('bf',     parseFloat(document.getElementById('inp_bf').value)||0.80);
+    m.setParam('hf',     parseFloat(document.getElementById('inp_hf').value)||0.12);
+    m.setParam('perfil', document.getElementById('inp_ipe').value||document.getElementById('inp_hea').value);
+    m.setParam('norma',  document.getElementById('inp_norma').value);
+    m.setParam('uso',    document.getElementById('inp_uso').value);
+    m.setParam('escala_visual', parseInt(document.getElementById('inp_amp').value)||50);
+    m.clearCargas();
+    cargasUI.forEach(c=>m.addCarga({...c}));
+}
+
+function calc(){sync();const r=window.DD_MODULE.calcular();renderAll(r);updateRes(r);}
+
+function renderAll(r){
+    r=r||window.DD_MODULE.state.result;if(!r)return;
+    window.DD_MODULE.draw(cM,r);
+    window.DD_MODULE.drawCurvatura(cCu,r);
+    window.DD_MODULE.drawGiro(cGi,r);
+}
+
+function updateRes(r){
+    if(!r)return;
+    const f=(v,d=2,u='')=>v!=null?`${v.toFixed(d)} ${u}`.trim():'—';
+    document.getElementById('rEI').textContent=f(r.EI/1000,2,'MN·m²');
+    document.getElementById('rI').textContent =f(r.I*1e8,2,'cm⁴');
+    document.getElementById('rE').textContent =`${(r.E/1e6).toFixed(0)} GPa`;
+    document.getElementById('rD').textContent =f(r.delta_max_mm,3,'mm');
+    document.getElementById('rXD').textContent=f(r.x_max,2,'m');
+    document.getElementById('rLD').textContent=`L/${r.ratio_L.toFixed(0)}`;
+    document.getElementById('rTA').textContent=f(r.theta_A*1000,3,'mrad');
+    document.getElementById('rTB').textContent=f(r.theta_B*1000,3,'mrad');
+    document.getElementById('rRho').textContent=f(r.rho_min,2,'m');
+    document.getElementById('ovD').textContent=r.delta_max_mm?.toFixed(3);
+    document.getElementById('ovX').textContent=r.x_max?.toFixed(2);
+    document.getElementById('ovLD').textContent=`L/${r.ratio_L?.toFixed(0)}`;
+    document.getElementById('ovEI').textContent=(r.EI/1000)?.toFixed(2);
+    // Analítico
+    if(r.analitico?.formula){
+        document.getElementById('aFormula').textContent=r.analitico.formula.split('=')[0]?.trim()||'—';
+        document.getElementById('aVal').textContent=r.analitico.formula;
+    }
+    // Verificación
+    const v=r.verif;
+    if(v){
+        document.getElementById('vLblL').textContent=`L/${v.L_L} → ${v.delta_adm_L_mm.toFixed(2)} mm`;
+        document.getElementById('vResL').textContent=v.ok_L?'✅ OK':'❌ EXCEDE';
+        document.getElementById('vRowL').className='verif-row '+(v.ok_L?'ok':'fail');
+        document.getElementById('vLblDL').textContent=`L/${v.L_DL} → ${v.delta_adm_DL_mm.toFixed(2)} mm`;
+        document.getElementById('vResDL').textContent=v.ok_DL?'✅ OK':'❌ EXCEDE';
+        document.getElementById('vRowDL').className='verif-row '+(v.ok_DL?'ok':'fail');
+        document.getElementById('rDCRL').textContent=v.ratio_L.toFixed(3);
+        document.getElementById('rDCRL').className='res-val '+(v.ratio_L<=1?'ok':'fail');
+        document.getElementById('rDCRDL').textContent=v.ratio_DL.toFixed(3);
+        document.getElementById('rDCRDL').className='res-val '+(v.ratio_DL<=1?'ok':'fail');
+        const ok=v.ok_DL;
+        document.getElementById('verifBox').className='verif-box '+(ok?'ok':'fail');
+        document.getElementById('verifTitle').textContent=ok?'✅ FLECHA ADMISIBLE':'❌ FLECHA EXCEDE LÍMITE';
+        document.getElementById('verifTitle').style.color=ok?'var(--green)':'var(--red)';
+        document.getElementById('verifSub').textContent=`δ=${v.delta_mm.toFixed(2)}mm | adm=${v.delta_adm_DL_mm.toFixed(2)}mm (${v.desc})`;
+    }
+}
+
+function renderUI(){
+    const list=document.getElementById('cargas-list');list.innerHTML='';
+    const L=parseFloat(document.getElementById('inp_L').value)||6;
+    cargasUI.forEach(c=>{
+        const el=document.createElement('div');el.className='carga-item';
+        const v=c.tipo==='puntual'?`P=${c.P}kN @${c.a}m`:`q=${c.q}kN/m [${c.a}→${c.b_end}m]`;
+        el.innerHTML=`<span class="carga-vals"><b style="color:var(--accent);font-size:9px">${c.tipo.toUpperCase()}</b><br>${v}</span><button class="carga-del" data-id="${c.id}">✕</button>`;
+        list.appendChild(el);
+    });
+    list.querySelectorAll('.carga-del').forEach(b=>b.addEventListener('click',()=>{cargasUI=cargasUI.filter(c=>c.id!==+b.dataset.id);renderUI();}));
+}
+
+/* Sección toggle */
+document.getElementById('inp_sec').addEventListener('change',function(){
+    ['rect','T','IPE','HEA'].forEach(s=>{const el=document.getElementById(`sec_${s}`);if(el)el.style.display=s===this.value?'block':'none';});
+});
+
+/* Slider */
+document.getElementById('inp_amp').addEventListener('input',function(){
+    document.getElementById('ampVal').textContent=`×${this.value}`;
+    if(window.DD_MODULE?.state?.result){window.DD_MODULE.setParam('escala_visual',+this.value);renderAll();}
+});
+
+document.getElementById('btnAddCarga').addEventListener('click',()=>{
+    const L=parseFloat(document.getElementById('inp_L').value)||6;
+    const tipo=Math.random()>.5?'puntual':'dist';
+    if(tipo==='puntual') cargasUI.push({id:nextId++,tipo:'puntual',P:60,a:L/2});
+    else cargasUI.push({id:nextId++,tipo:'dist',q:12,a:0,b_end:L});
+    renderUI();
+});
+
+document.getElementById('btnCalc').addEventListener('click',calc);
+document.getElementById('btnReset').addEventListener('click',()=>{
+    cargasUI=[{id:1,tipo:'dist',q:15,a:0,b_end:6}];nextId=2;
+    document.getElementById('inp_tipo').value='simple';document.getElementById('inp_L').value='6';
+    document.getElementById('inp_sec').value='rect';document.getElementById('inp_amp').value='50';
+    document.getElementById('ampVal').textContent='×50';
+    ['rect','T','IPE','HEA'].forEach(s=>{const el=document.getElementById(`sec_${s}`);if(el)el.style.display=s==='rect'?'block':'none';});
+    renderUI();calc();
+});
+
+renderUI();initC();setTimeout(calc,200);
+</script>
+</body>
+</html>

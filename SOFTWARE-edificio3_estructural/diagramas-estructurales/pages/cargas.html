@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DC — Diagramas de Carga | IngeLAB 3D</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Bebas+Neue&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg:#080c10;--bg2:#0d1117;--card:#0f1520;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.14);--accent:#ff8c00;--accent2:#00e5ff;--green:#00ff9d;--red:#ff4757;--text:#e8edf5;--text2:#8b95a8;--text3:#3d4758;--mono:'Space Mono',monospace;--display:'Bebas Neue',sans-serif;--orb:'Orbitron',sans-serif;--body:'DM Sans',sans-serif;--r:10px;--r2:6px;}
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+        html,body{height:100%;overflow:hidden;}
+        body{background:var(--bg);color:var(--text);font-family:var(--body);display:flex;flex-direction:column;}
+        .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;border-bottom:1px solid var(--border);background:rgba(8,12,16,.95);backdrop-filter:blur(10px);flex-shrink:0;}
+        .topbar-left{display:flex;align-items:center;gap:14px;}
+        .back-btn{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r2);padding:7px 12px;color:var(--text2);font-family:var(--mono);font-size:11px;cursor:pointer;transition:all .2s;text-decoration:none;}
+        .back-btn:hover{border-color:var(--accent2);color:var(--accent2);}
+        .page-badge{background:rgba(255,140,0,.12);border:1px solid rgba(255,140,0,.3);border-radius:var(--r2);padding:5px 12px;font-family:var(--orb);font-size:11px;color:var(--accent);letter-spacing:.08em;}
+        .page-title{font-family:var(--display);font-size:22px;letter-spacing:.04em;}
+        .topbar-right{display:flex;align-items:center;gap:10px;}
+        .calc-btn{background:var(--accent);border:none;border-radius:var(--r2);padding:8px 18px;color:#000;font-family:var(--mono);font-size:12px;cursor:pointer;transition:all .2s;font-weight:700;}
+        .calc-btn:hover{background:#ffa030;transform:translateY(-1px);box-shadow:0 4px 16px rgba(255,140,0,.4);}
+        .reset-btn{background:transparent;border:1px solid var(--border2);border-radius:var(--r2);padding:8px 14px;color:var(--text2);font-family:var(--mono);font-size:11px;cursor:pointer;transition:all .2s;}
+        .reset-btn:hover{border-color:var(--text2);color:var(--text);}
+        .layout{display:grid;grid-template-columns:280px 1fr 270px;flex:1;overflow:hidden;}
+        .panel-left{background:var(--bg2);border-right:1px solid var(--border);overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;}
+        .panel-left::-webkit-scrollbar{width:4px;}
+        .panel-left::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+        .pgroup{display:flex;flex-direction:column;gap:8px;}
+        .pgroup-title{font-family:var(--orb);font-size:10px;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid var(--border);}
+        .field{display:flex;flex-direction:column;gap:4px;}
+        .field label{font-size:11px;color:var(--text2);font-family:var(--mono);}
+        .field input,.field select{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:7px 10px;color:var(--text);font-family:var(--mono);font-size:12px;transition:border-color .2s;width:100%;}
+        .field input:focus,.field select:focus{outline:none;border-color:var(--accent);}
+        .field-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+        .tipo-tabs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;}
+        .tipo-tab{padding:6px 2px;text-align:center;border-radius:var(--r2);border:1px solid var(--border);font-family:var(--mono);font-size:9px;color:var(--text2);cursor:pointer;transition:all .2s;line-height:1.4;}
+        .tipo-tab.active{background:rgba(255,140,0,.1);border-color:var(--accent);color:var(--accent);}
+        .tipo-tab:hover{border-color:var(--accent2);}
+        .tipo-tab .ti{display:block;font-size:13px;margin-bottom:1px;}
+        .add-btn{background:rgba(255,140,0,.07);border:1px dashed rgba(255,140,0,.25);border-radius:var(--r2);padding:8px;color:var(--accent);font-family:var(--mono);font-size:11px;cursor:pointer;transition:all .2s;text-align:center;}
+        .add-btn:hover{background:rgba(255,140,0,.14);border-color:var(--accent);}
+        .carga-item{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:9px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
+        .carga-info{flex:1;}
+        .carga-tipo-tag{font-family:var(--mono);font-size:9px;color:var(--accent);background:rgba(255,140,0,.1);border:1px solid rgba(255,140,0,.2);padding:1px 5px;border-radius:3px;display:inline-block;margin-bottom:3px;}
+        .carga-vals{font-family:var(--mono);font-size:10px;color:var(--text2);}
+        .carga-del{background:none;border:none;color:var(--text3);cursor:pointer;font-size:13px;padding:3px;transition:color .2s;flex-shrink:0;}
+        .carga-del:hover{color:var(--red);}
+        .col-section{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+        .col-hdr{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;cursor:pointer;background:var(--card);}
+        .col-hdr-title{font-family:var(--orb);font-size:10px;color:var(--text2);letter-spacing:.1em;}
+        .col-arrow{color:var(--text3);font-size:11px;transition:transform .2s;}
+        .col-hdr.open .col-arrow{transform:rotate(180deg);}
+        .col-body{display:none;padding:12px;flex-direction:column;gap:8px;border-top:1px solid var(--border);}
+        .col-body.open{display:flex;}
+        .panel-center{display:flex;flex-direction:column;overflow:hidden;background:var(--bg);}
+        .canvas-area{flex:1;display:flex;flex-direction:column;padding:16px;gap:10px;overflow:hidden;}
+        .canvas-tabs{display:flex;gap:6px;flex-shrink:0;}
+        .canvas-tab{padding:6px 14px;border-radius:var(--r2);border:1px solid var(--border);font-family:var(--mono);font-size:10px;color:var(--text2);cursor:pointer;transition:all .2s;}
+        .canvas-tab.active{background:rgba(255,140,0,.1);border-color:var(--accent);color:var(--accent);}
+        .canvas-tab:hover{border-color:var(--accent2);}
+        .canvas-panel{display:none;flex:1;flex-direction:column;gap:10px;overflow:hidden;}
+        .canvas-panel.active{display:flex;}
+        .canvas-lbl{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:8px;flex-shrink:0;}
+        .canvas-lbl::before{content:'';display:block;width:3px;height:12px;background:var(--accent);border-radius:2px;}
+        .canvas-wrap{flex:1;position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+        .canvas-wrap canvas{display:block;width:100%;height:100%;}
+        .ov{position:absolute;bottom:10px;left:10px;display:flex;gap:6px;flex-wrap:wrap;}
+        .ovb{background:rgba(8,12,16,.85);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-family:var(--mono);font-size:9px;color:var(--text2);}
+        .ovb span{color:var(--accent);font-weight:700;}
+        .panel-right{background:var(--bg2);border-left:1px solid var(--border);overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;}
+        .panel-right::-webkit-scrollbar{width:4px;}
+        .panel-right::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+        .res-group{display:flex;flex-direction:column;gap:6px;}
+        .res-title{font-family:var(--orb);font-size:10px;color:var(--accent2);letter-spacing:.15em;padding-bottom:6px;border-bottom:1px solid var(--border);}
+        .res-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+        .res-key{font-size:11px;color:var(--text2);font-family:var(--mono);flex-shrink:0;}
+        .res-val{font-size:12px;color:var(--text);font-family:var(--mono);font-weight:700;text-align:right;}
+        .res-val.acc{color:var(--accent);}
+        table.rt{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:10px;}
+        table.rt th{color:var(--text3);font-weight:400;padding:3px 5px;border-bottom:1px solid var(--border);text-align:left;}
+        table.rt td{color:var(--text2);padding:3px 5px;border-bottom:1px solid rgba(255,255,255,.03);}
+        table.rt tr.dom td{color:var(--accent);background:rgba(255,140,0,.06);}
+        .dom-box{background:rgba(255,140,0,.08);border:1px solid rgba(255,140,0,.3);border-radius:var(--r);padding:12px;text-align:center;}
+        .dom-title{font-family:var(--orb);font-size:10px;color:var(--accent);margin-bottom:4px;}
+        .dom-nombre{font-family:var(--mono);font-size:12px;color:var(--text);font-weight:700;margin-bottom:4px;}
+        .dom-valor{font-family:var(--mono);font-size:16px;color:var(--accent);font-weight:700;}
+        .teoria-box{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px;}
+        .teoria-title{font-family:var(--orb);font-size:10px;color:var(--text2);letter-spacing:.1em;margin-bottom:8px;}
+        .formula{background:rgba(0,0,0,.4);border:1px solid rgba(255,140,0,.15);border-radius:var(--r2);padding:6px 10px;margin:4px 0;font-family:var(--mono);font-size:11px;color:var(--accent);}
+        .norma-chips{display:flex;flex-wrap:wrap;gap:5px;}
+        .norma-chip{font-family:var(--mono);font-size:9px;padding:3px 7px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:3px;color:var(--text3);}
+        .panel-left,.panel-center,.panel-right{animation:fi .4s ease both;}
+        .panel-center{animation-delay:.05s;}.panel-right{animation-delay:.1s;}
+        @keyframes fi{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+    </style>
+</head>
+<body>
+<div class="topbar">
+    <div class="topbar-left">
+        <a href="../index.html" class="back-btn">← Volver</a>
+        <div class="page-badge">DC</div>
+        <div class="page-title">DIAGRAMAS DE CARGA</div>
+    </div>
+    <div class="topbar-right">
+        <button class="reset-btn" id="btnReset">↺ Reset</button>
+        <button class="calc-btn" id="btnCalc">⚡ Calcular</button>
+    </div>
+</div>
+<div class="layout">
+<!-- IZQUIERDA -->
+<div class="panel-left">
+    <div class="pgroup">
+        <div class="pgroup-title">Longitud de viga</div>
+        <div class="field"><label>L [m]</label><input type="number" id="inp_L" value="6" min="1" max="30" step="0.5"></div>
+    </div>
+    <div class="pgroup">
+        <div class="pgroup-title">Tipo de carga</div>
+        <div class="tipo-tabs">
+            <div class="tipo-tab active" data-tipo="puntual"><span class="ti">↓</span>Puntual</div>
+            <div class="tipo-tab" data-tipo="dist"><span class="ti">▬</span>Distribuida</div>
+            <div class="tipo-tab" data-tipo="triangular"><span class="ti">◭</span>Triangular</div>
+            <div class="tipo-tab" data-tipo="trapecial"><span class="ti">⌂</span>Trapecial</div>
+            <div class="tipo-tab" data-tipo="momento"><span class="ti">↻</span>Momento</div>
+        </div>
+        <div id="frm_puntual">
+            <div class="field-row" style="margin-top:6px">
+                <div class="field"><label>P [kN]</label><input type="number" id="nP" value="80" step="5"></div>
+                <div class="field"><label>a [m]</label><input type="number" id="na" value="3" step="0.1" min="0"></div>
+            </div>
+            <div class="field" style="margin-top:6px"><label>Categoría</label>
+                <select id="ncat"><option value="L">Viva (L)</option><option value="D">Muerta (D)</option><option value="S">Nieve (S)</option></select>
+            </div>
+        </div>
+        <div id="frm_dist" style="display:none">
+            <div class="field-row" style="margin-top:6px">
+                <div class="field"><label>q [kN/m]</label><input type="number" id="nq" value="15" step="1"></div>
+                <div class="field"><label>a [m]</label><input type="number" id="na2" value="0" step="0.1" min="0"></div>
+            </div>
+            <div class="field" style="margin-top:6px"><label>b fin [m]</label><input type="number" id="nb" value="6" step="0.1"></div>
+            <div class="field" style="margin-top:6px"><label>Categoría</label>
+                <select id="ncat2"><option value="D" selected>Muerta (D)</option><option value="L">Viva (L)</option></select>
+            </div>
+        </div>
+        <div id="frm_triangular" style="display:none">
+            <div class="field-row" style="margin-top:6px">
+                <div class="field"><label>q_max [kN/m]</label><input type="number" id="nqt" value="20" step="1"></div>
+                <div class="field"><label>a [m]</label><input type="number" id="nat" value="0" step="0.1" min="0"></div>
+            </div>
+            <div class="field" style="margin-top:6px"><label>b fin [m]</label><input type="number" id="nbt" value="6" step="0.1"></div>
+        </div>
+        <div id="frm_trapecial" style="display:none">
+            <div class="field-row" style="margin-top:6px">
+                <div class="field"><label>q1 [kN/m]</label><input type="number" id="nq1" value="10" step="1"></div>
+                <div class="field"><label>q2 [kN/m]</label><input type="number" id="nq2" value="25" step="1"></div>
+            </div>
+            <div class="field-row" style="margin-top:6px">
+                <div class="field"><label>a [m]</label><input type="number" id="natr" value="0" step="0.1" min="0"></div>
+                <div class="field"><label>b [m]</label><input type="number" id="nbtr" value="6" step="0.1"></div>
+            </div>
+        </div>
+        <div id="frm_momento" style="display:none">
+            <div class="field-row" style="margin-top:6px">
+                <div class="field"><label>M [kN·m]</label><input type="number" id="nM" value="40" step="5"></div>
+                <div class="field"><label>a [m]</label><input type="number" id="nam" value="3" step="0.1" min="0"></div>
+            </div>
+        </div>
+        <div class="add-btn" id="btnAddCarga" style="margin-top:6px">+ Agregar carga</div>
+    </div>
+    <div class="pgroup">
+        <div class="pgroup-title">Cargas activas</div>
+        <div id="cargas-list"></div>
+    </div>
+    <!-- Viento -->
+    <div class="col-section">
+        <div class="col-hdr" id="hdrV"><span class="col-hdr-title">💨 VIENTO — NCh 432</span><span class="col-arrow">▼</span></div>
+        <div class="col-body" id="bodyV">
+            <div class="field-row">
+                <div class="field"><label>V_ref [m/s]</label><input type="number" id="vVr" value="28" step="1"></div>
+                <div class="field"><label>Exposición</label><select id="vExp"><option value="A">A</option><option value="B" selected>B</option><option value="C">C</option></select></div>
+            </div>
+            <div class="field-row">
+                <div class="field"><label>h total [m]</label><input type="number" id="vH" value="12" step="1"></div>
+                <div class="field"><label>b fachada [m]</label><input type="number" id="vB" value="10" step="1"></div>
+            </div>
+            <div class="field"><label>Cp barlovento</label><input type="number" id="vCp" value="0.8" step="0.05" min="0.1" max="2"></div>
+        </div>
+    </div>
+    <!-- Sísmico -->
+    <div class="col-section">
+        <div class="col-hdr" id="hdrS"><span class="col-hdr-title">🌊 SÍSMICO — NCh 433</span><span class="col-arrow">▼</span></div>
+        <div class="col-body" id="bodyS">
+            <div class="field-row">
+                <div class="field"><label>Zona sísmica</label><select id="sZona"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div>
+                <div class="field"><label>Tipo suelo</label><select id="sSuelo"><option>A</option><option selected>B</option><option>C</option><option>D</option></select></div>
+            </div>
+            <div class="field-row">
+                <div class="field"><label>N° pisos</label><input type="number" id="sPisos" value="5" min="1" max="30"></div>
+                <div class="field"><label>W/piso [kN]</label><input type="number" id="sW" value="500" step="50"></div>
+            </div>
+            <div class="field-row">
+                <div class="field"><label>Z</label><input type="number" id="sZ" value="0.30" step="0.05"></div>
+                <div class="field"><label>Importancia I</label><input type="number" id="sI" value="1.0" step="0.1"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CENTRO -->
+<div class="panel-center">
+    <div class="canvas-area">
+        <div class="canvas-tabs">
+            <div class="canvas-tab active" data-panel="pCargas">📐 Cargas sobre viga</div>
+            <div class="canvas-tab" data-panel="pViento">💨 Viento NCh 432</div>
+            <div class="canvas-tab" data-panel="pSismo">🌊 Sísmico NCh 433</div>
+        </div>
+        <div class="canvas-panel active" id="pCargas">
+            <div class="canvas-lbl">Diagrama de cargas — D + L + M</div>
+            <div class="canvas-wrap" id="wMain">
+                <canvas id="cMain"></canvas>
+                <div class="ov">
+                    <div class="ovb">R = <span id="ovR">—</span> kN</div>
+                    <div class="ovb">xR = <span id="ovXR">—</span> m</div>
+                    <div class="ovb">Dom. = <span id="ovDom">—</span> kN</div>
+                </div>
+            </div>
+        </div>
+        <div class="canvas-panel" id="pViento">
+            <div class="canvas-lbl">Perfil de presión p(z) — NCh 432</div>
+            <div class="canvas-wrap" id="wViento">
+                <canvas id="cViento"></canvas>
+                <div class="ov">
+                    <div class="ovb">R_W = <span id="ovRW">—</span> kN</div>
+                    <div class="ovb">z_R = <span id="ovZR">—</span> m</div>
+                </div>
+            </div>
+        </div>
+        <div class="canvas-panel" id="pSismo">
+            <div class="canvas-lbl">Fuerzas sísmicas por piso — NCh 433</div>
+            <div class="canvas-wrap" id="wSismo">
+                <canvas id="cSismo"></canvas>
+                <div class="ov">
+                    <div class="ovb">V_basal = <span id="ovV">—</span> kN</div>
+                    <div class="ovb">T = <span id="ovT">—</span> s</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- DERECHA -->
+<div class="panel-right">
+    <div class="res-group">
+        <div class="res-title">Resultantes por carga</div>
+        <table class="rt"><thead><tr><th>Label</th><th>Tipo</th><th>R [kN]</th><th>xR [m]</th></tr></thead><tbody id="tbRes"></tbody></table>
+    </div>
+    <div class="res-group">
+        <div class="res-title">Resultante total</div>
+        <div class="res-row"><span class="res-key">R total</span><span class="res-val acc" id="rR">—</span></div>
+        <div class="res-row"><span class="res-key">xR total</span><span class="res-val" id="rXR">—</span></div>
+    </div>
+    <div class="res-group">
+        <div class="res-title">Viento NCh 432</div>
+        <div class="res-row"><span class="res-key">q_ref</span><span class="res-val" id="rQref">—</span></div>
+        <div class="res-row"><span class="res-key">R_W</span><span class="res-val" id="rRW">—</span></div>
+        <div class="res-row"><span class="res-key">z_R</span><span class="res-val" id="rZR">—</span></div>
+    </div>
+    <div class="res-group">
+        <div class="res-title">Sísmico NCh 433</div>
+        <div class="res-row"><span class="res-key">T</span><span class="res-val" id="rT">—</span></div>
+        <div class="res-row"><span class="res-key">Sa</span><span class="res-val" id="rSa">—</span></div>
+        <div class="res-row"><span class="res-key">V basal</span><span class="res-val" id="rV">—</span></div>
+        <div class="res-row"><span class="res-key">Ft (techo)</span><span class="res-val" id="rFt">—</span></div>
+    </div>
+    <div class="res-group">
+        <div class="res-title">Combinaciones NCh 1537 / ASCE 7</div>
+        <div id="tbCombis"></div>
+    </div>
+    <div class="dom-box">
+        <div class="dom-title">⚠️ COMBINACIÓN DOMINANTE</div>
+        <div class="dom-nombre" id="domNom">—</div>
+        <div class="dom-valor" id="domVal">—</div>
+    </div>
+    <div class="teoria-box">
+        <div class="teoria-title">RESULTANTES POR TIPO</div>
+        <div class="formula">R_punt = P  @  xR = a</div>
+        <div class="formula">R_dist = q·L  @  xR = L/2</div>
+        <div class="formula">R_triang = ½·q·L  @  xR = 2L/3</div>
+        <div class="formula">V = Sa·W/g  (NCh 433)</div>
+        <div class="formula">1.2D + 1.6L  (dominante habitual)</div>
+    </div>
+    <div class="res-group">
+        <div class="res-title">Normativa</div>
+        <div class="norma-chips">
+            <span class="norma-chip">NCh 1537</span><span class="norma-chip">NCh 432</span>
+            <span class="norma-chip">NCh 433</span><span class="norma-chip">ASCE 7-22</span>
+        </div>
+    </div>
+</div>
+</div>
+<script src="../js/diag_carga.js"></script>
+<script>
+'use strict';
+let tipoActivo='puntual',nextId=4;
+let cargasUI=[
+    {id:1,tipo:'puntual',P:80,a:2,cat:'L',label:'P₁'},
+    {id:2,tipo:'dist',q:15,a:0,b_end:6,cat:'D',label:'q₁'},
+    {id:3,tipo:'triangular',q:25,a:3,b_end:6,cat:'L',label:'q₂'},
+];
+let cM,cV,cS;
+
+function initC(){
+    cM=document.getElementById('cMain');
+    cV=document.getElementById('cViento');
+    cS=document.getElementById('cSismo');
+    const ro=new ResizeObserver(()=>{
+        [['wMain','cMain'],['wViento','cViento'],['wSismo','cSismo']].forEach(([wId,cId])=>{
+            const w=document.getElementById(wId),c=document.getElementById(cId);
+            c.width=w.clientWidth;c.height=w.clientHeight;
+        });
+        if(window.DC_MODULE?.state?.result) renderAll();
+    });
+    ['wMain','wViento','wSismo'].forEach(id=>ro.observe(document.getElementById(id)));
+    setTimeout(()=>{[['wMain','cMain'],['wViento','cViento'],['wSismo','cSismo']].forEach(([wId,cId])=>{const w=document.getElementById(wId),c=document.getElementById(cId);c.width=w.clientWidth;c.height=w.clientHeight;});},100);
+}
+
+function sync(){
+    const m=window.DC_MODULE;
+    m.setParam('L',parseFloat(document.getElementById('inp_L').value)||6);
+    m.state.viento={V_ref:+document.getElementById('vVr').value||28,expo:document.getElementById('vExp').value,h_total:+document.getElementById('vH').value||12,b:+document.getElementById('vB').value||10,Cp:+document.getElementById('vCp').value||0.8};
+    m.state.sismico={zona:+document.getElementById('sZona').value||2,suelo:document.getElementById('sSuelo').value,n_pisos:+document.getElementById('sPisos').value||5,W_piso:+document.getElementById('sW').value||500,Z:+document.getElementById('sZ').value||0.30,I:+document.getElementById('sI').value||1.0,Ct:0.09};
+    m.clearCargas();
+    cargasUI.forEach(c=>m.addCarga({...c}));
+}
+
+function calc(){sync();const r=window.DC_MODULE.calcular();renderAll(r);updateRes(r);}
+
+function renderAll(r){
+    r=r||window.DC_MODULE.state.result;if(!r)return;
+    window.DC_MODULE.draw(cM,r);
+    window.DC_MODULE.drawViento(cV,r.viento);
+    window.DC_MODULE.drawSismico(cS,r.sismico);
+}
+
+function updateRes(r){
+    if(!r)return;
+    const f=(v,d=2,u='')=>v!=null?`${v.toFixed(d)} ${u}`.trim():'—';
+    document.getElementById('tbRes').innerHTML=r.resultantes.map(c=>`<tr><td>${c.label||'—'}</td><td style="color:var(--accent)">${c.tipo}</td><td>${c.R?.toFixed(2)||'—'}</td><td>${c.xR?.toFixed(2)||'—'}</td></tr>`).join('');
+    document.getElementById('rR').textContent=f(r.R_total,2,'kN');
+    document.getElementById('rXR').textContent=f(r.xR_total,2,'m');
+    document.getElementById('ovR').textContent=r.R_total?.toFixed(1);
+    document.getElementById('ovXR').textContent=r.xR_total?.toFixed(2);
+    document.getElementById('rQref').textContent=f(r.viento?.q_ref*1000,3,'kPa');
+    document.getElementById('rRW').textContent=f(r.viento?.R_total,2,'kN');
+    document.getElementById('rZR').textContent=f(r.viento?.z_R,2,'m');
+    document.getElementById('ovRW').textContent=r.viento?.R_total?.toFixed(1);
+    document.getElementById('ovZR').textContent=r.viento?.z_R?.toFixed(1);
+    document.getElementById('rT').textContent=f(r.sismico?.T,3,'s');
+    document.getElementById('rSa').textContent=f(r.sismico?.Sa,3,'m/s²');
+    document.getElementById('rV').textContent=f(r.sismico?.V,2,'kN');
+    document.getElementById('rFt').textContent=f(r.sismico?.Ft,2,'kN');
+    document.getElementById('ovV').textContent=r.sismico?.V?.toFixed(1);
+    document.getElementById('ovT').textContent=r.sismico?.T?.toFixed(3);
+    document.getElementById('tbCombis').innerHTML=window.DC_MODULE.generarTablaHTML(r.combinaciones);
+    const dom=r.combinaciones?.find(c=>c.dominante);
+    if(dom){document.getElementById('domNom').textContent=dom.nombre;document.getElementById('domVal').textContent=`${dom.valor.toFixed(2)} kN`;document.getElementById('ovDom').textContent=dom.valor.toFixed(1);}
+}
+
+function renderUI(){
+    const list=document.getElementById('cargas-list');list.innerHTML='';
+    cargasUI.forEach(c=>{
+        const el=document.createElement('div');el.className='carga-item';
+        let v='';
+        if(c.tipo==='puntual') v=`P=${c.P}kN @${c.a}m [${c.cat}]`;
+        else if(c.tipo==='momento') v=`M=${c.M}kN·m @${c.a}m`;
+        else if(c.tipo==='trapecial') v=`q=${c.q1}-${c.q2}kN/m [${c.a}→${c.b_end}m]`;
+        else v=`q=${c.q}kN/m [${c.a}→${c.b_end}m] [${c.cat||'D'}]`;
+        el.innerHTML=`<div class="carga-info"><div class="carga-tipo-tag">${c.label||c.tipo}</div><div class="carga-vals">${v}</div></div><button class="carga-del" data-id="${c.id}">✕</button>`;
+        list.appendChild(el);
+    });
+    list.querySelectorAll('.carga-del').forEach(b=>b.addEventListener('click',()=>{cargasUI=cargasUI.filter(c=>c.id!==+b.dataset.id);renderUI();}));
+}
+
+document.querySelectorAll('.tipo-tab').forEach(t=>t.addEventListener('click',()=>{
+    document.querySelectorAll('.tipo-tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');tipoActivo=t.dataset.tipo;
+    ['puntual','dist','triangular','trapecial','momento'].forEach(tp=>{ const el=document.getElementById(`frm_${tp}`);if(el)el.style.display=tp===tipoActivo?'block':'none'; });
+}));
+
+document.getElementById('btnAddCarga').addEventListener('click',()=>{
+    const L=parseFloat(document.getElementById('inp_L').value)||6;
+    let n={id:nextId++};
+    if(tipoActivo==='puntual') n={...n,tipo:'puntual',P:+document.getElementById('nP').value||50,a:+document.getElementById('na').value||L/2,cat:document.getElementById('ncat').value,label:`P${nextId}`};
+    else if(tipoActivo==='dist') n={...n,tipo:'dist',q:+document.getElementById('nq').value||15,a:+document.getElementById('na2').value||0,b_end:+document.getElementById('nb').value||L,cat:document.getElementById('ncat2').value,label:`q${nextId}`};
+    else if(tipoActivo==='triangular') n={...n,tipo:'triangular',q:+document.getElementById('nqt').value||20,a:+document.getElementById('nat').value||0,b_end:+document.getElementById('nbt').value||L,cat:'L',label:`qt${nextId}`};
+    else if(tipoActivo==='trapecial') n={...n,tipo:'trapecial',q1:+document.getElementById('nq1').value||10,q2:+document.getElementById('nq2').value||25,a:+document.getElementById('natr').value||0,b_end:+document.getElementById('nbtr').value||L,cat:'D',label:`qtr${nextId}`};
+    else if(tipoActivo==='momento') n={...n,tipo:'momento',M:+document.getElementById('nM').value||40,a:+document.getElementById('nam').value||L/2,label:`M${nextId}`};
+    cargasUI.push(n);renderUI();
+});
+
+document.querySelectorAll('.canvas-tab').forEach(t=>t.addEventListener('click',()=>{
+    document.querySelectorAll('.canvas-tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.canvas-panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');document.getElementById(t.dataset.panel).classList.add('active');
+    setTimeout(()=>{if(window.DC_MODULE?.state?.result)renderAll();},50);
+}));
+
+['V','S'].forEach(k=>{
+    document.getElementById(`hdr${k}`).addEventListener('click',function(){
+        this.classList.toggle('open');document.getElementById(`body${k}`).classList.toggle('open');
+    });
+});
+
+document.getElementById('btnCalc').addEventListener('click',calc);
+document.getElementById('btnReset').addEventListener('click',()=>{
+    cargasUI=[{id:1,tipo:'puntual',P:80,a:2,cat:'L',label:'P₁'},{id:2,tipo:'dist',q:15,a:0,b_end:6,cat:'D',label:'q₁'},{id:3,tipo:'triangular',q:25,a:3,b_end:6,cat:'L',label:'q₂'}];
+    nextId=4;renderUI();calc();
+});
+
+renderUI();initC();setTimeout(calc,200);
+</script>
+</body>
+</html>

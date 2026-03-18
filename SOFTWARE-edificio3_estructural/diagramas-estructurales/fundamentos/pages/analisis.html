@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conceptos de Análisis | Fundamentos Estructurales</title>
+    <link rel="stylesheet" href="../css/fundamentos.css">
+    <style>
+        :root { --accent: var(--analisis); }
+        .concepto-num { color: var(--analisis) !important; }
+        .formula-main { color: var(--analisis) !important; }
+        .formula-block::before { background: var(--analisis) !important; }
+        .sidebar-item.active { border-left-color: var(--analisis) !important; }
+        .sidebar-progress-fill { background: var(--analisis) !important; }
+        .topbar-badge { color:#c084fc !important; border-color:rgba(192,132,252,.3) !important; background:rgba(192,132,252,.08) !important; }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="topbar-left">
+        <a href="../index.html" class="back-btn">← Fundamentos</a>
+        <div class="topbar-badge">CAT 04</div>
+        <div class="topbar-title">CONCEPTOS DE ANÁLISIS</div>
+    </div>
+    <div class="topbar-right">
+        <span style="font-family:var(--mono);font-size:10px;color:var(--text3)">14 conceptos</span>
+    </div>
+</div>
+
+<div class="page-layout">
+    <nav class="sidebar">
+        <div class="sidebar-title">Análisis Estructural</div>
+        <div class="sidebar-progress"><div class="sidebar-progress-fill" style="width:7%"></div></div>
+        <div class="sidebar-item active"><span class="item-num">01</span><span class="item-dot"></span>Deformación</div>
+        <div class="sidebar-item"><span class="item-num">02</span><span class="item-dot"></span>Desplazamiento</div>
+        <div class="sidebar-item"><span class="item-num">03</span><span class="item-dot"></span>Rotación</div>
+        <div class="sidebar-item"><span class="item-num">04</span><span class="item-dot"></span>Rigidez</div>
+        <div class="sidebar-item"><span class="item-num">05</span><span class="item-dot"></span>Ductilidad</div>
+        <div class="sidebar-item"><span class="item-num">06</span><span class="item-dot"></span>Resistencia</div>
+        <div class="sidebar-item"><span class="item-num">07</span><span class="item-dot"></span>Estabilidad</div>
+        <div class="sidebar-item"><span class="item-num">08</span><span class="item-dot"></span>Pandeo</div>
+        <div class="sidebar-item"><span class="item-num">09</span><span class="item-dot"></span>Fluencia</div>
+        <div class="sidebar-item"><span class="item-num">10</span><span class="item-dot"></span>Fatiga</div>
+        <div class="sidebar-item"><span class="item-num">11</span><span class="item-dot"></span>Elasticidad</div>
+        <div class="sidebar-item"><span class="item-num">12</span><span class="item-dot"></span>Plasticidad</div>
+        <div class="sidebar-item"><span class="item-num">13</span><span class="item-dot"></span>Módulo de Elasticidad</div>
+        <div class="sidebar-item"><span class="item-num">14</span><span class="item-dot"></span>Factor de Seguridad</div>
+    </nav>
+
+    <div class="main-content">
+
+        <!-- 01 DEFORMACIÓN -->
+        <div class="concepto active" id="c01">
+            <div class="concepto-header">
+                <div class="concepto-num">01</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Conceptos de Análisis</div>
+                    <div class="concepto-titulo">DEFORMACIÓN</div>
+                    <div class="concepto-subtitulo">Strain ε — Cambio de forma relativo al tamaño original</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>deformación unitaria</strong> (o strain) es el cambio de longitud por unidad de longitud original. Es adimensional y describe cuánto se ha deformado el material localmente. Diferente del <em>desplazamiento</em> que es el movimiento absoluto de un punto.</p>
+            <div class="formula-block">
+                <div class="formula-label">DEFORMACIÓN UNITARIA NORMAL Y CORTANTE</div>
+                <div class="formula-main">ε = ΔL / L₀    γ = Δu / h</div>
+                <div class="formula-vars">
+                    <span class="formula-var">ε</span> = deformación unitaria normal [adimensional]<br>
+                    <span class="formula-var">ΔL</span> = cambio de longitud [m]<br>
+                    <span class="formula-var">L₀</span> = longitud original [m]<br>
+                    <span class="formula-var">γ</span> = deformación angular (cortante) [rad]<br>
+                    Ley de Hooke: <span class="formula-var">σ = E · ε</span>  (tracción/compresión)
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">TIPO</div><div class="prop-val">Normal ε / Angular γ</div></div>
+                <div class="prop-chip"><div class="prop-label">UNIDAD</div><div class="prop-val">Adimensional [m/m]</div></div>
+                <div class="prop-chip"><div class="prop-label">ELÁSTICA</div><div class="prop-val">Recuperable</div></div>
+                <div class="prop-chip"><div class="prop-label">PLÁSTICA</div><div class="prop-val">Permanente</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev" style="display:none"></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Desplazamiento</span></button>
+            </div>
+        </div>
+
+        <!-- 02 DESPLAZAMIENTO -->
+        <div class="concepto" id="c02">
+            <div class="concepto-header">
+                <div class="concepto-num">02</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Conceptos de Análisis</div>
+                    <div class="concepto-titulo">DESPLAZAMIENTO</div>
+                    <div class="concepto-subtitulo">Displacement δ — Movimiento absoluto de un punto</div>
+                </div>
+            </div>
+            <p class="concepto-desc">El <strong>desplazamiento</strong> es el movimiento de un punto de la estructura desde su posición inicial a la deformada. Puede ser vertical (flecha), horizontal (deriva de entrepiso) o axial. Los límites de desplazamiento definen los <em>Estados Límites de Servicio</em> (ELS).</p>
+            <div class="formula-block">
+                <div class="formula-label">FLECHA MÁXIMA — VIGA SIMPLE CON CARGA UNIFORME</div>
+                <div class="formula-main">δ_max = 5·q·L⁴ / (384·E·I)</div>
+                <div class="formula-vars">
+                    <span class="formula-var">δ_max</span> = flecha máxima en el centro de la viga [m]<br>
+                    <span class="formula-var">q</span> = carga distribuida [kN/m]<br>
+                    <span class="formula-var">L</span> = luz de la viga [m]<br>
+                    <span class="formula-var">E·I</span> = rigidez flexural [kN·m²]<br>
+                    Límite de servicio: <span class="formula-var">δ ≤ L/300</span> a <span class="formula-var">L/500</span>
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Deformación</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Rotación</span></button>
+            </div>
+        </div>
+
+        <!-- 03 ROTACIÓN -->
+        <div class="concepto" id="c03">
+            <div class="concepto-header">
+                <div class="concepto-num">03</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Conceptos de Análisis</div>
+                    <div class="concepto-titulo">ROTACIÓN</div>
+                    <div class="concepto-subtitulo">Rotation θ — Giro de la sección transversal</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>rotación</strong> de una sección es el ángulo que gira la sección transversal con respecto a su posición original. Es la derivada del desplazamiento vertical (pendiente de la elástica). En análisis sísmico, la <em>rotación de entrepiso</em> mide la distorsión angular entre pisos.</p>
+            <div class="formula-block">
+                <div class="formula-label">ROTACIÓN Y DERIVA DE ENTREPISO</div>
+                <div class="formula-main">θ = dδ/dx    Δ/h ≤ θ_adm</div>
+                <div class="formula-vars">
+                    <span class="formula-var">θ</span> = ángulo de rotación de la sección [rad]<br>
+                    <span class="formula-var">Δ</span> = desplazamiento horizontal relativo entre pisos [m]<br>
+                    <span class="formula-var">h</span> = altura del entrepiso [m]<br>
+                    NCh 433: <span class="formula-var">Δ/h ≤ 0.002</span> (deriva admisible)
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Desplazamiento</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Rigidez</span></button>
+            </div>
+        </div>
+
+        <!-- 04 RIGIDEZ -->
+        <div class="concepto" id="c04">
+            <div class="concepto-header">
+                <div class="concepto-num">04</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Conceptos de Análisis</div>
+                    <div class="concepto-titulo">RIGIDEZ</div>
+                    <div class="concepto-subtitulo">Stiffness k — Relación entre fuerza y deformación</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>rigidez</strong> es la relación entre la fuerza aplicada y el desplazamiento producido. Un elemento rígido se deforma poco bajo carga. La rigidez determina la distribución de fuerzas en sistemas hiperestáticos: los elementos más rígidos atraen más carga.</p>
+            <div class="formula-block">
+                <div class="formula-label">RIGIDEZ AXIAL, FLEXURAL Y LATERAL</div>
+                <div class="formula-main">k_axial = EA/L    k_flex = 48EI/L³    k_lat = 12EI/h³</div>
+                <div class="formula-vars">
+                    <span class="formula-var">k_axial</span> = rigidez axial de una barra [kN/m]<br>
+                    <span class="formula-var">k_flex</span> = rigidez al centro de una viga biapoyada [kN/m]<br>
+                    <span class="formula-var">k_lat</span> = rigidez lateral de una columna biempotrada [kN/m]<br>
+                    <span class="formula-var">EI</span> = rigidez flexural [kN·m²] · <span class="formula-var">EA</span> = rigidez axial [kN]
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Rotación</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Ductilidad</span></button>
+            </div>
+        </div>
+
+        <!-- 05 DUCTILIDAD -->
+        <div class="concepto" id="c05">
+            <div class="concepto-header">
+                <div class="concepto-num">05</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Conceptos de Análisis</div>
+                    <div class="concepto-titulo">DUCTILIDAD</div>
+                    <div class="concepto-subtitulo">Ductility μ — Capacidad de deformarse sin perder resistencia</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>ductilidad</strong> es la capacidad de una estructura o material de deformarse significativamente más allá del límite elástico sin fracturarse y sin perder resistencia. Es fundamental en diseño sísmico: una estructura dúctil disipa energía del sismo mediante deformaciones plásticas controladas.</p>
+            <div class="formula-block">
+                <div class="formula-label">FACTOR DE DUCTILIDAD</div>
+                <div class="formula-main">μ = δ_u / δ_y    R = μ · Ω₀</div>
+                <div class="formula-vars">
+                    <span class="formula-var">μ</span> = factor de ductilidad de desplazamiento<br>
+                    <span class="formula-var">δ_u</span> = desplazamiento último (colapso) [m]<br>
+                    <span class="formula-var">δ_y</span> = desplazamiento de fluencia [m]<br>
+                    <span class="formula-var">R</span> = factor de reducción sísmica (NCh 433)<br>
+                    Mayor μ → mayor capacidad de disipar energía sísmica
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">ACERO</div><div class="prop-val">Alta ductilidad</div></div>
+                <div class="prop-chip"><div class="prop-label">H.A.</div><div class="prop-val">Media (con detallado)</div></div>
+                <div class="prop-chip"><div class="prop-label">HORMIGÓN SIMPLE</div><div class="prop-val">Frágil (μ ≈ 1)</div></div>
+                <div class="prop-chip"><div class="prop-label">R sísmico</div><div class="prop-val">3 – 8 (NCh 433)</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Rigidez</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Resistencia</span></button>
+            </div>
+        </div>
+
+        <!-- 06 RESISTENCIA -->
+        <div class="concepto" id="c06">
+            <div class="concepto-header">
+                <div class="concepto-num">06</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Conceptos de Análisis</div>
+                    <div class="concepto-titulo">RESISTENCIA</div>
+                    <div class="concepto-subtitulo">Strength — Capacidad máxima de un elemento ante solicitaciones</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>resistencia</strong> es la capacidad máxima de un elemento o sección para soportar cargas antes de fallar. En diseño por resistencia última (LRFD), la resistencia nominal reducida por un factor de seguridad debe superar la demanda mayorada: <em>φRn ≥ Ru</em>.</p>
+            <div class="formula-block">
+                <div class="formula-label">FILOSOFÍA LRFD (Load Resistance Factor Design)</div>
+                <div class="formula-main">φ · Rn ≥ Σ γᵢ · Qᵢ</div>
+                <div class="formula-vars">
+                    <span class="formula-var">φ</span> = factor de reducción de resistencia (0.65 – 0.90)<br>
+                    <span class="formula-var">Rn</span> = resistencia nominal del elemento<br>
+                    <span class="formula-var">γᵢ</span> = factores de carga (1.2D, 1.6L, etc.)<br>
+                    <span class="formula-var">Qᵢ</span> = efecto de las cargas nominales<br>
+                    DCR = demanda / capacidad = Ru / (φ·Rn) ≤ 1.0
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Ductilidad</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Estabilidad</span></button>
+            </div>
+        </div>
+
+        <!-- 07 ESTABILIDAD -->
+        <div class="concepto" id="c07">
+            <div class="concepto-header">
+                <div class="concepto-num">07</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Conceptos de Análisis</div>
+                    <div class="concepto-titulo">ESTABILIDAD</div>
+                    <div class="concepto-subtitulo">Stability — Capacidad de retornar al equilibrio tras una perturbación</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>estabilidad</strong> es la capacidad de una estructura de recuperar su posición de equilibrio tras una perturbación. Una estructura es estable si al desplazarse levemente, las fuerzas tienden a devolverla. El pandeo es la pérdida de estabilidad por compresión.</p>
+            <div class="formula-block">
+                <div class="formula-label">CONDICIÓN DE ESTABILIDAD</div>
+                <div class="formula-main">P &lt; P_cr = π²·E·I / L_ef²  (Euler)</div>
+                <div class="formula-vars">
+                    La estructura es estable mientras la carga P sea menor que la carga crítica P_cr.<br>
+                    <span class="formula-var">E·I</span> = rigidez flexural [kN·m²]<br>
+                    <span class="formula-var">L_ef</span> = longitud efectiva de pandeo [m]<br>
+                    Tipos: equilibrio estable / inestable / indiferente
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Resistencia</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Pandeo</span></button>
+            </div>
+        </div>
+
+        <!-- 08 PANDEO -->
+        <div class="concepto" id="c08">
+            <div class="concepto-header">
+                <div class="concepto-num">08</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Conceptos de Análisis</div>
+                    <div class="concepto-titulo">PANDEO</div>
+                    <div class="concepto-subtitulo">Buckling — Fallo súbito de elementos esbeltos a compresión</div>
+                </div>
+            </div>
+            <p class="concepto-desc">El <strong>pandeo</strong> es la pérdida brusca de estabilidad de un elemento esbelto sometido a compresión axial. Al alcanzar la carga crítica de Euler, el elemento colapsa lateralmente de manera repentina y catastrófica. Es el modo de fallo más peligroso por su naturaleza impredecible.</p>
+            <div class="formula-block">
+                <div class="formula-label">CARGA CRÍTICA DE EULER</div>
+                <div class="formula-main">N_cr = π² · E · I / L_ef²    λ = L_ef / r</div>
+                <div class="formula-vars">
+                    <span class="formula-var">N_cr</span> = carga crítica de pandeo [kN]<br>
+                    <span class="formula-var">E·I</span> = rigidez flexural [kN·m²]<br>
+                    <span class="formula-var">L_ef = β·L</span> = longitud efectiva (β: 0.5 biempotr. / 2.0 voladizo)<br>
+                    <span class="formula-var">λ = L_ef/r</span> = esbeltez mecánica (mayor λ → mayor riesgo)
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">β biempotrado</div><div class="prop-val">0.5</div></div>
+                <div class="prop-chip"><div class="prop-label">β art-art</div><div class="prop-val">1.0</div></div>
+                <div class="prop-chip"><div class="prop-label">β voladizo</div><div class="prop-val">2.0</div></div>
+                <div class="prop-chip"><div class="prop-label">λ_máx acero</div><div class="prop-val">200 (AISC)</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Estabilidad</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Fluencia</span></button>
+            </div>
+        </div>
+
+        <!-- 09 FLUENCIA -->
+        <div class="concepto" id="c09">
+            <div class="concepto-header">
+                <div class="concepto-num">09</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Conceptos de Análisis</div>
+                    <div class="concepto-titulo">FLUENCIA</div>
+                    <div class="concepto-subtitulo">Yielding — Límite entre comportamiento elástico y plástico</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>fluencia</strong> es el fenómeno por el cual el material comienza a deformarse plásticamente sin aumento de tensión, al superar el límite elástico (fy). En acero existe una meseta de fluencia clara. En hormigón el comportamiento es no lineal desde el principio.</p>
+            <div class="formula-block">
+                <div class="formula-label">TENSIÓN DE FLUENCIA Y PLASTIFICACIÓN</div>
+                <div class="formula-main">σ ≥ fy → deformación plástica irreversible</div>
+                <div class="formula-vars">
+                    <span class="formula-var">fy</span> = tensión de fluencia del acero [MPa]<br>
+                    Acero A630-420H (Chile): <span class="formula-var">fy = 420 MPa</span><br>
+                    Acero A36: <span class="formula-var">fy = 250 MPa</span><br>
+                    Deformación de fluencia: <span class="formula-var">εy = fy/E ≈ 0.002</span> (0.2%)<br>
+                    Post-fluencia: endurecimiento por deformación hasta fu (rotura)
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Pandeo</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Fatiga</span></button>
+            </div>
+        </div>
+
+        <!-- 10 FATIGA -->
+        <div class="concepto" id="c10">
+            <div class="concepto-header">
+                <div class="concepto-num">10</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Conceptos de Análisis</div>
+                    <div class="concepto-titulo">FATIGA</div>
+                    <div class="concepto-subtitulo">Fatigue — Rotura por cargas cíclicas de baja amplitud</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>fatiga</strong> es el fallo del material bajo cargas repetidas de amplitud menor a su resistencia estática. Las fisuras se inician en concentradores de tensión y crecen ciclo a ciclo hasta la fractura. Crítica en puentes, estructuras offshore y maquinaria.</p>
+            <div class="formula-block">
+                <div class="formula-label">CURVA S-N (WÖHLER)</div>
+                <div class="formula-main">σ^m · N = C    (log σ vs log N es lineal)</div>
+                <div class="formula-vars">
+                    <span class="formula-var">σ</span> = amplitud de tensión [MPa]<br>
+                    <span class="formula-var">N</span> = número de ciclos hasta la rotura<br>
+                    <span class="formula-var">m, C</span> = parámetros del material (curva S-N)<br>
+                    Límite de fatiga (acero): tensión por debajo de la cual N → ∞<br>
+                    Regla de Miner: <span class="formula-var">Σ(ni/Ni) ≤ 1.0</span>
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Fluencia</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Elasticidad</span></button>
+            </div>
+        </div>
+
+        <!-- 11 ELASTICIDAD -->
+        <div class="concepto" id="c11">
+            <div class="concepto-header">
+                <div class="concepto-num">11</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Conceptos de Análisis</div>
+                    <div class="concepto-titulo">ELASTICIDAD</div>
+                    <div class="concepto-subtitulo">Elasticity — Capacidad de recuperar la forma original al retirar la carga</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>elasticidad</strong> es la propiedad del material de recuperar completamente su forma y dimensiones originales cuando se retira la carga. En el rango elástico, tensión y deformación son proporcionales (Ley de Hooke). La mayoría de los análisis estructurales asumen comportamiento elástico lineal.</p>
+            <div class="formula-block">
+                <div class="formula-label">LEY DE HOOKE (RÉGIMEN ELÁSTICO LINEAL)</div>
+                <div class="formula-main">σ = E · ε    τ = G · γ    G = E / [2(1+ν)]</div>
+                <div class="formula-vars">
+                    <span class="formula-var">E</span> = módulo de Young o elasticidad [GPa]<br>
+                    <span class="formula-var">G</span> = módulo de corte [GPa]<br>
+                    <span class="formula-var">ν</span> = coeficiente de Poisson<br>
+                    En el rango elástico: al retirar la carga, σ y ε vuelven a cero por el mismo camino.
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Fatiga</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Plasticidad</span></button>
+            </div>
+        </div>
+
+        <!-- 12 PLASTICIDAD -->
+        <div class="concepto" id="c12">
+            <div class="concepto-header">
+                <div class="concepto-num">12</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Conceptos de Análisis</div>
+                    <div class="concepto-titulo">PLASTICIDAD</div>
+                    <div class="concepto-subtitulo">Plasticity — Deformación permanente más allá del límite elástico</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>plasticidad</strong> es la capacidad del material de deformarse permanentemente sin fracturarse, más allá del límite elástico. El análisis plástico de estructuras aprovecha esta capacidad para redistribuir esfuerzos y obtener una reserva de resistencia más allá del límite elástico.</p>
+            <div class="formula-block">
+                <div class="formula-label">MOMENTO PLÁSTICO Y FACTOR DE FORMA</div>
+                <div class="formula-main">Mp = fy · Zp    f = Mp/Me = Zp/W</div>
+                <div class="formula-vars">
+                    <span class="formula-var">Mp</span> = momento plástico (toda la sección plastificada) [kN·m]<br>
+                    <span class="formula-var">Zp</span> = módulo plástico de la sección [m³]<br>
+                    <span class="formula-var">Me = fy·W</span> = momento de primera fluencia [kN·m]<br>
+                    <span class="formula-var">f</span> = factor de forma (rectangular: f = 1.5 · acero IPN: f ≈ 1.12–1.15)
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Elasticidad</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Módulo de Elasticidad</span></button>
+            </div>
+        </div>
+
+        <!-- 13 MÓDULO DE ELASTICIDAD -->
+        <div class="concepto" id="c13">
+            <div class="concepto-header">
+                <div class="concepto-num">13</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Conceptos de Análisis</div>
+                    <div class="concepto-titulo">MÓDULO DE ELASTICIDAD</div>
+                    <div class="concepto-subtitulo">Young's Modulus E — Rigidez intrínseca del material</div>
+                </div>
+            </div>
+            <p class="concepto-desc">El <strong>módulo de elasticidad</strong> (o módulo de Young, E) es la constante de proporcionalidad entre tensión y deformación en el rango elástico. Mide la rigidez del material. Un E alto significa que el material se deforma poco bajo tensión. Es la propiedad más importante del material en análisis estructural.</p>
+            <div class="formula-block">
+                <div class="formula-label">VALORES DE E PARA MATERIALES COMUNES</div>
+                <div class="formula-main">E_acero ≈ 200 GPa    E_HA ≈ 4700·√f'c [MPa]</div>
+                <div class="formula-vars">
+                    <span class="formula-var">E_acero</span> = 200 000 MPa = 200 GPa (constante)<br>
+                    <span class="formula-var">E_HA</span> = 4700·√f'c [MPa]  (f'c en MPa)<br>
+                    Para f'c=25MPa: E_HA ≈ 23 500 MPa ≈ 24 GPa<br>
+                    <span class="formula-var">E_madera</span> ≈ 8–12 GPa (según especie)<br>
+                    <span class="formula-var">E_aluminio</span> ≈ 70 GPa
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">ACERO</div><div class="prop-val">200 GPa</div></div>
+                <div class="prop-chip"><div class="prop-label">H.A. (f'c=25)</div><div class="prop-val">≈ 24 GPa</div></div>
+                <div class="prop-chip"><div class="prop-label">ALUMINIO</div><div class="prop-val">70 GPa</div></div>
+                <div class="prop-chip"><div class="prop-label">MADERA</div><div class="prop-val">8–12 GPa</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Plasticidad</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Factor de Seguridad</span></button>
+            </div>
+        </div>
+
+        <!-- 14 FACTOR DE SEGURIDAD -->
+        <div class="concepto" id="c14">
+            <div class="concepto-header">
+                <div class="concepto-num">14</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Conceptos de Análisis</div>
+                    <div class="concepto-titulo">FACTOR DE SEGURIDAD</div>
+                    <div class="concepto-subtitulo">Safety Factor — Relación entre capacidad y demanda</div>
+                </div>
+            </div>
+            <p class="concepto-desc">El <strong>factor de seguridad</strong> (FS o DCR inverso) es la relación entre la capacidad resistente y la demanda de carga. Garantiza un margen frente a incertidumbres en cargas, materiales y modelos de cálculo. Los métodos modernos (LRFD) reemplazan un FS global por factores parciales diferenciados.</p>
+            <div class="formula-block">
+                <div class="formula-label">FACTOR DE SEGURIDAD Y DCR</div>
+                <div class="formula-main">FS = R_n / Q    DCR = Q_u / φR_n ≤ 1.0</div>
+                <div class="formula-vars">
+                    <span class="formula-var">FS</span> = factor de seguridad global (ASD clásico) ≥ 1.5–3.0<br>
+                    <span class="formula-var">DCR</span> = Demand/Capacity Ratio (LRFD)<br>
+                    <span class="formula-var">R_n</span> = resistencia nominal del elemento<br>
+                    <span class="formula-var">Q_u</span> = carga última mayorada<br>
+                    <span class="formula-var">φ</span> = factor de reducción de resistencia (0.65–0.90)
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">MÉTODO ASD</div><div class="prop-val">FS global (2–3)</div></div>
+                <div class="prop-chip"><div class="prop-label">MÉTODO LRFD</div><div class="prop-val">Factores parciales</div></div>
+                <div class="prop-chip"><div class="prop-label">DCR ≤ 1.0</div><div class="prop-val">Elemento OK</div></div>
+                <div class="prop-chip"><div class="prop-label">φ flexión</div><div class="prop-val">0.90 (ACI)</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Módulo de Elasticidad</span></button>
+                <button class="nav-btn next" data-dir="next" style="display:none"></button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="../js/fundamentos.js"></script>
+<script>FND_NAV.initNav('--analisis');</script>
+</body>
+</html>

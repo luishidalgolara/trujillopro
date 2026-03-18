@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DFA — Fuerza Axial | IngeLAB 3D</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Bebas+Neue&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg:#080c10;--bg2:#0d1117;--card:#0f1520;
+            --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.14);
+            --accent:#00ff9d;--accent2:#00e5ff;--blue:#0077ff;
+            --red:#ff4757;--orange:#ff8c00;--purple:#c084fc;
+            --text:#e8edf5;--text2:#8b95a8;--text3:#3d4758;
+            --mono:'Space Mono',monospace;--display:'Bebas Neue',sans-serif;
+            --orb:'Orbitron',sans-serif;--body:'DM Sans',sans-serif;
+            --r:10px;--r2:6px;
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+        html,body{height:100%;overflow:hidden;}
+        body{background:var(--bg);color:var(--text);font-family:var(--body);display:flex;flex-direction:column;}
+
+        .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;border-bottom:1px solid var(--border);background:rgba(8,12,16,.95);backdrop-filter:blur(10px);flex-shrink:0;}
+        .topbar-left{display:flex;align-items:center;gap:14px;}
+        .back-btn{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r2);padding:7px 12px;color:var(--text2);font-family:var(--mono);font-size:11px;cursor:pointer;transition:all .2s;text-decoration:none;}
+        .back-btn:hover{border-color:var(--accent2);color:var(--accent2);}
+        .page-badge{background:rgba(0,255,157,.1);border:1px solid rgba(0,255,157,.3);border-radius:var(--r2);padding:5px 12px;font-family:var(--orb);font-size:11px;color:var(--accent);letter-spacing:.08em;}
+        .page-title{font-family:var(--display);font-size:22px;letter-spacing:.04em;}
+        .topbar-right{display:flex;align-items:center;gap:10px;}
+        .calc-btn{background:var(--accent);border:none;border-radius:var(--r2);padding:8px 18px;color:#000;font-family:var(--mono);font-size:12px;cursor:pointer;transition:all .2s;font-weight:700;}
+        .calc-btn:hover{background:#1affa8;transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,255,157,.4);}
+        .reset-btn{background:transparent;border:1px solid var(--border2);border-radius:var(--r2);padding:8px 14px;color:var(--text2);font-family:var(--mono);font-size:11px;cursor:pointer;transition:all .2s;}
+        .reset-btn:hover{border-color:var(--text2);color:var(--text);}
+
+        .layout{display:grid;grid-template-columns:280px 1fr 260px;flex:1;overflow:hidden;}
+
+        .panel-left{background:var(--bg2);border-right:1px solid var(--border);overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:14px;}
+        .panel-left::-webkit-scrollbar{width:4px;}
+        .panel-left::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+
+        .pgroup{display:flex;flex-direction:column;gap:8px;}
+        .pgroup-title{font-family:var(--orb);font-size:10px;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid var(--border);}
+        .field{display:flex;flex-direction:column;gap:4px;}
+        .field label{font-size:11px;color:var(--text2);font-family:var(--mono);}
+        .field input,.field select{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:8px 10px;color:var(--text);font-family:var(--mono);font-size:12px;transition:border-color .2s;width:100%;}
+        .field input:focus,.field select:focus{outline:none;border-color:var(--accent);}
+        .field-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+        .field-unit{font-size:10px;color:var(--text3);font-family:var(--mono);margin-top:2px;text-align:right;}
+
+        /* Modo toggle pills */
+        .mode-pills{display:flex;gap:6px;}
+        .mode-pill{flex:1;padding:7px;text-align:center;border-radius:var(--r2);border:1px solid var(--border);font-family:var(--mono);font-size:10px;color:var(--text2);cursor:pointer;transition:all .2s;}
+        .mode-pill.active{background:rgba(0,255,157,.1);border-color:var(--accent);color:var(--accent);}
+        .mode-pill:hover{border-color:var(--accent2);}
+
+        .carga-item{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:10px;display:flex;flex-direction:column;gap:6px;}
+        .carga-del{background:none;border:none;color:var(--text3);cursor:pointer;font-size:14px;padding:2px;transition:color .2s;}
+        .carga-del:hover{color:var(--red);}
+        .add-carga-btn{background:rgba(0,255,157,.05);border:1px dashed rgba(0,255,157,.2);border-radius:var(--r2);padding:9px;color:var(--accent);font-family:var(--mono);font-size:11px;cursor:pointer;transition:all .2s;text-align:center;}
+        .add-carga-btn:hover{background:rgba(0,255,157,.1);border-color:var(--accent);}
+
+        .toggle-row{display:flex;align-items:center;justify-content:space-between;}
+        .toggle-label{font-size:11px;color:var(--text2);font-family:var(--mono);}
+        .toggle{position:relative;width:36px;height:20px;}
+        .toggle input{opacity:0;width:0;height:0;}
+        .toggle-slider{position:absolute;inset:0;background:var(--card);border:1px solid var(--border);border-radius:20px;cursor:pointer;transition:.2s;}
+        .toggle-slider::before{content:'';position:absolute;width:14px;height:14px;background:var(--text3);border-radius:50%;top:2px;left:2px;transition:.2s;}
+        .toggle input:checked + .toggle-slider{background:rgba(0,255,157,.2);border-color:var(--accent);}
+        .toggle input:checked + .toggle-slider::before{background:var(--accent);transform:translateX(16px);}
+
+        .panel-center{display:flex;flex-direction:column;overflow:hidden;background:var(--bg);}
+        .canvas-area{flex:1;display:flex;flex-direction:column;padding:16px;gap:12px;overflow:hidden;}
+        .canvas-label{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+        .canvas-label::before{content:'';display:block;width:3px;height:12px;background:var(--accent);border-radius:2px;}
+        .canvas-main-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1;overflow:hidden;}
+        .canvas-wrap{position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+        .canvas-wrap canvas{display:block;width:100%;height:100%;}
+        .canvas-sec-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);position:relative;overflow:hidden;height:190px;}
+        .canvas-sec-wrap canvas{width:100%;height:100%;display:block;}
+        .canvas-sec-label{position:absolute;top:8px;left:10px;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.1em;}
+        .canvas-bottom-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;height:190px;}
+        .canvas-overlay{position:absolute;bottom:10px;left:10px;display:flex;gap:6px;flex-wrap:wrap;}
+        .overlay-badge{background:rgba(8,12,16,.85);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-family:var(--mono);font-size:9px;color:var(--text2);}
+        .overlay-badge span{color:var(--accent);font-weight:700;}
+
+        .panel-right{background:var(--bg2);border-left:1px solid var(--border);overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:14px;}
+        .panel-right::-webkit-scrollbar{width:4px;}
+        .panel-right::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+
+        .res-group{display:flex;flex-direction:column;gap:6px;}
+        .res-title{font-family:var(--orb);font-size:10px;color:var(--accent2);letter-spacing:.15em;padding-bottom:6px;border-bottom:1px solid var(--border);}
+        .res-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+        .res-key{font-size:11px;color:var(--text2);font-family:var(--mono);flex-shrink:0;}
+        .res-val{font-size:12px;color:var(--text);font-family:var(--mono);font-weight:700;text-align:right;}
+        .res-val.ok{color:var(--accent);}
+        .res-val.fail{color:var(--red);}
+        .res-val.warn{color:var(--orange);}
+
+        .verif-box{border-radius:var(--r);padding:12px;border:1px solid;text-align:center;}
+        .verif-box.ok{background:rgba(0,255,157,.07);border-color:rgba(0,255,157,.3);}
+        .verif-box.fail{background:rgba(255,71,87,.07);border-color:rgba(255,71,87,.3);}
+        .verif-title{font-family:var(--orb);font-size:12px;font-weight:700;margin-bottom:4px;}
+        .verif-sub{font-family:var(--mono);font-size:10px;color:var(--text2);}
+
+        .teoria-box{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px;}
+        .teoria-title{font-family:var(--orb);font-size:10px;color:var(--text2);letter-spacing:.1em;margin-bottom:8px;}
+        .teoria-text{font-size:11px;color:var(--text2);line-height:1.7;}
+        .formula{background:rgba(0,0,0,.4);border:1px solid rgba(0,255,157,.15);border-radius:var(--r2);padding:8px 10px;margin:6px 0;font-family:var(--mono);font-size:12px;color:var(--accent);}
+
+        .dcr-bar-wrap{height:8px;background:var(--card);border-radius:4px;overflow:hidden;margin-top:4px;}
+        .dcr-bar{height:100%;border-radius:4px;transition:width .4s;}
+
+        .norma-chips{display:flex;flex-wrap:wrap;gap:5px;}
+        .norma-chip{font-family:var(--mono);font-size:9px;padding:3px 7px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:3px;color:var(--text3);}
+
+        .panel-left,.panel-center,.panel-right{animation:fadeIn .4s ease both;}
+        .panel-center{animation-delay:.05s;}.panel-right{animation-delay:.1s;}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="topbar-left">
+        <a href="../index.html" class="back-btn">← Volver</a>
+        <div class="page-badge">DFA</div>
+        <div class="page-title">DIAGRAMA DE FUERZA AXIAL</div>
+    </div>
+    <div class="topbar-right">
+        <button class="reset-btn" id="btnReset">↺ Reset</button>
+        <button class="calc-btn" id="btnCalc">⚡ Calcular</button>
+    </div>
+</div>
+
+<div class="layout">
+
+    <!-- IZQUIERDA -->
+    <div class="panel-left">
+
+        <div class="pgroup">
+            <div class="pgroup-title">Modo de análisis</div>
+            <div class="mode-pills">
+                <div class="mode-pill active" data-modo="barra">🏛 Columna</div>
+                <div class="mode-pill" data-modo="celosia">🔺 Celosía</div>
+            </div>
+        </div>
+
+        <div class="pgroup" id="sec_barra">
+            <div class="pgroup-title">Geometría columna</div>
+            <div class="field">
+                <label>Altura L</label>
+                <input type="number" id="inp_L" value="3.5" min="0.5" max="30" step="0.5">
+                <div class="field-unit">m</div>
+            </div>
+            <div class="field">
+                <label>Factor longitud efectiva β</label>
+                <select id="inp_beta">
+                    <option value="0.5">0.5 — Biempotrado</option>
+                    <option value="0.7">0.7 — Empotr./articulado</option>
+                    <option value="1.0" selected>1.0 — Articulado/articulado</option>
+                    <option value="2.0">2.0 — Voladizo</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="pgroup">
+            <div class="pgroup-title">Material y sección</div>
+            <div class="field">
+                <label>Material</label>
+                <select id="inp_material">
+                    <option value="HA">Hormigón armado (H.A.)</option>
+                    <option value="acero">Acero estructural</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Tipo de sección</label>
+                <select id="inp_seccion">
+                    <option value="rect">Rectangular</option>
+                    <option value="circ">Circular</option>
+                    <option value="HEA">Perfil HEA (acero)</option>
+                </select>
+            </div>
+            <div id="sec_rect_wrap">
+                <div class="field-row">
+                    <div class="field"><label>b [m]</label><input type="number" id="inp_b" value="0.35" min="0.1" max="3" step="0.05"></div>
+                    <div class="field"><label>h [m]</label><input type="number" id="inp_h" value="0.35" min="0.1" max="3" step="0.05"></div>
+                </div>
+            </div>
+            <div id="sec_circ_wrap" style="display:none">
+                <div class="field"><label>Diámetro [m]</label><input type="number" id="inp_diam" value="0.35" min="0.1" max="3" step="0.05"></div>
+            </div>
+            <div id="sec_hea_wrap" style="display:none">
+                <div class="field">
+                    <label>Perfil HEA</label>
+                    <select id="inp_hea">
+                        <option value="HEA160">HEA 160</option>
+                        <option value="HEA200" selected>HEA 200</option>
+                        <option value="HEA240">HEA 240</option>
+                        <option value="HEA280">HEA 280</option>
+                        <option value="HEA300">HEA 300</option>
+                    </select>
+                </div>
+            </div>
+            <div id="mat_ha_wrap">
+                <div class="field"><label>f'c [MPa]</label><input type="number" id="inp_fc" value="25" min="17" max="60" step="1"></div>
+            </div>
+            <div id="mat_ac_wrap" style="display:none">
+                <div class="field"><label>fy [MPa]</label><input type="number" id="inp_fy" value="250" min="200" max="500" step="10"></div>
+            </div>
+        </div>
+
+        <div class="pgroup" id="sec_barra_cargas">
+            <div class="pgroup-title">Cargas axiales</div>
+            <div class="toggle-row">
+                <span class="toggle-label">Incluir peso propio</span>
+                <label class="toggle"><input type="checkbox" id="inp_pp" checked><span class="toggle-slider"></span></label>
+            </div>
+            <div id="cargas-list"></div>
+            <div class="add-carga-btn" id="btnAddCarga">+ Agregar carga (piso)</div>
+        </div>
+
+    </div>
+
+    <!-- CENTRO -->
+    <div class="panel-center">
+        <div class="canvas-area">
+            <div class="canvas-label">Diagrama de Fuerza Axial N(x)</div>
+            <div class="canvas-main-row">
+                <div class="canvas-wrap" id="mainWrap">
+                    <canvas id="canvasMain"></canvas>
+                    <div class="canvas-overlay">
+                        <div class="overlay-badge">N_max = <span id="ovNmax">—</span> kN</div>
+                        <div class="overlay-badge">σ = <span id="ovSigma">—</span> MPa</div>
+                    </div>
+                </div>
+                <div class="canvas-wrap" id="secWrap">
+                    <canvas id="canvasSeccion"></canvas>
+                    <div class="canvas-sec-label">SECCIÓN TRANSVERSAL</div>
+                </div>
+            </div>
+            <div class="canvas-bottom-row">
+                <div class="canvas-sec-wrap">
+                    <div class="canvas-sec-label">DIAGRAMA DE PANDEO — N_cr</div>
+                    <canvas id="canvasPandeo"></canvas>
+                </div>
+                <div class="canvas-sec-wrap">
+                    <div class="canvas-sec-label">CELOSÍA PLANA (modo celosía)</div>
+                    <canvas id="canvasCelosia"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DERECHA -->
+    <div class="panel-right">
+
+        <div class="res-group">
+            <div class="res-title">Sección</div>
+            <div class="res-row"><span class="res-key">A</span><span class="res-val" id="res_A">—</span></div>
+            <div class="res-row"><span class="res-key">I</span><span class="res-val" id="res_I">—</span></div>
+            <div class="res-row"><span class="res-key">r (giro)</span><span class="res-val" id="res_r">—</span></div>
+            <div class="res-row"><span class="res-key">E</span><span class="res-val" id="res_E">—</span></div>
+        </div>
+
+        <div class="res-group">
+            <div class="res-title">Fuerza Axial</div>
+            <div class="res-row"><span class="res-key">N_max (comp)</span><span class="res-val" id="res_Nmax">—</span></div>
+            <div class="res-row"><span class="res-key">N_min (trac)</span><span class="res-val" id="res_Nmin">—</span></div>
+            <div class="res-row"><span class="res-key">δ axial</span><span class="res-val" id="res_delta">—</span></div>
+            <div class="res-row"><span class="res-key">σ_max</span><span class="res-val" id="res_sigma">—</span></div>
+        </div>
+
+        <div class="res-group">
+            <div class="res-title">Verificación resistencia</div>
+            <div class="res-row"><span class="res-key">φPn</span><span class="res-val" id="res_phiPn">—</span></div>
+            <div class="res-row"><span class="res-key">DCR = N/φPn</span><span class="res-val" id="res_DCR">—</span></div>
+            <div class="dcr-bar-wrap"><div class="dcr-bar" id="dcrBar" style="width:0%;background:var(--accent)"></div></div>
+        </div>
+
+        <div class="res-group">
+            <div class="res-title">Pandeo de Euler</div>
+            <div class="res-row"><span class="res-key">L_ef = β·L</span><span class="res-val" id="res_Lef">—</span></div>
+            <div class="res-row"><span class="res-key">Esbeltez λ</span><span class="res-val" id="res_lambda">—</span></div>
+            <div class="res-row"><span class="res-key">λ_máx</span><span class="res-val" id="res_lambdamax">—</span></div>
+            <div class="res-row"><span class="res-key">N_cr (Euler)</span><span class="res-val" id="res_Ncr">—</span></div>
+            <div class="res-row"><span class="res-key">N/N_cr</span><span class="res-val" id="res_ratioNcr">—</span></div>
+        </div>
+
+        <div class="verif-box ok" id="verifBox">
+            <div class="verif-title" id="verifTitle">—</div>
+            <div class="verif-sub" id="verifSub">Calcule para verificar</div>
+        </div>
+
+        <div class="teoria-box">
+            <div class="teoria-title">TEORÍA — PANDEO Y ESBELTEZ</div>
+            <div class="teoria-text">La carga crítica de Euler determina el límite de pandeo:</div>
+            <div class="formula">N_cr = π²·E·I / L_ef²</div>
+            <div class="formula">λ = L_ef / r  ≤  λ_máx</div>
+            <div class="formula">σ = N / A  [MPa]</div>
+            <div class="formula">δ = N·L / (E·A)  [mm]</div>
+            <div class="teoria-text">Azul = compresión · Rojo = tracción. El color del diagrama indica el tipo de esfuerzo.</div>
+        </div>
+
+        <div class="res-group">
+            <div class="res-title">Normativa</div>
+            <div class="norma-chips">
+                <span class="norma-chip">ACI 318-19 §22.4</span>
+                <span class="norma-chip">AISC 360</span>
+                <span class="norma-chip">NCh 430</span>
+                <span class="norma-chip">EC3</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="../js/diag_axial.js"></script>
+<script>
+'use strict';
+
+let modoActivo = 'barra';
+let cargasUI = [
+    { id: 1, N: 850, x: 0, tipo: 'comp', label: 'Piso 3' },
+    { id: 2, N: 650, x: 0, tipo: 'comp', label: 'Piso 2' },
+    { id: 3, N: 300, x: 0, tipo: 'comp', label: 'Piso 1' },
+];
+let nextId = 4;
+
+let canvasMain, canvasSeccion, canvasPandeo, canvasCelosia;
+
+function initCanvases() {
+    canvasMain    = document.getElementById('canvasMain');
+    canvasSeccion = document.getElementById('canvasSeccion');
+    canvasPandeo  = document.getElementById('canvasPandeo');
+    canvasCelosia = document.getElementById('canvasCelosia');
+
+    const resizeAll = () => {
+        ['mainWrap','secWrap'].forEach(id => {
+            const w = document.getElementById(id);
+            const c = w.querySelector('canvas');
+            c.width = w.clientWidth; c.height = w.clientHeight;
+        });
+        [canvasPandeo, canvasCelosia].forEach(c => {
+            c.width = c.parentElement.clientWidth;
+            c.height = c.parentElement.clientHeight;
+        });
+        if (window.DFA_MODULE?.state?.result) renderAll();
+    };
+
+    const ro = new ResizeObserver(resizeAll);
+    ro.observe(document.getElementById('mainWrap'));
+    ro.observe(document.getElementById('secWrap'));
+    ro.observe(canvasPandeo.parentElement);
+    ro.observe(canvasCelosia.parentElement);
+    setTimeout(resizeAll, 100);
+}
+
+function syncState() {
+    const mod = window.DFA_MODULE;
+    mod.setParam('modo',     modoActivo);
+    mod.setParam('L',        parseFloat(document.getElementById('inp_L').value) || 3.5);
+    mod.setParam('beta',     parseFloat(document.getElementById('inp_beta').value) || 1.0);
+    mod.setParam('material', document.getElementById('inp_material').value);
+    mod.setParam('seccion',  document.getElementById('inp_seccion').value);
+    mod.setParam('b',        parseFloat(document.getElementById('inp_b').value)    || 0.35);
+    mod.setParam('h_sec',    parseFloat(document.getElementById('inp_h').value)    || 0.35);
+    mod.setParam('diam',     parseFloat(document.getElementById('inp_diam').value) || 0.35);
+    mod.setParam('perfil',   document.getElementById('inp_hea').value);
+    mod.setParam('fc',       parseFloat(document.getElementById('inp_fc').value)   || 25);
+    mod.setParam('fy',       parseFloat(document.getElementById('inp_fy').value)   || 250);
+    mod.setParam('inc_pp',   document.getElementById('inp_pp').checked);
+    mod.clearCargas();
+    cargasUI.forEach(c => mod.addCarga({ ...c }));
+}
+
+function calcularYRenderizar() {
+    syncState();
+    const result = window.DFA_MODULE.calcular();
+    renderAll(result);
+    updateResults(result);
+}
+
+function renderAll(result) {
+    result = result || window.DFA_MODULE.state.result;
+    if (!result) return;
+    window.DFA_MODULE.draw(canvasMain, result);
+    window.DFA_MODULE.drawSeccion && drawSeccionAxial(canvasSeccion, result);
+    drawPandeoCanvas(canvasPandeo, result);
+    if (modoActivo === 'celosia' && result.celosia) {
+        window.DFA_MODULE.drawCelosia(canvasCelosia, result.celosia, window.DFA_MODULE.state.celosia.nodos);
+    }
+}
+
+function drawSeccionAxial(canvas, result) {
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+    const mod = window.DFA_MODULE.state;
+    const sec = mod.seccion;
+    const cx = W/2, cy = H/2;
+
+    if (sec === 'rect') {
+        const scale = Math.min(W*0.55/mod.b, H*0.6/mod.h_sec);
+        const bpx = mod.b*scale, hpx = mod.h_sec*scale;
+        ctx.fillStyle = 'rgba(100,150,120,0.2)';
+        ctx.strokeStyle = 'rgba(0,255,157,0.7)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.rect(cx-bpx/2, cy-hpx/2, bpx, hpx); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = 'rgba(255,255,255,0.4)'; ctx.font = '10px Space Mono,monospace'; ctx.textAlign = 'center';
+        ctx.fillText(`${(mod.b*100).toFixed(0)}×${(mod.h_sec*100).toFixed(0)} cm`, cx, cy+hpx/2+16);
+        ctx.fillText(`A=${(result.props.A*1e4).toFixed(1)} cm²`, cx, cy-hpx/2-8);
+    }
+    else if (sec === 'circ') {
+        const r = Math.min(W,H)*0.3;
+        ctx.fillStyle = 'rgba(100,150,120,0.2)';
+        ctx.strokeStyle = 'rgba(0,255,157,0.7)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI*2); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = 'rgba(255,255,255,0.4)'; ctx.font = '10px Space Mono,monospace'; ctx.textAlign = 'center';
+        ctx.fillText(`Ø${(mod.diam*100).toFixed(0)} cm`, cx, cy+r+16);
+    }
+    else {
+        const p = window.DFA_MODULE.PERFILES_HEA[mod.perfil];
+        if (!p) return;
+        const scale = Math.min(W*0.55/p.b_f*100, H*0.65/p.h*100)*0.01;
+        const h = p.h*scale/100*1000, bf = p.b_f*scale/100*1000;
+        const tf = p.tf*scale/100*10*0.1, tw = p.tw*scale/100*10*0.1;
+        const hw = h - 2*tf;
+        const x0 = cx-bf/2, y0 = cy-h/2;
+        ctx.fillStyle = 'rgba(180,150,50,0.2)'; ctx.strokeStyle = 'rgba(255,200,50,0.8)'; ctx.lineWidth = 1.5;
+        [[x0,y0,bf,tf],[cx-tw/2,y0+tf,tw,hw],[x0,y0+tf+hw,bf,tf]].forEach(([x,y,w,hh])=>{
+            ctx.beginPath(); ctx.rect(x,y,w,hh); ctx.fill(); ctx.stroke();
+        });
+        ctx.fillStyle = 'rgba(255,200,50,0.7)'; ctx.font = 'bold 11px Space Mono,monospace'; ctx.textAlign = 'center';
+        ctx.fillText(mod.perfil, cx, y0-10);
+        ctx.fillStyle = 'rgba(255,255,255,0.4)'; ctx.font = '9px Space Mono,monospace';
+        ctx.fillText(`A=${p.A} cm²  I=${p.I} cm⁴`, cx, y0+h+16);
+    }
+}
+
+function drawPandeoCanvas(canvas, result) {
+    if (!canvas || !result?.pandeo) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+    const { lambda, lambda_max, N_cr, ok_esbeltez } = result.pandeo;
+    const pad = 20;
+    const cw = W - pad*2, ch = H - pad*2;
+    const lMax = Math.max(lambda_max*1.2, lambda+20);
+    const scaleL = cw / lMax;
+    const scaleN = ch * 0.8 / Math.max(N_cr, 1);
+    const x0 = pad, y0 = pad+ch;
+
+    // Curva de Euler N_cr vs λ
+    ctx.beginPath();
+    const EI = result.props.E * result.props.I;
+    const L0 = window.DFA_MODULE.state.L;
+    for (let i = 1; i <= 80; i++) {
+        const lam = (i/80)*lMax;
+        const Lef = lam * result.props.r_giro;
+        const Ncr_i = Math.PI*Math.PI*EI / (Lef*Lef);
+        const px = x0 + lam*scaleL;
+        const py = y0 - Math.min(Ncr_i, N_cr*1.5) * (ch*0.8/Math.max(N_cr,1));
+        i===1 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);
+    }
+    ctx.strokeStyle = 'rgba(0,229,255,0.7)'; ctx.lineWidth = 2; ctx.stroke();
+
+    // Línea λ_max
+    const x_lmax = x0 + lambda_max*scaleL;
+    ctx.strokeStyle = 'rgba(255,140,0,0.5)'; ctx.lineWidth = 1; ctx.setLineDash([5,4]);
+    ctx.beginPath(); ctx.moveTo(x_lmax, pad); ctx.lineTo(x_lmax, y0); ctx.stroke(); ctx.setLineDash([]);
+
+    // Punto actual
+    const px = x0 + lambda*scaleL;
+    const py = y0 - Math.min(N_cr, N_cr) * (ch*0.8/Math.max(N_cr,1));
+    ctx.beginPath(); ctx.arc(px, y0-ch*0.4, 5, 0, Math.PI*2);
+    ctx.fillStyle = ok_esbeltez ? 'rgba(0,255,157,0.9)' : 'rgba(255,71,87,0.9)'; ctx.fill();
+
+    // Labels
+    ctx.fillStyle = 'rgba(0,229,255,0.7)'; ctx.font = '9px Space Mono,monospace'; ctx.textAlign = 'center';
+    ctx.fillText(`N_cr = ${N_cr.toFixed(0)} kN`, W/2, pad+14);
+    ctx.fillStyle = 'rgba(255,140,0,0.7)';
+    ctx.fillText(`λ_máx=${lambda_max}`, x_lmax, pad+24);
+    ctx.fillStyle = ok_esbeltez ? 'rgba(0,255,157,0.8)' : 'rgba(255,71,87,0.8)';
+    ctx.fillText(`λ=${lambda.toFixed(1)}`, px+24, y0-ch*0.4);
+}
+
+function updateResults(r) {
+    if (!r) return;
+    const fmt = (v,d=2,u='') => v!=null ? `${v.toFixed(d)} ${u}`.trim() : '—';
+    const p = r.props;
+    document.getElementById('res_A').textContent  = fmt(p.A*1e4,2,'cm²');
+    document.getElementById('res_I').textContent  = fmt(p.I*1e8,2,'cm⁴');
+    document.getElementById('res_r').textContent  = fmt(p.r_giro*100,2,'cm');
+    document.getElementById('res_E').textContent  = `${(p.E/1e6).toFixed(0)} GPa`;
+    document.getElementById('res_Nmax').textContent = fmt(r.N_max,2,'kN');
+    document.getElementById('res_Nmin').textContent = fmt(r.N_min,2,'kN');
+    document.getElementById('res_delta').textContent= fmt(r.delta,3,'mm');
+    document.getElementById('res_sigma').textContent= fmt(r.sigma_max,2,'MPa');
+
+    const v = r.verif;
+    document.getElementById('res_phiPn').textContent = fmt(v?.phiPn,1,'kN');
+    const DCR = v?.DCR || 0;
+    const dcrEl = document.getElementById('res_DCR');
+    dcrEl.textContent = DCR.toFixed(3);
+    dcrEl.className = 'res-val ' + (DCR<=1?'ok':'fail');
+    const bar = document.getElementById('dcrBar');
+    bar.style.width = Math.min(DCR*100,100)+'%';
+    bar.style.background = DCR<=0.7 ? 'var(--accent)' : DCR<=1 ? 'var(--orange)' : 'var(--red)';
+
+    const pan = r.pandeo;
+    document.getElementById('res_Lef').textContent      = fmt(window.DFA_MODULE.state.L_ef,2,'m');
+    document.getElementById('res_lambda').textContent   = pan?.lambda.toFixed(1) || '—';
+    document.getElementById('res_lambdamax').textContent= pan?.lambda_max || '—';
+    document.getElementById('res_Ncr').textContent      = fmt(pan?.N_cr,1,'kN');
+    const ratioNcr = r.N_max / Math.max(pan?.N_cr,1);
+    document.getElementById('res_ratioNcr').textContent = ratioNcr.toFixed(3);
+
+    document.getElementById('ovNmax').textContent  = r.N_max?.toFixed(1);
+    document.getElementById('ovSigma').textContent = r.sigma_max?.toFixed(2);
+
+    const ok = v?.ok && pan?.ok_esbeltez;
+    const box = document.getElementById('verifBox');
+    box.className = 'verif-box ' + (ok?'ok':'fail');
+    document.getElementById('verifTitle').textContent = ok ? '✅ COLUMNA OK' : '❌ REVISAR DISEÑO';
+    document.getElementById('verifTitle').style.color = ok ? 'var(--accent)' : 'var(--red)';
+    document.getElementById('verifSub').textContent = v
+        ? `DCR=${DCR.toFixed(3)}  λ=${pan?.lambda.toFixed(1)}/${pan?.lambda_max}`
+        : 'Calcule para verificar';
+}
+
+/* Cargas UI */
+function renderCargasUI() {
+    const list = document.getElementById('cargas-list');
+    list.innerHTML = '';
+    cargasUI.forEach(c => {
+        const el = document.createElement('div');
+        el.className = 'carga-item';
+        el.innerHTML = `
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+                <span style="font-family:var(--mono);font-size:10px;color:var(--text2)">${c.label||'Piso'}</span>
+                <button class="carga-del" data-id="${c.id}">✕</button>
+            </div>
+            <div class="field-row">
+                <div class="field"><label>N [kN]</label><input type="number" class="ci" data-id="${c.id}" data-field="N" value="${c.N||500}" step="50"></div>
+                <div class="field"><label>x [m]</label><input type="number" class="ci" data-id="${c.id}" data-field="x" value="${c.x||0}" step="0.5" min="0"></div>
+            </div>
+            <div class="field"><label>Etiqueta</label><input type="text" class="ci-txt" data-id="${c.id}" value="${c.label||''}"></div>
+        `;
+        list.appendChild(el);
+    });
+    list.querySelectorAll('.carga-del').forEach(b=>b.addEventListener('click',()=>{cargasUI=cargasUI.filter(c=>c.id!==+b.dataset.id);renderCargasUI();}));
+    list.querySelectorAll('.ci').forEach(i=>i.addEventListener('input',()=>{const c=cargasUI.find(c=>c.id===+i.dataset.id);if(c)c[i.dataset.field]=parseFloat(i.value)||0;}));
+    list.querySelectorAll('.ci-txt').forEach(i=>i.addEventListener('input',()=>{const c=cargasUI.find(c=>c.id===+i.dataset.id);if(c)c.label=i.value;}));
+}
+
+/* Modo pills */
+document.querySelectorAll('.mode-pill').forEach(p=>p.addEventListener('click',()=>{
+    document.querySelectorAll('.mode-pill').forEach(x=>x.classList.remove('active'));
+    p.classList.add('active');
+    modoActivo = p.dataset.modo;
+    document.getElementById('sec_barra').style.display = modoActivo==='barra'?'flex':'none';
+    document.getElementById('sec_barra_cargas').style.display = modoActivo==='barra'?'flex':'none';
+}));
+
+/* Sección toggle */
+document.getElementById('inp_seccion').addEventListener('change',function(){
+    document.getElementById('sec_rect_wrap').style.display = this.value==='rect'?'block':'none';
+    document.getElementById('sec_circ_wrap').style.display = this.value==='circ'?'block':'none';
+    document.getElementById('sec_hea_wrap').style.display  = this.value==='HEA' ?'block':'none';
+});
+document.getElementById('inp_material').addEventListener('change',function(){
+    document.getElementById('mat_ha_wrap').style.display = this.value==='HA'?'block':'none';
+    document.getElementById('mat_ac_wrap').style.display = this.value==='acero'?'block':'none';
+});
+
+document.getElementById('btnCalc').addEventListener('click', calcularYRenderizar);
+document.getElementById('btnReset').addEventListener('click',()=>{
+    document.getElementById('inp_L').value='3.5';
+    document.getElementById('inp_beta').value='1.0';
+    document.getElementById('inp_material').value='HA';
+    document.getElementById('inp_seccion').value='rect';
+    document.getElementById('inp_b').value='0.35';
+    document.getElementById('inp_h').value='0.35';
+    document.getElementById('inp_fc').value='25';
+    cargasUI=[{id:1,N:850,x:0,tipo:'comp',label:'Piso 3'},{id:2,N:650,x:0,tipo:'comp',label:'Piso 2'},{id:3,N:300,x:0,tipo:'comp',label:'Piso 1'}];
+    nextId=4; renderCargasUI(); calcularYRenderizar();
+});
+document.getElementById('btnAddCarga').addEventListener('click',()=>{
+    cargasUI.push({id:nextId++,N:400,x:0,tipo:'comp',label:`Piso ${nextId}`});
+    renderCargasUI();
+});
+
+renderCargasUI();
+initCanvases();
+setTimeout(calcularYRenderizar, 200);
+</script>
+</body>
+</html>

@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCL — Cuerpo Libre | IngeLAB 3D</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Bebas+Neue&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg:#080c10;--bg2:#0d1117;--card:#0f1520;
+            --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.14);
+            --accent:#00e5ff;--accent2:#00ff9d;--blue:#0077ff;
+            --red:#ff4757;--orange:#ff8c00;--purple:#c084fc;
+            --text:#e8edf5;--text2:#8b95a8;--text3:#3d4758;
+            --mono:'Space Mono',monospace;--display:'Bebas Neue',sans-serif;
+            --orb:'Orbitron',sans-serif;--body:'DM Sans',sans-serif;
+            --r:10px;--r2:6px;
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+        html,body{height:100%;overflow:hidden;}
+        body{background:var(--bg);color:var(--text);font-family:var(--body);display:flex;flex-direction:column;}
+
+        .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;border-bottom:1px solid var(--border);background:rgba(8,12,16,.95);backdrop-filter:blur(10px);flex-shrink:0;}
+        .topbar-left{display:flex;align-items:center;gap:14px;}
+        .back-btn{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r2);padding:7px 12px;color:var(--text2);font-family:var(--mono);font-size:11px;cursor:pointer;transition:all .2s;text-decoration:none;}
+        .back-btn:hover{border-color:var(--accent);color:var(--accent);}
+        .page-badge{background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.3);border-radius:var(--r2);padding:5px 12px;font-family:var(--orb);font-size:11px;color:var(--accent);letter-spacing:.08em;}
+        .page-title{font-family:var(--display);font-size:22px;letter-spacing:.04em;}
+        .topbar-right{display:flex;align-items:center;gap:10px;}
+        .calc-btn{background:var(--accent);border:none;border-radius:var(--r2);padding:8px 18px;color:#000;font-family:var(--mono);font-size:12px;cursor:pointer;transition:all .2s;font-weight:700;}
+        .calc-btn:hover{background:#33eeff;transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,229,255,.4);}
+        .reset-btn{background:transparent;border:1px solid var(--border2);border-radius:var(--r2);padding:8px 14px;color:var(--text2);font-family:var(--mono);font-size:11px;cursor:pointer;transition:all .2s;}
+        .reset-btn:hover{border-color:var(--text2);color:var(--text);}
+
+        .layout{display:grid;grid-template-columns:280px 1fr 260px;flex:1;overflow:hidden;}
+
+        /* PANEL IZQ */
+        .panel-left{background:var(--bg2);border-right:1px solid var(--border);overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:14px;}
+        .panel-left::-webkit-scrollbar{width:4px;}
+        .panel-left::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+        .pgroup{display:flex;flex-direction:column;gap:8px;}
+        .pgroup-title{font-family:var(--orb);font-size:10px;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid var(--border);}
+        .field{display:flex;flex-direction:column;gap:4px;}
+        .field label{font-size:11px;color:var(--text2);font-family:var(--mono);}
+        .field input,.field select{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:8px 10px;color:var(--text);font-family:var(--mono);font-size:12px;transition:border-color .2s;width:100%;}
+        .field input:focus,.field select:focus{outline:none;border-color:var(--accent);}
+        .field-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+        .field-unit{font-size:10px;color:var(--text3);font-family:var(--mono);margin-top:2px;text-align:right;}
+        .toggle-row{display:flex;align-items:center;justify-content:space-between;}
+        .toggle-label{font-size:11px;color:var(--text2);font-family:var(--mono);}
+        .toggle{position:relative;width:36px;height:20px;}
+        .toggle input{opacity:0;width:0;height:0;}
+        .toggle-slider{position:absolute;inset:0;background:var(--card);border:1px solid var(--border);border-radius:20px;cursor:pointer;transition:.2s;}
+        .toggle-slider::before{content:'';position:absolute;width:14px;height:14px;background:var(--text3);border-radius:50%;top:2px;left:2px;transition:.2s;}
+        .toggle input:checked+.toggle-slider{background:rgba(0,229,255,.2);border-color:var(--accent);}
+        .toggle input:checked+.toggle-slider::before{background:var(--accent);transform:translateX(16px);}
+        .slider-field{display:flex;flex-direction:column;gap:6px;}
+        .slider-field label{font-size:11px;color:var(--text2);font-family:var(--mono);display:flex;justify-content:space-between;}
+        .slider-field label span{color:var(--accent);font-weight:700;}
+        .slider-field input[type=range]{width:100%;accent-color:var(--accent);cursor:pointer;}
+
+        /* PANEL CENTRO */
+        .panel-center{display:flex;flex-direction:column;overflow:hidden;background:var(--bg);}
+        .canvas-area{flex:1;display:flex;flex-direction:column;padding:16px;gap:10px;overflow:hidden;}
+        .canvas-label{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+        .canvas-label::before{content:'';display:block;width:3px;height:12px;background:var(--accent);border-radius:2px;}
+        .canvas-main-wrap{flex:1;position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;min-height:0;}
+        .canvas-main-wrap canvas{display:block;width:100%;height:100%;}
+        .canvas-bottom-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;height:155px;flex-shrink:0;}
+        .canvas-mini-wrap{position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+        .canvas-mini-wrap canvas{display:block;width:100%;height:100%;}
+        .mini-label{position:absolute;top:6px;left:10px;font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.08em;pointer-events:none;z-index:1;}
+        .canvas-overlay{position:absolute;bottom:8px;left:8px;display:flex;gap:6px;flex-wrap:wrap;}
+        .overlay-badge{background:rgba(8,12,16,.88);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-family:var(--mono);font-size:9px;color:var(--text2);}
+        .overlay-badge span{color:var(--accent);font-weight:700;}
+
+        /* PANEL DER */
+        .panel-right{background:var(--bg2);border-left:1px solid var(--border);overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:14px;}
+        .panel-right::-webkit-scrollbar{width:4px;}
+        .panel-right::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+        .res-group{display:flex;flex-direction:column;gap:6px;}
+        .res-title{font-family:var(--orb);font-size:10px;color:var(--accent2);letter-spacing:.15em;padding-bottom:6px;border-bottom:1px solid var(--border);}
+        .res-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+        .res-key{font-size:11px;color:var(--text2);font-family:var(--mono);flex-shrink:0;}
+        .res-val{font-size:12px;color:var(--text);font-family:var(--mono);font-weight:700;text-align:right;}
+        .res-val.ok{color:var(--accent2);}
+        .res-val.warn{color:var(--orange);}
+        .res-val.blue{color:var(--blue);}
+        .res-val.red{color:var(--red);}
+        .conv-box{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:10px;display:flex;flex-direction:column;gap:5px;}
+        .conv-title{font-family:var(--orb);font-size:9px;color:var(--text3);letter-spacing:.12em;margin-bottom:2px;}
+        .conv-row{display:flex;align-items:center;gap:8px;}
+        .conv-icon{font-size:13px;width:18px;text-align:center;}
+        .conv-label{font-size:10px;color:var(--text2);font-family:var(--mono);}
+        .verif-box{border-radius:var(--r);padding:12px;border:1px solid;text-align:center;}
+        .verif-box.ok{background:rgba(0,229,255,.07);border-color:rgba(0,229,255,.3);}
+        .verif-box.warn{background:rgba(255,140,0,.07);border-color:rgba(255,140,0,.3);}
+        .verif-title{font-family:var(--orb);font-size:12px;font-weight:700;margin-bottom:4px;}
+        .verif-sub{font-family:var(--mono);font-size:10px;color:var(--text2);line-height:1.6;white-space:pre-line;}
+        .teoria-box{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px;}
+        .teoria-title{font-family:var(--orb);font-size:10px;color:var(--text2);letter-spacing:.1em;margin-bottom:8px;}
+        .teoria-text{font-size:11px;color:var(--text2);line-height:1.7;}
+        .formula{background:rgba(0,0,0,.4);border:1px solid rgba(0,229,255,.15);border-radius:var(--r2);padding:7px 10px;margin:5px 0;font-family:var(--mono);font-size:11px;color:var(--accent);}
+        .norma-chips{display:flex;flex-wrap:wrap;gap:5px;}
+        .norma-chip{font-family:var(--mono);font-size:9px;padding:3px 7px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:3px;color:var(--text3);}
+
+        .panel-left,.panel-center,.panel-right{animation:fadeIn .4s ease both;}
+        .panel-center{animation-delay:.05s;}.panel-right{animation-delay:.1s;}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="topbar-left">
+        <a href="../index.html" class="back-btn">← Volver</a>
+        <div class="page-badge">DCL</div>
+        <div class="page-title">DIAGRAMA DE CUERPO LIBRE</div>
+    </div>
+    <div class="topbar-right">
+        <button class="reset-btn" id="btnReset">↺ Reset</button>
+        <button class="calc-btn" id="btnCalc">⚡ Calcular</button>
+    </div>
+</div>
+
+<div class="layout">
+
+    <!-- PANEL IZQ -->
+    <div class="panel-left">
+
+        <div class="pgroup">
+            <div class="pgroup-title">Tipo de elemento</div>
+            <div class="field">
+                <label>Elemento estructural</label>
+                <select id="inp_elem">
+                    <option value="viga">Viga (horizontal)</option>
+                    <option value="columna">Columna (vertical)</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Condición de apoyos</label>
+                <select id="inp_apoyo">
+                    <option value="simple">Articulado — Articulado</option>
+                    <option value="voladizo">Voladizo (empotrado en A)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="pgroup">
+            <div class="pgroup-title">Geometría</div>
+            <div class="field">
+                <label>Longitud L [m]</label>
+                <input type="number" id="inp_L" value="6.0" min="1" max="30" step="0.5">
+                <div class="field-unit">metros</div>
+            </div>
+        </div>
+
+        <div class="pgroup">
+            <div class="pgroup-title">Carga puntual P</div>
+            <div class="toggle-row">
+                <span class="toggle-label">Incluir carga puntual</span>
+                <label class="toggle"><input type="checkbox" id="inp_incP" checked><span class="toggle-slider"></span></label>
+            </div>
+            <div id="puntual_wrap" style="margin-top:6px">
+                <div class="field-row">
+                    <div class="field"><label>P [kN]</label><input type="number" id="inp_P" value="40" min="0" max="2000" step="5"></div>
+                    <div class="field"><label>a [m]</label><input type="number" id="inp_aP" value="3.0" min="0" max="30" step="0.25"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pgroup">
+            <div class="pgroup-title">Carga distribuida q</div>
+            <div class="toggle-row">
+                <span class="toggle-label">Incluir distribuida</span>
+                <label class="toggle"><input type="checkbox" id="inp_incQ" checked><span class="toggle-slider"></span></label>
+            </div>
+            <div id="dist_wrap" style="margin-top:6px">
+                <div class="field">
+                    <label>q [kN/m] — uniforme en L</label>
+                    <input type="number" id="inp_q" value="15" min="0" max="500" step="1">
+                </div>
+            </div>
+        </div>
+
+        <div class="pgroup">
+            <div class="pgroup-title">Sección de corte</div>
+            <div class="slider-field">
+                <label>x_corte [m] <span id="lbl_xcorte">2.50</span></label>
+                <input type="range" id="inp_xcorte" value="2.5" min="0" max="6" step="0.05">
+            </div>
+            <div class="field-unit">Desliza para mover la sección</div>
+        </div>
+
+        <div class="pgroup">
+            <div class="pgroup-title">Visibilidad</div>
+            <div class="toggle-row">
+                <span class="toggle-label">Reacciones en apoyos</span>
+                <label class="toggle"><input type="checkbox" id="show_react" checked><span class="toggle-slider"></span></label>
+            </div>
+            <div class="toggle-row">
+                <span class="toggle-label">Cargas externas</span>
+                <label class="toggle"><input type="checkbox" id="show_ext" checked><span class="toggle-slider"></span></label>
+            </div>
+            <div class="toggle-row">
+                <span class="toggle-label">Fuerzas internas V, M</span>
+                <label class="toggle"><input type="checkbox" id="show_int" checked><span class="toggle-slider"></span></label>
+            </div>
+            <div class="toggle-row">
+                <span class="toggle-label">Cotas y dimensiones</span>
+                <label class="toggle"><input type="checkbox" id="show_cotas" checked><span class="toggle-slider"></span></label>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- PANEL CENTRO -->
+    <div class="panel-center">
+        <div class="canvas-area">
+            <div class="canvas-label">Diagrama de Cuerpo Libre — Elemento aislado</div>
+
+            <div class="canvas-main-wrap" id="mainWrap">
+                <canvas id="canvasDCL"></canvas>
+                <div class="canvas-overlay">
+                    <div class="overlay-badge">RA = <span id="ovRA">—</span> kN</div>
+                    <div class="overlay-badge">RB = <span id="ovRB">—</span> kN</div>
+                    <div class="overlay-badge">V(x) = <span id="ovVx">—</span> kN</div>
+                    <div class="overlay-badge">M(x) = <span id="ovMx">—</span> kN·m</div>
+                </div>
+            </div>
+
+            <div class="canvas-bottom-row">
+                <div class="canvas-mini-wrap" id="dfcWrap">
+                    <canvas id="canvasDFC"></canvas>
+                    <div class="mini-label">DFC — V(x) [kN]</div>
+                </div>
+                <div class="canvas-mini-wrap" id="dmfWrap">
+                    <canvas id="canvasDMF"></canvas>
+                    <div class="mini-label">DMF — M(x) [kN·m]</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANEL DER -->
+    <div class="panel-right">
+
+        <div class="res-group">
+            <div class="res-title">Equilibrio estático</div>
+            <div class="res-row"><span class="res-key">ΣFx = 0</span><span class="res-val ok" id="res_SFx">—</span></div>
+            <div class="res-row"><span class="res-key">ΣFy = 0</span><span class="res-val" id="res_SFy">—</span></div>
+            <div class="res-row"><span class="res-key">ΣM_A = 0</span><span class="res-val" id="res_SM">—</span></div>
+        </div>
+
+        <div class="res-group">
+            <div class="res-title">Reacciones</div>
+            <div class="res-row"><span class="res-key">RA [kN]</span><span class="res-val blue" id="res_RA">—</span></div>
+            <div class="res-row"><span class="res-key">RB [kN]</span><span class="res-val blue" id="res_RB">—</span></div>
+            <div class="res-row"><span class="res-key">HA [kN]</span><span class="res-val" id="res_HA">0.00 kN</span></div>
+            <div class="res-row"><span class="res-key">MA [kN·m]</span><span class="res-val" id="res_MA">—</span></div>
+        </div>
+
+        <div class="res-group">
+            <div class="res-title">Sección x = <span id="res_xcLabel" style="color:var(--accent)">—</span> m</div>
+            <div class="res-row"><span class="res-key">V(x)</span><span class="res-val blue" id="res_Vx">—</span></div>
+            <div class="res-row"><span class="res-key">M(x)</span><span class="res-val red" id="res_Mx">—</span></div>
+            <div class="res-row"><span class="res-key">N(x)</span><span class="res-val" id="res_Nx">0.00 kN</span></div>
+        </div>
+
+        <div class="res-group">
+            <div class="res-title">Máximos</div>
+            <div class="res-row"><span class="res-key">|V|_max</span><span class="res-val blue" id="res_Vmax">—</span></div>
+            <div class="res-row"><span class="res-key">|M|_max</span><span class="res-val red" id="res_Mmax">—</span></div>
+            <div class="res-row"><span class="res-key">x (V = 0)</span><span class="res-val" id="res_xV0">—</span></div>
+        </div>
+
+        <div class="conv-box">
+            <div class="conv-title">CONVENCIÓN DE SIGNOS (ACI)</div>
+            <div class="conv-row"><div class="conv-icon" style="color:var(--accent2)">↑</div><div class="conv-label">V(+) = cara izq. hacia arriba</div></div>
+            <div class="conv-row"><div class="conv-icon" style="color:var(--red)">∪</div><div class="conv-label">M(+) = tracción fibra inferior</div></div>
+            <div class="conv-row"><div class="conv-icon" style="color:var(--text2)">→</div><div class="conv-label">N(x) = 0 para viga pura</div></div>
+        </div>
+
+        <div class="verif-box ok" id="verifBox">
+            <div class="verif-title" id="verifTitle">—</div>
+            <div class="verif-sub" id="verifSub">Calcule para verificar</div>
+        </div>
+
+        <div class="teoria-box">
+            <div class="teoria-title">TEORÍA — EQUILIBRIO ESTÁTICO</div>
+            <div class="formula">ΣFy = 0 → RA + RB = ΣP + q·L</div>
+            <div class="formula">ΣM_A = 0 → RB·L = ΣM_ext</div>
+            <div class="formula">V(x) = RA − ΣP_izq − q·x</div>
+            <div class="formula">M(x) = RA·x − ΣP(x−a) − q·x²/2</div>
+            <div class="teoria-text">El DCL aísla el elemento mostrando: reacciones (verdes), cargas externas (naranja) y fuerzas internas V, M en la sección de corte (rojo).</div>
+        </div>
+
+        <div class="res-group">
+            <div class="res-title">Normativa</div>
+            <div class="norma-chips">
+                <span class="norma-chip">ACI 318-19</span>
+                <span class="norma-chip">NCh 430</span>
+                <span class="norma-chip">AISC 360</span>
+                <span class="norma-chip">Mecánica Est.</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Módulos existentes — sin JS propio -->
+<script src="../js/diag_cortante.js"></script>
+<script src="../js/diag_momento.js"></script>
+
+<script>
+'use strict';
+
+/* ─── CANVAS REFS ─── */
+let canvasDCL, canvasDFC, canvasDMF;
+let x_corte = 2.5;
+
+/* ─── INIT RESIZE ─── */
+function initCanvases() {
+    canvasDCL = document.getElementById('canvasDCL');
+    canvasDFC = document.getElementById('canvasDFC');
+    canvasDMF = document.getElementById('canvasDMF');
+
+    function resizeAll() {
+        const mw = document.getElementById('mainWrap');
+        canvasDCL.width  = mw.clientWidth;
+        canvasDCL.height = mw.clientHeight;
+
+        const dw = document.getElementById('dfcWrap');
+        canvasDFC.width  = dw.clientWidth;
+        canvasDFC.height = dw.clientHeight;
+
+        const mfw = document.getElementById('dmfWrap');
+        canvasDMF.width  = mfw.clientWidth;
+        canvasDMF.height = mfw.clientHeight;
+
+        if (DMF_MODULE.state.result && DFC_MODULE.state.result) {
+            renderAll(DMF_MODULE.state.result, DFC_MODULE.state.result);
+        }
+    }
+
+    const ro = new ResizeObserver(resizeAll);
+    ro.observe(document.getElementById('mainWrap'));
+    ro.observe(document.getElementById('dfcWrap'));
+    ro.observe(document.getElementById('dmfWrap'));
+    setTimeout(resizeAll, 100);
+}
+
+/* ─── SINCRONIZAR AMBOS MÓDULOS ─── */
+function syncModules() {
+    const L    = parseFloat(document.getElementById('inp_L').value) || 6;
+    const tipo = document.getElementById('inp_apoyo').value;   // 'simple' | 'voladizo'
+    const incP = document.getElementById('inp_incP').checked;
+    const incQ = document.getElementById('inp_incQ').checked;
+    const P    = parseFloat(document.getElementById('inp_P').value)  || 40;
+    const aP   = Math.min(parseFloat(document.getElementById('inp_aP').value) || 3, L - 0.01);
+    const q    = parseFloat(document.getElementById('inp_q').value)  || 15;
+
+    // Sincronizar DMF_MODULE
+    DMF_MODULE.setParam('L',    L);
+    DMF_MODULE.setParam('tipo', tipo);
+    DMF_MODULE.clearCargas();
+    if (incP) DMF_MODULE.addCarga({ tipo: 'puntual', P: P, a: aP });
+    if (incQ) DMF_MODULE.addCarga({ tipo: 'dist',    q: q, a: 0, b_end: L });
+
+    // Sincronizar DFC_MODULE (mismas cargas, misma longitud y tipo)
+    DFC_MODULE.setParam('L',    L);
+    DFC_MODULE.setParam('tipo', tipo);
+    DFC_MODULE.clearCargas();
+    if (incP) DFC_MODULE.addCarga({ tipo: 'puntual', P: P, a: aP });
+    if (incQ) DFC_MODULE.addCarga({ tipo: 'dist',    q: q, a: 0, b_end: L });
+
+    // Clamp x_corte al rango [0, L]
+    x_corte = Math.max(0, Math.min(parseFloat(document.getElementById('inp_xcorte').value) || 0, L));
+}
+
+/* ─── CALCULAR Y RENDERIZAR ─── */
+function calcularYRenderizar() {
+    syncModules();
+    const resDMF = DMF_MODULE.calcular();
+    const resDFC = DFC_MODULE.calcular();
+    renderAll(resDMF, resDFC);
+    updateResults(resDMF, resDFC);
+}
+
+function renderAll(resDMF, resDFC) {
+    resDMF = resDMF || DMF_MODULE.state.result;
+    resDFC = resDFC || DFC_MODULE.state.result;
+    if (!resDMF || !resDFC) return;
+    drawDCLCanvas(canvasDCL, resDMF, resDFC);
+    drawMiniDFC(canvasDFC, resDFC);
+    drawMiniDMF(canvasDMF, resDMF);
+}
+
+/* ─── INTERPOLACIÓN LINEAL ─── */
+function interp(xs, Ys, x) {
+    if (!xs || xs.length === 0) return 0;
+    if (x <= xs[0]) return Ys[0];
+    if (x >= xs[xs.length - 1]) return Ys[xs.length - 1];
+    for (let i = 0; i < xs.length - 1; i++) {
+        if (xs[i] <= x && x <= xs[i + 1]) {
+            const t = (x - xs[i]) / (xs[i + 1] - xs[i]);
+            return Ys[i] + t * (Ys[i + 1] - Ys[i]);
+        }
+    }
+    return 0;
+}
+
+/* ════════════════════════════════════════════════════
+   CANVAS PRINCIPAL — DCL
+   ════════════════════════════════════════════════════ */
+function drawDCLCanvas(canvas, resDMF, resDFC) {
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+
+    const showR = document.getElementById('show_react').checked;
+    const showE = document.getElementById('show_ext').checked;
+    const showI = document.getElementById('show_int').checked;
+    const showC = document.getElementById('show_cotas').checked;
+
+    const L      = DMF_MODULE.state.L;
+    const tipo   = DMF_MODULE.state.tipo;
+    const cargas = DMF_MODULE.state.cargas;
+    const { RA, RB, MA } = resDMF.reacciones;
+
+    const pad = { top: 95, right: 60, bottom: 85, left: 72 };
+    const cw  = W - pad.left - pad.right;
+    const ch  = H - pad.top  - pad.bottom;
+    const sx  = cw / L;
+
+    const yV     = pad.top + ch * 0.40;   // y centro viga
+    const vigaH  = Math.max(18, Math.min(ch * 0.09, 34));
+    const yTop   = yV - vigaH / 2;
+    const yBot   = yV + vigaH / 2;
+
+    /* GRID */
+    ctx.strokeStyle = 'rgba(255,255,255,0.03)';
+    ctx.lineWidth = 1; ctx.setLineDash([4, 10]);
+    for (let i = 1; i < 6; i++) {
+        const gx = pad.left + (i / 6) * cw;
+        ctx.beginPath(); ctx.moveTo(gx, pad.top - 25); ctx.lineTo(gx, H - 20); ctx.stroke();
+    }
+    ctx.setLineDash([]);
+
+    /* CARGAS EXTERNAS */
+    if (showE) {
+        cargas.forEach(c => {
+            if (c.tipo === 'dist') {
+                _drawDist(ctx, pad.left, pad.left + cw, yTop, c.q);
+            }
+        });
+        cargas.forEach(c => {
+            if (c.tipo === 'puntual') {
+                _drawPunt(ctx, pad.left + c.a * sx, yTop, c.P);
+            }
+        });
+    }
+
+    /* VIGA */
+    ctx.shadowColor = 'rgba(0,229,255,0.12)'; ctx.shadowBlur = 10;
+    ctx.fillStyle   = 'rgba(255,255,255,0.06)';
+    ctx.strokeStyle = 'rgba(255,255,255,0.45)';
+    ctx.lineWidth   = 2;
+    ctx.beginPath(); ctx.rect(pad.left, yTop, cw, vigaH); ctx.fill(); ctx.stroke();
+    ctx.shadowBlur  = 0;
+
+    ctx.fillStyle   = 'rgba(255,255,255,0.18)';
+    ctx.font        = '9px Space Mono, monospace';
+    ctx.textAlign   = 'center';
+    ctx.fillText(tipo === 'voladizo' ? 'VOLADIZO' : 'VIGA SIMPLEMENTE APOYADA', pad.left + cw / 2, yTop - 5);
+
+    /* APOYOS */
+    if (tipo === 'voladizo') {
+        _drawEmpotrado(ctx, pad.left, yV, vigaH);
+    } else {
+        _drawPin(ctx, pad.left, yBot);
+        _drawRoller(ctx, pad.left + cw, yBot);
+    }
+
+    /* REACCIONES */
+    if (showR) {
+        if (tipo === 'voladizo') {
+            _drawReaccion(ctx, pad.left, yTop, RA, 'RA', true);
+            if (Math.abs(MA || 0) > 0.01) _drawMomentoArco(ctx, pad.left + 26, yV, MA, 'MA');
+        } else {
+            _drawReaccion(ctx, pad.left, yTop, RA, 'RA', true);
+            _drawReaccion(ctx, pad.left + cw, yTop, RB, 'RB', false);
+        }
+    }
+
+    /* LÍNEA DE CORTE */
+    const xcPx = pad.left + x_corte * sx;
+    ctx.strokeStyle = 'rgba(255,71,87,0.85)';
+    ctx.lineWidth   = 1.5; ctx.setLineDash([7, 5]);
+    ctx.beginPath(); ctx.moveTo(xcPx, pad.top - 16); ctx.lineTo(xcPx, H - 22); ctx.stroke();
+    ctx.setLineDash([]);
+
+    ctx.fillStyle   = 'rgba(255,71,87,0.95)';
+    ctx.font        = 'bold 10px Space Mono, monospace';
+    ctx.textAlign   = 'center';
+    ctx.fillText(`x = ${x_corte.toFixed(2)} m`, xcPx, pad.top - 20);
+
+    /* FUERZAS INTERNAS */
+    const Vx = interp(resDFC.xs, resDFC.Vs, x_corte);
+    const Mx = interp(resDMF.xs, resDMF.Ms, x_corte);
+    if (showI) _drawFuerzasInternas(ctx, xcPx, yV, vigaH, Vx, Mx);
+
+    /* COTAS */
+    if (showC) _drawCotas(ctx, pad, cw, yBot, L, sx, cargas);
+}
+
+/* ── PRIMITIVAS DCL ── */
+function _drawDist(ctx, x0, x1, yTop, q) {
+    const n = Math.max(4, Math.ceil((x1 - x0) / 36));
+    const h = 28;
+    ctx.strokeStyle = 'rgba(255,140,0,0.85)';
+    ctx.fillStyle   = 'rgba(255,140,0,0.85)';
+    ctx.lineWidth   = 1.5;
+    ctx.beginPath(); ctx.moveTo(x0, yTop - h); ctx.lineTo(x1, yTop - h); ctx.stroke();
+    for (let i = 0; i <= n; i++) {
+        const x = x0 + (i / n) * (x1 - x0);
+        ctx.beginPath(); ctx.moveTo(x, yTop - h); ctx.lineTo(x, yTop - 2); ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(x - 4, yTop - 10); ctx.lineTo(x, yTop - 2); ctx.lineTo(x + 4, yTop - 10);
+        ctx.stroke();
+    }
+    ctx.font = 'bold 10px Space Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText(`q = ${q.toFixed(1)} kN/m`, (x0 + x1) / 2, yTop - h - 8);
+}
+
+function _drawPunt(ctx, px, yTop, P) {
+    const h = 38;
+    ctx.strokeStyle = 'rgba(255,140,0,0.95)';
+    ctx.fillStyle   = 'rgba(255,140,0,0.95)';
+    ctx.lineWidth   = 2.5;
+    ctx.beginPath(); ctx.moveTo(px, yTop - h); ctx.lineTo(px, yTop - 2); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(px - 6, yTop - 12); ctx.lineTo(px, yTop - 2); ctx.lineTo(px + 6, yTop - 12);
+    ctx.stroke();
+    ctx.font = 'bold 11px Space Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText(`P = ${P.toFixed(0)} kN`, px, yTop - h - 8);
+}
+
+function _drawPin(ctx, x, y) {
+    const s = 13;
+    ctx.fillStyle = 'rgba(0,229,255,0.15)'; ctx.strokeStyle = 'rgba(0,229,255,0.7)'; ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(x, y + 2); ctx.lineTo(x - s, y + 2 + s * 1.4); ctx.lineTo(x + s, y + 2 + s * 1.4);
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x - s - 6, y + 2 + s * 1.4); ctx.lineTo(x + s + 6, y + 2 + s * 1.4);
+    ctx.strokeStyle = 'rgba(255,255,255,0.2)'; ctx.stroke();
+}
+
+function _drawRoller(ctx, x, y) {
+    const s = 13;
+    ctx.fillStyle = 'rgba(0,229,255,0.15)'; ctx.strokeStyle = 'rgba(0,229,255,0.7)'; ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(x, y + 2); ctx.lineTo(x - s, y + 2 + s * 1.4); ctx.lineTo(x + s, y + 2 + s * 1.4);
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.arc(x, y + 2 + s * 1.4 + 7, 5, 0, Math.PI * 2); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x - s - 6, y + 2 + s * 1.4 + 13); ctx.lineTo(x + s + 6, y + 2 + s * 1.4 + 13);
+    ctx.strokeStyle = 'rgba(255,255,255,0.2)'; ctx.stroke();
+}
+
+function _drawEmpotrado(ctx, x, yV, vigaH) {
+    const w = 12, h = vigaH * 2.6;
+    ctx.fillStyle = 'rgba(0,229,255,0.1)'; ctx.strokeStyle = 'rgba(0,229,255,0.6)'; ctx.lineWidth = 1.5;
+    ctx.fillRect(x - w, yV - h / 2, w, h); ctx.strokeRect(x - w, yV - h / 2, w, h);
+    ctx.strokeStyle = 'rgba(0,229,255,0.25)'; ctx.lineWidth = 1;
+    for (let yy = yV - h / 2; yy < yV + h / 2; yy += 7) {
+        ctx.beginPath(); ctx.moveTo(x - w, yy); ctx.lineTo(x - w - 9, yy + 7); ctx.stroke();
+    }
+}
+
+function _drawReaccion(ctx, x, yTop, R, label, izq) {
+    if (isNaN(R) || Math.abs(R) < 0.001) return;
+    const h = 38;
+    ctx.strokeStyle = '#00ff9d'; ctx.fillStyle = '#00ff9d'; ctx.lineWidth = 2.2;
+    ctx.beginPath(); ctx.moveTo(x, yTop + h); ctx.lineTo(x, yTop); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x - 5, yTop + 9); ctx.lineTo(x, yTop); ctx.lineTo(x + 5, yTop + 9);
+    ctx.stroke();
+    ctx.font = 'bold 10px Space Mono, monospace';
+    ctx.textAlign = izq ? 'right' : 'left';
+    ctx.fillText(`${label}=${Math.abs(R).toFixed(1)}kN`, x + (izq ? -8 : 8), yTop + h * 0.55);
+}
+
+function _drawMomentoArco(ctx, x, y, M, label) {
+    const r = 20;
+    ctx.strokeStyle = '#00ff9d'; ctx.fillStyle = '#00ff9d'; ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(x, y, r, M > 0 ? -Math.PI * 0.85 : Math.PI * 0.15, M > 0 ? Math.PI * 0.15 : Math.PI * 0.85, M < 0);
+    ctx.stroke();
+    ctx.font = '9px Space Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText(`${label}=${Math.abs(M).toFixed(0)}kNm`, x + r + 4, y - 4);
+}
+
+function _drawFuerzasInternas(ctx, xc, yV, vigaH, V, M) {
+    const h = Math.min(32, Math.abs(V) * 0.22 + 14);
+    const dV = V >= 0 ? -1 : 1;   // dirección de flecha en cara izquierda
+
+    /* Cara izquierda */
+    ctx.strokeStyle = 'rgba(255,71,87,0.95)'; ctx.fillStyle = 'rgba(255,71,87,0.95)'; ctx.lineWidth = 2;
+    const xL = xc - 16;
+    ctx.beginPath(); ctx.moveTo(xL, yV + dV * h); ctx.lineTo(xL, yV - dV * h); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(xL - 4, yV - dV * h + dV * 8); ctx.lineTo(xL, yV - dV * h); ctx.lineTo(xL + 4, yV - dV * h + dV * 8);
+    ctx.stroke();
+    ctx.font = 'bold 9px Space Mono, monospace'; ctx.textAlign = 'right';
+    ctx.fillText(`V=${V.toFixed(1)}kN`, xc - 20, yV - dV * h - 4);
+
+    /* Cara derecha (sentido opuesto) */
+    const xR = xc + 16;
+    ctx.strokeStyle = 'rgba(255,71,87,0.55)';
+    ctx.beginPath(); ctx.moveTo(xR, yV - dV * h); ctx.lineTo(xR, yV + dV * h); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(xR - 4, yV + dV * h - dV * 8); ctx.lineTo(xR, yV + dV * h); ctx.lineTo(xR + 4, yV + dV * h - dV * 8);
+    ctx.stroke();
+
+    /* Momento — arco */
+    const rM = 18, dM = M >= 0 ? 1 : -1;
+    ctx.strokeStyle = 'rgba(255,71,87,0.85)'; ctx.lineWidth = 1.8;
+    ctx.beginPath();
+    ctx.arc(xc, yV, rM, -Math.PI * 0.7 * dM, Math.PI * 0.7 * dM, M < 0);
+    ctx.stroke();
+    ctx.fillStyle = 'rgba(255,71,87,0.9)';
+    ctx.font = 'bold 9px Space Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText(`M=${M.toFixed(1)}kNm`, xc + rM + 4, yV - 4);
+}
+
+function _drawCotas(ctx, pad, cw, yBot, L, sx, cargas) {
+    const yC  = yBot + 44;
+    const yCA = yBot + 26;
+    ctx.font = '9px Space Mono, monospace';
+
+    /* Cota L total */
+    ctx.strokeStyle = 'rgba(255,255,255,0.2)'; ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pad.left, yC); ctx.lineTo(pad.left + cw, yC); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(pad.left, yC - 4); ctx.lineTo(pad.left, yC + 4); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(pad.left + cw, yC - 4); ctx.lineTo(pad.left + cw, yC + 4); ctx.stroke();
+    ctx.textAlign = 'center';
+    ctx.fillText(`L = ${L.toFixed(2)} m`, pad.left + cw / 2, yC + 12);
+
+    /* Cota x_corte */
+    if (x_corte > 0.05 && x_corte < L - 0.05) {
+        const xcp = pad.left + x_corte * sx;
+        ctx.strokeStyle = 'rgba(255,71,87,0.35)'; ctx.setLineDash([3, 3]);
+        ctx.beginPath(); ctx.moveTo(pad.left, yCA); ctx.lineTo(xcp, yCA); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = 'rgba(255,71,87,0.7)'; ctx.textAlign = 'center';
+        ctx.fillText(`x = ${x_corte.toFixed(2)} m`, (pad.left + xcp) / 2, yCA + 11);
+    }
+
+    /* Cota a — cargas puntuales */
+    cargas.forEach(c => {
+        if (c.tipo === 'puntual' && c.a > 0.05) {
+            const xp = pad.left + c.a * sx;
+            const ycc = yBot + 62;
+            ctx.strokeStyle = 'rgba(255,140,0,0.3)'; ctx.fillStyle = 'rgba(255,140,0,0.65)';
+            ctx.setLineDash([3, 4]);
+            ctx.beginPath(); ctx.moveTo(pad.left, ycc); ctx.lineTo(xp, ycc); ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.textAlign = 'center';
+            ctx.fillText(`a = ${c.a.toFixed(2)} m`, (pad.left + xp) / 2, ycc + 11);
+        }
+    });
+}
+
+/* ════════════════════════════════════════════════════
+   MINI DFC — usa DFC_MODULE.draw + superpone x_corte
+   ════════════════════════════════════════════════════ */
+function drawMiniDFC(canvas, resDFC) {
+    if (!canvas || !resDFC) return;
+    DFC_MODULE.draw(canvas, resDFC);
+
+    // Superponer línea de corte
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    const L = DFC_MODULE.state.L;
+    // Mismos paddings que usa drawDFC internamente
+    const padL = 65, padR = 40, padT = 55, padB = 75;
+    const cw   = W - padL - padR;
+    if (cw <= 0) return;
+    const xP   = padL + (x_corte / L) * cw;
+
+    ctx.strokeStyle = 'rgba(255,71,87,0.75)';
+    ctx.lineWidth   = 1.5; ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(xP, padT); ctx.lineTo(xP, H - padB); ctx.stroke();
+    ctx.setLineDash([]);
+
+    const Vx = interp(resDFC.xs, resDFC.Vs, x_corte);
+    ctx.fillStyle = 'rgba(255,71,87,0.9)';
+    ctx.font = 'bold 9px Space Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText(`V=${Vx.toFixed(1)}kN`, xP + 3, padT + 14);
+}
+
+/* ════════════════════════════════════════════════════
+   MINI DMF — usa DMF_MODULE.draw + superpone x_corte
+   ════════════════════════════════════════════════════ */
+function drawMiniDMF(canvas, resDMF) {
+    if (!canvas || !resDMF) return;
+    DMF_MODULE.draw(canvas, resDMF);
+
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    const L = DMF_MODULE.state.L;
+    // Mismos paddings que usa drawDMF internamente
+    const padL = 60, padR = 40, padT = 60, padB = 80;
+    const cw   = W - padL - padR;
+    const ch   = H - padT  - padB;
+    if (cw <= 0) return;
+    const xP   = padL + (x_corte / L) * cw;
+    const yMid = padT + ch * 0.5;
+
+    ctx.strokeStyle = 'rgba(255,71,87,0.75)';
+    ctx.lineWidth   = 1.5; ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(xP, padT); ctx.lineTo(xP, H - padB); ctx.stroke();
+    ctx.setLineDash([]);
+
+    const Mx = interp(resDMF.xs, resDMF.Ms, x_corte);
+    ctx.fillStyle = 'rgba(255,71,87,0.9)';
+    ctx.font = 'bold 9px Space Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText(`M=${Mx.toFixed(1)}kNm`, xP + 3, yMid - 8);
+}
+
+/* ════════════════════════════════════════════════════
+   ACTUALIZAR PANEL DERECHO
+   ════════════════════════════════════════════════════ */
+function updateResults(resDMF, resDFC) {
+    if (!resDMF || !resDFC) return;
+    const fmt  = (v, d, u) => (v != null && !isNaN(v)) ? `${(+v).toFixed(d)} ${u}`.trim() : '—';
+    const fmtE = v => Math.abs(v) < 0.05 ? '✅ ~0.00' : `⚠️ ${v.toFixed(3)}`;
+
+    const re  = resDMF.reacciones;
+    const RA  = re.RA  ?? 0;
+    const RB  = re.RB  ?? 0;
+    const MA  = re.MA  ?? 0;
+    const L   = DMF_MODULE.state.L;
+
+    /* Equilibrio */
+    const sumCarga = DMF_MODULE.state.cargas.reduce((acc, c) => {
+        if (c.tipo === 'puntual') return acc + c.P;
+        if (c.tipo === 'dist')   return acc + c.q * (c.b_end - c.a);
+        return acc;
+    }, 0);
+    const SumFy = RA + RB - sumCarga;
+    const SumMA = DMF_MODULE.state.tipo === 'voladizo'
+        ? 0
+        : RB * L - DMF_MODULE.state.cargas.reduce((acc, c) => {
+              if (c.tipo === 'puntual') return acc + c.P * c.a;
+              if (c.tipo === 'dist')   return acc + c.q * (c.b_end - c.a) * (c.a + (c.b_end - c.a) / 2);
+              return acc;
+          }, 0);
+
+    document.getElementById('res_SFx').textContent = '✅ ~0.00';
+    document.getElementById('res_SFy').textContent = fmtE(SumFy);
+    document.getElementById('res_SM').textContent  = fmtE(SumMA);
+
+    document.getElementById('res_RA').textContent = fmt(RA,  2, 'kN');
+    document.getElementById('res_RB').textContent = DMF_MODULE.state.tipo === 'voladizo'
+        ? '— (libre)' : fmt(RB, 2, 'kN');
+    document.getElementById('res_MA').textContent = DMF_MODULE.state.tipo === 'voladizo'
+        ? fmt(MA, 2, 'kN·m') : '— (articulado)';
+
+    /* Sección */
+    const Vx = interp(resDFC.xs, resDFC.Vs, x_corte);
+    const Mx = interp(resDMF.xs, resDMF.Ms, x_corte);
+    document.getElementById('res_xcLabel').textContent = x_corte.toFixed(2);
+    document.getElementById('res_Vx').textContent = fmt(Vx, 2, 'kN');
+    document.getElementById('res_Mx').textContent = fmt(Mx, 2, 'kN·m');
+
+    /* Máximos */
+    const Vmax = resDFC.notables.VmaxAbs;
+    const Mmax = Math.max(Math.abs(resDMF.Mmax), Math.abs(resDMF.Mmin));
+    const xV0  = resDFC.notables.cerosV;
+    document.getElementById('res_Vmax').textContent = fmt(Vmax, 2, 'kN');
+    document.getElementById('res_Mmax').textContent = fmt(Mmax, 2, 'kN·m');
+    document.getElementById('res_xV0').textContent  = xV0.length
+        ? xV0.map(v => v.toFixed(2) + 'm').join(', ') : '—';
+
+    /* Overlays */
+    document.getElementById('ovRA').textContent = RA.toFixed(1);
+    document.getElementById('ovRB').textContent = (RB || 0).toFixed(1);
+    document.getElementById('ovVx').textContent = Vx.toFixed(1);
+    document.getElementById('ovMx').textContent = Mx.toFixed(1);
+
+    /* Verificación */
+    const eqOk = Math.abs(SumFy) < 0.1;
+    const box   = document.getElementById('verifBox');
+    box.className = 'verif-box ' + (eqOk ? 'ok' : 'warn');
+    document.getElementById('verifTitle').textContent = eqOk ? '✅ EQUILIBRIO VERIFICADO' : '⚠️ REVISAR EQUILIBRIO';
+    document.getElementById('verifTitle').style.color = eqOk ? 'var(--accent)' : 'var(--orange)';
+    document.getElementById('verifSub').textContent   =
+        `RA = ${RA.toFixed(2)} kN  |  RB = ${(RB||0).toFixed(2)} kN\nV(${x_corte.toFixed(2)}m) = ${Vx.toFixed(2)} kN  |  M = ${Mx.toFixed(2)} kNm`;
+}
+
+/* ════════════════════════════════════════════════════
+   SLIDER — solo redibujar, sin recalcular
+   ════════════════════════════════════════════════════ */
+document.getElementById('inp_xcorte').addEventListener('input', function () {
+    x_corte = parseFloat(this.value);
+    document.getElementById('lbl_xcorte').textContent = x_corte.toFixed(2);
+    if (DMF_MODULE.state.result && DFC_MODULE.state.result) {
+        renderAll(DMF_MODULE.state.result, DFC_MODULE.state.result);
+        updateResults(DMF_MODULE.state.result, DFC_MODULE.state.result);
+    }
+});
+
+/* ════════════════════════════════════════════════════
+   BOTONES
+   ════════════════════════════════════════════════════ */
+document.getElementById('btnCalc').addEventListener('click', calcularYRenderizar);
+
+document.getElementById('btnReset').addEventListener('click', () => {
+    document.getElementById('inp_elem').value   = 'viga';
+    document.getElementById('inp_apoyo').value  = 'simple';
+    document.getElementById('inp_L').value      = '6.0';
+    document.getElementById('inp_P').value      = '40';
+    document.getElementById('inp_aP').value     = '3.0';
+    document.getElementById('inp_q').value      = '15';
+    document.getElementById('inp_incP').checked = true;
+    document.getElementById('inp_incQ').checked = true;
+    const sl = document.getElementById('inp_xcorte');
+    sl.max = 6; sl.value = 2.5;
+    x_corte = 2.5;
+    document.getElementById('lbl_xcorte').textContent = '2.50';
+    calcularYRenderizar();
+});
+
+/* ════════════════════════════════════════════════════
+   AUTO-RECALC
+   ════════════════════════════════════════════════════ */
+const SOLO_REDIBUJA = ['show_react','show_ext','show_int','show_cotas'];
+
+['inp_elem','inp_apoyo','inp_L','inp_P','inp_aP','inp_q',
+ 'inp_incP','inp_incQ','show_react','show_ext','show_int','show_cotas'
+].forEach(id => {
+    const el = document.getElementById(id);
+    const ev = (el.tagName === 'SELECT' || el.type === 'checkbox') ? 'change' : 'input';
+    el.addEventListener(ev, () => {
+        if (id === 'inp_L') {
+            const newL = parseFloat(document.getElementById('inp_L').value) || 6;
+            const sl   = document.getElementById('inp_xcorte');
+            sl.max = newL;
+            if (x_corte > newL) {
+                x_corte  = newL / 2;
+                sl.value = x_corte;
+                document.getElementById('lbl_xcorte').textContent = x_corte.toFixed(2);
+            }
+        }
+        if (SOLO_REDIBUJA.includes(id)) {
+            if (DMF_MODULE.state.result && DFC_MODULE.state.result) {
+                renderAll(DMF_MODULE.state.result, DFC_MODULE.state.result);
+            }
+        } else {
+            calcularYRenderizar();
+        }
+    });
+});
+
+/* ── ARRANQUE ── */
+initCanvases();
+setTimeout(calcularYRenderizar, 200);
+</script>
+</body>
+</html>

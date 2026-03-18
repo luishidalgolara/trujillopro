@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edificio Campo Dourique — Projeto Estrutural 3D | IngeLAB 3D</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/annotations.css">
+    <style>
+        .back-btn {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.09);
+            background: rgba(14,15,20,0.93);
+            backdrop-filter: blur(16px);
+            color: #9da5b2;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .back-btn:hover {
+            border-color: #00ddaa;
+            color: #00ddaa;
+            box-shadow: 0 0 14px rgba(0,221,170,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botón volver al selector -->
+    <a class="back-btn" href="index.html">← Volver</a>
+
+    <div class="loading-screen" id="ls">
+        <div class="lb-icon">🏢</div>
+        <div class="lb-bar"><div class="lb-fill" id="lbFill"></div></div>
+        <div class="lb-txt" id="lbTxt">Inicializando Edificio Campo Dourique...</div>
+    </div>
+
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:14px">
+            <span style="font-size:1.6rem">🏢</span>
+            <div>
+                <h1>IngeLAB 3D</h1>
+                <span>Edificio Campo Dourique — Projeto Estrutural</span>
+            </div>
+        </div>
+        <div class="header-r">
+            <div class="fps" id="fps">-- FPS</div>
+            <div class="sdot"></div>
+        </div>
+    </div>
+
+    <canvas id="mainCanvas"></canvas>
+
+    <div class="hl-panel">
+        <div class="hl-title">🏢 Componentes Estructurales</div>
+        <button class="hl-btn active" data-part="all">
+            <span class="hl-dot" style="background:#00ddaa"></span>Estructura completa
+        </button>
+
+        <div class="hl-sep">— Elementos Verticales —</div>
+        <button class="hl-btn" data-part="columns">
+            <span class="hl-dot" style="background:#FF6B00"></span>Pilares
+        </button>
+        <button class="hl-btn" data-part="walls">
+            <span class="hl-dot" style="background:#FF2244"></span>Paredes perimetrales
+        </button>
+        <button class="hl-btn" data-part="shear_walls">
+            <span class="hl-dot" style="background:#FF2244"></span>Muros de corte
+        </button>
+
+        <div class="hl-sep">— Elementos Horizontales —</div>
+        <button class="hl-btn" data-part="slabs">
+            <span class="hl-dot" style="background:#AADD00"></span>Losas planas
+        </button>
+        <button class="hl-btn" data-part="roof">
+            <span class="hl-dot" style="background:#00DDFF"></span>Cubierta
+        </button>
+        <button class="hl-btn" data-part="beams">
+            <span class="hl-dot" style="background:#FFD700"></span>Vigas de borde
+        </button>
+
+        <div class="hl-sep">— Sistemas Estructurales —</div>
+        <button class="hl-btn" data-part="foundation">
+            <span class="hl-dot" style="background:#9933FF"></span>Fundación — Losa + Pilotes
+        </button>
+        <button class="hl-btn" data-part="core">
+            <span class="hl-dot" style="background:#0066FF"></span>Núcleo central rígido
+        </button>
+        <button class="hl-btn" data-part="frame">
+            <span class="hl-dot" style="background:#FF6B00"></span>Sistema flat plate
+        </button>
+
+        <div class="hl-sep">— Análisis por Niveles —</div>
+        <button class="hl-btn" data-part="ground_floor">
+            <span class="hl-dot" style="background:#44aa88"></span>Planta Baja
+        </button>
+        <button class="hl-btn" data-part="typical_floor">
+            <span class="hl-dot" style="background:#66bbaa"></span>Pisos Tipo
+        </button>
+        <button class="hl-btn" data-part="top_floor">
+            <span class="hl-dot" style="background:#88ccbb"></span>Ático y Cubierta
+        </button>
+
+        <div class="hl-sep">— Vistas Técnicas —</div>
+        <button class="hl-btn" data-part="load_path">
+            <span class="hl-dot" style="background:#ff5588"></span>Camino de carga
+        </button>
+        <button class="hl-btn" data-part="seismic">
+            <span class="hl-dot" style="background:#dd3355"></span>Sistema antisísmico
+        </button>
+    </div>
+
+    <div class="info-panel" id="ip">
+        <div class="ip-tag">🏢 Análise Estrutural</div>
+        <div class="ip-name" id="ipN">Edificio Campo Dourique — Projeto Estrutural</div>
+        <div class="ip-sys" id="ipS">Sistema de Losas Planas con Núcleo Central</div>
+        <div class="ip-desc" id="ipD">Edificio residencial de concreto armado con sistema de losas planas y núcleo central rígido. La estructura resiste cargas verticales mediante losas planas apoyadas en pilares y muros perimetrales, mientras que el núcleo central y los muros de rigidización garantizan la resistencia sísmica. Diseñado conforme NCh 433 y ACI 318-19.</div>
+        <div class="ip-stats" id="ipSt">
+            <div class="st-card"><div class="st-label">Sistema</div><div class="st-val">Losas + Núcleo</div></div>
+            <div class="st-card"><div class="st-label">Material</div><div class="st-val">Concreto Armado</div></div>
+            <div class="st-card"><div class="st-label">Normas</div><div class="st-val">NCh 433 / ACI</div></div>
+            <div class="st-card"><div class="st-label">Resistência</div><div class="st-val">f'c 30 MPa</div></div>
+        </div>
+    </div>
+
+    <div class="ctrl-bar">
+        <button class="cb active" id="bRot"  title="Auto-rotação">🔄</button>
+        <button class="cb"        id="bRst"  title="Reset">🏠</button>
+        <div class="cd"></div>
+        <button class="cb" id="bZi"   title="Zoom +">➕</button>
+        <button class="cb" id="bZo"   title="Zoom -">➖</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFr"   title="Vista frontal">👁️</button>
+        <button class="cb" id="bTo"   title="Vista superior">🔝</button>
+        <button class="cb" id="bSi"   title="Vista lateral">👈</button>
+        <button class="cb" id="bIso"  title="Vista isométrica">📐</button>
+        <div class="cd"></div>
+        <button class="cb" id="bFloor"   title="Control de pisos">🏢</button>
+        <button class="cb" id="bXray"    title="Modo rayos X">🔍</button>
+        <div class="cd"></div>
+        <button class="cb" id="bSeismic" title="Simulação sísmica">🌊</button>
+        <button class="cb" id="bPP"      title="Efectos visuales">✨</button>
+        <button class="cb" id="bAnn"     title="Anotações estruturais">📌</button>
+        <button class="cb" id="bIn"      title="Info">📋</button>
+    </div>
+
+    <div class="pp-panel" id="ppP">
+        <div class="hl-title">Efectos Visuales</div>
+        <div class="pp-row"><label>Bloom</label>     <input type="range" id="ppB" min="0" max="100" value="15"></div>
+        <div class="pp-row"><label>Exposição</label> <input type="range" id="ppE" min="50" max="200" value="115"></div>
+        <div class="pp-row"><label>Contraste</label> <input type="range" id="ppC" min="0" max="100" value="55"></div>
+        <div class="pp-row"><label>Vinheta</label>   <input type="range" id="ppV" min="0" max="100" value="20"></div>
+    </div>
+
+    <div class="floor-slider" id="floorSlider">
+        <label>Nível</label>
+        <input type="range" id="floorRange" min="0" max="8" value="8" orient="vertical">
+        <div class="floor-level" id="floorLevel">Todos</div>
+    </div>
+
+    <div class="xray-mode" id="xrayMode">
+        <label>Transparência</label>
+        <input type="range" id="xrayRange" min="0" max="100" value="0">
+    </div>
+
+    <div class="seismic-panel" id="seismicPanel">
+        <div class="seismic-header" id="seismicHeader">
+            <div class="seismic-title">🌊 Simulação Sísmica</div>
+            <div class="seismic-header-right">
+                <span class="seismic-mini-status" id="seismicMiniStatus"></span>
+                <button class="seismic-toggle" id="seismicToggle" title="Minimizar">▾</button>
+            </div>
+        </div>
+
+        <div class="seismic-body" id="seismicBody">
+            <div class="seismic-row">
+                <label>Magnitude Richter</label>
+                <input type="range" id="seismicMagnitude" min="30" max="90" value="65" step="5">
+                <div class="seismic-value" id="magnitudeValue">6.5</div>
+            </div>
+            <div class="seismic-row">
+                <label>Duração (segundos)</label>
+                <input type="range" id="seismicDuration" min="15" max="90" value="30" step="5">
+                <div class="seismic-value" id="durationValue">30s</div>
+            </div>
+            <div class="seismic-row">
+                <label>Tipo de Solo</label>
+                <div class="seismic-radio">
+                    <input type="radio" name="soilType" id="soilRock" value="rock">
+                    <label for="soilRock">Rocha</label>
+                    <input type="radio" name="soilType" id="soilFirm" value="firm" checked>
+                    <label for="soilFirm">Firme</label>
+                    <input type="radio" name="soilType" id="soilSoft" value="soft">
+                    <label for="soilSoft">Mole</label>
+                </div>
+            </div>
+            <div class="seismic-row">
+                <label>Tipo de Colapso</label>
+                <div class="seismic-radio">
+                    <input type="radio" name="collapseType" id="colProgressive" value="progressive" checked>
+                    <label for="colProgressive">Progressivo</label>
+                    <input type="radio" name="collapseType" id="colPancake" value="pancake">
+                    <label for="colPancake">Pancake</label>
+                    <input type="radio" name="collapseType" id="colToppling" value="toppling">
+                    <label for="colToppling">Tombamento</label>
+                </div>
+            </div>
+            <div class="seismic-row">
+                <div class="seismic-checkbox">
+                    <input type="checkbox" id="allowCollapse" checked>
+                    <label for="allowCollapse">Permitir colapso estrutural</label>
+                </div>
+                <div class="seismic-checkbox">
+                    <input type="checkbox" id="showCracks" checked>
+                    <label for="showCracks">Mostrar fissuras</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="seismic-buttons">
+            <button class="seismic-btn" id="startEarthquake">▶ Iniciar</button>
+            <button class="seismic-btn" id="pauseEarthquake">⏸ Pausar</button>
+            <button class="seismic-btn danger" id="resetEarthquake">🔄 Reset</button>
+        </div>
+
+        <div class="seismic-status">
+            <div class="seismic-status-row">
+                <span class="seismic-status-label">Estado:</span>
+                <span class="seismic-status-value" id="seismicState">Estável</span>
+            </div>
+            <div class="seismic-status-row">
+                <span class="seismic-status-label">Deriva:</span>
+                <span class="seismic-status-value" id="seismicDrift">0.00%</span>
+            </div>
+            <div class="seismic-status-row">
+                <span class="seismic-status-label">Tempo:</span>
+                <span class="seismic-status-value" id="seismicTime">0.0s</span>
+            </div>
+            <div class="seismic-status-row">
+                <span class="seismic-status-label">Colapso:</span>
+                <span class="seismic-status-value" id="collapseProgress">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="credit">
+        Modelo 3D: Projeto Estrutural — Edificio Campo Dourique<br>
+        Licença: uso educacional / análise estrutural
+    </div>
+
+    <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"}}
+    </script>
+
+    <!-- JS compartidos -->
+    <script src="js/structural_data_campo.js"></script>
+    <script src="js/annotations_system.js"></script>
+    <script src="js/earthquake_motion.js"></script>
+    <script src="js/building_collapse.js"></script>
+
+    <!-- Módulo principal del Campo Dourique -->
+    <script type="module" src="js/main_campo.js"></script>
+
+</body>
+</html>

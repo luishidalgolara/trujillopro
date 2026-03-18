@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CC — Camino de Cargas | IngeLAB 3D</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Bebas+Neue&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg:#080c10;--bg2:#0d1117;--card:#0f1520;
+            --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.14);
+            --accent:#00ff9d;--accent2:#00e5ff;--blue:#0077ff;
+            --red:#ff4757;--orange:#ff8c00;--purple:#c084fc;
+            --text:#e8edf5;--text2:#8b95a8;--text3:#3d4758;
+            --mono:'Space Mono',monospace;--display:'Bebas Neue',sans-serif;
+            --orb:'Orbitron',sans-serif;--body:'DM Sans',sans-serif;
+            --r:10px;--r2:6px;
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+        html,body{height:100%;overflow:hidden;}
+        body{background:var(--bg);color:var(--text);font-family:var(--body);display:flex;flex-direction:column;}
+
+        .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;border-bottom:1px solid var(--border);background:rgba(8,12,16,.95);backdrop-filter:blur(10px);flex-shrink:0;}
+        .topbar-left{display:flex;align-items:center;gap:14px;}
+        .back-btn{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r2);padding:7px 12px;color:var(--text2);font-family:var(--mono);font-size:11px;cursor:pointer;transition:all .2s;text-decoration:none;}
+        .back-btn:hover{border-color:var(--accent2);color:var(--accent2);}
+        .page-badge{background:rgba(0,255,157,.1);border:1px solid rgba(0,255,157,.3);border-radius:var(--r2);padding:5px 12px;font-family:var(--orb);font-size:11px;color:var(--accent);letter-spacing:.08em;}
+        .page-title{font-family:var(--display);font-size:22px;letter-spacing:.04em;}
+        .topbar-right{display:flex;align-items:center;gap:10px;}
+        .calc-btn{background:var(--accent);border:none;border-radius:var(--r2);padding:8px 18px;color:#000;font-family:var(--mono);font-size:12px;cursor:pointer;transition:all .2s;font-weight:700;}
+        .calc-btn:hover{background:#1affa8;transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,255,157,.4);}
+        .reset-btn{background:transparent;border:1px solid var(--border2);border-radius:var(--r2);padding:8px 14px;color:var(--text2);font-family:var(--mono);font-size:11px;cursor:pointer;transition:all .2s;}
+        .reset-btn:hover{border-color:var(--text2);color:var(--text);}
+
+        .layout{display:grid;grid-template-columns:280px 1fr 260px;flex:1;overflow:hidden;}
+
+        /* PANEL IZQ */
+        .panel-left{background:var(--bg2);border-right:1px solid var(--border);overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:14px;}
+        .panel-left::-webkit-scrollbar{width:4px;}
+        .panel-left::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+        .pgroup{display:flex;flex-direction:column;gap:8px;}
+        .pgroup-title{font-family:var(--orb);font-size:10px;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid var(--border);}
+        .field{display:flex;flex-direction:column;gap:4px;}
+        .field label{font-size:11px;color:var(--text2);font-family:var(--mono);}
+        .field input,.field select{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:8px 10px;color:var(--text);font-family:var(--mono);font-size:12px;transition:border-color .2s;width:100%;}
+        .field input:focus,.field select:focus{outline:none;border-color:var(--accent);}
+        .field-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+        .field-unit{font-size:10px;color:var(--text3);font-family:var(--mono);margin-top:2px;text-align:right;}
+
+        /* PANEL CENTRO */
+        .panel-center{display:flex;flex-direction:column;overflow:hidden;background:var(--bg);}
+        .tabs-bar{display:flex;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--bg2);}
+        .tab-btn{padding:10px 18px;font-family:var(--mono);font-size:11px;color:var(--text2);cursor:pointer;border:none;background:transparent;border-bottom:2px solid transparent;transition:all .2s;letter-spacing:.05em;}
+        .tab-btn.active{color:var(--accent);border-bottom-color:var(--accent);background:rgba(0,255,157,.04);}
+        .tab-btn:hover:not(.active){color:var(--text);background:rgba(255,255,255,.03);}
+        .canvas-area{flex:1;padding:16px;overflow:hidden;display:flex;flex-direction:column;gap:8px;}
+        .canvas-label{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+        .canvas-label::before{content:'';display:block;width:3px;height:12px;background:var(--accent);border-radius:2px;}
+        .canvas-wrap{flex:1;position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;min-height:0;}
+        .canvas-wrap canvas{display:block;width:100%;height:100%;}
+        .canvas-overlay{position:absolute;bottom:10px;left:10px;display:flex;gap:6px;flex-wrap:wrap;}
+        .overlay-badge{background:rgba(8,12,16,.85);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-family:var(--mono);font-size:9px;color:var(--text2);}
+        .overlay-badge span{color:var(--accent);font-weight:700;}
+        .tab-panel{display:none;flex:1;flex-direction:column;gap:8px;overflow:hidden;}
+        .tab-panel.active{display:flex;}
+
+        /* PANEL DER */
+        .panel-right{background:var(--bg2);border-left:1px solid var(--border);overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:14px;}
+        .panel-right::-webkit-scrollbar{width:4px;}
+        .panel-right::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+        .res-group{display:flex;flex-direction:column;gap:6px;}
+        .res-title{font-family:var(--orb);font-size:10px;color:var(--accent2);letter-spacing:.15em;padding-bottom:6px;border-bottom:1px solid var(--border);}
+        .res-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+        .res-key{font-size:11px;color:var(--text2);font-family:var(--mono);flex-shrink:0;}
+        .res-val{font-size:12px;color:var(--text);font-family:var(--mono);font-weight:700;text-align:right;}
+        .res-val.ok{color:var(--accent);}
+        .res-val.fail{color:var(--red);}
+        .res-val.warn{color:var(--orange);}
+        .res-table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:10px;}
+        .res-table th{color:var(--text2);font-size:9px;padding:3px 4px;text-align:right;letter-spacing:.05em;border-bottom:1px solid var(--border);}
+        .res-table th:first-child{text-align:left;}
+        .res-table td{padding:3px 4px;text-align:right;color:var(--text);border-bottom:1px solid rgba(255,255,255,.03);}
+        .res-table td:first-child{text-align:left;color:var(--text2);}
+        .res-table tr:last-child td{color:var(--accent);font-weight:700;}
+        .verif-box{border-radius:var(--r);padding:12px;border:1px solid;text-align:center;}
+        .verif-box.ok{background:rgba(0,255,157,.07);border-color:rgba(0,255,157,.3);}
+        .verif-box.fail{background:rgba(255,71,87,.07);border-color:rgba(255,71,87,.3);}
+        .verif-title{font-family:var(--orb);font-size:12px;font-weight:700;margin-bottom:4px;}
+        .verif-sub{font-family:var(--mono);font-size:10px;color:var(--text2);}
+        .teoria-box{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px;}
+        .teoria-title{font-family:var(--orb);font-size:10px;color:var(--text2);letter-spacing:.1em;margin-bottom:8px;}
+        .teoria-text{font-size:11px;color:var(--text2);line-height:1.7;}
+        .formula{background:rgba(0,0,0,.4);border:1px solid rgba(0,255,157,.15);border-radius:var(--r2);padding:8px 10px;margin:6px 0;font-family:var(--mono);font-size:11px;color:var(--accent);}
+        .dcr-bar-wrap{height:8px;background:var(--card);border-radius:4px;overflow:hidden;margin-top:4px;}
+        .dcr-bar{height:100%;border-radius:4px;transition:width .4s;}
+        .norma-chips{display:flex;flex-wrap:wrap;gap:5px;}
+        .norma-chip{font-family:var(--mono);font-size:9px;padding:3px 7px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:3px;color:var(--text3);}
+
+        .panel-left,.panel-center,.panel-right{animation:fadeIn .4s ease both;}
+        .panel-center{animation-delay:.05s;}.panel-right{animation-delay:.1s;}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="topbar-left">
+        <a href="../index.html" class="back-btn">← Volver</a>
+        <div class="page-badge">CC</div>
+        <div class="page-title">CAMINO DE CARGAS</div>
+    </div>
+    <div class="topbar-right">
+        <button class="reset-btn" id="btnReset">↺ Reset</button>
+        <button class="calc-btn" id="btnCalc">⚡ Calcular</button>
+    </div>
+</div>
+
+<div class="layout">
+
+    <!-- PANEL IZQ -->
+    <div class="panel-left">
+
+        <div class="pgroup">
+            <div class="pgroup-title">Geometría de planta</div>
+            <div class="field-row">
+                <div class="field"><label>Lx [m]</label><input type="number" id="inp_Lx" value="6.0" min="1" max="20" step="0.5"><div class="field-unit">luz X</div></div>
+                <div class="field"><label>Ly [m]</label><input type="number" id="inp_Ly" value="6.0" min="1" max="20" step="0.5"><div class="field-unit">luz Y</div></div>
+            </div>
+            <div class="field-row">
+                <div class="field"><label>Vanos X (nx)</label><input type="number" id="inp_nx" value="3" min="1" max="5" step="1"></div>
+                <div class="field"><label>Vanos Y (ny)</label><input type="number" id="inp_ny" value="3" min="1" max="5" step="1"></div>
+            </div>
+        </div>
+
+        <div class="pgroup">
+            <div class="pgroup-title">Pisos</div>
+            <div class="field-row">
+                <div class="field"><label>N° pisos</label><input type="number" id="inp_npisos" value="5" min="1" max="20" step="1"></div>
+                <div class="field"><label>h_piso [m]</label><input type="number" id="inp_hpiso" value="3.0" min="2" max="6" step="0.25"></div>
+            </div>
+        </div>
+
+        <div class="pgroup">
+            <div class="pgroup-title">Losa</div>
+            <div class="field"><label>Espesor e [m]</label><input type="number" id="inp_elosa" value="0.15" min="0.08" max="0.40" step="0.01"><div class="field-unit">m</div></div>
+            <div class="field">
+                <label>Tipo de losa</label>
+                <select id="inp_tipol">
+                    <option value="bid">Bidireccional</option>
+                    <option value="uni">Unidireccional</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="pgroup">
+            <div class="pgroup-title">Cargas (NCh 1537)</div>
+            <div class="field"><label>q_D adicional [kN/m²]</label><input type="number" id="inp_qd" value="2.0" min="0" max="5" step="0.25"><div class="field-unit">piso terminado + tabiques</div></div>
+            <div class="field">
+                <label>Ocupación → q_L automático</label>
+                <select id="inp_ocup">
+                    <option value="viv">Vivienda — 2.0 kN/m²</option>
+                    <option value="viv2">Vivienda sala — 3.0 kN/m²</option>
+                    <option value="ofic">Oficina — 2.5 kN/m²</option>
+                    <option value="com">Comercio — 5.0 kN/m²</option>
+                    <option value="ind">Industrial — 7.5 kN/m²</option>
+                    <option value="cub">Cubierta — 1.0 kN/m²</option>
+                    <option value="bib">Biblioteca — 7.5 kN/m²</option>
+                    <option value="estac">Estacionamiento — 2.5 kN/m²</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="pgroup">
+            <div class="pgroup-title">Sección de pilar</div>
+            <div class="field-row">
+                <div class="field"><label>b [m]</label><input type="number" id="inp_bpil" value="0.40" min="0.15" max="1.5" step="0.05"></div>
+                <div class="field"><label>h [m]</label><input type="number" id="inp_hpil" value="0.40" min="0.15" max="1.5" step="0.05"></div>
+            </div>
+            <div class="field-row">
+                <div class="field"><label>f'c [MPa]</label><input type="number" id="inp_fc" value="25" min="17" max="60" step="1"></div>
+                <div class="field"><label>ρ [%]</label><input type="number" id="inp_rho" value="2.0" min="1" max="8" step="0.5"></div>
+            </div>
+        </div>
+
+        <div class="pgroup">
+            <div class="pgroup-title">Viga</div>
+            <div class="field-row">
+                <div class="field"><label>b_viga [m]</label><input type="number" id="inp_bviga" value="0.30" min="0.15" max="1.0" step="0.05"></div>
+                <div class="field"><label>h_viga [m]</label><input type="number" id="inp_hviga" value="0.55" min="0.20" max="1.5" step="0.05"></div>
+            </div>
+        </div>
+
+        <div class="pgroup">
+            <div class="pgroup-title">Fundación</div>
+            <div class="field">
+                <label>Tipo</label>
+                <select id="inp_tipof">
+                    <option value="zapata">Zapata aislada</option>
+                    <option value="pilotes">Pilotes</option>
+                    <option value="losa">Losa de cimentación</option>
+                </select>
+            </div>
+            <div class="field-row">
+                <div class="field"><label>B_zap [m]</label><input type="number" id="inp_Bzap" value="1.8" min="0.5" max="8" step="0.1"></div>
+                <div class="field"><label>L_zap [m]</label><input type="number" id="inp_Lzap" value="1.8" min="0.5" max="8" step="0.1"></div>
+            </div>
+            <div class="field-row">
+                <div class="field"><label>e_zap [m]</label><input type="number" id="inp_ezap" value="0.50" min="0.30" max="1.5" step="0.05"></div>
+                <div class="field"><label>Df [m]</label><input type="number" id="inp_Df" value="1.5" min="0.5" max="5" step="0.25"></div>
+            </div>
+            <div class="field"><label>σ_adm [kPa]</label><input type="number" id="inp_sigadm" value="200" min="50" max="800" step="10"></div>
+        </div>
+
+    </div>
+
+    <!-- PANEL CENTRO -->
+    <div class="panel-center">
+        <div class="tabs-bar">
+            <button class="tab-btn active" data-tab="corte">⬛ Corte longitudinal</button>
+            <button class="tab-btn" data-tab="planta">▦ Planta tipo</button>
+            <button class="tab-btn" data-tab="acum">▬ Acumulación por piso</button>
+        </div>
+        <div class="canvas-area">
+
+            <div class="tab-panel active" id="tab_corte">
+                <div class="canvas-label">Corte longitudinal — Flujo de cargas</div>
+                <div class="canvas-wrap" id="corteWrap">
+                    <canvas id="canvasCorte"></canvas>
+                    <div class="canvas-overlay">
+                        <div class="overlay-badge">N_base = <span id="ovNbase">—</span> kN</div>
+                        <div class="overlay-badge">q_u = <span id="ovQu">—</span> kN/m²</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-panel" id="tab_planta">
+                <div class="canvas-label">Planta tipo — Áreas tributarias</div>
+                <div class="canvas-wrap" id="plantaWrap">
+                    <canvas id="canvasPlanta"></canvas>
+                </div>
+            </div>
+
+            <div class="tab-panel" id="tab_acum">
+                <div class="canvas-label">Acumulación de carga axial por piso</div>
+                <div class="canvas-wrap" id="acumWrap">
+                    <canvas id="canvasAcum"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PANEL DER -->
+    <div class="panel-right">
+
+        <div class="res-group">
+            <div class="res-title">Cargas por m²</div>
+            <div class="res-row"><span class="res-key">q_pp (losa)</span><span class="res-val" id="res_qpp">—</span></div>
+            <div class="res-row"><span class="res-key">q_D total</span><span class="res-val" id="res_qd">—</span></div>
+            <div class="res-row"><span class="res-key">q_L (NCh 1537)</span><span class="res-val" id="res_ql">—</span></div>
+            <div class="res-row"><span class="res-key">q_u = 1.2D+1.6L</span><span class="res-val" id="res_qu">—</span></div>
+        </div>
+
+        <div class="res-group">
+            <div class="res-title">Áreas tributarias</div>
+            <div class="res-row"><span class="res-key">At interior</span><span class="res-val" id="res_atint">—</span></div>
+            <div class="res-row"><span class="res-key">At borde</span><span class="res-val" id="res_atbor">—</span></div>
+            <div class="res-row"><span class="res-key">At esquina</span><span class="res-val" id="res_atesq">—</span></div>
+        </div>
+
+        <div class="res-group">
+            <div class="res-title">Acumulación pilar interior</div>
+            <table class="res-table">
+                <thead><tr><th>Piso</th><th>N_int [kN]</th><th>N_bor [kN]</th></tr></thead>
+                <tbody id="res_tabla_body"></tbody>
+            </table>
+        </div>
+
+        <div class="res-group">
+            <div class="res-title">Carga en pilar base</div>
+            <div class="res-row"><span class="res-key">N_interior</span><span class="res-val" id="res_Nint">—</span></div>
+            <div class="res-row"><span class="res-key">N_borde</span><span class="res-val" id="res_Nbor">—</span></div>
+            <div class="res-row"><span class="res-key">N_esquina</span><span class="res-val" id="res_Nesq">—</span></div>
+        </div>
+
+        <div class="res-group">
+            <div class="res-title">Verificación pilar base</div>
+            <div class="res-row"><span class="res-key">φPn</span><span class="res-val" id="res_phiPn">—</span></div>
+            <div class="res-row"><span class="res-key">DCR = N/φPn</span><span class="res-val" id="res_DCR">—</span></div>
+            <div class="dcr-bar-wrap"><div class="dcr-bar" id="dcrBar" style="width:0%"></div></div>
+        </div>
+
+        <div class="res-group">
+            <div class="res-title">Verificación fundación</div>
+            <div class="res-row"><span class="res-key">A_zap</span><span class="res-val" id="res_Azap">—</span></div>
+            <div class="res-row"><span class="res-key">σ_neta</span><span class="res-val" id="res_sigma">—</span></div>
+            <div class="res-row"><span class="res-key">σ_adm</span><span class="res-val" id="res_sigadm_r">—</span></div>
+            <div class="res-row"><span class="res-key">Estado</span><span class="res-val" id="res_fundok">—</span></div>
+        </div>
+
+        <div class="verif-box ok" id="verifBox">
+            <div class="verif-title" id="verifTitle">—</div>
+            <div class="verif-sub" id="verifSub">Calcule para verificar</div>
+        </div>
+
+        <div class="teoria-box">
+            <div class="teoria-title">TEORÍA — ÁREAS TRIBUTARIAS</div>
+            <div class="formula">At_int  = Lx × Ly</div>
+            <div class="formula">At_bord = Lx × Ly / 2</div>
+            <div class="formula">At_esq  = Lx/2 × Ly/2</div>
+            <div class="formula">q_u = 1.2D + 1.6L</div>
+            <div class="formula">σ_neta = (N+W_zap) / A_zap</div>
+            <div class="teoria-text">Verificación pilar: φPn (ACI 318-19 §22.4.2), φ=0.65. Fundación: σ_neta ≤ σ_adm (NCh 2123).</div>
+        </div>
+
+        <div class="res-group">
+            <div class="res-title">Normativa</div>
+            <div class="norma-chips">
+                <span class="norma-chip">NCh 1537</span>
+                <span class="norma-chip">ACI 318-19</span>
+                <span class="norma-chip">NCh 430</span>
+                <span class="norma-chip">NCh 2123</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="../js/camino_cargas.js"></script>
+<script>
+'use strict';
+
+let canvasCorte, canvasPlanta, canvasAcum;
+
+/* ── INIT Y RESIZE ── */
+function initCanvases() {
+    canvasCorte  = document.getElementById('canvasCorte');
+    canvasPlanta = document.getElementById('canvasPlanta');
+    canvasAcum   = document.getElementById('canvasAcum');
+
+    function resizeAll() {
+        ['corteWrap','plantaWrap','acumWrap'].forEach(id => {
+            const wrap = document.getElementById(id);
+            const c    = wrap.querySelector('canvas');
+            c.width    = wrap.clientWidth;
+            c.height   = wrap.clientHeight;
+        });
+        if (CC_MODULE.state.result) renderAll();
+    }
+
+    const ro = new ResizeObserver(resizeAll);
+    ro.observe(document.getElementById('corteWrap'));
+    ro.observe(document.getElementById('plantaWrap'));
+    ro.observe(document.getElementById('acumWrap'));
+    setTimeout(resizeAll, 100);
+}
+
+/* ── SINCRONIZAR ESTADO con CC_MODULE ── */
+function syncState() {
+    const m = CC_MODULE;
+
+    // Geometría
+    m.setParam('Lx',       parseFloat(document.getElementById('inp_Lx').value)     || 6);
+    m.setParam('Ly',       parseFloat(document.getElementById('inp_Ly').value)     || 6);
+    m.setParam('nx',       parseInt(document.getElementById('inp_nx').value)       || 3);
+    m.setParam('ny',       parseInt(document.getElementById('inp_ny').value)       || 3);
+
+    // Pisos
+    m.setParam('n_pisos',  parseInt(document.getElementById('inp_npisos').value)   || 5);
+    m.setParam('h_piso',   parseFloat(document.getElementById('inp_hpiso').value)  || 3);
+
+    // Losa — valores 'bid' / 'uni' según CC_MODULE
+    m.setParam('e_losa',   parseFloat(document.getElementById('inp_elosa').value)  || 0.15);
+    m.setParam('tipo_losa',document.getElementById('inp_tipol').value);
+
+    // Cargas — q_D_adic y ocupacion con claves correctas
+    m.setParam('q_D_adic', parseFloat(document.getElementById('inp_qd').value)     || 2.0);
+    const ocup = document.getElementById('inp_ocup').value;
+    m.setParam('ocupacion', ocup);
+    m.setParam('q_L',      CC_MODULE.SOBRECARGAS[ocup].q);
+
+    // Pilar — fc_pilar y rho_pilar (no fc / rho)
+    m.setParam('b_pilar',  parseFloat(document.getElementById('inp_bpil').value)   || 0.40);
+    m.setParam('h_pilar',  parseFloat(document.getElementById('inp_hpil').value)   || 0.40);
+    m.setParam('fc_pilar', parseFloat(document.getElementById('inp_fc').value)     || 25);
+    m.setParam('rho_pilar',parseFloat(document.getElementById('inp_rho').value) / 100 || 0.02);
+
+    // Viga
+    m.setParam('b_viga',   parseFloat(document.getElementById('inp_bviga').value)  || 0.30);
+    m.setParam('h_viga',   parseFloat(document.getElementById('inp_hviga').value)  || 0.55);
+
+    // Fundación
+    m.setParam('tipo_fund',document.getElementById('inp_tipof').value);
+    m.setParam('B_zap',    parseFloat(document.getElementById('inp_Bzap').value)   || 1.8);
+    m.setParam('L_zap',    parseFloat(document.getElementById('inp_Lzap').value)   || 1.8);
+    m.setParam('e_zap',    parseFloat(document.getElementById('inp_ezap').value)   || 0.50);
+    m.setParam('Df',       parseFloat(document.getElementById('inp_Df').value)     || 1.5);
+    m.setParam('sigma_adm',parseFloat(document.getElementById('inp_sigadm').value) || 200);
+}
+
+/* ── CALCULAR Y RENDERIZAR ── */
+function calcularYRenderizar() {
+    syncState();
+    const result = CC_MODULE.calcular();
+    renderAll(result);
+    updateResults(result);
+}
+
+function renderAll(result) {
+    result = result || CC_MODULE.state.result;
+    if (!result) return;
+    CC_MODULE.draw(canvasCorte, result);
+    CC_MODULE.drawPlanta(canvasPlanta, result);
+    CC_MODULE.drawAcumulacion(canvasAcum, result);
+}
+
+/* ── ACTUALIZAR PANEL DER ── */
+function updateResults(r) {
+    if (!r) return;
+    const fmt = (v, d, u) => (v != null && !isNaN(v)) ? `${(+v).toFixed(d)} ${u}`.trim() : '—';
+
+    // Cargas por m²
+    document.getElementById('res_qpp').textContent = fmt(r.q_D_pp, 2, 'kN/m²');
+    document.getElementById('res_qd').textContent  = fmt(r.q_D,    2, 'kN/m²');
+    document.getElementById('res_ql').textContent  = fmt(r.q_L,    2, 'kN/m²');
+    document.getElementById('res_qu').textContent  = fmt(r.q_comb, 2, 'kN/m²');
+
+    // Áreas tributarias — desde el primer piso de la tabla
+    const p0 = r.tabla.pisos[0];
+    document.getElementById('res_atint').textContent = fmt(p0.At_int, 2, 'm²');
+    document.getElementById('res_atbor').textContent = fmt(p0.At_bor, 2, 'm²');
+    document.getElementById('res_atesq').textContent = fmt(p0.At_esq, 2, 'm²');
+
+    // Tabla de pisos (máx 8 filas)
+    const tbody = document.getElementById('res_tabla_body');
+    tbody.innerHTML = '';
+    const pisos = r.tabla.pisos;
+    const step  = Math.ceil(pisos.length / 8);
+    pisos.filter((_, i) => i % step === 0 || i === pisos.length - 1).forEach(p => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>P${p.numero}</td><td>${p.N_int_acum.toFixed(0)}</td><td>${p.N_bor_acum.toFixed(0)}</td>`;
+        tbody.appendChild(tr);
+    });
+
+    // Cargas pilar base
+    document.getElementById('res_Nint').textContent = fmt(r.N_int_base, 1, 'kN');
+    document.getElementById('res_Nbor').textContent = fmt(r.N_bor_base, 1, 'kN');
+    document.getElementById('res_Nesq').textContent = fmt(r.N_esq_base, 1, 'kN');
+
+    // Verificación pilar
+    const vp  = r.verif_pilar;
+    document.getElementById('res_phiPn').textContent = fmt(vp.phiPn, 1, 'kN');
+    const dcrEl = document.getElementById('res_DCR');
+    dcrEl.textContent = vp.DCR.toFixed(3);
+    dcrEl.className   = 'res-val ' + (vp.DCR <= 1 ? 'ok' : 'fail');
+    const bar = document.getElementById('dcrBar');
+    bar.style.width      = Math.min(vp.DCR * 100, 100) + '%';
+    bar.style.background = vp.DCR <= 0.7 ? 'var(--accent)' : vp.DCR <= 1 ? 'var(--orange)' : 'var(--red)';
+
+    // Verificación fundación
+    const vf = r.verif_fund;
+    document.getElementById('res_Azap').textContent    = fmt(vf.A_zap,      2, 'm²');
+    document.getElementById('res_sigma').textContent   = fmt(vf.sigma_neta, 1, 'kPa');
+    document.getElementById('res_sigadm_r').textContent= fmt(vf.sigma_adm,  0, 'kPa');
+    const fundEl = document.getElementById('res_fundok');
+    fundEl.textContent = vf.ok ? '✅ OK' : '❌ EXCEDE';
+    fundEl.className   = 'res-val ' + (vf.ok ? 'ok' : 'fail');
+
+    // Overlays
+    document.getElementById('ovNbase').textContent = r.N_int_base.toFixed(0);
+    document.getElementById('ovQu').textContent    = r.q_comb.toFixed(2);
+
+    // Verificación global
+    const ok = vp.ok && vf.ok;
+    const box = document.getElementById('verifBox');
+    box.className = 'verif-box ' + (ok ? 'ok' : 'fail');
+    document.getElementById('verifTitle').textContent = ok ? '✅ ESTRUCTURA OK' : '❌ REVISAR DISEÑO';
+    document.getElementById('verifTitle').style.color = ok ? 'var(--accent)' : 'var(--red)';
+    document.getElementById('verifSub').textContent   =
+        `Pilar DCR=${vp.DCR.toFixed(2)}  |  σ=${vf.sigma_neta.toFixed(0)}/${vf.sigma_adm} kPa`;
+}
+
+/* ── TABS ── */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab_' + btn.dataset.tab).classList.add('active');
+        if (CC_MODULE.state.result) renderAll();
+    });
+});
+
+/* ── BOTONES ── */
+document.getElementById('btnCalc').addEventListener('click', calcularYRenderizar);
+
+document.getElementById('btnReset').addEventListener('click', () => {
+    document.getElementById('inp_Lx').value     = '6.0';
+    document.getElementById('inp_Ly').value     = '6.0';
+    document.getElementById('inp_nx').value     = '3';
+    document.getElementById('inp_ny').value     = '3';
+    document.getElementById('inp_npisos').value = '5';
+    document.getElementById('inp_hpiso').value  = '3.0';
+    document.getElementById('inp_elosa').value  = '0.15';
+    document.getElementById('inp_tipol').value  = 'bid';
+    document.getElementById('inp_qd').value     = '2.0';
+    document.getElementById('inp_ocup').value   = 'viv';
+    document.getElementById('inp_bpil').value   = '0.40';
+    document.getElementById('inp_hpil').value   = '0.40';
+    document.getElementById('inp_fc').value     = '25';
+    document.getElementById('inp_rho').value    = '2.0';
+    document.getElementById('inp_bviga').value  = '0.30';
+    document.getElementById('inp_hviga').value  = '0.55';
+    document.getElementById('inp_tipof').value  = 'zapata';
+    document.getElementById('inp_Bzap').value   = '1.8';
+    document.getElementById('inp_Lzap').value   = '1.8';
+    document.getElementById('inp_ezap').value   = '0.50';
+    document.getElementById('inp_Df').value     = '1.5';
+    document.getElementById('inp_sigadm').value = '200';
+    calcularYRenderizar();
+});
+
+/* ── ARRANQUE ── */
+initCanvases();
+setTimeout(calcularYRenderizar, 200);
+</script>
+</body>
+</html>

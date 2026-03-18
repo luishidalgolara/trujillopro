@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRUJILLO - Revolución en Diseño de Instalaciones</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/pdf-modal.css">
+    <link rel="stylesheet" href="css/video-modal.css">
+    <link rel="stylesheet" href="css/certificate-modal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+    <style>
+        .patent-seal {
+            position: absolute; top: 80px; left: 200px;
+            width: 280px; height: 280px; z-index: 10;
+            animation: fadeInSeal 1s ease-out;
+            filter: drop-shadow(0 6px 20px rgba(220,38,38,0.4));
+        }
+        .patent-seal-2 {
+            position: absolute; top: 80px; right: 200px;
+            width: 280px; height: 280px; z-index: 10;
+            animation: fadeInSeal 1.2s ease-out;
+            filter: drop-shadow(0 6px 20px rgba(220,38,38,0.4));
+        }
+        .patent-seal-3 {
+            position: absolute; top: 390px; left: 200px;
+            width: 280px; height: 280px; z-index: 10;
+            animation: fadeInSeal 1.4s ease-out;
+            filter: drop-shadow(0 6px 20px rgba(220,38,38,0.4));
+        }
+        @keyframes fadeInSeal {
+            from { opacity:0; transform:scale(0.8) rotate(-5deg); }
+            to   { opacity:1; transform:scale(1) rotate(0deg); }
+        }
+        .patent-seal:hover,
+        .patent-seal-2:hover,
+        .patent-seal-3:hover { transform:scale(1.05) rotate(2deg); transition:transform 0.3s ease; }
+        @media (max-width:768px) {
+            .patent-seal  { width:160px; height:160px; top:80px;  left:20px; }
+            .patent-seal-2{ width:160px; height:160px; top:80px;  right:20px; }
+            .patent-seal-3{ width:160px; height:160px; top:260px; left:20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Secciones inyectadas por JS -->
+    <div id="section-nav"></div>
+    <div id="section-hero"></div>
+    <div id="section-problem"></div>
+    <div id="section-modules"></div>
+    <div id="section-ai"></div>
+    <div id="section-gallery"></div>
+    <div id="section-comparison"></div>
+    <div id="section-pricing"></div>
+    <div id="section-benefits"></div>
+    <div id="section-cta"></div>
+    <div id="section-footer"></div>
+    <div id="section-modals"></div>
+
+    <!-- Loader: inyecta secciones y luego carga todos los JS -->
+    <script src="js/sections/loader.js"></script>
+
+</body>
+</html>

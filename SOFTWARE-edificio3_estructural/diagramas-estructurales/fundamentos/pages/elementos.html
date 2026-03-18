@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elementos Estructurales | Fundamentos Estructurales</title>
+    <link rel="stylesheet" href="../css/fundamentos.css">
+    <style>
+        :root { --accent: var(--elementos); }
+        .concepto-num { color: var(--elementos) !important; }
+        .formula-main { color: var(--elementos) !important; }
+        .formula-block::before { background: var(--elementos) !important; }
+        .sidebar-item.active { border-left-color: var(--elementos) !important; }
+        .sidebar-progress-fill { background: var(--elementos) !important; }
+        .topbar-badge { color:#ff8c00 !important; border-color:rgba(255,140,0,.3) !important; background:rgba(255,140,0,.08) !important; }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="topbar-left">
+        <a href="../index.html" class="back-btn">← Fundamentos</a>
+        <div class="topbar-badge">CAT 03</div>
+        <div class="topbar-title">ELEMENTOS ESTRUCTURALES</div>
+    </div>
+    <div class="topbar-right">
+        <span style="font-family:var(--mono);font-size:10px;color:var(--text3)">14 conceptos</span>
+    </div>
+</div>
+
+<div class="page-layout">
+    <nav class="sidebar">
+        <div class="sidebar-title">Elementos</div>
+        <div class="sidebar-progress"><div class="sidebar-progress-fill" style="width:7%"></div></div>
+        <div class="sidebar-item active"><span class="item-num">01</span><span class="item-dot"></span>Viga</div>
+        <div class="sidebar-item"><span class="item-num">02</span><span class="item-dot"></span>Columna</div>
+        <div class="sidebar-item"><span class="item-num">03</span><span class="item-dot"></span>Pilar</div>
+        <div class="sidebar-item"><span class="item-num">04</span><span class="item-dot"></span>Losa</div>
+        <div class="sidebar-item"><span class="item-num">05</span><span class="item-dot"></span>Placa</div>
+        <div class="sidebar-item"><span class="item-num">06</span><span class="item-dot"></span>Muro Estructural</div>
+        <div class="sidebar-item"><span class="item-num">07</span><span class="item-dot"></span>Diafragma</div>
+        <div class="sidebar-item"><span class="item-num">08</span><span class="item-dot"></span>Fundación</div>
+        <div class="sidebar-item"><span class="item-num">09</span><span class="item-dot"></span>Zapata</div>
+        <div class="sidebar-item"><span class="item-num">10</span><span class="item-dot"></span>Pilote</div>
+        <div class="sidebar-item"><span class="item-num">11</span><span class="item-dot"></span>Cabezal</div>
+        <div class="sidebar-item"><span class="item-num">12</span><span class="item-dot"></span>Viga de Fundación</div>
+        <div class="sidebar-item"><span class="item-num">13</span><span class="item-dot"></span>Arriostramiento</div>
+        <div class="sidebar-item"><span class="item-num">14</span><span class="item-dot"></span>Cercha / Marco</div>
+    </nav>
+
+    <div class="main-content">
+
+        <!-- 01 VIGA -->
+        <div class="concepto active" id="c01">
+            <div class="concepto-header">
+                <div class="concepto-num">01</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Elementos Estructurales</div>
+                    <div class="concepto-titulo">VIGA</div>
+                    <div class="concepto-subtitulo">Beam — Elemento horizontal que trabaja principalmente a flexión</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>viga</strong> es un elemento estructural horizontal que recibe cargas transversales y las transfiere a sus apoyos (columnas o muros). Trabaja principalmente a <strong>flexión</strong> y <strong>corte</strong>. Su diseño busca resistir el momento flector máximo y garantizar una flecha admisible.</p>
+            <div class="canvas-block">
+                <svg width="100%" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs><marker id="arrVig" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#ff8c00"/></marker></defs>
+                    <!-- Viga 3D perspectiva simple -->
+                    <rect x="80" y="90" width="400" height="30" fill="rgba(255,140,0,0.15)" stroke="#ff8c00" stroke-width="2"/>
+                    <!-- Cara superior -->
+                    <polygon points="80,90 100,75 500,75 480,90" fill="rgba(255,140,0,0.08)" stroke="#ff8c00" stroke-width="1"/>
+                    <!-- Cara lateral -->
+                    <polygon points="480,90 500,75 500,105 480,120" fill="rgba(255,140,0,0.06)" stroke="#ff8c00" stroke-width="1"/>
+                    <!-- Apoyos -->
+                    <polygon points="80,120 60,148 100,148" fill="rgba(255,140,0,0.2)" stroke="#ff8c00" stroke-width="1.5"/>
+                    <polygon points="480,120 460,148 500,148" fill="rgba(255,140,0,0.2)" stroke="#ff8c00" stroke-width="1.5"/>
+                    <!-- Cargas -->
+                    <line x1="200" y1="50" x2="200" y2="73" stroke="#ff8c00" stroke-width="2" marker-end="url(#arrVig)"/>
+                    <line x1="280" y1="50" x2="280" y2="73" stroke="#ff8c00" stroke-width="2" marker-end="url(#arrVig)"/>
+                    <line x1="360" y1="50" x2="360" y2="73" stroke="#ff8c00" stroke-width="2" marker-end="url(#arrVig)"/>
+                    <!-- Dim -->
+                    <line x1="80" y1="160" x2="480" y2="160" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                    <text x="280" y="175" fill="rgba(255,255,255,0.35)" font-family="Space Mono" font-size="9" text-anchor="middle">Luz libre L</text>
+                    <!-- Labels -->
+                    <text x="280" y="108" fill="rgba(255,255,255,0.5)" font-family="Space Mono" font-size="11" text-anchor="middle">VIGA</text>
+                    <text x="570" y="98" fill="rgba(255,140,0,0.6)" font-family="Space Mono" font-size="9">b</text>
+                    <line x1="540" y1="90" x2="540" y2="120" stroke="rgba(255,140,0,0.4)" stroke-width="1"/>
+                    <text x="570" y="112" fill="rgba(255,140,0,0.6)" font-family="Space Mono" font-size="9">h</text>
+                </svg>
+            </div>
+            <div class="formula-block">
+                <div class="formula-label">DIMENSIONAMIENTO PRELIMINAR</div>
+                <div class="formula-main">h ≈ L/10 a L/15    b ≈ h/2 a h/3</div>
+                <div class="formula-vars">
+                    <span class="formula-var">h</span> = altura total de la viga [m]<br>
+                    <span class="formula-var">b</span> = ancho del alma [m]<br>
+                    <span class="formula-var">L</span> = luz libre entre apoyos [m]<br>
+                    Momento de diseño: <span class="formula-var">Mu ≈ wu·L²/8</span>  (carga uniforme, viga simple)
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">SOLICITACIONES</div><div class="prop-val">Flexión + Corte</div></div>
+                <div class="prop-chip"><div class="prop-label">MATERIALES</div><div class="prop-val">H.A. / Acero / Madera</div></div>
+                <div class="prop-chip"><div class="prop-label">h/L típico</div><div class="prop-val">1/10 a 1/15</div></div>
+                <div class="prop-chip"><div class="prop-label">ELS</div><div class="prop-val">δ ≤ L/300 a L/500</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev" style="display:none"></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Columna</span></button>
+            </div>
+        </div>
+
+        <!-- 02 COLUMNA -->
+        <div class="concepto" id="c02">
+            <div class="concepto-header">
+                <div class="concepto-num">02</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Elementos Estructurales</div>
+                    <div class="concepto-titulo">COLUMNA</div>
+                    <div class="concepto-subtitulo">Column — Elemento vertical que trabaja a compresión y flexión</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>columna</strong> es un elemento estructural vertical que transmite cargas verticales (compresión) desde los pisos superiores hasta la fundación. En marcos resistentes a momento, también trabaja a flexión. Su diseño debe verificar resistencia, esbeltez y pandeo.</p>
+            <div class="formula-block">
+                <div class="formula-label">CAPACIDAD AXIAL (ACI 318-19 §22.4)</div>
+                <div class="formula-main">φPn = φ·0.80·[0.85·f'c·(Ag−Ast) + fy·Ast]</div>
+                <div class="formula-vars">
+                    <span class="formula-var">φ</span> = factor de reducción = 0.65 (estribos)<br>
+                    <span class="formula-var">Ag</span> = área bruta de la sección [mm²]<br>
+                    <span class="formula-var">Ast</span> = área total de acero longitudinal [mm²]<br>
+                    <span class="formula-var">ρ = Ast/Ag</span> = cuantía longitudinal (1% – 8%)
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">SOLICITACIONES</div><div class="prop-val">Compresión + Flexión</div></div>
+                <div class="prop-chip"><div class="prop-label">ρ mínimo</div><div class="prop-val">1% (ACI)</div></div>
+                <div class="prop-chip"><div class="prop-label">ρ máximo</div><div class="prop-val">8% (ACI)</div></div>
+                <div class="prop-chip"><div class="prop-label">RIESGO</div><div class="prop-val">Pandeo (esbeltez)</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Viga</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Pilar</span></button>
+            </div>
+        </div>
+
+        <!-- 03 PILAR -->
+        <div class="concepto" id="c03">
+            <div class="concepto-header">
+                <div class="concepto-num">03</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Elementos Estructurales</div>
+                    <div class="concepto-titulo">PILAR</div>
+                    <div class="concepto-subtitulo">Pier / Post — Columna robusta de baja esbeltez</div>
+                </div>
+            </div>
+            <p class="concepto-desc">El <strong>pilar</strong> es una columna de gran sección transversal y baja esbeltez (corto y ancho). Trabaja predominantemente a compresión con poca o ninguna flexión. Término también usado para elementos de sustentación en puentes y estructuras portuarias.</p>
+            <div class="formula-block">
+                <div class="formula-label">ESBELTEZ Y LONGITUD EFECTIVA</div>
+                <div class="formula-main">λ = L_ef / r    L_ef = β · L</div>
+                <div class="formula-vars">
+                    <span class="formula-var">λ</span> = esbeltez mecánica (pilar: λ ≤ 30–40 típicamente)<br>
+                    <span class="formula-var">r = √(I/A)</span> = radio de giro de la sección [m]<br>
+                    <span class="formula-var">β</span> = coeficiente de longitud efectiva (0.5 a 2.0)<br>
+                    Pilar corto: λ < 30 → sin efectos de 2° orden relevantes
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Columna</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Losa</span></button>
+            </div>
+        </div>
+
+        <!-- 04 LOSA -->
+        <div class="concepto" id="c04">
+            <div class="concepto-header">
+                <div class="concepto-num">04</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Elementos Estructurales</div>
+                    <div class="concepto-titulo">LOSA</div>
+                    <div class="concepto-subtitulo">Slab — Placa plana que distribuye cargas en dos direcciones</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>losa</strong> es un elemento bidimensional (plano) que recibe cargas sobre su superficie y las transfiere a vigas o directamente a columnas. Puede ser unidireccional (λ = Lx/Ly > 2) o bidireccional (λ ≤ 2). Define los entrepisos y cubiertas de los edificios.</p>
+            <div class="formula-block">
+                <div class="formula-label">ESPESOR MÍNIMO (ACI 318-19 Tabla 7.3.1)</div>
+                <div class="formula-main">e_min = L/20 (simple)   L/24 (continua)   L/28 (voladizo)</div>
+                <div class="formula-vars">
+                    <span class="formula-var">e</span> = espesor de la losa [m]<br>
+                    <span class="formula-var">L</span> = luz libre en la dirección de análisis [m]<br>
+                    Peso propio: <span class="formula-var">q_pp = γ_HA · e = 25 · e [kN/m²]</span><br>
+                    Tipo: λ = Lx/Ly ≤ 2 → bidireccional; λ > 2 → unidireccional
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">TIPO</div><div class="prop-val">Uni / Bidireccional</div></div>
+                <div class="prop-chip"><div class="prop-label">e típico</div><div class="prop-val">0.10 – 0.25 m</div></div>
+                <div class="prop-chip"><div class="prop-label">SOLICIT.</div><div class="prop-val">Flexión bidireccional</div></div>
+                <div class="prop-chip"><div class="prop-label">q_pp</div><div class="prop-val">25 · e [kN/m²]</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Pilar</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Placa</span></button>
+            </div>
+        </div>
+
+        <!-- 05 PLACA -->
+        <div class="concepto" id="c05">
+            <div class="concepto-header">
+                <div class="concepto-num">05</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Elementos Estructurales</div>
+                    <div class="concepto-titulo">PLACA</div>
+                    <div class="concepto-subtitulo">Plate — Elemento laminar con carga perpendicular a su plano</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>placa</strong> es un elemento estructural delgado (espesor mucho menor que sus otras dimensiones) que resiste cargas perpendiculares a su plano mediante flexión bidireccional. La teoría de placas (Kirchhoff) es la base del diseño de losas de H.A. y plataformas de acero.</p>
+            <div class="formula-block">
+                <div class="formula-label">ECUACIÓN DE PLACAS (KIRCHHOFF)</div>
+                <div class="formula-main">D · ∇⁴w = q    D = E·h³ / [12(1−ν²)]</div>
+                <div class="formula-vars">
+                    <span class="formula-var">w</span> = deflexión transversal de la placa [m]<br>
+                    <span class="formula-var">D</span> = rigidez flexural de la placa [kN·m]<br>
+                    <span class="formula-var">q</span> = carga por unidad de área [kN/m²]<br>
+                    <span class="formula-var">ν</span> = coeficiente de Poisson (concreto ≈ 0.2; acero ≈ 0.3)
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Losa</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Muro Estructural</span></button>
+            </div>
+        </div>
+
+        <!-- 06 MURO ESTRUCTURAL -->
+        <div class="concepto" id="c06">
+            <div class="concepto-header">
+                <div class="concepto-num">06</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Elementos Estructurales</div>
+                    <div class="concepto-titulo">MURO ESTRUCTURAL</div>
+                    <div class="concepto-subtitulo">Shear Wall — Muro de H.A. que resiste cargas sísmicas laterales</div>
+                </div>
+            </div>
+            <p class="concepto-desc">El <strong>muro estructural</strong> (o muro de corte) es un elemento vertical de H.A. de gran rigidez en su plano, diseñado para resistir las fuerzas sísmicas o de viento. Actúa como una viga en voladizo empotrada en la base. Dominante en el diseño sísmico chileno.</p>
+            <div class="formula-block">
+                <div class="formula-label">CORTANTE DE DISEÑO Y CUANTÍA MÍNIMA</div>
+                <div class="formula-main">ρ_h ≥ 0.0025    ρ_v ≥ 0.0025    (ACI §11.6)</div>
+                <div class="formula-vars">
+                    <span class="formula-var">ρ_h</span> = cuantía horizontal mínima del muro<br>
+                    <span class="formula-var">ρ_v</span> = cuantía vertical mínima del muro<br>
+                    Resistencia al corte: <span class="formula-var">Vn = Acv · (αc·λ·√f'c + ρt·fy)</span><br>
+                    e_muro típico: 0.15 – 0.30 m para edificios
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Placa</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Diafragma</span></button>
+            </div>
+        </div>
+
+        <!-- 07 DIAFRAGMA -->
+        <div class="concepto" id="c07">
+            <div class="concepto-header">
+                <div class="concepto-num">07</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Elementos Estructurales</div>
+                    <div class="concepto-titulo">DIAFRAGMA</div>
+                    <div class="concepto-subtitulo">Diaphragm — Losa rígida que distribuye fuerzas sísmicas horizontales</div>
+                </div>
+            </div>
+            <p class="concepto-desc">El <strong>diafragma</strong> es la losa de entrepiso actuando como elemento horizontal que distribuye las fuerzas sísmicas a los elementos verticales (muros, marcos). Para que funcione como diafragma rígido, debe ser suficientemente rígido en su plano. Es fundamental en el análisis sísmico.</p>
+            <div class="formula-block">
+                <div class="formula-label">CONDICIÓN DE DIAFRAGMA RÍGIDO</div>
+                <div class="formula-main">Δ_losa / Δ_entrepiso ≤ 0.10  (10%)</div>
+                <div class="formula-vars">
+                    Si la deformación del diafragma es ≤10% de la deformación de entrepiso, se modela como rígido.<br>
+                    Diafragma rígido: todos los nodos del piso tienen el mismo desplazamiento lateral.<br>
+                    Distribución de fuerza sísmica: proporcional a la rigidez de cada muro/marco.
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Muro Estructural</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Fundación</span></button>
+            </div>
+        </div>
+
+        <!-- 08 FUNDACIÓN -->
+        <div class="concepto" id="c08">
+            <div class="concepto-header">
+                <div class="concepto-num">08</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Elementos Estructurales</div>
+                    <div class="concepto-titulo">FUNDACIÓN</div>
+                    <div class="concepto-subtitulo">Foundation — Elemento que transfiere cargas al suelo</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>fundación</strong> es el conjunto de elementos que transmiten las cargas de la estructura al suelo. Debe distribuir la carga de manera que la tensión en el suelo no supere su capacidad portante admisible. Se clasifican en superficiales (zapatas, losas) y profundas (pilotes).</p>
+            <div class="formula-block">
+                <div class="formula-label">VERIFICACIÓN TENSIÓN EN SUELO</div>
+                <div class="formula-main">σ_neta = (N + W_fund) / A_fund ≤ σ_adm</div>
+                <div class="formula-vars">
+                    <span class="formula-var">σ_neta</span> = tensión neta sobre el suelo [kPa]<br>
+                    <span class="formula-var">N</span> = carga axial de la columna [kN]<br>
+                    <span class="formula-var">W_fund</span> = peso propio de la fundación [kN]<br>
+                    <span class="formula-var">A_fund</span> = área de la base de la fundación [m²]<br>
+                    <span class="formula-var">σ_adm</span> = capacidad portante admisible del suelo [kPa]
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Diafragma</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Zapata</span></button>
+            </div>
+        </div>
+
+        <!-- 09 ZAPATA -->
+        <div class="concepto" id="c09">
+            <div class="concepto-header">
+                <div class="concepto-num">09</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Elementos Estructurales</div>
+                    <div class="concepto-titulo">ZAPATA</div>
+                    <div class="concepto-subtitulo">Footing — Fundación superficial aislada bajo columna</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>zapata aislada</strong> es una fundación superficial que amplía la base de una columna para distribuir su carga sobre una mayor área de suelo. Trabaja a flexión (como una placa empotrada en la columna) y a punzonamiento. Es la fundación más común en edificios de baja y mediana altura.</p>
+            <div class="formula-block">
+                <div class="formula-label">DIMENSIONAMIENTO EN PLANTA</div>
+                <div class="formula-main">A_req = N_servicio / σ_adm    B ≈ √A_req</div>
+                <div class="formula-vars">
+                    <span class="formula-var">A_req</span> = área requerida [m²]<br>
+                    <span class="formula-var">N_servicio</span> = carga axial de servicio (sin factores) [kN]<br>
+                    <span class="formula-var">σ_adm</span> = capacidad portante admisible [kPa]<br>
+                    Espesor: <span class="formula-var">h_zap ≥ (B − b_col)/4</span>  (pendiente 1:2)
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Fundación</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Pilote</span></button>
+            </div>
+        </div>
+
+        <!-- 10 PILOTE -->
+        <div class="concepto" id="c10">
+            <div class="concepto-header">
+                <div class="concepto-num">10</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Elementos Estructurales</div>
+                    <div class="concepto-titulo">PILOTE</div>
+                    <div class="concepto-subtitulo">Pile — Fundación profunda que transfiere carga a estratos resistentes</div>
+                </div>
+            </div>
+            <p class="concepto-desc">El <strong>pilote</strong> es una fundación profunda, elemento esbelto que se hunde hasta estratos de suelo resistente. Transfiere la carga por <em>punta</em> (apoyo en roca o suelo firme) y por <em>fricción</em> lateral (adherencia entre el pilote y el suelo). Se usa cuando el suelo superficial es débil.</p>
+            <div class="formula-block">
+                <div class="formula-label">CAPACIDAD PORTANTE DEL PILOTE</div>
+                <div class="formula-main">Q_ult = Q_punta + Q_fricción = qp·Ap + fs·As</div>
+                <div class="formula-vars">
+                    <span class="formula-var">Q_punta</span> = resistencia de punta [kN]<br>
+                    <span class="formula-var">Q_fricción</span> = resistencia por fricción lateral [kN]<br>
+                    <span class="formula-var">qp</span> = resistencia unitaria en la punta [kPa]<br>
+                    <span class="formula-var">fs</span> = adherencia unitaria lateral [kPa] · <span class="formula-var">As</span> = área lateral [m²]
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Zapata</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Cabezal</span></button>
+            </div>
+        </div>
+
+        <!-- 11 CABEZAL -->
+        <div class="concepto" id="c11">
+            <div class="concepto-header">
+                <div class="concepto-num">11</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Elementos Estructurales</div>
+                    <div class="concepto-titulo">CABEZAL</div>
+                    <div class="concepto-subtitulo">Pile Cap — Bloque de H.A. que une pilotes y distribuye la carga</div>
+                </div>
+            </div>
+            <p class="concepto-desc">El <strong>cabezal</strong> es el elemento de H.A. que conecta la columna con un grupo de pilotes. Distribuye la carga axial y el momento entre los pilotes del grupo. Trabaja principalmente a flexión (como una viga sobre apoyos elásticos) y a punzonamiento.</p>
+            <div class="formula-block">
+                <div class="formula-label">FUERZA EN CADA PILOTE</div>
+                <div class="formula-main">P_i = N/n ± M·x_i / Σx²</div>
+                <div class="formula-vars">
+                    <span class="formula-var">P_i</span> = fuerza axial en el pilote i [kN]<br>
+                    <span class="formula-var">N</span> = carga axial total [kN]<br>
+                    <span class="formula-var">n</span> = número de pilotes<br>
+                    <span class="formula-var">M</span> = momento aplicado [kN·m] · <span class="formula-var">x_i</span> = distancia al eje neutro del grupo
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Pilote</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Viga de Fundación</span></button>
+            </div>
+        </div>
+
+        <!-- 12 VIGA DE FUNDACIÓN -->
+        <div class="concepto" id="c12">
+            <div class="concepto-header">
+                <div class="concepto-num">12</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Elementos Estructurales</div>
+                    <div class="concepto-titulo">VIGA DE FUNDACIÓN</div>
+                    <div class="concepto-subtitulo">Grade Beam — Viga que conecta zapatas y rigidiza la fundación</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>viga de fundación</strong> (o cadena de fundación) conecta las zapatas aisladas entre sí, rigidizando el sistema de fundación. Reduce los asentamientos diferenciales y transmite momentos sísmicos entre pilares adyacentes. Requerida por NCh 433 en zonas sísmicas.</p>
+            <div class="formula-block">
+                <div class="formula-label">DIMENSIONES MÍNIMAS (NCh 433)</div>
+                <div class="formula-main">b ≥ 0.25 m    h ≥ L/20    ρ_long ≥ 0.4%</div>
+                <div class="formula-vars">
+                    <span class="formula-var">L</span> = luz libre entre columnas [m]<br>
+                    <span class="formula-var">b, h</span> = dimensiones de la sección [m]<br>
+                    Función sísmica: <span class="formula-var">N_viga = 0.10 · N_col</span>  (tensión + compresión alternados)<br>
+                    Norma Chile: obligatoria en zona sísmica 2 y 3
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Cabezal</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Arriostramiento</span></button>
+            </div>
+        </div>
+
+        <!-- 13 ARRIOSTRAMIENTO -->
+        <div class="concepto" id="c13">
+            <div class="concepto-header">
+                <div class="concepto-num">13</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Elementos Estructurales</div>
+                    <div class="concepto-titulo">ARRIOSTRAMIENTO</div>
+                    <div class="concepto-subtitulo">Bracing — Sistema diagonal que da rigidez lateral al marco</div>
+                </div>
+            </div>
+            <p class="concepto-desc">El <strong>arriostramiento</strong> es un sistema de elementos diagonales que confiere rigidez lateral al marco estructural, resistiendo fuerzas horizontales de viento y sismo. Trabaja a tracción y compresión. Puede ser en X, V, chevron o arriostrado excéntrico (EBF).</p>
+            <div class="formula-block">
+                <div class="formula-label">FUERZA EN DIAGONAL</div>
+                <div class="formula-main">N_diag = H / cos(α)    α = arctan(h/b)</div>
+                <div class="formula-vars">
+                    <span class="formula-var">N_diag</span> = fuerza axial en la diagonal [kN]<br>
+                    <span class="formula-var">H</span> = fuerza horizontal de diseño [kN]<br>
+                    <span class="formula-var">α</span> = ángulo de inclinación de la diagonal<br>
+                    Ángulo óptimo: <span class="formula-var">α ≈ 45°</span>  (mínima fuerza en diagonal)
+                </div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Viga de Fundación</span></button>
+                <button class="nav-btn next" data-dir="next"><span class="nav-label">Siguiente →</span><span class="nav-name">Cercha / Marco</span></button>
+            </div>
+        </div>
+
+        <!-- 14 CERCHA / MARCO -->
+        <div class="concepto" id="c14">
+            <div class="concepto-header">
+                <div class="concepto-num">14</div>
+                <div class="concepto-meta">
+                    <div class="concepto-categoria">Elementos Estructurales</div>
+                    <div class="concepto-titulo">CERCHA / MARCO ESTRUCTURAL</div>
+                    <div class="concepto-subtitulo">Truss / Frame — Sistema articulado o rígido de barras</div>
+                </div>
+            </div>
+            <p class="concepto-desc">La <strong>cercha</strong> (o armadura) es un sistema triangulado de barras articuladas que trabajan solo a tracción o compresión. El <strong>marco estructural</strong> es un sistema de vigas y columnas con conexiones rígidas que puede resistir cargas tanto verticales como horizontales.</p>
+            <div class="formula-block">
+                <div class="formula-label">CONDICIÓN DE ISOSTÁTICA (CERCHA)</div>
+                <div class="formula-main">b + r = 2·n    (isostática)</div>
+                <div class="formula-vars">
+                    <span class="formula-var">b</span> = número de barras de la cercha<br>
+                    <span class="formula-var">r</span> = número de reacciones externas (normalmente 3)<br>
+                    <span class="formula-var">n</span> = número de nodos<br>
+                    b + r &lt; 2n → mecanismo · b + r &gt; 2n → hiperestática<br>
+                    Método de resolución: <strong>nodos</strong> o <strong>secciones</strong> (Ritter)
+                </div>
+            </div>
+            <div class="props-grid">
+                <div class="prop-chip"><div class="prop-label">CERCHA</div><div class="prop-val">Solo N (axial)</div></div>
+                <div class="prop-chip"><div class="prop-label">MARCO</div><div class="prop-val">N + V + M</div></div>
+                <div class="prop-chip"><div class="prop-label">CERCHA ISOST.</div><div class="prop-val">b + r = 2n</div></div>
+                <div class="prop-chip"><div class="prop-label">MATERIAL</div><div class="prop-val">Acero / Madera / H.A.</div></div>
+            </div>
+            <div class="nav-prevnext">
+                <button class="nav-btn" data-dir="prev"><span class="nav-label">← Anterior</span><span class="nav-name">Arriostramiento</span></button>
+                <button class="nav-btn next" data-dir="next" style="display:none"></button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="../js/fundamentos.js"></script>
+<script>FND_NAV.initNav('--elementos');</script>
+</body>
+</html>

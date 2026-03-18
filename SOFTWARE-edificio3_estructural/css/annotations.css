@@ -1,0 +1,450 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   ANNOTATIONS CSS v1.0
+   Estilos para marcadores numéricos 3D y panel de información técnica
+   Compatible con el sistema de diseño existente (variables CSS compartidas)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── OVERLAY CONTAINER ── */
+.ann-overlay {
+    position: fixed;
+    top: 58px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 58px);
+    pointer-events: none;
+    z-index: 45;
+    overflow: hidden;
+}
+
+/* ── NUMBERED MARKERS ── */
+.ann-marker {
+    position: absolute;
+    pointer-events: auto;
+    cursor: pointer;
+    z-index: 46;
+    transition: transform 0.15s ease;
+}
+
+.ann-marker-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00c9ff 0%, #0080d0 100%);
+    color: #fff;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 
+        0 0 14px rgba(0, 201, 255, 0.5),
+        0 2px 8px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: ann-pulse 2.8s ease-in-out infinite;
+    position: relative;
+}
+
+.ann-marker-num::after {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(0, 201, 255, 0.3);
+    animation: ann-ring 2.8s ease-in-out infinite;
+}
+
+@keyframes ann-pulse {
+    0%, 100% { box-shadow: 0 0 14px rgba(0,201,255,0.5), 0 2px 8px rgba(0,0,0,0.4); }
+    50% { box-shadow: 0 0 22px rgba(0,201,255,0.7), 0 2px 12px rgba(0,0,0,0.5); }
+}
+
+@keyframes ann-ring {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.15); opacity: 0.2; }
+}
+
+/* Hover state */
+.ann-marker.hover .ann-marker-num,
+.ann-marker:hover .ann-marker-num {
+    transform: scale(1.2);
+    background: linear-gradient(135deg, #ff9500 0%, #ff6600 100%);
+    box-shadow: 
+        0 0 20px rgba(255, 149, 0, 0.6),
+        0 4px 12px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.ann-marker.hover .ann-marker-num::after,
+.ann-marker:hover .ann-marker-num::after {
+    border-color: rgba(255, 149, 0, 0.5);
+    animation: none;
+    transform: scale(1.2);
+    opacity: 0.7;
+}
+
+/* Active/selected state */
+.ann-marker.active .ann-marker-num {
+    transform: scale(1.25);
+    background: linear-gradient(135deg, #ff5588 0%, #dd3355 100%);
+    box-shadow: 
+        0 0 24px rgba(255, 85, 136, 0.7),
+        0 4px 16px rgba(0, 0, 0, 0.5);
+    border-color: #fff;
+    animation: none;
+}
+
+.ann-marker.active .ann-marker-num::after {
+    border-color: rgba(255, 85, 136, 0.5);
+    animation: ann-active-ring 1.5s ease-in-out infinite;
+}
+
+@keyframes ann-active-ring {
+    0%, 100% { transform: scale(1.1); opacity: 0.7; }
+    50% { transform: scale(1.35); opacity: 0; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   INFO PANEL
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ann-panel {
+    position: fixed;
+    top: 74px;
+    right: -460px;
+    width: 420px;
+    max-height: calc(100vh - 100px);
+    background: rgba(12, 13, 18, 0.96);
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 17px;
+    z-index: 60;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 201, 255, 0.08);
+    transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+}
+
+.ann-panel.visible {
+    right: 18px;
+}
+
+.ann-panel-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    color: #9da5b2;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.2s;
+}
+
+.ann-panel-close:hover {
+    background: rgba(255, 80, 80, 0.15);
+    border-color: rgba(255, 80, 80, 0.4);
+    color: #ff5050;
+}
+
+.ann-panel-scroll {
+    overflow-y: auto;
+    max-height: calc(100vh - 120px);
+    padding: 22px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+
+.ann-panel-scroll::-webkit-scrollbar {
+    width: 5px;
+}
+
+.ann-panel-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.12);
+    border-radius: 3px;
+}
+
+.ann-panel-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.22);
+}
+
+/* Header */
+.ann-panel-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.ann-panel-icon {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 6px rgba(0,201,255,0.3));
+}
+
+.ann-panel-badge {
+    font-size: 0.62rem;
+    font-family: 'Space Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #00c9ff;
+    font-weight: 600;
+    margin-bottom: 4px;
+    padding: 3px 8px;
+    background: rgba(0, 201, 255, 0.1);
+    border: 1px solid rgba(0, 201, 255, 0.2);
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.ann-panel-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #e8ebf0;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.ann-panel-desc {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: #9da5b2;
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Sections */
+.ann-section {
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ann-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 6px;
+}
+
+.ann-section-title {
+    font-size: 0.72rem;
+    font-family: 'Space Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #ff9500;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+}
+
+/* Composition list */
+.ann-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ann-list li {
+    font-size: 0.78rem;
+    color: #b0b8c4;
+    line-height: 1.6;
+    padding: 5px 0 5px 16px;
+    position: relative;
+    border-left: 2px solid rgba(0, 201, 255, 0.15);
+    margin-bottom: 2px;
+    transition: all 0.2s;
+}
+
+.ann-list li:hover {
+    border-left-color: rgba(0, 201, 255, 0.5);
+    background: rgba(0, 201, 255, 0.03);
+    padding-left: 20px;
+}
+
+.ann-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 5px;
+    color: #00c9ff;
+    font-size: 0.65rem;
+}
+
+/* Specifications grid */
+.ann-specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.ann-spec-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 9px;
+    padding: 10px 12px;
+    transition: all 0.2s;
+}
+
+.ann-spec-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(0, 201, 255, 0.2);
+}
+
+.ann-spec-label {
+    font-size: 0.6rem;
+    font-family: 'Space Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6a7180;
+    margin-bottom: 3px;
+}
+
+.ann-spec-value {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #e8ebf0;
+}
+
+/* Calculations */
+.ann-calc-block {
+    background: rgba(10, 12, 18, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 10px;
+    transition: border-color 0.2s;
+}
+
+.ann-calc-block:hover {
+    border-color: rgba(255, 149, 0, 0.25);
+}
+
+.ann-calc-name {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #e8ebf0;
+    margin-bottom: 8px;
+}
+
+.ann-calc-formula {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.73rem;
+    color: #00c9ff;
+    background: rgba(0, 201, 255, 0.06);
+    border: 1px solid rgba(0, 201, 255, 0.12);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.ann-calc-example {
+    font-size: 0.72rem;
+    color: #b0b8c4;
+    font-family: 'Space Mono', monospace;
+    line-height: 1.6;
+    margin-bottom: 6px;
+    padding-left: 8px;
+    border-left: 2px solid rgba(255, 149, 0, 0.3);
+}
+
+.ann-calc-note {
+    font-size: 0.7rem;
+    color: #7a8290;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* Function text */
+.ann-func-text {
+    font-size: 0.8rem;
+    line-height: 1.75;
+    color: #b0b8c4;
+    margin: 0;
+}
+
+/* Normative tags */
+.ann-norms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.ann-norm-tag {
+    font-size: 0.65rem;
+    font-family: 'Space Mono', monospace;
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: #9da5b2;
+    transition: all 0.2s;
+}
+
+.ann-norm-tag:hover {
+    background: rgba(0, 201, 255, 0.08);
+    border-color: rgba(0, 201, 255, 0.3);
+    color: #00c9ff;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+    .ann-panel {
+        width: calc(100vw - 24px);
+        right: -105vw;
+        top: auto;
+        bottom: 90px;
+        max-height: 55vh;
+        border-radius: 15px;
+    }
+
+    .ann-panel.visible {
+        right: 12px;
+    }
+
+    .ann-specs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ann-marker-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .ann-panel {
+        width: calc(100vw - 12px);
+        bottom: 80px;
+        max-height: 50vh;
+        border-radius: 13px;
+    }
+
+    .ann-panel.visible {
+        right: 6px;
+    }
+
+    .ann-panel-scroll {
+        padding: 16px;
+    }
+
+    .ann-panel-title {
+        font-size: 1.1rem;
+    }
+}
